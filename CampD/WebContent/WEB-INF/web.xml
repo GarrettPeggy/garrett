@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>springMvc</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <listener>
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+ 
+  <!-- 统一字符编码为UTF-8 -->
+  <!-- 设定字符过滤器 -->
+  <filter>
+      <filter-name>encodingFilter</filter-name>
+      <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+      <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+      <filter-name>encodingFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 设定过滤器 -->
+  <filter>
+       <filter-name>applicationFilter</filter-name>
+       <filter-class>com.campD.portal.filter.ApplicationFilter</filter-class>
+       <init-param>
+           <param-name>session_exclude_url</param-name>
+           <param-value>/,/demo/register.do,/demo/greeting.do,/demo/index.do</param-value>
+       </init-param>
+  </filter>
+  <filter-mapping>
+        <filter-name>applicationFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+        <filter-name>applicationFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  
+  <!-- ehcache缓存配置 -->
+	<filter>
+		<filter-name>PageEhCacheFilter</filter-name>
+		<filter-class>com.campD.portal.filter.PageEhCacheFilter</filter-class>
+		<init-param>
+		    <param-name>patterns</param-name>
+		    <!-- 配置你需要缓存的url -->
+		    <param-value>/demo/index.do</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>PageEhCacheFilter</filter-name>
+	    <url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+	    <filter-name>PageEhCacheFilter</filter-name>
+	    <url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+  
+   <servlet>
+    <servlet-name>springMvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:*applicationContext.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springMvc</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 设定JSP的相关配置 -->
+  <jsp-config>
+    <taglib>
+        <taglib-uri>/flaginfoTokenLib</taglib-uri>
+        <taglib-location>/WEB-INF/tld/token.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+</web-app>
