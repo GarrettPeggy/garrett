@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.campD.server.common.JSONView;
+
 /**
  * @author Administrator
  *
@@ -29,16 +31,18 @@ public class RoleJsonServer {
      * @param reqMap
      * @return 
      */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"rawtypes" })
 	public Map findRoleByName(Map reqMap) {
 		
+    	logger.info("reqMap=" + reqMap);
 		String sqlStr = "select id,name from role where name=?";
-		Map returnMap = new HashMap();
 		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{reqMap.get("roleName")});
-        returnMap.put("roleList", resultList);
-        logger.info("根据角色名查询角色信息->roleName="+reqMap.get("roleName"));
+
+		JSONView jsonView = new JSONView();
+		jsonView.addAttribute("roleList", resultList);
+        logger.info("resultList=" + resultList);
         
-        return returnMap;
+        return jsonView;
 	}
     
     /**
@@ -49,12 +53,14 @@ public class RoleJsonServer {
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public Map findRoles(Map reqMap) {
+    	
+    	logger.info("reqMap=" + reqMap);
 		
 		String sqlStr = "select id,name from role";
 		Map returnMap = new HashMap();
-		List resultList =  jdbcTemplate.queryForList(sqlStr, new Object[]{});
-        returnMap.put("roleList", resultList);
-        logger.info("根据角色名查询角色信息->roleName="+reqMap.get("roleName"));
+		List roleList =  jdbcTemplate.queryForList(sqlStr, new Object[]{});
+        returnMap.put("roleList", roleList);
+        logger.info("roleList=" + roleList);
         
         return returnMap;
 	}

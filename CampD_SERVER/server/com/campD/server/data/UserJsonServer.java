@@ -38,13 +38,14 @@ public class UserJsonServer {
 	@SuppressWarnings({ "rawtypes"})
 	public Map register(Map reqMap) {
 		
-		JSONView jsonView = new JSONView();
+		logger.info("reqMap="+reqMap);
 		
 		// 记录用户注册信息
 		String sqlStr = "insert into user(id,user_name,mdn,role_id,login_time) values(?,?,?,?,?)";
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("userName"), reqMap.get("mdn"), reqMap.get("roleId"), new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
+        JSONView jsonView = new JSONView();
         if(updateLineCount <= 0){
         	jsonView.setFail();
 			jsonView.setReturnErrorMsg();
@@ -52,9 +53,10 @@ public class UserJsonServer {
 			return jsonView;
         }
         
-        jsonView.setSuccess();
         jsonView.setReturnSuccMsg();
         jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("updateLineCount="+updateLineCount);
+        
         return jsonView;
 
 	}
@@ -67,13 +69,15 @@ public class UserJsonServer {
     @SuppressWarnings({"rawtypes" })
 	public Map findUserByMdn(Map reqMap) {
 		
-    	JSONView jsonView = new JSONView();
+    	logger.info("reqMap="+reqMap);
     	
 		String sqlStr = "select u.id, u.user_name as name, u.password, u.mdn, u.email, u.login_time, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
 		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{reqMap.get("mdn")});
-        jsonView.setSuccess();
+		
+    	JSONView jsonView = new JSONView();
         jsonView.setReturnSuccMsg();
         jsonView.addAttribute("userList", resultList);
+        logger.info("resultList="+resultList);
         logger.info("根据手机号查询有无该用户->mdn="+reqMap.get("mdn"));
         
         return jsonView;
