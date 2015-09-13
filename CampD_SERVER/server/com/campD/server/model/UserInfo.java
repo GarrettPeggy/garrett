@@ -12,30 +12,20 @@ public class UserInfo implements Serializable{
     
 	private static final long serialVersionUID = 2195119891567279998L;
 
-	private String id;
-    private String mdn;//手机号
-    private String userame;//设计者名称
-    private String email;//正式姓名
-    private String roleName;//用户角色
+	private String userId;
+    private String mdn;
+    private String userName;
+    private String email;
+    private String roleName;
     private String loginIp;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 	public String getMdn() {
 		return mdn;
 	}
 	public void setMdn(String mdn) {
 		this.mdn = mdn;
 	}
-	public String getUserame() {
-		return userame;
-	}
-	public void setUserame(String userame) {
-		this.userame = userame;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -53,6 +43,18 @@ public class UserInfo implements Serializable{
 	}
 	public void setLoginIp(String loginIp) {
 		this.loginIp = loginIp;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
     
     

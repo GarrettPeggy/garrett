@@ -8,6 +8,6 @@
 </head>
 <body>
 	This is a test page.
-	<a href="http://localhost:8080/campD/demo/register?userName=王光华&password=garrett">addUser</a>
+	<a href="http://localhost:8080/campD/demo/register.do?userName=王光华&password=garrett">addUser</a>
 </body>
 </html>

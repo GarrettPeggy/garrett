@@ -80,7 +80,7 @@ public class ApplicationFilter implements Filter {
 				userInfo = JsonHelper.parseToObject(sessionUser, UserInfo.class);
 				UserInfoHolder.set(userInfo);
 				MDC.put("ip", userInfo.getLoginIp()==null ? "unkownIp" : userInfo.getLoginIp());
-				String user = userInfo.getMdn()+"-"+(userInfo.getUserame() == null ? "unkownUser": userInfo.getUserame());
+				String user = userInfo.getMdn()+"-"+(userInfo.getUserName() == null ? "unkownUser": userInfo.getUserName());
 				MDC.put("userName", user);
 			}
 
