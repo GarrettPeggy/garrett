@@ -13,4 +13,4 @@
 <script type="text/javascript" src="${locResPath}/static/common/angularjs/angular.min.js?_v=${vs}"></script>
 <link rel="stylesheet" type="text/css" href="${locResPath}/static/common/bootstrap/css/bootstrap.min.css?_v=${vs}" />
 <link rel="stylesheet" type="text/css" href="${locResPath}/static/common/bootstrap/css/bootstrap-theme.min.css?_v=${vs}" />
-<link rel="shortcut icon" href="${locResPath}/static/images/login/logo.jpg"/>
+<link rel="shortcut icon" href="${locResPath}/static/images/login/logo.png"/>
