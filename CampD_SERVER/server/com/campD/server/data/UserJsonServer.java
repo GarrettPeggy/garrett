@@ -3,11 +3,7 @@
  */
 package com.campD.server.data;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -15,11 +11,9 @@ import java.util.UUID;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
 
 import com.campD.server.common.JSONView;
-import com.campD.server.common.SystemConstant;
 
 /**
  * @author Administrator
@@ -70,30 +64,13 @@ public class UserJsonServer {
      * @param reqMap:{mdn:手机号}
      * @return
      */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"rawtypes" })
 	public Map findUserByMdn(Map reqMap) {
 		
     	JSONView jsonView = new JSONView();
     	
 		String sqlStr = "select u.id, u.user_name as name, u.password, u.mdn, u.email, u.login_time, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
-		List resultList = new ArrayList();
-        jdbcTemplate.query(sqlStr, new Object[]{reqMap.get("mdn")}, new RowCallbackHandler() {
-			@Override
-            public void processRow(ResultSet rs) throws SQLException {
-				Map resultMap = new HashMap();
-				resultMap.put("id", UUID.fromString(rs.getString("id")));
-				resultMap.put("name", rs.getString("name"));
-				resultMap.put("password", rs.getString("password"));
-				resultMap.put("mdn", rs.getString("mdn"));
-				resultMap.put("email", rs.getString("email"));
-				resultMap.put("loginTime", rs.getDate("login_time"));
-				
-				resultMap.put("roleId", UUID.fromString(rs.getString("roleId")));
-				resultMap.put("roleName", rs.getString("roleName"));
-				resultList.add(resultMap);
-            }
-			
-        });
+		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{reqMap.get("mdn")});
         jsonView.setSuccess();
         jsonView.setReturnSuccMsg();
         jsonView.addAttribute("userList", resultList);

@@ -3,18 +3,13 @@
  */
 package com.campD.server.data;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -39,16 +34,7 @@ public class RoleJsonServer {
 		
 		String sqlStr = "select id,name from role where name=?";
 		Map returnMap = new HashMap();
-		List resultList = new ArrayList();
-        jdbcTemplate.query(sqlStr, new Object[]{reqMap.get("roleName")}, new RowCallbackHandler() {
-			@Override
-            public void processRow(ResultSet rs) throws SQLException {
-				Map resultMap = new HashMap();
-				resultMap.put("id", UUID.fromString(rs.getString("id")));
-				resultMap.put("name", rs.getString("name"));
-				resultList.add(resultMap);
-            }
-        });
+		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{reqMap.get("roleName")});
         returnMap.put("roleList", resultList);
         logger.info("根据角色名查询角色信息->roleName="+reqMap.get("roleName"));
         
@@ -66,16 +52,7 @@ public class RoleJsonServer {
 		
 		String sqlStr = "select id,name from role";
 		Map returnMap = new HashMap();
-		List resultList = new ArrayList();
-        jdbcTemplate.query(sqlStr, new Object[]{}, new RowCallbackHandler() {
-			@Override
-            public void processRow(ResultSet rs) throws SQLException {
-				Map resultMap = new HashMap();
-				resultMap.put("id", UUID.fromString(rs.getString("id")));
-				resultMap.put("name", rs.getString("name"));
-				resultList.add(resultMap);
-            }
-        });
+		List resultList =  jdbcTemplate.queryForList(sqlStr, new Object[]{});
         returnMap.put("roleList", resultList);
         logger.info("根据角色名查询角色信息->roleName="+reqMap.get("roleName"));
         

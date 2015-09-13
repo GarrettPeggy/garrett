@@ -2,16 +2,11 @@
  * 
  */
 package com.campD.server.data;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
 
 import com.campD.server.common.JSONView;
@@ -39,19 +34,11 @@ public class DemoJsonServer {
 
 	}
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"rawtypes" })
 	public Map findUserByUserName(Map reqMap) {
 		
 		String sqlStr = "select id,name,password from user where name=?";
-		Map returnMap = new HashMap();
-        jdbcTemplate.query(sqlStr, new Object[]{reqMap.get("userName")}, new RowCallbackHandler() {
-			@Override
-            public void processRow(ResultSet rs) throws SQLException {
-            	returnMap.put("id", UUID.fromString(rs.getString("id")));
-            	returnMap.put("name", rs.getString("name"));
-            	returnMap.put("password", rs.getString("password"));
-            }
-        });
+		Map returnMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("userName")});
         return returnMap;
         
 	}
