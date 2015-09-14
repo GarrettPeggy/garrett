@@ -32,6 +32,7 @@ public class DemoTestService extends AbstractServiceTransactionalTests {
 	@Test  
     public void testFindByUserName() {  
         
+		// 本测试用例是连接test数据库的，并不是真的数据库
 		Map reqMap = new HashMap();
 		reqMap.put("userName", "王光华");
         System.out.println("查找到的用户是-> " + demoJsonServer.findUserByUserName(reqMap));  
