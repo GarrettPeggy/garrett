@@ -21,12 +21,6 @@ public class DemoTestService extends AbstractServiceTransactionalTests {
 	
 	@Autowired  
     private DemoJsonServer demoJsonServer;
-
-	@Override
-	String[] getOtherConfigs() {
-		
-		return new String[] { applicationContextFile }; 
-	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Test  
