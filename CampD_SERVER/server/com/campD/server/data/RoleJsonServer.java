@@ -52,9 +52,7 @@ public class RoleJsonServer {
      * @return 
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
-	public Map findRoles(Map reqMap) {
-    	
-    	logger.info("reqMap=" + reqMap);
+	public Map findRoles() {
 		
 		String sqlStr = "select id,name from role";
 		Map returnMap = new HashMap();
