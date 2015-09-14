@@ -3,6 +3,7 @@
  */
 package test;
 
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
  * @author WangGuanghua
  *
  */
+@ContextConfiguration("../server-applicationContext.xml")
 public abstract class AbstractServiceTransactionalTests extends AbstractTransactionalJUnit4SpringContextTests {
 
 	// 项目classpath路径  
