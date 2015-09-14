@@ -99,10 +99,8 @@ public class ApplicationFilter implements Filter {
             fc.doFilter(request, resp);
         } catch (IOException e) {
             logger.error("an error has occurred!", e);
-            throw e;
         } catch (ServletException e) {
             logger.error("an error has occurred!", e);
-            throw e;
         } finally {
             UserInfoHolder.remove();
             MDC.remove("ip");

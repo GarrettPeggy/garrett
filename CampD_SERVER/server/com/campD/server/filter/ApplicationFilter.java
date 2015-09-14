@@ -105,7 +105,6 @@ public class ApplicationFilter implements Filter {
 			} catch (Exception e1) {
 				logger.info("请求"+serviceName+"服务发生异常", e1);
 			}
-			throw e;
 		} finally {
 			//1s 就认为是比较慢的，需要处理
 			if(System.currentTimeMillis()-requestStart>1000){ 
