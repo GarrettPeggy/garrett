@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.sound.midi.SysexMessage;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,9 +27,6 @@ public class UserJsonServer {
 
 	@Autowired
     private JdbcTemplate jdbcTemplate;
-	
-	@Autowired
-    private RoleJsonServer roleJsonServer;
 	
 	/**
 	 * 目前测试账户统一初始化密码为111111，统一角色为普通角色
