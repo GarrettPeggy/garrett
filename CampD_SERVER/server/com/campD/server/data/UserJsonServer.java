@@ -4,7 +4,6 @@
 package com.campD.server.data;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -52,6 +51,9 @@ public class UserJsonServer {
 			return jsonView;
         }
         
+        Map userInfoMap = findUserByMdn(reqMap);
+        jsonView.addAttribute("userInfo", userInfoMap.get("userInfo"));
+        
         jsonView.setReturnSuccMsg();
         jsonView.addAttribute("updateLineCount", updateLineCount);
         logger.info("updateLineCount="+updateLineCount);
@@ -71,13 +73,12 @@ public class UserJsonServer {
     	logger.info("reqMap="+reqMap);
     	
 		String sqlStr = "select u.id, u.user_name as name, u.password, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
-		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{reqMap.get("mdn")});
+		Map resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});
 		
     	JSONView jsonView = new JSONView();
         jsonView.setReturnSuccMsg();
-        jsonView.addAttribute("userList", resultList);
-        logger.info("resultList="+resultList);
-        logger.info("根据手机号查询有无该用户->mdn="+reqMap.get("mdn"));
+        jsonView.addAttribute("userInfo", resultMap);
+        logger.info("resultMap="+resultMap);
         
         return jsonView;
         

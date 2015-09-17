@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.common.UserInfoHolder;
 import com.campD.portal.model.UserInfo;
-import com.campD.portal.service.UserCacheService;
-import com.campD.portal.service.UserService;
+import com.campD.portal.service.DemoCacheService;
+import com.campD.portal.service.DemoService;
 
 /**
  * @author Garrett Wang
@@ -26,10 +26,10 @@ import com.campD.portal.service.UserService;
 public class DemoController extends BaseController{
 	
 	@Autowired
-	private UserService userService;
+	private DemoService demoService;
 	
 	@Autowired
-	private UserCacheService userCacheService;
+	private DemoCacheService demoCacheService;
 	
 	@RequestMapping("/index.do")
     public String index(){
@@ -46,7 +46,7 @@ public class DemoController extends BaseController{
 		
 		UserInfoHolder.set(new UserInfo());
 		
-		return userCacheService.getGreetingContent();
+		return demoCacheService.getGreetingContent();
     }
 	
 	@SuppressWarnings("rawtypes")
@@ -57,6 +57,6 @@ public class DemoController extends BaseController{
 		UserInfoHolder.set(new UserInfo());
 		Map reqMap = bindParamToMap(request);
 		
-		return userService.register(reqMap);
+		return demoService.register(reqMap);
     }
 }

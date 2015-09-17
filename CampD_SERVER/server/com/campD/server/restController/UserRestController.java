@@ -57,7 +57,7 @@ public class UserRestController extends BaseRestController{
     public Map getByMdn(HttpServletRequest request) {
     	
     	Map reqMap = bindParamToMap(request);
-    	Map returnMap = userJsonServer.register(reqMap);
+    	Map returnMap = userJsonServer.findUserByMdn(reqMap);
     	
         return returnMap;
     }
