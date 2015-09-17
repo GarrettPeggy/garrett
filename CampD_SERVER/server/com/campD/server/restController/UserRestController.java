@@ -29,13 +29,34 @@ public class UserRestController extends BaseRestController{
 	@Autowired
 	private UserJsonServer userJsonServer;
     
+	/**
+	 * 目前测试账户统一初始化密码为111111，统一角色为普通角色
+	 * 用户注册
+	 * @param reqMap:{userName:用户名，mdn:手机号，roleId:普通用户角色}
+	 * @return
+	 */
     @SuppressWarnings({ "rawtypes"})
 	@RequestMapping(value="/register", method=RequestMethod.POST)
     @ResponseBody
     public Map register(HttpServletRequest request) {
     	
     	Map reqMap = bindParamToMap(request);
-    	logger.info("reqMap->"+reqMap);
+    	Map returnMap = userJsonServer.register(reqMap);
+    	
+        return returnMap;
+    }
+    
+    /**
+     * 根据手机号查找用户信息
+     * @param reqMap:{mdn:手机号}
+     * @return
+     */
+    @SuppressWarnings("rawtypes")
+	@RequestMapping("/getByMdn")
+    @ResponseBody
+    public Map getByMdn(HttpServletRequest request) {
+    	
+    	Map reqMap = bindParamToMap(request);
     	Map returnMap = userJsonServer.register(reqMap);
     	
         return returnMap;
