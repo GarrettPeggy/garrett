@@ -17,7 +17,7 @@
     </div>
 	<!-- end -->
     <div class="main">
-    	<form id="loginForm" method="post">
+    	<form id="loginForm">
 	    	<div class="login-form form-box">
 	        	<div class="line retina-1px-border-bottom">
 	            	<div class="input-icon">
@@ -32,7 +32,7 @@
 	            	<input type="tel" class="text-input" name="mdn" id="mdn" placeholder="请输入手机号码"/>
 	            </div>
 	            <div class="line textCenter mab23">
-					<button class="btn orange-btn" onclick="User.login();">确认登录</button>
+					<button type="button" class="btn orange-btn" onclick="User.login();">确认登录</button>
 	            </div>
 	            <p>
 	            	<a href="${ctx}/user/toRegister.do">没有账号，点此注册</a>

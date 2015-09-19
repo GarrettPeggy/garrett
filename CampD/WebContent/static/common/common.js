@@ -26,7 +26,6 @@ function submitForm(formId,url,successback,failback){
 		url:url, //action目标
 		type: 'POST',
 		dataType:"json",
-		contentType: 'application/json;charset=utf-8',
 		success:function(data){
 			if(data && data.returnCode=='200'){
 				if(successback){
@@ -63,7 +62,6 @@ function submitSave(url,params,successback,failback){
 		data:params,
 		type: 'POST',
 		dataType:'json',
-		contentType: 'application/json;charset=utf-8',
 		success:function(data){
 			if(data && data.returnCode=='200'){
 				if(successback){

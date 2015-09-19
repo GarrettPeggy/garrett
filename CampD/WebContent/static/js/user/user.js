@@ -10,7 +10,10 @@ User.register = function(){
 	
 	if (User.checkLogin()) {// 校验输入信息
 		systemLoading("", true, "注册中,请稍后");
-		var params = $("#registerForm").serialize();
+		var params = {
+			"userName":$("#userName").val(),
+			"mdn":$("#mdn").val()
+		};
 		submitSave(BASE_PATH + "/user/register.do", params, function(data) {
 			systemLoaded();
 			window.location.href = BASE_PATH + "/";
@@ -31,7 +34,11 @@ User.login = function(){
 	
 	if (User.checkLogin()) {// 校验输入信息
 		systemLoading("", true, "登录中,请稍后");
-		var params = $("#loginForm").serialize();
+		var params = {
+			"userName":$("#userName").val(),
+			"mdn":$("#mdn").val()
+		};
+		// 记住参数提交的格式一定要正确，否则会报error错误。
 		submitSave(BASE_PATH + "/user/login.do", params, function(data) {
 			systemLoaded();
 			window.location.href = BASE_PATH + "/";

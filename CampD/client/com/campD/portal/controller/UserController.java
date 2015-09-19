@@ -65,9 +65,10 @@ public class UserController extends BaseController {
         Map<?, ?> userInfoMap = userService.getUserInfoByMdn(map);
         String returnCode = (String)userInfoMap.get("returnCode");
         
-        if (!SystemConstant.RETURN_SUCC.equals(returnCode)) {//返回不为200时
-            jv.setReturnCode(returnCode);
-            jv.setReturnMsg((String)userInfoMap.get("returnMsg"));
+        if (null == userInfoMap.get("userInfo")) {//返回为空时
+            jv.setFail();
+            jv.setSearchReturnType();
+            jv.setReturnMsg("该用户未注册,请注册！");
             return jv;
         }
         
