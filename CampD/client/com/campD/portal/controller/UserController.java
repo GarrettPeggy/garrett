@@ -78,6 +78,7 @@ public class UserController extends BaseController {
         
         // 返回登陆成功信息
         jv.setReturnCode(returnCode);
+        jv.setSearchReturnType();
         jv.setReturnMsg((String)userInfoMap.get("returnMsg"));
         
         return jv;
@@ -114,6 +115,7 @@ public class UserController extends BaseController {
         
         if (null != userInfoMap.get("userInfo")) {//返回为空时
             jv.setFail();
+            jv.setSearchReturnType();
             jv.setReturnMsg("该手机号已注册！");
             return jv;
         }

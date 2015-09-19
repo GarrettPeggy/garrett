@@ -16,7 +16,7 @@ User.register = function(){
 			window.location.href = BASE_PATH + "/";
 		}, function(data) {
 			systemLoaded();
-			Dialog.alertError(data.returnMsg);
+			alert(data.returnMsg);
 		});
 	} else {
 		systemLoaded();
@@ -37,7 +37,7 @@ User.login = function(){
 			window.location.href = BASE_PATH + "/";
 		}, function(data) {
 			systemLoaded();
-			Dialog.alertError(data.returnMsg);
+			alert(data.returnMsg);
 		});
 	} else {
 		systemLoaded();
@@ -53,13 +53,13 @@ User.checkLogin = function() {
 	var mdn = $("#mdn").val();
 	
 	if (userName == "" || userName == $("#userName").attr('placeholder')) {
-		Dialog.alertWarning("用户名不能为空!");
+		alert("用户名不能为空!");
 		return false;
 	} else if (mdn == "" || mdn == $("#mdn").attr('placeholder')) {
-		Dialog.alertWarning("手机号不能为空!");
+		alert("手机号不能为空!");
 		return false;
 	} else if(!isPhone(mdn)){
-		Dialog.alertWarning("手机号格式不正确!");
+		alert("手机号格式不正确!");
 		return false;
 	}
 	return true;

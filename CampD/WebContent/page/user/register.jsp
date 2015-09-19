@@ -18,7 +18,7 @@
 	<!-- end -->
     <!-- 主体 -->
     <div class="main">
-    	<form id="registerForm">
+    	<form id="registerForm" method="post">
 	    	<div class="login-form form-box">
 	        	<div class="line retina-1px-border-bottom">
 	            	<div class="input-icon">
@@ -36,7 +36,7 @@
 					<button class="btn orange-btn" onclick="User.register();">确认注册</button>
 	            </div>
 	            <p>
-	            	<a href="login.html">已有账号，点此直接登录</a>
+	            	<a href="${ctx}/user/toLogin.do">已有账号，点此直接登录</a>
 	            </p>
 	        </div>
         </form>
