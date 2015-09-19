@@ -38,7 +38,7 @@ public class ActivityTestService extends AbstractServiceTransactionalTests {
 		logger.info("添加活动需求结果是----> " + activityJsonServer.add(reqMap));  
 	} 
 	
-	//reqMap:{categoryId：活动所属范畴id，actNum:活动人数，actCity：活动城市，requirement：活动需求，adress:活动地址，
+	//reqMap:{categoryId：活动所属范畴id，actNum:活动人数，actCity：活动城市，actType:活动类型,requirement：活动需求，adress:活动地址，
 	//sponsor：活动发起方，status：活动状态，show_image：活动展示的图片，title：活动标题，
 	//subTitle：活动副标题，beginTime:开始时间，endTime：结束时间，publishTime：发布时间,id:活动Id}
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -49,6 +49,7 @@ public class ActivityTestService extends AbstractServiceTransactionalTests {
 		reqMap.put("categoryId", 1);
 		reqMap.put("actNum", 33);
 		reqMap.put("actCity", "上海");
+		reqMap.put("actType", 1);
 		reqMap.put("requirement", "梅塞德斯-奔驰文化中心");
 		reqMap.put("adress", "上海市浦东区");
 		reqMap.put("sponsor", "北京长夜公司");

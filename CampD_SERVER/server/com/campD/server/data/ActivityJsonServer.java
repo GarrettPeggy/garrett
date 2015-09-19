@@ -28,6 +28,7 @@ public class ActivityJsonServer {
 	/**
 	 * 添加活动需求
 	 * @param reqMap:{categoryId：活动所属范畴id，actNum:活动人数，actCity：活动城市，actType:活动类型,requirement：活动需求，creator：活动提交人，createTime：活动提交时间，status：活动状态}
+	 *  actType:活动类型指普通活动，热门活动  0是普通活动，1是热门活动
 	 * @return
 	 */
 	public Map add(Map reqMap) {
@@ -35,7 +36,7 @@ public class ActivityJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 添加活动需求到数据库
-		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,act_city,act_type,requirement,create_time,status) values(?,?,?,?,?,?,?,?,?)";
+		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,act_city,act_type,requirement,create_time,status) values(?,?,?,?,?,?,?,?,?,?)";
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),new Date(),reqMap.get("status")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
@@ -56,15 +57,15 @@ public class ActivityJsonServer {
 	}
 	/**
 	 * 活动更新
-	 * @param reqMap:{categoryId：活动所属范畴id，actNum:活动人数，actCity：活动城市，requirement：活动需求，adress:活动地址，sponsor：活动发起方，status：活动状态，show_image：活动展示的图片，title：活动标题，subTitle：活动副标题，beginTime:开始时间，endTime：结束时间，publishTime：发布时间,id:活动Id}
+	 * @param reqMap:{categoryId：活动所属范畴id，actNum:活动人数，actCity：活动城市，actType:活动类型,requirement：活动需求，adress:活动地址，sponsor：活动发起方，status：活动状态，show_image：活动展示的图片，title：活动标题，subTitle：活动副标题，beginTime:开始时间，endTime：结束时间，publishTime：发布时间,id:活动Id}
 	 * @return
 	 */
 	public Map update(Map reqMap){
 		
 		logger.info("reqMap="+reqMap);
 		//活动更新
-		String sqlStr = " update activity set category_id=?,act_num=?,act_city=?,requirement=?,adress=?,sponsor=?,status=?,show_image=?,title=?,sub_title=?,begin_time=?,end_time=?,publish_time=? where id=? ";
-        Object[] params = new Object[]{reqMap.get("categoryId"), reqMap.get("actNum"), reqMap.get("actCity"),reqMap.get("requirement"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("status"),reqMap.get("show_image"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),reqMap.get("publishTime"),reqMap.get("id")};
+		String sqlStr = " update activity set category_id=?,act_num=?,act_city=?,act_type=?requirement=?,adress=?,sponsor=?,status=?,show_image=?,title=?,sub_title=?,begin_time=?,end_time=?,publish_time=? where id=? ";
+        Object[] params = new Object[]{reqMap.get("categoryId"), reqMap.get("actNum"), reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("status"),reqMap.get("show_image"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),reqMap.get("publishTime"),reqMap.get("id")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         JSONView jsonView = new JSONView();
         if(updateLineCount <= 0){

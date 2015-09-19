@@ -18,7 +18,7 @@ public class SpaceTestService extends AbstractServiceTransactionalTests {
 	
 	//reqMap:{creatorId：创建者id，createTime：创建时间，name：场地名称，adress：场地地址，traggic：交通状况，
 	//workFor：使用哪些活动，capacity：场地容量，spaceType：场地类型，contactor：场地联系人，
-	//cost：花费，contact：联系方式，showImages：场地展示图片，description：场地描述}
+	//cost：花费，contact：联系方式，showImages：场地展示图片，description：场地描述,spaceLevel:场地级别}
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Rollback(false)
 	@Test
@@ -36,6 +36,7 @@ public class SpaceTestService extends AbstractServiceTransactionalTests {
 		reqMap.put("contact", "13122222222");
 		reqMap.put("showImages", "图片url地址");
 		reqMap.put("description", "高端大气");
+		reqMap.put("spaceLevel", 1);
 		logger.info("后台场地发布结果是----> " + spaceJsonServer.add(reqMap));  
 	}
 	
