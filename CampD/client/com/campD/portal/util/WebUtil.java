@@ -17,7 +17,7 @@ import com.campD.portal.security.BASE64;
 import com.campD.portal.security.ThreeDES;
 
 /**
- * Web Util �?
+ * Web Util �?
  * 
  * @author Rain
  * 
@@ -145,7 +145,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 取Session中�??
+	 * 取Session中�??
 	 * 
 	 * @param request
 	 * @param SessionName
@@ -160,7 +160,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 设置cookie，value�?(URLEncoder.encode)
+	 * 设置cookie，value�?(URLEncoder.encode)
 	 * 
 	 * @param response
 	 * @param cookieName
@@ -187,7 +187,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 设置cookie 默认为一�?
+	 * 设置cookie 默认为一�?
 	 * 
 	 * @param response
 	 * @param cookieName
@@ -199,7 +199,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 获取cookie的�?�，value�?(URLEncoder.encode)
+	 * 获取cookie的�?�，value�?(URLEncoder.encode)
 	 * 
 	 * @param response
 	 * @param cookieName
@@ -238,7 +238,7 @@ public class WebUtil {
     }
 
     /**
-     * 设置加密的cookie,无生命周�?
+     * 设置加密的cookie,无生命周�?
      * 
      * @param response
      * @param cookieName
@@ -275,7 +275,7 @@ public class WebUtil {
     }
 
 	/**
-	 * 获取加密前的cookie�?
+	 * 获取加密前的cookie�?
 	 * 
 	 * @param response
 	 * @param cookieName
@@ -298,7 +298,7 @@ public class WebUtil {
 	}
 
     /**
-     * 删除Cookie信息�?(指定了cookie域名)
+     * 删除Cookie信息�?(指定了cookie域名)
      * 
      * @param HttpServletResponse
      *            response
