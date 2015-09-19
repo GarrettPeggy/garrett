@@ -70,12 +70,12 @@ public class BaseController {
 		while (enumer.hasMoreElements()) {
 			String key = (String) enumer.nextElement();
 			String val = request.getParameter(key);// 在此需要将值进行解码称utf-8
-			try {
-				val = new String(val.getBytes("iso8859-1"), "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//				val = new String(val.getBytes("iso8859-1"), "UTF-8");
+//			} catch (UnsupportedEncodingException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			if(!"randomId".equals(key)){
 				if("orderBy".equals(key)){
 					if(!StringUtil.isEmpty(val)){

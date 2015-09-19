@@ -29,7 +29,7 @@
        <filter-class>com.campD.portal.filter.ApplicationFilter</filter-class>
        <init-param>
            <param-name>session_exclude_url</param-name>
-           <param-value>/,/demo/register.do,/demo/greeting.do,/demo/index.do</param-value>
+           <param-value>/,/user/toLogin.do,/user/toRegister.do,/user/register.do,/user/login.do,/demo/greeting.do,/demo/index.do</param-value>
        </init-param>
   </filter>
   <filter-mapping>

@@ -36,7 +36,7 @@ public class DemoController extends BaseController{
 		
 		UserInfoHolder.set(new UserInfo());
 		
-        return "demo/rest-angular";
+        return "user/login";
     }
 	
 	@SuppressWarnings("rawtypes")

@@ -44,7 +44,7 @@ public class UserTestService extends AbstractServiceTransactionalTests {
         
 		// 本测试用例是连接test数据库的，并不是真的数据库
 		Map reqMap = new HashMap();
-		reqMap.put("mdn", "13410000000");
+		reqMap.put("mdn", "1341000000");
 		logger.info("查找到的当前用户是-> " + userJsonServer.findUserByMdn(reqMap));  
 		
     }

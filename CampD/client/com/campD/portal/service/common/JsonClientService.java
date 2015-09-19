@@ -181,7 +181,8 @@ public abstract class JsonClientService {
 				HttpEntity request= new HttpEntity(requestMap, headers);
 				result = restTemplate.postForObject(url, request, responseClass);
 			}else{
-				result = restTemplate.postForObject(url, requestMap, responseClass);
+				HttpEntity request= new HttpEntity(requestMap, headers);
+				result = restTemplate.postForObject(url, request, responseClass);
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

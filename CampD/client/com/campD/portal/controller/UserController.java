@@ -39,6 +39,12 @@ public class UserController extends BaseController {
 	@Autowired
 	private RoleCacheService roleCacheService;
 	
+	@RequestMapping("/toLogin.do")
+    public String toLogin(){
+		
+        return "user/login";
+    }
+	
 	/**
      * 登录
      * @param response
@@ -77,6 +83,12 @@ public class UserController extends BaseController {
         return jv;
     }
     
+    @RequestMapping("/toRegister.do")
+    public String toRegister(){
+		
+        return "user/register";
+    }
+    
     /**
      * 用户注册
      * @param response
@@ -88,12 +100,23 @@ public class UserController extends BaseController {
 	@RequestMapping("/register.do")
     @ResponseBody
     public JSONView register(HttpServletResponse response, HttpServletRequest request) throws Exception {
+    	
+    	JSONView jv = new JSONView();
         
     	Map<String, Object> map = bindParamToMap(request);
     	
     	// 初次进来的用户给它设置默认角色
-    	String commonRoleId = roleCacheService.getRoleIdByName(SystemMessage.getString("role_common"));
+    	String commonRoleId = roleCacheService.searchRoleIdByName(new String(SystemMessage.getString("role_common").getBytes("iso8859-1"), "UTF-8"));
     	map.put("roleId", commonRoleId);
+    	
+    	//调用登录接口
+        Map<?, ?> userInfoMap = userService.getUserInfoByMdn(map);
+        
+        if (null != userInfoMap.get("userInfo")) {//返回为空时
+            jv.setFail();
+            jv.setReturnMsg("该手机号已注册！");
+            return jv;
+        }
     	
         Map<?, ?> resultMap = userService.register(map);
         UserInfo userInfo = userService.setUserInfo(request, (Map) resultMap.get("userInfo"));//设置userInfo

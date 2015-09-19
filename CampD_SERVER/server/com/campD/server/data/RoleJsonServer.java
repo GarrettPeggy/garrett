@@ -3,7 +3,6 @@
  */
 package com.campD.server.data;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,16 +50,17 @@ public class RoleJsonServer {
      * @param reqMap
      * @return 
      */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({ "rawtypes" })
 	public Map findRoles() {
+    	
+		JSONView jsonView = new JSONView();
 		
 		String sqlStr = "select id,name from role";
-		Map returnMap = new HashMap();
 		List roleList =  jdbcTemplate.queryForList(sqlStr, new Object[]{});
-        returnMap.put("roleList", roleList);
+		jsonView.addAttribute("roleList", roleList);
         logger.info("roleList=" + roleList);
         
-        return returnMap;
+        return jsonView;
 	}
     
 }

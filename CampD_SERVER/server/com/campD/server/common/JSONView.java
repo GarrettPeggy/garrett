@@ -43,6 +43,11 @@ public class JSONView extends HashMap {
     
     public static final String RETURN_GET_DATA_TYPE = "1"; // 获取数据类型
     
+    public JSONView() {
+    	setSuccess();
+        setReturnSuccMsg();
+	}
+    
     /**
      * 设置分页
      */

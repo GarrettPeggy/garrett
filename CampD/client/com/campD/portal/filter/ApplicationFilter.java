@@ -70,8 +70,6 @@ public class ApplicationFilter implements Filter {
         
         UserInfo userInfo = (UserInfo)WebUtil.getValueFromSession(request,SystemConstant.USER_INFO);
         
-        //TODO:此处添加全局缓存
-        
         //验证session不允许过去，跳到登陆页面
         if (userInfo == null && (excludePathList == null || !excludePathList.contains(requestUrl)) && !requestUrl.endsWith(".jsp")) {
         	logger.info("request userInfo is null");

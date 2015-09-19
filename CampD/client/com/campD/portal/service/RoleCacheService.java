@@ -21,12 +21,12 @@ public class RoleCacheService extends JsonClientService {
 	@SuppressWarnings("rawtypes")
 	public Map getAllRoles() {
 		
-		return postForMap(SystemMessage.getString("roleJsonServer") + "/getAllRoles", null);
+		return postForObject(SystemMessage.getString("roleJsonServer") + "/getAllRoles", null, Map.class, false);
 		
     }
 	
 	@SuppressWarnings("rawtypes")
-	public String getRoleIdByName(String name){
+	public String searchRoleIdByName(String name){
 		
 		String roleId = null;
 		Map rolesMap = getAllRoles();

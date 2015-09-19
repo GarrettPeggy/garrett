@@ -24,14 +24,14 @@ public class UserService extends JsonClientService {
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map register(Map reqMap) {
 		
-		return postForMap(SystemMessage.getString("userJsonServer") + "/add", reqMap);
+		return postForObject(SystemMessage.getString("userJsonServer") + "/register", reqMap, Map.class, false);
 		
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getUserInfoByMdn(Map reqMap) {
 		
-		return postForMap(SystemMessage.getString("userJsonServer") + "/getByMdn", reqMap);
+		return postForObject(SystemMessage.getString("userJsonServer") + "/getByMdn", reqMap, Map.class, false);
 		
     }
     

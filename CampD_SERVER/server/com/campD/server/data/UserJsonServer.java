@@ -54,7 +54,6 @@ public class UserJsonServer {
         Map userInfoMap = findUserByMdn(reqMap);
         jsonView.addAttribute("userInfo", userInfoMap.get("userInfo"));
         
-        jsonView.setReturnSuccMsg();
         jsonView.addAttribute("updateLineCount", updateLineCount);
         logger.info("updateLineCount="+updateLineCount);
         
@@ -71,12 +70,12 @@ public class UserJsonServer {
 	public Map findUserByMdn(Map reqMap) {
 		
     	logger.info("reqMap="+reqMap);
+    	JSONView jsonView = new JSONView();
+    	Map resultMap = null;
     	
 		String sqlStr = "select u.id, u.user_name as name, u.password, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
-		Map resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});
+		resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});
 		
-    	JSONView jsonView = new JSONView();
-        jsonView.setReturnSuccMsg();
         jsonView.addAttribute("userInfo", resultMap);
         logger.info("resultMap="+resultMap);
         
