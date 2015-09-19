@@ -33,10 +33,10 @@
 	            	<input type="tel" class="text-input" name="mdn" id="mdn" placeholder="请输入手机号码"/>
 	            </div>
 	            <div class="line textCenter mab23">
-					<button class="btn orange-btn" onclick="User.register();">确认注册</button>
+					<button type="button" class="btn orange-btn" onclick="User.register();">确认注册</button>
 	            </div>
 	            <p>
-	            	<a href="login.html">已有账号，点此直接登录</a>
+	            	<a href="${ctx}/user/toLogin.do">已有账号，点此直接登录</a>
 	            </p>
 	        </div>
         </form>

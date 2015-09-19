@@ -45,6 +45,7 @@ public class SystemConstant {
 	public static String ERROR_CODE_FORM_RESUBMIT = "905";//表单重复提交"905"
 	public static String ERROR_CODE_FILE_TOO_BIG = "903";//文件过大错误 903
 	public static String ERROR_CODE_FILE_FORMAT = "904";//文件类型错误 904
+	public static String ERROR_CODE_USER_NOT_REGISTER = "906";//文件类型错误 904
 	
 	//===========================活动范畴定义的key值========================
 	public static String ENTREPRENEURSHIP= "0";//创业

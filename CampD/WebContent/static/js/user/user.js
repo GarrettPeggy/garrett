@@ -10,13 +10,16 @@ User.register = function(){
 	
 	if (User.checkLogin()) {// 校验输入信息
 		systemLoading("", true, "注册中,请稍后");
-		var params = $("#registerForm").serialize();
+		var params = {
+			"userName":$("#userName").val(),
+			"mdn":$("#mdn").val()
+		};
 		submitSave(BASE_PATH + "/user/register.do", params, function(data) {
 			systemLoaded();
 			window.location.href = BASE_PATH + "/";
 		}, function(data) {
 			systemLoaded();
-			Dialog.alertError(data.returnMsg);
+			alert(data.returnMsg);
 		});
 	} else {
 		systemLoaded();
@@ -31,13 +34,17 @@ User.login = function(){
 	
 	if (User.checkLogin()) {// 校验输入信息
 		systemLoading("", true, "登录中,请稍后");
-		var params = $("#loginForm").serialize();
+		var params = {
+			"userName":$("#userName").val(),
+			"mdn":$("#mdn").val()
+		};
+		// 记住参数提交的格式一定要正确，否则会报error错误。
 		submitSave(BASE_PATH + "/user/login.do", params, function(data) {
 			systemLoaded();
 			window.location.href = BASE_PATH + "/";
 		}, function(data) {
 			systemLoaded();
-			Dialog.alertError(data.returnMsg);
+			alert(data.returnMsg);
 		});
 	} else {
 		systemLoaded();
@@ -53,13 +60,13 @@ User.checkLogin = function() {
 	var mdn = $("#mdn").val();
 	
 	if (userName == "" || userName == $("#userName").attr('placeholder')) {
-		Dialog.alertWarning("用户名不能为空!");
+		alert("用户名不能为空!");
 		return false;
 	} else if (mdn == "" || mdn == $("#mdn").attr('placeholder')) {
-		Dialog.alertWarning("手机号不能为空!");
+		alert("手机号不能为空!");
 		return false;
 	} else if(!isPhone(mdn)){
-		Dialog.alertWarning("手机号格式不正确!");
+		alert("手机号格式不正确!");
 		return false;
 	}
 	return true;
