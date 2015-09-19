@@ -17,7 +17,7 @@ import com.campD.portal.security.BASE64;
 import com.campD.portal.security.ThreeDES;
 
 /**
- * Web Util �?
+ * Web Util 锟�?
  * 
  * @author Rain
  * 
@@ -71,7 +71,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * ֵ
+	 * 值
 	 * 
 	 * @param request
 	 * @param paramName
@@ -104,7 +104,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 获取访问IP地址
+	 * 鑾峰彇璁块棶IP鍦板潃
 	 * 
 	 * @param request
 	 * @return
@@ -117,7 +117,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 设置Session
+	 * 璁剧疆Session
 	 * 
 	 * @param request
 	 * @param SessionName
@@ -131,7 +131,7 @@ public class WebUtil {
 	}
 	
 	/**
-	 * 移除Session
+	 * 绉婚櫎Session
 	 * 
 	 * @param request
 	 * @param SessionName
@@ -145,7 +145,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 取Session中�??
+	 * 鍙朣ession涓拷??
 	 * 
 	 * @param request
 	 * @param SessionName
@@ -160,7 +160,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 设置cookie，value�?(URLEncoder.encode)
+	 * 璁剧疆cookie锛寁alue锟�?(URLEncoder.encode)
 	 * 
 	 * @param response
 	 * @param cookieName
@@ -187,7 +187,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 设置cookie 默认为一�?
+	 * 璁剧疆cookie 榛樿涓轰竴锟�?
 	 * 
 	 * @param response
 	 * @param cookieName
@@ -199,7 +199,7 @@ public class WebUtil {
 	}
 
 	/**
-	 * 获取cookie的�?�，value�?(URLEncoder.encode)
+	 * 鑾峰彇cookie鐨勶拷?锟斤紝value锟�?(URLEncoder.encode)
 	 * 
 	 * @param response
 	 * @param cookieName
@@ -226,7 +226,7 @@ public class WebUtil {
 	}
 
     /**
-     * 设置加密的cookie
+     * 璁剧疆鍔犲瘑鐨刢ookie
      * 
      * @param response
      * @param cookieName
@@ -238,7 +238,7 @@ public class WebUtil {
     }
 
     /**
-     * 设置加密的cookie,无生命周�?
+     * 璁剧疆鍔犲瘑鐨刢ookie,鏃犵敓鍛藉懆锟�?
      * 
      * @param response
      * @param cookieName
@@ -275,7 +275,7 @@ public class WebUtil {
     }
 
 	/**
-	 * 获取加密前的cookie�?
+	 * 鑾峰彇鍔犲瘑鍓嶇殑cookie锟�?
 	 * 
 	 * @param response
 	 * @param cookieName
@@ -298,7 +298,7 @@ public class WebUtil {
 	}
 
     /**
-     * 删除Cookie信息�?(指定了cookie域名)
+     * 鍒犻櫎Cookie淇℃伅锟�?(鎸囧畾浜哻ookie鍩熷悕)
      * 
      * @param HttpServletResponse
      *            response
@@ -327,7 +327,7 @@ public class WebUtil {
     }
 
 	/**
-	 * 返回Cookie
+	 * 杩斿洖Cookie
 	 * 
 	 * @param request
 	 * @param cookieName
