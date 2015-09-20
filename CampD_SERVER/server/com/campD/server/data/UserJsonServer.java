@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -74,11 +75,17 @@ public class UserJsonServer {
     	Map resultMap = null;
     	
 		String sqlStr = "select u.id, u.user_name as name, u.password, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
-		resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});
+		try {  
+			resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});  
+        } catch (EmptyResultDataAccessException e) { 
+
+            jsonView.addAttribute("userInfo", resultMap);
+            logger.info("resultMap="+resultMap);
+            return jsonView;  
+        }
 		
-        jsonView.addAttribute("userInfo", resultMap);
+		jsonView.addAttribute("userInfo", resultMap);
         logger.info("resultMap="+resultMap);
-        
         return jsonView;
         
 	}
