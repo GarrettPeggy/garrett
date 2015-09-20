@@ -74,7 +74,7 @@ public class UserJsonServer {
     	JSONView jsonView = new JSONView();
     	Map resultMap = null;
     	
-		String sqlStr = "select u.id, u.user_name as name, u.password, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
+		String sqlStr = "select u.id, u.user_name as userName, u.password, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
 		try {  
 			resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});  
         } catch (EmptyResultDataAccessException e) { 
