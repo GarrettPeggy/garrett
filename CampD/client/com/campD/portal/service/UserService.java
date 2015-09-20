@@ -51,7 +51,7 @@ public class UserService extends JsonClientService {
         userInfo.setRoleName((String) userInfoMap.get("roleName"));
         userInfo.setMdn((String) userInfoMap.get("mdn"));
         userInfo.setEmail((String) userInfoMap.get("email"));
-        userInfo.setUserame((String) userInfoMap.get("userName"));
+        userInfo.setUserName((String) userInfoMap.get("userName"));
         
         return userInfo;
     }
