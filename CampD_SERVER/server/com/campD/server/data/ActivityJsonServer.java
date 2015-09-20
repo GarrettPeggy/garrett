@@ -113,10 +113,11 @@ public class ActivityJsonServer {
 	 * @return
 	 */
 	public Map getActivityList(Map reqMap){
+		//System.out.println("reqMap.get(\"categoryId\")===================="+reqMap.get("categoryId"));
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,assistance,show_image,title,sub_title,begin_time,end_time,click_num,create_time,publish_time,status from activity where 1=1 ";
+		String sqlStr = " select id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 ";
 		if(null!=reqMap.get("categoryId") && !"".equals(reqMap.get("categoryId"))){
-			sqlStr+=" and creator_id like '%"+reqMap.get("categoryId")+"%' ";
+			sqlStr+=" and category_id ="+reqMap.get("categoryId")+"";
 		}
 		if(null!=reqMap.get("createTime") && !"".equals(reqMap.get("createTime"))){
 			sqlStr+=" and create_time like '%"+reqMap.get("createTime")+"%' ";
