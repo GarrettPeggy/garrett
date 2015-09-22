@@ -89,7 +89,7 @@ public class BaseRestController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		while (keyIeraotr.hasNext()) {
 			String key = (String) keyIeraotr.next();
-			Object val = (String) requestMap.get(key);
+			Object val = requestMap.get(key);
 			if(!"randomId".equals(key)){
 				if("orderBy".equals(key)){
 					if(!StringUtil.isEmpty((String) val)){

@@ -4,10 +4,8 @@
 package com.campD.server.data;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 import org.apache.log4j.Logger;
@@ -43,7 +41,7 @@ public class UserJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 记录用户注册信息
-		String sqlStr = "insert into user(id,user_name,password,mdn,role_id,login_time,register_time) values(?,?,?,?,?,?,?)";
+		String sqlStr = "insert into user(id,user_name,password,mdn,role_id,login_time, register_time) values(?,?,?,?,?,?,?)";
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("userName"), SystemMessage.getString("inital_password"),reqMap.get("mdn"), reqMap.get("roleId"), new Date(), new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
@@ -77,7 +75,7 @@ public class UserJsonServer {
     	JSONView jsonView = new JSONView();
     	Map resultMap = null;
     	
-		String sqlStr = "select u.id, u.user_name as userName, u.password, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
+		String sqlStr = "select u.id, u.user_name as userName, u.password, u.mdn, u.email, FROM_UNIXTIME(UNIX_TIMESTAMP(u.login_time), '%Y-%m-%d %H:%i:%S') AS login_time,FROM_UNIXTIME(UNIX_TIMESTAMP(u.register_time), '%Y-%m-%d %H:%i:%S') AS register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
 		try {  
 			resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});  
         } catch (EmptyResultDataAccessException e) { 
@@ -102,7 +100,8 @@ public class UserJsonServer {
 	public Map findUserList(Map reqMap) {
 		
     	logger.info("reqMap="+reqMap);
-    	String sqlStr = "select u.id, u.user_name as userName, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id";
+    	String sqlStr = "select u.id, u.user_name as userName, u.mdn, u.email, FROM_UNIXTIME(UNIX_TIMESTAMP(u.login_time), '%Y-%m-%d %H:%i:%S') AS login_time,FROM_UNIXTIME(UNIX_TIMESTAMP(u.register_time), '%Y-%m-%d %H:%i:%S') AS register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id";
+    	String sqlCountStr = "select count(1) from user u, role r where u.role_id = r.id";
     	
     	// 查询的表单参数
     	String userName = (String) reqMap.get("userName");
@@ -113,28 +112,38 @@ public class UserJsonServer {
     	String endLoginTime = (String) reqMap.get("endLoginTime");
     	
     	if (!"".equals(userName)) {  
-    		sqlStr += " and u.user_name like '%"+userName+"%' ";;
+    		sqlStr += " and u.user_name like '%"+userName+"%' ";
+    		sqlCountStr += " and u.user_name like '%"+userName+"%' ";
         }
     	if (!"".equals(mdn)) {  
     		sqlStr += " and u.mdn = '" + mdn + "'";
+    		sqlCountStr += " and u.mdn = '" + mdn + "'";
         }
     	if (!"".equals(beginRegTime)) {  
     		sqlStr += " and u.register_time >= '" + beginRegTime + " 00:00:00'";
+    		sqlCountStr += " and u.register_time >= '" + beginRegTime + " 00:00:00'";
         }
     	if (!"".equals(endRegTime)) {  
     		sqlStr += " and u.register_time <= '" + endRegTime + " 23:59:59'";
+    		sqlCountStr += " and u.register_time <= '" + endRegTime + " 23:59:59'";
         }
     	if (!"".equals(beginLoginTime)) {  
     		sqlStr += " and u.login_time >= '" + beginLoginTime + " 00:00:00'";
+    		sqlCountStr += " and u.login_time >= '" + beginLoginTime + " 00:00:00'";
         }
     	if (!"".equals(endLoginTime)) {  
     		sqlStr += " and u.login_time <= '" + endLoginTime + " 23:59:59'";
+    		sqlCountStr += " and u.login_time <= '" + endLoginTime + " 23:59:59'";
         }
+    	
+    	// 获取当前用户总数
+    	@SuppressWarnings("deprecation")
+		int dataCount = jdbcTemplate.queryForInt(sqlCountStr);
     	
     	// 查询的分页参数
     	Map pageInfo = (Map) reqMap.get("pageInfo");
-    	int curPage = Integer.parseInt((String) pageInfo.get("curPage"));
-    	int pageLimit = Integer.parseInt((String) pageInfo.get("pageLimit"));
+    	int curPage = (int) pageInfo.get("curPage");
+    	int pageLimit = (int) pageInfo.get("pageLimit");
     	int startIndex = (curPage-1)*pageLimit;
     	sqlStr += " limit " + startIndex + "," + pageLimit;
 
@@ -143,6 +152,7 @@ public class UserJsonServer {
     	JSONView jsonView = new JSONView();
     	List userList = jdbcTemplate.queryForList(sqlStr, new Object[0]);
 		jsonView.addAttribute("userList", userList);
+		jsonView.addAttribute("dataCount", dataCount);
         logger.info("userList="+userList);
         
         return jsonView;
