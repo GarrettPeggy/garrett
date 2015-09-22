@@ -4,7 +4,10 @@
 package com.campD.server.data;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import org.apache.log4j.Logger;
@@ -89,4 +92,61 @@ public class UserJsonServer {
         return jsonView;
         
 	}
+    
+    /**
+     * 根据手机号查找用户信息
+     * @param reqMap:{mdn:手机号}
+     * @return
+     */
+    @SuppressWarnings({"rawtypes" })
+	public Map findUserList(Map reqMap) {
+		
+    	logger.info("reqMap="+reqMap);
+    	String sqlStr = "select u.id, u.user_name as userName, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id";
+    	
+    	// 查询的表单参数
+    	String userName = (String) reqMap.get("userName");
+    	String mdn = (String) reqMap.get("mdn");
+    	String beginRegTime = (String) reqMap.get("beginRegTime");
+    	String endRegTime = (String) reqMap.get("endRegTime");
+    	String beginLoginTime = (String) reqMap.get("beginLoginTime");
+    	String endLoginTime = (String) reqMap.get("endLoginTime");
+    	
+    	if (!"".equals(userName)) {  
+    		sqlStr += " and u.user_name like '%"+userName+"%' ";;
+        }
+    	if (!"".equals(mdn)) {  
+    		sqlStr += " and u.mdn = '" + mdn + "'";
+        }
+    	if (!"".equals(beginRegTime)) {  
+    		sqlStr += " and u.register_time >= '" + beginRegTime + " 00:00:00'";
+        }
+    	if (!"".equals(endRegTime)) {  
+    		sqlStr += " and u.register_time <= '" + endRegTime + " 23:59:59'";
+        }
+    	if (!"".equals(beginLoginTime)) {  
+    		sqlStr += " and u.login_time >= '" + beginLoginTime + " 00:00:00'";
+        }
+    	if (!"".equals(endLoginTime)) {  
+    		sqlStr += " and u.login_time <= '" + endLoginTime + " 23:59:59'";
+        }
+    	
+    	// 查询的分页参数
+    	Map pageInfo = (Map) reqMap.get("pageInfo");
+    	int curPage = Integer.parseInt((String) pageInfo.get("curPage"));
+    	int pageLimit = Integer.parseInt((String) pageInfo.get("pageLimit"));
+    	int startIndex = (curPage-1)*pageLimit;
+    	sqlStr += " limit " + startIndex + "," + pageLimit;
+
+    	logger.info("sqlStr="+sqlStr);
+    	
+    	JSONView jsonView = new JSONView();
+    	List userList = jdbcTemplate.queryForList(sqlStr, new Object[0]);
+		jsonView.addAttribute("userList", userList);
+        logger.info("userList="+userList);
+        
+        return jsonView;
+        
+	}
+    
 }
