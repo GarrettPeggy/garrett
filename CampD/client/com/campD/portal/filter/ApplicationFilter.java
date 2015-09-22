@@ -88,6 +88,7 @@ public class ApplicationFilter implements Filter {
         
         if (userInfo != null) {
         	MDC.put("userId", userInfo.getId() == null ? "" : userInfo.getId());
+        	MDC.put("mdn", userInfo.getMdn() == null ? "" : userInfo.getMdn());
             MDC.put("ip", userInfo.getLoginIp() == null ? "" : userInfo.getLoginIp());
         }else{
         	MDC.put("ip", WebUtil.getIPAddress(request));
