@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"  
+"http://www.springframework.org/dtd/spring-beans.dtd">  
+<beans>  
+    <!-- 引用ehCache 的配置-->  
+    <!-- <bean id="myCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
+        <property name="configLocation">  
+            <value>classpath:ehcache.xml</value>  
+        </property>  
+    </bean> -->  
+  
+    <!-- 定义ehCache 的工厂，并设置所使用的Cache name -->  
+    <bean id="ehCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">  
+        <!-- <property name="cacheManager">  
+            <ref local="myCacheManager" />  
+        </property>   -->
+        <property name="cacheName">  
+            <value>MY_CACHE</value>  
+        </property>  
+    </bean>  
+  
+    <!-- find/create cache 拦截器-->  
+    <bean id="methodCacheInterceptor" class="com.campD.portal.interceptor.ehcache.MethodCacheInterceptor">  
+        <property name="cache">  
+            <ref local="ehCache" />  
+        </property>  
+    </bean>  
+    <!-- flush cache 拦截器-->  
+    <bean id="methodCacheAfterAdvice" class="com.campD.portal.interceptor.ehcache.MethodCacheAfterAdvice">  
+        <property name="cache">  
+            <ref local="ehCache" />  
+        </property>  
+    </bean>  
+  
+    <bean id="methodCachePointCut"  
+        class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">  
+        <property name="advice">  
+            <ref local="methodCacheInterceptor" />  
+        </property>  
+        <property name="patterns">  
+            <list>  
+                <value>com.campD.portal.service.*CacheService.*find.*</value>  
+                <value>com.campD.portal.service.*CacheService.*get.*</value>  
+            </list>  
+        </property>  
+    </bean>  
+    <bean id="methodCachePointCutAdvice"  
+        class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">  
+        <property name="advice">  
+            <ref local="methodCacheAfterAdvice" />  
+        </property>  
+        <property name="patterns">  
+            <list>  
+                <value>com.campD.portal.service.*CacheService.*create.*</value>  
+                <value>com.campD.portal.service.*CacheService.*update.*</value>  
+                <value>com.campD.portal.service.*CacheService.*delete.*</value>  
+            </list>  
+        </property>  
+    </bean>  
+</beans>  

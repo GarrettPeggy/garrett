@@ -1,0 +1,243 @@
+body {
+	background-color: #e4e6e9;
+	min-height: 100%;
+	padding-bottom: 0;
+	font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+	font-size: 13px;
+	color: #393939;
+	line-height: 1.5;
+}
+h1 {
+	font-size: 32px;
+	font-weight: normal;
+	font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+}
+h3 {
+	font-size: 22px;
+	font-weight: normal;
+	font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+}
+h4 {
+	font-size: 16px;
+	font-weight: normal;
+	font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+}
+h5 {
+	font-size: 14px;
+	font-weight: normal;
+	font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+}
+.mar-0 {
+	margin: 0;
+}
+.mar-t-0 {
+	margin-top: 0;
+}
+.mar-r-10 {
+	margin-right: 10px;
+}
+.mar-l-10 {
+	margin-left: 10px;
+}
+.mar-t-10 {
+	margin-top: 10px;
+}
+.mar-b-10 {
+	margin-bottom: 10px;
+}
+.bor-0 {
+	border: 0;
+}
+.float-n {
+	float: none;
+}
+.display-inl {
+	display: inline-block
+}
+.page-header {
+	padding-bottom: 7px;
+}
+.page-header h1 small {
+	margin: 0;
+}
+.page-header .e-company {
+	padding-left: 20px;
+	color: #8089a0;
+}
+.page-header .e-company .state {
+	cursor: pointer;
+}
+.btn-group button {
+	border: 0;
+	font-size: 16px;
+}
+.page-header h1 {
+	font-size: 20px;
+}
+.infobox > .infobox-data > .infobox-data-title {
+	display: block;
+	font-size: 14px;
+	margin: 2px 0 4px;
+	position: relative;
+	font-weight: bold;
+}
+.desk-mo-list {
+	font-size: 14px;
+	border-top: 1px #eeeeee solid;
+	margin: 10px 0 25px 0;
+	padding-top: 15px;
+}
+.desk-mo-list li {
+	padding-left: 5px;
+}
+.desk-mo-list a {
+	padding-left: 5px;
+}
+.desk-r-time {
+	margin: 0 0 10px 10px;
+	font-weight: bold;
+}
+.desk-r-info {
+	font-size: 12px;
+}
+.desk-r-more {
+	text-align: right;
+}
+.desk-r-widget {
+	background-color: #EFF3F8;
+	border-bottom: 1px #C5D0DC solid;
+	border-left: 1px #C5D0DC solid;
+	border-right: 1px #C5D0DC solid;
+}
+.search-tool .row:first-child {
+	background-color: #EFF3F8;
+	margin: 0;
+	border-top: 1px #5090c1 solid;
+}
+.e-pager {
+	margin: 8px 0;
+	text-align: center;
+}
+.e-data {
+	font-size: 14px;
+	float: right;
+}
+.e-data span {
+	font-weight: bold;
+}
+.e-data .deal {
+	float: left;
+	margin: 12px 0;
+	padding: 0 20px;
+}
+.e-data .income {
+	float: left;
+	margin: 12px 0;
+	padding: 0 20px;
+}
+.datatime{	margin: 12px 0;
+	padding: 0 20px;
+}
+.search-con {
+	padding: 5px 20px;
+}
+.search-con label {
+	float: left;
+	margin: 5px 10px 0 0;
+}
+.search-con-btn {
+	float: right;
+}
+.table-main {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.table-page {
+	border-bottom: 1px solid #e0e0e0;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: #EFF3F8;
+	margin: 0;
+}
+.order-tit {
+	font-weight: bold;
+}
+.order-time {
+	float: right;
+	font-weight: bold;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: middle;
+	border-top: 1px solid #dddddd;
+}
+.modal-body {
+	text-align: center;
+}
+.modal-body .icon {
+	font-size: 60px;
+}
+.modal-body .e-text {
+	margin-top: 10px;
+}
+.login-layout .widget-box {
+	padding: 0;
+	background: none;
+}
+.login-container {
+	width: 320px;
+	margin: 30px auto 0 auto;
+}
+.login-layout .widget-box .widget-body .toolbar > div > a {
+	font-size: 12px;
+	text-shadow: none;
+}
+.login-box .forgot-password-link {
+	color: #46a8d7;
+}
+.login-box .user-signup-link {
+	color: #ff6207;
+}
+.login-box .toolbar {
+	background: #f7f7f7;
+	border-top: 0;
+}
+input[type=checkbox].ace + .lbl {
+	font-size: 12px;
+}
+.login-box .cooperation-login {
+	font-size: 12px;
+}
+.social-login a {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+}
+.social-login a > .ace-icon {
+	font-size: 16px;
+}
+.widget-body {
+	border-radius: 5px;
+}
+.login-layout .login-box .widget-main {
+	border-radius: 5px;
+}
+.infobox>.infobox-icon {
+	margin-left: 14px;
+	;
+}
+.infobox-orange2 > .infobox-icon > .ace-icon {
+	-webkit-box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+	width: 45px;
+	height: 45px;
+	background-color: #f79263;
+}
+.login-tishi{
+	margin-bottom: 0;
+	margin-top: -20px;
+	padding: 5px 15px;
+	text-align:center;
+}
+.total-page{ float:right; line-height:34px;}
