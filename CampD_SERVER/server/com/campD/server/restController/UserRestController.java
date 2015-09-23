@@ -30,10 +30,7 @@ public class UserRestController extends BaseRestController{
 	private UserJsonServer userJsonServer;
     
 	/**
-	 * 目前测试账户统一初始化密码为111111，统一角色为普通角色
 	 * 用户注册
-	 * @param reqMap:{userName:用户名，mdn:手机号，roleId:普通用户角色}
-	 * @return
 	 */
     @SuppressWarnings({ "rawtypes"})
 	@RequestMapping(value="/register", method=RequestMethod.POST)
@@ -42,6 +39,34 @@ public class UserRestController extends BaseRestController{
     	
     	Map reqMap = bindParamToMap(request);
     	Map returnMap = userJsonServer.register(reqMap);
+    	
+        return returnMap;
+    }
+    
+    /**
+	 * 更新用户角色
+	 */
+    @SuppressWarnings({ "rawtypes"})
+	@RequestMapping(value="/updateRole", method=RequestMethod.POST)
+    @ResponseBody
+    public Map updateRole(HttpServletRequest request) {
+    	
+    	Map reqMap = bindParamToMap(request);
+    	Map returnMap = userJsonServer.updateRole(reqMap);
+    	
+        return returnMap;
+    }
+    
+    /**
+	 * 更新用户基本信息
+	 */
+    @SuppressWarnings({ "rawtypes"})
+	@RequestMapping(value="/updateUserInfo", method=RequestMethod.POST)
+    @ResponseBody
+    public Map updateUserInfo(HttpServletRequest request) {
+    	
+    	Map reqMap = bindParamToMap(request);
+    	Map returnMap = userJsonServer.updateUserInfo(reqMap);
     	
         return returnMap;
     }

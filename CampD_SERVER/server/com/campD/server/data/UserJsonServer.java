@@ -42,6 +42,7 @@ public class UserJsonServer {
 		
 		// 记录用户注册信息
 		String sqlStr = "insert into user(id,user_name,password,mdn,role_id,login_time, register_time) values(?,?,?,?,?,?,?)";
+		logger.info("sqlStr="+sqlStr);
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("userName"), SystemMessage.getString("inital_password"),reqMap.get("mdn"), reqMap.get("roleId"), new Date(), new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
@@ -55,6 +56,68 @@ public class UserJsonServer {
         
         Map userInfoMap = findUserByMdn(reqMap);
         jsonView.addAttribute("userInfo", userInfoMap.get("userInfo"));
+        
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("updateLineCount="+updateLineCount);
+        
+        return jsonView;
+
+	}
+	
+	/**
+	 * 更新用户角色
+	 * @param reqMap:{userId:用户id，roleId：角色id}
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	public Map updateRole(Map reqMap) {
+		
+		logger.info("reqMap="+reqMap);
+		
+		// 更新用户角色
+		String sqlStr = "UPDATE user SET role_id=? WHERE id=?";
+		logger.info("sqlStr="+sqlStr);
+        Object[] params = new Object[]{reqMap.get("roleId"), reqMap.get("userId")};
+        int updateLineCount = jdbcTemplate.update(sqlStr, params);
+        
+        JSONView jsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("更新用户角色失败->params="+params.toString());
+			return jsonView;
+        }
+        
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("updateLineCount="+updateLineCount);
+        
+        return jsonView;
+
+	}
+	
+	/**
+	 * 更新用户基本信息
+	 * @param reqMap:{userId:用户id，userName：用户姓名，mdn：手机号，email：邮箱}
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	public Map updateUserInfo(Map reqMap) {
+		
+		logger.info("reqMap="+reqMap);
+		
+		// 更新用户角色
+		String sqlStr = "UPDATE user SET user_name=?, mdn=?, email=? WHERE id=?";
+		logger.info("sqlStr="+sqlStr);
+        Object[] params = new Object[]{reqMap.get("userName"), reqMap.get("mdn"), reqMap.get("email"), reqMap.get("userId")};
+        int updateLineCount = jdbcTemplate.update(sqlStr, params);
+        
+        JSONView jsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("更新用户信息失败->params="+params.toString());
+			return jsonView;
+        }
         
         jsonView.addAttribute("updateLineCount", updateLineCount);
         logger.info("updateLineCount="+updateLineCount);
@@ -76,6 +139,7 @@ public class UserJsonServer {
     	Map resultMap = null;
     	
 		String sqlStr = "select u.id, u.user_name as userName, u.password, u.mdn, u.email, FROM_UNIXTIME(UNIX_TIMESTAMP(u.login_time), '%Y-%m-%d %H:%i:%S') AS login_time,FROM_UNIXTIME(UNIX_TIMESTAMP(u.register_time), '%Y-%m-%d %H:%i:%S') AS register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
+		logger.info("sqlStr="+sqlStr);
 		try {  
 			resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});  
         } catch (EmptyResultDataAccessException e) { 
@@ -148,6 +212,7 @@ public class UserJsonServer {
     	sqlStr += " limit " + startIndex + "," + pageLimit;
 
     	logger.info("sqlStr="+sqlStr);
+    	logger.info("sqlCountStr="+sqlCountStr);
     	
     	JSONView jsonView = new JSONView();
     	List userList = jdbcTemplate.queryForList(sqlStr, new Object[0]);
