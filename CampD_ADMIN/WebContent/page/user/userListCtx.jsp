@@ -24,7 +24,7 @@
 					<c:if test="${user.roleName eq sysConfig.role_common}">
 						<a href="#">设为管理员</a>
 					</c:if>
-					<c:if test="${user.roleName ne sysConfig.role_admin}">
+					<c:if test="${user.roleName eq sysConfig.role_admin}">
 						<a href="#">设为注册用户</a>
 					</c:if>
 				</td>

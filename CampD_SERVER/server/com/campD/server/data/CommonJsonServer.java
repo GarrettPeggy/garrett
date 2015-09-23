@@ -37,7 +37,7 @@ public class CommonJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 记录用户注册信息
-		String sqlStr = "insert into sys_config(id,type,key,value) values(?,?,?,?)";
+		String sqlStr = "insert into sys_config(id,sys_type,key_val,value_val) values(?,?,?,?)";
 		logger.info("sqlStr="+sqlStr);
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("type"), reqMap.get("key"), reqMap.get("value")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
@@ -66,7 +66,7 @@ public class CommonJsonServer {
 	public Map findSysConfigs(Map reqMap) {
 		
     	logger.info("reqMap="+reqMap);
-    	String sqlStr = "select id,type,key,value from sys_config where 1=1 ";
+    	String sqlStr = "select id,sys_type,key_val,value_val from sys_config where 1=1 ";
     	
     	// 查询的表单参数
     	Object type = reqMap.get("type");

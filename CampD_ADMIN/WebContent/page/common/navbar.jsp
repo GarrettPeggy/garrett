@@ -42,7 +42,7 @@
 					<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 
 						<li>
-							<a href="#">
+							<a href="javascript:toViewUserInfo();">
 								<i class="ace-icon fa fa-user"></i>
 								个人中心
 							</a>
@@ -51,7 +51,7 @@
 						<li class="divider"></li>
 
 						<li>
-							<a href="${ctx}/user/quit">
+							<a href="${ctx}/user/quit.do">
 								<i class="ace-icon fa fa-power-off"></i>
 								退出
 							</a>
@@ -66,3 +66,15 @@
 		<!-- /section:basics/navbar.dropdown -->
 	</div><!-- /.navbar-container -->
 </div>
+
+<script type="text/javascript">
+/*
+ * 查看用户个人信息
+ */
+toViewUserInfo = function(){
+	var url = BASE_PATH + '/user/toUpdateUserInfo.do';
+	Dialog.ajaxOpenDialog(url,{},"toUpdateUserInfo",function(){
+		
+	},null);
+};
+</script>

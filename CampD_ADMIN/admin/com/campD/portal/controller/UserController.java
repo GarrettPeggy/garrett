@@ -116,4 +116,29 @@ public class UserController extends BaseController {
 		return "user/userListCtx";
 	}
 	
+	/**
+     * 退出登录页面
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/quit.do")
+    public String quit(HttpServletResponse response, HttpServletRequest request){
+        
+        request.getSession().invalidate();
+        
+        return "user/login";
+    }
+    
+    /**
+     * 更新用户信息的界面
+     * 
+     */
+    @RequestMapping("/toUpdateUserInfo.do")
+    public String toUpdateUserInfo(HttpServletRequest request) {
+		
+        return "user/userInfoDialog";
+    }
+	
 }

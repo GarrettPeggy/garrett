@@ -39,6 +39,13 @@
 					</a>
 					<b class="arrow"></b>
 				</li>
+				<li class="" name="subMenu120100" id="leftMenu110102">
+					<a href="${ctx}/user/toList.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						活动列表
+					</a>
+					<b class="arrow"></b>
+				</li>
 			</ul>
 		</li>
 	
@@ -54,7 +61,14 @@
 				<li class="" name="subMenu120100" id="leftMenu120101">
 					<a href="${ctx}/user/toList.do">
 						<i class="menu-icon fa fa-caret-right"></i>
-						发布活动
+						发布场地
+					</a>
+					<b class="arrow"></b>
+				</li>
+				<li class="" name="subMenu120100" id="leftMenu120102">
+					<a href="${ctx}/user/toList.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						场地列表
 					</a>
 					<b class="arrow"></b>
 				</li>
@@ -63,11 +77,21 @@
 	
 	
 		<li class="" id="leftMenu130100">
-			<a href="${ctx}/user/toList.do">
+			<a href="#" class="dropdown-toggle">
 				<img src="${locResPath}/static/images/statement .png"/>
 				<span class="menu-text"> 资讯管理</span>
+				<b class="arrow fa fa-angle-down"></b>
 			</a>
 			<b class="arrow"></b>
+			<ul class="submenu">
+				<li class="" name="subMenu130100" id="leftMenu130101">
+					<a href="${ctx}/information/toHomePicConfig.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						首页轮播图
+					</a>
+					<b class="arrow"></b>
+				</li>
+			</ul>
 		</li>
 	</ul>
 	
