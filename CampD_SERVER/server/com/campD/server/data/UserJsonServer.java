@@ -157,7 +157,7 @@ public class UserJsonServer {
     
     /**
      * 根据手机号查找用户信息
-     * @param reqMap:{mdn:手机号}
+     * @param reqMap:{mdn:手机号,userName:用户名，开始注册时间，结束注册时间，开始登陆时间，结束登陆时间}
      * @return
      */
     @SuppressWarnings({"rawtypes" })
