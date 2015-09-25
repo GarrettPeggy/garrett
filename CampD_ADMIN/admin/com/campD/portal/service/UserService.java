@@ -36,6 +36,20 @@ public class UserService extends JsonClientService {
 		
     }
     
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map updateRole(Map reqMap) {
+		
+		return postForMap(SystemMessage.getString("userJsonServer") + "/updateRole", reqMap);
+		
+    }
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+   	public Map updateUserInfo(Map reqMap) {
+   		
+   		return postForMap(SystemMessage.getString("userJsonServer") + "/updateUserInfo", reqMap);
+   		
+    }
+    
     /**
      * 设置用户信息
      * @param request

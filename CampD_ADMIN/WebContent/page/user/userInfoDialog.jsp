@@ -11,7 +11,7 @@
       </div>
       <div class="modal-body">
 	      <form id="updateUserInfoForm" class="form-horizontal" role="form" >
-	          
+	          <input type="hidden" name="userId" value="${USER_INFO.id}">
 	          <div class="form-group">
 		          <label for="tagName" class="col-xs-12 col-sm-3 col-md-3 control-label no-padding-right">账户名称:</label>
 		          <div class="col-xs-12 col-sm-4">
@@ -42,7 +42,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
-        <button type="button" class="btn btn-primary" onclick="void();">确定</button>
+        <button type="button" class="btn btn-primary" onclick="updateUserInfo();">确定</button>
       </div>
     </div>
   </div>

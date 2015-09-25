@@ -44,7 +44,21 @@ public class CommonRestController extends BaseRestController {
     }
     
     /**
-	 * 添加系统配置信息
+	 * 更新系统配置信息
+	 */
+    @SuppressWarnings({ "rawtypes"})
+	@RequestMapping(value="/updateSysConfig", method=RequestMethod.POST)
+    @ResponseBody
+    public Map updateSysConfig(HttpServletRequest request) {
+    	
+    	Map reqMap = bindParamToMap(request);
+    	Map returnMap = commonJsonServer.updateSysConfig(reqMap);
+    	
+        return returnMap;
+    }
+    
+    /**
+	 * 添加无用图片配置信息
 	 */
     @SuppressWarnings({ "rawtypes"})
 	@RequestMapping(value="/addNoUsePic", method=RequestMethod.POST)
@@ -58,7 +72,7 @@ public class CommonRestController extends BaseRestController {
     }
     
     /**
-	 * 添加系统配置信息
+	 * 查找系统配置信息
 	 */
     @SuppressWarnings({ "rawtypes"})
 	@RequestMapping(value="/findSysConfigs", method=RequestMethod.POST)

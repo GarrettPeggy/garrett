@@ -1,5 +1,5 @@
 /**
- * 
+ * 用户管理
  */
 package com.campD.portal.controller;
 
@@ -26,7 +26,7 @@ import com.campD.portal.util.WebUtil;
 
 /**
  * @author Administrator
- *
+ * 
  */
 @Controller
 @RequestMapping("/user")
@@ -139,6 +139,40 @@ public class UserController extends BaseController {
     public String toUpdateUserInfo(HttpServletRequest request) {
 		
         return "user/userInfoDialog";
+    }
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping("/updateRole.do")
+    @ResponseBody
+    public Map updateRole(HttpServletRequest request) {
+    	
+		Map reqMap = bindParamToMap(request);
+		
+		// 初次进来的用户给它设置默认角色
+    	String roleId = roleCacheService.searchRoleIdByName((String) reqMap.get("roleName"));
+    	reqMap.put("roleId", roleId);
+		
+		return userService.updateRole(reqMap);
+    }
+    
+    @SuppressWarnings("rawtypes")
+	@RequestMapping("/updateUserInfo.do")
+    @ResponseBody
+    public Map updateUserInfo(HttpServletRequest request) {
+    	
+		Map reqMap = bindParamToMap(request);
+		
+		Map returnMap = userService.updateUserInfo(reqMap);
+		if(SystemConstant.RETURN_SUCC.equals((String) returnMap.get("returnCode"))){
+			UserInfo userInfo = UserInfoHolder.get();
+			userInfo.setEmail((String) reqMap.get("email"));
+			userInfo.setMdn((String) reqMap.get("mdn"));
+			userInfo.setUserName((String) reqMap.get("userName"));
+			UserInfoHolder.set(userInfo);
+			WebUtil.addSession(request, SystemConstant.USER_INFO, userInfo);// 把用户信息放入session中
+		}
+		
+		return returnMap;
     }
 	
 }

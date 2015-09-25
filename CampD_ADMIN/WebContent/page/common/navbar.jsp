@@ -73,8 +73,20 @@
  */
 toViewUserInfo = function(){
 	var url = BASE_PATH + '/user/toUpdateUserInfo.do';
-	Dialog.ajaxOpenDialog(url,{},"toUpdateUserInfo",function(){
-		
-	},null);
+	Dialog.ajaxOpenDialog(url,{},"toUpdateUserInfo",function(){},null);
+};
+
+updateUserInfo = function(){
+	if(Validator.validForm("updateUserInfoForm")){
+		submitForm("updateUserInfoForm",BASE_PATH + '/user/updateUserInfo.do',
+			function(data){
+				$('#toUpdateUserInfo').modal('hide');
+			},
+			function(data){
+				Dialog.alertError(data.returnMsg);
+				$('#toUpdateUserInfo').modal('hide');
+			}
+		);
+	}
 };
 </script>

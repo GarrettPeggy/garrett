@@ -58,6 +58,37 @@ public class CommonJsonServer {
 	}
 	
 	/**
+	 * 更新系统配置信息
+	 * @param reqMap:{type:配置类型，key:配置项键值，value:配置项值}
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	public Map updateSysConfig(Map reqMap) {
+		
+		logger.info("reqMap="+reqMap);
+		
+		// 记录用户注册信息
+		String sqlStr = "update sys_config set value_val=? where sys_type=? and key_val=?";
+		logger.info("sqlStr="+sqlStr);
+        Object[] params = new Object[]{reqMap.get("value"), reqMap.get("type"), reqMap.get("key")};
+        int updateLineCount = jdbcTemplate.update(sqlStr, params);
+        
+        JSONView jsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("更新配置项信息失败->params="+params.toString());
+			return jsonView;
+        }
+        
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("updateLineCount="+updateLineCount);
+        
+        return jsonView;
+
+	}
+	
+	/**
      * 根据类型和key查找配置信息
      * @param reqMap:{type:手机号，key：配置项键值}
      * @return

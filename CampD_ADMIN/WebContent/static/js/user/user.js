@@ -20,7 +20,7 @@ User.login = function(){
 			window.location.href = BASE_PATH + "/user/toList.do";
 		}, function(data) {
 			systemLoaded();
-			alert(data.returnMsg);
+			Dialog.alertError(data.returnMsg);
 		});
 	} else {
 		systemLoaded();
@@ -36,13 +36,13 @@ User.checkLogin = function() {
 	var mdn = $("#mdn").val();
 	
 	if (userName == "" || userName == $("#userName").attr('placeholder')) {
-		alert("用户名不能为空!");
+		Dialog.alertError("用户名不能为空!");
 		return false;
 	} else if (mdn == "" || mdn == $("#mdn").attr('placeholder')) {
-		alert("手机号不能为空!");
+		Dialog.alertError("手机号不能为空!");
 		return false;
 	} else if(!isPhone(mdn)){
-		alert("手机号格式不正确!");
+		Dialog.alertError("手机号格式不正确!");
 		return false;
 	}
 	return true;
@@ -56,5 +56,21 @@ User.searchUserList = function(){
 		pageInfo("userListForm",function() {
 			User.searchUserList();
 		});
+	});
+};
+
+/**
+ * 设置用户角色
+ */
+User.setRole = function(userId, roleName){
+	var params = {
+		"userId":userId,
+		"roleName":roleName
+	};
+	// 记住参数提交的格式一定要正确，否则会报error错误。
+	submitSave(BASE_PATH + "/user/updateRole.do", params, function(data) {
+		User.searchUserList();
+	}, function(data) {
+		Dialog.alertError(data.returnMsg);
 	});
 };
