@@ -151,8 +151,9 @@ public class UserController extends BaseController {
 		// 初次进来的用户给它设置默认角色
     	String roleId = roleCacheService.searchRoleIdByName((String) reqMap.get("roleName"));
     	reqMap.put("roleId", roleId);
+    	Map returnMap = userService.updateRole(reqMap); 
 		
-		return userService.updateRole(reqMap);
+		return getOperateJSONView(returnMap);
     }
     
     @SuppressWarnings("rawtypes")
@@ -172,7 +173,7 @@ public class UserController extends BaseController {
 			WebUtil.addSession(request, SystemConstant.USER_INFO, userInfo);// 把用户信息放入session中
 		}
 		
-		return returnMap;
+		return getOperateJSONView(returnMap);
     }
 	
 }

@@ -97,10 +97,10 @@ public class BaseController {
 	 */
 	protected JSONView getSearchJSONView(List list) {
 		JSONView jsonView = new JSONView();
-		jsonView.setSearchReturnType();
 		if(list!=null){
 			jsonView.setReturnValue(list);
 		}
+		jsonView.setSearchReturnType();
 		// pageinfo
 		jsonView.setPageInfo(pageInfo);
 		return jsonView;
@@ -113,10 +113,10 @@ public class BaseController {
 	 */
 	protected JSONView getSearchJSONView(Map map) {
 		JSONView jsonView = new JSONView();
-		jsonView.setSearchReturnType();
 		if(map!=null){
 			jsonView.putAll(map);
 		}
+		jsonView.setSearchReturnType();
 		return jsonView;
 	}
 
@@ -128,10 +128,10 @@ public class BaseController {
 	 */
 	protected JSONView getOperateJSONView(Map result) {
 		JSONView jsonView = new JSONView();
-		jsonView.setOperateReturnType();
 		if(result!=null){
 			jsonView.putAll(result);
 		}
+		jsonView.setOperateReturnType();
 		return jsonView;
 	}
 	protected String errorCodeDialog(String code,HttpServletRequest request) {
