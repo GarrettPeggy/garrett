@@ -1,4 +1,5 @@
 package com.campD.portal.util;
+import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -28,7 +29,12 @@ public class SystemMessage {
 		Enumeration<String> e = bundle.getKeys();
 		while(e.hasMoreElements()){
 			String key = e.nextElement();
-			properties.put(key, bundle.getString(key));
+			String val = bundle.getString(key);
+			try {
+				properties.put(key, new String(val.getBytes("iso8859-1"), "UTF-8"));
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			}
 		}
 		logger.info("----------------------------------------------");
 		logger.info("----开启本地读取模式，读取本地配置system--------");

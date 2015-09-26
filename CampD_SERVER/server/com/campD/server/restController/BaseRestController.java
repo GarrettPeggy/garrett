@@ -2,7 +2,6 @@ package com.campD.server.restController;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -89,11 +88,11 @@ public class BaseRestController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		while (keyIeraotr.hasNext()) {
 			String key = (String) keyIeraotr.next();
-			String val = (String) requestMap.get(key);
+			Object val = requestMap.get(key);
 			if(!"randomId".equals(key)){
 				if("orderBy".equals(key)){
-					if(!StringUtil.isEmpty(val)){
-						Object orderByList = JsonHelper.parseToObject(val, List.class);
+					if(!StringUtil.isEmpty((String) val)){
+						Object orderByList = JsonHelper.parseToObject((String) val, List.class);
 						map.put(key, orderByList);
 					}
 					continue;

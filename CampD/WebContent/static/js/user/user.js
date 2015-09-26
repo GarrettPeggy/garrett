@@ -9,7 +9,7 @@ var User = {};
 User.register = function(){
 	
 	if (User.checkLogin()) {// 校验输入信息
-		systemLoading("", true, "注册中,请稍后");
+		systemLoading(null, true, "注册中,请稍后");
 		var params = {
 			"userName":$("#userName").val(),
 			"mdn":$("#mdn").val()
@@ -33,7 +33,7 @@ User.register = function(){
 User.login = function(){
 	
 	if (User.checkLogin()) {// 校验输入信息
-		systemLoading("", true, "登录中,请稍后");
+		systemLoading(null, true, "登录中,请稍后");
 		var params = {
 			"userName":$("#userName").val(),
 			"mdn":$("#mdn").val()

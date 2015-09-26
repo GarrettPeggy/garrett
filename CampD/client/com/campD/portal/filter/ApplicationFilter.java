@@ -73,7 +73,7 @@ public class ApplicationFilter implements Filter {
         //验证session不允许过去，跳到登陆页面
         if (userInfo == null && (excludePathList == null || !excludePathList.contains(requestUrl)) && !requestUrl.endsWith(".jsp")) {
         	logger.info("request userInfo is null");
-        	errorDeal(response, request,SystemConstant.ERROR_CODE_UNLOGIN,"/page/user/login.jsp");
+        	errorDeal(response, request,SystemConstant.ERROR_CODE_UNLOGIN,"/toLogin.do");
             return;
         }
         
@@ -88,6 +88,7 @@ public class ApplicationFilter implements Filter {
         
         if (userInfo != null) {
         	MDC.put("userId", userInfo.getId() == null ? "" : userInfo.getId());
+        	MDC.put("mdn", userInfo.getMdn() == null ? "" : userInfo.getMdn());
             MDC.put("ip", userInfo.getLoginIp() == null ? "" : userInfo.getLoginIp());
         }else{
         	MDC.put("ip", WebUtil.getIPAddress(request));

@@ -4,11 +4,13 @@
 package com.campD.server.data;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -39,7 +41,8 @@ public class UserJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 记录用户注册信息
-		String sqlStr = "insert into user(id,user_name,password,mdn,role_id,login_time,register_time) values(?,?,?,?,?,?,?)";
+		String sqlStr = "insert into user(id,user_name,password,mdn,role_id,login_time, register_time) values(?,?,?,?,?,?,?)";
+		logger.info("sqlStr="+sqlStr);
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("userName"), SystemMessage.getString("inital_password"),reqMap.get("mdn"), reqMap.get("roleId"), new Date(), new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
@@ -60,6 +63,68 @@ public class UserJsonServer {
         return jsonView;
 
 	}
+	
+	/**
+	 * 更新用户角色
+	 * @param reqMap:{userId:用户id，roleId：角色id}
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	public Map updateRole(Map reqMap) {
+		
+		logger.info("reqMap="+reqMap);
+		
+		// 更新用户角色
+		String sqlStr = "UPDATE user SET role_id=? WHERE id=?";
+		logger.info("sqlStr="+sqlStr);
+        Object[] params = new Object[]{reqMap.get("roleId"), reqMap.get("userId")};
+        int updateLineCount = jdbcTemplate.update(sqlStr, params);
+        
+        JSONView jsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("更新用户角色失败->params="+params.toString());
+			return jsonView;
+        }
+        
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("updateLineCount="+updateLineCount);
+        
+        return jsonView;
+
+	}
+	
+	/**
+	 * 更新用户基本信息
+	 * @param reqMap:{userId:用户id，userName：用户姓名，mdn：手机号，email：邮箱}
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	public Map updateUserInfo(Map reqMap) {
+		
+		logger.info("reqMap="+reqMap);
+		
+		// 更新用户角色
+		String sqlStr = "UPDATE user SET user_name=?, mdn=?, email=? WHERE id=?";
+		logger.info("sqlStr="+sqlStr);
+        Object[] params = new Object[]{reqMap.get("userName"), reqMap.get("mdn"), reqMap.get("email"), reqMap.get("userId")};
+        int updateLineCount = jdbcTemplate.update(sqlStr, params);
+        
+        JSONView jsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("更新用户信息失败->params="+params.toString());
+			return jsonView;
+        }
+        
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("updateLineCount="+updateLineCount);
+        
+        return jsonView;
+
+	}
 
     /**
      * 根据手机号查找用户信息
@@ -73,13 +138,90 @@ public class UserJsonServer {
     	JSONView jsonView = new JSONView();
     	Map resultMap = null;
     	
-		String sqlStr = "select u.id, u.user_name as name, u.password, u.mdn, u.email, u.login_time, u.register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
-		resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});
+		String sqlStr = "select u.id, u.user_name as userName, u.password, u.mdn, u.email, FROM_UNIXTIME(UNIX_TIMESTAMP(u.login_time), '%Y-%m-%d %H:%i:%S') AS login_time,FROM_UNIXTIME(UNIX_TIMESTAMP(u.register_time), '%Y-%m-%d %H:%i:%S') AS register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=?";
+		logger.info("sqlStr="+sqlStr);
+		try {  
+			resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn")});  
+        } catch (EmptyResultDataAccessException e) { 
+
+            jsonView.addAttribute("userInfo", resultMap);
+            logger.info("resultMap="+resultMap);
+            return jsonView;  
+        }
 		
-        jsonView.addAttribute("userInfo", resultMap);
+		jsonView.addAttribute("userInfo", resultMap);
         logger.info("resultMap="+resultMap);
+        return jsonView;
+        
+	}
+    
+    /**
+     * 根据手机号查找用户信息
+     * @param reqMap:{mdn:手机号,userName:用户名，开始注册时间，结束注册时间，开始登陆时间，结束登陆时间}
+     * @return
+     */
+    @SuppressWarnings({"rawtypes" })
+	public Map findUserList(Map reqMap) {
+		
+    	logger.info("reqMap="+reqMap);
+    	String sqlStr = "select u.id, u.user_name as userName, u.mdn, u.email, FROM_UNIXTIME(UNIX_TIMESTAMP(u.login_time), '%Y-%m-%d %H:%i:%S') AS login_time,FROM_UNIXTIME(UNIX_TIMESTAMP(u.register_time), '%Y-%m-%d %H:%i:%S') AS register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id";
+    	String sqlCountStr = "select count(1) from user u, role r where u.role_id = r.id";
+    	
+    	// 查询的表单参数
+    	String userName = (String) reqMap.get("userName");
+    	String mdn = (String) reqMap.get("mdn");
+    	String beginRegTime = (String) reqMap.get("beginRegTime");
+    	String endRegTime = (String) reqMap.get("endRegTime");
+    	String beginLoginTime = (String) reqMap.get("beginLoginTime");
+    	String endLoginTime = (String) reqMap.get("endLoginTime");
+    	
+    	if (!"".equals(userName)) {  
+    		sqlStr += " and u.user_name like '%"+userName+"%' ";
+    		sqlCountStr += " and u.user_name like '%"+userName+"%' ";
+        }
+    	if (!"".equals(mdn)) {  
+    		sqlStr += " and u.mdn = '" + mdn + "'";
+    		sqlCountStr += " and u.mdn = '" + mdn + "'";
+        }
+    	if (!"".equals(beginRegTime)) {  
+    		sqlStr += " and u.register_time >= '" + beginRegTime + " 00:00:00'";
+    		sqlCountStr += " and u.register_time >= '" + beginRegTime + " 00:00:00'";
+        }
+    	if (!"".equals(endRegTime)) {  
+    		sqlStr += " and u.register_time <= '" + endRegTime + " 23:59:59'";
+    		sqlCountStr += " and u.register_time <= '" + endRegTime + " 23:59:59'";
+        }
+    	if (!"".equals(beginLoginTime)) {  
+    		sqlStr += " and u.login_time >= '" + beginLoginTime + " 00:00:00'";
+    		sqlCountStr += " and u.login_time >= '" + beginLoginTime + " 00:00:00'";
+        }
+    	if (!"".equals(endLoginTime)) {  
+    		sqlStr += " and u.login_time <= '" + endLoginTime + " 23:59:59'";
+    		sqlCountStr += " and u.login_time <= '" + endLoginTime + " 23:59:59'";
+        }
+    	
+    	// 获取当前用户总数
+    	@SuppressWarnings("deprecation")
+		int dataCount = jdbcTemplate.queryForInt(sqlCountStr);
+    	
+    	// 查询的分页参数
+    	Map pageInfo = (Map) reqMap.get("pageInfo");
+    	int curPage = (int) pageInfo.get("curPage");
+    	int pageLimit = (int) pageInfo.get("pageLimit");
+    	int startIndex = (curPage-1)*pageLimit;
+    	sqlStr += " limit " + startIndex + "," + pageLimit;
+
+    	logger.info("sqlStr="+sqlStr);
+    	logger.info("sqlCountStr="+sqlCountStr);
+    	
+    	JSONView jsonView = new JSONView();
+    	List userList = jdbcTemplate.queryForList(sqlStr, new Object[0]);
+		jsonView.addAttribute("userList", userList);
+		jsonView.addAttribute("dataCount", dataCount);
+        logger.info("userList="+userList);
         
         return jsonView;
         
 	}
+    
 }

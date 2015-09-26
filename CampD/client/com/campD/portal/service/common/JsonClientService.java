@@ -174,8 +174,10 @@ public abstract class JsonClientService {
 				UserInfo userInfo = getUserInfo();
 				Map<String,Object> userMap = new HashMap<String,Object>(); //����Ҫ�����е��ֶζ�������̨
 				userMap.put("userId",userInfo.getId());
-				userMap.put("userName",userInfo.getUserame());
+				userMap.put("userName",userInfo.getUserName());
 				userMap.put("loginIp",userInfo.getLoginIp());
+				userMap.put("mdn",userInfo.getMdn());
+				userMap.put("roleName",userInfo.getRoleName());
 				headers.add("userInfo",URLEncoder.encode(JsonHelper.parseToJson(userMap),"UTF-8"));
 				
 				HttpEntity request= new HttpEntity(requestMap, headers);
