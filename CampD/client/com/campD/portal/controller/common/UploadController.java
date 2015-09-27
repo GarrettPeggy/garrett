@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +26,8 @@ import com.campD.portal.util.UploadFileUtil;
  * @author Administrator
  *
  */
+@Controller
+@RequestMapping("/upload")
 public class UploadController extends BaseController{
 	
 	public static final long LOGO_IMG_MAX_SIZE = 2*1024*1024;
@@ -52,7 +55,7 @@ public class UploadController extends BaseController{
 			String tmpPath = UploadFileUtil.getTmpRealPath(fileName, getUserInfo(), request);
 			cropImg.transferTo(new File(tmpPath));
 			Map<String, String> resMap = new HashMap<String, String>();
-			resMap.put("tmpPath", UploadFileUtil.getRelativePath(tmpPath, request));
+			resMap.put("tmpPath", request.getScheme() + "://" + SystemMessage.getString("rmtResUrl") + UploadFileUtil.getRelativePath(tmpPath, request));
 			JSONView view = getSearchJSONView(resMap);
 			view.setSuccess();
 			return view;

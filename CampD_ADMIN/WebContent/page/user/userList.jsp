@@ -56,7 +56,7 @@
 												<div class="col-xs-12 col-sm-3">
 													<div class="widget-body">
 														<div class="widget-main">
-															<label>手机号</label> 
+															<label>用户名</label> 
 															<input type="text" name="userName" value="" placeholder="用户名称" class="col-xs-12 col-sm-12" />
 														</div>
 													</div>

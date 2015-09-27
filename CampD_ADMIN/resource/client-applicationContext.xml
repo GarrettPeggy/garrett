@@ -20,6 +20,14 @@
     <mvc:annotation-driven/>
 	<context:annotation-config /><!-- support json -->
 	
+	<!-- 配置文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件的最大尺寸为1TB -->
+		<property name="maxUploadSize">
+			<value>1000000000000</value>
+		</property>
+	</bean>
+	
 	<!--  提供对rest接口的调用  -->
 	<bean id="requestFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory">
   		<property name="readTimeout" value="90000"/>

@@ -34,8 +34,9 @@ public class CommonController extends BaseController {
     public Map addSysConfig(HttpServletRequest request) {
     	
 		Map reqMap = bindParamToMap(request);
+		Map returnMap = commonService.addSysConfig(reqMap);
 		
-		return commonService.addSysConfig(reqMap);
+		return getOperateJSONView(returnMap);
     }
 	
 	@SuppressWarnings({ "rawtypes"})
@@ -44,8 +45,9 @@ public class CommonController extends BaseController {
     public Map updateSysConfig(HttpServletRequest request) {
     	
 		Map reqMap = bindParamToMap(request);
+		Map returnMap = commonService.updateSysConfig(reqMap);
 		
-		return commonService.updateSysConfig(reqMap);
+		return getOperateJSONView(returnMap);
     }
 	
 	@SuppressWarnings({ "rawtypes"})
