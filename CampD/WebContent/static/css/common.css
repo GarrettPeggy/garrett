@@ -586,7 +586,13 @@ a:hover{text-decoration:none;}
 .img-tap-show{
 	width:100%;
 	height:125px;
+	
 }
+/*轮播图样式*/
+.img-tap-show ol{position:relative;width: 80px;height: 20px;top:-30px;left:60px;}
+.img-tap-show ol li{float:left;width: 10px;height: 10px; -moz-border-radius: 50px;-webkit-border-radius: 50px;border-radius: 50px;margin: 5px;background: #fff;}/*圆形的滚动点*/
+.img-tap-show ol li.seleted{background: #1AA4CA;}
+
 .main .contain{
 	padding:10px 5px 0px 5px;
 	font-size:11.5px;
