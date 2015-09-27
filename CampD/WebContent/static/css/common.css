@@ -1,7 +1,9 @@
 /* CSS Document */
-body{padding:0;margin:0;background:#f0f0f0;}
+body{padding:0;margin:0;background:#f0f0f0; font-family:STHeiti,"华文黑体";}
 img,p,ul,li,input{ margin:0; padding:0; list-style-type:none;}
 img{border:none;}
+.fl{float:left;}
+.fr{float:right;}
 .clearfix:before,.clearfix:after{display:table;content:"";height:;line-height:0;clear:both}
 .clearfix{*zoom:1}
 *{box-sizing: border-box; margin:0; padding:0;}
@@ -48,6 +50,33 @@ a:hover{text-decoration:none;}
 		transform-origin:100% 100%
 	}
 }
+.retina-1px-border-top1:before, .retina-1px-border-bottom1:after { position: absolute; background-color: #646f72; content: ""; right: 0; left: 0; height: 1px;z-index:30; width:100%;}
+.retina-1px-border-top1:before {top:0}
+.retina-1px-border-bottom1:after {bottom:0;}
+@media (-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5),(min-resolution:144dpi),(min-resolution:1.5dppx) {
+	.retina-1px-border-top1:before,.retina-1px-border-bottom1:after {
+		-webkit-transform:scaleY(.5);
+		transform:scaleY(.5)
+	}
+	.retina-1px-border-left:before,.retina-1px-border-right:after {
+		-webkit-transform:scaleX(.5);
+		transform:scaleX(.5)
+	}
+	.retina-1px-border:after {
+		width:200%;
+		height:200%;
+		-webkit-transform:scale(.5);
+		transform:scale(.5)
+	}
+	.retina-1px-border-top1:before,.retina-1px-border-left:before,.retina-1px-border:after {
+		-webkit-transform-origin:0 0;
+		transform-origin:0 0
+	}
+	.retina-1px-border-bottom1:after,.retina-1px-border-right:after {
+		-webkit-transform-origin:100% 100%;
+		transform-origin:100% 100%
+	}
+}
 .bdb{border-bottom:1px solid #e0e0e0;}
 
 /*常用间距*/
@@ -60,6 +89,7 @@ a:hover{text-decoration:none;}
 .mat15{margin-top:15px;}
 .mat10{margin-top:10px;}
 .pdt10{padding-top:10px;}
+.pdb5{padding-bottom:5px;}
 .pdb10{padding-bottom:10px;}
 .pdl10{padding-left:10px;}
 .mat7{margin-top:7px;}
@@ -79,11 +109,12 @@ a:hover{text-decoration:none;}
 .fontSize18{font-size:18px;}
 
 /*常用按钮*/
-.btn{padding:0 37px;height:50px;line-height:50px;border:none;border-radius:5px;font-size:20px;}
+.btn{padding:0 37px;height:50px;line-height:50px;border:none;border-radius:5px;font-size:20px; display:inline-block;}
 .orange-btn {background:#edbe57;color:#fff;}
 
 .hide{display:none;}
 
+.positionR{position:relative;z-index:36;}
 
 .header{
 	position:relative;
@@ -100,7 +131,7 @@ a:hover{text-decoration:none;}
 	top:0;
 	left:0;
 	display:block;
-	width:50px;
+	width:45px;
 	text-align:center;
 	padding-top:4px;
 }
@@ -118,7 +149,8 @@ a:hover{text-decoration:none;}
 }
 /*表单*/
 .main{
-	font-size:16px;
+	font-size:15px;
+	padding-bottom:20px;
 }
 .main .line{
 	width:100%;
@@ -219,14 +251,8 @@ a:hover{text-decoration:none;}
 	background:#fff!important;
 	margin-bottom:0px!important;
 }
-.classify-head .head-left-icon{
-	padding-top:20px;
-}
 .classify-head .head-content{
-	padding-top:17px;
-}
-.classify-head .head-right-icon{
-	padding-top:18px;
+	padding-top:5px;
 }
 .nav-box{
 	position:relative;
@@ -234,6 +260,7 @@ a:hover{text-decoration:none;}
 }
 .nav-box .nav-list{
 	background:#fff;
+	font-size:14px;
 }
 .nav-box .nav-list li{
 	float:left;
@@ -250,6 +277,9 @@ a:hover{text-decoration:none;}
 }
 .classify-li-title,.classify-li-date{
 	color:#3c3c3c;
+}
+.ul-box .classify-li-desc, .ul-box .classify-li-date{
+	font-size:12px;
 }
 
 /*活动详情*/
@@ -305,10 +335,7 @@ a:hover{text-decoration:none;}
 }
 .btn-box{
 	text-align:center;
-	margin-top:10px;
-}
-.rea-body{
-	position:relative;
+	margin-top:15px;
 }
 .mc{
 	position:absolute;
@@ -391,4 +418,244 @@ a:hover{text-decoration:none;}
 	right: 0;
 	border-radius:180px;
 	top:-18px;
+}
+
+/*场地*/
+.ground .mc{
+	top:94px;
+}
+.search-box{
+	padding-right:10px;
+	margin-top:5px;
+	background:#fff;
+	position:relative;
+	height:38px;
+	line-height:38px;
+	z-index:36;
+}
+.search-box .search-parent-list li{
+	float:left;
+	width:25%;
+	text-align:center;
+	background:url(/campD/static/images/select_icon.png) no-repeat 90%;
+	background-size:8px 7px;
+}
+.ground-list li .data-li-right .dlr-title{
+	padding-top:4px;
+	margin-bottom:0px!important;
+	padding-bottom:5px!important;
+}
+.ground-list li .data-li-right .dlr-address, .ground-list li .data-li-right .dlr-cost{
+	color:#a5a5a5;
+	font-size:14px;
+}
+.ground-list li .data-li-right .dlr-cost .co{
+	color:#e6c680;
+}
+.ground-list li .data-li-right .dlr-address{
+	margin-bottom:4px;
+}
+.ground-no{
+	color:#949494;
+	padding-top:27px;
+	text-align:center;
+}
+.ground-no p{
+	margin-top:16px;
+}
+.search-box .search-detail{
+	position:absolute;
+	left:0;
+	top:38px;
+	z-index:36;
+	background:#fff;
+	padding-top:16px;
+	padding-bottom:6px;
+	width:100%;
+}
+.search-box .search-detail li{
+	float:left;
+	margin-left:8px;
+	width:30%;
+	border:1px solid #e0e0e0;
+	text-align:center;
+	border-radius:13px;
+	height:29px;
+	line-height:29px;
+	margin-bottom:13px;
+	font-size:14px;
+}
+.search-box .search-detail .active{
+	color:#fff;
+	background:#e6cf9c;
+	border:1px solid #e6cf9c;
+}
+
+/*举办活动*/
+.hold-ac-header{
+	margin-bottom:0px!important;
+}
+.hold-ac-header .head-right-icon{
+	width:62px;
+	right:5px;
+	color:#fff;
+}
+.hold-ac-header .head-right-icon img{
+	margin-top:16px;
+	float:left;
+	margin-right:3px;
+}
+.hold-ac-header .head-right-icon span{
+	float:left;
+	display:inline-block;
+	font-size:17px;
+}
+
+/*举办活动*/
+.sub-ac-form .line{
+	display:block;
+	color:#3c3c3c;
+	padding:0 31px 0 16px;
+	height:45px;
+	line-height:45px;
+	background:#fff;
+	border-bottom:1px solid #e0e0e0;
+	font-size:15px;
+}
+.sub-ac-form a:hover{color:#3c3c3c;}
+.sub-ac-form a:link{color:#3c3c3c;}
+.sub-ac-form a:active{color:#3c3c3c;}
+.sub-ac-form .line .fr{
+	color:#adadad;
+}
+.sub-ac-form .line .go-img{
+	position:absolute;
+	top:13px;
+	right:13px;
+	z-index:29;
+}
+/*举办活动-活动类型，活动城市，活动人数*/
+.hold-type-header{
+	margin-bottom:0px;
+}
+.hold-type-header .head-left-icon, .hold-type-header .head-right-icon{
+	font-size:17px;
+	color:#fff;
+	font-family:Verdana,"华文细黑";
+}
+.hold-type-header .head-left-icon:hover{
+	color:#fff;
+	text-decoration:none;
+}
+.hold-type-header .head-left-icon:link{
+	color:#fff;
+	text-decoration:none;
+}
+.hold-type-header .head-left-icon:active{
+	color:#fff;
+	text-decoration:none;
+}
+.hold-type-header .head-right-icon{
+	width:40px;
+}
+.type-form .line .fl{
+	color:#949494;
+}
+.type-form .active .fl{
+	color:#638ee0!important;
+}
+.type-form .active .fr{
+	background:url(/campD/static/images/gou_blue.png) no-repeat center;
+	background-size:20px 14px;
+	width:20px;
+	height:45px;
+}
+/*举办活动-活动需求*/
+.sub-desc-form{
+	padding:10px 5px 0px 5px;
+}
+.sub-desc-form .ac-desc-text{
+	width:100%;
+	border:none;
+	border-radius:3px;
+	padding:14px 16px;
+	font-size:15px;
+	resize: none;
+}
+/*首页*/
+.img-tap-show{
+	width:100%;
+	height:125px;
+}
+.main .contain{
+	padding:10px 5px 0px 5px;
+	font-size:11.5px;
+}
+.main .contain .c-top{
+	padding:0px 5px 4px 5px;
+}
+.main .contain .ul-box{
+	padding:0;
+}
+.main .contain .ul-box .classify-li-title{
+	font-size:15px;
+}
+.main .contain .ul-box .classify-li-desc, .main .contain .ul-box .classify-li-date{
+	font-size:12px;
+}
+.index-nav{
+	position:absolute;
+	top:51px;
+	left:9px;
+	z-index:20;
+	background:rgba(0,0,0,0.5);
+	color:#b8c3c6;
+	font-size:17px;
+	width:147px;
+	border-radius:4px;
+}
+.index-nav ul li{
+	padding-left:17px;
+	position:relative;
+	height:44px;
+	line-height:44px;
+}
+.mao{
+	position:absolute;
+	width:100%;
+	height:100%;
+	z-index:40;
+	opacity:0.5;
+}
+.m-active{
+	-webkit-filter: blur(4px); /* Chrome, Opera */
+    -moz-filter: blur(4px);
+    -ms-filter: blur(4px);  
+    filter: blur(4px);
+}
+.person-right{
+	position:absolute;
+	top:0;
+	right:0;
+	width:70%;
+	height:100%;
+	background:#fff;
+	z-index:41;
+	opacity:.9;
+	padding-top:60px;
+	font-size:18px;
+}
+.person-right .line{
+	width:100%;
+	height:54.5px;
+	line-height:54.5px;
+	padding-left:18.5px;
+}
+.person-right .line:hover{
+	background:#d7e0e1;
+}
+.person-right .line .left-img{
+	border-radius:180px;
+	margin-top:6px;
+	margin-right:17px;
 }
