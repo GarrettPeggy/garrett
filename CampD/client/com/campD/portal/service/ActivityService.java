@@ -32,17 +32,27 @@ public class ActivityService extends JsonClientService {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getActivityList(Map reqMap){
-		return postForMap(SystemMessage.getString("activityJsonServer") + "/getActivityList", reqMap);
+		return postForObject(SystemMessage.getString("activityJsonServer") + "/getActivityList", reqMap, Map.class, false);
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map getActivityListClassify(Map reqMap){
+		return postForObject(SystemMessage.getString("activityJsonServer") + "/getActivityListClassify", reqMap, Map.class, false);
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map getActivityListByCategoryId(Map reqMap){
+		return postForObject(SystemMessage.getString("activityJsonServer") + "/getActivityListByParam", reqMap, Map.class, false);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getActivityById(Map reqMap){
-		return postForMap(SystemMessage.getString("activityJsonServer") + "/getActivityById", reqMap);
+		return postForObject(SystemMessage.getString("activityJsonServer") + "/getActivityById", reqMap,Map.class, false);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map takeAnActive(Map reqMap){
-		return postForMap(SystemMessage.getString("activityJsonServer") + "/takeAnActive", reqMap);
+		return postForObject(SystemMessage.getString("activityJsonServer") + "/takeAnActive", reqMap,Map.class, false);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

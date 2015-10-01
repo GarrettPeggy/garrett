@@ -29,9 +29,9 @@ public class ActivityTestService extends AbstractServiceTransactionalTests {
 	public void testAdd(){
 		Map reqMap = new HashMap();
 		reqMap.put("categoryId", 1);
-		reqMap.put("actNum", 22);
-		reqMap.put("actCity", "北京");
-		reqMap.put("actType", "1");
+		reqMap.put("actNum", 23);
+		reqMap.put("actCity", "重庆");
+		reqMap.put("actType", "0");
 		reqMap.put("requirement", "场地足够大");
 		reqMap.put("creator", "018ffd2c-adab-4131-8ef6-af00650ccee2");
 		reqMap.put("status", 1);

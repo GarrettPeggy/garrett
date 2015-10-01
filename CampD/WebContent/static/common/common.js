@@ -782,6 +782,12 @@ function closeTopNotice(id){
 	$("#topnotice").remove();
 	CommonUtil.setCookie('topnotice',id);
 }
+/**
+ * 页面上的返回按钮
+ */
+function back(){
+	window.history.back(-1);
+}
 
 /**
  * 清空查询条件
@@ -994,6 +1000,34 @@ String.prototype.getBytesLength = function() {
 };
 //------------------------------ie 的textArea 控制输入长度jquery插件------------------------------
 (function($) {
+	
+	// 点击筛选框外面的时候，隐藏筛选框
+	document.onclick = function(e) { 
+		//浏览器兼容
+		event = e||event;
+		source = event.srcElement||event.target;
+		
+		// 首页头图右边图标初始化
+		if(($(source).parents('#activity_person').length<=0 && $(source).parents('.head-right-icon').length<=0)) { 
+			$("#activity_person").addClass("hide");
+			$("#activity_mao").addClass("hide");
+			$("#activity_main").removeClass("m-active");
+			$("#activity_header").removeClass("m-active");
+		};
+		
+		// 首页头图左边图标初始化
+		if(($(source).parents('#avtivity_nav').length<=0 && $(source).parents('.head-left-icon').length<=0) ) { 
+			$("#avtivity_nav").addClass("hide");
+		};
+		
+		// 场地列表下拉框初始化
+		if($(source).parents('.search-parent-list').length <= 0 && $(source).parents('.search-detail').length <= 0) { 
+			$(".search-detail").addClass("hide");
+			$("#space_mc").addClass("hide");
+		};
+	};
+	
+	
 	$.fn.textarealimit = function() {
 		var maxLength = $(this).attr('maxlength');
 		if(!maxLength){

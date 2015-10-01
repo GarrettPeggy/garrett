@@ -6,6 +6,11 @@ img{border:none;}
 .fr{float:right;}
 .clearfix:before,.clearfix:after{display:table;content:"";height:;line-height:0;clear:both}
 .clearfix{*zoom:1}
+
+.clearfix-2{
+	height: 1200px;
+}
+
 *{box-sizing: border-box; margin:0; padding:0;}
 a{text-decoration:none;}
 a:link{text-decoration:none;}
@@ -174,6 +179,13 @@ a:hover{text-decoration:none;}
 	font-size:16px;
 	border-radius:0px;
 }
+
+.text-input-2{
+	 width: 150px;
+	 height: 30px;
+	 border:1px solid;
+}
+
 .main .form-box p{
 	width:100%;
 	text-align:center;
@@ -581,6 +593,14 @@ a:hover{text-decoration:none;}
 	padding:14px 16px;
 	font-size:15px;
 	resize: none;
+}
+
+.ac-desc-text-2{
+	width:80%;
+	resize: none;
+	height:80px;
+	border:1px solid;
+	margin-top: 8px;
 }
 /*首页*/
 .img-tap-show{

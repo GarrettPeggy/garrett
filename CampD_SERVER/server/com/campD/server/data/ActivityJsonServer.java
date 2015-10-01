@@ -36,7 +36,7 @@ public class ActivityJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 添加活动需求到数据库
-		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,act_city,act_type,requirement,create_time,status) values(?,?,?,?,?,?,?,?,?,?)";
+		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,act_city,act_type,requirement,create_time,status) values(?,?,?,?,?,?,?,?,?)";
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),new Date(),reqMap.get("status")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
@@ -109,7 +109,7 @@ public class ActivityJsonServer {
 	}
 	/**
 	 * 根据活动所属范畴id,活动提交时间，活动状态等信息查询活动
-	 * @param reqMap:{categoryId：活动所属范畴id，createTime：活动提交时间，status：活动状态}
+	 * @param reqMap:{categoryId：活动所属范畴id，createTime：活动提交时间，status：活动状态,actType:活动类型,creatorId:活动创建者Id}
 	 * @return
 	 */
 	public Map getActivityList(Map reqMap){
@@ -123,7 +123,20 @@ public class ActivityJsonServer {
 			sqlStr+=" and create_time like '%"+reqMap.get("createTime")+"%' ";
 		}
 		if(null!=reqMap.get("status") && !"".equals(reqMap.get("status"))){
-			sqlStr+=" and status like '%"+reqMap.get("status")+"%' ";
+			sqlStr+=" and status ="+reqMap.get("status")+" ";
+		}
+		if(null!=reqMap.get("creatorId") && !"".equals(reqMap.get("creatorId"))){
+			sqlStr+=" and creator_id ='"+reqMap.get("creatorId")+"' ";
+		}
+		
+		if(null!=reqMap.get("actType") && !"".equals(reqMap.get("actType"))){
+			sqlStr+=" and act_type ="+reqMap.get("actType")+" order by begin_time desc ";
+		}
+		
+		//查询热门活动  0代表首页的热门活动  1代表首页点击更多的热门活动
+		if(null!=reqMap.get("flag") && 0==Integer.parseInt(reqMap.get("flag").toString())){
+			//直接拼接热门活动
+			sqlStr+=" and act_type = 1 order by begin_time desc limit 0,3 ";
 		}
 		List activityList =  jdbcTemplate.queryForList(sqlStr, new Object[]{});//多条信息
 		JSONView jsonView = new JSONView();
@@ -141,7 +154,7 @@ public class ActivityJsonServer {
 	 */
 	public Map getActivityById(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,assistance,show_image,title,sub_title,begin_time,end_time,click_num,create_time,publish_time,status from activity where 1=1 and id=? ";
+		String sqlStr = " select id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
 		Map activityInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});//单条信息
 		JSONView jsonView = new JSONView();
 		jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);
@@ -160,7 +173,7 @@ public class ActivityJsonServer {
 		logger.info("reqMap="+reqMap);
 		// 用户参与活动，添加数据到数据库
 		String sqlStr = "insert into user_activity(id,user_id,activity_id,enroll_time) values(?,?,?,?)";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("userId"), reqMap.get("categoryId"), reqMap.get("enrollTime")};
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("userId"), reqMap.get("categoryId"), new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
