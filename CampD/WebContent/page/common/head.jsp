@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><!-- 我的 -->
+<link rel="stylesheet" href="${locResPath}/static/css/luara.css?_v=${vs}"/>
+<script type="text/javascript" src="${locResPath}/static/common/jquery.luara.0.0.1.min.js?_v=${vs}"></script>
+<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>
+
    	<!-- 毛玻璃效果蒙层 -->
     <div class="mao hide" id="activity_mao"></div>
     <!-- end -->
@@ -60,5 +64,3 @@
         </ul>
     </div>
 <!-- end -->
-
-<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>

@@ -30,6 +30,18 @@ Header.initHeadIcon=function(){
 	
 };
 
+/**
+ * 轮播图
+ */
+Header.tapShow=function(){
+	//调用Luara示例
+    $(".img-tap-show").luara({
+    	interval:5000,
+    	selected:"seleted"
+    });
+};
+
 $(function(){
 	Header.initHeadIcon();
+	Header.tapShow();
 });

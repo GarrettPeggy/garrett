@@ -15,7 +15,6 @@ $(function(){
  * 初始化列表
  */
 Activity.init=function(){
-	Activity.tapShow();
 	Activity.list();
 };
 
@@ -47,15 +46,6 @@ Activity.list=function(){
 		alert("呵呵，错了吧-->"+data.returnMsg);
 	});
 	
-};
-
-
-/**
- * 轮播图
- */
-Activity.tapShow=function(){
-	//调用Luara示例
-    $(".img-tap-show").luara({width:"500",height:"334",interval:4000,selected:"seleted"});
 };
 
 /**
