@@ -6,8 +6,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/page/common/meta.jsp"%>
-	<link rel="stylesheet" href="${rmtResPath}/static/css/bootstrap-datetimepicker.min.css" />
 	<%@ include file="/page/common/jsCss.jsp"%>
+	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 </head>
 
 <body class="no-skin">
@@ -38,10 +38,10 @@
 					                <div class="form-horizontal">
 					                
 					                  <div class="form-group">
-					                    <label for="name" class="col-xs-12 col-sm-3 control-label no-padding-right">代理商名称</label>
+					                    <label for="name" class="col-xs-12 col-sm-3 control-label no-padding-right">场地名称</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="name" id="name" class="width-100" value="lxd" notnull="true" maxlength="10" >
+						                      <input type="text" name="name" id="name" class="width-100" notnull="true" maxlength="50" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                     </div>
@@ -49,10 +49,10 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="contactName" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人姓名</label>
+					                    <label for="contactor" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="contactName" id="contactName" class="width-100" value="zf" >
+						                      <input type="text" name="contactor" id="contactor" class="width-100" notnull="true" maxlength="15" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -60,10 +60,10 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="contactMdn" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人手机号</label>
+					                    <label for="contact" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人方式</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="contactMdn" id="contactMdn" class="width-100" value="" >
+						                      <input type="text" name="contact" id="contact" class="width-100" datatype="phone" notnull="true" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -71,34 +71,12 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="email" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人邮箱</label>
-					                    <div class="col-xs-12 col-sm-3"> 
-					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="email" id="email" class="width-100" value="lxd2011@sina.com" >
-						                      <i class="ace-icon fa fa-leaf"></i> 
-					                      </span> 
-					                    </div>
-					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
-					                  </div>
-					                  
-					                  <div class="form-group">
-					                    <label for="tel" class="col-xs-12 col-sm-3 control-label no-padding-right">固定电话</label>
-					                    <div class="col-xs-12 col-sm-3"> 
-						                    <span class="block input-icon input-icon-right">
-						                      <input type="text" name="tel" id="tel" class="width-100" value="" >
-						                      <i class="ace-icon fa fa-leaf"></i> 
-						                    </span> 
-					                    </div>
-					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
-					                  </div>
-					                  
-					                  <div class="form-group">
-					                    <label class="col-sm-3 control-label no-padding-right">所属行业</label>
+					                    <label class="col-sm-3 control-label no-padding-right">场地类型</label>
 					                    <div class="col-md-3">
 					                      <div class="row">
 					                        <div class="col-sm-6">
-					                          <select class="form-control" name="industryId" id="form-field-select-1" >
-					                            <option value="" selected="selected"></option>
+					                          <select class="form-control" name="spaceType">
+					                            <option value="0">众创空间</option>
 					                          </select>
 					                        </div>
 					                      </div>
@@ -106,6 +84,89 @@
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
 					                  </div>
 					                  
+					                  <div class="form-group">
+					                    <label for="cost" class="col-xs-12 col-sm-3 control-label no-padding-right">场地费用</label>
+					                    <div class="col-xs-12 col-sm-3"> 
+					                      <span class="block input-icon input-icon-right">
+						                      <input type="text" name="cost" id="cost" class="width-100" datatype="money" notnull="true" >
+						                      <i class="ace-icon fa fa-leaf"></i> 
+					                      </span>
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"><b>元/小时</b></div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label class="col-sm-3 control-label no-padding-right">适合活动</label>
+					                    <div class="col-md-3">
+					                      <div class="row">
+					                        <div class="col-sm-6">
+					                          <select class="form-control" name="workFor">
+					                            <option value="0">创业</option>
+					                          </select>
+					                        </div>
+					                      </div>
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">场地地址</label>
+					                    <div class="col-xs-12 col-sm-3"> 
+					                      <span class="block input-icon input-icon-right">
+						                      <input type="text" name="adress" id="adress" class="width-100" maxlength="100" >
+						                      <i class="ace-icon fa fa-leaf"></i> 
+					                      </span> 
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label for="traffic" class="col-xs-12 col-sm-3 control-label no-padding-right">交通概况</label>
+					                    <div class="col-xs-12 col-sm-3"> 
+					                      <span class="block input-icon input-icon-right">
+						                      <input type="text" name="traffic" id="traffic" class="width-100" maxlength="100" >
+						                      <i class="ace-icon fa fa-leaf"></i> 
+					                      </span> 
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label for="description" class="col-xs-12 col-sm-3 control-label no-padding-right">场地介绍</label>
+					                    <div class="col-xs-12 col-sm-3"> 
+					                      <span class="block input-icon input-icon-right">
+						                      <textarea rows="4" class="form-control limited" name="description" id="description" maxlength="250"></textarea>
+					                      </span> 
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label for="show_images" class="col-xs-12 col-sm-3 control-label no-padding-right">活动照片</label>
+					                    <input type="hidden" id="show_images" name="show_images" value="">
+					                    <div class="col-xs-12 col-sm-9"> 
+					                      <span class="block input-icon input-icon-right" id="pic_container">
+						                      	<div class="avatar-title clearfix">
+											    	<input type="file" class="btn-orange-s pull-lef"  onclick="Space.controlPicNum(event,this);" onchange="Space.uploadSpacePic(this);" id="cropImg" name="cropImg">
+											    </div>
+					                      </span> 
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="clearfix form-actions">
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-primary" type="button">
+												<i class="ace-icon fa fa-check bigger-110"></i>
+												Submit
+											</button>
+											&nbsp; &nbsp; &nbsp;
+											<button class="btn" type="reset">
+												<i class="ace-icon fa fa-undo bigger-110"></i>
+												Reset
+											</button>
+										</div>
+									   </div>
 					                </div>
 					              </div>
 					            </div>

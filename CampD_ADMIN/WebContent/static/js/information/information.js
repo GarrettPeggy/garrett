@@ -95,6 +95,10 @@ Information.uploadPic = function(currentObject, key){
 	var ext = fakepath.substring(fakepath.lastIndexOf('.')+1);
 	if((Information.imageFormat).indexOf(ext)!=-1){
 		submitForm('addHomePicDialogForm_'+key, BASE_PATH + '/upload/uploadCropImg.do', function(res){
+			
+			// 保证能连续上传同一张图片
+			$(currentObject).val("");
+			
 			if(res && res.tmpPath){
 				$("#prin_url_"+key).val($("#imageHiddenPath_"+key).val());
 				$("#imageHiddenPath_"+key).val(res.tmpPath);

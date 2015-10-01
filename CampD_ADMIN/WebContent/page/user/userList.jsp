@@ -29,7 +29,7 @@
 		<div class="main-content">
 			<div class="main-content-inner">
 				<jsp:include page="/page/common/breadcrumbs.jsp" flush="true">
-					<jsp:param   value='[{"name":"用户管理","href":"${ctx}/user/toList.do"}]'  name="navigationItems" />
+					<jsp:param value='[{"name":"用户管理","href":"${ctx}/user/toList.do"}]' name="navigationItems" />
 				</jsp:include>
 
 				<div class="page-content">

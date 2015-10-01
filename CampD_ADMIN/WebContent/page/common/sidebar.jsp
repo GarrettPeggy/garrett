@@ -39,7 +39,7 @@
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="" name="subMenu120100" id="leftMenu110102">
+				<li class="" name="subMenu110100" id="leftMenu110102">
 					<a href="${ctx}/user/toList.do">
 						<i class="menu-icon fa fa-caret-right"></i>
 						活动列表

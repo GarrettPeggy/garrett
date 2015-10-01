@@ -128,5 +128,20 @@ public class UserController extends BaseController {
         
         return getSearchJSONView(resultMap);
     }
+    
+    /**
+     * 退出登录页面
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/quit.do")
+    public String quit(HttpServletResponse response, HttpServletRequest request){
+        
+        request.getSession().invalidate();
+        
+        return "redirect:/";
+    }
 	
 }

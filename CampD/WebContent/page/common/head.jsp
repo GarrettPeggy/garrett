@@ -12,16 +12,16 @@
              	<img src="${rmtResPath}/static/images/p2.png" width="41" height="41" class="fl left-img"/>
               <div class="fl right-text">要举办的活动</div>
           </li>
-          <li class="line clearfix" onclick="User.toLogin()">
+          <li class="line clearfix" onclick="Header.toLogin()">
              	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
               <div class="fl right-text">登录</div>
           </li>
           <!-- 以下两个通过增加hide样式显示隐藏 -->
-          <li class="line clearfix" onclick="">
+          <li class="line clearfix" onclick="Header.toQuit()">
              	<img src="${rmtResPath}/static/images/p4.png" width="41" height="41" class="fl left-img"/>
               <div class="fl right-text">退出</div>
           </li>
-          <li class="line clearfix" onclick="User.toRegister()">
+          <li class="line clearfix" onclick="Header.toRegister()">
              	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img"/>
               <div class="fl right-text">注册</div>
           </li>
@@ -60,17 +60,5 @@
         </ul>
     </div>
 <!-- end -->
-<script type="text/javascript">
-initHeadIcon=function(){
-	$(".head-left-icon").bind("click",function(){
-		$("#avtivity_nav").removeClass("hide");
-	});
-	$(".head-right-icon").bind("click",function(){
-		$("#activity_person").removeClass("hide");
-	});
-	
-};
-$(function(){
-	initHeadIcon();
-});
-</script>
+
+<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>

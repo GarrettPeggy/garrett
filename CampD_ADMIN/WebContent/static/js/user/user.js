@@ -53,9 +53,7 @@ User.checkLogin = function() {
  */
 User.searchUserList = function(){
 	submitSearch('userListForm', 'load_content', BASE_PATH + '/user/list.do',function() {
-		pageInfo("userListForm",function() {
-			User.searchUserList();
-		});
+		pageInfo("userListForm",User.searchUserList);
 	});
 };
 
