@@ -20,7 +20,7 @@ User.login = function(){
 			window.location.href = BASE_PATH + "/user/toList.do";
 		}, function(data) {
 			systemLoaded();
-			Dialog.alertError(data.returnMsg);
+			Dialog.alertInfo(data.returnMsg);
 		});
 	} else {
 		systemLoaded();
@@ -36,10 +36,10 @@ User.checkLogin = function() {
 	var mdn = $("#mdn").val();
 	
 	if (userName == "" || userName == $("#userName").attr('placeholder')) {
-		Dialog.alertError("用户名不能为空!");
+		Dialog.alertInfo("用户名不能为空!");
 		return false;
 	} else if (mdn == "" || mdn == $("#mdn").attr('placeholder')) {
-		Dialog.alertError("手机号不能为空!");
+		Dialog.alertInfo("手机号不能为空!");
 		return false;
 	} else if(!isPhone(mdn)){
 		Dialog.alertError("手机号格式不正确!");

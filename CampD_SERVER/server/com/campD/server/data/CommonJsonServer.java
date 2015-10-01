@@ -97,17 +97,17 @@ public class CommonJsonServer {
 	public Map findSysConfigs(Map reqMap) {
 		
     	logger.info("reqMap="+reqMap);
-    	String sqlStr = "select id,sys_type,key_val,value_val from sys_config where 1=1 ";
+    	String sqlStr = "select id,sys_type,key_val,value_val from sys_config where 1=1";
     	
     	// 查询的表单参数
     	Object type = reqMap.get("type");
     	Object key = reqMap.get("key");
     	
     	if (null!=type && !"".equals((String) type)) {  
-    		sqlStr += " and type = '" + type + "'";
+    		sqlStr += " and sys_type = '" + type + "'";
         }
     	if (null!=key && !"".equals((String) key)) {  
-    		sqlStr += " and key = '" + key + "'";
+    		sqlStr += " and key_val = '" + key + "'";
         }
 
     	logger.info("sqlStr="+sqlStr);
