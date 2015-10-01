@@ -51,6 +51,18 @@ User.login = function(){
 	}
 	
 };
+/**
+ * 跳转到登录页面
+ */
+User.toLogin=function(){
+	window.location.href = BASE_PATH + "/"+"user/toLogin.do";
+};
+/**
+ * 跳转到注册界面
+ */
+User.toRegister=function(){
+	window.location.href = BASE_PATH + "/"+"user/toRegister.do";
+};
 
 /**
  * 校验登录信息
