@@ -25,6 +25,9 @@ Header.initHeadIcon=function(){
 		$("#avtivity_nav").removeClass("hide");
 	});
 	$(".head-right-icon").bind("click",function(){
+		$("#activity_main").addClass("m-active");
+		$("#activity_header").addClass("m-active");
+		$("#activity_mao").removeClass("hide");
 		$("#activity_person").removeClass("hide");
 	});
 	

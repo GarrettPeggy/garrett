@@ -40,7 +40,7 @@
         <div class="head-content">
         	<img src="${rmtResPath}/static/images/cd_logo.png" width="56" height="20" />
         </div>
-        <div class="head-right-icon" onclick="Activity.person()">
+        <div class="head-right-icon">
         	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17"/>
         </div>
     </div>
