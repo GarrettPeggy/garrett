@@ -73,7 +73,7 @@ public class ApplicationFilter implements Filter {
         //验证session不允许过去，跳到登陆页面
         if (userInfo == null && (excludePathList == null || !excludePathList.contains(requestUrl)) && !requestUrl.endsWith(".jsp")) {
         	logger.info("request userInfo is null");
-        	errorDeal(response, request,SystemConstant.ERROR_CODE_UNLOGIN,"/toLogin.do");
+        	errorDeal(response, request,SystemConstant.ERROR_CODE_UNLOGIN,"/user/toLogin.do");
             return;
         }
         
