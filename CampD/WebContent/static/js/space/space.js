@@ -74,7 +74,7 @@ Space.cancel=function(){
  * 下拉小三角
  */
 Space.setSelect=function(){
-	$(".search-box ul li").each(function(index,item){
+	$(".search-parent-list li").each(function(index,item){
         $(item).bind("click",function(){
         	$(this).parent().parent().find("div.search-detail:eq("+index+")").removeClass("hide");
         	$(this).parent().parent().find("div.search-detail:eq("+index+")").prevAll().addClass("hide");
@@ -92,6 +92,8 @@ Space.setSelect=function(){
 Space.cost=function(costType){
 	//alert(costType);
 	var params={"cost":costType};//costType的值为  0：全部  1：收费   2：免费
+	$(".search-detail").addClass("hide");
+	$("#space_mc").addClass("hide");
 	Space.search(params);
 };
 /**
@@ -99,6 +101,8 @@ Space.cost=function(costType){
  */
 Space.type=function(spaceType){
 	var params={"spaceType":spaceType}; //spaceType的值为  0：全部  1：众创空间  2：咖啡厅  3：公司会议室   4：社区场地   5：商业广场
+	$(".search-detail").addClass("hide");
+	$("#space_mc").addClass("hide");
 	Space.search(params);
 };
 /**
@@ -106,6 +110,8 @@ Space.type=function(spaceType){
  */
 Space.address=function(adress){
 	var params={"adress":adress};
+	$(".search-detail").addClass("hide");
+	$("#space_mc").addClass("hide");
 	Space.search(params);
 };
 /**
@@ -113,6 +119,8 @@ Space.address=function(adress){
  */
 Space.capacity=function(minCapacity,maxCapacity){
 	var params={"minCapacity":minCapacity,"maxCapacity":maxCapacity};
+	$(".search-detail").addClass("hide");
+	$("#space_mc").addClass("hide");
 	Space.search(params);
 };
 
