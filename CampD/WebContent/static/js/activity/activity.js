@@ -181,18 +181,6 @@ Activity.nav=function(){
 };
 
 /**
- * 右边人头图标,用于显示我的中心的
- */
-Activity.person=function(){
-	
-	$("#activity_main").addClass("m-active");
-	$("#activity_header").addClass("m-active");
-	$("#activity_mao").removeClass("hide");
-	$("#activity_person").removeClass("hide");
-	
-};
-
-/**
  * 移除class的m-active样式
  */
 Activity.removeClas=function(id){
