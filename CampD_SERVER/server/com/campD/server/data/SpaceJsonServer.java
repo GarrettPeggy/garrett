@@ -59,52 +59,77 @@ public class SpaceJsonServer {
 	public Map getSpaceInfoList(Map reqMap){
 		logger.info("reqMap="+reqMap);
 		//根据场地名称，场地地地址，使用哪些活动，场地容量，花费等信息查询场地列表信息.
-		String sqlStr = "select t1.id,t1.creator_id,t1.name,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level from spaces t1 where 1=1 ";
+		String sqlStr = " select t1.id,t1.creator_id,t1.name,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level from spaces t1 where 1=1 ";
+		String sqlCount =" select count(1) from spaces t1 where 1=1 ";
 		if(null!=reqMap.get("name") && !"".equals(reqMap.get("name"))){
 			sqlStr+=" and t1.name like '%"+reqMap.get("name")+"%' ";
+			sqlCount+=" and t1.name like '%"+reqMap.get("name")+"%' ";
 		}
 		if(null!=reqMap.get("adress") && !"".equals(reqMap.get("adress"))){
 			sqlStr+=" and t1.adress like '%"+reqMap.get("adress")+"%' ";
+			sqlCount+=" and t1.adress like '%"+reqMap.get("adress")+"%' ";
 		}
 		if(null!=reqMap.get("workFor") && !"".equals(reqMap.get("workFor"))){
 			sqlStr+=" and t1.work_for ="+reqMap.get("workFor")+" ";
+			sqlCount+=" and t1.work_for ="+reqMap.get("workFor")+" ";
 		}
 		if(null!=reqMap.get("cost") && !"".equals(reqMap.get("cost"))){
 			//cost："1"表示免费   "2"表示收费
 			if("1".equals(reqMap.get("cost").toString())){
 				sqlStr+=" and t1.cost is null or t1.cost=0 ";
+				sqlCount+=" and t1.cost is null or t1.cost=0 ";
 			}
 			if("2".equals(reqMap.get("cost").toString())){
 				sqlStr+=" and t1.cost is not null ";
+				sqlCount+=" and t1.cost is not null ";
 			}
 		}
 		
 		if(null!=reqMap.get("spaceType") && !"".equals(reqMap.get("spaceType"))){
 			sqlStr+=" and t1.space_type="+reqMap.get("spaceType");
+			sqlCount+=" and t1.space_type="+reqMap.get("spaceType");
 		}
 		
 		if(null!=reqMap.get("minCapacity") && !"".equals(reqMap.get("minCapacity"))){
 			sqlStr+=" and t1.capacity>="+reqMap.get("minCapacity");
+			sqlCount+=" and t1.capacity>="+reqMap.get("minCapacity");
 		}
 		if(null!=reqMap.get("maxCapacity") && !"".equals(reqMap.get("maxCapacity"))){
 			sqlStr+=" and t1.capacity<"+reqMap.get("maxCapacity");
+			sqlCount+=" and t1.capacity<"+reqMap.get("maxCapacity");
 		}
 		
 		if(null!=reqMap.get("spaceLevel") && !"".equals(reqMap.get("spaceLevel"))){
 			sqlStr+=" and t1.space_level="+reqMap.get("spaceLevel")+" ";
+			sqlCount+=" and t1.space_level="+reqMap.get("spaceLevel")+" ";
 		}
 		
 		//首页查询如果flag=0就是精品场地查询出
 		if(null!=reqMap.get("flag") && 0==Integer.parseInt(reqMap.get("flag").toString())){
-			sqlStr+=" and t1.space_level=1 order by t1.cost asc limit 0,3 ";
+			sqlStr+=" and t1.space_level=1 ";
+			sqlCount+=" and t1.space_level=1 ";
 		}
 		
-		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{});
+		// 获取当前场地总数
+		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		
+		// 查询的分页参数
+    	Map pageInfo = (Map) reqMap.get("pageInfo");
+    	int curPage = (int) pageInfo.get("curPage");
+    	int pageLimit = (int) pageInfo.get("pageLimit");
+    	int startIndex = (curPage-1)*pageLimit;
+    	sqlStr += " limit " + startIndex + "," + pageLimit;
+    	
+    	logger.info("sql日志输出:sqlStr===="+sqlStr);
+    	logger.info("sql日志输出:sqlCount===="+sqlCount);
+		
+		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{});
     	JSONView jsonView = new JSONView();
     	jsonView.setSuccess();
     	jsonView.setReturnMsg("场地查询成功");
         jsonView.addAttribute("resultList", resultList);
+        jsonView.addAttribute("dataCount", dataCount);
+        
         logger.info("场地列表信息查询,\\(^o^)/。。。，resultList="+resultList);
         
         return jsonView;
