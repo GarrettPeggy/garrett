@@ -44,13 +44,13 @@ public class SpaceJsonServer {
 			return jsonView;
         }
         
+        jsonView.setSuccess();
         jsonView.setReturnMsg("场地添加成功");
         jsonView.addAttribute("updateLineCount", updateLineCount);
         logger.info("后台场地发布成功,\\(^o^)/。。。，updateLineCount="+updateLineCount);
         
         return jsonView;
 	}
-	
 	/**
 	 * 查询场地列表信息
 	 * @param reqMap:{name：场地名称，adress：场地地址，workFor：使用哪些活动(是就是范畴id)，capacity：场地容量，cost：花费,:spaceLevel:场地级别,spaceType:场地类型}
@@ -60,75 +60,35 @@ public class SpaceJsonServer {
 		logger.info("reqMap="+reqMap);
 		//根据场地名称，场地地地址，使用哪些活动，场地容量，花费等信息查询场地列表信息.
 		String sqlStr = "select t1.id,t1.creator_id,t1.name,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level from spaces t1 where 1=1 ";
-		
 		if(null!=reqMap.get("name") && !"".equals(reqMap.get("name"))){
 			sqlStr+=" and t1.name like '%"+reqMap.get("name")+"%' ";
 		}
 		if(null!=reqMap.get("adress") && !"".equals(reqMap.get("adress"))){
-			if("全部".equals(reqMap.get("adress").toString())){  // TODO:使用空字符串“”
-				sqlStr+=" order by t1.adress asc ";
-			}else{
-				sqlStr+=" and t1.adress like '%"+reqMap.get("adress")+"%' ";
-			}
+			sqlStr+=" and t1.adress like '%"+reqMap.get("adress")+"%' ";
 		}
-		if(null!=reqMap.get("workFor") && !"".equals(reqMap.get("workFor"))){ // TODO:严格搜索
-			sqlStr+=" and t1.work_for like '%"+reqMap.get("workFor")+"%' ";
-		}
-		if(null!=reqMap.get("capacity") && !"".equals(reqMap.get("capacity"))){ // TODO:删掉
-			sqlStr+=" and t1.capacity like '%"+reqMap.get("capacity")+"%' ";
+		if(null!=reqMap.get("workFor") && !"".equals(reqMap.get("workFor"))){
+			sqlStr+=" and t1.work_for ="+reqMap.get("workFor")+" ";
 		}
 		if(null!=reqMap.get("cost") && !"".equals(reqMap.get("cost"))){
-			//sqlStr+=" and t1.cost like '%"+reqMap.get("cost")+"%' ";
-			if(Integer.parseInt(reqMap.get("cost").toString())==1){ // TODO:条件加括号， 使用"1".equals()
-				sqlStr+=" and t1.cost is null or t1.cost=0 "; 
+			//cost："1"表示免费   "2"表示收费
+			if("1".equals(reqMap.get("cost").toString())){
+				sqlStr+=" and t1.cost is null or t1.cost=0 ";
 			}
-			if(Integer.parseInt(reqMap.get("cost").toString())==2){
+			if("2".equals(reqMap.get("cost").toString())){
 				sqlStr+=" and t1.cost is not null ";
 			}
 		}
 		
 		if(null!=reqMap.get("spaceType") && !"".equals(reqMap.get("spaceType"))){
-			if(Integer.parseInt(reqMap.get("spaceType").toString())==0){
-				sqlStr+=" order by t1.space_type asc ";
-			}
-			if(Integer.parseInt(reqMap.get("spaceType").toString())==1){
-				sqlStr+=" and t1.space_type=0 ";
-			}
-			if(Integer.parseInt(reqMap.get("spaceType").toString())==2){
-				sqlStr+=" and t1.space_type=1 ";
-			}
-			if(Integer.parseInt(reqMap.get("spaceType").toString())==3){
-				sqlStr+=" and t1.space_type=2 ";
-			}
-			if(Integer.parseInt(reqMap.get("spaceType").toString())==4){
-				sqlStr+=" and t1.space_type=3 ";
-			}
-			if(Integer.parseInt(reqMap.get("spaceType").toString())==5){
-				sqlStr+=" and t1.space_type=4 ";
-			}
+			sqlStr+=" and t1.space_type="+reqMap.get("spaceType");
 		}
 		
-		if(null!=reqMap.get("minCapacity") && !"".equals(reqMap.get("minCapacity")) && null!=reqMap.get("maxCapacity") && !"".equals(reqMap.get("maxCapacity"))){
-			if(-1==Integer.parseInt(reqMap.get("minCapacity").toString()) && -1==Integer.parseInt(reqMap.get("maxCapacity").toString())){
-				sqlStr+=" order by t1.capacity asc ";
-			}
-			if(10==Integer.parseInt(reqMap.get("minCapacity").toString()) && 30==Integer.parseInt(reqMap.get("maxCapacity").toString())){
-				sqlStr+=" and t1.capacity>=10 and t1.capacity<30 order by t1.capacity asc ";
-			}
-			if(30==Integer.parseInt(reqMap.get("minCapacity").toString()) && 50==Integer.parseInt(reqMap.get("maxCapacity").toString())){
-				sqlStr+=" and t1.capacity>=30 and t1.capacity<50 order by t1.capacity asc ";
-			}
-			if(50==Integer.parseInt(reqMap.get("minCapacity").toString()) && 70==Integer.parseInt(reqMap.get("maxCapacity").toString())){
-				sqlStr+=" and t1.capacity>=50 and t1.capacity<70 order by t1.capacity asc ";
-			}
-			if(70==Integer.parseInt(reqMap.get("minCapacity").toString()) && 90==Integer.parseInt(reqMap.get("maxCapacity").toString())){
-				sqlStr+=" and t1.capacity>=70 and t1.capacity<90 order by t1.capacity asc ";
-			}
-			if(90==Integer.parseInt(reqMap.get("minCapacity").toString()) && 110==Integer.parseInt(reqMap.get("maxCapacity").toString())){
-				sqlStr+=" and t1.capacity>=90 and t1.capacity<110 order by t1.capacity asc ";
-			}
+		if(null!=reqMap.get("minCapacity") && !"".equals(reqMap.get("minCapacity"))){
+			sqlStr+=" and t1.capacity>="+reqMap.get("minCapacity");
 		}
-		
+		if(null!=reqMap.get("maxCapacity") && !"".equals(reqMap.get("maxCapacity"))){
+			sqlStr+=" and t1.capacity<"+reqMap.get("maxCapacity");
+		}
 		
 		if(null!=reqMap.get("spaceLevel") && !"".equals(reqMap.get("spaceLevel"))){
 			sqlStr+=" and t1.space_level="+reqMap.get("spaceLevel")+" ";
