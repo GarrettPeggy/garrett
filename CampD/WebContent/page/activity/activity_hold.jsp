@@ -22,34 +22,44 @@
 	<!-- end -->
 	<!-- 主体 -->
 	 <div class="main">
-    	<div class="sub-ac-form">
-        	<!-- <a class="line clearfix" href="###"> -->
-        	<div class="line clearfix">
-                <div class="fl">活动类型</div>&nbsp;&nbsp;&nbsp;&nbsp;
-                <select id="actTyle">
-                	<option value="-1">---请选择---</option>
-                	<option value="0">创业</option>
-                	<option value="1">商务</option>
-                	<option value="2">玩乐</option>
-                	<option value="3">交友</option>
-                </select>
-            </div>  
-            <div class="line clearfix">
-            	<div class="fl">活动人数</div>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" id="actPepNum" name="actPepNum" class="text-input-2"/>
-            </div>
-            <div class="line clearfix">
-            	<div class="fl">活动城市</div>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" id="actCity" name="actCity" class="text-input-2"/>
-            </div>
-            <div class="line clearfix-2">
-            	<div class="fl">活动需求</div>&nbsp;&nbsp;&nbsp;&nbsp;
-                <textarea rows="6" class="ac-desc-text-2" id="actDesc"></textarea>
-            </div>
-        </div>
-        <div class="btn-box">
-        	<button class="btn orange-btn">立即提交</button>
-        </div>
+		 <form id="loginForm">
+	    	<div class="sub-ac-form">
+	        	<!-- <a class="line clearfix" href="###"> -->
+	        	<div class="line clearfix">
+	                <div class="fl">活动类型</div>&nbsp;&nbsp;&nbsp;&nbsp;
+	                <select id="categoryId">
+	                	<option value="">---请选择---</option>
+	                	<option value="0">创业</option>
+	                	<option value="1">商务</option>
+	                	<option value="2">玩乐</option>
+	                	<option value="3">交友</option>
+	                </select>
+	            </div>  
+	            <div class="line clearfix">
+	            	<div class="fl">活动人数</div>&nbsp;&nbsp;&nbsp;&nbsp;
+	                <input type="text" id="actNum" name="actNum" class="text-input-2"/>
+	            </div>
+	            <div class="line clearfix">
+	            	<div class="fl">活动城市</div>&nbsp;&nbsp;&nbsp;&nbsp;
+	            	<select id="actCity">
+	            		<option value="">---请选择---</option>
+	                	<option value="北京">北京</option>
+	                	<option value="上海">上海</option>
+	                	<option value="广州">广州</option>
+	                	<option value="深圳">深圳</option>
+	                	<option value="武汉">武汉</option>
+	            	</select>
+	                <!-- <input type="text" id="actCity" name="actCity" class="text-input-2"/> -->
+	            </div>
+	            <div class="line clearfix-2" style="height: 100px;">
+	            	<div class="fl">活动需求</div>&nbsp;&nbsp;&nbsp;&nbsp;
+	                <textarea rows="6" class="ac-desc-text-2" id="requirement" name="requirement"></textarea>
+	            </div>
+	        </div>
+	        <div class="btn-box">
+	        	<button class="btn orange-btn" type="button" onclick="Activity.actSub()">立即提交</button>
+	        </div>
+	    </form>
     </div>
     
     <!-- 蒙层 需要显示时删除hide -->
@@ -60,7 +70,7 @@
     <div class="tc-modal sign-succ-modal hide">
     	<img src="${rmtResPath}/static/images/yes.png" width="49" height="49" class="sure-icon"/>
     	<div class="tc-modal-title">
-        	<img src="${rmtResPath}/static/images/close_icon.png" width="16" height="16"/>
+        	<img src="${rmtResPath}/static/images/close_icon.png" onclick="Activity.close()" width="16" height="16"/>
         </div>
         <div class="tc-modal-content">
         	<div class="modal-line">
