@@ -66,7 +66,7 @@
 					<b class="arrow"></b>
 				</li>
 				<li class="" name="subMenu120100" id="leftMenu120102">
-					<a href="${ctx}/user/toList.do">
+					<a href="${ctx}/space/toList.do">
 						<i class="menu-icon fa fa-caret-right"></i>
 						场地列表
 					</a>

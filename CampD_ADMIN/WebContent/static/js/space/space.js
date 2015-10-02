@@ -5,6 +5,12 @@ var Space = {
 	imageFormat : 'jpg,png,PNG,JPG'
 };
 
+Space.searchSpaceList = function(){
+	submitSearch('spaceListForm', 'load_content', BASE_PATH + '/space/list.do',function() {
+		pageInfo("spaceListForm",User.searchUserList);
+	});
+};
+
 /**
  * 上传场地展示图片
  */
