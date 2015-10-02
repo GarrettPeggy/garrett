@@ -26,7 +26,7 @@ public class SpaceTestService extends AbstractServiceTransactionalTests {
 		Map reqMap = new HashMap();
 		reqMap.put("creatorId", "018ffd2c-adab-4131-8ef6-af00650ccee2");
 		reqMap.put("name", "好山好水情长在");
-		reqMap.put("adress", "上海大世界");
+		reqMap.put("adress", "上海浦东机场");
 		reqMap.put("traggic", "高楼林立，四通八达");
 		reqMap.put("workFor", "聚餐，同学聚会");
 		reqMap.put("capacity", 221);
