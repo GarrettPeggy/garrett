@@ -25,7 +25,7 @@
 		<div class="main-content">
 			<div class="main-content-inner">
 				<jsp:include page="/page/common/breadcrumbs.jsp" flush="true">
-					<jsp:param   value='[{"name":"场地管理","href":"${ctx}/space/toAddSpace.do"}]'  name="navigationItems" />
+					<jsp:param   value='[{"name":"场地管理","href":"${ctx}/space/toAdd.do"}]'  name="navigationItems" />
 				</jsp:include>
 
 				<div class="page-content">

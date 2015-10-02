@@ -59,7 +59,7 @@
 			<b class="arrow"></b>
 			<ul class="submenu">
 				<li class="" name="subMenu120100" id="leftMenu120101">
-					<a href="${ctx}/space/toAddSpace.do">
+					<a href="${ctx}/space/toAdd.do">
 						<i class="menu-icon fa fa-caret-right"></i>
 						发布场地
 					</a>

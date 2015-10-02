@@ -22,6 +22,7 @@ import com.campD.portal.service.SpaceService;
 @Controller
 @RequestMapping("/space")
 public class SpaceController extends BaseController {
+	
 	protected Logger logger = Logger.getLogger(getClass());
 	
 	@Autowired
@@ -34,16 +35,14 @@ public class SpaceController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("rawtypes")
 	@RequestMapping("/add.do")
     @ResponseBody
 	public JSONView add(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		
 		Map<?, ?> resultMap = spaceService.add(map);
 		 
-		return getSearchJSONView(resultMap);
+		return getOperateJSONView(resultMap);
 	}
 	
 	/**
@@ -53,16 +52,13 @@ public class SpaceController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("rawtypes")
 	@RequestMapping("/getSpaceInfoList.do")
 	public String getSpaceInfoList(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
 		
 		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map);
-		
 		JSONView jsonview=getSearchJSONView(resultMap);
-		
 		request.setAttribute("jsonview", jsonview);
 		 
 		return "space/space_index";
@@ -75,13 +71,11 @@ public class SpaceController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("rawtypes")
 	@RequestMapping("/getSpaceListByParam.do")
 	@ResponseBody
 	public JSONView getSpaceListByParam(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		
 		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map);
 		
 		return getSearchJSONView(resultMap);
@@ -94,16 +88,13 @@ public class SpaceController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("rawtypes")
 	@RequestMapping("/getSpaceListByLevel.do")
 	public String getSpaceListByLevel(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
 		
 		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map);
-		
 		JSONView jsonview=getSearchJSONView(resultMap);
-		
 		request.setAttribute("jsonview", jsonview);;
 		
 		return "space/heigh_level";
@@ -116,16 +107,13 @@ public class SpaceController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("rawtypes")
 	@RequestMapping("/getSpaceInfoById.do")
 	public String getSpaceInfoById(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
 		
 		Map<?, ?> resultMap = spaceService.getSpaceInfoById(map);
-		
 		JSONView jsonview=getSearchJSONView(resultMap);
-		
 		request.setAttribute("jsonview", jsonview);
 		 
 		return "space/space_detail";
