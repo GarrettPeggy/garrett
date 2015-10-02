@@ -18,7 +18,6 @@ $(function(){
  * 场地初始化
  */
 Space.init=function(){
-	Space.list();
 	Space.setSelect();
 };
 
@@ -26,7 +25,12 @@ Space.init=function(){
  * 首页加载的精品场地
  */
 Space.list=function(){
-	var params={"flag":0};
+	var params={
+		"spaceLevel":1,
+	    "curPage":1,
+	    "pageLimit":3,
+	    "isUserAuth":false
+	};
 	ajaxSearch(BASE_PATH + "/space/getSpaceListByParam.do",params,function(json){
 		systemLoaded();
 		//数据查询成功
@@ -53,7 +57,7 @@ Space.list=function(){
  * 首页点击更多的精品场地
  */
 Space.hightLevel=function(spaceLevel){
-	window.location.href = BASE_PATH + "/" +"space/getSpaceListByLevel.do?spaceLevel="+spaceLevel+"";
+	window.location.href = BASE_PATH + "/" +"space/getSpaceListByLevel.do?spaceLevel="+spaceLevel+"&curPage=1&pageLimit=3&isUserAuth=false";
 };
 
 /**
@@ -80,76 +84,124 @@ Space.setSelect=function(){
         	$(this).parent().parent().find("div.search-detail:eq("+index+")").prevAll().addClass("hide");
         	$(this).parent().parent().find("div.search-detail:eq("+index+")").nextAll().addClass("hide");
         	$("#space_mc").removeClass("hide");
-        	$(this).addClass("active");
-        	$(this).prevAll().removeClass("active");
-        	$(this).nextAll().removeClass("active");
         });
 	});
 };
+
 /**
  * 场地费用
  */
-Space.cost=function(costType){
-	//alert(costType);
-	var params={"cost":costType};//costType的值为  0：全部  1：收费   2：免费
-	$(".search-detail").addClass("hide");
-	$("#space_mc").addClass("hide");
-	Space.search(params);
+Space.cost=function(costType, curObj){
+	
+	$('#curPage').val(1);
+	$('#cost').val(costType);//costType的值为  0：全部  1：收费   2：免费
+	
+	$(curObj).addClass("active");
+	$(curObj).prevAll().removeClass("active");
+	$(curObj).nextAll().removeClass("active");
+	
+	$("#space_highlevel").empty();
+	Space.search();
 };
 /**
  * 类型
  */
-Space.type=function(spaceType){
-	var params={"spaceType":spaceType}; //spaceType的值为  0：全部  1：众创空间  2：咖啡厅  3：公司会议室   4：社区场地   5：商业广场
-	$(".search-detail").addClass("hide");
-	$("#space_mc").addClass("hide");
-	Space.search(params);
+Space.type=function(spaceType, curObj){
+	
+	$('#curPage').val(1);
+	$('#spaceType').val(spaceType);//spaceType的值为  0：全部  1：众创空间  2：咖啡厅  3：公司会议室   4：社区场地   5：商业广场
+	
+	$(curObj).addClass("active");
+	$(curObj).prevAll().removeClass("active");
+	$(curObj).nextAll().removeClass("active");
+	
+	$("#space_highlevel").empty();
+	Space.search();
 };
 /**
  * 地址
  */
-Space.address=function(adress){
-	var params={"adress":adress};
-	$(".search-detail").addClass("hide");
-	$("#space_mc").addClass("hide");
-	Space.search(params);
+Space.address=function(adress, curObj){
+	
+	$('#curPage').val(1);
+	$('#adress').val(adress);
+	
+	$(curObj).addClass("active");
+	$(curObj).prevAll().removeClass("active");
+	$(curObj).nextAll().removeClass("active");
+	
+	$("#space_highlevel").empty();
+	Space.search();
 };
 /**
  * 场地容量
  */
-Space.capacity=function(minCapacity,maxCapacity){
-	var params={"minCapacity":minCapacity,"maxCapacity":maxCapacity};
-	$(".search-detail").addClass("hide");
-	$("#space_mc").addClass("hide");
-	Space.search(params);
+Space.capacity=function(minCapacity,maxCapacity, curObj){
+	
+	$('#curPage').val(1);
+	$('#minCapacity').val(minCapacity);
+	$('#maxCapacity').val(maxCapacity);
+	
+	$(curObj).addClass("active");
+	$(curObj).prevAll().removeClass("active");
+	$(curObj).nextAll().removeClass("active");
+	
+	$("#space_highlevel").empty();
+	Space.search();
 };
 
-Space.search=function(params){
+Space.search=function(){
+	
+	var params = {
+	    "curPage":$("#curPage").val(),
+	    "pageLimit":$("#pageLimit").val(),
+	    'isUserAuth':false,
+		'cost':$('#cost').val(),
+		'spaceType':$('#spaceType').val(),
+		'adress':$('#adress').val(),
+		'minCapacity':$('#minCapacity').val(),
+		'maxCapacity':$('#maxCapacity').val(),
+		'spaceLevel':$('#spaceLevel').length==0?'':$('#spaceLevel').val()
+	};
+	
+	$(".search-detail").addClass("hide");
+	$("#space_mc").addClass("hide");
+	
 	ajaxSearch(BASE_PATH + "/space/getSpaceListByParam.do",params,function(json){
-		$("#space_main").hide();
-		$("#space_main_ajax").removeClass("hide");
 		var resultList=json.resultList;
-		if(0==resultList.length){
-			$("#space_no").removeClass("hide");
-			$("#space_yes").hide();
-		}else{
-			$("#space_no").addClass("hide");
-			$("#space_yes").show();
-			$("#space_yes ul li").remove();
-			for(var i=0;i<resultList.length;i++){
-				$("#space_cost_ul").append("<li class='clearfix'><div class='data-li-left'><img src='"+REMOTE_RES_PATH+"/static/images/ground_ex.png' width='91' height='63'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+Space.spaceType[resultList[i].space_type]+"</div><div class='dlr-address'>"+resultList[i].adress+"</div><div class='dlr-cost clearfix'><div class='fl'>费用：<span class='co'>"+resultList[i].cost+"元/小时</span></div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></li>");
-			}
+		for(var i=0;i<resultList.length;i++){
+			$("#space_highlevel").append("<li class='clearfix'><div class='data-li-left'><img src='"+REMOTE_RES_PATH+"/static/images/ground_ex.png' width='91' height='63'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+Space.spaceType[resultList[i].space_type]+"</div><div class='dlr-address'>"+resultList[i].adress+"</div><div class='dlr-cost clearfix'><div class='fl'>费用：<span class='co'>"+resultList[i].cost+"元/小时</span></div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></li>");
+		};
+		
+		var $loadMore_li = $("#loadMore_li");
+		var pageSize = $("#pageSize").val();
+		var curPage = $("#curPage").val();
+		if(curPage<pageSize){
+			$("#space_highlevel").parent().append($loadMore_li);
+		} else{
+			$("#loadMore_li").remove();
 		}
 	}, function(data) {
 		systemLoaded();
 		alert(data.returnMsg);
 	});
 };
+/**
+ * 加载更多按钮
+ */
+Space.loadMore=function(){
+	
+	var curPage = 1 + parseInt($("#curPage").val());
+	$("#curPage").val(curPage);//更新当前页面
+	
+	Space.search();
+	
+};
 
 /**
  * 跳转到场地首页
  */
 Space.classify=function(){
-	window.location.href = BASE_PATH + "/" +"space/getSpaceInfoList.do";
+	window.location.href = BASE_PATH + "/" +"space/getSpaceInfoList.do?curPage=1&pageLimit=3&isUserAuth=false";
 };
 

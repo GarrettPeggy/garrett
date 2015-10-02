@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.common.JSONView;
+import com.campD.portal.common.PageInfo;
 import com.campD.portal.model.UserInfo;
 import com.campD.portal.service.ActivityService;
 
@@ -166,7 +167,9 @@ public class ActivityController extends BaseController {
 	public JSONView getActivityList(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		Map<?, ?> resultMap = activityService.getActivityList(map);
+		PageInfo pageInfo = getPageInfo(request);
+		
+		Map<?, ?> resultMap = activityService.getActivityList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		 
 		return getOperateJSONView(resultMap);
 	}
@@ -182,7 +185,8 @@ public class ActivityController extends BaseController {
 	public String getActivityListClassify(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		Map<?, ?> resultMap = activityService.getActivityList(map);
+		PageInfo pageInfo = getPageInfo(request);
+		Map<?, ?> resultMap = activityService.getActivityList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		JSONView jsonview=getSearchJSONView(resultMap);
 		request.setAttribute("jsonview", jsonview);
 		 
@@ -198,10 +202,10 @@ public class ActivityController extends BaseController {
 	 */
 	@RequestMapping("/getActivityListByParam.do")
 	public String getActivityListByParam(HttpServletResponse response, HttpServletRequest request) throws Exception {
-		
+		bindParamToAttrbute(request);
 		Map<String, Object> map = bindParamToMap(request);
-		
-		Map<?, ?> resultMap = activityService.getActivityList(map);
+		PageInfo pageInfo = getPageInfo(request);
+		Map<?, ?> resultMap = activityService.getActivityList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		JSONView jsonview=getSearchJSONView(resultMap);
 		
 		request.setAttribute("categoryId", map.get("categoryId"));//活动范畴放到页面上
@@ -222,12 +226,13 @@ public class ActivityController extends BaseController {
 	 */
 	@RequestMapping("/getActivityListByUserId.do")
 	public String getActivityListByUserId(HttpServletResponse response, HttpServletRequest request) throws Exception {
-		
+		bindParamToAttrbute(request);
 		UserInfo userInfo= getUserInfo();
 		
 		Map<String, Object> map = bindParamToMap(request);
 		map.put("creatorId", userInfo.getId());
-		Map<?, ?> resultMap = activityService.getActivityList(map);
+		PageInfo pageInfo = getPageInfo(request);
+		Map<?, ?> resultMap = activityService.getActivityList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		JSONView jsonview=getSearchJSONView(resultMap);
 		request.setAttribute("jsonview", jsonview);
 		return "activity/sponsored";
@@ -291,12 +296,34 @@ public class ActivityController extends BaseController {
 
 		Map<String, Object> map = bindParamToMap(request);
 		map.put("userId", userInfo.getId());
-		Map<?, ?> resultMap = activityService.getMyTakeAnActive(map);
+		PageInfo pageInfo = getPageInfo(request);
+		Map<?, ?> resultMap = activityService.getMyTakeAnActive(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		JSONView jsonview = getSearchJSONView(resultMap);
 		
 		request.setAttribute("jsonview", jsonview);
 		
 		return "activity/sign_up";
+	}
+	
+	/**
+	 * 查询我的报名活动   跳转到已报名的活动界面
+	 * @param response
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/getMyTakeAnActiveAjax.do")
+	@ResponseBody
+	public JSONView getMyTakeAnActiveAjax(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		
+		UserInfo userInfo = getUserInfo();
+
+		Map<String, Object> map = bindParamToMap(request);
+		map.put("userId", userInfo.getId());
+		PageInfo pageInfo = getPageInfo(request);
+		Map<?, ?> resultMap = activityService.getMyTakeAnActive(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
+		
+		return getSearchJSONView(resultMap);
 	}
 	
 }

@@ -2,28 +2,30 @@
  * 活动js
  */
 
-var Activity={};
+var Activity={
+	catagory:{
+		'0':'创业',
+		'1':'商务',
+		"2":'玩乐',
+		'3':'交友'
+	}
+};
 
 /**
  * 活动加载 
  */
-$(function(){
-	Activity.init();
-});
-
-/**
- * 初始化列表
- */
-Activity.init=function(){
-	Activity.list();
-};
 
 /**
  * 首页加载的热门活动
  */
 Activity.list=function(){
 	
-	var params={"flag":0};
+	var params={
+		"actType":1,
+	    "curPage":1,
+	    "pageLimit":3,
+	    "isUserAuth":false
+    };
 	
 	ajaxSearch(BASE_PATH + "/activity/getActivityList.do",params,function(json){
 		systemLoaded();
@@ -52,7 +54,7 @@ Activity.list=function(){
  * 活动分类页面
  */
 Activity.classify=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do?curPage=1&pageLimit=3&isUserAuth=false";
 };
 
 /**
@@ -85,7 +87,7 @@ Activity.desc=function(){
  * 各种活动再分类显示
  */
 Activity.category=function(categoryValue){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?categoryId="+categoryValue+"";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?categoryId="+categoryValue+"&curPage=1&pageLimit=3&isUserAuth=false";
 };
 
 /**
@@ -93,16 +95,72 @@ Activity.category=function(categoryValue){
  */
 
 Activity.populer=function(actType){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?actType="+actType+"";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?actType="+actType+"&curPage=1&pageLimit=3&isUserAuth=false";
 };
 
+/**
+ * 热门活动加载更多
+ */
+Activity.loadMore=function(){
+	var curPage = 1 + parseInt($("#curPage").val());
+	$("#curPage").val(curPage);//更新当前页面
+	Activity.search("/activity/getActivityList.do",false);
+};
+/**
+ * 我的报名活动
+ */
+Activity.loadMyActivityMore=function(){
+	var curPage = 1 + parseInt($("#curPage").val());
+	$("#curPage").val(curPage);//更新当前页面
+	Activity.search("/activity/getMyTakeAnActiveAjax.do",true);
+};
 
+//
+
+/**
+ * 活动搜索
+ */
+Activity.search=function(url,isUserAuth){
+	var params = {
+	    "curPage":$("#curPage").val(),
+	    "pageLimit":$("#pageLimit").val(),
+	    'isUserAuth':isUserAuth,
+		'actType':$("#actType").length==0 ? '' : $("#actType").val(),
+		'categoryId':$("#categoryId").length==0 ? '' : $("#categoryId").val(),
+		'creatorId':$("#creatorId").length==0 ? '' : $("#creatorId").val(),
+		'userId':$("#userId").length==0 ? '' : $("#userId").val()
+	};
+
+	ajaxSearch(BASE_PATH + url,params,function(json){
+		var activityList=json.activityList;
+		for(var i=0;i<activityList.length;i++){
+			if($("#isSponsored").length > 0){//判断是不是要举办的活动界面  $("#isSponsored").length==0代表是要举办的活动
+				$("#activity_popu").append('<li class="clearfix"> <div class="data-li-left"> <a href="'+BASE_PATH+'/activity/getActivityById.do?id=${activity.id }"> <img src="'+REMOTE_RES_PATH+'/static/images/list_show.png" width="91" height="91"/> </a> </div> <div class="data-li-right"> <div class="dlr-title retina-1px-border-bottom"> <span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span> <span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span> <span class="dlrt3">'+activityList[i].act_city+'</span> </div> <div class="dlr-detail color94 fontSize14"> ' + activityList[i].requirement + '</div></div></li>');
+			}else{
+				$("#activity_popu").append("<li class='pd5'><img src='"+REMOTE_RES_PATH+"/static/images/example_img_big.png' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'><a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'>"+activityList[i].requirement+"</a></div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+activityList[i].begintime+"</span>--<span>"+activityList[i].endtime+"</span></div></li>");
+			}
+			
+		};
+		
+		var $loadMore_li = $("#activity_more");
+		var pageSize = $("#pageSize").val();
+		var curPage = $("#curPage").val();
+		if(curPage<pageSize){
+			$("#activity_popu").parent().append($loadMore_li);
+		} else{
+			$("#activity_more").remove();
+		}
+	}, function(data) {
+		systemLoaded();
+		alert(data.returnMsg);
+	});
+};
 /**
  * 已报名的活动 在用户活动表中就应该查询得到  就是查询我的报名活动
  */
 
 Activity.signUp=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getMyTakeAnActive.do";
+	window.location.href = BASE_PATH + "/" +"activity/getMyTakeAnActive.do?&curPage=1&pageLimit=3&isUserAuth=true";
 };
 
 /**
@@ -110,7 +168,7 @@ Activity.signUp=function(){
  */
 
 Activity.sponsored=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByUserId.do";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByUserId.do?&curPage=1&pageLimit=3&isUserAuth=true";
 };
 
 /**
@@ -212,7 +270,7 @@ Activity.sign=function(){
 //			$("#signUp_mc").removeClass("hide");
 //			$("#signUp_modal").removeClass("hide");
 //		}else{
-//			window.location.href = BASE_PATH + "/" + "user/toLogin";
+//			window.location.href = BASE_PATH + "/" + "user/toLogin.do";
 //		}
 		$("#signUp_mc").removeClass("hide");
 		$("#signUp_modal").removeClass("hide");

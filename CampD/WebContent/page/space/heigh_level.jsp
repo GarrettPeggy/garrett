@@ -17,6 +17,10 @@
     </div>
     
     <div class="main mat7" id="space_main">
+    	<input type="hidden" id="pageSize" name="pageSize" value="${pageInfo.pageSize }"/>
+    	<input type="hidden" id="curPage" name="curPage" value="${pageInfo.curPage }"/>
+    	<input type="hidden" id="pageLimit" name="pageLimit" value="${pageInfo.pageLimit }"/>
+    	<input type="hidden" id="spaceLevel" name="spaceLevel" value="${spaceLevel}"/>
     	<c:choose>
     		<c:when test="${empty jsonview.resultList }">
     			<!-- 当没有场地时 -->
@@ -29,7 +33,7 @@
     		<c:otherwise>
     			<!-- 当有场地时 -->
     			<div class="ul-box">
-		        	<ul class="data-list ground-list">
+		        	<ul class="data-list ground-list" id="space_highlevel">
 		        		<c:forEach items="${jsonview.resultList }" var="space">
 		        			<li class="clearfix">
 			                	<div class="data-li-left">
@@ -56,6 +60,11 @@
 			                </li>
 		        		</c:forEach>
 		        	</ul>
+		        	<c:if test="${pageInfo.pageSize > pageInfo.curPage }">
+	        			<div id="loadMore_li">
+	        				<button id="loadMore" name="loadMore" onclick="Space.loadMore()">加载更多</button>
+	        			<div>
+	        		</c:if>
         		</div>
     		</c:otherwise>
     	</c:choose>

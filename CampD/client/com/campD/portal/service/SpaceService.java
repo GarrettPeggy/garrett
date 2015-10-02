@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.campD.portal.common.PageInfo;
 import com.campD.portal.service.common.JsonClientService;
 import com.campD.portal.util.SystemMessage;
 /**
@@ -20,8 +21,8 @@ public class SpaceService extends JsonClientService {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map getSpaceInfoList(Map reqMap){
-		return postForObject(SystemMessage.getString("spaceJsonServer") + "/getSpaceInfoList", reqMap, Map.class, false);
+	public Map getSpaceInfoList(Map reqMap,PageInfo pageInfo,boolean isUserAuth){
+		return postForMap(SystemMessage.getString("spaceJsonServer") + "/getSpaceInfoList", reqMap,pageInfo, null, isUserAuth);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

@@ -104,12 +104,6 @@ public class SpaceJsonServer {
 			sqlCount+=" and t1.space_level="+reqMap.get("spaceLevel")+" ";
 		}
 		
-		//首页查询如果flag=0就是精品场地查询出
-		if(null!=reqMap.get("flag") && 0==Integer.parseInt(reqMap.get("flag").toString())){
-			sqlStr+=" and t1.space_level=1 ";
-			sqlCount+=" and t1.space_level=1 ";
-		}
-		
 		// 获取当前场地总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		

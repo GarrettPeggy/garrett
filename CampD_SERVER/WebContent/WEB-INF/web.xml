@@ -37,7 +37,7 @@
 	<filter-class>com.campD.server.filter.ApplicationFilter</filter-class>
 	<init-param>
           <param-name>auth_exclude_url</param-name>
-          <param-value>/user/register,/user/getByMdn,/role/getAllRoles,/activity/getActivityList,/activity/getActivityById,/activity/takeAnActive,/activity/getActivityListByParam,/activity/getActivityListClassify,/space/getSpaceInfoList,/space/getSpaceInfoById,/space/getSpaceListByParam,/space/getSpaceListByLevel</param-value>
+          <param-value>/user/register,/user/getByMdn,/role/getAllRoles,/activity/getActivityList,/activity/getActivityById,/activity/getActivityListByParam,/activity/getActivityListClassify,/space/getSpaceInfoList,/space/getSpaceInfoById,/space/getSpaceListByParam,/space/getSpaceListByLevel</param-value>
       </init-param>
   </filter>
   <filter-mapping>

@@ -33,45 +33,45 @@
             <!-- 费用搜索下拉内容 -->
             <div class="search-detail hide">
                 <ul class="clearfix">
-                    <li class="active" onclick="Space.cost(0)">全部</li>
-                    <li onclick="Space.cost(1)">免费</li>
-                    <li onclick="Space.cost(2)">收费</li>
+                    <li class="active" onclick="Space.cost('',this)">全部</li>
+                    <li onclick="Space.cost('1',this)">免费</li>
+                    <li onclick="Space.cost('2',this)">收费</li>
                 </ul>
             </div>
             <!-- end -->
             <!-- 类型搜索下拉内容 -->
             <div class="search-detail hide">
                 <ul class="clearfix">
-                    <li class="active" onclick="Space.type(0)">全部</li>
-                    <li onclick="Space.type(1)">众创空间</li>
-                    <li onclick="Space.type(2)">咖啡厅</li>
-                    <li onclick="Space.type(3)">公司会议室</li>
-                    <li onclick="Space.type(4)">社区场地</li>
-                    <li onclick="Space.type(5)">商业广场</li>
+                    <li class="active" onclick="Space.type('',this)">全部</li>
+                    <li onclick="Space.type(1,this)">众创空间</li>
+                    <li onclick="Space.type(2,this)">咖啡厅</li>
+                    <li onclick="Space.type(3,this)">公司会议室</li>
+                    <li onclick="Space.type(4,this)">社区场地</li>
+                    <li onclick="Space.type(5,this)">商业广场</li>
                 </ul>
             </div>
             <!-- end -->
             <!-- 区域搜索下拉内容 -->
             <div class="search-detail hide">
                 <ul class="clearfix">
-                    <li class="active" onclick="Space.address('全部')">全部</li>
-                    <li onclick="Space.address('浦东')">浦东</li>
-                    <li onclick="Space.address('黄埔')">黄浦</li>
-                    <li onclick="Space.address('普陀')">普陀</li>
-                    <li onclick="Space.address('静安')">静安</li>
-                    <li onclick="Space.address('闵行')">闵行</li>
+                    <li class="active" onclick="Space.address('',this)">全部</li>
+                    <li onclick="Space.address('浦东',this)">浦东</li>
+                    <li onclick="Space.address('黄埔',this)">黄浦</li>
+                    <li onclick="Space.address('普陀',this)">普陀</li>
+                    <li onclick="Space.address('静安',this)">静安</li>
+                    <li onclick="Space.address('闵行',this)">闵行</li>
                 </ul>
             </div>
             <!-- end -->
             <!-- 区域搜索下拉内容 -->
             <div class="search-detail hide">
                 <ul class="clearfix">
-                    <li class="active" onclick="Space.capacity(-1,-1)">全部</li>
-                    <li onclick="Space.capacity(10,30)">10-30人</li>
-                    <li onclick="Space.capacity(30,50)">30-50人</li>
-                    <li onclick="Space.capacity(50,70)">50-70人</li>
-                    <li onclick="Space.capacity(70,90)">70-90人</li>
-                    <li onclick="Space.capacity(90,110)">90-110人</li>
+                    <li class="active" onclick="Space.capacity('','',this)">全部</li>
+                    <li onclick="Space.capacity(10,30,this)">10-30人</li>
+                    <li onclick="Space.capacity(30,50,this)">30-50人</li>
+                    <li onclick="Space.capacity(50,70,this)">50-70人</li>
+                    <li onclick="Space.capacity(70,90,this)">70-90人</li>
+                    <li onclick="Space.capacity(90,110,this)">90-110人</li>
                 </ul>
             </div>
             <!-- end -->
@@ -83,6 +83,14 @@
     <!-- end -->
     <!-- end -->
     <div class="main mat7" id="space_main">
+    	<input type="hidden" id="pageSize" name="pageSize" value="${pageInfo.pageSize }"/>
+    	<input type="hidden" id="curPage" name="curPage" value="${pageInfo.curPage }"/>
+    	<input type="hidden" id="pageLimit" name="pageLimit" value="${pageInfo.pageLimit }"/>
+    	<input type="hidden" id="cost" name="cost" value=""/>
+    	<input type="hidden" id="spaceType" name="spaceType" value=""/>
+    	<input type="hidden" id="adress" name="adress" value=""/>
+    	<input type="hidden" id="minCapacity" name="minCapacity" value=""/>
+    	<input type="hidden" id="maxCapacity" name="maxCapacity" value=""/>
     	<c:choose>
     		<c:when test="${empty jsonview.resultList }">
     			<!-- 当没有场地时 -->
@@ -95,7 +103,7 @@
     		<c:otherwise>
     			<!-- 当有场地时 -->
     			<div class="ul-box">
-		        	<ul class="data-list ground-list">
+		        	<ul class="data-list ground-list" id="space_highlevel">
 		        		<c:forEach items="${jsonview.resultList }" var="space">
 		        			<li class="clearfix">
 			                	<div class="data-li-left">
@@ -122,6 +130,11 @@
 			                </li>
 		        		</c:forEach>
 		        	</ul>
+		        	<c:if test="${pageInfo.pageSize > pageInfo.curPage }">
+	        			<div id="loadMore_li">
+	        				<button id="loadMore" name="loadMore" onclick="Space.loadMore()">加载更多</button>
+	        			</div>
+	        		</c:if>
         		</div>
     		</c:otherwise>
     	</c:choose>

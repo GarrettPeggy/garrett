@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.common.JSONView;
+import com.campD.portal.common.PageInfo;
 import com.campD.portal.service.SpaceService;
 
 /**
@@ -56,8 +57,8 @@ public class SpaceController extends BaseController {
 	public String getSpaceInfoList(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		
-		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map);
+		PageInfo pageInfo = getPageInfo(request);
+		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		JSONView jsonview=getSearchJSONView(resultMap);
 		request.setAttribute("jsonview", jsonview);
 		 
@@ -76,7 +77,8 @@ public class SpaceController extends BaseController {
 	public JSONView getSpaceListByParam(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map);
+		PageInfo pageInfo=getPageInfo(request);
+		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		
 		return getSearchJSONView(resultMap);
 	}
@@ -91,9 +93,14 @@ public class SpaceController extends BaseController {
 	@RequestMapping("/getSpaceListByLevel.do")
 	public String getSpaceListByLevel(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
+		bindParamToAttrbute(request);
+		
 		Map<String, Object> map = bindParamToMap(request);
 		
-		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map);
+		PageInfo pageInfo=getPageInfo(request);
+		
+		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
+		
 		JSONView jsonview=getSearchJSONView(resultMap);
 		request.setAttribute("jsonview", jsonview);;
 		

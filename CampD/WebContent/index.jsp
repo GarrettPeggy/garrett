@@ -61,3 +61,10 @@
     
 </body>
 </html>
+
+<script type="text/javascript">
+$(function(){
+	Activity.list();
+	Space.list();
+});
+</script>

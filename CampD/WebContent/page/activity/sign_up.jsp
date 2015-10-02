@@ -22,6 +22,10 @@
 	
 	<!-- 主体 -->
     <div class="main">
+    	<input type="hidden" id="pageSize" name="pageSize" value="${pageInfo.pageSize }"/>
+    	<input type="hidden" id="curPage" name="curPage" value="${pageInfo.curPage }"/>
+    	<input type="hidden" id="pageLimit" name="pageLimit" value="${pageInfo.pageLimit }"/>
+    	<input type="hidden" id="userId" name="userId" value="${USER_INFO.id }"/>
     	<c:choose>
     		<c:when test="${empty jsonview.activityList}">
     			<div class="textCenter mat15">
@@ -34,7 +38,7 @@
         		</div>
     		</c:when>
     		<c:otherwise>
-    			<div class="ul-box">
+    			<div class="ul-box" id="activity_popu">
 		        	<ul class="data-list">
 		        		<c:forEach items="${jsonview.activityList }" var="activity">
 			            	<li class="pd5">
@@ -51,6 +55,11 @@
 			                </li>
 		                </c:forEach>
 		            </ul>
+		            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
+		            	<div id="activity_more">
+		            		<button id="activityLoadMore" name="activityLoadMore" onclick="Activity.loadMyActivityMore()">加载更多</button> 
+		            	</div>
+		            </c:if>
         		</div>
     		</c:otherwise>
     	</c:choose>

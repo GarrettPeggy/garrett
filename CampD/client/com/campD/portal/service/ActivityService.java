@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.campD.portal.common.PageInfo;
 import com.campD.portal.service.common.JsonClientService;
 import com.campD.portal.util.SystemMessage;
 /**
@@ -31,18 +32,8 @@ public class ActivityService extends JsonClientService {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map getActivityList(Map reqMap){
-		return postForObject(SystemMessage.getString("activityJsonServer") + "/getActivityList", reqMap, Map.class, false);
-	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map getActivityListClassify(Map reqMap){
-		return postForObject(SystemMessage.getString("activityJsonServer") + "/getActivityListClassify", reqMap, Map.class, false);
-	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map getActivityListByCategoryId(Map reqMap){
-		return postForObject(SystemMessage.getString("activityJsonServer") + "/getActivityListByParam", reqMap, Map.class, false);
+	public Map getActivityList(Map reqMap,PageInfo pageInfo,boolean isUserAuth){
+		return postForMap(SystemMessage.getString("activityJsonServer") + "/getActivityList", reqMap, pageInfo, null, isUserAuth);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -52,12 +43,12 @@ public class ActivityService extends JsonClientService {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map takeAnActive(Map reqMap){
-		return postForObject(SystemMessage.getString("activityJsonServer") + "/takeAnActive", reqMap,Map.class, false);
+		return postForObject(SystemMessage.getString("activityJsonServer") + "/takeAnActive", reqMap,Map.class, true);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map getMyTakeAnActive(Map reqMap){
-		return postForMap(SystemMessage.getString("activityJsonServer") + "/getMyTakeAnActive", reqMap);
+	public Map getMyTakeAnActive(Map reqMap,PageInfo pageInfo,boolean isUserAuth){
+		return postForMap(SystemMessage.getString("activityJsonServer") + "/getMyTakeAnActive", reqMap, pageInfo, null, isUserAuth);
 	}
 	
 	

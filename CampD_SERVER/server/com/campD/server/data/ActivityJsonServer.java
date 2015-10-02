@@ -116,33 +116,49 @@ public class ActivityJsonServer {
 		//System.out.println("reqMap.get(\"categoryId\")===================="+reqMap.get("categoryId"));
 		logger.info("reqMap="+reqMap);
 		String sqlStr = " select id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 ";
+		String sqlCount =" select count(1) from activity where 1=1 ";
 		if(null!=reqMap.get("categoryId") && !"".equals(reqMap.get("categoryId"))){
 			sqlStr+=" and category_id ="+reqMap.get("categoryId")+"";
+			sqlCount+=" and category_id ="+reqMap.get("categoryId")+"";
 		}
 		if(null!=reqMap.get("createTime") && !"".equals(reqMap.get("createTime"))){
 			sqlStr+=" and create_time like '%"+reqMap.get("createTime")+"%' ";
+			sqlCount+=" and create_time like '%"+reqMap.get("createTime")+"%' ";
 		}
 		if(null!=reqMap.get("status") && !"".equals(reqMap.get("status"))){
 			sqlStr+=" and status ="+reqMap.get("status")+" ";
+			sqlCount+=" and status ="+reqMap.get("status")+" ";
 		}
 		if(null!=reqMap.get("creatorId") && !"".equals(reqMap.get("creatorId"))){
 			sqlStr+=" and creator_id ='"+reqMap.get("creatorId")+"' ";
+			sqlCount+=" and creator_id ='"+reqMap.get("creatorId")+"' ";
 		}
 		
 		if(null!=reqMap.get("actType") && !"".equals(reqMap.get("actType"))){
 			sqlStr+=" and act_type ="+reqMap.get("actType")+" order by begin_time desc ";
+			sqlCount+=" and act_type ="+reqMap.get("actType")+" order by begin_time desc ";
 		}
 		
-		//查询热门活动  0代表首页的热门活动  1代表首页点击更多的热门活动
-		if(null!=reqMap.get("flag") && 0==Integer.parseInt(reqMap.get("flag").toString())){
-			//直接拼接热门活动
-			sqlStr+=" and act_type = 1 order by begin_time desc limit 0,3 ";
-		}
+		// 获取当前活动总数
+		int dataCount = jdbcTemplate.queryForInt(sqlCount);
+		
+		// 查询的分页参数
+    	Map pageInfo = (Map) reqMap.get("pageInfo");
+    	int curPage = (int) pageInfo.get("curPage");
+    	int pageLimit = (int) pageInfo.get("pageLimit");
+    	int startIndex = (curPage-1)*pageLimit;
+    	sqlStr += " limit " + startIndex + "," + pageLimit;
+    	
+    	logger.info("sql日志输出:sqlStr===="+sqlStr);
+    	logger.info("sql日志输出:sqlCount===="+sqlCount);
+		
 		List activityList =  jdbcTemplate.queryForList(sqlStr, new Object[]{});//多条信息
 		JSONView jsonView = new JSONView();
 		jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);
-        jsonView.setReturnMsg("活动次数增加成功");
+        jsonView.setReturnMsg("活动查询成功");
 		jsonView.addAttribute("activityList", activityList);
+		jsonView.addAttribute("dataCount", dataCount);
+		
         logger.info("activityList=" + activityList);
         return jsonView;
 	}
@@ -199,13 +215,28 @@ public class ActivityJsonServer {
 	 */
 	public Map getMyTakeAnActive(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.adress,t1.sponsor,t1.act_city,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,t1.begin_time,t1.end_time,t1.click_num,t1.create_time,t1.publish_time,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id=? ";
-		List myTakeAnActiveList =  jdbcTemplate.queryForList(sqlStr, new Object[]{reqMap.get("userId")});
+		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.adress,t1.sponsor,t1.act_city,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,date_format(ifnull(t1.begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(t1.end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,t1.click_num,date_format(ifnull(t1.create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(t1.publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id=? ";
+		String sqlCount =" select count(1) from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id='"+reqMap.get("userId")+"'";
+		
+		// 获取当前我的活动总数
+		int dataCount = jdbcTemplate.queryForInt(sqlCount);
+		// 查询的分页参数
+    	Map pageInfo = (Map) reqMap.get("pageInfo");
+    	int curPage = (int) pageInfo.get("curPage");
+    	int pageLimit = (int) pageInfo.get("pageLimit");
+    	int startIndex = (curPage-1)*pageLimit;
+    	sqlStr += " limit " + startIndex + "," + pageLimit;
+    	
+    	logger.info("sql日志输出:sqlStr===="+sqlStr);
+    	logger.info("sql日志输出:sqlCount===="+sqlCount);
+		
+		List activityList =  jdbcTemplate.queryForList(sqlStr, new Object[]{reqMap.get("userId")});
 		JSONView jsonView = new JSONView();
 		jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);
         jsonView.setReturnMsg("活动次数增加成功");
-		jsonView.addAttribute("myTakeAnActiveList", myTakeAnActiveList);
-        logger.info("myTakeAnActiveList=" + myTakeAnActiveList);
+		jsonView.addAttribute("activityList", activityList);
+		jsonView.addAttribute("dataCount", dataCount);
+        logger.info("myTakeAnActiveList=" + activityList);
         return jsonView;
 	}
 }

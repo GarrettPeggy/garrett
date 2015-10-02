@@ -88,6 +88,33 @@ public abstract class JsonClientService {
 	}
 	
 	/**
+	 * 
+	 * @param url:请求url
+	 * @param requestMap：请求查询参数
+	 * @param pageInfo：分页信息
+	 * @param orderBy：排序信息
+	 * @param isUserAuth：是否验证登录
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public Map postForMap(String url,Map<String,Object> requestMap,PageInfo pageInfo,List<Map<String, String>> orderBy, boolean isUserAuth){
+		if(pageInfo!=null){
+			Map<String,Object> pageInfoMap = new HashMap<String,Object>();
+			pageInfoMap.put("curPage",pageInfo.getCurPage());
+			pageInfoMap.put("pageLimit",pageInfo.getPageLimit());
+			requestMap.put("pageInfo", pageInfoMap);
+		}
+		if(orderBy!=null){
+			requestMap.put("orderBy", orderBy);
+		}
+		Map resultMap = postForObject(url,requestMap,Map.class,isUserAuth);
+		if(requestMap!=null && resultMap.get("dataCount")!=null && pageInfo!=null){
+			pageInfo.setDataCount((Integer)resultMap.get("dataCount"));
+		}
+		return resultMap;
+	}
+	
+	/**
 	 * 请求服务，带有分页的
 	 * @param url
 	 * @param requestMap

@@ -18,8 +18,12 @@
     
     <!-- 主体 -->
     <div class="main">
+    	<input type="hidden" id="pageSize" name="pageSize" value="${pageInfo.pageSize }"/>
+    	<input type="hidden" id="curPage" name="curPage" value="${pageInfo.curPage }"/>
+    	<input type="hidden" id="pageLimit" name="pageLimit" value="${pageInfo.pageLimit }"/>
+    	<input type="hidden" id="actType" name="actType" value="${actType }"/>
     	<div class="ul-box">
-        	<ul class="data-list">
+        	<ul class="data-list" id="activity_popu">
         		<c:choose>
         			<c:when test="${empty jsonview.activityList }">
 		        		<li class="pd5">
@@ -44,6 +48,11 @@
 	                </c:otherwise>
                 </c:choose>
             </ul>
+            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
+            	<div id="activity_more">
+            		<button id="activityLoadMore" name="activityLoadMore" onclick="Activity.loadMore()">加载更多</button> 
+            	</div>
+            </c:if>
         </div>
     </div>
     <!-- end -->
