@@ -39,7 +39,7 @@ public class SpaceController extends BaseController {
     }
 	
 	/**
-	 * 用户列表--查询
+	 * 场地列表--查询
 	 * 
 	 */
 	@SuppressWarnings("rawtypes")
@@ -77,4 +77,34 @@ public class SpaceController extends BaseController {
 		return getOperateJSONView(returnMap);
     }
 	
+	/**
+	 * 去编辑场地信息
+	 * 
+	 */
+	@SuppressWarnings("rawtypes")
+	@RequestMapping("/toEditSpace.do")
+	public String toEditSpace(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
+		
+		Map reqMap = bindParamToMap(request);
+		Map spaceMap = spaceService.getSpaceById(reqMap);
+		mop.addAttribute("spaceMap", spaceMap);
+		
+		bindParamToAttrbute(request);
+		return "space/editSpaceInfo"; 
+	}
+	
+	/**
+	 * 去预览场地信息
+	 * 
+	 */
+	@SuppressWarnings("rawtypes")
+	@RequestMapping("/toViewSpace.do")
+	public String toViewSpace(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
+		
+		Map reqMap = bindParamToMap(request);
+		Map spaceMap = spaceService.getSpaceById(reqMap);
+		mop.addAttribute("spaceMap", spaceMap);
+		
+		return "space/viewSpaceInfo"; 
+	}
 }

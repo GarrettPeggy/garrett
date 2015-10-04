@@ -20,13 +20,13 @@
 				<td class="center">${space.contactor}</td>
 				<td class="center">${space.contact}</td>
 				<td class="center">${space.name}</td>
-				<td class="center">${systemConst.spaceTypeMap[space.space_type]}</td>
+				<td class="center">${systemConst.spaceTypeMap[fn:trim(space.space_type)]}</td>
 				<td class="center">${systemConst.categoryMap[space.work_for]}</td>
 				<td class="center">${space.cost}</td>
-				<td class="center">${systemConst.spaceLevelMap['0']}</td>
+				<td class="center">${systemConst.spaceLevelMap[fn:trim(space.space_level)]}</td>
 				<td class="center">
-					<a href="javascript:void();">修改</a>
-					<a href="javascript:void();">预览</a>
+					<a href="${ctx}/space/toEditSpace.do?id=${space.id}">修改</a>&nbsp;&nbsp;
+					<a href="${ctx}/space/toViewSpace.do?id=${space.id}">查看</a>
 				</td>
 			</tr>
 		</c:forEach>

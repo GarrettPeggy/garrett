@@ -26,6 +26,13 @@ public class SpaceService extends JsonClientService {
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map getSpaceById(Map reqMap) {
+		
+		return postForMap(SystemMessage.getString("spaceJsonServer") + "/getSpaceInfoById", reqMap);
+		
+    }
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getSpaceList(Map reqMap, PageInfo pageInfo) {
 		
 		return postForMap(SystemMessage.getString("spaceJsonServer") + "/getSpaceInfoList", reqMap, pageInfo);

@@ -19,22 +19,22 @@
 		</script>
 
 		<jsp:include page="/page/common/sidebar.jsp" flush="true">
-			<jsp:param value="120101" name="leftMenuSelectId"/>
+			<jsp:param value="120102" name="leftMenuSelectId"/>
 		</jsp:include>
 		
 		<div class="main-content">
 			<div class="main-content-inner">
 				<jsp:include page="/page/common/breadcrumbs.jsp" flush="true">
-					<jsp:param   value='[{"name":"场地管理","href":"${ctx}/space/toAdd.do"}]'  name="navigationItems" />
+					<jsp:param value='[{"name":"场地管理","href":"#"},{"name":"场地列表","href":"${ctx}/space/toList.do"},{"name":"编辑场地","href":"#"}]' name="navigationItems" />
 				</jsp:include>
 
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-							<form id="addSpaceInfoForm">
-								<input type="hidden" name="spaceLevel" value="${systemConst.COMMON_SPACE }"><!-- 默认场地都是普通场地 -->
-								<flagToken:token tokenName="addSpaceInfoForm"/>
-								<div class="page-header"> <h1> 发布场地信息 </h1> </div>
+							<form id="updateSpaceInfoForm">
+								<flagToken:token tokenName="updateSpaceInfoForm"/>
+								<input type="hidden" name="id" value="${id}"><!-- 默认场地都是普通场地 -->
+								<div class="page-header"> <h1> 编辑场地信息 </h1> </div>
 					            <div class="row">
 					              <div class="col-xs-12">
 					                <div class="form-horizontal">
@@ -43,7 +43,7 @@
 					                    <label for="name" class="col-xs-12 col-sm-3 control-label no-padding-right">场地名称</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="name" id="name" class="width-100" notnull="true" maxlength="50" >
+						                      <input type="text" name="name" id="name" class="width-100" value="${spaceMap.spaceInfo.name}" notnull="true" maxlength="50" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                     </div>
@@ -54,7 +54,7 @@
 					                    <label for="contactor" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="contactor" id="contactor" class="width-100" notnull="true" maxlength="15" >
+						                      <input type="text" name="contactor" id="contactor" class="width-100" value="${spaceMap.spaceInfo.contactor}" notnull="true" maxlength="15" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -65,7 +65,7 @@
 					                    <label for="contact" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人方式</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="contact" id="contact" class="width-100" datatype="phone" notnull="true" >
+						                      <input type="text" name="contact" id="contact" class="width-100" value="${spaceMap.spaceInfo.contact}" datatype="phone" notnull="true" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -79,7 +79,7 @@
 					                        <div class="col-sm-6">
 					                          <select class="form-control" name="spaceType">
 					                            <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
-													<option value="${spaceType.key}">${spaceType.value}</option>
+													<option value="${spaceType.key}" selected="${spaceType.key eq spaceMap.spaceInfo.space_type?'selected':''}">${spaceType.value}</option>
 												</c:forEach>
 					                          </select>
 					                        </div>
@@ -92,7 +92,7 @@
 					                    <label for="cost" class="col-xs-12 col-sm-3 control-label no-padding-right">场地费用</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="cost" id="cost" class="width-100" datatype="money" notnull="true" >
+						                      <input type="text" name="cost" id="cost" class="width-100" value="${spaceMap.spaceInfo.cost}" datatype="money" notnull="true" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span>
 					                    </div>
@@ -103,7 +103,7 @@
 					                    <label for="cost" class="col-xs-12 col-sm-3 control-label no-padding-right">场地容量</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="capacity" id="capacity" class="width-100" datatype="number" notnull="true" >
+						                      <input type="text" name="capacity" id="capacity" class="width-100" value="${spaceMap.spaceInfo.capacity}" datatype="number" notnull="true" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span>
 					                    </div>
@@ -117,7 +117,7 @@
 					                        <div class="col-sm-6">
 					                          <select class="form-control" name="workFor">
 					                            <c:forEach items="${systemConst.categoryMap}" var="category">
-													<option value="${category.key}">${category.value}</option>
+													<option value="${category.key}" selected="${category.key eq spaceMap.spaceInfo.work_for?'selected':''}">${category.value}</option>
 												</c:forEach>
 					                          </select>
 					                        </div>
@@ -130,7 +130,7 @@
 					                    <label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">场地地址</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="adress" id="adress" class="width-100" notnull="true" maxlength="100" >
+						                      <input type="text" name="adress" id="adress" class="width-100" value="${spaceMap.spaceInfo.adress}" notnull="true" maxlength="100" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -141,7 +141,7 @@
 					                    <label for="traffic" class="col-xs-12 col-sm-3 control-label no-padding-right">交通概况</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="traffic" id="traffic" class="width-100" maxlength="100" notnull="true" >
+						                      <input type="text" name="traffic" id="traffic" class="width-100" value="${spaceMap.spaceInfo.traffic}" maxlength="100" notnull="true" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -152,7 +152,7 @@
 					                    <label for="description" class="col-xs-12 col-sm-3 control-label no-padding-right">场地介绍</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <textarea rows="4" class="form-control limited" name="description" id="description" maxlength="250"></textarea>
+						                      <textarea rows="4" class="form-control limited" name="description" value="${spaceMap.spaceInfo.description}" id="description" maxlength="250"></textarea>
 					                      </span> 
 					                    </div>
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
@@ -166,6 +166,19 @@
 						                      	<div class="avatar-title clearfix">
 											    	<input type="file" class="btn-orange-s pull-lef"  onclick="Space.controlPicNum(event,this);" onchange="Space.uploadSpacePic(this);" id="cropImg" name="cropImg">
 											    </div>
+											    <c:if test="${!empty spaceMap.spaceInfo.show_images}">
+												    <c:forEach var="image_src" items="${fn:split(spaceMap.spaceInfo.show_images, ',')}">
+												    	<div class="col-sm-3 clearfix" style="margin-top: 10px;margin-bottom: 10px;">
+												    		<div class="avatar-x">
+												    			<div id="addPic">
+												    				<img class="space-img" src="${image_src}" width="200" height="200">
+												    			</div>
+												    			<div class="avatar-bar"></div>
+												    		</div>
+												    		<button style="margin-left: 157px;margin-top: 10px;" class="btn btn-xs btn-success" id="button_0" onclick="Space.deleteCurPic(this);" type="button"><span class="bigger-110">删除</span></button>
+												    	</div>
+												    </c:forEach>
+												</c:if>
 					                      </span> 
 					                    </div>
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
@@ -173,7 +186,7 @@
 					                  
 					                  <div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-primary" onclick="Space.addSpace();" type="button">
+											<button class="btn btn-primary" onclick="Space.updateSpace();" type="button">
 												<i class="ace-icon fa fa-check bigger-110"></i>
 												Submit
 											</button>

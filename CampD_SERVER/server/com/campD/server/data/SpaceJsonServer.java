@@ -28,6 +28,7 @@ public class SpaceJsonServer {
 	 * spaceLevel:场地级别(0:普通场地，1：精品场地)
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	public Map add(Map reqMap){
 		logger.info("reqMap="+reqMap);
 		// 添加场地到数据库
@@ -56,52 +57,91 @@ public class SpaceJsonServer {
 	 * @param reqMap:{name：场地名称，adress：场地地址，workFor：使用哪些活动(是就是范畴id)，capacity：场地容量，cost：花费,:spaceLevel:场地级别,spaceType:场地类型}
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	public Map getSpaceInfoList(Map reqMap){
+		
 		logger.info("reqMap="+reqMap);
-		//根据场地名称，场地地地址，使用哪些活动，场地容量，花费等信息查询场地列表信息.
+		
+		//根据场地名称，场地地地址，适用哪些活动，场地容量，花费等信息查询场地列表信息.  王光华另加查询条件：
 		String sqlStr = " select t1.id,t1.creator_id,t1.name,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level from spaces t1 where 1=1 ";
 		String sqlCount =" select count(1) from spaces t1 where 1=1 ";
-		if(null!=reqMap.get("name") && !"".equals(reqMap.get("name"))){
-			sqlStr+=" and t1.name like '%"+reqMap.get("name")+"%' ";
-			sqlCount+=" and t1.name like '%"+reqMap.get("name")+"%' ";
+		
+		Object name = reqMap.get("name");//名称
+		if(null!=name && !"".equals(name)){
+			sqlStr+=" and t1.name like '%"+name+"%' ";
+			sqlCount+=" and t1.name like '%"+name+"%' ";
 		}
-		if(null!=reqMap.get("adress") && !"".equals(reqMap.get("adress"))){
-			sqlStr+=" and t1.adress like '%"+reqMap.get("adress")+"%' ";
-			sqlCount+=" and t1.adress like '%"+reqMap.get("adress")+"%' ";
+
+		Object contactor = reqMap.get("contactor");//联系人
+		if(null!=contactor && !"".equals(contactor)){
+			sqlStr+=" and t1.contactor like '%"+contactor+"%' ";
+			sqlCount+=" and t1.contactor like '%"+contactor+"%' ";
 		}
-		if(null!=reqMap.get("workFor") && !"".equals(reqMap.get("workFor"))){
-			sqlStr+=" and t1.work_for ="+reqMap.get("workFor")+" ";
-			sqlCount+=" and t1.work_for ="+reqMap.get("workFor")+" ";
+
+		Object contact = reqMap.get("contact");//联系方式
+		if(null!=contact && !"".equals(contact)){
+			sqlStr+=" and t1.contact ="+contact+" ";
+			sqlCount+=" and t1.contact ="+contact+" ";
 		}
-		if(null!=reqMap.get("cost") && !"".equals(reqMap.get("cost"))){
+
+		Object adress = reqMap.get("adress");//地址
+		if(null!=adress && !"".equals(adress)){
+			sqlStr+=" and t1.adress like '%"+adress+"%' ";
+			sqlCount+=" and t1.adress like '%"+adress+"%' ";
+		}
+
+		Object workFor = reqMap.get("workFor");//适用活动
+		if(null!=workFor && !"".equals(workFor)){
+			sqlStr+=" and t1.work_for ="+workFor+" ";
+			sqlCount+=" and t1.work_for ="+workFor+" ";
+		}
+
+		Object cost = reqMap.get("cost");//名称
+		if(null!=cost && !"".equals(cost)){
 			//cost："1"表示免费   "2"表示收费
-			if("1".equals(reqMap.get("cost").toString())){
+			if("1".equals(cost.toString())){
 				sqlStr+=" and t1.cost is null or t1.cost=0 ";
 				sqlCount+=" and t1.cost is null or t1.cost=0 ";
 			}
-			if("2".equals(reqMap.get("cost").toString())){
+			if("2".equals(cost.toString())){
 				sqlStr+=" and t1.cost is not null ";
 				sqlCount+=" and t1.cost is not null ";
 			}
 		}
-		
-		if(null!=reqMap.get("spaceType") && !"".equals(reqMap.get("spaceType"))){
-			sqlStr+=" and t1.space_type="+reqMap.get("spaceType");
-			sqlCount+=" and t1.space_type="+reqMap.get("spaceType");
+
+		Object spaceType = reqMap.get("spaceType");//场地类型
+		if(null!=spaceType && !"".equals(spaceType)){
+			sqlStr+=" and t1.space_type="+spaceType;
+			sqlCount+=" and t1.space_type="+spaceType;
+		}
+
+		Object minCapacity = reqMap.get("minCapacity");//最小容量
+		if(null!=minCapacity && !"".equals(minCapacity)){
+			sqlStr+=" and t1.capacity>="+minCapacity;
+			sqlCount+=" and t1.capacity>="+minCapacity;
+		}
+
+		Object maxCapacity = reqMap.get("maxCapacity");//最大容量
+		if(null!=maxCapacity && !"".equals(maxCapacity)){
+			sqlStr+=" and t1.capacity<"+maxCapacity;
+			sqlCount+=" and t1.capacity<"+maxCapacity;
+		}
+
+		Object beginCreateTime = reqMap.get("beginCreateTime");//最大容量
+		Object endCreateTime = reqMap.get("endCreateTime");//场地特征
+		if(null!=beginCreateTime && !"".equals(beginCreateTime)){
+			sqlStr+=" and t1.create_time>='"+beginCreateTime + " 00:00:00'";
+			sqlCount+=" and t1.create_time>='"+beginCreateTime + " 00:00:00'";
+		}
+		if(null!=endCreateTime && !"".equals(endCreateTime)){
+			sqlStr+=" and t1.create_time<'"+endCreateTime + " 23:59:59'";
+			sqlCount+=" and t1.create_time<'"+endCreateTime + " 23:59:59'";
 		}
 		
-		if(null!=reqMap.get("minCapacity") && !"".equals(reqMap.get("minCapacity"))){
-			sqlStr+=" and t1.capacity>="+reqMap.get("minCapacity");
-			sqlCount+=" and t1.capacity>="+reqMap.get("minCapacity");
-		}
-		if(null!=reqMap.get("maxCapacity") && !"".equals(reqMap.get("maxCapacity"))){
-			sqlStr+=" and t1.capacity<"+reqMap.get("maxCapacity");
-			sqlCount+=" and t1.capacity<"+reqMap.get("maxCapacity");
-		}
-		
-		if(null!=reqMap.get("spaceLevel") && !"".equals(reqMap.get("spaceLevel"))){
-			sqlStr+=" and t1.space_level="+reqMap.get("spaceLevel")+" ";
-			sqlCount+=" and t1.space_level="+reqMap.get("spaceLevel")+" ";
+		Object spaceLevel = reqMap.get("spaceLevel");//场地特征
+		if(null!=spaceLevel && !"".equals(spaceLevel)){
+			sqlStr+=" and t1.space_level="+spaceLevel+" ";
+			sqlCount+=" and t1.space_level="+spaceLevel+" ";
 		}
 		
 		// 获取当前场地总数
@@ -133,6 +173,7 @@ public class SpaceJsonServer {
 	 * @param reqMap:{id:场地id}
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	public Map getSpaceInfoById(Map reqMap){
 		logger.info("reqMap="+reqMap);
 		//根据场地Id查询场地信息
