@@ -73,6 +73,16 @@ public class SystemConstant {
 			actTypeMap.put(COMMON_ACTIVITY, "普通活动");
 			actTypeMap.put(HOT_ACTIVITY, "热门活动");
 		}
+		
+		//=============================活动状态的定义============================
+	  	public static String ACTIVITY_NOT_PUBLISH="0";//活动未发布
+	  	public static String ACTIVITY_PUBLISH="1";//活动已发布
+	  	public static Map actstatusMap = new HashMap();
+	  	static{
+	  		actstatusMap.put(ACTIVITY_NOT_PUBLISH, "未发布");
+	  		actstatusMap.put(ACTIVITY_PUBLISH, "已发布");
+	  	}
+		
 		//=========================场地类型定义的值=============================
 		public static String HACKERSPACE= "0";//众创空间
 		public static String COFFEE_HOUSE= "1";//咖啡厅
