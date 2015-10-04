@@ -39,6 +39,61 @@ public class SystemConstant {
     public static final String USER_ROLE_COMMON = "普通用户";//Cookie中标示用户名
     public static final String USER_ROLE_ADMIN = "管理员";//Cookie中标示密码
     
+  //===========================活动范畴定义的key值========================
+  	public static String ENTREPRENEURSHIP= "0";//创业
+  	public static String BUSINESS= "1";//商务
+  	public static String PLAYING= "2";//玩乐
+  	public static String MAKE_FRIENDS= "3";//交友
+  	public static Map categoryMap = new HashMap();
+  	static{
+  		categoryMap.put(ENTREPRENEURSHIP, "创业");
+  		categoryMap.put(BUSINESS, "商务");
+  		categoryMap.put(PLAYING, "玩乐");
+  		categoryMap.put(MAKE_FRIENDS, "交友");
+  	}
+  	//==========================活动类型定义的值============================
+  	public static String COMMON_ACTIVITY= "0";//普通活动
+  	public static String HOT_ACTIVITY= "1";//热门活动
+  	public static Map actTypeMap = new HashMap();
+  	static{
+  		actTypeMap.put(COMMON_ACTIVITY, "普通活动");
+  		actTypeMap.put(HOT_ACTIVITY, "热门活动");
+  	}
+  	
+  	//=============================活动状态的定义============================
+  	public static String ACTIVITY_NOT_PUBLISH="0";//活动未发布
+  	public static String ACTIVITY_PUBLISH="1";//活动已发布
+  	public static Map actstatusMap = new HashMap();
+  	static{
+  		actstatusMap.put(ACTIVITY_NOT_PUBLISH, "未发布");
+  		actstatusMap.put(ACTIVITY_PUBLISH, "已发布");
+  	}
+  	
+  	//=========================场地类型定义的值=============================
+  	public static String HACKERSPACE= "0";//众创空间
+  	public static String COFFEE_HOUSE= "1";//咖啡厅
+  	public static String COMPANY_MEETING_ROOM= "2";//公司会议室
+  	public static String COMMUNITY_SITE= "3";//社区场地
+  	public static String COMMERCIAL_PLAZA= "4";//商业广场
+  	public static Map spaceTypeMap = new HashMap();
+  	static{
+  		//场地类型
+  		spaceTypeMap.put(HACKERSPACE, "众创空间");
+  		spaceTypeMap.put(COFFEE_HOUSE, "咖啡厅");
+  		spaceTypeMap.put(COMPANY_MEETING_ROOM, "公司会议室");
+  		spaceTypeMap.put(COMMUNITY_SITE, "社区场地");
+  		spaceTypeMap.put(COMMERCIAL_PLAZA, "商业广场");
+  	}
+  	//========================场地级别定义的值=============================
+  	public static String COMMON_SPACE= "0";//普通场地
+  	public static String FINE_SPACE= "1";//精品场地
+  	public static Map spaceLevelMap = new HashMap();
+  	static{
+  		//场地级别
+  		spaceLevelMap.put(COMMON_SPACE, "普通场地");
+  		spaceLevelMap.put(FINE_SPACE, "精品场地");
+  	}
+    
     /**
 	 * 返回结果
 	 * 数据为空500
