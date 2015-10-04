@@ -118,4 +118,21 @@ public class SpaceController extends BaseController {
 		
 		return "space/viewSpaceInfo"; 
 	}
+	
+	/**
+	 * 更新用户级别
+	 * @param request
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	@RequestMapping("/updateLevel.do")
+    @ResponseBody
+    public Map updateLevel(HttpServletRequest request) {
+    	
+		Map reqMap = bindParamToMap(request);
+		Map returnMap = spaceService.updateSpaceLevel(reqMap);
+		
+		return getOperateJSONView(returnMap);
+    }
+	
 }

@@ -45,4 +45,16 @@ public class SpaceService extends JsonClientService {
 		return postForMap(SystemMessage.getString("spaceJsonServer") + "/getSpaceInfoList", reqMap, pageInfo);
 		
     }
+	
+	/**
+	 * 更新场地级别：精品场地，普通场地
+	 * @param reqMap
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map updateSpaceLevel(Map reqMap) {
+		
+		return postForMap(SystemMessage.getString("spaceJsonServer") + "/updateLevel", reqMap);
+		
+    }
 }

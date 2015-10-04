@@ -27,6 +27,12 @@
 				<td class="center">
 					<a href="${ctx}/space/toEditSpace.do?id=${space.id}">修改</a>&nbsp;&nbsp;
 					<a href="${ctx}/space/toViewSpace.do?id=${space.id}">查看</a>
+					<c:if test="${systemConst.COMMON_SPACE eq space.space_level}">
+						<a href="javascript:Space.updateSpaceLevel('${space.id}','${systemConst.FINE_SPACE}')">标记精品</a>
+					</c:if>
+					<c:if test="${systemConst.FINE_SPACE eq space.space_level}">
+						<a href="javascript:Space.updateSpaceLevel('${space.id}','${systemConst.COMMON_SPACE}')">取消精品</a>
+					</c:if>
 				</td>
 			</tr>
 		</c:forEach>

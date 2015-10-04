@@ -57,7 +57,7 @@ public class SpaceJsonServer {
 	
 	/**
 	 * 更新场地信息
-	 * @param 
+	 * @param reqMap:{id:场地id，name：场地名称，adress：场地地址，traffic：交通状况，workFor：使用哪些活动，capacity：场地容量，spaceType：场地类型，contactor：场地联系人，cost：花费，contact：联系方式，showImages：场地展示图片，description：场地描述}
 	 * spaceLevel:场地级别(0:普通场地，1：精品场地)
 	 * @return
 	 */
@@ -75,7 +75,7 @@ public class SpaceJsonServer {
         if(updateLineCount <= 0){
         	jsonView.setFail();
 			jsonView.setReturnErrorMsg();
-			logger.info("后台更新场地发布失败，此时传入参数为->params="+params.toString());
+			logger.info("后台更新场地失败，此时传入参数为->params="+params.toString());
 			return jsonView;
         }
         
@@ -87,11 +87,42 @@ public class SpaceJsonServer {
 	}
 	
 	/**
+	 * 更新场地级别
+	 * @param {id：场地id，spaceLevel：场地级别}
+	 * spaceLevel:场地级别(0:普通场地，1：精品场地)
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public Map updateLevel(Map reqMap){
+		
+		logger.info("reqMap="+reqMap);
+		
+		// 添加场地到数据库
+		String sqlStr = " update spaces set space_level=? where id=?";
+        Object[] params = new Object[]{reqMap.get("spaceLevel"),reqMap.get("id")};
+        int updateLineCount = jdbcTemplate.update(sqlStr, params);
+        
+        JSONView jsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("后台更新场地失败，此时传入参数为->params="+params.toString());
+			return jsonView;
+        }
+        
+        jsonView.setReturnMsg("场地级别更新成功");
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("后台场地级别更新成功,\\(^o^)/。。。，updateLineCount="+updateLineCount);
+        
+        return jsonView;
+	}
+	
+	/**
 	 * 查询场地列表信息
 	 * @param reqMap:{name：场地名称，adress：场地地址，workFor：使用哪些活动(是就是范畴id)，capacity：场地容量，cost：花费,:spaceLevel:场地级别,spaceType:场地类型}
 	 * @return
 	 */
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "deprecation" })
 	public Map getSpaceInfoList(Map reqMap){
 		
 		logger.info("reqMap="+reqMap);

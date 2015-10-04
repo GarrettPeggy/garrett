@@ -59,6 +59,22 @@ public class SpaceRestController extends BaseRestController {
 	}
 	
 	/**
+	 * 后台场地级别更新
+	 * @param reqMap
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	@RequestMapping(value="/updateLevel", method=RequestMethod.POST)
+    @ResponseBody
+	public Map updateLevel(HttpServletRequest request){
+		
+		Map reqMap = bindParamToMap(request);
+    	Map returnMap = spaceJsonServer.updateLevel(reqMap);
+    	
+        return returnMap;
+	}
+	
+	/**
 	 * 查询场地列表信息
 	 * @param reqMap:{name：场地名称，adress：场地地址，workFor：使用哪些活动(是就是范畴id)，capacity：场地容量，cost：花费}
 	 * @return

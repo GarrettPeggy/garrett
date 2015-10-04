@@ -105,3 +105,19 @@ Space.getSpaceImages = function(){
 	}
 	$("#show_images").val(show_images);
 };
+
+/**
+ * 设置用户角色
+ */
+Space.updateSpaceLevel = function(id, spaceLevel){
+	var params = {
+		"id":id,
+		"spaceLevel":spaceLevel
+	};
+	// 记住参数提交的格式一定要正确，否则会报error错误。
+	submitSave(BASE_PATH + "/space/updateLevel.do", params, function(data) {
+		Space.searchSpaceList();
+	}, function(data) {
+		Dialog.alertError(data.returnMsg);
+	});
+};
