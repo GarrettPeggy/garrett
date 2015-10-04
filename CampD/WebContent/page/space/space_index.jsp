@@ -139,44 +139,5 @@
     		</c:otherwise>
     	</c:choose>
     </div>
-    
-    <div class="main mat7 hide" id="space_main_ajax">
-    	<!-- 当没有场地时 -->
-        <div class="ground-no hide" id="space_no">
-        	<img src="${rmtResPath}/static/images/no_data.png" width="41" height="41"/>
-            <p>抱歉，没有找到合适的场地</p>
-            <p>请浏览其他场地吧</p>
-        </div>
-        <!-- end -->
-    	<!-- 当有场地时 -->
-    	<div class="ul-box" id="space_yes">
-        	<ul class="data-list ground-list" id="space_cost_ul">
-        		<%-- 
-            	<li class="clearfix">
-                	<div class="data-li-left">
-                    	<img src="${rmtResPath}/static/images/ground_ex.png" width="91" height="63"/>
-                    </div>	
-                    <div class="data-li-right">
-                    	<div class="dlr-title" id="space_type">
-                        	聚创空间
-                        </div>
-                        <div class="dlr-address">
-                                                                虹桥路-地铁三号线
-                        </div>
-                        <div class="dlr-cost clearfix">
-                            <div class="fl">
-                               	 费用：<span class="co">免费</span>
-                            </div>
-                            <div class="fr">
-                                <span class="co">1-30</span>人
-                            </div>
-                        </div>
-                    </div>	
-                </li>
-                 --%>
-            </ul>
-        </div>
-        <!-- end -->
-    </div>
 </body>
 </html>

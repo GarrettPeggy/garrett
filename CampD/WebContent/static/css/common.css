@@ -116,6 +116,7 @@ a:hover{text-decoration:none;}
 /*常用按钮*/
 .btn{padding:0 37px;height:50px;line-height:50px;border:none;border-radius:5px;font-size:20px; display:inline-block;}
 .orange-btn {background:#edbe57;color:#fff;}
+.gray-btn {background:#CBCBCB;color:#fff;}
 
 .hide{display:none;}
 

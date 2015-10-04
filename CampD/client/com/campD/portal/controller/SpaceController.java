@@ -55,11 +55,13 @@ public class SpaceController extends BaseController {
 	 */
 	@RequestMapping("/getSpaceInfoList.do")
 	public String getSpaceInfoList(HttpServletResponse response, HttpServletRequest request) throws Exception {
-		
+		bindParamToAttrbute(request);
 		Map<String, Object> map = bindParamToMap(request);
-		PageInfo pageInfo = getPageInfo(request);
+		PageInfo pageInfo = getPageInfo(request);//每页显示多少条 、当前页   两个参数
 		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
+		
 		JSONView jsonview=getSearchJSONView(resultMap);
+		
 		request.setAttribute("jsonview", jsonview);
 		 
 		return "space/space_index";

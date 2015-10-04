@@ -1,6 +1,7 @@
 package com.campD.portal.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.common.JSONView;
 import com.campD.portal.common.PageInfo;
+import com.campD.portal.common.SystemConstant;
 import com.campD.portal.model.UserInfo;
 import com.campD.portal.service.ActivityService;
 
@@ -194,7 +196,7 @@ public class ActivityController extends BaseController {
 	}
 	
 	/**
-	 * 根据活动所属范畴id查询活动，跳转到各种活动的再分类界面,热门活动界面
+	 * 根据活动所属范畴id查询活动，跳转到各种活动的再分类界面
 	 * @param response
 	 * @param request
 	 * @return
@@ -210,13 +212,30 @@ public class ActivityController extends BaseController {
 		
 		request.setAttribute("categoryId", map.get("categoryId"));//活动范畴放到页面上
 		request.setAttribute("jsonview", jsonview);
-		 
-		if((null==map.get("categoryId") || "".equals(map.get("categoryId"))) && ( null!=map.get("actType") && !"".equals(map.get("actType")))){
-			return "activity/popular_activity";
-		}else{
-			return "activity/all_activity_list";
-		}
+		
+		return "activity/all_activity_list";
 	}
+	
+	/**
+	 * 根据活动类型查询活动，跳转到热门活动界面
+	 * @param response
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/getActivityListByActType.do")
+	public String getActivityListByActType(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		bindParamToAttrbute(request);
+		Map<String, Object> map = bindParamToMap(request);
+		PageInfo pageInfo = getPageInfo(request);
+		Map<?, ?> resultMap = activityService.getActivityList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
+		JSONView jsonview=getSearchJSONView(resultMap);
+		
+		request.setAttribute("jsonview", jsonview);
+		
+		return "activity/popular_activity";
+	}
+	
 	/**
 	 * 查询要主办的活动   根据活动创建者来查询
 	 * @param response
@@ -252,6 +271,44 @@ public class ActivityController extends BaseController {
 		Map<String, Object> map = bindParamToMap(request);
 		
 		Map<?, ?> resultMap = activityService.getActivityById(map);
+		
+		UserInfo userInfo=(UserInfo) request.getSession().getAttribute(SystemConstant.USER_INFO);
+		//如果用户登录，判断该活动是否是该用户的
+		if(null!=userInfo){
+			String activityId=map.get("id").toString();//活动id
+			String creatorId=userInfo.getId();//用户Id
+			String userId=userInfo.getId();//用户Id
+			map.put("creatorId", creatorId);
+			map.put("userId", userId);
+			map.put("activityId", activityId);
+			//查询该活动是否是该用户的
+			Map activityList=activityService.getActivityList(map, pageInfo, true);
+			
+			JSONView activityListJsonview=getSearchJSONView(activityList);
+			
+			List activityListJsonArray=(List) activityListJsonview.get("activityList");
+			
+			System.out.println(activityListJsonview);
+			
+			int flag=0;//标志位，说明该活动是否是该用户的   0不是该用户的  1是该用户的   2该活动不是该用户的但是已经报名
+			if(null!=activityListJsonArray && activityListJsonArray.size()>0){
+				flag=1;
+				logger.info("flag=============="+flag);
+			}
+			//判断该用户是否已经报名该活动
+			Map takeAnActiveList=activityService.getMyTakeAnActive(map, pageInfo, true);
+			
+			JSONView takeAnActiveListJsonview=getSearchJSONView(takeAnActiveList);
+			
+			List takeAnActiveListJsonArray=(List) takeAnActiveListJsonview.get("activityList");
+			
+			if(null!=takeAnActiveListJsonArray && takeAnActiveListJsonArray.size()>0){
+				flag=2;
+				logger.info("flag=============="+flag);
+			}
+			request.setAttribute("flag", flag);
+		}
+		
 		JSONView jsonview=getSearchJSONView(resultMap);
 		
 		request.setAttribute("jsonview", jsonview);
@@ -306,7 +363,7 @@ public class ActivityController extends BaseController {
 	}
 	
 	/**
-	 * 查询我的报名活动   跳转到已报名的活动界面
+	 * 查询我的报名活动  
 	 * @param response
 	 * @param request
 	 * @return

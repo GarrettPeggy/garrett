@@ -89,16 +89,33 @@ Space.setSelect=function(){
 };
 
 /**
+ * 恢复原样式
+ */
+Space.resetStyle=function(curObj){
+	//其他样式复原
+	$(curObj).parent().parent().prevAll().find("ul li:eq(0)").addClass("active");
+	$(curObj).parent().parent().prevAll().find("ul li:not(:eq(0))").removeClass("active");
+	$(curObj).parent().parent().nextAll().find("ul li:eq(0)").addClass("active");
+	$(curObj).parent().parent().nextAll().find("ul li:not(:eq(0))").removeClass("active");
+};
+
+/**
  * 场地费用
  */
 Space.cost=function(costType, curObj){
 	
 	$('#curPage').val(1);
 	$('#cost').val(costType);//costType的值为  0：全部  1：收费   2：免费
+	$('#spaceType').val("");
+	$('#adress').val("");
+	$('#minCapacity').val("");
+	$('#maxCapacity').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
+	
+	Space.resetStyle(curObj);
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -110,10 +127,17 @@ Space.type=function(spaceType, curObj){
 	
 	$('#curPage').val(1);
 	$('#spaceType').val(spaceType);//spaceType的值为  0：全部  1：众创空间  2：咖啡厅  3：公司会议室   4：社区场地   5：商业广场
+	$('#cost').val("");
+	$('#adress').val("");
+	$('#minCapacity').val("");
+	$('#maxCapacity').val("");
+	
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
+	
+	Space.resetStyle(curObj);
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -125,10 +149,16 @@ Space.address=function(adress, curObj){
 	
 	$('#curPage').val(1);
 	$('#adress').val(adress);
+	$('#cost').val("");
+	$('#spaceType').val("");
+	$('#minCapacity').val("");
+	$('#maxCapacity').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
+	
+	Space.resetStyle(curObj);
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -141,10 +171,15 @@ Space.capacity=function(minCapacity,maxCapacity, curObj){
 	$('#curPage').val(1);
 	$('#minCapacity').val(minCapacity);
 	$('#maxCapacity').val(maxCapacity);
+	$('#cost').val("");
+	$('#spaceType').val("");
+	$('#adress').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
+	
+	Space.resetStyle(curObj);
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -152,9 +187,11 @@ Space.capacity=function(minCapacity,maxCapacity, curObj){
 
 Space.search=function(){
 	
+	var pageLimit = parseInt($("#pageLimit").val());
+	
 	var params = {
 	    "curPage":$("#curPage").val(),
-	    "pageLimit":$("#pageLimit").val(),
+	    "pageLimit":pageLimit,
 	    'isUserAuth':false,
 		'cost':$('#cost').val(),
 		'spaceType':$('#spaceType').val(),
@@ -173,13 +210,18 @@ Space.search=function(){
 			$("#space_highlevel").append("<li class='clearfix'><div class='data-li-left'><img src='"+REMOTE_RES_PATH+"/static/images/ground_ex.png' width='91' height='63'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+Space.spaceType[resultList[i].space_type]+"</div><div class='dlr-address'>"+resultList[i].adress+"</div><div class='dlr-cost clearfix'><div class='fl'>费用：<span class='co'>"+resultList[i].cost+"元/小时</span></div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></li>");
 		};
 		
-		var $loadMore_li = $("#loadMore_li");
-		var pageSize = $("#pageSize").val();
+		var dataCount = parseInt(json.dataCount);
+		var pageSize = Math.floor(dataCount/pageLimit);
+		pageSize = dataCount%pageLimit==0 ? pageSize: pageSize + 1;
+		//alert("pageSize=============="+pageSize);
 		var curPage = $("#curPage").val();
+		//alert("curPage###############"+curPage);
 		if(curPage<pageSize){
-			$("#space_highlevel").parent().append($loadMore_li);
-		} else{
 			$("#loadMore_li").remove();
+			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' onclick='Space.loadMore()'>加载更多</button></div>");
+		}else{
+			$("#loadMore_li").remove();
+			$("#curPage").val(1);
 		}
 	}, function(data) {
 		systemLoaded();

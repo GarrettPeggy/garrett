@@ -28,6 +28,8 @@
 		<!-- end -->
 		<!-- 主体 -->
 	    <div class="main">
+	    	<input type="hidden" id="user" name="user" value="${USER_INFO}"/>
+	    	<input type="hidden" id="activityId" name="activityId" value="${jsonview.activityInfo.id}"/>
 		    <!-- 活动概括与地点 -->
 	    	<div class="ac-detail-title retina-1px-border-bottom">
 		        <img src="${rmtResPath}/static/images/example_img_big.png" width="100%" height="116"/>
@@ -64,10 +66,31 @@
 	        </div>
 	        <!-- end -->
 	        <!-- 按钮 -->
-	        <div class="btn-box">
-	        	<button class="btn orange-btn" type="button" onclick="Activity.sign()">立即报名</button>
-	        	<input type="hidden" id="activityId" value="${jsonview.activityInfo.id}"/>
-	        </div>
+	        <c:choose>
+	        	<c:when test="${empty USER_INFO }"><!-- 用户没有登录，显示报名按钮 -->
+	        		<div class="btn-box">
+			        	<button class="btn orange-btn" type="button" onclick="Activity.sign()">立即报名</button>
+			        </div>
+	        	</c:when>
+	        	
+	        	<c:when test="${!empty USER_INFO && flag==0 }"><!-- 不是该用户的活动，显示按钮 -->
+        			<div class="btn-box">
+			        	<button class="btn orange-btn" type="button" onclick="Activity.sign()">立即报名</button>
+			        </div>
+	        	</c:when>
+	        	
+	        	<c:when test="${!empty USER_INFO && flag==1 }"><!-- 是该用户的活动，不显示按钮 -->
+	        	</c:when>
+	        	
+	        	<c:when test="${!empty USER_INFO && flag==2 }"><!-- 不是该用户的活动，但是该用户已经报名 -->
+        			<div class="btn-box">
+			        	<button class="btn gray-btn" type="button" disabled="disabled">已报名</button>
+			        </div>
+	        	</c:when>
+	        	
+	        	<c:otherwise>
+	        	</c:otherwise>
+	        </c:choose>
 	        <!-- end -->
     	</div>
     	<!-- end -->

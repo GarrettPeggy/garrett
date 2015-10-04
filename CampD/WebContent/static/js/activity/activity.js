@@ -95,7 +95,7 @@ Activity.category=function(categoryValue){
  */
 
 Activity.populer=function(actType){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?actType="+actType+"&curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByActType.do?actType="+actType+"&curPage=1&pageLimit=3&isUserAuth=false";
 };
 
 /**
@@ -262,22 +262,20 @@ Activity.addClas=function(id){
  */
 Activity.sign=function(){
 	systemLoading("", true, "加载中,请稍等");
-	var params={"categoryId":$("#activityId").val()};
-	ajaxSearch(BASE_PATH + "/activity/takeAnActive.do",params,function(json){
-		systemLoaded();
-//		var userId=json.userId;
-//		if(null!=userId && userId.length>0){
-//			$("#signUp_mc").removeClass("hide");
-//			$("#signUp_modal").removeClass("hide");
-//		}else{
-//			window.location.href = BASE_PATH + "/" + "user/toLogin.do";
-//		}
-		$("#signUp_mc").removeClass("hide");
-		$("#signUp_modal").removeClass("hide");
-	}, function(data) {
-		systemLoaded();
-		alert(data.returnMsg);
-	});
+	var user=$("#user").val();
+	var params={"activityId":$("#activityId").val()};
+	if(null==user || ""==user){//如果用户没有登录，就跳转到用户登录界面
+		window.location.href = BASE_PATH + "/" +"user/toLogin.do";
+	}else{
+		ajaxSearch(BASE_PATH + "/activity/takeAnActive.do",params,function(json){
+			systemLoaded();
+			$("#signUp_mc").removeClass("hide");
+			$("#signUp_modal").removeClass("hide");
+		}, function(data) {
+			systemLoaded();
+			alert(data.returnMsg);
+		});
+	}
 };
 
 /**
@@ -286,6 +284,8 @@ Activity.sign=function(){
 Activity.closeSignUp=function(){
 	$("#signUp_modal").addClass("hide");
 	$("#signUp_mc").addClass("hide");
+	//关闭报名成功按钮后跳转到我的报名活动界面
+	Activity.signUp();
 };
 
 /**

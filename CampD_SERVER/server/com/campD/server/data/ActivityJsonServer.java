@@ -117,6 +117,12 @@ public class ActivityJsonServer {
 		logger.info("reqMap="+reqMap);
 		String sqlStr = " select id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 ";
 		String sqlCount =" select count(1) from activity where 1=1 ";
+		
+		if(null!=reqMap.get("id") && !"".equals(reqMap.get("id"))){
+			sqlStr+=" and id ='"+reqMap.get("id")+"' ";
+			sqlCount+=" and id ='"+reqMap.get("id")+"' ";
+		}
+		
 		if(null!=reqMap.get("categoryId") && !"".equals(reqMap.get("categoryId"))){
 			sqlStr+=" and category_id ="+reqMap.get("categoryId")+"";
 			sqlCount+=" and category_id ="+reqMap.get("categoryId")+"";
@@ -189,7 +195,7 @@ public class ActivityJsonServer {
 		logger.info("reqMap="+reqMap);
 		// 用户参与活动，添加数据到数据库
 		String sqlStr = "insert into user_activity(id,user_id,activity_id,enroll_time) values(?,?,?,?)";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("userId"), reqMap.get("categoryId"), new Date()};
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("userId"), reqMap.get("activityId"), new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -218,6 +224,11 @@ public class ActivityJsonServer {
 		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.adress,t1.sponsor,t1.act_city,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,date_format(ifnull(t1.begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(t1.end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,t1.click_num,date_format(ifnull(t1.create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(t1.publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id=? ";
 		String sqlCount =" select count(1) from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id='"+reqMap.get("userId")+"'";
 		
+		if(null!=reqMap.get("activityId") && !"".equals(reqMap.get("activityId"))){
+			sqlStr += " and t2.activity_id ='"+reqMap.get("activityId")+"' "; 
+			sqlCount +=" and t2.activity_id ='"+reqMap.get("activityId")+"' "; 
+		}
+		
 		// 获取当前我的活动总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		// 查询的分页参数
@@ -236,7 +247,7 @@ public class ActivityJsonServer {
         jsonView.setReturnMsg("活动次数增加成功");
 		jsonView.addAttribute("activityList", activityList);
 		jsonView.addAttribute("dataCount", dataCount);
-        logger.info("myTakeAnActiveList=" + activityList);
+        logger.info("activityList=" + activityList);
         return jsonView;
 	}
 }
