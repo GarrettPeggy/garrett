@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.campD.portal.common.PageInfo;
 import com.campD.portal.model.UserInfo;
 import com.campD.portal.service.SpaceService;
 
@@ -41,10 +42,16 @@ public class SpaceController extends BaseController {
 	 * 用户列表--查询
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("/list.do")
-	public String queryUserList(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
+	public String querySpaceList(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
 		
-		return "space/spaceListCtx";
+		Map reqMap = bindParamToMap(request);
+		PageInfo pageInfo = getPageInfo(request);
+		Map spaceListMap = spaceService.getSpaceList(reqMap, pageInfo);
+		mop.addAttribute("spaceListMap", spaceListMap);
+		
+		return "space/spaceListCtx"; 
 	}
 	
 	/**
@@ -60,7 +67,7 @@ public class SpaceController extends BaseController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("/add.do")
     @ResponseBody
-    public Map updateUserInfo(HttpServletRequest request) {
+    public Map addSpaceInfo(HttpServletRequest request) {
     	
 		Map reqMap = bindParamToMap(request);
 		UserInfo userInfo = getUserInfo();

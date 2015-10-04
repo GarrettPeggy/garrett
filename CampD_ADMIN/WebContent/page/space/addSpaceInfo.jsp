@@ -32,6 +32,8 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<form id="addSpaceInfoForm">
+								<input type="hidden" name="spaceLevel" value="${systemConst.COMMON_SPACE }"><!-- 默认场地都是普通场地 -->
+								<flagToken:token tokenName="addSpaceInfoForm"/>
 								<div class="page-header"> <h1> 发布场地信息 </h1> </div>
 					            <div class="row">
 					              <div class="col-xs-12">
@@ -76,7 +78,9 @@
 					                      <div class="row">
 					                        <div class="col-sm-6">
 					                          <select class="form-control" name="spaceType">
-					                            <option value="0">众创空间</option>
+					                            <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
+													<option value="${spaceType.key}">${spaceType.value}</option>
+												</c:forEach>
 					                          </select>
 					                        </div>
 					                      </div>
@@ -96,12 +100,25 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
+					                    <label for="cost" class="col-xs-12 col-sm-3 control-label no-padding-right">场地容量</label>
+					                    <div class="col-xs-12 col-sm-3"> 
+					                      <span class="block input-icon input-icon-right">
+						                      <input type="text" name="capacity" id="capacity" class="width-100" datatype="number" notnull="true" >
+						                      <i class="ace-icon fa fa-leaf"></i> 
+					                      </span>
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"><b>人</b></div>
+					                  </div>
+					                  
+					                  <div class="form-group">
 					                    <label class="col-sm-3 control-label no-padding-right">适合活动</label>
 					                    <div class="col-md-3">
 					                      <div class="row">
 					                        <div class="col-sm-6">
 					                          <select class="form-control" name="workFor">
-					                            <option value="0">创业</option>
+					                            <c:forEach items="${systemConst.categoryMap}" var="category">
+													<option value="${category.key}">${category.value}</option>
+												</c:forEach>
 					                          </select>
 					                        </div>
 					                      </div>
@@ -113,7 +130,7 @@
 					                    <label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">场地地址</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="adress" id="adress" class="width-100" maxlength="100" >
+						                      <input type="text" name="adress" id="adress" class="width-100" notnull="true" maxlength="100" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -124,7 +141,7 @@
 					                    <label for="traffic" class="col-xs-12 col-sm-3 control-label no-padding-right">交通概况</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="traffic" id="traffic" class="width-100" maxlength="100" >
+						                      <input type="text" name="traffic" id="traffic" class="width-100" maxlength="100" notnull="true" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -142,7 +159,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="show_images" class="col-xs-12 col-sm-3 control-label no-padding-right">活动照片</label>
+					                    <label for="show_images" class="col-xs-12 col-sm-3 control-label no-padding-right">场地照片</label>
 					                    <input type="hidden" id="show_images" name="show_images" value="">
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right" id="pic_container">
@@ -156,7 +173,7 @@
 					                  
 					                  <div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-primary" type="button">
+											<button class="btn btn-primary" onclick="Space.addSpace();" type="button">
 												<i class="ace-icon fa fa-check bigger-110"></i>
 												Submit
 											</button>

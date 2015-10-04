@@ -7,7 +7,7 @@ var Space = {
 
 Space.searchSpaceList = function(){
 	submitSearch('spaceListForm', 'load_content', BASE_PATH + '/space/list.do',function() {
-		pageInfo("spaceListForm",User.searchUserList);
+		pageInfo("spaceListForm",Space.searchSpaceList);
 	});
 };
 
@@ -49,4 +49,40 @@ Space.controlPicNum = function(event,currentObject){
 		stopDefault(event||window.event);
 		Dialog.alertInfo('展示图片不能超过4个！');
 	}
+};
+
+/**
+ * 添加场地信息
+ */
+Space.addSpace = function(){
+	if(Validator.validForm("addSpaceInfoForm")){
+		
+		Space.getSpaceImages();
+		
+		submitForm("addSpaceInfoForm",BASE_PATH + '/space/add.do',
+			function(data){
+				window.location.href = BASE_PATH + "/space/toList.do";
+			},
+			function(data){
+				Dialog.alertError(data.returnMsg);
+			}
+		);
+	}
+};
+
+/**
+ * 获取场地图片的链接集合
+ */
+Space.getSpaceImages = function(){
+	var $space_imgs = $(".space-img");
+	var $spaceImg = null, show_images = "";
+	for (var i = 0; i < $space_imgs.length; i++) {
+		$spaceImg = $($space_imgs[i]);
+		if(i==0){
+			show_images += $spaceImg.attr("src");
+		} else {
+			show_images += "," + $spaceImg.attr("src");
+		}
+	}
+	$("#show_images").val(show_images);
 };

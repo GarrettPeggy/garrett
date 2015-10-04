@@ -55,7 +55,7 @@ public class UploadController extends BaseController{
 			String tmpPath = UploadFileUtil.getTmpRealPath(fileName, getUserInfo(), request);
 			cropImg.transferTo(new File(tmpPath));
 			Map<String, String> resMap = new HashMap<String, String>();
-			resMap.put("tmpPath", request.getScheme() + "://" + SystemMessage.getString("rmtResUrl") + UploadFileUtil.getRelativePath(tmpPath, request));
+			resMap.put("tmpPath", request.getScheme() + "://" + SystemMessage.getString("rmtResUrl") + UploadFileUtil.getRelativePath(tmpPath, request).replace("\\","/"));
 			JSONView view = getSearchJSONView(resMap);
 			view.setSuccess();
 			return view;

@@ -982,3 +982,28 @@ function changeRandCode(code) {
 	}
 	
 };
+
+/**
+ * 阻止事件冒泡
+ * @param e js事件对象
+ */
+function stopBubble(e){ 
+	if (e && e.stopPropagation){
+		e.stopPropagation();
+	}
+	else{
+		window.event.cancelBubble=true;
+	}
+}
+//阻止浏览器的默认行为 
+function stopDefault( e ) {
+    //阻止默认浏览器动作(W3C)
+    if (e && e.preventDefault ){
+    	e.preventDefault();
+    }
+    //IE中阻止函数器默认动作的方式
+    else{
+        window.event.returnValue = false;
+    }
+    return false; 
+}

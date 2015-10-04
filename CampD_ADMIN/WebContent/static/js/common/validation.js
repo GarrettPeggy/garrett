@@ -187,8 +187,18 @@ Validator.validElement = function(jqueryObj, needFocus) {
 					needFocus ? jqueryObj.focus() : $.noop();
 					return false;
 				}
+				
+			} else if (dataType == 'number') {// 证书类型
+				
+				if (!isNumber(jqueryObj.val())) {
+					formGroup.addClass('has-error');
+					icon.attr('class','ace-icon fa fa-times-circle').show();
+					tip.empty().html(label + '只能是正整数!').show();
+					needFocus ? jqueryObj.focus() : $.noop();
+					return false;
+				}
 				//固定电话
-			}else if (dataType == 'tel') {
+			} else if (dataType == 'tel') {
 				
 				if (!isTel(jqueryObj.val())) {
 					formGroup.addClass('has-error');

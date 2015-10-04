@@ -33,7 +33,7 @@ public class SpaceJsonServer {
 		// 添加场地到数据库
 		//String sqlStr = "insert into activity(id,creator_id,category_id,act_num,act_city,act_type,requirement,create_time,status) values(?,?,?,?,?,?,?,?,?)";
 		String sqlStr = " insert into spaces(id,creator_id,name,adress,traffic,work_for,capacity,cost,contact,show_images,description,create_time,space_type,contactor,space_level) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creatorId"), reqMap.get("name"), reqMap.get("adress"),reqMap.get("traggic"),reqMap.get("workFor"),reqMap.get("capacity"),reqMap.get("cost"),reqMap.get("contact"),reqMap.get("showImages"),reqMap.get("description"),new Date(),reqMap.get("spaceType"),reqMap.get("contactor"),reqMap.get("spaceLevel")};
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creatorId"), reqMap.get("name"), reqMap.get("adress"),reqMap.get("traffic"),reqMap.get("workFor"),reqMap.get("capacity"),reqMap.get("cost"),reqMap.get("contact"),reqMap.get("showImages"),reqMap.get("description"),new Date(),reqMap.get("spaceType"),reqMap.get("contactor"),reqMap.get("spaceLevel")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
