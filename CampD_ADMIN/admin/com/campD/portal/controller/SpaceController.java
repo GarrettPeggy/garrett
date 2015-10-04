@@ -77,6 +77,17 @@ public class SpaceController extends BaseController {
 		return getOperateJSONView(returnMap);
     }
 	
+	@SuppressWarnings({ "rawtypes"})
+	@RequestMapping("/update.do")
+    @ResponseBody
+    public Map updateSpaceInfo(HttpServletRequest request) {
+    	
+		Map reqMap = bindParamToMap(request);
+		Map returnMap = spaceService.updateSpace(reqMap);
+		
+		return getOperateJSONView(returnMap);
+    }
+	
 	/**
 	 * 去编辑场地信息
 	 * 

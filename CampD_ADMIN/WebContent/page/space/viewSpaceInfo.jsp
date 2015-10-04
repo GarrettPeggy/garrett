@@ -186,12 +186,13 @@
 					              </div>
 					            </div>
 							</form>
-			        	</div>
-				    </div>
-			   </div>
-			</div>
-			<jsp:include page="/page/common/footer.jsp" flush="true"></jsp:include>
+						</div>
+			        </div>
+				  </div>
+			 </div>
 		</div>
+		<jsp:include page="/page/common/footer.jsp" flush="true"></jsp:include>
+	</div>
 </body>
 <script type="text/javascript">
 $(function(){

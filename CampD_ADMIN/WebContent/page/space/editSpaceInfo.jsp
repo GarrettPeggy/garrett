@@ -186,15 +186,8 @@
 					                  
 					                  <div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-primary" onclick="Space.updateSpace();" type="button">
-												<i class="ace-icon fa fa-check bigger-110"></i>
-												Submit
-											</button>
-											&nbsp; &nbsp; &nbsp;
-											<button class="btn" type="reset">
-												<i class="ace-icon fa fa-undo bigger-110"></i>
-												Reset
-											</button>
+											<a href="javascript:Space.updateSpace();" class="btn btn-primary btn-lg active" role="button">保存</a>
+											<a href="${ctx}/space/toList.do" class="btn btn-default btn-lg active" role="button">取消</a>
 										</div>
 									   </div>
 					                </div>

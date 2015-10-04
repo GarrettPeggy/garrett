@@ -71,6 +71,25 @@ Space.addSpace = function(){
 };
 
 /**
+ * 更新场地信息
+ */
+Space.updateSpace = function(){
+	if(Validator.validForm("updateSpaceInfoForm")){
+		
+		Space.getSpaceImages();
+		
+		submitForm("updateSpaceInfoForm",BASE_PATH + '/space/update.do',
+			function(data){
+				window.location.href = BASE_PATH + "/space/toList.do";
+			},
+			function(data){
+				Dialog.alertError(data.returnMsg);
+			}
+		);
+	}
+};
+
+/**
  * 获取场地图片的链接集合
  */
 Space.getSpaceImages = function(){

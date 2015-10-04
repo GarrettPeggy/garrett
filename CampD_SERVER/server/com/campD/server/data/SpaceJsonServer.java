@@ -19,9 +19,12 @@ import com.campD.server.common.JSONView;
  */
 @Repository
 public class SpaceJsonServer {
+	
 	protected Logger logger = Logger.getLogger(getClass());
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
 	/**
 	 * 后台场地发布
 	 * @param reqMap:{creatorId：创建者id，createTime：创建时间，name：场地名称，adress：场地地址，traggic：交通状况，workFor：使用哪些活动，capacity：场地容量，spaceType：场地类型，contactor：场地联系人，cost：花费，contact：联系方式，showImages：场地展示图片，description：场地描述,spaceLevel:场地级别}
@@ -45,13 +48,44 @@ public class SpaceJsonServer {
 			return jsonView;
         }
         
-        jsonView.setSuccess();
         jsonView.setReturnMsg("场地添加成功");
         jsonView.addAttribute("updateLineCount", updateLineCount);
         logger.info("后台场地发布成功,\\(^o^)/。。。，updateLineCount="+updateLineCount);
         
         return jsonView;
 	}
+	
+	/**
+	 * 更新场地信息
+	 * @param 
+	 * spaceLevel:场地级别(0:普通场地，1：精品场地)
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public Map update(Map reqMap){
+		
+		logger.info("reqMap="+reqMap);
+		
+		// 添加场地到数据库
+		String sqlStr = " update spaces set name=?, adress=?, traffic=?, work_for=?, capacity=?, cost=?, contact=?, show_images=?, description=?, space_type=?, contactor=? where id=?";
+        Object[] params = new Object[]{reqMap.get("name"), reqMap.get("adress"),reqMap.get("traffic"),reqMap.get("workFor"),reqMap.get("capacity"),reqMap.get("cost"),reqMap.get("contact"),reqMap.get("showImages"),reqMap.get("description"),reqMap.get("spaceType"),reqMap.get("contactor"),reqMap.get("id")};
+        int updateLineCount = jdbcTemplate.update(sqlStr, params);
+        
+        JSONView jsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("后台更新场地发布失败，此时传入参数为->params="+params.toString());
+			return jsonView;
+        }
+        
+        jsonView.setReturnMsg("场地更新成功");
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("后台场地更新成功,\\(^o^)/。。。，updateLineCount="+updateLineCount);
+        
+        return jsonView;
+	}
+	
 	/**
 	 * 查询场地列表信息
 	 * @param reqMap:{name：场地名称，adress：场地地址，workFor：使用哪些活动(是就是范畴id)，capacity：场地容量，cost：花费,:spaceLevel:场地级别,spaceType:场地类型}
