@@ -33,14 +33,14 @@
 			<b class="arrow"></b>
 			<ul class="submenu">
 				<li class="" name="subMenu110100" id="leftMenu110101">
-					<a href="${ctx}/user/toList.do">
+					<a href="${ctx}/activity/addUI.do">
 						<i class="menu-icon fa fa-caret-right"></i>
 						发布活动
 					</a>
 					<b class="arrow"></b>
 				</li>
 				<li class="" name="subMenu110100" id="leftMenu110102">
-					<a href="${ctx}/user/toList.do">
+					<a href="${ctx}/activity/toActivityList.do">
 						<i class="menu-icon fa fa-caret-right"></i>
 						活动列表
 					</a>

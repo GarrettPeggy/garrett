@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.campD.server.common.JSONView;
+import com.campD.server.common.SystemConstant;
 
 /**
  * 活动server端接口
@@ -36,8 +37,8 @@ public class ActivityJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 添加活动需求到数据库
-		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,act_city,act_type,requirement,create_time,status) values(?,?,?,?,?,?,?,?,?)";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),new Date(),reqMap.get("status")};
+		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),new Date(),new Date(),Integer.parseInt(SystemConstant.ACTIVITY_NOT_PUBLISH)};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -121,6 +122,36 @@ public class ActivityJsonServer {
 		if(null!=reqMap.get("id") && !"".equals(reqMap.get("id"))){
 			sqlStr+=" and id ='"+reqMap.get("id")+"' ";
 			sqlCount+=" and id ='"+reqMap.get("id")+"' ";
+		}
+		
+		if(null!=reqMap.get("title") && !"".equals(reqMap.get("title"))){
+			sqlStr+=" and title like '%"+reqMap.get("title")+"%' ";
+			sqlCount+=" and title like '%"+reqMap.get("title")+"%' ";
+		}
+		
+		if(null!=reqMap.get("adress") && !"".equals(reqMap.get("adress"))){
+			sqlStr+=" and adress like '%"+reqMap.get("adress")+"%' ";
+			sqlCount+=" and adress like '%"+reqMap.get("adress")+"%' ";
+		}
+		
+		if(null!=reqMap.get("actCity") && !"".equals(reqMap.get("actCity"))){
+			sqlStr+=" and act_city like '%"+reqMap.get("actCity")+"%' ";
+			sqlCount+=" and act_city like '%"+reqMap.get("actCity")+"%' ";
+		}
+		
+		if(null!=reqMap.get("sponsor") && !"".equals(reqMap.get("sponsor"))){
+			sqlStr+=" and sponsor like '%"+reqMap.get("sponsor")+"%' ";
+			sqlCount+=" and sponsor like '%"+reqMap.get("sponsor")+"%' ";
+		}
+		
+		if(null!=reqMap.get("beginTime") && !"".equals(reqMap.get("beginTime"))){
+			sqlStr+=" and begin_time >= '"+reqMap.get("beginTime")+"' ";
+			sqlCount+=" and begin_time >= '"+reqMap.get("beginTime")+"' ";
+		}
+		
+		if(null!=reqMap.get("endTime") && !"".equals(reqMap.get("endTime"))){
+			sqlStr+=" and end_time <= '"+reqMap.get("endTime")+"' ";
+			sqlCount+=" and end_time <= '"+reqMap.get("endTime")+"' ";
 		}
 		
 		if(null!=reqMap.get("categoryId") && !"".equals(reqMap.get("categoryId"))){
