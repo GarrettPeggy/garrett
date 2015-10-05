@@ -27,9 +27,8 @@
 				<td class="center">${activity.endtime}</td>
 				<td class="center">${systemConst.actstatusMap[fn:trim(activity.status)] }</td>
 				<td class="center">
-					<button>
-						
-					</button>
+					<a href="${ctx}/activity/toEditActivity.do?id=${activity.id}">修改</a>&nbsp;&nbsp;
+					<a href="${ctx}/activity/toViewActivity.do?id=${activity.id}">查看</a>
 				</td>
 			</tr>
 		</c:forEach>

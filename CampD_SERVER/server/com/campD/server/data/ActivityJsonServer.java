@@ -65,8 +65,8 @@ public class ActivityJsonServer {
 		
 		logger.info("reqMap="+reqMap);
 		//活动更新
-		String sqlStr = " update activity set category_id=?,act_num=?,act_city=?,act_type=?requirement=?,adress=?,sponsor=?,status=?,show_image=?,title=?,sub_title=?,begin_time=?,end_time=?,publish_time=? where id=? ";
-        Object[] params = new Object[]{reqMap.get("categoryId"), reqMap.get("actNum"), reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("status"),reqMap.get("show_image"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),reqMap.get("publishTime"),reqMap.get("id")};
+		String sqlStr = " update activity set category_id=?,act_num=?,act_city=?,act_type=?,requirement=?,adress=?,sponsor=?,status=?,show_image=?,title=?,sub_title=?,begin_time=?,end_time=?,publish_time=? where id=? ";
+        Object[] params = new Object[]{reqMap.get("categoryId"), reqMap.get("actNum"), reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("status"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),reqMap.get("publishTime"),reqMap.get("id")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         JSONView jsonView = new JSONView();
         if(updateLineCount <= 0){

@@ -72,6 +72,42 @@ public class ActivityController extends BaseController {
 		return "activity/addActivity";
 		
 	}
+	
+	/**
+	 * 跳转到修改活动界面
+	 * @param response
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/toEditActivity.do")
+	public String toEditActivity(HttpServletResponse response, ModelMap mop, HttpServletRequest request) throws Exception{
+		
+		Map reqMap = bindParamToMap(request);
+		Map activityMap = activityService.getActivityById(reqMap);
+		mop.addAttribute("activityMap", activityMap);
+		bindParamToAttrbute(request);
+		
+		return "activity/editActivity";
+		
+	}
+	
+	/**
+	 * 跳转到查看场地信息界面
+	 * 
+	 */
+	@RequestMapping("/toViewActivity.do")
+	public String toViewActivity(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
+		
+		Map reqMap = bindParamToMap(request);
+		Map activityMap = activityService.getActivityById(reqMap);
+		mop.addAttribute("activityMap", activityMap);
+		
+		bindParamToAttrbute(request);
+		
+		return "activity/viewActivity"; 
+	}
+	
 	/**
 	 * 跳转到添加活动时的添加活动类型界面
 	 * @param response
@@ -184,7 +220,7 @@ public class ActivityController extends BaseController {
 	}
 	
 	/**
-	 * 根据活动所属范畴id,活动提交时间，活动状态等信息查询活动
+	 * 跳转到活动列表页面
 	 * @param response
 	 * @param request
 	 * @return
@@ -192,18 +228,6 @@ public class ActivityController extends BaseController {
 	 */
 	@RequestMapping("/toActivityList.do")
 	public String toActivityList(HttpServletResponse response, HttpServletRequest request) throws Exception {
-		
-		/*
-		Map<String, Object> map = bindParamToMap(request);
-		
-		PageInfo pageInfo = getPageInfo(request);
-		
-		Map<?, ?> resultMap = activityService.getActivityList(map,pageInfo);
-		
-		JSONView jsonview=getOperateJSONView(resultMap);
-		
-		request.setAttribute("jsonview", jsonview);
-		 */
 		
 		return "activity/activityList";
 	}
