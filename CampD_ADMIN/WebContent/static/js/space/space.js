@@ -14,11 +14,11 @@ Space.searchSpaceList = function(){
 /**
  * 上传场地展示图片
  */
-Space.uploadSpacePic = function(currentObject){
+Space.uploadSpacePic = function(currentObject, uploadForm){
 	var fakepath = $(currentObject).val();
 	var ext = fakepath.substring(fakepath.lastIndexOf('.')+1);
 	if((Space.imageFormat).indexOf(ext)!=-1){
-		submitForm('addSpaceInfoForm', BASE_PATH + '/upload/uploadCropImg.do', function(res){
+		submitForm(uploadForm, BASE_PATH + '/upload/uploadCropImg.do', function(res){
 			
 			// 保证能连续上传同一张图片
 			$(currentObject).val("");

@@ -164,7 +164,7 @@
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right" id="pic_container">
 						                      	<div class="avatar-title clearfix">
-											    	<input type="file" class="btn-orange-s pull-lef"  onclick="Space.controlPicNum(event,this);" onchange="Space.uploadSpacePic(this);" id="cropImg" name="cropImg">
+											    	<input type="file" class="btn-orange-s pull-lef"  onclick="Space.controlPicNum(event,this);" onchange="Space.uploadSpacePic(this,'addSpaceInfoForm');" id="cropImg" name="cropImg">
 											    </div>
 					                      </span> 
 					                    </div>
