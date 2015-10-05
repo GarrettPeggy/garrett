@@ -18,17 +18,17 @@
     <div class="main" id="activity_main">
     	<!-- 轮播图 -->
         <div class="img-tap-show">
-	        <ul>
-	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="1"/></li>
+	        <ul id="img-tap-show-ul">
+	            <%-- <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="1"/></li>
 	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="2"/></li>
 	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="3"/></li>
-	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="4"/></li>
+	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="4"/></li> --%>
 	        </ul>
-	        <ol>
+	        <ol id="img-tap-show-ol">
+	            <!-- <li></li>
 	            <li></li>
 	            <li></li>
-	            <li></li>
-	            <li></li>
+	            <li></li> -->
 	        </ol>
 	        <div style="clear:both;"></div>
         </div>
