@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.campD.portal.common.JSONView;
 import com.campD.portal.common.SystemConstant;
 import com.campD.portal.controller.BaseController;
+import com.campD.portal.util.ImageUtil;
 import com.campD.portal.util.SystemMessage;
 import com.campD.portal.util.UploadFileUtil;
 
@@ -30,7 +32,9 @@ import com.campD.portal.util.UploadFileUtil;
 @RequestMapping("/upload")
 public class UploadController extends BaseController{
 	
-	public static final long LOGO_IMG_MAX_SIZE = 2*1024*1024;
+	protected Logger logger = Logger.getLogger(getClass());
+	
+	public static final long LOGO_IMG_MAX_SIZE = 100*1024;
 
 	/**
 	 * 发布轻应用-上传截图到临时文件
@@ -46,18 +50,29 @@ public class UploadController extends BaseController{
 			if(!UploadFileUtil.isAvaliableFileFmt(fileName,SystemMessage.getString("fileFormatter"))){
 				return errorCodeSearchView(SystemConstant.ERROR_CODE_FILE_FORMAT);
 			}
+
+			String tmpPath = UploadFileUtil.getTmpRealPath(fileName, getUserInfo(), request);
+			File tempFile = new File(tmpPath);
+			cropImg.transferTo(tempFile);
 			// 判断文件大小是否符合要求
 			long size = cropImg.getSize();
-			if(LOGO_IMG_MAX_SIZE < size){
-				return errorCodeSearchView(SystemConstant.ERROR_CODE_FILE_TOO_BIG);
-			}
+			logger.info("开始大小->"+size);
+			if(LOGO_IMG_MAX_SIZE < size){// 如果图片大于100k
+				//return errorCodeSearchView(SystemConstant.ERROR_CODE_FILE_TOO_BIG);
+				ImageUtil image  = new ImageUtil(tempFile);
+		        image.saveAs(tmpPath);
+				long newSize = tempFile.length();
+				logger.info("压缩大小->"+newSize);
+			} 
 			
-			String tmpPath = UploadFileUtil.getTmpRealPath(fileName, getUserInfo(), request);
-			cropImg.transferTo(new File(tmpPath));
 			Map<String, String> resMap = new HashMap<String, String>();
+			resMap.put("realPath", tmpPath);
 			resMap.put("tmpPath", request.getScheme() + "://" + SystemMessage.getString("rmtResUrl") + UploadFileUtil.getRelativePath(tmpPath, request).replace("\\","/"));
 			JSONView view = getSearchJSONView(resMap);
 			view.setSuccess();
+			
+			logger.info("文件路径->"+resMap);
+			
 			return view;
 		}
 		return errorCodeSearchView(SystemConstant.ERROR_CODE_PARAM_NULL);
