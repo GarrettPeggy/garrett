@@ -90,7 +90,7 @@ public class CommonJsonServer {
 	
 	/**
      * 根据类型和key查找配置信息
-     * @param reqMap:{type:手机号，key：配置项键值}
+     * @param reqMap:{type:配置信息的类型：例如首页轮播图，key：配置项键值}
      * @return
      */
     @SuppressWarnings({"rawtypes" })
