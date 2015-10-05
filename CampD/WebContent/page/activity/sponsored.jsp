@@ -59,7 +59,7 @@
 		            </ul>
 		            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
 		            	<div id="activity_more">
-		            		<button id="activityLoadMore" name="activityLoadMore" onclick="Activity.loadMore()">加载更多</button> 
+		            		<button id="activityLoadMore" name="activityLoadMore" class="btn btn-xs btn-light bigger loadBtn" onclick="Activity.loadMore()">加载更多</button> 
 		            	</div>
 		            </c:if>
         		</div>

@@ -120,6 +120,11 @@ a:hover{text-decoration:none;}
 
 .hide{display:none;}
 
+.loadBtn{
+	width: 100%;
+	background-color: #787878;
+}
+
 .positionR{position:relative;z-index:36;}
 
 .header{

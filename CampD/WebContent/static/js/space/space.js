@@ -218,7 +218,7 @@ Space.search=function(){
 		//alert("curPage###############"+curPage);
 		if(curPage<pageSize){
 			$("#loadMore_li").remove();
-			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' onclick='Space.loadMore()'>加载更多</button></div>");
+			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Space.loadMore()'>加载更多</button></div>");
 		}else{
 			$("#loadMore_li").remove();
 			$("#curPage").val(1);
