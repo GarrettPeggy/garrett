@@ -33,7 +33,7 @@ public class CommonService extends JsonClientService {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map findSysConfigs(Map reqMap) {
 		
-		return postForMap(SystemMessage.getString("commonJsonServer") + "/findSysConfigs", reqMap);
+		return postForObject(SystemMessage.getString("commonJsonServer") + "/findSysConfigs", reqMap, Map.class, false);
 		
     }
 	

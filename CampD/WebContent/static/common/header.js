@@ -1,4 +1,6 @@
-var Header = {};
+var Header = {
+	home_tra_pic:"0"  //首页轮播图类型
+};
 /**
  * 跳转到登录页面
  */
@@ -44,7 +46,38 @@ Header.tapShow=function(){
     });
 };
 
+/**
+ * 加载轮播图
+ */
+Header.loadTapShow=function(){
+	
+	var params={"type":Header.home_tra_pic}; 
+	
+	ajaxSearch(BASE_PATH + "/common/findSysConfigs.do",params,function(json){
+		systemLoaded();
+		//数据查询成功
+		//清空列表项
+		$("#img-tap-show-ul").empty();
+		$("#img-tap-show-ol").empty();
+		var tapShowList=json.sysConfigList;
+		//把数据写到页面上
+		if(null!=tapShowList && tapShowList.length>0){
+			var length=tapShowList.length;
+			for(var i=0;i<length;i++){
+				$("#img-tap-show-ul").append("<li><img src='"+tapShowList[i].value_val+"' width='100%' height='125' alt='"+(i+1)+"'/></li>");
+				$("#img-tap-show-ol").append("<li></li>");
+			}
+			Header.tapShow();
+		}
+		
+	},function(data){
+		systemLoaded();
+		alert("呵呵，错了吧-->"+data.returnMsg);
+	});
+	
+};
+
 $(function(){
 	Header.initHeadIcon();
-	Header.tapShow();
+	Header.loadTapShow();
 });
