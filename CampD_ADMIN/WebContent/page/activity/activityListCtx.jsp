@@ -28,7 +28,13 @@
 				<td class="center">${systemConst.actstatusMap[fn:trim(activity.status)] }</td>
 				<td class="center">
 					<a href="${ctx}/activity/toEditActivity.do?id=${activity.id}">修改</a>&nbsp;&nbsp;
-					<a href="${ctx}/activity/toViewActivity.do?id=${activity.id}">查看</a>
+					<a href="${ctx}/activity/toViewActivity.do?id=${activity.id}">查看</a>&nbsp;&nbsp;
+					<c:if test="${systemConst.COMMON_ACTIVITY eq activity.act_type}">
+						<a href="javascript:Activity.updateActivityType('${activity.id}','${systemConst.HOT_ACTIVITY}')">设为热门</a>
+					</c:if>
+					<c:if test="${systemConst.HOT_ACTIVITY eq activity.act_type}">
+						<a href="javascript:Activity.updateActivityType('${activity.id}','${systemConst.COMMON_ACTIVITY}')">设为普通</a>
+					</c:if>
 				</td>
 			</tr>
 		</c:forEach>

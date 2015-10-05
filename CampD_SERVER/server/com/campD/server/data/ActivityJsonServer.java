@@ -84,6 +84,30 @@ public class ActivityJsonServer {
 	}
 	
 	/**
+	 * 更新活动类型
+	 * @param reqMap:{act_type:活动类型，id：活动id}
+	 * @return
+	 */
+	public Map updateActType(Map reqMap){
+		logger.info("reqMap="+reqMap);
+		String sqlStr = " update activity set act_type=? where 1=1 and id=? ";
+		Object[] params = new Object[]{reqMap.get("actType"),reqMap.get("id")};
+		int updateLineCount = jdbcTemplate.update(sqlStr, params);
+	    JSONView jsonView = new JSONView();
+	    if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("活动类型更新失败，呵呵。。。，此时传入参数为->params="+params.toString());
+			return jsonView;
+        }
+	    jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);
+        jsonView.setReturnMsg("活动类型更新成功");
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("updateLineCount="+updateLineCount);
+        return jsonView;
+	}
+	
+	/**
 	 * 更新活动点击次数
 	 * @param reqMap:{id:活动id}
 	 * @return

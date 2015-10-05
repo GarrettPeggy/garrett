@@ -78,6 +78,22 @@ Activity.updateActivity=function(){
 };
 
 /**
+ * 更新活动类型
+ */
+Activity.updateActivityType=function(id,actType){
+	var params = {
+			"id":id,
+			"actType":actType
+		};
+		// 记住参数提交的格式一定要正确，否则会报error错误。
+		submitSave(BASE_PATH + "/activity/updateActType.do", params, function(data) {
+			Activity.searchActivityList();
+		}, function(data) {
+			Dialog.alertError(data.returnMsg);
+		});
+};
+
+/**
  * 搜索活动列表
  */
 Activity.searchActivityList=function(){

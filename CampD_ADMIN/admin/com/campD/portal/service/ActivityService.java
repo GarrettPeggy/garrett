@@ -26,6 +26,11 @@ public class ActivityService extends JsonClientService {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map updateActType(Map reqMap){
+		return postForMap(SystemMessage.getString("activityJsonServer") + "/updateActType", reqMap);
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map updateClick(Map reqMap){
 		return postForMap(SystemMessage.getString("activityJsonServer") + "/updateClick", reqMap);
 	}

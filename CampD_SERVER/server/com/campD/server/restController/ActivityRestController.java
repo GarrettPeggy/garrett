@@ -56,6 +56,22 @@ public class ActivityRestController extends BaseRestController {
         return returnMap;
 	}
 	
+	/**
+	 * 更新活动类型
+	 * @param request reqMap:{act_type:活动类型，id：活动id}
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	@RequestMapping(value="/updateActType", method=RequestMethod.POST)
+    @ResponseBody
+	public Map updateActType(HttpServletRequest request){
+		
+		Map reqMap = bindParamToMap(request);
+    	Map returnMap = activityJsonServer.updateActType(reqMap);
+    	
+        return returnMap;
+	}
+	
 	
 	/**
 	 * 更新活动点击次数

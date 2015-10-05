@@ -108,6 +108,8 @@ public class ActivityController extends BaseController {
 		return "activity/viewActivity"; 
 	}
 	
+	
+	
 	/**
 	 * 跳转到添加活动时的添加活动类型界面
 	 * @param response
@@ -180,6 +182,24 @@ public class ActivityController extends BaseController {
 		 
 		return getOperateJSONView(resultMap);
 	}
+	
+	/**
+	 * 更新活动类型
+	 * @param response
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/updateActType.do")
+    @ResponseBody
+	public JSONView updateActType(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		
+		Map<String, Object> map = bindParamToMap(request);
+		Map<?, ?> resultMap = activityService.updateActType(map);
+		 
+		return getOperateJSONView(resultMap);
+	}
+	
 	
 	/**
 	 * 更新活动点击次数
