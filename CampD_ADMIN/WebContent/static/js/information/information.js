@@ -80,12 +80,19 @@ Information.updateHomePic = function(key){
  * 更新首页轮播图至OSS
  */
 Information.updateHomePicToOSS = function(key){
-	submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/upload/uploadImageToOSS.do', function(res){
-		// 如果上传成功则去提交表单
+	
+	var realPath = $("#realPath_"+key).val();
+	if(isEmpty(realPath)){
+		// 如果没有更新上传，则直接提交表单
 		Information.updateHomePic(key);
-	},function(res){
-		Dialog.alertErrorCodeMsg(res.returnCode);
-	});
+	} else{// 否则先上传到oss，然后再提交表单
+		submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/upload/uploadImageToOSS.do', function(res){
+			// 如果上传成功则去提交表单
+			Information.updateHomePic(key);
+		},function(res){
+			Dialog.alertErrorCodeMsg(res.returnCode);
+		});
+	}
 };
 
 /**
@@ -103,12 +110,19 @@ Information.addHomePic = function(key){
  * 添加首页轮播图至OSS
  */
 Information.addHomePicToOSS = function(key){
-	submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/upload/uploadImageToOSS.do', function(res){
-		// 如果上传成功则去提交表单
+	
+	var realPath = $("#realPath_"+key).val();
+	if(isEmpty(realPath)){
+		// 如果没有更新上传，则直接提交表单
 		Information.addHomePic(key);
-	},function(res){
-		Dialog.alertErrorCodeMsg(res.returnCode);
-	});
+	} else{// 否则先上传到oss，然后再提交表单
+		submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/upload/uploadImageToOSS.do', function(res){
+			// 如果上传成功则去提交表单
+			Information.addHomePic(key);
+		},function(res){
+			Dialog.alertErrorCodeMsg(res.returnCode);
+		});
+	}
 };
 
 /**

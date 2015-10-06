@@ -61,7 +61,7 @@
 								        <input type="hidden" name="key" id="value_1" value="1"><!-- 轮播图顺序，0表示首页轮播图第一张 -->
 								        <input type="hidden" name="value" id="imageHiddenPath_1" value="${rmtResPath}/static/images/login/logo.png">
 								        <input type="hidden" name="oldUrl" id="prin_url_1" value=""><!-- 轮播图的原始路径 -->
-								        <input type="hidden" name="realPath" id="realPath_0" value=""><!-- 新文件的物理路径-->
+								        <input type="hidden" name="realPath" id="realPath_1" value=""><!-- 新文件的物理路径-->
 										<div class="avatar-title clearfix">
 									    	<input type="file" class="btn-orange-s pull-lef" onchange="Information.uploadPic(this,'1');" id="cropImg" name="cropImg">
 									    </div>
@@ -84,7 +84,7 @@
 								        <input type="hidden" name="key" id="value_2" value="2"><!-- 轮播图顺序，0表示首页轮播图第一张 -->
 								        <input type="hidden" name="value" id="imageHiddenPath_2" value="${rmtResPath}/static/images/login/logo.png">
 								        <input type="hidden" name="oldUrl" id="prin_url_2" value=""><!-- 轮播图的原始路径 -->
-								        <input type="hidden" name="realPath" id="realPath_0" value=""><!-- 新文件的物理路径-->
+								        <input type="hidden" name="realPath" id="realPath_2" value=""><!-- 新文件的物理路径-->
 										<div class="avatar-title clearfix">
 									    	<input type="file" class="btn-orange-s pull-lef" onchange="Information.uploadPic(this,'2');" id="cropImg" name="cropImg">
 									    </div>
