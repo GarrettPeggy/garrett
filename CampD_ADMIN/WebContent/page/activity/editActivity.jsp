@@ -34,6 +34,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<form id="editActivityInfoForm">
+								<input type="hidden" id="status" name="status" value="1"/><!--  0表示未发布 1表示已发布 -->
 								<input type="hidden" id="activityId" name="id" value="${id }"/><!-- 活动id -->
 								<input type="hidden" id="actType" name="actType" value="${activityMap.activityInfo.act_type }"/><!-- 活动类型，必传，不需修改，就隐藏 -->
 								<input type="hidden" id="realPath" name="realPath" />

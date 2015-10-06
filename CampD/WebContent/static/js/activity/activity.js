@@ -24,7 +24,8 @@ Activity.list=function(){
 		"actType":1,
 	    "curPage":1,
 	    "pageLimit":3,
-	    "isUserAuth":false
+	    "isUserAuth":false,
+	    "status":1//活动状态  0表示未发布 1表示已发布
     };
 	
 	ajaxSearch(BASE_PATH + "/activity/getActivityList.do",params,function(json){
@@ -54,7 +55,7 @@ Activity.list=function(){
  * 活动分类页面
  */
 Activity.classify=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do?curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do?status=1&curPage=1&pageLimit=3&isUserAuth=false";
 };
 
 /**
@@ -87,7 +88,7 @@ Activity.desc=function(){
  * 各种活动再分类显示
  */
 Activity.category=function(categoryValue){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?categoryId="+categoryValue+"&curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?status=1&categoryId="+categoryValue+"&curPage=1&pageLimit=3&isUserAuth=false";
 };
 
 /**
@@ -95,7 +96,7 @@ Activity.category=function(categoryValue){
  */
 
 Activity.populer=function(actType){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByActType.do?actType="+actType+"&curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByActType.do?status=1&actType="+actType+"&curPage=1&pageLimit=3&isUserAuth=false";
 };
 
 /**
@@ -128,7 +129,8 @@ Activity.search=function(url,isUserAuth){
 		'actType':$("#actType").length==0 ? '' : $("#actType").val(),
 		'categoryId':$("#categoryId").length==0 ? '' : $("#categoryId").val(),
 		'creatorId':$("#creatorId").length==0 ? '' : $("#creatorId").val(),
-		'userId':$("#userId").length==0 ? '' : $("#userId").val()
+		'userId':$("#userId").length==0 ? '' : $("#userId").val(),
+		'status':isUserAuth?'':1
 	};
 
 	ajaxSearch(BASE_PATH + url,params,function(json){
@@ -210,7 +212,8 @@ Activity.actSub=function(){
 		"actNum":actNum,//活动人数
 		"actCity":actCity,//活动城市
 		"requirement":requirement, //活动需求
-		"actType":0//默认普通活动
+		"actType":0,//默认普通活动
+		"status":0//活动状态  0表示未发布
 	};
 	// 记住参数提交的格式一定要正确，否则会报error错误。
 	submitSave(BASE_PATH + "/activity/add.do", params, function(data) {

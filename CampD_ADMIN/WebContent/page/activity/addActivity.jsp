@@ -38,6 +38,7 @@
 								<div class="page-header"> <h1> 发布活动信息 </h1> </div>
 								<flagToken:token tokenName="addActivityInfoForm"/><!-- 防止表单重复提交 -->
 								<input type="hidden" id="realPath" name="realPath"/>
+								<input type="hidden" id="status" name="status" value="1"/><!--  0表示未发布 1表示已发布 -->
 								<div class="row">
 									<div class="col-xs-12">
 										<div class="form-horizontal">

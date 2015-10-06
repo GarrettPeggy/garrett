@@ -38,7 +38,7 @@ public class ActivityJsonServer {
 		
 		// 添加活动需求到数据库
 		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),new Date(),new Date(),Integer.parseInt(SystemConstant.ACTIVITY_NOT_PUBLISH)};
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),new Date(),new Date(),reqMap.get("status")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
