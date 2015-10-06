@@ -76,7 +76,7 @@ public class OSSUtil {
 	 * @param pathList
 	 * @return
 	 */
-	public JSONView uploadFile(List<String> pathList){
+	public static JSONView uploadFile(List<String> pathList){
 		JSONView jsonView = new JSONView();
 		try {
 			if(null != pathList && pathList.size() > 0){
