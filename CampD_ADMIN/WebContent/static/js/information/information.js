@@ -103,6 +103,7 @@ Information.uploadPic = function(currentObject, key){
 				$("#prin_url_"+key).val($("#imageHiddenPath_"+key).val());
 				$("#imageHiddenPath_"+key).val(res.tmpPath);
 				$("#imagePath_"+key).attr("src",res.tmpPath);
+				$("#realPath_"+key).val(res.realPath);
 			}
 		},function(res){
 			Dialog.alertErrorCodeMsg(res.returnCode);

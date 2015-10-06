@@ -4,7 +4,9 @@
 package com.campD.portal.controller.common;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ import com.campD.portal.common.JSONView;
 import com.campD.portal.common.SystemConstant;
 import com.campD.portal.controller.BaseController;
 import com.campD.portal.util.ImageUtil;
+import com.campD.portal.util.OSSUtil;
 import com.campD.portal.util.SystemMessage;
 import com.campD.portal.util.UploadFileUtil;
 
@@ -37,11 +40,11 @@ public class UploadController extends BaseController{
 	public static final long LOGO_IMG_MAX_SIZE = 100*1024;
 
 	/**
-	 * 发布轻应用-上传截图到临时文件
+	 * 图片上传公共方法
 	 */
 	@RequestMapping("/uploadCropImg.do")
 	@ResponseBody
-	public JSONView uploadCropImg(MultipartFile cropImg, HttpServletRequest request, ModelMap model) throws Exception{
+	public JSONView uploadImages(MultipartFile cropImg, HttpServletRequest request, ModelMap model) throws Exception{
 		
 		if(cropImg!=null){
 			
@@ -77,5 +80,45 @@ public class UploadController extends BaseController{
 			return view;
 		}
 		return errorCodeSearchView(SystemConstant.ERROR_CODE_PARAM_NULL);
+	}
+	
+	/**
+	 * 图片上传至OSS
+	 */
+	@RequestMapping("/uploadImageToOSS.do")
+	@ResponseBody
+	public JSONView uploadImageToOSS(HttpServletRequest request, ModelMap model) throws Exception{
+		
+		JSONView view = new JSONView();
+		Map<String, Object> resMap = bindParamToMap(request);
+		logger.info("文件参数->"+resMap);
+		
+		List<String> uploadKey = Arrays.asList(((String)resMap.get("realPath")).split(","));
+		view = OSSUtil.uploadFile(uploadKey);
+		
+		// 此处上传文件至OSS
+		logger.info("文件路径->"+view);
+		
+		return view;
+	}
+	
+	/**
+	 * 清楚oss中的文件
+	 */
+	@RequestMapping("/deleteImageToOSS.do")
+	@ResponseBody
+	public JSONView deleteImageToOSS(HttpServletRequest request, ModelMap model) throws Exception{
+		
+		JSONView view = new JSONView();
+		Map<String, Object> resMap = bindParamToMap(request);
+		logger.info("文件参数->"+resMap);
+		
+		List<String> uploadKey = Arrays.asList(((String)resMap.get("realPath")).split(","));
+		view = OSSUtil.deleteFile(uploadKey);
+		
+		// 此处删除文件至OSS
+		logger.info("文件路径->"+view);
+		
+		return view;
 	}
 }
