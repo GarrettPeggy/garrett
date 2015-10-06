@@ -161,6 +161,8 @@
 					                  <div class="form-group">
 					                    <label for="show_images" class="col-xs-12 col-sm-3 control-label no-padding-right">场地照片</label>
 					                    <input type="hidden" id="show_images" name="showImages" value="">
+					                    <input type="hidden" name="realPath" id="realPath" value=""><!-- 新文件的物理路径-->
+					                    <input type="hidden" name="oldPath" id="oldPath" value=""><!-- 新文件的物理路径-->
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right" id="pic_container">
 						                      	<div class="avatar-title clearfix">
@@ -171,7 +173,7 @@
 												    	<div class="col-sm-3 clearfix" style="margin-top: 10px;margin-bottom: 10px;">
 												    		<div class="avatar-x">
 												    			<div id="addPic">
-												    				<img class="space-img" src="${image_src}" width="200" height="200">
+												    				<img class="space-img" src="${sysConfig.ossResUrl}${image_src}" width="200" height="200">
 												    			</div>
 												    			<div class="avatar-bar"></div>
 												    		</div>
@@ -186,7 +188,7 @@
 					                  
 					                  <div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<a href="javascript:Space.updateSpace();" class="btn btn-primary btn-lg active" role="button">保存</a>
+											<a href="javascript:Space.updateSpacePicToOSS();" class="btn btn-primary btn-lg active" role="button">保存</a>
 											<a href="${ctx}/space/toList.do" class="btn btn-default btn-lg active" role="button">取消</a>
 										</div>
 									   </div>

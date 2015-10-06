@@ -165,7 +165,7 @@
 												    	<div class="col-sm-3 clearfix" style="margin-top: 10px;margin-bottom: 10px;">
 												    		<div class="avatar-x">
 												    			<div id="addPic">
-												    				<img class="space-img" src="${image_src}" width="200" height="200">
+												    				<img class="space-img" src="${sysConfig.ossResUrl}${image_src}" width="200" height="200">
 												    			</div>
 												    			<div class="avatar-bar"></div>
 												    		</div>

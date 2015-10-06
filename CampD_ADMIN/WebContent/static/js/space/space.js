@@ -25,6 +25,12 @@ Space.uploadSpacePic = function(currentObject, uploadForm){
 			
 			if(res && res.tmpPath){
 				$("#pic_container").append('<div class="col-sm-3 clearfix" style="margin-top: 10px;margin-bottom: 10px;"><div class="avatar-x"><div id="addPic"><img class="space-img" src="'+res.tmpPath+'" width="200" height="200"></div><div class="avatar-bar"></div></div><button style="margin-left: 157px;margin-top: 10px;" class="btn btn-xs btn-success" id="button_0" onclick="Space.deleteCurPic(this);" type="button"><span class="bigger-110">删除</span></button></div>');
+				var realPath = $("#realPath").val();
+				if(realPath.length==0){
+					$("#realPath").val(res.realPath);
+				} else{
+					$("#realPath").val(realPath+","+res.realPath);
+				}
 			}
 		},function(res){
 			Dialog.alertErrorCodeMsg(res.returnCode);
@@ -35,10 +41,21 @@ Space.uploadSpacePic = function(currentObject, uploadForm){
 };
 
 /**
- * 删掉当前图片
+ * 删掉当前图片，并且更新页面oldPath属性
  */
 Space.deleteCurPic = function(currentObject){
-	$(currentObject).parent().remove();
+	var $parent = $(currentObject).parent();
+	var $img = $parent.find('.space-img');
+	var imgSrc = $img.attr("src");
+	if(imgSrc.indexOf(OSS_RES_URL)>-1){
+		var oldPath = $("#oldPath").val();
+		if(oldPath.length==0){
+			$("#oldPath").val(imgSrc.substring(imgSrc.lastIndexOf('images/')));
+		} else{
+			$("#oldPath").val(oldPath+","+imgSrc.substring(imgSrc.lastIndexOf('images/')));
+		}
+	}
+	$parent.remove();
 };
 
 /**
@@ -52,6 +69,28 @@ Space.controlPicNum = function(event,currentObject){
 };
 
 /**
+ * 添加场地图片至OSS
+ */
+Space.addSpacePicToOSS = function(){
+	
+	var realPath = $("#realPath").val();
+	if(isEmpty(realPath)){
+		// 如果没有更新上传，则直接提交表单
+		Space.addSpace();
+	} else if(Validator.validForm("addSpaceInfoForm")){// 否则先上传到oss，然后再提交表单
+		var params = {
+			"realPath":realPath
+		};
+		submitSave(BASE_PATH + '/upload/uploadImageToOSS.do', params, function(res){
+			// 如果上传成功则去提交表单
+			Space.addSpace();
+		},function(res){
+			Dialog.alertErrorCodeMsg(res.returnCode);
+		});
+	}
+};
+
+/**
  * 添加场地信息
  */
 Space.addSpace = function(){
@@ -59,14 +98,34 @@ Space.addSpace = function(){
 		
 		Space.getSpaceImages();
 		
-		submitForm("addSpaceInfoForm",BASE_PATH + '/space/add.do',
-			function(data){
+		submitForm("addSpaceInfoForm",BASE_PATH + '/space/add.do', function(data){
 				window.location.href = BASE_PATH + "/space/toList.do";
-			},
-			function(data){
+			}, function(data){
 				Dialog.alertError(data.returnMsg);
 			}
 		);
+	}
+};
+
+/**
+ * 更新场地图片至OSS
+ */
+Space.updateSpacePicToOSS = function(){
+	
+	var realPath = $("#realPath").val();
+	if(isEmpty(realPath)){
+		// 如果没有更新上传，则直接提交表单
+		Space.updateSpace();
+	} else if(Validator.validForm("updateSpaceInfoForm")){// 否则先上传到oss，然后再提交表单
+		var params = {
+			"realPath":realPath
+		};
+		submitSave(BASE_PATH + '/upload/uploadImageToOSS.do', params, function(res){
+			// 如果上传成功则去提交表单
+			Space.updateSpace();
+		},function(res){
+			Dialog.alertErrorCodeMsg(res.returnCode);
+		});
 	}
 };
 
@@ -78,11 +137,19 @@ Space.updateSpace = function(){
 		
 		Space.getSpaceImages();
 		
-		submitForm("updateSpaceInfoForm",BASE_PATH + '/space/update.do',
-			function(data){
-				window.location.href = BASE_PATH + "/space/toList.do";
-			},
-			function(data){
+		submitForm("updateSpaceInfoForm",BASE_PATH + '/space/update.do', function(data){
+				var oldPath = $("#oldPath").val();
+				if(isEmpty(oldPath)){
+					window.location.href = BASE_PATH + "/space/toList.do";
+				}else{
+					var params = { "oldPath": oldPath };
+					submitSave(BASE_PATH + "/upload/deleteImageToOSS.do", params, function(data) { 
+						window.location.href = BASE_PATH + "/space/toList.do";
+					}, function(data) {
+						Dialog.alertError(data.returnMsg);
+					});
+				}
+			}, function(data){
 				Dialog.alertError(data.returnMsg);
 			}
 		);
@@ -97,10 +164,11 @@ Space.getSpaceImages = function(){
 	var $spaceImg = null, show_images = "";
 	for (var i = 0; i < $space_imgs.length; i++) {
 		$spaceImg = $($space_imgs[i]);
+		var imgSrc = $spaceImg.attr("src");
 		if(i==0){
-			show_images += $spaceImg.attr("src");
+			show_images += imgSrc.substring(imgSrc.lastIndexOf('images/'));
 		} else {
-			show_images += "," + $spaceImg.attr("src");
+			show_images += "," + imgSrc.substring(imgSrc.lastIndexOf('images/'));
 		}
 	}
 	$("#show_images").val(show_images);

@@ -161,6 +161,8 @@
 					                  <div class="form-group">
 					                    <label for="show_images" class="col-xs-12 col-sm-3 control-label no-padding-right">场地照片</label>
 					                    <input type="hidden" id="show_images" name="showImages" value="">
+					                    <input type="hidden" name="realPath" id="realPath" value=""><!-- 新文件的物理路径-->
+					                    <input type="hidden" name="oldPath" id="oldPath" value=""><!-- 新文件的物理路径-->
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right" id="pic_container">
 						                      	<div class="avatar-title clearfix">
@@ -173,7 +175,7 @@
 					                  
 					                  <div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-primary" onclick="Space.addSpace();" type="button">
+											<button class="btn btn-primary" onclick="Space.addSpacePicToOSS();" type="button">
 												<i class="ace-icon fa fa-check bigger-110"></i>
 												Submit
 											</button>
