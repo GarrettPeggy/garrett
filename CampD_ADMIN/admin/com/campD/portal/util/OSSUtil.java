@@ -148,10 +148,15 @@ public class OSSUtil {
 					deleteFile(pathList.get(i));
 					System.out.println("第 "+i+" 个文件被删除");
 				}
+				jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);
+				jsonView.setReturnMsg("文件被删除成功");
+				return jsonView;
+			}else{
+				jsonView.setReturnCode(JSONView.RETURN_FAIL_CODE);
+				jsonView.setReturnMsg("文件列表为空");
+				return jsonView;
 			}
-	        jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);
-			jsonView.setReturnMsg("文件被删除成功");
-			return jsonView;
+	        
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
