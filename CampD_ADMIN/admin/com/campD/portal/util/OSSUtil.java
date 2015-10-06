@@ -40,10 +40,13 @@ public class OSSUtil {
 	public static JSONView uploadFile(String path){
 		JSONView jsonView = new JSONView();
 		File file=new File(path);
+		//F:/wang/hua/images/20150913/1.jpg
 		
+		int index = path.lastIndexOf("images");
 		
+		String key = path.substring(index);
 		
-		String key = "images/" + file.getName();//整个文件对象,在oss上的路径加上文件名
+		//String key = "images/" + file.getName();//整个文件对象,在oss上的路径加上文件名
 		System.out.println("文件上传的key====="+key);
 		ObjectMetadata objectMeta = new ObjectMetadata();
 		objectMeta.setContentLength(file.length());
