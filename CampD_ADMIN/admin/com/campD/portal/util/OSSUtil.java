@@ -44,7 +44,7 @@ public class OSSUtil {
 		
 		int index = path.lastIndexOf("images");
 		
-		String key = path.substring(index).replaceAll("\\", "/");
+		String key = path.substring(index).replace("\\", "/");
 		
 		//String key = "images/" + file.getName();//整个文件对象,在oss上的路径加上文件名
 		System.out.println("文件上传的key====="+key);

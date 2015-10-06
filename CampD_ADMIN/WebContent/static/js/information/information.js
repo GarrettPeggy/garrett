@@ -82,7 +82,7 @@ Information.updateHomePic = function(key){
 Information.updateHomePicToOSS = function(key){
 	submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/upload/uploadImageToOSS.do', function(res){
 		// 如果上传成功则去提交表单
-		Information.updateHomePic();
+		Information.updateHomePic(key);
 	},function(res){
 		Dialog.alertErrorCodeMsg(res.returnCode);
 	});
@@ -105,7 +105,7 @@ Information.addHomePic = function(key){
 Information.addHomePicToOSS = function(key){
 	submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/upload/uploadImageToOSS.do', function(res){
 		// 如果上传成功则去提交表单
-		Information.addHomePic();
+		Information.addHomePic(key);
 	},function(res){
 		Dialog.alertErrorCodeMsg(res.returnCode);
 	});
