@@ -164,7 +164,7 @@
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right" id="pic_container">
 						                      	<div class="avatar-title clearfix">
-											    	<input type="file" class="btn-orange-s pull-lef"  onclick="Space.controlPicNum(event,this);" onchange="Space.uploadSpacePic(this);" id="cropImg" name="cropImg">
+											    	<input type="file" class="btn-orange-s pull-lef"  onclick="Space.controlPicNum(event,this);" onchange="Space.uploadSpacePic(this,'updateSpaceInfoForm');" id="cropImg" name="cropImg">
 											    </div>
 											    <c:if test="${!empty spaceMap.spaceInfo.show_images}">
 												    <c:forEach var="image_src" items="${fn:split(spaceMap.spaceInfo.show_images, ',')}">
