@@ -41,7 +41,7 @@
 			            	<li class="clearfix">
 			            		<div class="data-li-left">
 			                		<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
-			                			<img src="${rmtResPath}/static/images/list_show.png" width="91" height="91"/>
+			                			<img src="${sysConfig.ossResUrl}${activity.show_image }" width="91" height="91"/>
 			                		</a>
 			                	</div>	
 			                	<div class="data-li-right">

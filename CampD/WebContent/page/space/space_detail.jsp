@@ -25,7 +25,7 @@
     <div class="main">
 	    <!-- 活动概括与地点 -->
     	<div class="ac-detail-title retina-1px-border-bottom">
-	        <img src="${rmtResPath}/static/images/example_img_big.png" width="100%" height="116"/>
+	        <img src="${sysConfig.ossResUrl}${fn:split(jsonview.spaceInfo.show_images, ',')[0]}" width="100%" height="116"/>
             <div class="adt-desc">
                 <div class="fontSize17">${jsonview.spaceInfo.name }</div>
                 <div class="fontSize14 color94 clearfix">

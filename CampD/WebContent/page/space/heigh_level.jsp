@@ -38,7 +38,7 @@
 		        			<li class="clearfix">
 			                	<div class="data-li-left">
 			                    	<a href="${ctx }/space/getSpaceInfoById.do?id=${space.id }">
-			                    		<img src="${rmtResPath}/static/images/ground_ex.png" width="91" height="63"/>
+			                    		<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="91" height="63"/>
 			                    	</a>
 			                    </div>	
 			                    <div class="data-li-right">

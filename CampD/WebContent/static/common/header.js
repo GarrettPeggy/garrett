@@ -64,7 +64,7 @@ Header.loadTapShow=function(){
 		if(null!=tapShowList && tapShowList.length>0){
 			var length=tapShowList.length;
 			for(var i=0;i<length;i++){
-				$("#img-tap-show-ul").append("<li><img src='"+tapShowList[i].value_val+"' width='100%' height='125' alt='"+(i+1)+"'/></li>");
+				$("#img-tap-show-ul").append("<li><img src='"+OSS_RES_URL+tapShowList[i].value_val+"' width='100%' height='125' alt='"+(i+1)+"'/></li>");
 				$("#img-tap-show-ol").append("<li></li>");
 			}
 			Header.tapShow();

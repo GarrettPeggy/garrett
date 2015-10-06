@@ -42,7 +42,7 @@
 		        	<ul class="data-list">
 		        		<c:forEach items="${jsonview.activityList }" var="activity">
 			            	<li class="pd5">
-			                	<img src="${rmtResPath}/static/images/example_img_big.png" width="100%" height="116"/>
+			                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/>
 			                    <div class="classify-li-title">${activity.title }</div>
 			                    <div class="classify-li-desc color94 fontSize14">
 			                    	<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">${activity.requirement }</a>
