@@ -669,6 +669,31 @@ DateUtil.initDatePicker = function(){
 	});
 };
 
+/**
+ * 初始化时间选择 不显示默认时间
+ * 开始时间为
+ *
+ */
+DateUtil.initDateChoose = function(){
+	
+	var currentDay = new Date();
+	var startDate = DateUtil.getFirstDate();
+	
+	$('.input-daterange-startDate').datetimepicker({
+		format: 'YYYY-MM-DD',// 如果需要添加时间，请使用：YYYY-MM-DD HH:MM:SS
+		use24hours: true, // 是否启用24小时制
+        useSeconds: true // 是否启用秒选择
+       // maxDate: currentDay // 最大可选择时间
+	});
+	
+	$('.input-daterange-endDate').datetimepicker({
+		format: 'YYYY-MM-DD',// 如果需要添加时间，请使用：YYYY-MM-DD HH:MM:SS
+		use24hours: true, // 是否启用24小时制
+        useSeconds: true // 是否启用秒选择
+       // maxDate: currentDay // 最大可选择时间
+	});
+};
+
 
 /**
  * 处理分页方法

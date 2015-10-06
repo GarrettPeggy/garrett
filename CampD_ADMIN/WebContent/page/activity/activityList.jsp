@@ -193,7 +193,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		DateUtil.initDatePicker();
+		DateUtil.initDateChoose();
 		Activity.searchActivityList();
 	});
 </script>

@@ -36,6 +36,8 @@
 							<form id="editActivityInfoForm">
 								<input type="hidden" id="activityId" name="id" value="${id }"/><!-- 活动id -->
 								<input type="hidden" id="actType" name="actType" value="${activityMap.activityInfo.act_type }"/><!-- 活动类型，必传，不需修改，就隐藏 -->
+								<input type="hidden" id="realPath" name="realPath" />
+								<input type="hidden" id="oldPath" name="oldPath" value="${activityMap.activityInfo.show_image }"/><!-- 图片的原来的路径 -->
 								<div class="page-header"> <h1> 修改活动信息 </h1> </div>
 								<div class="row">
 									<div class="col-xs-12">
@@ -164,7 +166,7 @@
 											    		<div class="col-sm-3 clearfix" id="pic_div" style="margin-top: 10px;margin-bottom: 10px;">
 												    		<div class="avatar-x">
 												    			<div id="addPic">
-												    				<img class="space-img" src="${activityMap.activityInfo.show_image}" width="200" height="200" />
+												    				<img class="space-img" src="${sysConfig.ossResUrl}${activityMap.activityInfo.show_image}" width="200" height="200" />
 												    			</div>
 												    			<div class="avatar-bar"></div>
 												    		</div>
@@ -184,7 +186,7 @@
 											
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-3 col-md-9">
-													<button class="btn btn-primary" type="button" onclick="Activity.updateActivity();">
+													<button class="btn btn-primary" type="button" onclick="Activity.uploadPicToOSS();">
 														<i class="ace-icon fa fa-check bigger-110"></i>
 														Submit
 													</button>

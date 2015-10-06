@@ -24,8 +24,11 @@ Activity.uploadActivityPic = function(currentObject){
 		submitForm(form, BASE_PATH + '/upload/uploadCropImg.do', function(res){
 			// 保证能连续上传同一张图片
 			$(currentObject).val("");
+			$("#realPath").val(res.realPath);//把物理路径放到页面上
 			var pic_src=res.tmpPath;
-			$("#showImage").val(pic_src);
+			var index=res.realPath.lastIndexOf("images");
+			var imagePath=res.realPath.substring(index).replace(/\\/g,"/");
+			$("#showImage").val(imagePath);
 			if(res && pic_src){
 				if($("#pic_div").length>0){
 					$("#pic_div").find(".space-img").attr("src",pic_src);
@@ -42,12 +45,28 @@ Activity.uploadActivityPic = function(currentObject){
 };
 
 /**
+ * 上传文件到Oss
+ */
+Activity.uploadPicToOSS=function(){
+	var flag = $("#flag").val();
+	var params = {"realPath":$("#realPath").val()};
+	submitSave(BASE_PATH + "/upload/uploadImageToOSS.do", params, function(data) {
+		if(flag==0){
+			Activity.saveActivity();//保存活动
+		}else if(flag==1){
+			Activity.updateActivity();//更新活动
+		}
+	}, function(data) {
+		Dialog.alertError(data.returnMsg);
+	});
+};
+
+/**
  * 保存活动信息
  */
 Activity.saveActivity=function(){
 	
 	if(Validator.validForm("addActivityInfoForm")){
-		
 		submitForm("addActivityInfoForm",BASE_PATH + '/activity/add.do',function(data){
 				window.location.href = BASE_PATH + "/activity/toActivityList.do";
 			},function(data){
@@ -55,6 +74,7 @@ Activity.saveActivity=function(){
 			}
 		);
 	}
+	
 };
 
 /**
@@ -63,18 +83,32 @@ Activity.saveActivity=function(){
 Activity.updateActivity=function(){
 	
 	if(Validator.validForm("editActivityInfoForm")){
-			
-		//Space.getSpaceImages();
-		
-		submitForm("editActivityInfoForm",BASE_PATH + '/activity/update.do',
-			function(data){
-				window.location.href = BASE_PATH + "/activity/toActivityList.do";
+		submitForm("editActivityInfoForm",BASE_PATH + '/activity/update.do',function(data){
+				Activity.deletePicFromOSS();//活动修改成功后就删除图片
 			},
 			function(data){
 				Dialog.alertError(data.returnMsg);
 			}
 		);
 	}
+};
+
+/**
+ * 删除OSS上面的图片
+ */
+Activity.deletePicFromOSS=function(){
+	var oldPath=$("#oldPath").val();
+	var params = {"oldPath":oldPath};
+	if(null != oldPath && ""!=oldPath){
+		submitSave(BASE_PATH + "/upload/deleteImageToOSS.do", params, function(data) {
+			window.location.href = BASE_PATH + "/activity/toActivityList.do";//图片删除成功后就跳转页面
+		}, function(data) {
+			Dialog.alertError(data.returnMsg);
+		});
+	}else{
+		window.location.href = BASE_PATH + "/activity/toActivityList.do";//没有路径，就不执行删除方法，直接跳转页面
+	}
+	
 };
 
 /**

@@ -37,6 +37,7 @@
 							<form id="addActivityInfoForm">
 								<div class="page-header"> <h1> 发布活动信息 </h1> </div>
 								<flagToken:token tokenName="addActivityInfoForm"/><!-- 防止表单重复提交 -->
+								<input type="hidden" id="realPath" name="realPath"/>
 								<div class="row">
 									<div class="col-xs-12">
 										<div class="form-horizontal">
@@ -171,19 +172,14 @@
 							                
 							                <div class="form-group">
 												<label for="sponsor" class="col-xs-12 col-sm-3 control-label no-padding-right">活动需求</label>
-												<div class="col-xs-12 col-sm-3">
-													<span class="block input-icon input-icon-right">
-									                     <textarea rows="4" cols="50" name="requirement" id="requirement" class="width-100" notnull="true" style="resize:none;" maxlength="300">
-									                     </textarea> 
-									                     <i class="ace-icon fa fa-leaf"></i> 
-								                    </span> 
+												<div class="">
+								                     <textarea rows="4" cols="300" name="requirement" id="requirement" style="width:500px; resize:none;" maxlength="300"></textarea> 
 												</div>
-												<div class="help-block col-xs-12 col-sm-reset inline"> </div>
 											</div>
 							                
 							                <div class="clearfix form-actions">
 												<div class="col-md-offset-3 col-md-9">
-													<button class="btn btn-primary" type="button" onclick="Activity.saveActivity();">
+													<button class="btn btn-primary" type="button" onclick="Activity.uploadPicToOSS();">
 														<i class="ace-icon fa fa-check bigger-110"></i>
 														Submit
 													</button>
@@ -209,7 +205,7 @@
 </body>
 <script type="text/javascript">
 	$(function(){
-		DateUtil.initDatePicker();
+		DateUtil.initDateChoose();
 	});
 </script>
 </html>
