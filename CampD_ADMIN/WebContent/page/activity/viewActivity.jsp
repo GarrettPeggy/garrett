@@ -142,7 +142,7 @@
 					                      		  	<div class="col-sm-3 clearfix" id="pic_div" style="margin-top: 10px;margin-bottom: 10px;">
 											    		<div class="avatar-x">
 											    			<div id="addPic">
-											    				<img class="space-img" src="${activityMap.activityInfo.show_image}" width="200" height="200" />
+											    				<img class="space-img" src="${sysConfig.ossResUrl}${activityMap.activityInfo.show_image}" width="200" height="200" />
 											    			</div>
 											    			<div class="avatar-bar"></div>
 											    		</div>
