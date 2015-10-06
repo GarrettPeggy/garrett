@@ -27,19 +27,20 @@ Information.initHomePic = function(){
 			var value = sysConfig.value_val;
 			
 			$("#imageHiddenPath_"+key).val(value);
-			$("#imagePath_"+key).attr("src", value);
+			$("#prin_url_"+key).val(value);
+			$("#imagePath_"+key).attr("src", OSS_RES_URL + value);
 			
 			switch (key) {
 				case Information.sys_conf_homePic_0:{
-					$("#button_"+key).attr("onclick",'Information.updateHomePic("0");');
+					$("#button_"+key).attr("onclick",'Information.updateHomePicToOSS("0");');
 					break;
 				}
 				case Information.sys_conf_homePic_1:{
-					$("#button_"+key).attr("onclick",'Information.updateHomePic("1");');
+					$("#button_"+key).attr("onclick",'Information.updateHomePicToOSS("1");');
 					break;
 				}	
 				case Information.sys_conf_homePic_2:{
-					$("#button_"+key).attr("onclick",'Information.updateHomePic("2");');
+					$("#button_"+key).attr("onclick",'Information.updateHomePicToOSS("2");');
 					break;
 				}	
 				default:
@@ -60,10 +61,11 @@ Information.updateHomePic = function(key){
 		
 		if(res && res.returnCode == 200){//将原图片路径存入到无用图片表中
 			var url = $("#prin_url_"+key).val();
+			var newUrl = $("#imageHiddenPath_"+key).val();
 			
-			if(url && url != ""){
-				var params = { "url": url };
-				submitSave(BASE_PATH + "/common/addNoUsePic.do", params, function(data) { }, function(data) {
+			if(url != newUrl){
+				var params = { "oldPath": url };
+				submitSave(BASE_PATH + "/upload/deleteImageToOSS.do", params, function(data) { }, function(data) {
 					Dialog.alertError(data.returnMsg);
 				});
 			}
@@ -75,11 +77,35 @@ Information.updateHomePic = function(key){
 };
 
 /**
+ * 更新首页轮播图至OSS
+ */
+Information.updateHomePicToOSS = function(key){
+	submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/upload/uploadImageToOSS.do', function(res){
+		// 如果上传成功则去提交表单
+		Information.updateHomePic();
+	},function(res){
+		Dialog.alertErrorCodeMsg(res.returnCode);
+	});
+};
+
+/**
  * 添加首页轮播图
  */
 Information.addHomePic = function(key){
 	submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/common/addSysConfig.do', function(res){
 		
+	},function(res){
+		Dialog.alertErrorCodeMsg(res.returnCode);
+	});
+};
+
+/**
+ * 添加首页轮播图至OSS
+ */
+Information.addHomePicToOSS = function(key){
+	submitForm("addHomePicDialogForm_"+key, BASE_PATH + '/upload/uploadImageToOSS.do', function(res){
+		// 如果上传成功则去提交表单
+		Information.addHomePic();
 	},function(res){
 		Dialog.alertErrorCodeMsg(res.returnCode);
 	});
@@ -100,8 +126,7 @@ Information.uploadPic = function(currentObject, key){
 			$(currentObject).val("");
 			
 			if(res && res.tmpPath){
-				$("#prin_url_"+key).val($("#imageHiddenPath_"+key).val());
-				$("#imageHiddenPath_"+key).val(res.tmpPath);
+				$("#imageHiddenPath_"+key).val(res.tmpPath.substring(res.tmpPath.lastIndexOf('images/')));
 				$("#imagePath_"+key).attr("src",res.tmpPath);
 				$("#realPath_"+key).val(res.realPath);
 			}

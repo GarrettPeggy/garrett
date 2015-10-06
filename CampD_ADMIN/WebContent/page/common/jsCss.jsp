@@ -7,6 +7,8 @@ var BASE_PATH = '${ctx}';
 var RMT_RES_BASE_PATH = '${rmtResPath}';
 //js中本地静态文件base路径(包括:js,特殊的本地图片,所有插件的文件)
 var LOC_RES_BASE_PATH = '${locResPath}';
+//阿里云oss跟路径
+var OSS_RES_URL = '${sysConfig.ossResUrl}';
 </script>
 
 <link rel="stylesheet" href="${rmtResPath}/static/css/bootstrap.min.css?_v=${vs}" />

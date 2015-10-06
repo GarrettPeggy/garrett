@@ -61,7 +61,7 @@ public class UploadController extends BaseController{
 			long size = tempFile.length();
 			logger.info("开始大小->"+size);
 			
-			while(LOGO_IMG_MAX_SIZE < size){// 如果图片大于100k，就一直压缩到100k以内
+			if(LOGO_IMG_MAX_SIZE < size){// 如果图片大于100k，就一直压缩到100k以内
 				//return errorCodeSearchView(SystemConstant.ERROR_CODE_FILE_TOO_BIG);
 				ImageUtil image  = new ImageUtil(tempFile);
 		        image.saveAs(tmpPath);
@@ -113,7 +113,7 @@ public class UploadController extends BaseController{
 		Map<String, Object> resMap = bindParamToMap(request);
 		logger.info("文件参数->"+resMap);
 		
-		List<String> uploadKey = Arrays.asList(((String)resMap.get("realPath")).split(","));
+		List<String> uploadKey = Arrays.asList(((String)resMap.get("oldPath")).split(","));
 		view = OSSUtil.deleteFile(uploadKey);
 		
 		// 此处删除文件至OSS

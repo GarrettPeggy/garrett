@@ -6,6 +6,8 @@
 	var LOC_RES_PATH = '${locResPath}';
 	//js中远程静态资源文件base路径
 	var REMOTE_RES_PATH = '${rmtResPath}';
+	//阿里云oss跟路径
+	var OSS_RES_URL = '${sysConfig.ossResUrl}';
 	var VS = '${vs}';
 </script>
 <script type="text/javascript" src="${locResPath}/static/common/jquery/jquery-1.11.3.min.js?_v=${vs}"></script>

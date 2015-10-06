@@ -50,7 +50,7 @@
 									            <div class="avatar-bar"></div>
 									        </div>
 									    </div>
-									    <button class="btn btn-xs btn-success" id="button_0" onclick="Information.addHomePic('0');" type="button">
+									    <button class="btn btn-xs btn-success" id="button_0" onclick="Information.addHomePicToOSS('0');" type="button">
 											<span class="bigger-110">保存</span>
 										</button>
 							        </form>
@@ -73,7 +73,7 @@
 									            <div class="avatar-bar"></div>
 									        </div>
 									    </div>
-									    <button class="btn btn-xs btn-success" id="button_1" onclick="Information.addHomePic('1');" type="button">
+									    <button class="btn btn-xs btn-success" id="button_1" onclick="Information.addHomePicToOSS('1');" type="button">
 											<span class="bigger-110">保存</span>
 										</button>
 							        </form> 
@@ -96,7 +96,7 @@
 									            <div class="avatar-bar"></div>
 									        </div>
 									    </div>
-									    <button class="btn btn-xs btn-success" id="button_2" onclick="Information.addHomePic('2');" type="button">
+									    <button class="btn btn-xs btn-success" id="button_2" onclick="Information.addHomePicToOSS('2');" type="button">
 											<span class="bigger-110">保存</span>
 										</button>
 							        </form> 
