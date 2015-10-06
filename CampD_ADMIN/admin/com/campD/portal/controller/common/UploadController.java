@@ -55,14 +55,15 @@ public class UploadController extends BaseController{
 			File tempFile = new File(tmpPath);
 			cropImg.transferTo(tempFile);
 			// 判断文件大小是否符合要求
-			long size = cropImg.getSize();
+			long size = tempFile.length();
 			logger.info("开始大小->"+size);
-			if(LOGO_IMG_MAX_SIZE < size){// 如果图片大于100k
+			
+			while(LOGO_IMG_MAX_SIZE < size){// 如果图片大于100k，就一直压缩到100k以内
 				//return errorCodeSearchView(SystemConstant.ERROR_CODE_FILE_TOO_BIG);
 				ImageUtil image  = new ImageUtil(tempFile);
 		        image.saveAs(tmpPath);
-				long newSize = tempFile.length();
-				logger.info("压缩大小->"+newSize);
+				size = tempFile.length();
+				logger.info("压缩之后大小->"+size);
 			} 
 			
 			Map<String, String> resMap = new HashMap<String, String>();
