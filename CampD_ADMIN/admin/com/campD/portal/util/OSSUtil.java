@@ -5,18 +5,14 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.terracotta.agent.repkg.de.schlichtherle.io.File;
 
 import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.model.OSSObjectSummary;
-import com.aliyun.oss.model.ObjectListing;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 import com.campD.portal.common.JSONView;
-import com.campD.portal.common.SystemConstant;
 
 /**
  * OSS上传图片
