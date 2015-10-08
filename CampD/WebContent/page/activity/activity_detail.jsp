@@ -47,21 +47,23 @@
 	        <!-- end -->
 	        <!-- 活动主办方、赞助方 -->
 	        <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
-	        	<div class="adm-line retina-1px-border-bottom">
-	            	主办方:${jsonview.activityInfo.sponsor }
+	        	<div class="adm-line retina-1px-border-bottom clearfix">
+	        		<span class="fl">主办方</span>
+	        		<span class="fr">${jsonview.activityInfo.sponsor }</span>
 	            </div>
-	            <div class="adm-line">
-	            	赞助方:${jsonview.activityInfo.assistance }
+	            <div class="adm-line clearfix">
+	            	<span class="fl">赞助方</span>
+                	<span class="fr">${jsonview.activityInfo.assistance }</span>
 	            </div>
 	        </div>
 	        <!-- end -->
 	        <!-- 活动详细介绍 -->
 	        <div class="ac-detail-desc retina-1px-border-bottom retina-1px-border-top">
 	        	<div class="add-title retina-1px-border-bottom">
-	            	${jsonview.activityInfo.requirement }
+	            	详细介绍
 	            </div>
 	            <div class="add-desc">
-	            	活动描述字段没有  活动描述字段没有  活动描述字段没有
+	            	${jsonview.activityInfo.requirement }
 	            </div>
 	        </div>
 	        <!-- end -->

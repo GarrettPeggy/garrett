@@ -36,7 +36,14 @@
 			                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/>
 			                    <div class="classify-li-title"><c:out value="${activity.title }" default="无标题"></c:out></div>
 			                    <div class="classify-li-desc color94 fontSize14">
-			                    	<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">${activity.requirement }</a>
+			                    	<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
+			                    		<c:if test="${fn:length(activity.requirement) > 20}">
+			                    			<c:out value="${fn:substring(activity.requirement, 0, 21)}......" /> 
+			                    		</c:if>
+			                    		<c:if test="${fn:length(activity.requirement) <= 20}">
+			                    			 <c:out value="${activity.requirement}" /> 
+			                    		</c:if>
+			                    	</a>
 			                    </div>
 			                    <div class="classify-li-date fontSize14">
 			                    	<img src="${rmtResPath}/static/images/date_icon.png" width="10" height="10"/>

@@ -38,7 +38,12 @@ Activity.list=function(){
 		//把数据写到页面上
 		if(null!=activityList && activityList.length>0){
 			for(var i=0;i<activityList.length;i++){
-				activity_html.push("<li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'><a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'>"+activityList[i].requirement+"</a></div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+activityList[i].begintime+"</span>--<span>"+activityList[i].endtime+"</span></div></li>");
+				var requirement=activityList[i].requirement;
+				var len=Activity.getLength(requirement);
+				if(len > 20){
+					requirement=requirement.substring(0,21) + "......";
+				}
+				activity_html.push("<li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'><a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'>"+ requirement +"</a></div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+activityList[i].begintime+"</span>--<span>"+activityList[i].endtime+"</span></div></li>");
 			}
 		}else{
 			activity_html.push("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>");
@@ -49,6 +54,25 @@ Activity.list=function(){
 		alert("呵呵，错了吧-->"+data.returnMsg);
 	});
 	
+};
+/**
+ * 获取字符串长度
+ */
+Activity.getLength=function(str){
+	var cArr = str.match(/[^\x00-\xff]/ig);  
+    return str.length + (cArr == null ? 0 : cArr.length);  
+	/*var realLength = 0;
+	var len = str.length;
+	var charCode = -1; 
+	for (var i = 0; i < len; i++) { 
+		charCode = str.charCodeAt(i); 
+		if (charCode >= 0 && charCode <= 128) {
+			realLength += 1; 
+		}else{
+			realLength += 2; 
+		} 
+	} 
+	return realLength; */
 };
 
 /**
@@ -136,10 +160,15 @@ Activity.search=function(url,isUserAuth){
 	ajaxSearch(BASE_PATH + url,params,function(json){
 		var activityList=json.activityList;
 		for(var i=0;i<activityList.length;i++){
+			var requirement=activityList[i].requirement;
+			var len=Activity.getLength(requirement);
+			if(len > 20){
+				requirement=requirement.substring(0,21) + "......";
+			}
 			if($("#isSponsored").length > 0){//判断是不是要举办的活动界面  $("#isSponsored").length==0代表是要举办的活动
-				$("#activity_popu").append('<li class="clearfix"> <div class="data-li-left"> <a href="'+BASE_PATH+'/activity/getActivityById.do?id=${activity.id }"> <img src="'+OSS_RES_URL+activityList[i].show_image+'" width="91" height="91"/> </a> </div> <div class="data-li-right"> <div class="dlr-title retina-1px-border-bottom"> <span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span> <span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span> <span class="dlrt3">'+activityList[i].act_city+'</span> </div> <div class="dlr-detail color94 fontSize14"> ' + activityList[i].requirement + '</div></div></li>');
+				$("#activity_popu").append('<li class="clearfix"> <div class="data-li-left"> <a href="'+BASE_PATH+'/activity/getActivityById.do?id=${activity.id }"> <img src="'+OSS_RES_URL+activityList[i].show_image+'" width="91" height="91"/> </a> </div> <div class="data-li-right"> <div class="dlr-title retina-1px-border-bottom"> <span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span> <span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span> <span class="dlrt3">'+activityList[i].act_city+'</span> </div> <div class="dlr-detail color94 fontSize14"> ' + requirement + '</div></div></li>');
 			}else{
-				$("#activity_popu").append("<li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'><a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'>"+activityList[i].requirement+"</a></div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+activityList[i].begintime+"</span>--<span>"+activityList[i].endtime+"</span></div></li>");
+				$("#activity_popu").append("<li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'><a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'>"+requirement+"</a></div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+activityList[i].begintime+"</span>--<span>"+activityList[i].endtime+"</span></div></li>");
 			}
 			
 		};
