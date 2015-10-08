@@ -38,6 +38,7 @@
 								<input type="hidden" id="activityId" name="id" value="${id }"/><!-- 活动id -->
 								<input type="hidden" id="actType" name="actType" value="${activityMap.activityInfo.act_type }"/><!-- 活动类型，必传，不需修改，就隐藏 -->
 								<input type="hidden" id="realPath" name="realPath" />
+								<input type="hidden" id="fakepath" name="fakepath" /><!-- 更新活动时判断是否有选择替换图片 -->
 								<input type="hidden" id="oldPath" name="oldPath" value="${activityMap.activityInfo.show_image }"/><!-- 图片的原来的路径 -->
 								<div class="page-header"> <h1> 修改活动信息 </h1> </div>
 								<div class="row">

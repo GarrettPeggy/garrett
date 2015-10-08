@@ -12,6 +12,7 @@ var Activity={
 Activity.uploadActivityPic = function(currentObject){
 	var flag = $("#flag").val();//flag为0表示是新增页面的海报图片   1表示是修改页面的海报图片
 	var fakepath = $(currentObject).val();
+	$("#fakepath").val(fakepath);//把选择到的图片放到页面上进行判断更新活动时，是否选择了图片
 	var ext = fakepath.substring(fakepath.lastIndexOf('.')+1);
 	
 	var form = "addActivityInfoForm";
@@ -49,16 +50,25 @@ Activity.uploadActivityPic = function(currentObject){
  */
 Activity.uploadPicToOSS=function(){
 	var flag = $("#flag").val();
-	var params = {"realPath":$("#realPath").val()};
-	submitSave(BASE_PATH + "/upload/uploadImageToOSS.do", params, function(data) {
+	var realPath = $("#realPath").val();
+	var params = {"realPath":realPath};
+	if(null != realPath && ""!=realPath){
+		submitSave(BASE_PATH + "/upload/uploadImageToOSS.do", params, function(data) {
+			if(flag==0){
+				Activity.saveActivity();//保存活动
+			}else if(flag==1){
+				Activity.updateActivity();//更新活动
+			}
+		}, function(data) {
+			Dialog.alertError(data.returnMsg);
+		});
+	}else{
 		if(flag==0){
 			Activity.saveActivity();//保存活动
 		}else if(flag==1){
 			Activity.updateActivity();//更新活动
 		}
-	}, function(data) {
-		Dialog.alertError(data.returnMsg);
-	});
+	}
 };
 
 /**
@@ -80,9 +90,14 @@ Activity.saveActivity=function(){
 /**
  * 修改活动信息
  */
-Activity.updateActivity=function(){
+Activity.updateActivity = function(){
 	
 	if(Validator.validForm("editActivityInfoForm")){
+		var fakepath = $("#fakepath").val();
+		var oldPath = $("#oldPath").val();
+		if(null == fakepath || "" == fakepath){
+			$("#showImage").val(oldPath);
+		}
 		submitForm("editActivityInfoForm",BASE_PATH + '/activity/update.do',function(data){
 				Activity.deletePicFromOSS();//活动修改成功后就删除图片
 			},
@@ -98,13 +113,18 @@ Activity.updateActivity=function(){
  */
 Activity.deletePicFromOSS=function(){
 	var oldPath=$("#oldPath").val();
+	var fakepath=$("#fakepath").val();
 	var params = {"oldPath":oldPath};
 	if(null != oldPath && ""!=oldPath){
-		submitSave(BASE_PATH + "/upload/deleteImageToOSS.do", params, function(data) {
-			window.location.href = BASE_PATH + "/activity/toActivityList.do";//图片删除成功后就跳转页面
-		}, function(data) {
-			Dialog.alertError(data.returnMsg);
-		});
+		if(null != fakepath && ""!=fakepath){
+			submitSave(BASE_PATH + "/upload/deleteImageToOSS.do", params, function(data) {
+				window.location.href = BASE_PATH + "/activity/toActivityList.do";//图片删除成功后就跳转页面
+			}, function(data) {
+				Dialog.alertError(data.returnMsg);
+			});
+		}else{
+			window.location.href = BASE_PATH + "/activity/toActivityList.do";//没有更新路径，就不执行删除方法，直接跳转页面
+		}
 	}else{
 		window.location.href = BASE_PATH + "/activity/toActivityList.do";//没有路径，就不执行删除方法，直接跳转页面
 	}
