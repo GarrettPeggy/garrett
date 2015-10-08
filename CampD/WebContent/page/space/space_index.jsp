@@ -116,7 +116,12 @@
 			                        	${systemConst.spaceTypeMap[fn:trim(space.space_type)] }
 			                        </div>
 			                        <div class="dlr-address">
-			                           	${space.adress }
+			                        	<c:if test="${fn:length(space.adress) > 10}">
+			                    			<c:out value="${fn:substring(space.adress, 0, 11)}......" /> 
+			                    		</c:if>
+			                    		<c:if test="${fn:length(space.adress) <= 10}">
+			                    			 <c:out value="${space.adress}" /> 
+			                    		</c:if>
 			                        </div>
 			                        <div class="dlr-cost clearfix">
 			                            <div class="fl">
