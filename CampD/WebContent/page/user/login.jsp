@@ -23,13 +23,13 @@
 	            	<div class="input-icon">
 	                	<img src="${rmtResPath}/static/images/user_icon.png" width="18" height="18">
 	                </div>
-	            	<input type="text" class="text-input" name="userName" id="userName" value="王光华1" placeholder="请输入姓名"/>
+	            	<input type="text" class="text-input" name="userName" id="userName" placeholder="请输入姓名"/>
 	            </div>
 	            <div class="line mab20">
 	            	<div class="input-icon">
 	                	<img src="${rmtResPath}/static/images/phone_icon.png" width="14" height="25">
 	                </div>
-	            	<input type="tel" class="text-input" name="mdn" id="mdn" value="13410000000" placeholder="请输入手机号码"/>
+	            	<input type="tel" class="text-input" name="mdn" id="mdn" placeholder="请输入手机号码"/>
 	            </div>
 	            <div class="line textCenter mab23">
 					<button type="button" class="btn orange-btn" onclick="User.login();">确认登录</button>

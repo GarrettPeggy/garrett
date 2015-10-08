@@ -46,7 +46,7 @@
 
 												<label class="block clearfix">
 													<span class="block input-icon input-icon-right">
-														<input type="password" class="form-control" id=mdn placeholder="手机号" />
+														<input type="text" class="form-control" id=mdn placeholder="手机号" />
 														<i class="ace-icon fa fa-lock"></i>
 													</span>
 												</label>

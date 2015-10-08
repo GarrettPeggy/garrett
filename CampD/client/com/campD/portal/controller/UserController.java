@@ -108,7 +108,7 @@ public class UserController extends BaseController {
     	Map<String, Object> map = bindParamToMap(request);
     	
     	// 初次进来的用户给它设置默认角色
-    	String commonRoleId = roleCacheService.searchRoleIdByName(new String(SystemMessage.getString("role_common").getBytes("iso8859-1"), "UTF-8"));
+    	String commonRoleId = roleCacheService.searchRoleIdByName(SystemMessage.getString("role_common"));
     	map.put("roleId", commonRoleId);
     	
     	//调用登录接口
