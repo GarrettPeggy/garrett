@@ -50,15 +50,15 @@
     <div class="index-nav hide" id="avtivity_nav" style="z-index: 99;">
     	<ul>
         	<li class="retina-1px-border-bottom1" onclick="Activity.classify()">
-            	<img src="${rmtResPath}/static/images/clear_input.png" width="22" height="22"/>
+            	<img src="${rmtResPath}/static/images/activity.png" width="22" height="22"/>
                                    活动
             </li>
             <li class="retina-1px-border-bottom1" onclick="Space.classify()">
-            	<img src="${rmtResPath}/static/images/clear_input.png" width="22" height="22"/>
+            	<img src="${rmtResPath}/static/images/place.png" width="22" height="22"/>
                	 场地
             </li>
             <li class="retina-1px-border-bottom1" onclick="Activity.hold()">
-            	<img src="${rmtResPath}/static/images/clear_input.png" width="22" height="22"/>
+            	<img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
                                    举办活动
             </li>
         </ul>
