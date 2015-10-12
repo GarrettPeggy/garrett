@@ -27,6 +27,7 @@ public class SystemConstant {
 	//===========================系统角色=============================
 	public static String ROLE_COMMON = "注册用户";
 	public static String ROLE_ADMIN = "管理员";
+	public static String ROLE_SUPER_ADMIN = "超级管理员";
     
   //====================cookie中错误信息key===============================
     public static final String LOGIN_COOKIE_USERNAME_FLAG = "ck_mdn";//Cookie中标示用户名
