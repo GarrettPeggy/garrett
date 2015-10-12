@@ -6,8 +6,10 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<link rel="stylesheet" type="text/css" href="${locResPath}/static/css/nativeShare.css?_v=${vs}" />
+	<link rel="stylesheet" href="${locResPath}/static/css/luara.css?_v=${vs}"/>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/nativeShare.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/jquery.luara.0.0.1.min.js?_v=${vs}"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -25,7 +27,25 @@
     <div class="main">
 	    <!-- 活动概括与地点 -->
     	<div class="ac-detail-title retina-1px-border-bottom">
-	        <img src="${sysConfig.ossResUrl}${fn:split(jsonview.spaceInfo.show_images, ',')[0]}" width="100%" height="116"/>
+	    	<!-- 场地轮播图 -->
+	        <div class="img-tap-show-space">
+		        <ul>
+			        <c:if test="${!empty jsonview.spaceInfo.show_images}">
+					    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+					    	<li><img src="${sysConfig.ossResUrl}${image_src}" width="100%" height="125" alt="${ status.index + 1}"/></li>
+					    </c:forEach>
+					</c:if>
+		        </ul>
+		        <ol id="img-tap-show-ol">
+		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
+					    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}">
+					    	<li></li>
+					    </c:forEach>
+					</c:if>
+		        </ol>
+		        <div style="clear:both;"></div>
+	        </div>
+	        <!-- end -->
             <div class="adt-desc">
                 <div class="fontSize17">${jsonview.spaceInfo.name }</div>
                 <div class="fontSize14 color94 clearfix">
@@ -43,7 +63,9 @@
         <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
         	<div class="adm-line retina-1px-border-bottom clearfix">
             	<span class="fl">费用</span>
-                <span class="fr color94">${jsonview.spaceInfo.cost }/小时</span>
+                <span class="fr color94"><fmt:parseNumber integerOnly="true" value="${jsonview.spaceInfo.cost}" />元/小时</span>
+                <!-- 把金额每3位画一个逗号 -->
+                <%-- <fmt:formatNumber type="number" value="${jsonview.spaceInfo.cost}" maxFractionDigits="0"/> --%>
             </div>
             <div class="adm-line clearfix">
             	<span class="fl">容量</span>

@@ -196,8 +196,16 @@ public class ActivityJsonServer {
 		}
 		
 		if(null!=reqMap.get("actType") && !"".equals(reqMap.get("actType"))){
-			sqlStr+=" and act_type ="+reqMap.get("actType")+" order by begin_time desc ";
-			sqlCount+=" and act_type ="+reqMap.get("actType")+" order by begin_time desc ";
+			sqlStr+=" and act_type ="+reqMap.get("actType")+"";
+			sqlCount+=" and act_type ="+reqMap.get("actType")+"";
+		}
+		//要举办的活动通过创建时间倒序排列
+		if( null != reqMap.get("sponsored") && !"".equals(reqMap.get("sponsored")) && 0==Integer.parseInt(reqMap.get("sponsored").toString())){
+			sqlStr+=" order by create_time desc ";
+			sqlCount+=" order by create_time desc ";
+		}else if(null != reqMap.get("sponsored") && !"".equals(reqMap.get("sponsored")) && 1==Integer.parseInt(reqMap.get("sponsored").toString())){//其余查询活动通过发布时间倒序排列
+			sqlStr+=" order by publish_time desc ";
+			sqlCount+=" order by publish_time desc ";
 		}
 		
 		// 获取当前活动总数

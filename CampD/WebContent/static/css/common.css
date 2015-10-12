@@ -107,7 +107,7 @@ a:hover{text-decoration:none;}
 /*常用文本样式*/
 .textRight{ text-align:right;}
 .textCenter{ text-align:center;}
-.fontSize13{font-size:13px;}
+.fontSize13{font-size:13px;font-family: "微软雅黑"}
 .fontSize14{font-size:14px;}
 .fontSize16{font-size:16px;}
 .fontSize17{font-size:17px;}

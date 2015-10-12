@@ -33,7 +33,7 @@
 	                <c:otherwise>
 		                <c:forEach items="${jsonview.activityList }" var="activity">
 			            	<li class="pd5">
-			                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/>
+			                	<a href="${ctx }/activity/getActivityById.do?id=${activity.id }"><img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/></a>
 			                    <div class="classify-li-title"><c:out value="${activity.title }" default="无标题"></c:out></div>
 			                    <div class="classify-li-desc color94 fontSize14">
 			                    	<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">

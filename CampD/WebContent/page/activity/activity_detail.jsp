@@ -36,11 +36,12 @@
 	            <div class="adt-desc">
 	                <div class="fontSize17 retina-1px-border-bottom">${jsonview.activityInfo.title }</div>
 	                <div class="fontSize14">
-	                    <span>${jsonview.activityInfo.begintime }--</span>
-	                    <span>${jsonview.activityInfo.endtime }</span>
+	                	<span class="fontSize13">活动时间:</span>
+	                    <span class="fontSize13">${jsonview.activityInfo.begintime }--${jsonview.activityInfo.endtime }</span>
 	                </div>
 	                <div class="fontSize14 mat7 pdb10">
-	                	${jsonview.activityInfo.adress }
+	                	<span class="fontSize13">活动地点:</span>
+	                	<span class="fontSize13">${jsonview.activityInfo.adress }</span>
 	                </div>
 	            </div>
 	        </div>
@@ -51,10 +52,12 @@
 	        		<span class="fl">主办方</span>
 	        		<span class="fr">${jsonview.activityInfo.sponsor }</span>
 	            </div>
+	            <%-- 
 	            <div class="adm-line clearfix">
 	            	<span class="fl">赞助方</span>
                 	<span class="fr">${jsonview.activityInfo.assistance }</span>
 	            </div>
+	             --%>
 	        </div>
 	        <!-- end -->
 	        <!-- 活动详细介绍 -->

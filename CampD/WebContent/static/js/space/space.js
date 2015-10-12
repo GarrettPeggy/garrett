@@ -13,6 +13,7 @@ var Space={
 
 $(function(){
 	Space.init();
+	Space.tapShow();//自动调用轮播图效果
 });
 /**
  * 场地初始化
@@ -46,7 +47,7 @@ Space.list=function(){
 				if(len > 20){
 					description=description.substring(0,21) + "......";
 				}
-				space_html.push("<li class='pd5'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==spaceList[i].name ? "无名称" : spaceList[i].name )+"</div><div class='classify-li-desc color94 fontSize14'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'>"+description+"</a></div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+spaceList[i].adress+"</span>&nbsp;&nbsp;<span>"+spaceList[i].traffic+"</span>&nbsp;&nbsp;<span>"+spaceList[i].cost+"元/小时</span></div></li>");
+				space_html.push("<li class='pd5'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%' height='116'/></a><div class='classify-li-title'>"+(null==spaceList[i].name ? "无名称" : spaceList[i].name )+"</div><div class='classify-li-desc color94 fontSize14'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'>"+description+"</a></div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+spaceList[i].adress+"</span>&nbsp;&nbsp;<span>"+spaceList[i].traffic+"</span>&nbsp;&nbsp;<span>"+spaceList[i].cost+"元/小时</span></div></li>");
 			}
 		}else{
 			space_html.push("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>");
@@ -99,6 +100,17 @@ Space.setSelect=function(){
         	$("#space_mc").removeClass("hide");
         });
 	});
+};
+
+/**
+ * 场地轮播图
+ */
+Space.tapShow=function(){
+	//调用Luara示例
+    $(".img-tap-show-space").luara({
+    	interval:5000,
+    	selected:"seleted"
+    });
 };
 
 /**

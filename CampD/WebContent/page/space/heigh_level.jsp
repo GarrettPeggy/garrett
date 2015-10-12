@@ -55,7 +55,7 @@
 			                        </div>
 			                        <div class="dlr-cost clearfix">
 			                            <div class="fl">
-			                                                                        费用：<span class="co">${space.cost }</span>
+			                                                                        费用：<span class="co"><fmt:parseNumber integerOnly="true" value="${space.cost}" />元/小时</span>
 			                            </div>
 			                            <div class="fr">
 			                                <span class="co">${space.capacity }</span>人
