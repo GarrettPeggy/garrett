@@ -46,7 +46,7 @@ public class Test {
 		// 删除Object
 //	    client.deleteObject(PIC_BUKET, "images111222/Chrysanthemum.jpg");
 //	    System.out.println("删除成功!!!!!");
-	    
+	      
 	    ObjectListing ObjectListing = client.listObjects(PIC_BUKET);
         List<OSSObjectSummary> listDeletes = ObjectListing.getObjectSummaries();
         for (int i = 0; i < listDeletes.size(); i++) {
