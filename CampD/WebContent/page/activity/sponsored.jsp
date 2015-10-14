@@ -38,23 +38,23 @@
     			<div class="ul-box">
 		        	<ul class="data-list" id="activity_popu">
 		        		<c:forEach items="${jsonview.activityList }" var="activity">
-			            	<li class="clearfix">
-			            		<div class="data-li-left">
-			                		<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
-			                			<img src="${sysConfig.ossResUrl}${activity.show_image }" width="91" height="91"/>
-			                		</a>
-			                	</div>	
-			                	<div class="data-li-right">
-			                    	<div class="dlr-title retina-1px-border-bottom">
-			                        	<span class="dlrt1">${systemConst.categoryMap[fn:trim(activity.category_id)] }</span>
-			                            <span class="dlrt2"><font color="#638ee0">${activity.act_num}</font>人</span>
-			                            <span class="dlrt3">${activity.act_city }</span>
-			                        </div>
-			                        <div class="dlr-detail color94 fontSize14">
-			                        	${activity.requirement }
-			                        </div>
-			                    </div>
-			                </li>
+			        		<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
+				            	<li class="clearfix">
+				            		<div class="data-li-left">
+				                		<img src="${sysConfig.ossResUrl}${activity.show_image }" width="91" height="91"/>
+				                	</div>	
+				                	<div class="data-li-right">
+				                    	<div class="dlr-title retina-1px-border-bottom">
+				                        	<span class="dlrt1">${systemConst.categoryMap[fn:trim(activity.category_id)] }</span>
+				                            <span class="dlrt2"><font color="#638ee0">${activity.act_num}</font>人</span>
+				                            <span class="dlrt3">${activity.act_city }</span>
+				                        </div>
+				                        <div class="dlr-detail color94 fontSize14">
+				                        	${activity.requirement }
+				                        </div>
+				                    </div>
+				                </li>
+				            </a>
 		                </c:forEach>
 		            </ul>
 		            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">

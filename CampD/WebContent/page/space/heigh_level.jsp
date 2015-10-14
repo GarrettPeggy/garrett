@@ -35,34 +35,34 @@
     			<div class="ul-box">
 		        	<ul class="data-list ground-list" id="space_highlevel">
 		        		<c:forEach items="${jsonview.resultList }" var="space">
-		        			<li class="clearfix">
-			                	<div class="data-li-left">
-			                    	<a href="${ctx }/space/getSpaceInfoById.do?id=${space.id }">
-			                    		<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="91" height="63"/>
-			                    	</a>
-			                    </div>	
-			                    <div class="data-li-right">
-			                    	<div class="dlr-title">
-			                        	${systemConst.spaceTypeMap[fn:trim(space.space_type)] }
-			                        </div>
-			                        <div class="dlr-address">
-			                           	<c:if test="${fn:length(space.adress) > 10}">
-			                    			<c:out value="${fn:substring(space.adress, 0, 11)}......" /> 
-			                    		</c:if>
-			                    		<c:if test="${fn:length(space.adress) <= 10}">
-			                    			 <c:out value="${space.adress}" /> 
-			                    		</c:if>
-			                        </div>
-			                        <div class="dlr-cost clearfix">
-			                            <div class="fl">
-			                                                                        费用：<span class="co"><fmt:parseNumber integerOnly="true" value="${space.cost}" />元/小时</span>
-			                            </div>
-			                            <div class="fr">
-			                                <span class="co">${space.capacity }</span>人
-			                            </div>
-			                        </div>
-			                    </div>	
-			                </li>
+			        		<a href="${ctx }/space/getSpaceInfoById.do?id=${space.id }">
+			        			<li class="clearfix">
+				                	<div class="data-li-left">
+				                    	<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="91" height="63"/>
+				                    </div>	
+				                    <div class="data-li-right">
+				                    	<div class="dlr-title">
+				                        	${systemConst.spaceTypeMap[fn:trim(space.space_type)] }
+				                        </div>
+				                        <div class="dlr-address">
+				                           	<c:if test="${fn:length(space.adress) > 10}">
+				                    			<c:out value="${fn:substring(space.adress, 0, 11)}......" /> 
+				                    		</c:if>
+				                    		<c:if test="${fn:length(space.adress) <= 10}">
+				                    			 <c:out value="${space.adress}" /> 
+				                    		</c:if>
+				                        </div>
+				                        <div class="dlr-cost clearfix">
+				                            <div class="fl">
+				                                                                        费用：<span class="co"><fmt:parseNumber integerOnly="true" value="${space.cost}" />元/小时</span>
+				                            </div>
+				                            <div class="fr">
+				                                <span class="co">${space.capacity }</span>人
+				                            </div>
+				                        </div>
+				                    </div>	
+				                </li>
+				            </a>
 		        		</c:forEach>
 		        	</ul>
 		        	<c:if test="${pageInfo.pageSize > pageInfo.curPage }">

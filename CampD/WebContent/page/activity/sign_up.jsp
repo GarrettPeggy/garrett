@@ -41,18 +41,20 @@
     			<div class="ul-box" id="activity_popu">
 		        	<ul class="data-list">
 		        		<c:forEach items="${jsonview.activityList }" var="activity">
-			            	<li class="pd5">
-			                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/>
-			                    <div class="classify-li-title">${activity.title }</div>
-			                    <div class="classify-li-desc color94 fontSize14">
-			                    	<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">${activity.requirement }</a>
-			                    </div>
-			                    <div class="classify-li-date fontSize14">
-			                    	<img src="${rmtResPath}/static/images/date_icon.png" width="10" height="10"/>
-			                        <span>${activity.begintime }--</span>
-			                        <span>${activity.endtime }</span>
-			                    </div>
-			                </li>
+			        		<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
+				            	<li class="pd5">
+				                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/>
+				                    <div class="classify-li-title">${activity.title }</div>
+				                    <div class="classify-li-desc color94 fontSize14">
+				                    	${activity.requirement }
+				                    </div>
+				                    <div class="classify-li-date fontSize14">
+				                    	<img src="${rmtResPath}/static/images/date_icon.png" width="10" height="10"/>
+				                        <span>${activity.begintime }--</span>
+				                        <span>${activity.endtime }</span>
+				                    </div>
+				                </li>
+				            </a>
 		                </c:forEach>
 		            </ul>
 		            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
