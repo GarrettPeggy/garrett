@@ -50,7 +50,12 @@
 				                            <span class="dlrt3">${activity.act_city }</span>
 				                        </div>
 				                        <div class="dlr-detail color94 fontSize14">
-				                        	${activity.requirement }
+					                        <c:if test="${fn:length(activity.requirement) > 20}">
+				                    			<c:out value="${fn:substring(activity.requirement, 0, 21)}......" /> 
+				                    		</c:if>
+				                    		<c:if test="${fn:length(activity.requirement) <= 20}">
+				                    			 <c:out value="${activity.requirement}" /> 
+				                    		</c:if>
 				                        </div>
 				                    </div>
 				                </li>
