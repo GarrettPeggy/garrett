@@ -17,19 +17,25 @@
              	<img src="${rmtResPath}/static/images/p2.png" width="41" height="41" class="fl left-img"/>
               <div class="fl right-text">要举办的活动</div>
           </li>
-          <li class="line clearfix" onclick="Header.toLogin()">
-             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
-              <div class="fl right-text">登录</div>
-          </li>
+          <c:if test="${empty USER_INFO}">
+	          <li class="line clearfix" onclick="Header.toLogin()">
+	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">登录</div>
+	          </li>
+          </c:if>
           <!-- 以下两个通过增加hide样式显示隐藏 -->
-          <li class="line clearfix" onclick="Header.toQuit()">
-             	<img src="${rmtResPath}/static/images/p4.png" width="41" height="41" class="fl left-img"/>
-              <div class="fl right-text">退出</div>
-          </li>
-          <li class="line clearfix" onclick="Header.toRegister()">
-             	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img"/>
-              <div class="fl right-text">注册</div>
-          </li>
+          <c:if test="${!empty USER_INFO}">
+	          <li class="line clearfix" onclick="Header.toQuit()">
+	             	<img src="${rmtResPath}/static/images/p4.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">退出</div>
+	          </li>
+          </c:if>
+          <c:if test="${empty USER_INFO}">
+	          <li class="line clearfix" onclick="Header.toRegister()">
+	             	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">注册</div>
+	          </li>
+          </c:if>
       </ul>
     </div>
     <!-- end -->
