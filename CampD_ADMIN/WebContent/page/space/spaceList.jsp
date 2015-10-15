@@ -100,7 +100,7 @@
 														<div class="widget-main">
 															<label for="form-field-select-1">场地类型</label> 
 															<select class="form-control" name="spaceType">
-																<option value=""></option>
+																<option value="">全部</option>
 																<c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
 																	<option value="${spaceType.key}">${spaceType.value}</option>
 																</c:forEach>
@@ -113,7 +113,7 @@
 														<div class="widget-main">
 															<label for="form-field-select-1">适用活动</label> 
 															<select class="form-control" name="workFor">
-																<option value=""></option>
+																<option value="">全部</option>
 																<c:forEach items="${systemConst.categoryMap}" var="category">
 																	<option value="${category.key}">${category.value}</option>
 																</c:forEach>
@@ -126,7 +126,7 @@
 														<div class="widget-main">
 															<label for="form-field-select-1">场地特征</label> 
 															<select class="form-control" name="spaceLevel">
-																<option value=""></option>
+																<option value="">全部</option>
 																<c:forEach items="${systemConst.spaceLevelMap}" var="spaceLevel">
 																	<option value="${spaceLevel.key}">${spaceLevel.value}</option>
 																</c:forEach>

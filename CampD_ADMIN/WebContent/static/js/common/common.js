@@ -677,14 +677,14 @@ DateUtil.initDatePicker = function(){
 DateUtil.initDateChoose = function(){
 	
 	$('.input-daterange-startDate').datetimepicker({
-		format: 'YYYY-MM-DD HH:MM:SS',// 如果需要添加时间，请使用：YYYY-MM-DD HH:MM:SS
+		format: 'YYYY-MM-DD HH:mm:ss',// 如果需要添加时间，请使用：YYYY-MM-DD HH:mm:ss
 		use24hours: true, // 是否启用24小时制
         useSeconds: true // 是否启用秒选择
        // maxDate: currentDay // 最大可选择时间
 	});
 	
 	$('.input-daterange-endDate').datetimepicker({
-		format: 'YYYY-MM-DD HH:MM:SS',// 如果需要添加时间，请使用：YYYY-MM-DD HH:MM:SS
+		format: 'YYYY-MM-DD HH:mm:ss',// 如果需要添加时间，请使用：YYYY-MM-DD HH:mm:ss
 		use24hours: true, // 是否启用24小时制
         useSeconds: true // 是否启用秒选择
        // maxDate: currentDay // 最大可选择时间

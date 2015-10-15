@@ -21,11 +21,13 @@
 				<td class="center">${user.register_time}</td>
 				<td class="center">${user.login_time}</td>
 				<td class="center">
-					<c:if test="${user.roleName eq sysConfig.role_common}">
-						<a href="javascript:User.setRole('${user.id}','${sysConfig.role_super_admin}');">设为管理员</a>
-					</c:if>
-					<c:if test="${user.roleName eq sysConfig.role_admin}">
-						<a href="javascript:User.setRole('${user.id}','${sysConfig.role_super_admin}');">设为注册用户</a>
+					<c:if test="${USER_INFO.roleName eq sysConfig.role_super_admin}">
+						<c:if test="${user.roleName eq sysConfig.role_common}">
+							<a href="javascript:User.setRole('${user.id}','${sysConfig.role_admin}');">设为管理员</a>
+						</c:if>
+						<c:if test="${user.roleName eq sysConfig.role_admin}">
+							<a href="javascript:User.setRole('${user.id}','${sysConfig.role_common}');">设为注册用户</a>
+						</c:if>
 					</c:if>
 				</td>
 			</tr>

@@ -23,12 +23,17 @@ public class OSSUtil {
 	
 	protected Logger logger = Logger.getLogger(getClass());
 	
+	// 本地图片测试配置
+	//public static final String PIC_BUCKET="camp-image";//OSS的命名空间
 	//public static final String ACCESS_ID="EKNuX4gneNZoqNt1";
 	//public static final String ACCESS_KEY="Gt2PB5uRaSHumEms5wKM0vUWqn3gfY";
+	
+	// 现网图片测试配置
 	public static final String ACCESS_ID="sn0Bqqd3dZ68C2tq";//服务器环境
 	public static final String ACCESS_KEY="WSik5OB9sqfWREA6xRzgkGarE61Ewj";//服务器环境
-	public static final String OSS_ENDPOINT="http://oss-cn-shanghai.aliyuncs.com";//上海节点外网地址
 	public static final String PIC_BUCKET="camp-images";//OSS的命名空间
+
+	public static final String OSS_ENDPOINT="http://oss-cn-shanghai.aliyuncs.com";//上海节点外网地址
 	private static OSSClient client = new OSSClient(OSS_ENDPOINT,ACCESS_ID, ACCESS_KEY);
 	
 	/**

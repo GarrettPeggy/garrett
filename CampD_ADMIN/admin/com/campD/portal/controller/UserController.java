@@ -76,7 +76,7 @@ public class UserController extends BaseController {
         
         UserInfo userInfo = userService.setUserInfo(request, (Map) userInfoMap.get("userInfo"));//设置userInfo
         // 判断用户当前权限，加入当前用户不是管理员，那么返回用户无权限登陆
-        if(!SystemConstant.ROLE_ADMIN.equals(userInfo.getRoleName()) || !SystemConstant.ROLE_SUPER_ADMIN.equals(userInfo.getRoleName())){
+        if(!SystemConstant.ROLE_ADMIN.equals(userInfo.getRoleName()) && !SystemConstant.ROLE_SUPER_ADMIN.equals(userInfo.getRoleName())){
         	jv.setReturnCode(SystemConstant.ERROR_CODE_AUTH_ADMIN);
             jv.setSearchReturnType();
             jv.setReturnMsg("对不起，您不是管理员，只有管理员才能登陆！");
