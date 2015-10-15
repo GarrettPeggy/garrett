@@ -129,7 +129,11 @@ Activity.populer=function(actType){
 Activity.loadMore=function(){
 	var curPage = 1 + parseInt($("#curPage").val());
 	$("#curPage").val(curPage);//更新当前页面
-	Activity.search("/activity/getActivityList.do",false);
+	if($("#isSponsored").length > 0){//表示是在要举办的活动的界面
+		Activity.search("/activity/getActivityList.do",true);
+	}else{
+		Activity.search("/activity/getActivityList.do",false);
+	}
 };
 /**
  * 我的报名活动
@@ -155,7 +159,7 @@ Activity.search=function(url,isUserAuth){
 		'categoryId':$("#categoryId").length==0 ? '' : $("#categoryId").val(),
 		'creatorId':$("#creatorId").length==0 ? '' : $("#creatorId").val(),
 		'userId':$("#userId").length==0 ? '' : $("#userId").val(),
-		'status':isUserAuth?'':1
+		'status':isUserAuth ? '' : 1     //还有一种情况就是   如果登陆了，但是在要举办的活动界面 
 	};
 
 	ajaxSearch(BASE_PATH + url,params,function(json){
