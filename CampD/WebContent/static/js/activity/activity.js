@@ -167,7 +167,7 @@ Activity.search=function(url,isUserAuth){
 				requirement=requirement.substring(0,21) + "......";
 			}
 			if($("#isSponsored").length > 0){//判断是不是要举办的活动界面  $("#isSponsored").length==0代表是已报名的活动    $("#isSponsored").length>0代表的是要举办的活动
-				$("#activity_popu").append('<a href="'+BASE_PATH+'/activity/getActivityById.do?id='+activityList[i].id+'"><li class="clearfix"><div class="data-li-left"><img src="'+OSS_RES_URL+activityList[i].show_image+'" width="91" height="91"/></div><div class="data-li-right"><div class="dlr-title retina-1px-border-bottom"><span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span><span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span><span class="dlrt3">'+activityList[i].act_city+'</span></div><div class="dlr-detail color94 fontSize14">' + requirement + '</div></div></li></a>');
+				$("#activity_popu").append('<a href="'+BASE_PATH+'/activity/getActivityById.do?id='+activityList[i].id+'"><li class="clearfix"><div class="data-li-left"><img src="'+OSS_RES_URL+activityList[i].show_image+'" width="91" height="91"/></div><div class="data-li-right"><div class="dlr-title retina-1px-border-bottom"><span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span>&nbsp;&nbsp;&nbsp;<span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span>&nbsp;&nbsp;&nbsp;<span class="dlrt3">'+activityList[i].act_city+'</span></div><div class="dlr-detail color94 fontSize14">' + requirement + '</div></div></li></a>');
 			}else{//已报名的活动
 				$("#activity_popu").append("<a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'>"+requirement+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+activityList[i].begintime+"</span>--<span>"+activityList[i].endtime+"</span></div></li></a>");
 			}
@@ -178,6 +178,7 @@ Activity.search=function(url,isUserAuth){
 		pageSize = dataCount%pageLimit==0 ? pageSize: pageSize + 1;
 		var curPage = $("#curPage").val();
 		if(curPage<pageSize){
+			$("#activity_more").remove();
 			$("#activity_popu").parent().append("<div id='activity_more'><button id='activityLoadMore' name='activityLoadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Activity.loadMore()'>加载更多</button></div>");
 		} else{
 			$("#activity_more").remove();
