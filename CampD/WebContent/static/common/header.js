@@ -32,7 +32,9 @@ Header.initHeadIcon=function(){
 		$("#activity_mao").removeClass("hide");
 		$("#activity_person").removeClass("hide");
 	});
-	
+	$(".head-content").bind("click",function(){ //点击logo，跳转到首页
+		window.location.href = BASE_PATH + "/";
+	});
 };
 
 /**
