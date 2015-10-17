@@ -308,6 +308,7 @@ Activity.sign=function(){
 	}else{
 		ajaxSearch(BASE_PATH + "/activity/takeAnActive.do",params,function(json){
 			systemLoaded();
+			$("#signUp_mc").css("height",document.body.scrollHeight);
 			$("#signUp_mc").removeClass("hide");
 			$("#signUp_modal").removeClass("hide");
 		}, function(data) {
