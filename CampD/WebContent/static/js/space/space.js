@@ -71,7 +71,7 @@ Space.getLength=function(str){
  * 首页点击更多的精品场地
  */
 Space.hightLevel=function(spaceLevel){
-	window.location.href = BASE_PATH + "/" +"space/getSpaceListByLevel.do?spaceLevel="+spaceLevel+"&curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"space/getSpaceListByLevel.do?spaceLevel="+spaceLevel+"&curPage=1&pageLimit=6&isUserAuth=false";
 };
 
 /**
@@ -274,6 +274,6 @@ Space.loadMore=function(){
  * 跳转到场地首页
  */
 Space.classify=function(){
-	window.location.href = BASE_PATH + "/" +"space/getSpaceInfoList.do?curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"space/getSpaceInfoList.do?curPage=1&pageLimit=6&isUserAuth=false";
 };
 
