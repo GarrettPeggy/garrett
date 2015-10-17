@@ -182,12 +182,12 @@
 												<div class="col-md-offset-3 col-md-9">
 													<button class="btn btn-primary" type="button" onclick="Activity.uploadPicToOSS();">
 														<i class="ace-icon fa fa-check bigger-110"></i>
-														Submit
+														发布活动
 													</button>
 													&nbsp; &nbsp; &nbsp;
 													<button class="btn" type="reset">
 														<i class="ace-icon fa fa-undo bigger-110"></i>
-														Reset
+														重置表单
 													</button>
 												</div>
 											</div>

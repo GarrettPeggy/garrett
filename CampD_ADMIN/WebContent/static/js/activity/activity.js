@@ -75,6 +75,17 @@ Activity.uploadPicToOSS=function(){
  * 保存活动信息
  */
 Activity.saveActivity=function(){
+	var realPath = $("#realPath").val();
+	var requirement = $("#requirement").val().trim();
+	if(null == realPath || "" == realPath){
+		Dialog.alertInfo("没有活动海报，不能发布活动哦！\\(^o^)/",false);
+		return;
+	}
+	
+	if(null == requirement || "" == requirement){
+		Dialog.alertInfo("活动需求必填哦！\\(^o^)/",false);
+		return;
+	}
 	
 	if(Validator.validForm("addActivityInfoForm")){
 		submitForm("addActivityInfoForm",BASE_PATH + '/activity/add.do',function(data){
@@ -91,6 +102,19 @@ Activity.saveActivity=function(){
  * 修改活动信息
  */
 Activity.updateActivity = function(){
+	
+	var realPath = $("#realPath").val();
+	var oldPath = $("#oldPath").val();
+	var requirement = $("#requirement").val().trim();
+	if((null == realPath || "" == realPath) && (null == oldPath || "" == oldPath)){
+		Dialog.alertInfo("没有活动海报，不能发布活动哦！\\(^o^)/",false);
+		return;
+	}
+	
+	if(null == requirement || "" == requirement){
+		Dialog.alertInfo("活动需求必填哦！\\(^o^)/",false);
+		return;
+	}
 	
 	if(Validator.validForm("editActivityInfoForm")){
 		var fakepath = $("#fakepath").val();
