@@ -94,7 +94,7 @@
     	<c:choose>
     		<c:when test="${empty jsonview.resultList }">
     			<!-- 当没有场地时 -->
-		        <div class="ground-no hide">
+		        <div class="ground-no" id="ground-no-hide">
 		        	<img src="${rmtResPath}/static/images/no_data.png" width="41" height="41"/>
 		            <p>抱歉，没有找到合适的场地</p>
 		            <p>请浏览其他场地吧</p>
