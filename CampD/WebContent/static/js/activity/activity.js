@@ -159,7 +159,7 @@ Activity.search=function(url,isUserAuth){
 		'categoryId':$("#categoryId").length==0 ? '' : $("#categoryId").val(),
 		'creatorId':$("#creatorId").length==0 ? '' : $("#creatorId").val(),
 		'userId':$("#userId").length==0 ? '' : $("#userId").val(),
-		'status':isUserAuth ? '' : 1     //还有一种情况就是   如果登陆了，但是在要举办的活动界面 
+		'status':isUserAuth ? '' : 1    
 	};
 
 	ajaxSearch(BASE_PATH + url,params,function(json){
