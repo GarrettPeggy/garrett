@@ -24,9 +24,9 @@ public class OSSUtil {
 	protected Logger logger = Logger.getLogger(getClass());
 	
 	// 本地图片测试配置
-	//public static final String PIC_BUCKET="camp-image";//OSS的命名空间
-	//public static final String ACCESS_ID="EKNuX4gneNZoqNt1";
-	//public static final String ACCESS_KEY="Gt2PB5uRaSHumEms5wKM0vUWqn3gfY";
+//	public static final String PIC_BUCKET="camp-image";//OSS的命名空间
+//	public static final String ACCESS_ID="EKNuX4gneNZoqNt1";
+//	public static final String ACCESS_KEY="Gt2PB5uRaSHumEms5wKM0vUWqn3gfY";
 	
 	// 现网图片测试配置
 	public static final String ACCESS_ID="sn0Bqqd3dZ68C2tq";//服务器环境

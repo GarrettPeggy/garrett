@@ -138,21 +138,21 @@
 				                                    <ul>
 				                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
 				                                    </ul>
-				                                    <input type="hidden" name="province" class="curValue" value="">
+				                                    <input type="hidden" name="province" class="curValue" value="${spaceMap.spaceInfo.province}">
 				                                </span>
 				                                <span id="city">
 				                                    <i>请选择城市</i>
 				                                    <ul>
 				                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
 				                                    </ul>
-				                                    <input type="hidden" name="city" class="curValue" value="">
+				                                    <input type="hidden" name="city" class="curValue" value="${spaceMap.spaceInfo.city}">
 				                                </span>
 				                                <span id="area">
 				                                    <i>请选择地区</i>
 				                                    <ul>
 				                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
 				                                    </ul>
-				                                    <input type="hidden" name="area" class="curValue" value="">
+				                                    <input type="hidden" name="area" class="curValue" value="${spaceMap.spaceInfo.area}">
 				                                </span>
 					                      </span> 
 					                    </div>
