@@ -5,7 +5,7 @@ $.fn.citySelect = function(cityArray,defaultCityArray,options) {
  		setId : cityArray,                //默认id
  		stval : defaultCityArray,     //默认值
  		czemt : 'i',                        					  //存值元素
- 		inpvt : 'input[name^="cho"]',                     		  //存值文本框	
+ 		inpvt : '.curValue',                     		  //存值文本框	
  		intva : true											  //初始化所有下拉默认确定
  	},
  		opts = $.extend(defaults, options),
@@ -76,7 +76,7 @@ $.fn.citySelect = function(cityArray,defaultCityArray,options) {
  			var $_liA = $('li' , _setId[0]),
  				$_liB = $('li' , _setId[1]),
  				$_liC = $('li' , _setId[2]);
- 			$('li' , _setId[0]).live('click' , function(){ //省点击事件
+ 			$(_setId[0]).delegate('li' , 'click' , function(){ //省点击事件
  				indA = $('li' , _setId[0]).index(this) - 1;
  				var   _valA = $('a' , this).attr('alt'),
 					_textA = $('a' , this).text(),
@@ -95,12 +95,12 @@ $.fn.citySelect = function(cityArray,defaultCityArray,options) {
  				//TODO:当省份发生变化时，城市和地区要恢复默认值
  				_emeltB.text('请选择城市');
  				_emeltC.text('请选择地区');
- 				_inputB.val('请选择城市');
- 				_inputC.val('请选择地区');
+ 				_inputB.val('');
+ 				_inputC.val('');
  				
  				return indA;
  			});
- 			$('li' , _setId[1]).live('click' , function(){ //市点击事件
+ 			$(_setId[1]).delegate('li' , 'click' , function(){ //市点击事件
  				indB = $('li' , _setId[1]).index(this) - 1;
  				var   _valB = $('a' , this).attr('alt'), 
 					_textB = $('a' , this).text(),
@@ -114,10 +114,10 @@ $.fn.citySelect = function(cityArray,defaultCityArray,options) {
  				$(_setId[2]).removelist({thisindex : 2});
  				$(_setId[2]).appendlist({theindex:'0_'+indA+'_'+indB});	
  				_emeltC.text('请选择地区');		
- 				_inputC.val('请选择地区');		
+ 				_inputC.val('');		
  				return indB;
  			});
- 			$('li' , _setId[2]).live('click', function(){ //区点击事件
+ 			$(_setId[2]).delegate('li' , 'click', function(){ //区点击事件
  				indC = $('li' , _setId[2]).index(this);
  				var   _valC = $('a' , this).attr('alt'), 
 					_textC = $('a' , this).text(),
