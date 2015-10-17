@@ -10,7 +10,9 @@
 			<th width="10%" class="center">适用活动</th>
 			<th width="10%" class="center">费用</th>
 			<th width="10%" class="center">特征</th>
-			<th width="30%" class="center">操作</th>
+			<th width="10%" class="center">省市区</th>
+			<th width="10%" class="center">详细地址</th>
+			<th width="10%" class="center">操作</th>
 		</tr>
 	</thead>
 
@@ -24,6 +26,8 @@
 				<td class="center">${systemConst.categoryMap[space.work_for]}</td>
 				<td class="center">${space.cost}</td>
 				<td class="center">${systemConst.spaceLevelMap[fn:trim(space.space_level)]}</td>
+				<td class="center">${space.province}&nbsp;&nbsp;${space.city}&nbsp;&nbsp;${space.area}</td>
+				<td class="center">${space.adress}</td>
 				<td class="center">
 					<a href="${ctx}/space/toEditSpace.do?id=${space.id}">修改</a>&nbsp;&nbsp;
 					<a href="${ctx}/space/toViewSpace.do?id=${space.id}">查看</a>

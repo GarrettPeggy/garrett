@@ -7,7 +7,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/page/common/meta.jsp"%>
 	<%@ include file="/page/common/jsCss.jsp"%>
+	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
 
 <body class="no-skin">
@@ -127,7 +130,37 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">场地地址</label>
+					                    <label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">所在地区</label>
+					                    <div class="col-xs-12 col-sm-3 infolist"> 
+					                      <span class="block input-icon input-icon-right liststyle">
+						                      	<span id="province">
+				                                    <i>请选择省份</i>
+				                                    <ul>
+				                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
+				                                    </ul>
+				                                    <input type="hidden" name="province" class="curValue" value="">
+				                                </span>
+				                                <span id="city">
+				                                    <i>请选择城市</i>
+				                                    <ul>
+				                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
+				                                    </ul>
+				                                    <input type="hidden" name="city" class="curValue" value="">
+				                                </span>
+				                                <span id="area">
+				                                    <i>请选择地区</i>
+				                                    <ul>
+				                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
+				                                    </ul>
+				                                    <input type="hidden" name="area" class="curValue" value="">
+				                                </span>
+					                      </span> 
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">详细地址</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="adress" id="adress" class="width-100" value="${spaceMap.spaceInfo.adress}" notnull="true" maxlength="100" >
@@ -204,4 +237,9 @@
 		<jsp:include page="/page/common/footer.jsp" flush="true"></jsp:include>
 	</div>
 </body>
+<script type="text/javascript">
+$(function(){ //调用插件['#Province', '#City', '#Area']
+    $.fn.citySelect(['#province', '#city', '#area'],['${spaceMap.spaceInfo.province}' , '${spaceMap.spaceInfo.city}' , '${spaceMap.spaceInfo.area}']);
+});
+</script>
 </html>
