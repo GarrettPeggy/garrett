@@ -41,7 +41,14 @@
 			        		<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
 				            	<li class="clearfix">
 				            		<div class="data-li-left">
-				                		<img src="${sysConfig.ossResUrl}${activity.show_image }" width="91" height="91"/>
+					            		<c:choose>
+					            			<c:when test="${!empty activity.show_image && ''!=activity.show_image }">
+					            				<img src="${sysConfig.ossResUrl}${activity.show_image }" width="91" height="91"/>
+					            			</c:when>
+					            			<c:otherwise>
+					            				<img src="${rmtResPath}/static/images/cd_logo.png" width="91" height="91" />
+					            			</c:otherwise>
+					                	</c:choose>
 				                	</div>	
 				                	<div class="data-li-right">
 				                    	<div class="dlr-title retina-1px-border-bottom">
