@@ -54,7 +54,7 @@
 				                    	<div class="dlr-title retina-1px-border-bottom">
 				                        	<span class="dlrt1">${systemConst.categoryMap[fn:trim(activity.category_id)] }</span>&nbsp;&nbsp;&nbsp;
 				                            <span class="dlrt2"><font color="#638ee0">${activity.act_num}</font>人</span>&nbsp;&nbsp;&nbsp;
-				                            <span class="dlrt3">${activity.act_city }</span>
+				                            <span class="dlrt3">${activity.city }</span>
 				                        </div>
 				                        <div class="dlr-detail color94 fontSize14">
 					                        <c:if test="${fn:length(activity.requirement) > 20}">
