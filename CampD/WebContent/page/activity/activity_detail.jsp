@@ -41,7 +41,7 @@
 	                </div>
 	                <div class="fontSize14 mat7 pdb10">
 	                	<span class="fontSize13">活动地点:</span>
-	                	<span class="fontSize13">${jsonview.activityInfo.adress }</span>
+	                	<span class="fontSize13">${jsonview.activityInfo.province}${jsonview.activityInfo.city}${jsonview.activityInfo.area}${jsonview.activityInfo.adress }</span>
 	                </div>
 	            </div>
 	        </div>
