@@ -37,8 +37,9 @@ public class ActivityJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 添加活动需求到数据库
-		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),new Date(),new Date(),reqMap.get("status")};
+		//String sqlStr = "insert into activity(id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,province,city,area,adress,sponsor,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),new Date(),new Date(),reqMap.get("status")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -58,15 +59,15 @@ public class ActivityJsonServer {
 	}
 	/**
 	 * 活动更新
-	 * @param reqMap:{categoryId：活动所属范畴id，actNum:活动人数，actCity：活动城市，actType:活动类型,requirement：活动需求，adress:活动地址，sponsor：活动发起方，status：活动状态，show_image：活动展示的图片，title：活动标题，subTitle：活动副标题，beginTime:开始时间，endTime：结束时间，publishTime：发布时间,id:活动Id}
+	 * @param reqMap:{categoryId：活动所属范畴id，actNum:活动人数，province：活动省份，city：活动城市，area：活动地区，actType:活动类型,requirement：活动需求，adress:活动地址，sponsor：活动发起方，status：活动状态，show_image：活动展示的图片，title：活动标题，subTitle：活动副标题，beginTime:开始时间，endTime：结束时间，publishTime：发布时间,id:活动Id}
 	 * @return
 	 */
 	public Map update(Map reqMap){
 		
 		logger.info("reqMap="+reqMap);
 		//活动更新
-		String sqlStr = " update activity set category_id=?,act_num=?,act_city=?,act_type=?,requirement=?,adress=?,sponsor=?,status=?,show_image=?,title=?,sub_title=?,begin_time=?,end_time=?,publish_time=? where id=? ";
-        Object[] params = new Object[]{reqMap.get("categoryId"), reqMap.get("actNum"), reqMap.get("actCity"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("status"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),reqMap.get("publishTime"),reqMap.get("id")};
+		String sqlStr = " update activity set category_id=?,act_num=?,act_type=?,requirement=?,province=?,city=?,area=?,adress=?,sponsor=?,status=?,show_image=?,title=?,sub_title=?,begin_time=?,end_time=?,publish_time=? where id=? ";
+        Object[] params = new Object[]{reqMap.get("categoryId"), reqMap.get("actNum"), reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("status"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),reqMap.get("publishTime"),reqMap.get("id")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         JSONView jsonView = new JSONView();
         if(updateLineCount <= 0){
@@ -239,7 +240,7 @@ public class ActivityJsonServer {
 	 */
 	public Map getActivityById(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
+		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
 		Map activityInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});//单条信息
 		JSONView jsonView = new JSONView();
 		jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);

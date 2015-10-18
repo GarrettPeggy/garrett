@@ -7,10 +7,13 @@
 	<%@ include file="/page/common/meta.jsp"%>
 	<link rel="stylesheet" href="${rmtResPath}/static/css/bootstrap-datetimepicker.min.css" />
 	<%@ include file="/page/common/jsCss.jsp"%>
+	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<script src="${locResPath}/static/js/date-time/moment.min.js"></script>
 	<script src="${locResPath}/static/js/date-time/locale/zh-cn.js"></script>
 	<script src="${locResPath}/static/js/date-time/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
 
 <body class="no-skin">
@@ -67,21 +70,32 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="actCity" class="col-sm-3 control-label no-padding-right">活动城市</label>
-												<div class="col-md-3">
-													<div class="row">
-														<div class="col-sm-6">
-															<select class="form-control" name="actCity" id="actCity">
-																<c:if test="${activityMap.activityInfo.act_city=='上海' }"><option value="上海" selected="selected">上海</option></c:if>
-																<c:if test="${activityMap.activityInfo.act_city=='北京' }"><option value="北京" selected="selected">北京</option></c:if>
-									                            <c:if test="${activityMap.activityInfo.act_city=='广州' }"><option value="广州" selected="selected">广州</option></c:if>
-									                            <c:if test="${activityMap.activityInfo.act_city=='深圳' }"><option value="深圳" selected="selected">深圳</option></c:if>
-									                            <c:if test="${activityMap.activityInfo.act_city=='成都' }"><option value="成都" selected="selected">成都</option></c:if>
-									                            <c:if test="${activityMap.activityInfo.act_city=='武汉' }"><option value="武汉" selected="selected">武汉</option></c:if>
-									                         </select>
-														</div>
-													</div>
-												</div>
+												<label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">所在地区</label>
+												<div class="col-xs-12 col-sm-3 infolist"> 
+							                      	<span class="block input-icon input-icon-right liststyle">
+								                      	<span id="province">
+						                                    <i>请选择省份</i>
+						                                    <ul>
+						                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
+						                                    </ul>
+						                                    <input type="hidden" name="province" class="curValue" value="${activityMap.activityInfo.province}">
+						                                </span>
+						                                <span id="city">
+						                                    <i>请选择城市</i>
+						                                    <ul>
+						                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
+						                                    </ul>
+						                                    <input type="hidden" name="city" class="curValue" value="${activityMap.activityInfo.city}">
+						                                </span>
+						                                <span id="area">
+						                                    <i>请选择地区</i>
+						                                    <ul>
+						                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
+						                                    </ul>
+						                                    <input type="hidden" name="area" class="curValue" value="${activityMap.activityInfo.area}">
+						                                </span>
+							                      	</span> 
+							                    </div>
 												<div class="help-block col-xs-12 col-sm-reset inline"></div>
 											</div>
 											
@@ -125,7 +139,14 @@
 														<div class="col-sm-6">
 															<select class="form-control" name="categoryId" id="categoryId">
 																<c:forEach items="${systemConst.categoryMap}" var="category">
-																	<option value="${category.key}" selected="${category.key == activityMap.activityInfo.category_id?'selected':''}">${category.value}</option>
+																	<c:choose>
+																		<c:when test="${category.key == activityMap.activityInfo.category_id }">
+																			<option value="${category.key}" selected="selected">${category.value}</option>
+																		</c:when>
+																		<c:otherwise>
+																			<option value="${category.key}">${category.value}</option>
+																		</c:otherwise>
+																	</c:choose>
 																</c:forEach>
 									                         </select>
 														</div>
@@ -215,6 +236,7 @@
 <script type="text/javascript">
 	$(function(){
 		DateUtil.initDatePicker();
+		$.fn.citySelect(['#province', '#city', '#area'],['${activityMap.activityInfo.province}' , '${activityMap.activityInfo.city}' , '${activityMap.activityInfo.area}']);
 	});
 </script>
 </html>
