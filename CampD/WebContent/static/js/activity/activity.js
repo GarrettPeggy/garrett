@@ -229,7 +229,9 @@ Activity.actSub=function(){
 	systemLoading(null, true, "提交中,请稍等");
 	var categoryId=$("#categoryId").val();
 	var actNum=$("#actNum").val();
-	var actCity=$("#actCity").val();
+	var province=$("#province").val();
+	var city=$("#city").val();
+	var area=$("#area").val();
 	var requirement=$("#requirement").val();
 	if(categoryId=="" || null==categoryId){
 		alert("请选择活动范畴");
@@ -237,10 +239,6 @@ Activity.actSub=function(){
 	}
 	if(actNum=="" || null==actNum){
 		alert("请填写活动人数");
-		return;
-	}
-	if(actCity=="" || null==actCity){
-		alert("请选择活动城市");
 		return;
 	}
 	if(requirement=="" || null==requirement){
@@ -251,7 +249,9 @@ Activity.actSub=function(){
 	var params = {
 		"categoryId":categoryId,//活动类型
 		"actNum":actNum,//活动人数
-		"actCity":actCity,//活动城市
+		"province":province,//省份
+		"city":city,//城市
+		"area":area,//区域
 		"requirement":requirement, //活动需求
 		"actType":0,//默认普通活动
 		"status":0//活动状态  0表示未发布
