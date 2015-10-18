@@ -347,4 +347,31 @@ Activity.cancel=function(){
 	$("#activity_share").addClass("hide");
 };
 
-
+/**
+ * 验证省市区是否为空
+ */
+Activity.validateAdress = function(){
+	
+	var isPass = true;
+	
+	var province = $("input[name='province']").val();
+	var city = $("input[name='city']").val();
+	var area = $("input[name='area']").val();
+	
+	if(isEmpty(province)){
+		Dialog.alertInfo("请选择省份！");
+		isPass = false;
+	}
+	
+	if(isEmpty(city)){
+		Dialog.alertInfo("请选择城市！");
+		isPass = false;
+	}
+	
+	if(isEmpty(area)){
+		Dialog.alertInfo("请选择区域！");
+		isPass = false;
+	}
+	
+	return isPass;
+};
