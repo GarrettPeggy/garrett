@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><!-- 我的 -->
 <link rel="stylesheet" href="${locResPath}/static/common/mobileFocus/css/styles.css?_v=${vs}"/>
-<%-- <link rel="stylesheet" href="${locResPath}/static/css/luara.css?_v=${vs}"/> --%>
-<%-- <link rel="stylesheet" href="${locResPath}/static/css/luara.left.css?_v=${vs}"/> --%>
-<%-- <script type="text/javascript" src="${locResPath}/static/common/jquery.luara.0.0.1.min.js?_v=${vs}"></script> --%>
 <script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/common/mobileFocus/js/yxMobileSlider.js?_v=${vs}"></script>
 
