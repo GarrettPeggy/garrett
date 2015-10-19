@@ -6,10 +6,12 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<link rel="stylesheet" type="text/css" href="${locResPath}/static/css/nativeShare.css?_v=${vs}" />
-	<link rel="stylesheet" href="${locResPath}/static/css/luara.css?_v=${vs}"/>
+	<%-- <link rel="stylesheet" href="${locResPath}/static/css/luara.css?_v=${vs}"/> --%>
+	<link rel="stylesheet" href="${locResPath}/static/common/mobileFocus/css/styles.css?_v=${vs}"/>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/nativeShare.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/common/jquery.luara.0.0.1.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/mobileFocus/js/yxMobileSlider.js?_v=${vs}"></script>
+	<%-- <script type="text/javascript" src="${locResPath}/static/common/jquery.luara.0.0.1.min.js?_v=${vs}"></script> --%>
 </head>
 <body>
 	<!-- 头部 -->
@@ -29,6 +31,18 @@
     	<div class="ac-detail-title retina-1px-border-bottom">
 	    	<!-- 场地轮播图 -->
 	        <div class="img-tap-show-space">
+	        	<ul>
+	        		<c:if test="${!empty jsonview.spaceInfo.show_images}">
+					    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+					    	<li>
+						    	<a href="#" target="_blank">
+						    		<img src="${sysConfig.ossResUrl}${image_src}" width="100%" height="125" alt="${ status.index + 1}"/>
+						    	</a>
+					    	</li>
+					    </c:forEach>
+					</c:if>
+	           </ul>
+	        	<%-- 
 		        <ul>
 			        <c:if test="${!empty jsonview.spaceInfo.show_images}">
 					    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
@@ -44,6 +58,7 @@
 					</c:if>
 		        </ol>
 		        <div style="clear:both;"></div>
+		        --%>
 	        </div>
 	        <!-- end -->
             <div class="adt-desc">

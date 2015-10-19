@@ -119,9 +119,17 @@ Space.setSelect=function(){
  */
 Space.tapShow=function(){
 	//调用Luara示例
-    $(".img-tap-show-space").luara({
-    	interval:5000,
-    	selected:"seleted"
+//    $(".img-tap-show-space").luara({
+//    	interval:5000,
+//    	selected:"seleted"
+//    });
+	
+	$(".img-tap-show-space").yxMobileSlider({
+    	width:$(document).width(),  //容器的宽度  不指定的话默认就是640
+    	height:125,//容器的高度     不指定的话默认就是320
+    	//width:1024,
+    	//height:125,
+    	during:5000  //轮播的间隔时间   不指定默认就是5000毫秒
     });
 };
 

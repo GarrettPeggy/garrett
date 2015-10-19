@@ -42,9 +42,16 @@ Header.initHeadIcon=function(){
  */
 Header.tapShow=function(){
 	//调用Luara示例
-    $(".img-tap-show").luara({
-    	interval:5000,
-    	selected:"seleted"
+//    $(".img-tap-show").luara({
+//    	interval:5000,
+//    	selected:"seleted"
+//    });
+    $(".img-tap-show").yxMobileSlider({
+    	width:$(document).width(),  //容器的宽度  不指定的话默认就是640
+    	height:125,//容器的高度     不指定的话默认就是320
+    	//width:1024,
+    	//height:125,
+    	during:5000  //轮播的间隔时间   不指定默认就是5000毫秒
     });
 };
 
@@ -60,14 +67,14 @@ Header.loadTapShow=function(){
 		//数据查询成功
 		//清空列表项
 		$("#img-tap-show-ul").empty();
-		$("#img-tap-show-ol").empty();
+		//$("#img-tap-show-ol").empty();
 		var tapShowList=json.sysConfigList;
 		//把数据写到页面上
 		if(null!=tapShowList && tapShowList.length>0){
 			var length=tapShowList.length;
 			for(var i=0;i<length;i++){
-				$("#img-tap-show-ul").append("<li><img src='"+OSS_RES_URL+tapShowList[i].value_val+"' width='100%' height='125' alt='"+(i+1)+"'/></li>");
-				$("#img-tap-show-ol").append("<li></li>");
+				$("#img-tap-show-ul").append("<li><a href='#' target='_blank'><img src='"+OSS_RES_URL+tapShowList[i].value_val+"' width='100%' height='125' alt='"+(i+1)+"'/></a></li>");
+				//$("#img-tap-show-ol").append("<li></li>");
 			}
 			Header.tapShow();
 		}

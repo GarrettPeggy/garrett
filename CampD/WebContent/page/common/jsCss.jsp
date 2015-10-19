@@ -16,8 +16,8 @@
 <script type="text/javascript" src="${locResPath}/static/common/bootstrap/js/bootstrap.min.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/common/validation.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/common/common.js?_v=${vs}"></script>
-<script type="text/javascript" src="${locResPath}/static/common/hammer/hammer.min.js?_v=${vs}"></script>
-<script type="text/javascript" src="${locResPath}/static/common/jquery.hammer.js?_v=${vs}"></script>
+<%-- <script type="text/javascript" src="${locResPath}/static/common/hammer/hammer.min.js?_v=${vs}"></script>
+<script type="text/javascript" src="${locResPath}/static/common/jquery.hammer.js?_v=${vs}"></script> --%>
 <link rel="stylesheet" type="text/css" href="${locResPath}/static/common/bootstrap/css/bootstrap.min.css?_v=${vs}" />
 <link rel="stylesheet" type="text/css" href="${locResPath}/static/common/bootstrap/css/bootstrap-theme.min.css?_v=${vs}" />
 <link rel="stylesheet" type="text/css" href="${locResPath}/static/css/common.css?_v=${vs}" />
