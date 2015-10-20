@@ -150,9 +150,9 @@ public class UserJsonServer {
         }
 		
 		// 如果记录不为空说明用户已注册，可以允许登陆，此时需要修改登录时间
-		String logTimeSqlStr = "UPDATE user SET login_time=? WHERE id=?";
+		String logTimeSqlStr = "UPDATE user SET login_time=? WHERE mdn=?";
 		logger.info("logTimeSqlStr="+logTimeSqlStr);
-        Object[] params = new Object[]{new Date(), reqMap.get("userId")};
+        Object[] params = new Object[]{new Date(), reqMap.get("mdn")};
         int updateLineCount = jdbcTemplate.update(logTimeSqlStr, params);
         
         JSONView logTimeJsonView = new JSONView();
