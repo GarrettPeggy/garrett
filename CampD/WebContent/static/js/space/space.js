@@ -26,11 +26,19 @@ Space.init=function(){
  * 场地轮播图
  */
 Space.tapShow=function(){
-	$(".img-tap-show-space").yxMobileSlider({
-    	width:$(document).width(),  //容器的宽度  不指定的话默认就是640
-    	height:125,//容器的高度     不指定的话默认就是320
-    	during:5000  //轮播的间隔时间   不指定默认就是5000毫秒
-    });
+	var bullets = document.getElementById('position').getElementsByTagName('li');
+	var banner = Swipe(document.getElementById('mySwipe'), {
+		auto: 2000,
+		continuous: true,
+		disableScroll:false,
+		callback: function(pos) {
+			var i = bullets.length;
+			while (i--) {
+				bullets[i].className = ' ';
+			}
+			bullets[pos].className = 'cur';
+		}
+	});
 };
 
 /**

@@ -6,12 +6,10 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<link rel="stylesheet" type="text/css" href="${locResPath}/static/css/nativeShare.css?_v=${vs}" />
-	<%-- <link rel="stylesheet" href="${locResPath}/static/css/luara.css?_v=${vs}"/> --%>
-	<link rel="stylesheet" href="${locResPath}/static/common/mobileFocus/css/styles.css?_v=${vs}"/>
+	<link rel="stylesheet" href="${locResPath}/static/common/swipe/css/swipe.css?_v=${vs}"/>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/nativeShare.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/common/mobileFocus/js/yxMobileSlider.js?_v=${vs}"></script>
-	<%-- <script type="text/javascript" src="${locResPath}/static/common/jquery.luara.0.0.1.min.js?_v=${vs}"></script> --%>
+	<script type="text/javascript" src="${locResPath}/static/common/swipe/js/swipe.js?_v=${vs}"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -30,18 +28,32 @@
 	    <!-- 活动概括与地点 -->
     	<div class="ac-detail-title retina-1px-border-bottom">
 	    	<!-- 场地轮播图 -->
-	        <div class="img-tap-show-space">
-	        	<ul>
-	        		<c:if test="${!empty jsonview.spaceInfo.show_images}">
-					    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
-					    	<li>
-						    	<a href="#" target="_blank">
-						    		<img src="${sysConfig.ossResUrl}${image_src}" width="100%" height="125" alt="${ status.index + 1}"/>
-						    	</a>
-					    	</li>
-					    </c:forEach>
-					</c:if>
-	           </ul>
+	    	<div class="addWrap">
+		        <div class="img-tap-show-space swipe" id="mySwipe">
+		        	<div class="swipe-wrap">
+		        		<c:if test="${!empty jsonview.spaceInfo.show_images}">
+						    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+						    	<div>
+							    	<a href="javascript:;">
+							    		<img src="${sysConfig.ossResUrl}${image_src}" class="img-responsive" alt="${ status.index + 1}"/>
+							    	</a>
+						    	</div>
+						    </c:forEach>
+						</c:if>
+		           </div>
+		        </div>
+		        <ul id="position">
+		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
+		        		<c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+		        			<c:if test="${status.index == 0}">
+		        				<li class="cur"></li>
+		        			</c:if>
+		        			<c:if test="${status.index != 0}">
+		        				<li></li>
+		        			</c:if>
+		        		</c:forEach>
+		        	</c:if>
+				</ul>
 	        </div>
 	        <!-- end -->
             <div class="adt-desc">
