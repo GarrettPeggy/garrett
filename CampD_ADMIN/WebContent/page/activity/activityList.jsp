@@ -103,41 +103,6 @@
 													</div>
 												</div>
 												
-												<!-- 
-												<div class="form-group">
-												<label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">所在地区</label>
-												<div class="col-xs-12 col-sm-3 infolist"> 
-													<span class="block input-icon input-icon-right liststyle">
-								                      	<span id="province">
-						                                    <i>请选择省份</i>
-						                                    <ul>
-						                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
-						                                    </ul>
-						                                    <input type="hidden" name="province" class="curValue" value="">
-						                                </span>
-						                                <span id="city">
-						                                    <i>请选择城市</i>
-						                                    <ul>
-						                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
-						                                    </ul>
-						                                    <input type="hidden" name="city" class="curValue" value="">
-						                                </span>
-						                                <span id="area">
-						                                    <i>请选择地区</i>
-						                                    <ul>
-						                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
-						                                    </ul>
-						                                    <input type="hidden" name="area" class="curValue" value="">
-						                                </span>
-						                      		</span> 
-						                      	</div>
-												<div class="help-block col-xs-12 col-sm-reset inline"></div>
-											</div>		
-												 -->
-												
-												
-												
-												
 												<div class="col-xs-12 col-sm-3">
 													<div class="widget-body">
 														<div class="widget-main">
