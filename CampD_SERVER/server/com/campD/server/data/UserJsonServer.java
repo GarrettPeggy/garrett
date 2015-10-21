@@ -149,6 +149,21 @@ public class UserJsonServer {
             return jsonView;  
         }
 		
+		// 如果记录不为空说明用户已注册，可以允许登陆，此时需要修改登录时间
+		String logTimeSqlStr = "UPDATE user SET login_time=? WHERE mdn=?";
+		logger.info("logTimeSqlStr="+logTimeSqlStr);
+        Object[] params = new Object[]{new Date(), reqMap.get("mdn")};
+        int updateLineCount = jdbcTemplate.update(logTimeSqlStr, params);
+        
+        JSONView logTimeJsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	logTimeJsonView.setFail();
+        	logTimeJsonView.setReturnErrorMsg();
+			logger.info("更新用户登录时间失败->params="+params.toString());
+			return logTimeJsonView;
+        }
+		
+        // 返回查询结果
 		jsonView.addAttribute("userInfo", resultMap);
         logger.info("resultMap="+resultMap);
         return jsonView;

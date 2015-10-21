@@ -133,4 +133,9 @@
     </div>
     <!-- end -->
 </body>
+<script type="text/javascript">
+$(function(){
+	Space.tapShow();
+});
+</script>
 </html>

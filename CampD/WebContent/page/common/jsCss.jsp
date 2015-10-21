@@ -18,5 +18,5 @@
 <script type="text/javascript" src="${locResPath}/static/common/common.js?_v=${vs}"></script>
 <link rel="stylesheet" type="text/css" href="${locResPath}/static/common/bootstrap/css/bootstrap.min.css?_v=${vs}" />
 <link rel="stylesheet" type="text/css" href="${locResPath}/static/common/bootstrap/css/bootstrap-theme.min.css?_v=${vs}" />
-<link rel="stylesheet" type="text/css" href="${locResPath}/static/css/common.css?_v=${vs}" />
-<link rel="shortcut icon" href="${locResPath}/static/images/login/logo.png"/>
+<link rel="stylesheet" type="text/css" href="${rmtResPath}/static/css/common.css?_v=${vs}" />
+<link rel="shortcut icon" href="${rmtResPath}/static/images/login/logo.png"/>

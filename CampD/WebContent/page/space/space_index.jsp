@@ -105,8 +105,8 @@
     			<div class="ul-box">
 		        	<ul class="data-list ground-list" id="space_highlevel">
 		        		<c:forEach items="${jsonview.resultList }" var="space">
-			        		<a href="${ctx }/space/getSpaceInfoById.do?id=${space.id }">
-			        			<li class="clearfix">
+		        			<li class="clearfix">
+		        				<a href="${ctx }/space/getSpaceInfoById.do?id=${space.id }">
 				                	<div class="data-li-left">
 				                    	<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="91" height="63"/>
 				                    </div>	
@@ -131,8 +131,8 @@
 				                            </div>
 				                        </div>
 				                    </div>	
-				                </li>
-				            </a>
+			                    </a>
+			                </li>
 		        		</c:forEach>
 		        	</ul>
 		        	<c:if test="${pageInfo.pageSize > pageInfo.curPage }">

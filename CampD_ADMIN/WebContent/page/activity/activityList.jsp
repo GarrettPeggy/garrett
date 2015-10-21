@@ -7,11 +7,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/page/common/meta.jsp"%>
 	<link rel="stylesheet" href="${rmtResPath}/static/css/bootstrap-datetimepicker.min.css" />
+	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<%@ include file="/page/common/jsCss.jsp"%>
 	<script src="${locResPath}/static/js/date-time/moment.min.js"></script>
 	<script src="${locResPath}/static/js/date-time/locale/zh-cn.js"></script>
 	<script src="${locResPath}/static/js/date-time/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
 
 <body class="no-skin">
@@ -70,16 +73,32 @@
 												<div class="col-xs-12 col-sm-3">
 													<div class="widget-body">
 														<div class="widget-main">
-															<label for="form-field-select-1">活动城市</label> 
-															<select class="form-control" name="actCity" id="actCity">
-																<option value="">---请选择---</option>
-																<option value="北京">北京</option>
-																<option value="上海">上海</option>
-																<option value="广州">广州</option>
-																<option value="深圳">深圳</option>
-																<option value="成都">成都</option>
-																<option value="武汉">武汉</option>
-															</select>
+															<label>所在地区</label> 
+															<div class="infolist" style="width: 400px;"> 
+																<span class="block input-icon input-icon-right liststyle">
+											                      	<span id="province">
+									                                    <i>请选择省份</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="province" class="curValue" value="">
+									                                </span>
+									                                <span id="city">
+									                                    <i>请选择城市</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="city" class="curValue" value="">
+									                                </span>
+									                                <span id="area">
+									                                    <i>请选择地区</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="area" class="curValue" value="">
+									                                </span>
+									                      		</span> 
+									                      	</div>
 														</div>
 													</div>
 												</div>
@@ -195,6 +214,7 @@
 	$(function(){
 		DateUtil.initDateChoose();
 		Activity.searchActivityList();
+		$.fn.citySelect(['#province', '#city', '#area'],['北京市' , '北京市' , '东城区']);
 	});
 </script>
 

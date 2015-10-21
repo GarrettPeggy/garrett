@@ -18,29 +18,7 @@
     <div class="main" id="activity_main">
     	<!-- 轮播图 -->
         <div class="img-tap-show">
-        	<%-- 
-	        <ul id="img-tap-show-ul">
-	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="1"/></li>
-	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="2"/></li>
-	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="3"/></li>
-	            <li><img src="${rmtResPath}/static/images/index_img_tap.png" width="100%" height="125" alt="4"/></li>
-	        </ul>
-	        <ol id="img-tap-show-ol">
-	            <!-- <li></li>
-	            <li></li>
-	            <li></li>
-	            <li></li> -->
-	        </ol>
-	        <div style="clear:both;"></div>
-	         --%>	
 	         <ul id="img-tap-show-ul">
-	         	<!--
-			    <li><a href="#" target="_blank"><img src="images/1.jpg" alt="科e互联网站建设团队"></a></li>
-				<li><a href="#" target="_blank"><img src="images/2.jpg" alt="网页特效集锦"></a></li>
-				<li><a href="#" target="_blank"><img src="images/3.jpg" alt="JS代码素材库"></a></li>
-				<li><a href="#" target="_blank"><img src="images/4.jpg" alt="用心建站用心服务"></a></li>
-				<li><a href="#" target="_blank"><img src="images/5.jpg" alt="学会用才能学会写"></a></li>
-				-->
 			 </ul>
         </div>
         <!-- end -->
