@@ -62,9 +62,9 @@ Space.deleteCurPic = function(currentObject){
  * 控制场地图片个数
  */
 Space.controlPicNum = function(event,currentObject){
-	if($(".space-img").length>=4){
+	if($(".space-img").length>=5){
 		stopDefault(event||window.event);
-		Dialog.alertInfo('展示图片不能超过4个！');
+		Dialog.alertInfo('展示图片不能超过5个！');
 	}
 };
 
@@ -96,7 +96,13 @@ Space.addSpacePicToOSS = function(){
 Space.addSpace = function(){
 	if(Validator.validForm("addSpaceInfoForm")){
 		
-		Space.getSpaceImages();
+		var show_images = Space.getSpaceImages();
+		$("#show_images").val(show_images);
+		// 必须上传场地图片
+		if(isEmpty(show_images)){
+			Dialog.alertInfo("请至少上传一张场地照片",false);
+			return;
+		}
 		
 		submitForm("addSpaceInfoForm",BASE_PATH + '/space/add.do', function(data){
 				window.location.href = BASE_PATH + "/space/toList.do";
@@ -135,7 +141,13 @@ Space.updateSpacePicToOSS = function(){
 Space.updateSpace = function(){
 	if(Validator.validForm("updateSpaceInfoForm")){
 		
-		Space.getSpaceImages();
+		var show_images = Space.getSpaceImages();
+		$("#show_images").val(show_images);
+		// 必须上传场地图片
+		if(isEmpty(show_images)){
+			Dialog.alertInfo("请至少上传一张场地照片",false);
+			return;
+		}
 		
 		submitForm("updateSpaceInfoForm",BASE_PATH + '/space/update.do', function(data){
 				var oldPath = $("#oldPath").val();
@@ -200,7 +212,8 @@ Space.getSpaceImages = function(){
 			show_images += "," + imgSrc.substring(imgSrc.lastIndexOf('images/'));
 		}
 	}
-	$("#show_images").val(show_images);
+	
+	return show_images;
 };
 
 /**
