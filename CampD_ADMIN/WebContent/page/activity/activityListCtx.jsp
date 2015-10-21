@@ -4,8 +4,8 @@
 	<thead>
 		<tr>
 			<th width="8%" class="center">活动标题</th>
-			<th width="8%" class="center">城市</th>
-			<th width="8%" class="center">活动范畴</th>
+			<th width="11%" class="center">省&nbsp;市&nbsp;区</th>
+			<th width="5%" class="center">活动范畴</th>
 			<th width="10%" class="center">地址</th>
 			<th width="8%" class="center">活动类型</th>
 			<th width="15%" class="center">开始时间</th>
@@ -19,7 +19,7 @@
 		<c:forEach items="${resultMap.activityList}" var="activity">
 			<tr>
 				<td class="center">${activity.title}</td>
-				<td class="center">${activity.act_city}</td>
+				<td class="center">${activity.province}&nbsp;${activity.city}&nbsp;${activity.area}</td>
 				<td class="center">${systemConst.categoryMap[fn:trim(activity.category_id)] }</td>
 				<td class="center">${activity.adress}</td>
 				<td class="center">${systemConst.actTypeMap[fn:trim(activity.act_type)] }</td>
