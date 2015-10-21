@@ -128,7 +128,7 @@ public class SpaceJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		//根据场地名称，场地地地址，适用哪些活动，场地容量，花费等信息查询场地列表信息.  王光华另加查询条件：
-		String sqlStr = " select t1.id,t1.creator_id,t1.name,t1.province,t1.city,t1.area,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level from spaces t1 where 1=1 ";
+		String sqlStr = " select t1.id,t1.creator_id,t1.name,t1.province,t1.city,t1.area,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level from spaces t1 where 1=1 ORDER BY t1.create_time";
 		String sqlCount =" select count(1) from spaces t1 where 1=1 ";
 		
 		Object name = reqMap.get("name");//名称
