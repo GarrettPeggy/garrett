@@ -13,13 +13,24 @@ var Space={
 
 $(function(){
 	Space.init();
-	Space.tapShow();//自动调用轮播图效果
+	//Space.tapShow();//自动调用轮播图效果
 });
 /**
  * 场地初始化
  */
 Space.init=function(){
 	Space.setSelect();
+};
+
+/**
+ * 场地轮播图
+ */
+Space.tapShow=function(){
+	$(".img-tap-show-space").yxMobileSlider({
+    	width:$(document).width(),  //容器的宽度  不指定的话默认就是640
+    	height:125,//容器的高度     不指定的话默认就是320
+    	during:5000  //轮播的间隔时间   不指定默认就是5000毫秒
+    });
 };
 
 /**
@@ -114,17 +125,6 @@ Space.setSelect=function(){
 	});
 };
 
-/**
- * 场地轮播图
- */
-Space.tapShow=function(){
-	
-	$(".img-tap-show-space").yxMobileSlider({
-    	width:$(document).width(),  //容器的宽度  不指定的话默认就是640
-    	height:125,//容器的高度     不指定的话默认就是320
-    	during:5000  //轮播的间隔时间   不指定默认就是5000毫秒
-    });
-};
 
 /**
  * 恢复原样式

@@ -42,23 +42,6 @@
 					    </c:forEach>
 					</c:if>
 	           </ul>
-	        	<%-- 
-		        <ul>
-			        <c:if test="${!empty jsonview.spaceInfo.show_images}">
-					    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
-					    	<li><img src="${sysConfig.ossResUrl}${image_src}" width="100%" height="125" alt="${ status.index + 1}"/></li>
-					    </c:forEach>
-					</c:if>
-		        </ul>
-		        <ol id="img-tap-show-ol">
-		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
-					    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}">
-					    	<li></li>
-					    </c:forEach>
-					</c:if>
-		        </ol>
-		        <div style="clear:both;"></div>
-		        --%>
 	        </div>
 	        <!-- end -->
             <div class="adt-desc">
@@ -150,4 +133,9 @@
     </div>
     <!-- end -->
 </body>
+<script type="text/javascript">
+$(function(){
+	Space.tapShow();
+});
+</script>
 </html>
