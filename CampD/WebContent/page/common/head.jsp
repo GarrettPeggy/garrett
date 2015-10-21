@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><!-- 我的 -->
-<link rel="stylesheet" href="${locResPath}/static/common/mobileFocus/css/styles.css?_v=${vs}"/>
+<link rel="stylesheet" href="${locResPath}/static/common/swipe/css/swipe.css?_v=${vs}"/>
 <script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>
-<script type="text/javascript" src="${locResPath}/static/common/mobileFocus/js/yxMobileSlider.js?_v=${vs}"></script>
-
+<script type="text/javascript" src="${locResPath}/static/common/swipe/js/swipe.js?_v=${vs}"></script>
    	<!-- 毛玻璃效果蒙层 -->
     <div class="mao hide" id="activity_mao"></div>
     <!-- end -->

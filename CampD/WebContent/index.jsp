@@ -5,7 +5,6 @@
 <head>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
-	<!-- <meta name=”viewport” content=”width=device-width, initial-scale=1″> -->
 	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/user/user.js?_v=${vs}"></script>
@@ -17,9 +16,13 @@
     <!-- 主体 -->
     <div class="main" id="activity_main">
     	<!-- 轮播图 -->
-        <div class="img-tap-show">
-	         <ul id="img-tap-show-ul">
-			 </ul>
+    	<div class="addWrap">
+	        <div class="img-tap-show swipe" id="mySwipe">
+	        	<div class="swipe-wrap">
+				</div>
+	        </div>
+	        <ul id="position">
+			</ul>
         </div>
         <!-- end -->
         <!-- 热门活动 -->

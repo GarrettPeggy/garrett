@@ -42,11 +42,20 @@ Header.initHeadIcon=function(){
  */
 Header.tapShow=function(){
 	
-    $(".img-tap-show").yxMobileSlider({
-    	width:$(document).width(),  //容器的宽度  不指定的话默认就是640
-    	height:125,//容器的高度     不指定的话默认就是320
-    	during:5000  //轮播的间隔时间   不指定默认就是5000毫秒
-    });
+	var bullets = document.getElementById('position').getElementsByTagName('li');
+
+	var banner = Swipe(document.getElementById('mySwipe'), {
+		auto: 2000,
+		continuous: true,
+		disableScroll:false,
+		callback: function(pos) {
+			var i = bullets.length;
+			while (i--) {
+				bullets[i].className = ' ';
+			}
+			bullets[pos].className = 'cur';
+		}
+	});
 };
 
 /**
@@ -60,13 +69,20 @@ Header.loadTapShow=function(){
 		systemLoaded();
 		//数据查询成功
 		//清空列表项
-		$("#img-tap-show-ul").empty();
+		//$("#img-tap-show-ul").empty();
+		$(".swipe-wrap").empty();
+		$("#position").empty();
 		var tapShowList=json.sysConfigList;
 		//把数据写到页面上
 		if(null!=tapShowList && tapShowList.length>0){
-			var length=tapShowList.length;
-			for(var i=0;i<length;i++){
-				$("#img-tap-show-ul").append("<li><a href='#' target='_blank'><img src='"+OSS_RES_URL+tapShowList[i].value_val+"' width='100%' height='125' alt='"+(i+1)+"'/></a></li>");
+			var length=tapShowList.length;//<li><a href='#' target='_blank'><img src='"+OSS_RES_URL+tapShowList[i].value_val+"' width='100%' height='125' alt='"+(i+1)+"'/></a></li>
+			for(var i=0;i<length;i++){//
+				$(".swipe-wrap").append("<div><a href='javascript:;'><img class='img-responsive' src='"+OSS_RES_URL+tapShowList[i].value_val+"' alt='"+(i+1)+"'/></a></div>");
+				if(i==0){
+					$("#position").append("<li class='cur'></li>");
+				}else{
+					$("#position").append("<li></li>");
+				}
 			}
 			Header.tapShow();
 		}
