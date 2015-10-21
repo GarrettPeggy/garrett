@@ -212,6 +212,9 @@ public class SpaceJsonServer {
 		// 获取当前场地总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		
+		// 默认按照发布时间降序排列
+		sqlStr += " ORDER BY t1.create_time DESC ";
+		
 		// 查询的分页参数
     	Map pageInfo = (Map) reqMap.get("pageInfo");
     	int curPage = (int) pageInfo.get("curPage");
