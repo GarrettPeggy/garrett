@@ -110,6 +110,7 @@ a:hover{text-decoration:none;}
 .fontSize17{font-size:17px;}
 .fontSize18{font-size:18px;}
 
+
 /*常用按钮*/
 .btn{padding:0 37px;height:50px;line-height:50px;border:none;border-radius:5px;font-size:20px; display:inline-block;}
 .orange-btn {background:#edbe57;color:#fff;}
@@ -184,9 +185,9 @@ a:hover{text-decoration:none;}
 
 /*润华新增*/
 .text-input-2{
-	 width: 150px;
-	 height: 30px;
-	 border:1px solid;
+	 width: 110px;
+	 height: 25px;
+	 border:1px #CCC solid;
 }
 
 .main .form-box p{
@@ -550,6 +551,45 @@ a:hover{text-decoration:none;}
 	right:13px;
 	z-index:29;
 }
+
+/*举办活动-elissa新增*/
+.sub-ac-form{
+	width:100%;
+	line-height:35px;
+	margin:-15px 0 20px 0;
+	padding:5px 0 5px 0;
+	display:block;
+	float:left;
+	background:#FFF;
+}
+.sub-ac-form dl{
+	float:left;
+	width:100%;
+	border-bottom:1px #CCCCCC solid;
+	padding:2px 0 5px 24px;
+}
+.sub-ac-form dl dt{
+	float:left;
+	width:20%;
+}
+.sub-ac-form dl dt dd{
+	float:left;
+	margin-left:12px;
+}
+
+.ac-desc-text-2{
+	margin:6px 0 0 0;
+	border:1px #CCCCCC solid;
+	width:170px;
+}
+.sub-ac-form dl select{
+	width: 110px;
+	height:25px;
+	border:1px #CCCCCC solid;
+	appearance: none;
+}
+
+
 /*举办活动-活动类型，活动城市，活动人数*/
 .hold-type-header{
 	margin-bottom:0px;

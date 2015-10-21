@@ -24,38 +24,44 @@
 	 <div class="main">
 		 <form id="loginForm">
 	    	<div class="sub-ac-form">
-	        	<!-- <a class="line clearfix" href="###"> -->
-	        	<div class="line clearfix">
-	                <div class="fl">活动类型</div>&nbsp;&nbsp;&nbsp;&nbsp;
-	                <select id="categoryId">
-	                	<option value="">---请选择---</option>
-	                	<option value="0">创业</option>
-	                	<option value="1">商务</option>
-	                	<option value="2">玩乐</option>
-	                	<option value="3">交友</option>
-	                </select>
-	            </div>  
-	            <div class="line clearfix">
-	            	<div class="fl">活动人数</div>&nbsp;&nbsp;&nbsp;&nbsp;
-	                <input type="text" id="actNum" name="actNum" class="text-input-2"/>
-	            </div>
-	            <div class="line clearfix">
-	            	<div class="fl">活动城市</div>&nbsp;&nbsp;&nbsp;&nbsp;
-	            	<select id="actCity">
-	            		<option value="">---请选择---</option>
-	                	<option value="北京">北京</option>
-	                	<option value="上海">上海</option>
-	                	<option value="广州">广州</option>
-	                	<option value="深圳">深圳</option>
-	                	<option value="武汉">武汉</option>
-	            	</select>
-	                <!-- <input type="text" id="actCity" name="actCity" class="text-input-2"/> -->
-	            </div>
-	            <div class="line clearfix-2" style="height: 100px;">
-	            	<div class="fl">活动需求</div>&nbsp;&nbsp;&nbsp;&nbsp;
-	                <textarea rows="6" class="ac-desc-text-2" id="requirement" name="requirement"></textarea>
-	            </div>
-	        </div>
+	    		<dl>
+	                <dt>活动类型</dt>
+	                <dd>
+		                <select id="categoryId">
+		                	<option value="">---请选择---</option>
+		                	<option value="0">创业</option>
+		                	<option value="1">商务</option>
+		                	<option value="2">玩乐</option>
+		                	<option value="3">交友</option>
+		                </select>
+	                </dd>
+	           </dl>
+	           <dl>  
+	           	  <dt>活动人数</dt>
+	              <dd>
+                 	<input type="text" id="actNum" name="actNum" class="text-input-2"/>
+              	  </dd>
+               </dl>
+               <dl>
+	              <dt>活动城市</dt>
+	              	<dd>
+	            	  	<select id="actCity">
+		            		<option value="">---请选择---</option>
+		                	<option value="北京">北京</option>
+		                	<option value="上海">上海</option>
+		                	<option value="广州">广州</option>
+		                	<option value="深圳">深圳</option>
+		                	<option value="武汉">武汉</option>
+	            		</select>
+	            	</dd>
+	          </dl>
+	          <dl style=" border:none;">
+	             <dt>活动需求</dt>
+	             <dd>
+                 	<textarea rows="4" class="ac-desc-text-2" id="requirement" name="requirement"></textarea>
+              	 </dd>
+              </dl>
+            </div>
 	        <div class="btn-box">
 	        	<button class="btn orange-btn" type="button" onclick="Activity.actSub()">立即提交</button>
 	        </div>
