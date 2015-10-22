@@ -245,6 +245,22 @@ Activity.actSub=function(){
 		alert("请填写活动人数");
 		return;
 	}
+	/*
+	if(province == "" || null == province){
+		alert("请选择省份");
+		return;
+	}
+	
+	if(city == "" || null == city){
+		alert("请选择城市");
+		return;
+	}
+	
+	if(area == "" || null == area){
+		alert("请选择地区");
+		return;
+	}
+	*/
 	if(requirement=="" || null==requirement){
 		alert("请填写活动需求");
 		return;

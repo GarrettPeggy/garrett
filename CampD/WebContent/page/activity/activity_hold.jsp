@@ -5,7 +5,10 @@
 <head>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
+	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -43,17 +46,34 @@
               	  </dd>
                </dl>
                <dl>
-	              <dt>活动城市</dt>
-	              	<dd>
-	            	  	<select id="actCity">
-		            		<option value="">---请选择---</option>
-		                	<option value="北京">北京</option>
-		                	<option value="上海">上海</option>
-		                	<option value="广州">广州</option>
-		                	<option value="深圳">深圳</option>
-		                	<option value="武汉">武汉</option>
-	            		</select>
-	            	</dd>
+	              <dt>所在地区</dt>
+	              <dd>
+		            <div class="infolist" style="float: left;margin-left: 68px;margin-top: -19px;"> 
+						<span class="block input-icon input-icon-right liststyle">
+	                     	<span id="province">
+	                          	<i>请选择省份</i>
+                                <ul>
+                                    <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
+                                </ul>
+	                            <input type="hidden" name="province" id="province" class="curValue" value="">
+	                        </span>
+	                        <span id="city">
+	                            <i>请选择城市</i>
+                                 <ul>
+                                     <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
+                                 </ul>
+	                             <input type="hidden" name="city" id="city" class="curValue" value="">
+	                        </span>
+	                        <span id="area">
+	                            <i>请选择地区</i>
+                                 <ul>
+                                     <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
+                                 </ul>
+	                             <input type="hidden" name="area" id="area" class="curValue" value="">
+	                        </span>
+	                   </span> 
+	              </div>
+	           </dd>
 	          </dl>
 	          <dl style=" border:none;">
 	             <dt>活动需求</dt>
@@ -92,4 +112,9 @@
     <!-- end -->
 	
 </body>
+<script type="text/javascript">
+	$(function(){
+		$.fn.citySelect(['#province', '#city', '#area'],['北京市' , '北京市' , '东城区']);
+	});
+</script>
 </html>
