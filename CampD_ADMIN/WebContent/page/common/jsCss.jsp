@@ -24,7 +24,7 @@ var OSS_RES_URL = '${sysConfig.ossResUrl}';
 	<link rel="stylesheet" href="${rmtResPath}/static/css/ace-ie.min.css?_v=${vs}" />
 <![endif]-->
 
-<link rel="shortcut icon" href="${rmtResPath}/static/images/favicon.ico"/>
+<link rel="shortcut icon" href="${rmtResPath}/static/images/CD-20x20.png"/>
 <link rel="stylesheet" href="${rmtResPath}/static/css/campD.css?_v=${vs}" />
 <!-- inline styles related to this page -->
 
