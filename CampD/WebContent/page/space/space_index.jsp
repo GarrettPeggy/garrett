@@ -5,7 +5,7 @@
 <head>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
-	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 </head>
 <body>
@@ -53,7 +53,7 @@
             <!-- end -->
             <!-- 区域搜索下拉内容 -->
             <div class="search-detail hide">
-                <ul class="clearfix">
+                <ul class="clearfix" id="search_province">
                     <li class="active" onclick="Space.address('',this)">全部</li>
                     <li onclick="Space.address('浦东',this)">浦东</li>
                     <li onclick="Space.address('黄埔',this)">黄浦</li>
@@ -145,4 +145,12 @@
     	</c:choose>
     </div>
 </body>
+
+<script type="text/javascript">
+$(function(){
+	// 初始化区域选择
+	Space.initProvince();
+});
+</script>
+
 </html>

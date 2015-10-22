@@ -134,6 +134,17 @@ Space.setSelect=function(){
 	});
 };
 
+/**
+ * 初始化区域搜索
+ */
+Space.initProvince = function(){
+	var provinceList = dsy.Items[0];
+	var length = provinceList.length;
+	for (var i = 0; i < length; i++) {
+		var province = provinceList[i];
+		$("#search_province").append($('<li onclick="Space.address(' + "'" + province + "'" + ',this)">' + province + '</li>'));
+	}
+};
 
 /**
  * 恢复原样式
