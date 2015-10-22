@@ -103,14 +103,6 @@
 													</div>
 												</div>
 												
-												<div class="col-xs-12 col-sm-3">
-													<div class="widget-body">
-														<div class="widget-main">
-															<label>活动举办方</label> 
-															<input type="text" name="sponsor" id="sponsor" value="" class="col-xs-12 col-sm-12" />
-														</div>
-													</div>
-												</div>
 											</div>
 											<div class="row">
 												<div class="col-xs-12 col-sm-3">
@@ -174,6 +166,15 @@
 																	<option value="${actType.key}">${actType.value}</option>
 																</c:forEach>
 															</select>
+														</div>
+													</div>
+												</div>
+												
+												<div class="col-xs-12 col-sm-3">
+													<div class="widget-body">
+														<div class="widget-main">
+															<label>活动举办方</label> 
+															<input type="text" name="sponsor" id="sponsor" value="" class="col-xs-12 col-sm-12" />
 														</div>
 													</div>
 												</div>
