@@ -6,7 +6,6 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 </head>
 <body>
 	<!-- 头部 -->
