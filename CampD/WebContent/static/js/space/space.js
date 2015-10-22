@@ -128,6 +128,7 @@ Space.setSelect=function(){
         	$(this).parent().parent().find("div.search-detail:eq("+index+")").removeClass("hide");
         	$(this).parent().parent().find("div.search-detail:eq("+index+")").prevAll().addClass("hide");
         	$(this).parent().parent().find("div.search-detail:eq("+index+")").nextAll().addClass("hide");
+        	$("#space_mc").css("height",$(document.body).height());
         	$("#space_mc").removeClass("hide");
         });
 	});
