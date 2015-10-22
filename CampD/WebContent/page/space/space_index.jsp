@@ -55,11 +55,6 @@
             <div class="search-detail hide">
                 <ul class="clearfix" id="search_province">
                     <li class="active" onclick="Space.address('',this)">全部</li>
-                    <li onclick="Space.address('浦东',this)">浦东</li>
-                    <li onclick="Space.address('黄埔',this)">黄浦</li>
-                    <li onclick="Space.address('普陀',this)">普陀</li>
-                    <li onclick="Space.address('静安',this)">静安</li>
-                    <li onclick="Space.address('闵行',this)">闵行</li>
                 </ul>
             </div>
             <!-- end -->
