@@ -5,14 +5,14 @@
 	<head>
 		<%@ include file="/page/common/meta.jsp" %>
 		<%@ include file="/page/common/jsCss.jsp" %>
-		<link rel="stylesheet" type="text/css" href="${locResPath}/static/css/nativeShare.css?_v=${vs}" />
+		<link rel="stylesheet" type="text/css" href="${locResPath}/static/common/nativeShare/nativeShare.css?_v=${vs}" />
 		<script type="text/javascript">
 			var rmtResPath="${rmtResPath}";
 			var ctx="${ctx}";
 			//alert("${jsonview}");
 		</script>
 		<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
-		<script type="text/javascript" src="${locResPath}/static/common/nativeShare.js?_v=${vs}"></script>
+		<script type="text/javascript" src="${locResPath}/static/common/nativeShare/nativeShare.js?_v=${vs}"></script>
 	</head>
 	<body class="rea-body">
 		<!-- 头部 -->
