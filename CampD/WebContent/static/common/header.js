@@ -42,20 +42,25 @@ Header.initHeadIcon=function(){
  */
 Header.tapShow=function(){
 	
-	var bullets = document.getElementById('position').getElementsByTagName('li');
-
-	var banner = Swipe(document.getElementById('mySwipe'), {
-		auto: 2000,
-		continuous: true,
-		disableScroll:false,
-		callback: function(pos) {
-			var i = bullets.length;
-			while (i--) {
-				bullets[i].className = ' ';
-			}
-			bullets[pos].className = 'cur';
+	if(null != document.getElementById('position')){
+		
+		var bullets = document.getElementById('position').getElementsByTagName('li');
+		if(null != bullets){
+			var banner = Swipe(document.getElementById('mySwipe'), {
+				auto: 2000,//自动滑动，单位为毫秒
+				continuous: true,//是否循环滑动，默认值为true
+				disableScroll:false,//停止任何触及此容器上滚动页面，默认值flase
+				callback: function(pos) {
+					var i = bullets.length;
+					while (i--) {
+						bullets[i].className = ' ';
+					}
+					bullets[pos].className = 'cur';
+				}
+			});
 		}
-	});
+	}
+
 };
 
 /**
