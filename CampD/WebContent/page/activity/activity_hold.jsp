@@ -5,10 +5,10 @@
 <head>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
-	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
+	<link rel="stylesheet" href="${locResPath}/static/common/citySelect/city.css?_v=${vs}" />
 	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/citySelect/city.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -48,7 +48,7 @@
                <dl>
 	              <dt>所在地区</dt>
 	              <dd>
-		            <div class="infolist" style="float: left;margin-left: 68px;margin-top: -19px;"> 
+		            <div class="infolist" style="float: left;margin-left: 112px;margin-top: -23px;"> 
 						<span class="block input-icon input-icon-right liststyle">
 	                     	<span id="province">
 	                          	<i>请选择省份</i>

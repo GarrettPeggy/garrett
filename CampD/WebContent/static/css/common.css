@@ -454,7 +454,7 @@ a:hover{text-decoration:none;}
 	float:left;
 	width:25%;
 	text-align:center;
-	background:url(/static/images/select_icon.png) no-repeat 74%;
+	background:url(/campD/static/images/select_icon.png) no-repeat 74%;
 	background-size:8px 7px;
 }
 .ground-list li .data-li-right .dlr-title{
@@ -621,7 +621,7 @@ a:hover{text-decoration:none;}
 	color:#638ee0!important;
 }
 .type-form .active .fr{
-	background:url(/static/images/gou_blue.png) no-repeat center;
+	background:url(/campD/static/images/gou_blue.png) no-repeat center;
 	background-size:20px 14px;
 	width:20px;
 	height:45px;
