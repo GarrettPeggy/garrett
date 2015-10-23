@@ -47,8 +47,8 @@
                </dl>
                <dl>
 	              <dt>所在地区</dt>
-	              <dd>
-		            <div class="infolist" style="float: left;margin-left: 112px;margin-top: -23px;"> 
+	              <dd><!-- style="float: left;margin-left: 112px;margin-top: -23px;" -->
+		            <div class="infolist"> 
 						<span class="block input-icon input-icon-right liststyle">
 	                     	<span id="province">
 	                          	<i>请选择省份</i>

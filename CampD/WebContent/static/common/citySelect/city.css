@@ -44,6 +44,10 @@ i {
 .infolist {
 	position: relative;
 	min-height: 38px;
+	/* background-color: green; */
+	float: left;
+	margin-left: 67px;
+	margin-top: -31px;
 }
 
 .infolist lable {
@@ -117,7 +121,7 @@ i {
 	line-height: 36px;
 	display: inline-block;
 	border: 1px solid #E8E8E8;
-	border-radius: 5px;
+	border-radius: 0px;
 	padding: 0 0 0 8px;
 	cursor: pointer;
 	background: white;
