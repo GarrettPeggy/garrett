@@ -245,6 +245,13 @@ Activity.actSub=function(){
 		alert("请填写活动人数");
 		return;
 	}
+	
+	var type = "^\\d+$"; 
+    var re = new RegExp(type); 
+    if(actNum.match(re)==null) { 
+    	alert( "人数必须是大于或等于零的整数"); 
+    	return;
+    }
 	/*
 	if(province == "" || null == province){
 		alert("请选择省份");

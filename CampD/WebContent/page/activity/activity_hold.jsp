@@ -42,7 +42,7 @@
 	           <dl>  
 	           	  <dt>活动人数</dt>
 	              <dd>
-                 	<input type="text" id="actNum" name="actNum" class="text-input-2"/>
+                 	<input type="text" id="actNum" name="actNum" class="text-input-2"/>&nbsp;人
               	  </dd>
                </dl>
                <dl>
