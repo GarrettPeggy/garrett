@@ -4,12 +4,14 @@
 	<thead>
 		<tr>
 			<th width="8%" class="center">活动标题</th>
-			<th width="11%" class="center">省&nbsp;市&nbsp;区</th>
+			<th width="8%" class="center">省&nbsp;市&nbsp;区</th>
 			<th width="5%" class="center">活动范畴</th>
 			<th width="10%" class="center">地址</th>
 			<th width="8%" class="center">活动类型</th>
-			<th width="15%" class="center">开始时间</th>
-			<th width="15%" class="center">结束时间</th>
+			<th width="10%" class="center">开始时间</th>
+			<th width="10%" class="center">结束时间</th>
+			<th width="6%" class="center">举办方</th>
+			<th width="7%" class="center">联系方式</th>
 			<th width="8%" class="center">发布状态</th>
 			<th width="20%" class="center">操作</th>
 		</tr>
@@ -25,6 +27,8 @@
 				<td class="center">${systemConst.actTypeMap[fn:trim(activity.act_type)] }</td>
 				<td class="center">${activity.begintime}</td>
 				<td class="center">${activity.endtime}</td>
+				<td class="center">${activity.sponsor}</td>
+				<td class="center">联系方式</td>
 				<td class="center">${systemConst.actstatusMap[fn:trim(activity.status)] }</td>
 				<td class="center">
 					<a href="${ctx}/activity/toEditActivity.do?id=${activity.id}">修改</a>&nbsp;&nbsp;
