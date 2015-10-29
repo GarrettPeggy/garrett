@@ -207,6 +207,16 @@ Validator.validElement = function(jqueryObj, needFocus) {
 					needFocus ? jqueryObj.focus() : $.noop();
 					return false;
 				}
+				//固话号码或者手机号
+			} else if (dataType == 'telOrPhone') {
+				
+				if (!isTel(jqueryObj.val()) && !isPhone(jqueryObj.val())) {
+					formGroup.addClass('has-error');
+					icon.attr('class','ace-icon fa fa-times-circle').show();
+					tip.empty().html(label + '不正确!').show();
+					needFocus ? jqueryObj.focus() : $.noop();
+					return false;
+				}
 				//Money
 			}else if (dataType == 'money') {
 				
