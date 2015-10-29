@@ -68,7 +68,7 @@
 					                    <label for="contact" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人方式</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="contact" id="contact" class="width-100" value="${spaceMap.spaceInfo.contact}" datatype="phone" notnull="true" >
+						                      <input type="text" name="contact" id="contact" class="width-100" value="${spaceMap.spaceInfo.contact}" datatype="phone,tel" notnull="true" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>

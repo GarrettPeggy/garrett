@@ -138,7 +138,7 @@ Space.setSelect=function(){
  * 初始化区域搜索
  */
 Space.initProvince = function(){
-	var provinceList = dsy.Items[0];
+	var provinceList = dsy.Items['0_2_0'];//上海区域
 	var length = provinceList.length;
 	for (var i = 0; i < length; i++) {
 		var province = provinceList[i];
@@ -165,7 +165,7 @@ Space.cost=function(costType, curObj){
 	$('#curPage').val(1);
 	$('#cost').val(costType);//costType的值为  0：全部  1：收费   2：免费
 	$('#spaceType').val("");
-	$('#adress').val("");
+	$('#area').val("");
 	$('#minCapacity').val("");
 	$('#maxCapacity').val("");
 	
@@ -186,7 +186,7 @@ Space.type=function(spaceType, curObj){
 	$('#curPage').val(1);
 	$('#spaceType').val(spaceType);//spaceType的值为  0：全部  1：众创空间  2：咖啡厅  3：公司会议室   4：社区场地   5：商业广场
 	$('#cost').val("");
-	$('#adress').val("");
+	$('#area').val("");
 	$('#minCapacity').val("");
 	$('#maxCapacity').val("");
 	
@@ -203,10 +203,10 @@ Space.type=function(spaceType, curObj){
 /**
  * 地址
  */
-Space.address=function(adress, curObj){
+Space.address=function(area, curObj){
 	
 	$('#curPage').val(1);
-	$('#adress').val(adress);
+	$('#area').val(area);
 	$('#cost').val("");
 	$('#spaceType').val("");
 	$('#minCapacity').val("");
@@ -231,7 +231,7 @@ Space.capacity=function(minCapacity,maxCapacity, curObj){
 	$('#maxCapacity').val(maxCapacity);
 	$('#cost').val("");
 	$('#spaceType').val("");
-	$('#adress').val("");
+	$('#area').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
@@ -253,7 +253,7 @@ Space.search=function(){
 	    'isUserAuth':false,
 		'cost':$('#cost').val(),
 		'spaceType':$('#spaceType').val(),
-		'adress':$('#adress').val(),
+		'area':$('#area').val(),
 		'minCapacity':$('#minCapacity').val(),
 		'maxCapacity':$('#maxCapacity').val(),
 		'spaceLevel':$('#spaceLevel').length==0?'':$('#spaceLevel').val()

@@ -143,5 +143,28 @@ public class UserController extends BaseController {
         
         return "redirect:/";
     }
+    
+    @RequestMapping("/toUpdate.do")
+    public String toUpdate(){
+		
+        return "user/edit";
+    }
+    
+    /**
+     * 用户注册
+     * @param response
+     * @param request
+     * @return
+     * @throws Exception
+     */
+	@RequestMapping("/update.do")
+    @ResponseBody
+    public JSONView update(HttpServletResponse response, HttpServletRequest request) throws Exception {
+    	
+    	Map<String, Object> map = bindParamToMap(request);
+        Map<?, ?> resultMap = userService.update(map);
+        
+        return getSearchJSONView(resultMap);
+    }
 	
 }

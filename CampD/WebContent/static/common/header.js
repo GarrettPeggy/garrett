@@ -16,6 +16,13 @@ Header.toLogin=function(){
 };
 
 /**
+ * 跳转到更新页面
+ */
+Header.toUpdate=function(){
+	window.location.href = BASE_PATH + "/"+"user/toUpdate.do";
+};
+
+/**
  * 跳转到注册界面
  */
  Header.toQuit=function(){

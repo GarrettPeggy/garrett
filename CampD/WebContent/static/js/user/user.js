@@ -53,6 +53,33 @@ User.login = function(){
 };
 
 /**
+ * 更新方法
+ */
+User.update = function(){
+	
+	if (User.checkLogin()) {// 校验输入信息
+		systemLoading(null, true, "更新中,请稍后");
+		var params = {
+			"userName":$("#userName").val(),
+			"mdn":$("#mdn").val(),
+			"userId":$("#userId").val(),
+			"email":$("#email").val()
+		};
+		// 记住参数提交的格式一定要正确，否则会报error错误。
+		submitSave(BASE_PATH + "/user/update.do", params, function(data) {
+			systemLoaded();
+			window.location.href = BASE_PATH + "/";
+		}, function(data) {
+			systemLoaded();
+			alert(data.returnMsg);
+		});
+	} else {
+		systemLoaded();
+	}
+	
+};
+
+/**
  * 校验登录信息
  */
 User.checkLogin = function() {

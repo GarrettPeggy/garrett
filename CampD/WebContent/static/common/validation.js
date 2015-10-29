@@ -157,7 +157,16 @@ Validator.validElement = function(jqueryObj, needFocus) {
 					return false;
 				}
 				// 手机号	
-			} 
+			}  else if (dataType == 'tel') {
+				
+				if (!isTel(jqueryObj.val())) {
+					formGroup.addClass('has-error');
+					icon.attr('class','ace-icon fa fa-times-circle').show();
+					tip.empty().html(label + '不正确!').show();
+					needFocus ? jqueryObj.focus() : $.noop();
+					return false;
+				}
+			}
 			// 有需要验证其他的可以在此添加datatype
 		}
 	}
@@ -609,4 +618,31 @@ function isNumberOrLetter(s) {
 	  }else{
 	   return false;
 	  }
+}
+
+/**
+ * 验证固定电话号码
+ * 0\d{2,3}   代表区号   
+	*[0\+]\d{2,3}   代表国际区号
+	*\d{7,8} 代表7－8位数字(表示电话号码)
+	*正确格式：区号-电话号码-分机号(全写|只写电话号码)
+	*另外还要加上400号码段
+ */
+function isTel(str){ 
+  
+  // 普通固话号码验证
+  var reg=/^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/;  
+  // 400固话号码验证
+  var reg400=/^400-([0-9]){1}(-{1}[0-9]{5}|[0-9]{1}-{1}[0-9]{4}|[0-9]{2}-{1}[0-9]{3}|[0-9]{3}-{1}[0-9]{2}|[0-9]{4}-{1}[0-9]{1}|[0-9]{5}-{1})([0-9]){1}$/;
+  
+  if (str == ""){
+	  return true;
+  }
+		
+  if(!reg.test(str) && !reg400.test(str) ){
+     
+      return false; 
+  } 
+  
+  return true;
 }

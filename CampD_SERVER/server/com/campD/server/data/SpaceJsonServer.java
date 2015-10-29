@@ -149,10 +149,10 @@ public class SpaceJsonServer {
 			sqlCount+=" and t1.contact ="+contact+" ";
 		}
 
-		Object adress = reqMap.get("adress");//地址
-		if(null!=adress && !"".equals(adress)){
-			sqlStr+=" and t1.adress like '%"+adress+"%' ";
-			sqlCount+=" and t1.adress like '%"+adress+"%' ";
+		Object area = reqMap.get("area");//地址
+		if(null!=area && !"".equals(area)){
+			sqlStr+=" and t1.area='"+area+"' ";
+			sqlCount+=" and t1.area='"+area+"' ";
 		}
 
 		Object workFor = reqMap.get("workFor");//适用活动

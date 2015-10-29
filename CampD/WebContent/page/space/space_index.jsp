@@ -82,7 +82,7 @@
     	<input type="hidden" id="pageLimit" name="pageLimit" value="${pageInfo.pageLimit }"/>
     	<input type="hidden" id="cost" name="cost" value=""/>
     	<input type="hidden" id="spaceType" name="spaceType" value=""/>
-    	<input type="hidden" id="adress" name="adress" value=""/>
+    	<input type="hidden" id="area" name="area" value=""/>
     	<input type="hidden" id="minCapacity" name="minCapacity" value=""/>
     	<input type="hidden" id="maxCapacity" name="maxCapacity" value=""/>
     	<c:choose>
