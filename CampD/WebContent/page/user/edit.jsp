@@ -46,7 +46,7 @@
 	                </div>
 	            </div>
 	            <div class="line textCenter">
-	               <button class="btn orange-btn" onclick="User.update();">保存</button>
+	               <button class="btn orange-btn" type="button" onclick="User.update();">保存</button>
 	            </div>
 	        </div>
         </form>
@@ -55,7 +55,7 @@
 <script type="text/javascript">
 // 当点击清除图标的时候清空输入框
 $(".right-op").click(function(){
-	$(this).parent().find("inpput").val("");
+	$(this).parent().find("input").val("");
 });
 </script>
 </html>
