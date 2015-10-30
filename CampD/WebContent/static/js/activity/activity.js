@@ -301,6 +301,7 @@ Activity.actSub=function(){
 Activity.close=function(){
 	$(".sign-succ-modal").addClass("hide");
 	$(".mc").addClass("hide");
+	Activity.sponsored();
 };
 
 /**
