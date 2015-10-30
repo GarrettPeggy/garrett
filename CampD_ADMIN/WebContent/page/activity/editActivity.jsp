@@ -133,6 +133,17 @@
 											</div>
 											
 											<div class="form-group">
+												<label for="sponsor" class="col-xs-12 col-sm-3 control-label no-padding-right">联系方式</label>
+												<div class="col-xs-12 col-sm-3">
+													<span class="block input-icon input-icon-right">
+									                     <input type="text" name="contact" id="contact" class="width-100" datatype="telOrPhone" notnull="true" value="${activityMap.activityInfo.contact }">
+									                     <i class="ace-icon fa fa-leaf"></i> 
+								                    </span> 
+												</div>
+												<div class="help-block col-xs-12 col-sm-reset inline"> </div>
+											</div>
+											
+											<div class="form-group">
 												<label for="categoryId" class="col-sm-3 control-label no-padding-right">活动范畴</label>
 												<div class="col-md-3">
 													<div class="row">

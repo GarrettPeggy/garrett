@@ -281,7 +281,8 @@ Activity.actSub=function(){
 		"area":area,//区域
 		"requirement":requirement, //活动需求
 		"actType":0,//默认普通活动
-		"status":0//活动状态  0表示未发布
+		"status":0,//活动状态  0表示未发布
+		"contact":$("#contact").val()
 	};
 	// 记住参数提交的格式一定要正确，否则会报error错误。
 	submitSave(BASE_PATH + "/activity/add.do", params, function(data) {

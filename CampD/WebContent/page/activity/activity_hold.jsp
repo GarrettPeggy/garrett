@@ -26,6 +26,7 @@
 	<!-- 主体 -->
 	 <div class="main">
 		 <form id="loginForm">
+		 	<input type="hidden" id="contact" name="contact" value="${USER_INFO.mdn}"/>
 	    	<div class="sub-ac-form">
 	    		<dl>
 	                <dt>活动类型</dt>

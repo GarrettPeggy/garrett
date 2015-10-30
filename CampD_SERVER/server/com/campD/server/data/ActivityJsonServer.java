@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.campD.server.common.JSONView;
-import com.campD.server.common.SystemConstant;
 
 /**
  * 活动server端接口
@@ -38,8 +37,8 @@ public class ActivityJsonServer {
 		
 		// 添加活动需求到数据库
 		//String sqlStr = "insert into activity(id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,province,city,area,adress,sponsor,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),new Date(),new Date(),reqMap.get("status")};
+		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("contact"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),new Date(),new Date(),reqMap.get("status")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -66,8 +65,8 @@ public class ActivityJsonServer {
 		
 		logger.info("reqMap="+reqMap);
 		//活动更新
-		String sqlStr = " update activity set category_id=?,act_num=?,act_type=?,requirement=?,province=?,city=?,area=?,adress=?,sponsor=?,status=?,show_image=?,title=?,sub_title=?,begin_time=?,end_time=?,publish_time=? where id=? ";
-        Object[] params = new Object[]{reqMap.get("categoryId"), reqMap.get("actNum"), reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("status"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),reqMap.get("publishTime"),reqMap.get("id")};
+		String sqlStr = " update activity set category_id=?,act_num=?,act_type=?,requirement=?,province=?,city=?,area=?,adress=?,sponsor=?,contact=?,status=?,show_image=?,title=?,sub_title=?,begin_time=?,end_time=?,publish_time=? where id=? ";
+        Object[] params = new Object[]{reqMap.get("categoryId"), reqMap.get("actNum"), reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("contact"),reqMap.get("status"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),reqMap.get("publishTime"),reqMap.get("id")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         JSONView jsonView = new JSONView();
         if(updateLineCount <= 0){
@@ -141,7 +140,7 @@ public class ActivityJsonServer {
 	public Map getActivityList(Map reqMap){
 		//System.out.println("reqMap.get(\"categoryId\")===================="+reqMap.get("categoryId"));
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 ";
+		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 ";
 		String sqlCount =" select count(1) from activity where 1=1 ";
 		
 		if(null!=reqMap.get("id") && !"".equals(reqMap.get("id"))){
@@ -250,7 +249,7 @@ public class ActivityJsonServer {
 	 */
 	public Map getActivityById(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
+		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
 		Map activityInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});//单条信息
 		JSONView jsonView = new JSONView();
 		jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);
@@ -295,7 +294,7 @@ public class ActivityJsonServer {
 	 */
 	public Map getMyTakeAnActive(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.province,t1.city,t1.area,t1.adress,t1.sponsor,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,date_format(ifnull(t1.begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(t1.end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,t1.click_num,date_format(ifnull(t1.create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(t1.publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id=? ";
+		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.province,t1.city,t1.area,t1.adress,t1.sponsor,t1.contact,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,date_format(ifnull(t1.begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(t1.end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,t1.click_num,date_format(ifnull(t1.create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(t1.publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id=? ";
 		String sqlCount =" select count(1) from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id='"+reqMap.get("userId")+"'";
 		
 		if(null!=reqMap.get("activityId") && !"".equals(reqMap.get("activityId"))){

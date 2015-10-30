@@ -28,7 +28,7 @@
 				<td class="center">${activity.begintime}</td>
 				<td class="center">${activity.endtime}</td>
 				<td class="center">${activity.sponsor}</td>
-				<td class="center">联系方式</td>
+				<td class="center">${activity.contact}</td>
 				<td class="center">${systemConst.actstatusMap[fn:trim(activity.status)] }</td>
 				<td class="center">
 					<a href="${ctx}/activity/toEditActivity.do?id=${activity.id}">修改</a>&nbsp;&nbsp;
