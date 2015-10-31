@@ -36,12 +36,15 @@
 	            <div class="adt-desc">
 	                <div class="fontSize17 retina-1px-border-bottom">${jsonview.activityInfo.title }</div>
 	                <div class="fontSize14">
-	                	<span class="fontSize13">活动时间:</span>
-	                    <span class="fontSize13">${jsonview.activityInfo.begintime }--${jsonview.activityInfo.endtime }</span>
+	                    <span class="fontSize13">
+	                    	<fmt:parseDate value="${jsonview.activityInfo.begintime}" var="begintime" pattern="yyyy-MM-dd HH:mm:ss"/>
+	                    	<fmt:parseDate value="${jsonview.activityInfo.endtime}" var="endtime" pattern="yyyy-MM-dd HH:mm:ss"/>
+	                    	<fmt:formatDate value="${begintime}" pattern="MM月dd日  HH:mm"/>&nbsp;--
+	                    	<fmt:formatDate value="${endtime}" pattern="MM月dd日  HH:mm"/>
+	                    </span>
 	                </div>
 	                <div class="fontSize14 mat7 pdb10">
-	                	<span class="fontSize13">活动地点:</span>
-	                	<span class="fontSize13">${jsonview.activityInfo.province}${jsonview.activityInfo.city}${jsonview.activityInfo.area}${jsonview.activityInfo.adress }</span>
+	                	<span class="fontSize13">${jsonview.activityInfo.adress }</span>
 	                </div>
 	            </div>
 	        </div>
