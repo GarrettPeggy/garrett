@@ -64,7 +64,7 @@
                 </div>
                 <div class="fontSize14 mat7 pdb10 clearfix color94">
                 	<span class="fl">具体地址</span>
-                    <span class="fr">${jsonview.spaceInfo.province }${jsonview.spaceInfo.city }${jsonview.spaceInfo.area }${jsonview.spaceInfo.adress }</span>
+                    <span class="fr">${jsonview.spaceInfo.adress }</span>
                 </div>
             </div>
         </div>
