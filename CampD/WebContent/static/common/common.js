@@ -484,7 +484,9 @@ $(function(){
 });
 
 /********************************js时间工具*****************************************/
-DateUtil = {};
+DateUtil = {
+	"chineseWeek":["星期日","星期一","星期二","星期三","星期四","星期五","星期六"]
+};
 
 DateUtil.isLeapYear = function(date){
     return (0==date.getYear()%4&&((date.getYear()%100!=0)||(date.getYear()%400==0))); 
@@ -573,6 +575,16 @@ DateUtil.getFirstDate = function(date){
 	newDate.setDate(1);
     return newDate;
 };
+
+/**
+ * 获取指定日期属于星期几
+ * date:js  Date对象
+ */
+DateUtil.getWeekDay = function(date){
+	
+    return DateUtil.chineseWeek[date.getDay()];
+};
+
 /**
  * 日期计算  
  * @param strInterval string  可选值 y 年 m月 d日 w星期 ww周 h时 n分 s秒  
