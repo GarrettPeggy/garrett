@@ -128,7 +128,7 @@
 
 		<!-- 分享 需要显示时删除hide -->
 	    <div class="tc-modal share-modal hide" id="activity_share">
-	    	<div id="code"></div>
+	    	<div id="code" style="margin: 20px 20px 20px 20px"></div>
 	        <div class="bottom-close retina-1px-border-top">
 	        	<a onclick="Activity.cancel()">取&nbsp;&nbsp;消</a>
 	        </div>

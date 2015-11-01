@@ -8,8 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="${locResPath}/static/common/nativeShare/nativeShare.css?_v=${vs}" />
 	<link rel="stylesheet" href="${locResPath}/static/common/swipe/css/swipe.css?_v=${vs}"/>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/common/nativeShare/nativeShare.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/swipe/js/swipe.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/share/jquery.qrcode.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/share/share.js?_v=${vs}"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -107,44 +108,20 @@
 
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide" id="space_share">
-    	<div id="nativeShare"></div>
-    	<script>
-		    var config = {
-		        url:'http://blog.wangjunfeng.com',// 分享的网页链接
-		        title:'王俊锋的个人博客',// 标题
-		        desc:'王俊锋的个人博客',// 描述
-		        img:'http://www.wangjunfeng.com/img/face.jpg',// 图片
-		        img_title:'王俊锋的个人博客',// 图片标题
-		        from:'王俊锋的博客' // 来源
-		    };
-    		var share_obj = new nativeShare('nativeShare',config);
-		</script>
-    	<%-- 
-    	<ul class="clearfix">
-        	<li>
-            	<img src="${rmtResPath}/static/images/shaer_icon_04.png" width="58" height="58"/>
-                <p class="mat7">收藏</p>
-            </li>
-            <li>
-            	<img src="${rmtResPath}/static/images/shaer_icon_01.png" width="58" height="58"/>
-                <p class="mat7">微信朋友圈</p>
-            </li>
-            <li>
-            	<img src="${rmtResPath}/static/images/shaer_icon_02.png" width="58" height="58"/>
-                <p class="mat7">微信好友</p>
-            </li>
-            <li>
-            	<img src="${rmtResPath}/static/images/shaer_icon_03.png" width="58" height="58"/>
-                <p class="mat7">QQ好友</p>
-            </li>
-        </ul>
-         --%>
+		<div id="code" style="margin: 20px 20px 20px 20px"></div>
         <div class="bottom-close retina-1px-border-top">
         	<a onclick="Space.cancel()">取&nbsp;&nbsp;消</a>
         </div>
     </div>
     <!-- end -->
 </body>
+<script>
+	Space.share=function(){
+		//场地分享
+		$("#space_share").removeClass("hide");
+		Share.qcode();
+	};
+</script>
 <script type="text/javascript">
 $(function(){
 	Space.tapShow();

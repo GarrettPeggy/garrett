@@ -106,13 +106,6 @@ Space.hightLevel=function(spaceLevel){
 };
 
 /**
- * 场地分享
- */
-Space.share=function(){
-	$("#space_share").removeClass("hide");
-};
-
-/**
  * 分享的取消按钮
  */
 Space.cancel=function(){
