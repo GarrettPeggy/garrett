@@ -50,7 +50,7 @@
         	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14"/>
         </div>
         <div class="head-content">
-        	<img src="${rmtResPath}/static/images/cd_logo.png" width="56" height="20" />
+        	<img src="${rmtResPath}/static/images/cd_logo.png" id="cd_logo" width="56" height="20" />
         </div>
         <div class="head-right-icon">
         	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17"/>
