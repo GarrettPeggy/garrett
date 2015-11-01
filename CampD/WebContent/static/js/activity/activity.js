@@ -43,7 +43,10 @@ Activity.list=function(){
 				if(len > 20){
 					requirement=requirement.substring(0,21) + "......";
 				}
-				activity_html.push("<a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'>"+ requirement +"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+activityList[i].begintime+"</span>--<span>"+activityList[i].endtime+"</span></div></li></a>");
+				var begintimeDate = DateUtil.parseDate(activityList[i].begintime,"yyyy-MM-dd HH:mm:ss");
+				var begintime = DateUtil.fomatDate(begintimeDate,"MM月dd日 HH:mm");
+				var begintimeWeek = DateUtil.getWeekDay(begintimeDate);
+				activity_html.push("<a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'>"+ requirement +"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+begintime+"&nbsp;&nbsp;"+begintimeWeek+"</span></div></li></a>");
 			}
 		}else{
 			activity_html.push("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>");
@@ -55,24 +58,13 @@ Activity.list=function(){
 	});
 	
 };
+
 /**
  * 获取字符串长度
  */
 Activity.getLength=function(str){
 	var cArr = str.match(/[^\x00-\xff]/ig);  
     return str.length + (cArr == null ? 0 : cArr.length);  
-	/*var realLength = 0;
-	var len = str.length;
-	var charCode = -1; 
-	for (var i = 0; i < len; i++) { 
-		charCode = str.charCodeAt(i); 
-		if (charCode >= 0 && charCode <= 128) {
-			realLength += 1; 
-		}else{
-			realLength += 2; 
-		} 
-	} 
-	return realLength; */
 };
 
 /**
