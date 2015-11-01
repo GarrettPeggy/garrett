@@ -250,6 +250,7 @@ public class ActivityJsonServer {
 	public Map getActivityById(Map reqMap){
 		logger.info("reqMap="+reqMap);
 		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
+		//String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,begin_time as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
 		Map activityInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});//单条信息
 		JSONView jsonView = new JSONView();
 		jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);

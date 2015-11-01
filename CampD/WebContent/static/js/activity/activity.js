@@ -363,13 +363,6 @@ Activity.closeSignUp=function(){
 };
 
 /**
- * 活动分享
- */
-Activity.share=function(){
-	$("#activity_share").removeClass("hide");
-};
-
-/**
  * 分享的取消按钮
  */
 Activity.cancel=function(){
