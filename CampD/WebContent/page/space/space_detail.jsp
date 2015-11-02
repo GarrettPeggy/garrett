@@ -5,7 +5,6 @@
 <head>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
-	<link rel="stylesheet" type="text/css" href="${locResPath}/static/common/nativeShare/nativeShare.css?_v=${vs}" />
 	<link rel="stylesheet" href="${locResPath}/static/common/swipe/css/swipe.css?_v=${vs}"/>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/swipe/js/swipe.js?_v=${vs}"></script>
@@ -115,11 +114,11 @@
     </div>
     <!-- end -->
 </body>
-<script>
+<script type="text/javascript">
 	Space.share=function(){
 		//场地分享
-		$("#space_share").removeClass("hide");
-		Share.qcode();
+		//$("#space_share").removeClass("hide");
+		//Share.qcode();
 	};
 </script>
 <script type="text/javascript">
