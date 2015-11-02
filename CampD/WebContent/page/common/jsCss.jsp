@@ -13,10 +13,7 @@
 <script type="text/javascript" src="${locResPath}/static/common/jquery/jquery-1.11.3.min.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/common/jquery/jquery.form.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/common/dialog/lhgdialog.min.js?_v=${vs}"></script>
-<%-- <script type="text/javascript" src="${locResPath}/static/common/bootstrap/js/bootstrap.min.js?_v=${vs}"></script> --%>
 <script type="text/javascript" src="${locResPath}/static/common/validation.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/common/common.js?_v=${vs}"></script>
-<%-- <link rel="stylesheet" type="text/css" href="${locResPath}/static/common/bootstrap/css/bootstrap.min.css?_v=${vs}" />
-<link rel="stylesheet" type="text/css" href="${locResPath}/static/common/bootstrap/css/bootstrap-theme.min.css?_v=${vs}" /> --%>
 <link rel="stylesheet" type="text/css" href="${rmtResPath}/static/css/common.css?_v=${vs}" />
 <link rel="shortcut icon" href="${rmtResPath}/static/images/CD-20x20.png"/>
