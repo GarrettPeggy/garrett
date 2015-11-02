@@ -5,7 +5,6 @@
 	<head>
 		<%@ include file="/page/common/meta.jsp" %>
 		<%@ include file="/page/common/jsCss.jsp" %>
-		<link rel="stylesheet" type="text/css" href="${locResPath}/static/common/nativeShare/nativeShare.css?_v=${vs}" />
 		<script type="text/javascript">
 			var rmtResPath="${rmtResPath}";
 			var ctx="${ctx}";
@@ -138,8 +137,8 @@
 	<script type="text/javascript">
 		 //活动分享
 		Activity.share=function(){
-			$("#activity_share").removeClass("hide");
-			Share.qcode();
+			//$("#activity_share").removeClass("hide");
+			//Share.qcode();
 		};
 	</script>
 </html>
