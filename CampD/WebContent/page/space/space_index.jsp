@@ -110,10 +110,10 @@
 				                        </div>
 				                        <div class="dlr-address">
 				                        	<c:if test="${fn:length(space.adress) > 10}">
-				                    			<c:out value="${space.province }${space.city }${space.area }${fn:substring(space.adress, 0, 11)}......" /> 
+				                    			<c:out value="${fn:substring(space.adress, 0, 11)}......" /> 
 				                    		</c:if>
 				                    		<c:if test="${fn:length(space.adress) <= 10}">
-				                    			 <c:out value="${space.province }${space.city }${space.area }${space.adress}" /> 
+				                    			 <c:out value="${space.adress}" /> 
 				                    		</c:if>
 				                        </div>
 				                        <div class="dlr-cost clearfix">

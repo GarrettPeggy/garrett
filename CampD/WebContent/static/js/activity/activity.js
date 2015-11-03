@@ -341,6 +341,8 @@ Activity.sign=function(){
 			$("#signUp_mc").css("height",document.body.scrollHeight);
 			$("#signUp_mc").removeClass("hide");
 			$("#signUp_modal").removeClass("hide");
+			// 让屏幕回到最上面
+			scroll(0,0);
 		}, function(data) {
 			systemLoaded();
 			alert(data.returnMsg);
