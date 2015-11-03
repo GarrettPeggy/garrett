@@ -6,7 +6,7 @@
 <script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 
    	<!-- 毛玻璃效果蒙层 -->
-    <div class="mao hide" id="activity_mao"></div>
+    <!-- <div class="mao hide" id="activity_mao"></div> -->
     <!-- end -->
     <div class="person-right hide" id="activity_person">
      	<ul>

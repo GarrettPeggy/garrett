@@ -31,13 +31,26 @@ Header.toUpdate=function(){
 
 Header.initHeadIcon=function(){
 	$(".head-left-icon").bind("click",function(){
-		$("#avtivity_nav").removeClass("hide");
+		if($("#avtivity_nav").hasClass("hide")){
+			$("#avtivity_nav").removeClass("hide");
+		} else{
+			$("#avtivity_nav").addClass("hide");
+		}
 	});
 	$(".head-right-icon").bind("click",function(){
-		$("#activity_main").addClass("m-active");
-		$("#activity_header").addClass("m-active");
-		$("#activity_mao").removeClass("hide");
-		$("#activity_person").removeClass("hide");
+		//$("#activity_main").addClass("m-active");
+		//$("#activity_header").addClass("m-active");
+		//$("#activity_mao").removeClass("hide");
+		if($("#activity_person").hasClass("hide")){
+			$("#activity_person").removeClass("hide");
+		} else{
+			$("#activity_person").addClass("hide");
+		}
+		
+		$("#activity_person").height($(document).height());
+		$("#activity_person").width($(document).width());
+		$("#activity_person").css("top","50px");
+		$("#activity_person").css("padding-top","0px");
 	});
 	$("#cd_logo").bind("click",function(){ //点击logo，跳转到首页
 		window.location.href = BASE_PATH + "/";

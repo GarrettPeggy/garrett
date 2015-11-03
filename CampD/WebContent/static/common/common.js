@@ -1014,13 +1014,13 @@ String.prototype.getBytesLength = function() {
 (function($) {
 	
 	// 点击筛选框外面的时候，隐藏筛选框
-	document.onclick = function(e) { 
+	document.addEventListener('touchend', function(e) { 
 		//浏览器兼容
 		event = e||event;
 		source = event.srcElement||event.target;
 		
 		// 首页头图右边图标初始化
-		if(($(source).parents('#activity_person').length<=0 && $(source).parents('.head-right-icon').length<=0)) { 
+		if((($(source).parents('#activity_person').length<=0 && !$(source).hasClass("person-right")) && (!$(source).hasClass("head-right-icon") && $(source).parents('.head-right-icon').length<=0))) { 
 			$("#activity_person").addClass("hide");
 			$("#activity_mao").addClass("hide");
 			$("#activity_main").removeClass("m-active");
@@ -1037,7 +1037,7 @@ String.prototype.getBytesLength = function() {
 			$(".search-detail").addClass("hide");
 			$("#space_mc").addClass("hide");
 		};
-	};
+	});
 	
 	
 	$.fn.textarealimit = function() {
