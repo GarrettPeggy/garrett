@@ -23,7 +23,7 @@ Activity.list=function(){
 	var params={
 		"actType":1,
 	    "curPage":1,
-	    "pageLimit":3,
+	    "pageLimit":6,
 	    "isUserAuth":false,
 	    "status":1//活动状态  0表示未发布 1表示已发布
     };
@@ -71,7 +71,7 @@ Activity.getLength=function(str){
  * 活动分类页面
  */
 Activity.classify=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do?status=1&curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do?status=1&curPage=1&pageLimit=6&isUserAuth=false";
 };
 
 /**
@@ -104,7 +104,7 @@ Activity.desc=function(){
  * 各种活动再分类显示
  */
 Activity.category=function(categoryValue){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?status=1&categoryId="+categoryValue+"&curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?status=1&categoryId="+categoryValue+"&curPage=1&pageLimit=6&isUserAuth=false";
 };
 
 /**
@@ -112,7 +112,7 @@ Activity.category=function(categoryValue){
  */
 
 Activity.populer=function(actType){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByActType.do?status=1&actType="+actType+"&curPage=1&pageLimit=3&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByActType.do?status=1&actType="+actType+"&curPage=1&pageLimit=6&isUserAuth=false";
 };
 
 /**
@@ -203,7 +203,7 @@ Activity.search=function(url,isUserAuth){
  */
 
 Activity.signUp=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getMyTakeAnActive.do?&curPage=1&pageLimit=3&isUserAuth=true";
+	window.location.href = BASE_PATH + "/" +"activity/getMyTakeAnActive.do?&curPage=1&pageLimit=6&isUserAuth=true";
 };
 
 /**
@@ -211,7 +211,7 @@ Activity.signUp=function(){
  */
 
 Activity.sponsored=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByUserId.do?&curPage=1&pageLimit=3&isUserAuth=true";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByUserId.do?&curPage=1&pageLimit=6&isUserAuth=true";
 };
 
 /**
