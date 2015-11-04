@@ -80,7 +80,7 @@ public class ApplicationFilter implements Filter {
         //防止表单重复提交
         boolean validTokenRes = validateToken(request);
         if(!validTokenRes){
-        	errorDeal(response, request, SystemConstant.ERROR_CODE_FORM_RESUBMIT,"/page/common/error500.jsp");
+        	errorDeal(response, request, SystemConstant.ERROR_CODE_FORM_RESUBMIT,"/page/common/error.jsp");
         	return;
         }
         

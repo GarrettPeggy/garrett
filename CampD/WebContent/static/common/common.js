@@ -376,7 +376,6 @@ function rnd(){
  * @param desc 加载的描述字符
  */
 function systemLoading(selector,isLock,desc){
-	var isBodySel = selector || true;
 	selector = selector || 'body';
 	var container = $(selector);
 	//控制弹出层和loading的层的z-index
@@ -390,22 +389,10 @@ function systemLoading(selector,isLock,desc){
 	
 	container.each(function(){
 		//loading层控制
-		var dataLoadingDiv = $(selector+' > .sys_loading');
+		var dataLoadingDiv = $(selector+' > .loading_01');
 		if(dataLoadingDiv.length<=0){
-			dataLoadingDiv = $('<div class="loading"><i></i>加载中...</div>');
-			$(this).addClass('pos_rel').append(dataLoadingDiv);
-		}
-		//修改样式位置
-		var loadingWidth = $(selector+' > .sys_loading').width();
-		var leftPencent = parseInt(((width/2.0-loadingWidth/2.0)/width)*100);
-		
-		var loadingHeight = $(selector+' > .sys_loading').height();
-		var topPencent = isBodySel?parseInt(((height/2.0-loadingHeight/2.0)/height)*100):25;
-		dataLoadingDiv.css({left:leftPencent+'%',top:topPencent+'%','z-index':ldgMaskIndex+8});
-		
-		//控制显示容器最小高度
-		if(loadingHeight>height){
-			$(this).addClass('sysLoadingMinHeight');
+			dataLoadingDiv = $('<div class="loading_01"><img src="http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151104/loading.gif" /></div>');
+			$(this).append(dataLoadingDiv);
 		}
 		
 		//锁屏层
@@ -427,8 +414,7 @@ function systemLoaded(selector){
 	selector = selector || 'body';
 	var container = $(selector);
 	container.each(function(){
-		$(this).removeClass('sysLoadingMinHeight').removeClass('pos_rel');;
-		$(selector+' > .sys_loading').hide();
+		$(selector+' > .loading_01').hide();
 		$(selector+' > .sys_masklock').hide();
 	});
 }

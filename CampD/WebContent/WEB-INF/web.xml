@@ -4,6 +4,22 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  <error-page>  
+	 <error-code>404</error-code>  
+	 <location>/page/common/error.jsp</location>  
+  </error-page>
+  
+  <error-page>  
+	 <error-code>500</error-code>  
+	 <location>/page/common/error.jsp</location>  
+  </error-page>
+  
+  <error-page>  
+    <exception-type>com.campD.portal.exception.DataException</exception-type>  
+    <location>/page/common/error.jsp</location>  
+  </error-page> 
+  
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
