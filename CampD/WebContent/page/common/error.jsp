@@ -51,6 +51,8 @@
 	var t = 5;
 	var interval;
 	function timeout(){
+		$(".nofood").height($(document).height());
+		$(".nofood").width($(document).width());
 		interval = setInterval(jishi,1000);
 	}
 	
