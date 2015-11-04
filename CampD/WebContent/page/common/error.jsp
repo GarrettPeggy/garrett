@@ -5,13 +5,11 @@
 <head>
 	<%@ include file="/page/common/meta.jsp" %>
 	<link rel="stylesheet" type="text/css" href="${rmtResPath}/static/css/common.css?_v=${vs}" />
+	<script type="text/javascript" src="${locResPath}/static/common/jquery/jquery-1.11.3.min.js?_v=${vs}"></script>
 	<link rel="shortcut icon" href="${rmtResPath}/static/images/CD-20x20.png"/>
 </head>
 <style type="text/css">
 .nofood{
-	width:640px;
-	height:1136px;
-	background:url(http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151104/wrong.png);
 	font-size:34px;
 	color:#FFF;
 	
@@ -53,6 +51,8 @@
 	function timeout(){
 		$(".nofood").height($(document).height());
 		$(".nofood").width($(document).width());
+		$(".nofood").css("background","url(http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151104/wrong.png)");
+		
 		interval = setInterval(jishi,1000);
 	}
 	

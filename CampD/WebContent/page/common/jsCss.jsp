@@ -16,4 +16,4 @@
 <script type="text/javascript" src="${locResPath}/static/common/validation.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/common/common.js?_v=${vs}"></script>
 <link rel="stylesheet" type="text/css" href="${rmtResPath}/static/css/common.css?_v=${vs}" />
-<link rel="shortcut icon" href="${rmtResPath}/static/images/CD-20x20.ico"/>
+<link rel="shortcut icon" href="${rmtResPath}/static/images/CD-20x20.png"/>
