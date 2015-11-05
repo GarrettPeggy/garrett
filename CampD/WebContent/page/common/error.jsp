@@ -8,41 +8,6 @@
 	<script type="text/javascript" src="${locResPath}/static/common/jquery/jquery-1.11.3.min.js?_v=${vs}"></script>
 	<link rel="shortcut icon" href="${rmtResPath}/static/images/CD-20x20.png"/>
 </head>
-<style type="text/css">
-.nofood{
-	font-size:34px;
-	color:#FFF;
-	
-}
-.nofood p{
-	font-family:微软雅黑;
-	padding:520px 0 0 153px;
-	
-}
-.nofood ul{
-	width:50%;
-	margin:0 auto;
-	margin-top:20px;
-	line-height:60px;
-	
-}
-.nofood ul li{
-	list-style-type:disc;
-	font-family:微软雅黑;
-}
-.nofood a{
-
-	color:#FFF;
-}
-.point{
-	width:43%;
-	margin:35px auto;
-}
-.point a{
-	padding-right:8px;
-}
-	
-</style>
 
 <script type="text/javascript">
 	var BASE_PATH = '${ctx}';
@@ -51,7 +16,6 @@
 	function timeout(){
 		$(".nofood").height($(document).height());
 		$(".nofood").width($(document).width());
-		$(".nofood").css("background","url(http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151104/wrong.png)");
 		
 		interval = setInterval(jishi,1000);
 	}
@@ -74,7 +38,7 @@
        </ul>
        <div class="point">
        	<em id="times">5</em>秒后,&nbsp;<a href="${ctx}">返回首页</a>
-       	<!-- <img src="http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151104/new.png" /> -->
+       	<!-- <img src="${rmtResPath}/static/images/new.png" /> -->
        </div>
    </div>
 </body>

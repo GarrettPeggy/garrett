@@ -389,9 +389,9 @@ function systemLoading(selector,isLock,desc){
 	
 	container.each(function(){
 		//loading层控制
-		var dataLoadingDiv = $(selector+' > .loading_01');
+		var dataLoadingDiv = $(selector+' > .loading');
 		if(dataLoadingDiv.length<=0){
-			dataLoadingDiv = $('<div class="loading_01"><img src="http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151104/loading.gif" /></div>');
+			dataLoadingDiv = $('<div class="loading" style="width:'+width+'px;height:'+height+'px;"><img src="'+REMOTE_RES_PATH+'/static/images/loading.gif" /></div>');
 			$(this).append(dataLoadingDiv);
 		}
 		
@@ -414,7 +414,7 @@ function systemLoaded(selector){
 	selector = selector || 'body';
 	var container = $(selector);
 	container.each(function(){
-		$(selector+' > .loading_01').hide();
+		$(selector+' > .loading').hide();
 		$(selector+' > .sys_masklock').hide();
 	});
 }

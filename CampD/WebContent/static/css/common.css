@@ -1,5 +1,5 @@
 /* CSS Document */
-body{padding:0;margin:0;background:#f0f0f0; font-family:STHeiti,"华文黑体";}
+body{padding:0;margin:0;background:#f0f0f0; font-family:STHeiti,"鍗庢枃榛戜綋";}
 img,p,ul,li,input{ margin:0; padding:0; list-style-type:none;}
 img{border:none;}
 .fl{float:left;}
@@ -12,7 +12,7 @@ a{text-decoration:none;}
 a:link{text-decoration:none;}
 a:active{text-decoration:none;}
 a:hover{text-decoration:none;}
-/*常用字体颜色*/
+/*甯哥敤瀛椾綋棰滆壊*/
 .orange         { color : #f16b1a;}
 .grey           { color : #afb0b6;}
 .color999       { color : #999;}
@@ -23,7 +23,7 @@ a:hover{text-decoration:none;}
 .colorGreen     { color : #26ae69;}
 .color94		{color:#949494; font-size:16px;}
 .bgfff			{background:#fff!important;}
-/*细线*/
+/*缁嗙嚎*/
 .retina-1px-border-top:before, .retina-1px-border-bottom:after { position: absolute; background-color: rgba(32,35,37,0.16); content: ""; right: 0; left: 0; height: 1px;z-index:30; width:100%;}
 .retina-1px-border-top:before {top:0}
 .retina-1px-border-bottom:after {bottom:0;}
@@ -80,7 +80,7 @@ a:hover{text-decoration:none;}
 }
 .bdb{border-bottom:1px solid #e0e0e0;}
 
-/*常用间距*/
+/*甯哥敤闂磋窛*/
 .pdb1{ padding-bottom:1px;}
 .mab20{ margin-bottom:20px;}
 .mab25{ margin-bottom:25px;}
@@ -94,14 +94,13 @@ a:hover{text-decoration:none;}
 .pdb10{padding-bottom:10px;}
 .pdl10{padding-left:10px;}
 .mat7{margin-top:7px;}
-.mat7 span{ padding-right:12px;}
 .mat15{margin-top:25px;}
 .mar5{margin-right:5px;}
 .mar15{margin-right:15px;}
 .pd5{padding:5px!important;}
 .bd-bottom {border-bottom:1px solid #e0e0e0!important;}
 
-/*常用文本样式*/
+/*甯哥敤鏂囨湰鏍峰紡*/
 .textRight{ text-align:right;}
 .textCenter{ text-align:center;}
 .fontSize13{font-size:16px; line-height:24px;}
@@ -111,13 +110,23 @@ a:hover{text-decoration:none;}
 .fontSize18{font-size:18px;}
 
 
-/*常用按钮*/
-.btn{padding:0 37px;height:50px;line-height:50px;border:none;border-radius:5px;font-size:20px; display:inline-block;}
-.orange-btn {background:#edbe57;color:#fff;}
+/*甯哥敤鎸夐挳*/
+.btn{padding: 0 62px;height:50px;line-height:50px;border:none;border-radius:5px;font-size:20px; display:inline-block;}
+.orange-btn {color:#fff; background:#edbe57;}
 .gray-btn {background:#CBCBCB;color:#fff;}
 .loadBtn{
-	width: 100%;
-	background-color: #787878;
+	width: 100%;	
+}
+#loadMore_li{
+	margin:14px auto;
+	text-align:center;
+}
+.jiazai{
+	width:100%;
+	background-color:#f0f0f0;
+	border:none;
+	font-size:14px;
+	color:#848484;
 }
 
 .hide{display:none;}
@@ -155,7 +164,7 @@ a:hover{text-decoration:none;}
 	width:100%;
 	text-align:center;
 }
-/*表单*/
+/*琛ㄥ崟*/
 .main{
 	font-size:15px;
 	padding-bottom:20px;
@@ -183,7 +192,7 @@ a:hover{text-decoration:none;}
 	border-radius:0px;
 }
 
-/*润华新增*/
+/*娑﹀崕鏂板*/
 .text-input-2{
 	 width: 110px;
 	 height: 25px;
@@ -240,7 +249,7 @@ a:hover{text-decoration:none;}
 	width:100%;
 	padding-left:115px;
 }
-/*跳转中*/
+/*璺宠浆涓�*/
 .main .forward-tip1 .forward-tip1-l{
 	font-size:26px;
 	color:#edbe57;
@@ -253,18 +262,18 @@ a:hover{text-decoration:none;}
 	color:#a6a6a6;
 	font-size:22px;
 }
-/*要主办的活动，已报名的活动*/
+/*瑕佷富鍔炵殑娲诲姩锛屽凡鎶ュ悕鐨勬椿鍔�*/
 .ui-tips-box .colorBlue:hover{color:#638ee0; text-decoration:none;}
 .ui-tips-box .colorBlue:link{color:#638ee0; text-decoration:none;}
 .ui-tips-box .colorBlue:avtive{color:#638ee0; text-decoration:none;}
 .ul-box{padding:0 5px;}
-.ul-box .data-list li{background:#fff;padding:10px;margin-bottom:8px;}
+.ul-box .data-list li{background:#fff;padding:6px;margin-bottom:8px;}
 .ul-box .data-list li .data-li-left, .ul-box .data-list li .data-li-right{float:left;}
-.ul-box .data-list li .data-li-right{width:63%;margin-top:6px;}
-.ul-box .data-list li .data-li-left{margin-right:15px;}
-.ul-box .data-list li .data-li-right .dlr-title{padding-bottom:8px;margin-bottom:8px; position:relative;}
+.ul-box .data-list li .data-li-right{width:63%;margin-top:-3px;}
+.ul-box .data-list li .data-li-left{margin-right:10px;}
+.ul-box .data-list li .data-li-right .dlr-title{padding-bottom:8px;margin-bottom:8px; display:block; position:relative;}
 
-/*活动分类*/
+/*娲诲姩鍒嗙被*/
 .classify-head{
 	background:#fff!important;
 	margin-bottom:0px!important;
@@ -300,7 +309,19 @@ a:hover{text-decoration:none;}
 	font-size:12px;
 }
 
-/*活动详情*/
+/*娲诲姩璇︽儏*/
+.fontSize14 table{
+	line-height:22px;
+	font-size:15px;
+	margin-top: 35px;
+}
+.fontSize14 table tr{
+	margin-top:-23px;
+	float:left;
+}
+.dress01{
+	padding-top:22px;
+}
 .ac-detail-header .head-right-icon{
 	padding-top:3px;
 	margin-bottom:0px!important;
@@ -320,7 +341,7 @@ a:hover{text-decoration:none;}
 	margin-bottom:10px;
 }
 .ac-detail-title .adt-desc{
-	padding:0 11px;
+	padding:0 0 13px 11px;
 }
 .ac-detail-mechanism{
 	position:relative;
@@ -350,10 +371,14 @@ a:hover{text-decoration:none;}
 	color:#adadad;
 	padding-top:6px;
 	padding-bottom:16px;
+	line-height:22px;
 }
 .btn-box{
 	text-align:center;
 	margin-top:15px;
+}
+.btn-box a{
+	letter-spacing:4px;
 }
 .mc{
 	position:absolute;
@@ -437,7 +462,7 @@ a:hover{text-decoration:none;}
 	top:-18px;
 }
 
-/*场地*/
+/*鍦哄湴*/
 .ground .mc{
 	top:94px;
 }
@@ -454,7 +479,7 @@ a:hover{text-decoration:none;}
 	float:left;
 	width:25%;
 	text-align:center;
-	background:url(/campD/static/images/select_icon.png) no-repeat 74%;
+	background:url(/static/images/select_icon.png) no-repeat 83%;
 	background-size:8px 7px;
 }
 .ground-list li .data-li-right .dlr-title{
@@ -468,7 +493,9 @@ a:hover{text-decoration:none;}
 }
 .ground-list li .data-li-right .dlr-cost .co{
 	color:#e6c680;
+	padding-right: 3px;
 }
+
 .ground-list li .data-li-right .dlr-address{
 	margin-bottom:4px;
 }
@@ -508,7 +535,7 @@ a:hover{text-decoration:none;}
 	border:1px solid #e6cf9c;
 }
 
-/*举办活动*/
+/*涓惧姙娲诲姩*/
 .hold-ac-header{
 	margin-bottom:0px!important;
 }
@@ -528,7 +555,7 @@ a:hover{text-decoration:none;}
 	font-size:17px;
 }
 
-/*举办活动*/
+/*涓惧姙娲诲姩*/
 .sub-ac-form .line{
 	display:block;
 	color:#3c3c3c;
@@ -552,7 +579,7 @@ a:hover{text-decoration:none;}
 	z-index:29;
 }
 
-/*举办活动-elissa新增*/
+/*涓惧姙娲诲姩-elissa鏂板*/
 .sub-ac-form{
 	width:100%;
 	line-height:35px;
@@ -566,11 +593,11 @@ a:hover{text-decoration:none;}
 	float:left;
 	width:100%;
 	border-bottom:1px #CCCCCC solid;
-	padding:2px 0 5px 24px;
+	padding:2px 0 5px 12px;
 }
 .sub-ac-form dl dt{
 	float:left;
-	width:20%;
+	width:24%;
 }
 .sub-ac-form dl dt dd{
 	float:left;
@@ -590,14 +617,14 @@ a:hover{text-decoration:none;}
 }
 
 
-/*举办活动-活动类型，活动城市，活动人数*/
+/*涓惧姙娲诲姩-娲诲姩绫诲瀷锛屾椿鍔ㄥ煄甯傦紝娲诲姩浜烘暟*/
 .hold-type-header{
 	margin-bottom:0px;
 }
 .hold-type-header .head-left-icon, .hold-type-header .head-right-icon{
 	font-size:17px;
 	color:#fff;
-	font-family:Verdana,"华文细黑";
+	font-family:Verdana,"鍗庢枃缁嗛粦";
 }
 .hold-type-header .head-left-icon:hover{
 	color:#fff;
@@ -621,12 +648,12 @@ a:hover{text-decoration:none;}
 	color:#638ee0!important;
 }
 .type-form .active .fr{
-	background:url(/campD/static/images/gou_blue.png) no-repeat center;
+	background:url(/static/images/gou_blue.png) no-repeat center;
 	background-size:20px 14px;
 	width:20px;
 	height:45px;
 }
-/*举办活动-活动需求*/
+/*涓惧姙娲诲姩-娲诲姩闇�姹�*/
 .sub-desc-form{
 	padding:10px 5px 0px 5px;
 }
@@ -638,7 +665,7 @@ a:hover{text-decoration:none;}
 	font-size:15px;
 }
 
-/*首页*/
+/*棣栭〉*/
 .img-tap-show{
 	width:100%;
 	height:125px;
@@ -719,4 +746,51 @@ a:hover{text-decoration:none;}
 /*################ add by qrh. Be careful! ##################*/
 #actc{
 	height: 102px;
+}
+
+/*######### 错误页面  ######## */
+.nofood{
+	font-size:34px;
+	color:#FFF;
+	background:url(/static/images/wrong.png) no-repeat;
+}
+.nofood p{
+	font-family:微软雅黑;
+	padding:520px 0 0 153px;
+	
+}
+.nofood ul{
+	width:50%;
+	margin:0 auto;
+	margin-top:20px;
+	line-height:60px;
+	
+}
+.nofood ul li{
+	list-style-type:disc;
+	font-family:微软雅黑;
+}
+.nofood a{
+
+	color:#FFF;
+}
+.point{
+	width:43%;
+	margin:35px auto;
+}
+.point a{
+	padding-right:8px;
+}
+
+/* 加载中样式  */
+.loading{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1000;
+    background: white;
+}
+.loading img{
+	display: block;
+    margin: 0 auto;
 }
