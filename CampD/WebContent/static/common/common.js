@@ -391,7 +391,7 @@ function systemLoading(selector,isLock,desc){
 		//loading层控制
 		var dataLoadingDiv = $(selector+' > .loading');
 		if(dataLoadingDiv.length<=0){
-			dataLoadingDiv = $('<div class="loading" style="width:'+width+'px;height:'+height+'px;"><img src="'+REMOTE_RES_PATH+'/static/images/loading.gif" /></div>');
+			dataLoadingDiv = $('<div class="loading" style="width:'+window.innerWidth+'px;height:'+window.innerHeight+'px;"><img src="'+REMOTE_RES_PATH+'/static/images/loading.gif" /></div>');
 			$(this).append(dataLoadingDiv);
 		}
 		
