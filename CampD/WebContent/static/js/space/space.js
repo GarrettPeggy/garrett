@@ -48,7 +48,7 @@ Space.list=function(){
 	var params={
 		"spaceLevel":1,
 	    "curPage":1,
-	    "pageLimit":3,
+	    "pageLimit":5,
 	    "isUserAuth":false
 	};
 	ajaxSearch(BASE_PATH + "/space/getSpaceListByParam.do",params,function(json){
