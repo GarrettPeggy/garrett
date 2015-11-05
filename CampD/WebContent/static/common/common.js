@@ -1014,7 +1014,7 @@ String.prototype.getBytesLength = function() {
 		};
 		
 		// 首页头图左边图标初始化
-		if(($(source).parents('#avtivity_nav').length<=0 && $(source).parents('.head-left-icon').length<=0) ) { 
+		if(($(source).parents('#avtivity_nav').length<=0 && (!$(source).hasClass("head-left-icon") && $(source).parents('.head-left-icon').length<=0)) ) { 
 			$("#avtivity_nav").addClass("hide");
 		};
 		

@@ -30,17 +30,14 @@ Header.toUpdate=function(){
 };
 
 Header.initHeadIcon=function(){
-	$(".head-left-icon").bind("click",function(){
+	$(".head-left-icon").addEventListener('touchend', function(){
 		if($("#avtivity_nav").hasClass("hide")){
 			$("#avtivity_nav").removeClass("hide");
 		} else{
 			$("#avtivity_nav").addClass("hide");
 		}
 	});
-	$(".head-right-icon").bind("click",function(){
-		//$("#activity_main").addClass("m-active");
-		//$("#activity_header").addClass("m-active");
-		//$("#activity_mao").removeClass("hide");
+	$(".head-right-icon").addEventListener('touchend', function(){
 		if($("#activity_person").hasClass("hide")){
 			$("#activity_person").removeClass("hide");
 		} else{
