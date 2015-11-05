@@ -30,14 +30,14 @@ Header.toUpdate=function(){
 };
 
 Header.initHeadIcon=function(){
-	$(".head-left-icon").addEventListener('touchend', function(){
+	$(".head-left-icon").bind("click",function(){
 		if($("#avtivity_nav").hasClass("hide")){
 			$("#avtivity_nav").removeClass("hide");
 		} else{
 			$("#avtivity_nav").addClass("hide");
 		}
 	});
-	$(".head-right-icon").addEventListener('touchend', function(){
+	$(".head-right-icon").bind("click",function(){
 		if($("#activity_person").hasClass("hide")){
 			$("#activity_person").removeClass("hide");
 		} else{
@@ -50,7 +50,7 @@ Header.initHeadIcon=function(){
 		$("#activity_person").css("padding-top","0px");
 	});
 	$("#cd_logo").bind("click",function(){ //点击logo，跳转到首页
-		window.location.href = BASE_PATH + "/";
+		window.location.href = "/";
 	});
 };
 

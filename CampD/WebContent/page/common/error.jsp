@@ -60,7 +60,7 @@
 		document.getElementById('times').innerHTML= --t;
 		if(t<=0){
 			clearInterval(interval);
-			window.location.href = BASE_PATH;
+			window.location.href = "/";
 		}
 	}
 </script>
