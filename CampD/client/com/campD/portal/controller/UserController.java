@@ -62,13 +62,13 @@ public class UserController extends BaseController {
         map.put("ip", WebUtil.getIPAddress(request));//设置ip
         
         //调用登录接口
-        Map<?, ?> userInfoMap = userService.getUserInfoByMdn(map);
+        Map<?, ?> userInfoMap = userService.getUserInfoByMdnAndUserName(map);
         String returnCode = (String)userInfoMap.get("returnCode");
         
         if (null == userInfoMap.get("userInfo")) {//返回为空时
             jv.setFail();
             jv.setSearchReturnType();
-            jv.setReturnMsg("该用户未注册,请注册！");
+            jv.setReturnMsg("用户名与手机号不匹配！");
             return jv;
         }
         
@@ -163,6 +163,15 @@ public class UserController extends BaseController {
     	
     	Map<String, Object> map = bindParamToMap(request);
         Map<?, ?> resultMap = userService.update(map);
+        
+        // 更新session信息
+        if(SystemConstant.RETURN_SUCC.equals((String) resultMap.get("returnCode"))){
+			UserInfo userInfo = UserInfoHolder.get();
+			userInfo.setMdn((String) map.get("mdn"));
+			userInfo.setUserName((String) map.get("userName"));
+			UserInfoHolder.set(userInfo);
+			WebUtil.addSession(request, SystemConstant.USER_INFO, userInfo);// 把用户信息放入session中
+		}
         
         return getSearchJSONView(resultMap);
     }

@@ -30,6 +30,13 @@ public class UserService extends JsonClientService {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map getUserInfoByMdnAndUserName(Map reqMap) {
+		
+		return postForObject(SystemMessage.getString("userJsonServer") + "/findUserByMdnAndUserName", reqMap, Map.class, false);
+		
+    }
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getUserList(Map reqMap, PageInfo pageInfo) {
 		
 		return postForMap(SystemMessage.getString("userJsonServer") + "/list", reqMap, pageInfo);

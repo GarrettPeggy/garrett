@@ -88,6 +88,22 @@ public class UserRestController extends BaseRestController{
     }
     
     /**
+     * 根据手机号和用户名查找用户信息
+     * @param reqMap:{mdn:手机号, userName:用户名}
+     * @return
+     */
+    @SuppressWarnings("rawtypes")
+	@RequestMapping("/findUserByMdnAndUserName")
+    @ResponseBody
+    public Map findUserByMdnAndUserName(HttpServletRequest request) {
+    	
+    	Map reqMap = bindParamToMap(request);
+    	Map returnMap = userJsonServer.findUserByMdnAndUserName(reqMap);
+    	
+        return returnMap;
+    }
+    
+    /**
      * 根据手机号查找用户信息
      * @param reqMap:{mdn:手机号}
      * @return

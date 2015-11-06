@@ -149,6 +149,36 @@ public class UserJsonServer {
             return jsonView;  
         }
 		
+        // 返回查询结果
+		jsonView.addAttribute("userInfo", resultMap);
+        logger.info("resultMap="+resultMap);
+        return jsonView;
+        
+	}
+    
+    /**
+     * 根据手机号和用户名查找用户信息
+     * @param reqMap:{mdn:手机号, userName:用户名}
+     * @return
+     */
+    @SuppressWarnings({"rawtypes" })
+	public Map findUserByMdnAndUserName(Map reqMap) {
+		
+    	logger.info("reqMap="+reqMap);
+    	JSONView jsonView = new JSONView();
+    	Map resultMap = null;
+    	
+		String sqlStr = "select u.id, u.user_name as userName, u.password, u.mdn, u.email, FROM_UNIXTIME(UNIX_TIMESTAMP(u.login_time), '%Y-%m-%d %H:%i:%S') AS login_time,FROM_UNIXTIME(UNIX_TIMESTAMP(u.register_time), '%Y-%m-%d %H:%i:%S') AS register_time, u.status, r.id as roleId, r.name as roleName from user u, role r where u.role_id = r.id and mdn=? and u.user_name=?";
+		logger.info("sqlStr="+sqlStr);
+		try {  
+			resultMap = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("mdn"), reqMap.get("userName")});  
+        } catch (EmptyResultDataAccessException e) { 
+
+            jsonView.addAttribute("userInfo", resultMap);
+            logger.info("resultMap="+resultMap);
+            return jsonView;  
+        }
+		
 		// 如果记录不为空说明用户已注册，可以允许登陆，此时需要修改登录时间
 		String logTimeSqlStr = "UPDATE user SET login_time=? WHERE mdn=?";
 		logger.info("logTimeSqlStr="+logTimeSqlStr);

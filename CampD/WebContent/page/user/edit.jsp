@@ -39,11 +39,12 @@
 	                    <span>手机：</span>
 	                </div>
 	                <div class="center-input">
-	                	<input type="tel" class="text-input" name="mdn" id="mdn" value="${USER_INFO.mdn}"/>
+	                	<input type="tel" class="text-input" name="mdn" id="mdn" disabled="disabled" value="${USER_INFO.mdn}"/>
 	                </div>
-	                <div class="right-op">
+	                <!-- 暂时屏蔽 -->
+	                <%-- <div class="right-op">
 	                	<img src="${rmtResPath}/static/images/clear_input.png" width="22" height="22"/>
-	                </div>
+	                </div> --%>
 	            </div>
 	            <div class="line textCenter">
 	               <button class="btn orange-btn" type="button" onclick="User.update();">保存</button>

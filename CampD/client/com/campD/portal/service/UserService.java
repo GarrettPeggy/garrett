@@ -15,7 +15,7 @@ import com.campD.portal.util.SystemMessage;
 import com.campD.portal.util.WebUtil;
 
 /**
- * @author Administrator
+ * @author Administrator 
  *
  */
 @Service("userService")
@@ -32,6 +32,13 @@ public class UserService extends JsonClientService {
 	public Map getUserInfoByMdn(Map reqMap) {
 		
 		return postForObject(SystemMessage.getString("userJsonServer") + "/getByMdn", reqMap, Map.class, false);
+		
+    }
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map getUserInfoByMdnAndUserName(Map reqMap) {
+		
+		return postForObject(SystemMessage.getString("userJsonServer") + "/findUserByMdnAndUserName", reqMap, Map.class, false);
 		
     }
     

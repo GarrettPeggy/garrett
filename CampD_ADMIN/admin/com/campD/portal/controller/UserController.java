@@ -63,7 +63,7 @@ public class UserController extends BaseController {
         map.put("ip", WebUtil.getIPAddress(request));//设置ip
         
         //调用登录接口
-        Map<?, ?> userInfoMap = userService.getUserInfoByMdn(map);
+        Map<?, ?> userInfoMap = userService.getUserInfoByMdnAndUserName(map);
         String returnCode = (String)userInfoMap.get("returnCode");
         
       //返回为空时，当用户不存在时
