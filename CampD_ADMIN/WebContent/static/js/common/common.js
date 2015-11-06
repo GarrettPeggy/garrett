@@ -654,7 +654,7 @@ DateUtil.initDatePicker = function(){
 	
 	$('.input-daterange-startDate').datetimepicker({
 		format: 'YYYY-MM-DD',// 如果需要添加时间，请使用：YYYY-MM-DD HH:MM:SS
-		defaultDate: startDate, // 默认显示的时间
+		// defaultDate: startDate, // 默认显示的时间
 		use24hours: true, // 是否启用24小时制
         useSeconds: true // 是否启用秒选择
        // maxDate: currentDay // 最大可选择时间
@@ -662,7 +662,7 @@ DateUtil.initDatePicker = function(){
 	
 	$('.input-daterange-endDate').datetimepicker({
 		format: 'YYYY-MM-DD',// 如果需要添加时间，请使用：YYYY-MM-DD HH:MM:SS
-		defaultDate: currentDay, // 默认显示的时间
+		// defaultDate: currentDay, // 默认显示的时间
 		use24hours: true, // 是否启用24小时制
         useSeconds: true // 是否启用秒选择
        // maxDate: currentDay // 最大可选择时间

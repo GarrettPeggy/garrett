@@ -21,9 +21,9 @@
 	        	<img src="${rmtResPath}/static/images/back.png" width="13" height="22" onclick="back()"/>
 	        </a>
 	        <div class="head-content">活动详情</div>
-	        <div class="head-right-icon">
+	        <%-- <div class="head-right-icon">
 	        	<img src="${rmtResPath}/static/images/share_icon.png" onclick="Activity.share()" width="23" height="23"/>
-	        </div>
+	        </div> --%>
     	</div>
 		<!-- end -->
 		<!-- 主体 -->

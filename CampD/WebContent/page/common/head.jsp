@@ -12,11 +12,11 @@
      	<ul>
          	<li class="line clearfix" onclick="Activity.signUp()">
              	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img"/>
-              <div class="fl right-text">已报名的活动</div>
+              <div class="fl right-text">报名的活动</div>
           </li>
           <li class="line clearfix" onclick="Activity.sponsored()">
              	<img src="${rmtResPath}/static/images/p2.png" width="41" height="41" class="fl left-img"/>
-              <div class="fl right-text">要举办的活动</div>
+              <div class="fl right-text">举办的活动</div>
           </li>
           <c:if test="${empty USER_INFO}">
 	          <li class="line clearfix" onclick="Header.toLogin()">
