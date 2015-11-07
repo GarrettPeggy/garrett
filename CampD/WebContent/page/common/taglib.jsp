@@ -9,6 +9,10 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	pageContext.setAttribute("httpProtocol", request.getScheme());
+	
+	// 返回历史页
+	String referer = request.getHeader("Referer");
+	pageContext.setAttribute("referer", referer);
 %>
 <c:set var="locResPath" value="${pageContext.request.contextPath}"/>
 <c:set var="rmtResPath" value="${httpProtocol}://${sysConfig.rmtResUrl}"/>

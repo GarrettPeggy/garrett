@@ -783,8 +783,12 @@ function closeTopNotice(id){
 /**
  * 页面上的返回按钮
  */
-function back(){
-	window.history.go(-1);// 返回历史
+function back(oldUrl){
+	if(!oldUrl){
+		window.history.go(-1);// 返回历史
+	} else{
+		window.location.href = oldUrl;
+	}
 }
 
 /**
