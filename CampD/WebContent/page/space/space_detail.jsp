@@ -107,7 +107,8 @@
 
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide" id="space_share">
-		<div id="code" style="margin: 20px 20px 20px 20px"></div>
+        <img alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
+		<!-- <div id="code" style="margin: 20px 20px 20px 20px"></div> -->
         <div class="bottom-close retina-1px-border-top">
         	<a onclick="Space.cancel()">取&nbsp;&nbsp;消</a>
         </div>
@@ -117,13 +118,12 @@
 <script type="text/javascript">
 	Space.share=function(){
 		//场地分享
-		//$("#space_share").removeClass("hide");
+		$("#space_share").removeClass("hide");
 		//Share.qcode();
 	};
-</script>
-<script type="text/javascript">
-$(function(){
-	Space.tapShow();
-});
+	
+	$(function(){
+		Space.tapShow();
+	});
 </script>
 </html>

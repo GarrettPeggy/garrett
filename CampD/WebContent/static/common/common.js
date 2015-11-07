@@ -784,7 +784,7 @@ function closeTopNotice(id){
  * 页面上的返回按钮
  */
 function back(){
-	window.history.back(-1);
+	window.history.go(-1);// 返回历史
 }
 
 /**
