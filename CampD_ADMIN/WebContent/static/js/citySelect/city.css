@@ -45,8 +45,8 @@ i {
 	position: relative;
 	min-height: 38px;
 	/* background-color: green; */
-	float: left;
-	margin-left: -10px;
+	float: none;
+	margin-left: -1px;
 	margin-top: 0px;
 }
 

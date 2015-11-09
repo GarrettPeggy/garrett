@@ -34,7 +34,7 @@
 		                <c:forEach items="${jsonview.activityList }" var="activity">
 				            	<li class="pd5">
 				            		<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
-					                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/>
+					                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="156"/>
 					                    <div class="classify-li-title">
 					                    	<c:out value="${activity.title }" default="无标题"></c:out>
 					                    </div>

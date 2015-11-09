@@ -32,7 +32,7 @@
 	    	<input type="hidden" id="activityId" name="activityId" value="${jsonview.activityInfo.id}"/>
 		    <!-- 活动概括与地点 -->
 	    	<div class="ac-detail-title retina-1px-border-bottom">
-		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%" height="116"/>
+		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%" height="156"/>
 	            <div class="adt-desc">
 	                <div class="fontSize17 retina-1px-border-bottom">${jsonview.activityInfo.title }</div>
 	                <div class="fontSize14">

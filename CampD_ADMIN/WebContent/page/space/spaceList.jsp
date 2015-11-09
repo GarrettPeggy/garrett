@@ -147,7 +147,7 @@
 													<div class="widget-body">
 														<div class="widget-main">
 															<label>所在地区</label> 
-															<div class="infolist col-xs-12 col-sm-12"> 
+															<div class="infolist"> 
 																<span class="block input-icon input-icon-right liststyle">
 											                      	<span id="province">
 									                                    <i>请选择省份</i>

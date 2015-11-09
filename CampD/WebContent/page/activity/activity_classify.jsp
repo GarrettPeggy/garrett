@@ -53,10 +53,10 @@
         				<!-- end -->
         			</c:when>
         			<c:otherwise>
-        				<c:forEach items="${jsonview.activityList }" var="activity">
+        				<%-- <c:forEach items="${jsonview.activityList }" var="activity">
 	        				<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
 	        					<li class="pd5">
-				                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/>
+				                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="156"/>
 				                    <div class="classify-li-title">
 				                    	<c:out value="${activity.title }" default="无标题"></c:out>
 				                    </div>
@@ -70,21 +70,26 @@
 				                    </div>
 				                    <div class="classify-li-date fontSize14">
 				                    	<img src="${rmtResPath}/static/images/date_icon.png" width="10" height="10"/>
-				                        <span><fmt:formatDate value="${activity.begintime}" dateStyle="full" /></span>
+				                        <span>${activity.begintime }--${activity.endtime }</span>
 				                    </div>
 				                </li>
 				            </a>
-        				</c:forEach>
+        				</c:forEach> --%>
         			</c:otherwise>
         		</c:choose>
             </ul>
-            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
+            <%-- <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
             	<div id="activity_more">
             		<button id="activityLoadMore" name="activityLoadMore" class="btn btn-xs btn-light bigger loadBtn" onclick="Activity.loadMore()">加载更多</button> 
             	</div>
-            </c:if>
+            </c:if> --%>
         </div>
     </div>
     <!-- end -->
 </body>
+<script type="text/javascript">
+$(function(){
+	Activity.search("/activity/getActivityList.do",false);
+});
+</script>
 </html>

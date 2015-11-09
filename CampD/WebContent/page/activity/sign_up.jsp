@@ -43,7 +43,7 @@
 		        		<c:forEach items="${jsonview.activityList }" var="activity">
 			        		<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
 				            	<li class="pd5">
-				                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="116"/>
+				                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="156"/>
 				                    <div class="classify-li-title">${activity.title }</div>
 				                    <div class="classify-li-desc color94 fontSize14">
 				                    	<c:if test="${fn:length(activity.requirement) > 20}">

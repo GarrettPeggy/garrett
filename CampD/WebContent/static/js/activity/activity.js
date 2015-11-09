@@ -46,10 +46,10 @@ Activity.list=function(){
 				var begintimeDate = DateUtil.parseDate(activityList[i].begintime,"yyyy-MM-dd HH:mm:ss");
 				var begintime = DateUtil.fomatDate(begintimeDate,"MM月dd日 HH:mm");
 				var begintimeWeek = DateUtil.getWeekDay(begintimeDate);
-				activity_html.push("<a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'>"+ requirement +"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+begintime+"&nbsp;&nbsp;"+begintimeWeek+"</span></div></li></a>");
+				activity_html.push("<a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'>"+ requirement +"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+begintime+"&nbsp;&nbsp;"+begintimeWeek+"</span></div></li></a>");
 			}
 		}else{
-			activity_html.push('<div class="textCenter mat15"><img src="'+REMOTE_RES_PATH+'/static/images/no_data.png" width="41" height="41"/><div class="ui-tips-box mat10"><span class="color94">还没有任何活动哦!点击</span><a href="###" class="colorBlue">主办活动</a><br/><p class="mat15 color94">提交你的活动需求吧</p></div></div>');
+			activity_html.push("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>");
 		}
 		$("#activity_first_pop").html(activity_html.join(""));
 	},function(data){
@@ -178,7 +178,7 @@ Activity.search=function(url,isUserAuth){
 					$("#activity_popu").append('<li class="clearfix"><a href="'+BASE_PATH+'/activity/getActivityById.do?id='+activityList[i].id+'"><div class="data-li-left"><img src="'+REMOTE_RES_PATH+'/static/images/cd_logo.png" width="91" height="91"/></div><div class="data-li-right"><div class="dlr-title retina-1px-border-bottom"><span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span>&nbsp;&nbsp;&nbsp;<span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span>&nbsp;&nbsp;&nbsp;<span class="dlrt3">'+city+'</span></div><div class="dlr-detail color94 fontSize14">' + requirement + '</div></div></a></li>');
 				}
 			}else{//已报名的活动
-				$("#activity_popu").append("<li class='pd5'><a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='116'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'>"+requirement+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+begintime+"&nbsp;&nbsp;"+begintimeWeek+"</span></div></a></li>");
+				$("#activity_popu").append("<li class='pd5'><a href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><img src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-desc color94 fontSize14'>"+requirement+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+begintime+"&nbsp;&nbsp;"+begintimeWeek+"</span></div></a></li>");
 			}
 			
 		};
