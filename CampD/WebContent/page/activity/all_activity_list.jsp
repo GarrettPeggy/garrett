@@ -27,11 +27,16 @@
         		<c:choose>
 	        		<c:when test="${empty jsonview.activityList }">
 	        			<li class="pd5">
-		        			对不起，暂时没有你所需要查询的数据
+		        			<img src="${rmtResPath}/static/images/no_data.png" width="41" height="41"/>
+            				<div class="ui-tips-box mat10">
+            					<span class="color94">还没有任何活动哦!点击</span>
+                				<a href="###" class="colorBlue">主办活动</a><br/>
+                				<p class="mat15 color94">提交你的活动需求吧</p>
+            				</div>
 		        		</li>
 	        		</c:when>
 	        		<c:otherwise>
-			        	<c:forEach items="${jsonview.activityList }" var="activity">
+			        	<%-- <c:forEach items="${jsonview.activityList }" var="activity">
 				        	<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
 				            	<li class="pd5">
 				                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="156"/>
@@ -53,17 +58,22 @@
 				                    </div>
 				                </li>
 				            </a>
-			            </c:forEach>   
+			            </c:forEach> --%>   
 			        </c:otherwise>
 	            </c:choose>
             </ul>
-            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
+            <%-- <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
             	<div id="activity_more">
             		<button id="activityLoadMore" name="activityLoadMore" class="btn btn-xs btn-light bigger loadBtn" onclick="Activity.loadMore()">加载更多</button> 
             	</div>
-            </c:if>
+            </c:if> --%>
         </div>
     </div>
     <!-- end -->
 </body>
+<script type="text/javascript">
+$(function(){
+	Activity.search("/activity/getActivityList.do",false);
+});
+</script>
 </html>
