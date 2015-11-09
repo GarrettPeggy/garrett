@@ -73,32 +73,8 @@
 												<div class="col-xs-12 col-sm-3">
 													<div class="widget-body">
 														<div class="widget-main">
-															<label>所在地区</label> 
-															<div class="infolist" style="width: 400px;"> 
-																<span class="block input-icon input-icon-right liststyle">
-											                      	<span id="province">
-									                                    <i>请选择省份</i>
-									                                    <ul>
-									                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
-									                                    </ul>
-									                                    <input type="hidden" name="province" class="curValue" value="">
-									                                </span>
-									                                <span id="city">
-									                                    <i>请选择城市</i>
-									                                    <ul>
-									                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
-									                                    </ul>
-									                                    <input type="hidden" name="city" class="curValue" value="">
-									                                </span>
-									                                <span id="area">
-									                                    <i>请选择地区</i>
-									                                    <ul>
-									                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
-									                                    </ul>
-									                                    <input type="hidden" name="area" class="curValue" value="">
-									                                </span>
-									                      		</span> 
-									                      	</div>
+															<label>活动举办方</label> 
+															<input type="text" name="sponsor" id="sponsor" value="" class="col-xs-12 col-sm-12" />
 														</div>
 													</div>
 												</div>
@@ -156,6 +132,7 @@
 												</div>
 											</div>	
 											<div class="row">
+												
 												<div class="col-xs-12 col-sm-3">
 													<div class="widget-body">
 														<div class="widget-main">
@@ -170,11 +147,35 @@
 													</div>
 												</div>
 												
-												<div class="col-xs-12 col-sm-3">
+												<div class="col-xs-12 col-sm-5">
 													<div class="widget-body">
 														<div class="widget-main">
-															<label>活动举办方</label> 
-															<input type="text" name="sponsor" id="sponsor" value="" class="col-xs-12 col-sm-12" />
+															<label>所在地区</label> 
+															<div class="infolist"> 
+																<span class="block input-icon input-icon-right liststyle">
+											                      	<span id="province">
+									                                    <i>请选择省份</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="province" class="curValue" value="">
+									                                </span>
+									                                <span id="city">
+									                                    <i>请选择城市</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="city" class="curValue" value="">
+									                                </span>
+									                                <span id="area">
+									                                    <i>请选择地区</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="area" class="curValue" value="">
+									                                </span>
+									                      		</span> 
+									                      	</div>
 														</div>
 													</div>
 												</div>

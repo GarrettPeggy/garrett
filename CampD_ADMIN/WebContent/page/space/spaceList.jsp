@@ -7,8 +7,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/page/common/meta.jsp"%>
 	<link rel="stylesheet" href="${rmtResPath}/static/css/bootstrap-datetimepicker.min.css" />
-	<%@ include file="/page/common/jsCss.jsp"%>
 	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
+	<%@ include file="/page/common/jsCss.jsp"%>
 	<script src="${locResPath}/static/js/date-time/moment.min.js"></script>
 	<script src="${locResPath}/static/js/date-time/locale/zh-cn.js"></script>
 	<script src="${locResPath}/static/js/date-time/bootstrap-datetimepicker.min.js"></script>
@@ -143,11 +143,11 @@
 													</div>
 												</div>
 												
-												<div class="col-xs-12 col-sm-3">
+												<div class="col-xs-12 col-sm-6">
 													<div class="widget-body">
 														<div class="widget-main">
 															<label>所在地区</label> 
-															<div class="infolist" style="width: 400px;"> 
+															<div class="infolist col-xs-12 col-sm-12"> 
 																<span class="block input-icon input-icon-right liststyle">
 											                      	<span id="province">
 									                                    <i>请选择省份</i>
@@ -210,7 +210,7 @@
 $(function(){
 	DateUtil.initDatePicker();
 	Space.searchSpaceList();
-	$.fn.citySelect(['#province', '#city', '#area'],['' , '' , '']);
+	$.fn.citySelect(['#province', '#city', '#area'],['上海市' , '上海市' , '浦东新区']);
 });
 </script>
 </html>

@@ -44,6 +44,10 @@ i {
 .infolist {
 	position: relative;
 	min-height: 38px;
+	/* background-color: green; */
+	float: left;
+	margin-left: 67px;
+	margin-top: -31px;
 }
 
 .infolist lable {
@@ -117,7 +121,7 @@ i {
 	line-height: 36px;
 	display: inline-block;
 	border: 1px solid #E8E8E8;
-	border-radius: 0px;/*原来是5px，runhua改为了0px*/
+	border-radius: 0px;
 	padding: 0 0 0 8px;
 	cursor: pointer;
 	background: white;
@@ -162,7 +166,7 @@ i {
 	position: absolute;
 	border: 1px solid #E8E8E8;
 	background: white;
-	left: -26px;
+	left: -1px;
 	top: 36px;
 	border-top: 0;
 	margin-bottom: 10px;
