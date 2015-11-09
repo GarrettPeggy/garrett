@@ -27,7 +27,7 @@
           <!-- 以下两个通过增加hide样式显示隐藏 -->
           <c:if test="${!empty USER_INFO}">
           	  <li class="line clearfix" onclick="Header.toUpdate()">
-	             	<img src="${rmtResPath}/static/images/user_icon_blue.png" width="41" height="41" class="fl left-img"/>
+	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
 	              <div class="fl right-text">${USER_INFO.userName}</div>
 	          </li>
 	          <li class="line clearfix" onclick="Header.toQuit()">

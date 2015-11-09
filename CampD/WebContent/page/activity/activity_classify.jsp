@@ -70,7 +70,7 @@
 				                    </div>
 				                    <div class="classify-li-date fontSize14">
 				                    	<img src="${rmtResPath}/static/images/date_icon.png" width="10" height="10"/>
-				                        <span>${activity.begintime }--${activity.endtime }</span>
+				                        <span><fmt:formatDate value="${activity.begintime}" dateStyle="full" /></span>
 				                    </div>
 				                </li>
 				            </a>

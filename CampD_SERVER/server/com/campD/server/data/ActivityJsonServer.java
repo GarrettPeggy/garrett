@@ -164,8 +164,8 @@ public class ActivityJsonServer {
 		}
 		
 		if(null != reqMap.get("area") && !"".equals(reqMap.get("area"))){
-			sqlStr+=" and city area '%"+reqMap.get("area")+"%' ";
-			sqlCount+=" and city area '%"+reqMap.get("area")+"%' ";
+			sqlStr+=" and area '%"+reqMap.get("area")+"%' ";
+			sqlCount+=" and area '%"+reqMap.get("area")+"%' ";
 		}
 		
 		if(null!=reqMap.get("adress") && !"".equals(reqMap.get("adress"))){
