@@ -26,14 +26,14 @@
         	<ul class="data-list" id="activity_popu">
         		<c:choose>
 	        		<c:when test="${empty jsonview.activityList }">
-	        			<li class="pd5">
+	        			<div class="textCenter mat15">
 		        			<img src="${rmtResPath}/static/images/no_data.png" width="41" height="41"/>
             				<div class="ui-tips-box mat10">
             					<span class="color94">还没有任何活动哦!点击</span>
                 				<a href="###" class="colorBlue">主办活动</a><br/>
                 				<p class="mat15 color94">提交你的活动需求吧</p>
             				</div>
-		        		</li>
+		        		</div>
 	        		</c:when>
 	        		<c:otherwise></c:otherwise>
 	            </c:choose>
