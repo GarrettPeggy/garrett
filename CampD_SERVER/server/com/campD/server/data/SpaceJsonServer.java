@@ -148,11 +148,23 @@ public class SpaceJsonServer {
 			sqlStr+=" and t1.contact ="+contact+" ";
 			sqlCount+=" and t1.contact ="+contact+" ";
 		}
-
-		Object area = reqMap.get("area");//地址
+		
+		Object province = reqMap.get("province");//省份
+		if(null!=province && !"".equals(province)){
+			sqlStr+=" and t1.province='"+province+"' ";
+			sqlCount+=" and t1.province='"+province+"' ";
+		}
+		
+		Object area = reqMap.get("area");//区域
 		if(null!=area && !"".equals(area)){
 			sqlStr+=" and t1.area='"+area+"' ";
 			sqlCount+=" and t1.area='"+area+"' ";
+		}
+
+		Object city = reqMap.get("city");//地级市
+		if(null!=city && !"".equals(city)){
+			sqlStr+=" and t1.city='"+city+"' ";
+			sqlCount+=" and t1.city='"+city+"' ";
 		}
 
 		Object workFor = reqMap.get("workFor");//适用活动

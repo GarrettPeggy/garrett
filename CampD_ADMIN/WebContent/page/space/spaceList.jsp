@@ -8,10 +8,13 @@
 	<%@ include file="/page/common/meta.jsp"%>
 	<link rel="stylesheet" href="${rmtResPath}/static/css/bootstrap-datetimepicker.min.css" />
 	<%@ include file="/page/common/jsCss.jsp"%>
+	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<script src="${locResPath}/static/js/date-time/moment.min.js"></script>
 	<script src="${locResPath}/static/js/date-time/locale/zh-cn.js"></script>
 	<script src="${locResPath}/static/js/date-time/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
 
 <body class="no-skin">
@@ -77,20 +80,6 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-xs-12 col-sm-3">
-													<div class="widget-body">
-														<div class="widget-main">
-															<label>发布时间</label>
-															<div class="input-daterange input-group">
-																<input type="text" class="input-sm form-control input-daterange-startDate" value="" name="beginCreateTime" />
-																<span class="input-group-addon"> 
-																	<i class="fa glyphicon-minus"></i>
-																</span> 
-																<input type="text" class="input-sm form-control input-daterange-endDate" value="" name="endCreateTime" />
-															</div>
-														</div>
-													</div>
-												</div>
 												
 											</div>
 											
@@ -136,6 +125,58 @@
 												</div>
 												
 											</div>
+											
+											<div class="row">
+												
+												<div class="col-xs-12 col-sm-3">
+													<div class="widget-body">
+														<div class="widget-main">
+															<label>发布时间</label>
+															<div class="input-daterange input-group">
+																<input type="text" class="input-sm form-control input-daterange-startDate" value="" name="beginCreateTime" />
+																<span class="input-group-addon"> 
+																	<i class="fa glyphicon-minus"></i>
+																</span> 
+																<input type="text" class="input-sm form-control input-daterange-endDate" value="" name="endCreateTime" />
+															</div>
+														</div>
+													</div>
+												</div>
+												
+												<div class="col-xs-12 col-sm-3">
+													<div class="widget-body">
+														<div class="widget-main">
+															<label>所在地区</label> 
+															<div class="infolist" style="width: 400px;"> 
+																<span class="block input-icon input-icon-right liststyle">
+											                      	<span id="province">
+									                                    <i>请选择省份</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="province" class="curValue" value="">
+									                                </span>
+									                                <span id="city">
+									                                    <i>请选择城市</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="city" class="curValue" value="">
+									                                </span>
+									                                <span id="area">
+									                                    <i>请选择地区</i>
+									                                    <ul>
+									                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
+									                                    </ul>
+									                                    <input type="hidden" name="area" class="curValue" value="">
+									                                </span>
+									                      		</span> 
+									                      	</div>
+														</div>
+													</div>
+												</div>
+												
+											</div>
 
 											<div class="widget-toolbox padding-8 clearfix">
 												<div class="search-con-btn">
@@ -169,6 +210,7 @@
 $(function(){
 	DateUtil.initDatePicker();
 	Space.searchSpaceList();
+	$.fn.citySelect(['#province', '#city', '#area'],['' , '' , '']);
 });
 </script>
 </html>
