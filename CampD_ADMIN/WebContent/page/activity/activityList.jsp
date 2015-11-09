@@ -147,7 +147,7 @@
 													</div>
 												</div>
 												
-												<div class="col-xs-12 col-sm-5">
+												<div class="col-xs-12 col-sm-8">
 													<div class="widget-body">
 														<div class="widget-main">
 															<label>所在地区</label> 
