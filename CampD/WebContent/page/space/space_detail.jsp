@@ -19,7 +19,7 @@
         </a>
         <div class="head-content">场地详情</div>
         <div class="head-right-icon">
-        	<img src="${rmtResPath}/static/images/share_icon.png" onclick="Space.share()" width="23" height="23"/>
+        	<img src="${rmtResPath}/static/images/guanzhu.png" onclick="Space.share()" width="28" height="28"/>
         </div>
     </div>
 	<!-- end -->
@@ -109,9 +109,11 @@
     <div class="tc-modal share-modal hide" id="space_share">
         <img alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
 		<!-- <div id="code" style="margin: 20px 20px 20px 20px"></div> -->
-        <div class="bottom-close retina-1px-border-top">
-        	<a onclick="Space.cancel()">取&nbsp;&nbsp;消</a>
-        </div>
+       <!--  <div class="bottom-close retina-1px-border-top">
+         	<a onclick="Space.cancel()">取&nbsp;&nbsp;消</a>        
+             </div> 
+        -->
+          <span class="more">关注我们，获取更多活动资源</span>
     </div>
     <!-- end -->
 </body>
