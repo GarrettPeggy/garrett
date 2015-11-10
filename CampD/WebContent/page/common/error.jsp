@@ -16,7 +16,7 @@
 	function timeout(){
 		//$(".nofood").height($(document).height());
 		//(".nofood").width($(document).width());
-		interval = setInterval(jishi,1000);
+		//interval = setInterval(jishi,1000);
 	}
 	
 	function jishi(){

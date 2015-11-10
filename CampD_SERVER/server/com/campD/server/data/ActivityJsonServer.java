@@ -212,10 +212,11 @@ public class ActivityJsonServer {
 		//要举办的活动通过创建时间倒序排列
 		if( null != reqMap.get("sponsored") && !"".equals(reqMap.get("sponsored")) && 0==Integer.parseInt(reqMap.get("sponsored").toString())){
 			sqlStr+=" order by create_time desc ";
-			sqlCount+=" order by create_time desc ";
 		}else if(null != reqMap.get("sponsored") && !"".equals(reqMap.get("sponsored")) && 1==Integer.parseInt(reqMap.get("sponsored").toString())){//其余查询活动通过发布时间倒序排列
 			sqlStr+=" order by publish_time desc ";
-			sqlCount+=" order by publish_time desc ";
+		}else{
+			// 默认按照发布时间降序排列
+			sqlStr += " ORDER BY create_time DESC ";
 		}
 		
 		// 获取当前活动总数
