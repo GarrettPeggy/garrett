@@ -126,7 +126,7 @@
 	    <!-- end -->
 
 		<!-- 分享 需要显示时删除hide -->
-	    <div class="tc-modal share-modal hide" id="activity_share" style="filter:alpha(opacity:80);opacity:0.8;">
+	    <div class="tc-modal share-modal hide" id="activity_share">
 	    	<img alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
 			<!-- <div id="code" style="margin: 20px 20px 20px 20px"></div> -->
 	       <!--  <div class="bottom-close retina-1px-border-top">
@@ -141,7 +141,12 @@
 	<script type="text/javascript">
 		 //活动分享
 		Activity.share=function(){
-			$("#activity_share").removeClass("hide");
+			var isHide = $("#activity_share").hasClass("hide");
+			if(isHide){
+				$("#activity_share").removeClass("hide");
+			} else{
+				$("#activity_share").addClass("hide");
+			}
 			//Share.qcode();
 		};
 	</script>

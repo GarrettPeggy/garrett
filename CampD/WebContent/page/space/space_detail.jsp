@@ -114,14 +114,19 @@
              </div> 
         -->
           <span>关注我们，获取更多活动资源</span>
-	      <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Activity.cancel()"/>
+	      <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Space.cancel()"/>
     </div>
     <!-- end -->
 </body>
 <script type="text/javascript">
 	Space.share=function(){
 		//场地分享
-		$("#space_share").removeClass("hide");
+		var isHide = $("#space_share").hasClass("hide");
+		if(isHide){
+			$("#space_share").removeClass("hide");
+		} else{
+			$("#space_share").addClass("hide");
+		}
 		//Share.qcode();
 	};
 	
