@@ -835,11 +835,11 @@ a:hover{text-decoration:none;}
 }
 .pic .word{
 	position:relative;
-	top:-950px;
-	left:250px;
+	margin-top:200px;
+	margin-left:-30px;
 	margin-bottom:5px;
 	color:#fff;
-	font-size:60px;
+	font-size:34px;
 }
 .pic .word p{
 	margin-left:-30px;
@@ -851,14 +851,15 @@ a:hover{text-decoration:none;}
 }
 .pic .point{
 	position:relative;
-	top:-920px;
-	left:-40px;
+	margin-top:10px;
+	margin-left:250px;
 }
 .pic .point a{
 	color:#fff;
-	font-size:60px;
+	font-size:34px;
 }
 .pic .point img{
 	width:40px;
 	height:40px;
+	display:inline-block;
 }
