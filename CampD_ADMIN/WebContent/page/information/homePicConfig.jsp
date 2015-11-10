@@ -45,7 +45,7 @@
 									    <div class="clearfix" style="margin-top: 10px;margin-bottom: 10px;">
 									    	<div class="avatar-x">
 									    	    <div id="addPic">
-									    	    	<img id="imagePath_0" src="${rmtResPath}/static/images/login/logo.png" width="200" height="200">
+									    	    	<img id="imagePath_0" src="${rmtResPath}/static/images/login/cd_logo.png" width="200" height="200">
 									    	    </div>
 									            <div class="avatar-bar"></div>
 									        </div>
@@ -78,7 +78,7 @@
 									    <div class="clearfix" style="margin-top: 10px;margin-bottom: 10px;">
 									    	<div class="avatar-x">
 									    	    <div id="addPic">
-									    	    	<img id="imagePath_1" src="${rmtResPath}/static/images/login/logo.png" width="200" height="200">
+									    	    	<img id="imagePath_1" src="${rmtResPath}/static/images/login/cd_logo.png" width="200" height="200">
 									    	    </div>
 									            <div class="avatar-bar"></div>
 									        </div>
@@ -111,7 +111,7 @@
 									    <div class="clearfix" style="margin-top: 10px;margin-bottom: 10px;">
 									    	<div class="avatar-x">
 									    	    <div id="addPic">
-									    	    	<img id="imagePath_2" src="${rmtResPath}/static/images/login/logo.png" width="200" height="200">
+									    	    	<img id="imagePath_2" src="${rmtResPath}/static/images/login/cd_logo.png" width="200" height="200">
 									    	    </div>
 									            <div class="avatar-bar"></div>
 									        </div>
