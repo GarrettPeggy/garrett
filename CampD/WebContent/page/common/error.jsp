@@ -53,7 +53,7 @@
      </div>  
      <div class="point" >
        <a href="${ctx}" >点击刷新</a>
-       	<img src="http://camp-images.oss-cn-shanghai.aliyuncs.com/static/images/new.png" />
+       	<img class="new" src="http://camp-images.oss-cn-shanghai.aliyuncs.com/static/images/new.png" />
      </div>
  </div>
 </div>

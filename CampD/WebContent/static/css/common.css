@@ -857,7 +857,7 @@ a:hover{text-decoration:none;}
 	color:#fff;
 	font-size:34px;
 }
-.pic .point img{
+.pic .point .new{
 	width:40px;
 	height:40px;
 	display:inline-block;
