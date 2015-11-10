@@ -839,15 +839,15 @@ a:hover{text-decoration:none;}
 	left:250px;
 	margin-bottom:5px;
 	color:#fff;
-	font-size:40px;
+	font-size:60px;
 }
 .pic .word p{
 	margin-left:-30px;
-	margin-bottom:10px;
+	margin-bottom:15px;
 }
 .pic .word ul li{
 	list-style-type:disc;
-	margin-bottom:10px;
+	margin-bottom:15px;
 }
 .pic .point{
 	position:relative;
@@ -856,7 +856,7 @@ a:hover{text-decoration:none;}
 }
 .pic .point a{
 	color:#fff;
-	font-size:40px;
+	font-size:60px;
 }
 .pic .point img{
 	width:40px;
