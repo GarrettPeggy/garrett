@@ -2,7 +2,7 @@
 body{padding:0;margin:0;background:#f0f0f0; font-family:STHeiti,"閸楀孩鏋冩鎴滅秼";}
 img,p,ul,li,input{ margin:0; padding:0; list-style-type:none;}
 img{border:none;}
-.fl{float:left;width:30%}
+.fl{float:left;}
 .fr{float:right;}
 .clearfix:before,.clearfix:after{display:table;content:"";height:;line-height:0;clear:both}
 .clearfix{*zoom:1}
@@ -818,4 +818,11 @@ a:hover{text-decoration:none;}
 }
 .tc-modal  img{
 	text-align:center;
+}
+   /* 场地dl样式修改*/
+.adt-desc .fontSize17 dl dt {
+	width:30%;
+}
+.adt-desc .fontSize17 dl dd {
+	width:50%;
 }
