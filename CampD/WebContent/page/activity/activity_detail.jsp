@@ -133,8 +133,8 @@
 	        	<a onclick="Activity.cancel()">取&nbsp;&nbsp;消</a>
 	        </div>
 	         -->
-	         <span style="bottom:-9px;text-align:center;position:relative;margin-top:-20px;margin-left:-2px;display:block;height:21px;background:#e9e9e9;">关注我们，获取更多活动资源</span>
-	         <img src="${rmtResPath}/static/images/login/closed.png" style="width:20px;height:23px;position:absolute;top:0px;right:0px" onclick="Activity.cancel()">
+	         <span>关注我们，获取更多活动资源</span>
+	         <img class="close" src="${rmtResPath}/static/images/login/closed.png"  onclick="Activity.cancel()"/>
 	    </div>
 	    <!-- end -->
 	</body>
