@@ -397,6 +397,8 @@ a:hover{text-decoration:none;}
 	right: 0;
 	z-index:36;
 	border-radius:8px;
+	filter:alpha(opacity:80);
+	opacity:1;
 }
 .sign-succ-modal{
 	top:100px;
@@ -795,7 +797,9 @@ a:hover{text-decoration:none;}
     margin: 0 auto;
     padding-top: 10%;
 }
-.tc-modal .share-modal span{
+
+/* 关注我们样式 */
+.tc-modal span{
 	bottom:-9px;
 	text-align:center;
 	position:relative;
@@ -805,10 +809,13 @@ a:hover{text-decoration:none;}
 	height:21px;
 	background:#e9e9e9;
 }
-.tc-modal .share-modal img.close{
+.tc-modal .close{
 	width:20px;
 	height:23px;
 	position:absolute;
 	top:0px;
 	right:0px;
+}
+.tc-modal  img{
+	text-align:center;
 }

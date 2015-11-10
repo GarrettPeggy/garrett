@@ -106,8 +106,8 @@
     <!-- end -->
 
 	<!-- 分享 需要显示时删除hide -->
-    <div class="tc-modal share-modal hide" id="space_share" style="filter:alpha(opacity:80);opacity:0.8;">
-        <img alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
+    <div class="tc-modal share-modal hide" id="space_share">
+        <img alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" >
 		<!-- <div id="code" style="margin: 20px 20px 20px 20px"></div> -->
        <!--  <div class="bottom-close retina-1px-border-top">
          	<a onclick="Space.cancel()">取&nbsp;&nbsp;消</a>        
