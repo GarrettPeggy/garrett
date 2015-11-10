@@ -58,14 +58,23 @@
 	        <!-- end -->
             <div class="adt-desc">
                 <div class="fontSize17">${jsonview.spaceInfo.name }</div>
-                <div class="fontSize14 color94 clearfix">
+              <!--   <div class="fontSize14 color94 clearfix">
                     <span class="fl">交通概况</span>
-                    <span class="fr">${jsonview.spaceInfo.traffic }</span>
+                    <span class="fl">${jsonview.spaceInfo.traffic }</span>
                 </div>
                 <div class="fontSize14 mat7 pdb10 clearfix color94">
                 	<span class="fl">具体地址</span>
-                    <span class="fr">${jsonview.spaceInfo.adress }</span>
-                </div>
+                    <span class="fl">${jsonview.spaceInfo.adress }</span>
+                </div> -->
+                 <dl class="fontSize14 color94 clearfix">
+                           <dt class="fl">交通概况</dt>
+                           <dd class="fl">${jsonview.spaceInfo.traffic }</dd> 
+                </dl>
+                <dl class="fontSize14 mat7 pdb10 clearfix color94" style="margin-right:8px;">
+                        <dt class="fl">具体地址</dt>
+                        <dd class="fl">${jsonview.spaceInfo.adress }</dd> 
+               </dl>
+                
             </div>
         </div>
         <!-- end -->
