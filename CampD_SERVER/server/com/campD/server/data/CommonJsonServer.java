@@ -37,9 +37,9 @@ public class CommonJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 记录用户注册信息
-		String sqlStr = "insert into sys_config(id,sys_type,key_val,value_val) values(?,?,?,?)";
+		String sqlStr = "insert into sys_config(id,sys_type,key_val,value_val,url_val) values(?,?,?,?,?)";
 		logger.info("sqlStr="+sqlStr);
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("type"), reqMap.get("key"), reqMap.get("value")};
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("type"), reqMap.get("key"), reqMap.get("value"), reqMap.get("url")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -68,9 +68,9 @@ public class CommonJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 记录用户注册信息
-		String sqlStr = "update sys_config set value_val=? where sys_type=? and key_val=?";
+		String sqlStr = "update sys_config set value_val=?, url_val=? where sys_type=? and key_val=?";
 		logger.info("sqlStr="+sqlStr);
-        Object[] params = new Object[]{reqMap.get("value"), reqMap.get("type"), reqMap.get("key")};
+        Object[] params = new Object[]{reqMap.get("value"), reqMap.get("url"), reqMap.get("type"), reqMap.get("key")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -97,7 +97,7 @@ public class CommonJsonServer {
 	public Map findSysConfigs(Map reqMap) {
 		
     	logger.info("reqMap="+reqMap);
-    	String sqlStr = "select id,sys_type,key_val,value_val from sys_config where 1=1";
+    	String sqlStr = "select id,sys_type,key_val,value_val,url_val from sys_config where 1=1";
     	
     	// 查询的表单参数
     	Object type = reqMap.get("type");

@@ -25,10 +25,12 @@ Information.initHomePic = function(){
 			var sysConfig = sysConfigList[i];
 			var key = sysConfig.key_val;
 			var value = sysConfig.value_val;
+			var url = sysConfig.url_val;
 			
 			$("#imageHiddenPath_"+key).val(value);
 			$("#prin_url_"+key).val(value);
 			$("#imagePath_"+key).attr("src", OSS_RES_URL + value);
+			$("#url_"+key).val(url);
 			
 			switch (key) {
 				case Information.sys_conf_homePic_0:{

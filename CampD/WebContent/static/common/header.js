@@ -99,7 +99,9 @@ Header.loadTapShow=function(){
 		if(null!=tapShowList && tapShowList.length>0){
 			var length=tapShowList.length;//<li><a href='#' target='_blank'><img src='"+OSS_RES_URL+tapShowList[i].value_val+"' width='100%' height='125' alt='"+(i+1)+"'/></a></li>
 			for(var i=0;i<length;i++){//
-				$(".swipe-wrap").append("<div><a href='javascript:;'><img class='img-responsive' src='"+OSS_RES_URL+tapShowList[i].value_val+"' alt='"+(i+1)+"'/></a></div>");
+				var url_val = tapShowList[i].url_val;
+				url_val = url_val==null || isEmpty(url_val)?'javascript:void();':url_val;
+				$(".swipe-wrap").append("<div><a href='"+url_val+"'><img class='img-responsive' src='"+OSS_RES_URL+tapShowList[i].value_val+"' alt='"+(i+1)+"'/></a></div>");
 				if(i==0){
 					$("#position").append("<li class='cur'></li>");
 				}else{

@@ -50,6 +50,16 @@
 									            <div class="avatar-bar"></div>
 									        </div>
 									    </div>
+									    <div class="form-group">
+											<label for="subTitle" class="col-xs-12 col-sm-3 control-label no-padding-right">链接地址：</label>
+											<div class="col-xs-12 col-sm-6">
+												<span class="block input-icon input-icon-right">
+								                    <input type="text" name="url" id="url_0" class="width-100" maxlength="300" >
+								                    <i class="ace-icon fa fa-leaf"></i>
+							                    </span>
+											</div>
+											<div class="help-block col-xs-12 col-sm-reset inline"></div>
+										</div>
 									    <button class="btn btn-xs btn-success" id="button_0" onclick="Information.addHomePicToOSS('0');" type="button">
 											<span class="bigger-110">保存</span>
 										</button>
@@ -73,6 +83,16 @@
 									            <div class="avatar-bar"></div>
 									        </div>
 									    </div>
+									    <div class="form-group">
+											<label for="subTitle" class="col-xs-12 col-sm-3 control-label no-padding-right">链接地址：</label>
+											<div class="col-xs-12 col-sm-6">
+												<span class="block input-icon input-icon-right">
+								                    <input type="text" name="url" id="url_1" class="width-100" maxlength="300" >
+								                    <i class="ace-icon fa fa-leaf"></i>
+							                    </span>
+											</div>
+									        <div class="help-block col-xs-12 col-sm-reset inline"></div>
+										</div>
 									    <button class="btn btn-xs btn-success" id="button_1" onclick="Information.addHomePicToOSS('1');" type="button">
 											<span class="bigger-110">保存</span>
 										</button>
@@ -96,6 +116,16 @@
 									            <div class="avatar-bar"></div>
 									        </div>
 									    </div>
+									    <div class="form-group">
+											<label for="subTitle" class="col-xs-12 col-sm-3 control-label no-padding-right">链接地址：</label>
+											<div class="col-xs-12 col-sm-6">
+												<span class="block input-icon input-icon-right">
+								                    <input type="text" name="url" id="url_2" class="width-100" maxlength="300" >
+								                    <i class="ace-icon fa fa-leaf"></i>
+							                    </span>
+											</div>
+											<div class="help-block col-xs-12 col-sm-reset inline"></div>
+										</div>
 									    <button class="btn btn-xs btn-success" id="button_2" onclick="Information.addHomePicToOSS('2');" type="button">
 											<span class="bigger-110">保存</span>
 										</button>
