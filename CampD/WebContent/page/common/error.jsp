@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 	var BASE_PATH = '${ctx}';
-	var t = 5;
+	var t = 10;
 	var interval;
 	function timeout(){
 		//$(".nofood").height($(document).height());
@@ -36,8 +36,8 @@
           <li>找不到请求页面</li>
        </ul>
        <div class="point">
-       	<em id="times">5</em>秒后,&nbsp;<a href="${ctx}">返回首页</a>
-       	<!-- <img src="${rmtResPath}/static/images/new.png" /> -->
+       	<em id="times">10</em>秒后,&nbsp;<a href="${ctx}">返回首页</a>
+       	<img src="${rmtResPath}/static/images/new.png" />
        </div>
    </div>
 </body>
