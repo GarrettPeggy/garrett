@@ -29,7 +29,7 @@
 </script>
 
 <body onload="timeout();">
-   <div class="nofood">
+ <!--    <div class="nofood">
        <p>可能原因：</p>
        <ul>
           <li>网络信号弱</li>
@@ -39,6 +39,25 @@
        	<em id="times">10</em>秒后,&nbsp;<a href="${ctx}">返回首页</a>
        	<img src="${rmtResPath}/static/images/new.png" />
        </div>
+   </div>-->
+  <div class="error" >
+  <div class="pic">
+  <img src="/static/images/wrong.png">
+    
+     <div class="word" >
+   <p >可能原因：</p>
+       <ul>
+          <li >网络信号弱</li>
+          <li>找不到请求页面</li>
+       </ul>
+  </div>  
+  <div class="point">
+       <a href="${ctx}">点击刷新</a>
+       	<img src="http://camp-images.oss-cn-shanghai.aliyuncs.com/static/images/new.png" >
    </div>
+ </div>
+</div>
+
+</div>
 </body>
 </html>

@@ -826,3 +826,39 @@ a:hover{text-decoration:none;}
 .adt-desc .fontSize17 dl dd {
 	width:60%;
 }
+/*error页面修改*/
+.error{background:#fff;}
+.pic img{
+	width:100%;
+	height:100%;
+	display:block;
+}
+.pic .word{
+	position:relative;
+	top:-950px;
+	left:250px;
+	margin-bottom:5px;
+	color:#fff;
+	font-size:40px;
+}
+.pic .word p{
+	margin-left:-30px;
+	margin-bottom:10px;
+}
+.pic .word ul li{
+	list-style-type:disc;
+	margin-bottom:10px;
+}
+.pic .point{
+	position:relative;
+	top:-920px;
+	left:-40px;
+}
+.pic .point a{
+	color:#fff;
+	font-size:40px;
+}
+.pic .point img{
+	width:40px;
+	height:40px;
+}
