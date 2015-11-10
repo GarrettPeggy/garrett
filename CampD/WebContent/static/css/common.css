@@ -754,11 +754,11 @@ a:hover{text-decoration:none;}
 	font-size:34px;
 	color:#FFF;
 	background:url(/static/images/wrong.png) no-repeat;
+	background-size: 100% 100%;
 }
 .nofood p{
 	font-family:寰蒋闆呴粦;
 	padding:520px 0 0 153px;
-	
 }
 .nofood ul{
 	width:50%;
@@ -772,7 +772,6 @@ a:hover{text-decoration:none;}
 	font-family:寰蒋闆呴粦;
 }
 .nofood a{
-
 	color:#FFF;
 }
 .point{
