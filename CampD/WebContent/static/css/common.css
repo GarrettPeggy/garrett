@@ -3,7 +3,7 @@ body{padding:0;margin:0;background:#f0f0f0; font-family:STHeiti,"閸楀孩鏋冩
 img,p,ul,li,input{ margin:0; padding:0; list-style-type:none;}
 img{border:none;}
 .fl{float:left;}
-.fr{float:right;}
+.fr{float:right;margin-right:18px;}
 .clearfix:before,.clearfix:after{display:table;content:"";height:;line-height:0;clear:both}
 .clearfix{*zoom:1}
 .clearfix a{ color:#000000;}
