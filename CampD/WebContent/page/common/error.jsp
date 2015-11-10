@@ -42,22 +42,21 @@
    </div>-->
   <div class="error" >
   <div class="pic">
-  <img src="/static/images/wrong.png" >
+    <img src="/static/images/wrong.png" />
     
      <div class="word" >
-   <p >可能原因：</p>
+       <p >可能原因：</p>
        <ul>
-          <li >网络信号弱</li>
+          <li>网络信号弱</li>
           <li>找不到请求页面</li>
        </ul>
-  </div>  
-  <div class="point" >
+     </div>  
+     <div class="point" >
        <a href="${ctx}" >点击刷新</a>
-       	<img src="http://camp-images.oss-cn-shanghai.aliyuncs.com/static/images/new.png" >
-   </div>
+       	<img src="http://camp-images.oss-cn-shanghai.aliyuncs.com/static/images/new.png" />
+     </div>
  </div>
 </div>
 
-</div>
 </body>
 </html>
