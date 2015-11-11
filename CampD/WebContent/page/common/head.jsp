@@ -9,6 +9,7 @@
     <!-- <div class="mao hide" id="activity_mao"></div> -->
     <!-- end -->
     <div class="person-right hide" id="activity_person">
+        <div class="newperson-right">
      	<ul>
          	<li class="line clearfix" onclick="Activity.signUp()">
              	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img"/>
@@ -42,6 +43,7 @@
 	          </li>
           </c:if>
       </ul>
+      </div>
     </div>
     <!-- end -->
     <!-- 头部 -->
