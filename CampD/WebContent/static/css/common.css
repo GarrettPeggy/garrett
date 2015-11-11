@@ -103,7 +103,7 @@ a:hover{text-decoration:none;}
 /*鐢摜鏁ら弬鍥ㄦ拱閺嶅嘲绱�*/
 .textRight{ text-align:right;}
 .textCenter{ text-align:center;}
-.fontSize13{font-size:16px; line-height:24px;}
+.fontSize13{font-size:13px; line-height:24px;}
 .fontSize14{font-size:14px;}
 .fontSize16{font-size:16px;}
 .fontSize17{font-size:17px;}
@@ -418,11 +418,11 @@ a:hover{text-decoration:none;}
 }
 .tc-modal .tc-modal-content .modal-line .modal-line1{
 	color:#edbe57;
-	font-size:24px;
+	font-size:20px;/*24px*/
 }
 .tc-modal .tc-modal-content .modal-line .modal-line2{
 	color:#484848;
-	font-size:22px;
+	font-size:20px;/*22px*/
 }
 .share-modal{
 	top:50px;
