@@ -273,25 +273,12 @@ Space.search=function(){
 		if(null != resultList && resultList.length > 0){
 			for(var i=0;i<resultList.length;i++){
 				var adress = resultList[i].adress;
-				/*
-				var province = resultList[i].province;
-				var city = resultList[i].city;
-				var area = resultList[i].area;
-				if(null == province){
-					province = "";
-				}
-				if(null == city){
-					city = "";
-				}
-				if(null == area){
-					area = "";
-				}
-				*/
+				var name = resultList[i].name;
 				var len=Space.getLength(adress);
 				if(len > 10){
 					adress=adress.substring(0,11) + "......";
 				}
-				$("#space_highlevel").append("<li class='clearfix'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+resultList[i].id+"'><div class='data-li-left'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='91' height='63'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+Space.spaceType[resultList[i].space_type]+"</div><div class='dlr-address'>" + adress + "</div><div class='dlr-cost clearfix'><div class='fl'>费用：<span class='co'>"+resultList[i].cost+"元/小时</span></div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></a></li>");
+				$("#space_highlevel").append("<li class='clearfix'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+resultList[i].id+"'><div class='data-li-left'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='91' height='63'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+name+"</div><div class='dlr-address'>" + adress + "</div><div class='dlr-cost clearfix'><div class='fl'>费用：<span class='co'>"+resultList[i].cost+"元/小时</span></div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></a></li>");
 			};
 		}else{
 			$("#space_highlevel").append("<div class='ground-no'><img src='"+REMOTE_RES_PATH+"/static/images/no_data.png' width='41' height='41'/><p>抱歉，没有找到合适的场地</p><p>请浏览其他场地吧</p></div>");

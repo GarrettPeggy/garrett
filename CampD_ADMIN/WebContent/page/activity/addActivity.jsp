@@ -148,10 +148,9 @@
 														<div class="col-sm-6">
 															<select class="form-control" name="categoryId" id="categoryId">
 									                            <!-- <option value="">---请选择---</option> -->
-									                            <option value="0">创业</option>
-									                            <option value="1">商务</option>
-									                            <option value="2">玩乐</option>
-									                            <option value="3">交友</option>
+									                            <c:forEach items="${systemConst.categoryMap}" var="category">
+																	<option value="${category.key}">${category.value}</option>
+																</c:forEach>
 									                         </select>
 														</div>
 													</div>

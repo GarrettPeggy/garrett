@@ -228,9 +228,6 @@ Activity.hold=function(){
 Activity.actSub=function(){
 	var categoryId=$("#categoryId").val();
 	var actNum=$("#actNum").val();
-	var province=$("#province").val();
-	var city=$("#city").val();
-	var area=$("#area").val();
 	var requirement=$("#requirement").val();
 	if(categoryId=="" || null==categoryId){
 		alert("请选择活动范畴");
@@ -247,51 +244,47 @@ Activity.actSub=function(){
     	alert( "人数必须是大于或等于零的整数"); 
     	return;
     }
-	/*
-	if(province == "" || null == province){
-		alert("请选择省份");
-		return;
-	}
-	
-	if(city == "" || null == city){
-		alert("请选择城市");
-		return;
-	}
-	
-	if(area == "" || null == area){
-		alert("请选择地区");
-		return;
-	}
-	*/
+    
 	if(requirement=="" || null==requirement){
 		alert("请填写活动需求");
 		return;
 	}
 	
-	var params = {
-		"categoryId":categoryId,//活动类型
-		"actNum":actNum,//活动人数
-		"province":province,//省份
-		"city":city,//城市
-		"area":area,//区域
-		"requirement":requirement, //活动需求
-		"actType":0,//默认普通活动
-		"status":0,//活动状态  0表示未发布
-		"contact":$("#contact").val()
-	};
+//	var params = {
+//		"categoryId":categoryId,//活动类型
+//		"actNum":actNum,//活动人数
+//		"province":province,//省份
+//		"city":city,//城市
+//		"area":area,//区域
+//		"requirement":requirement, //活动需求
+//		"actType":0,//默认普通活动
+//		"status":0,//活动状态  0表示未发布
+//		"contact":$("#contact").val()
+//	};
 	// 记住参数提交的格式一定要正确，否则会报error错误。
 	systemLoading(null, true, "提交中,请稍等");
-	submitSave(BASE_PATH + "/activity/add.do", params, function(data) {
-		systemLoaded();
-		$(".mc").removeClass("hide");
-		$(".sign-succ-modal").removeClass("hide");
-		$(".mc").height($(document).height());
-		$("#Activity.actSub").attr("onclick","void(0)");
-		//window.location.href = BASE_PATH + "/";
-	}, function(data) {
-		systemLoaded();
-		alert(data.returnMsg);
-	});
+	submitForm("addActivityForm",BASE_PATH + '/activity/add.do',function(data){
+			systemLoaded();
+			$(".mc").removeClass("hide");
+			$(".sign-succ-modal").removeClass("hide");
+			$(".mc").height($(document).height());
+			$("#Activity.actSub").attr("onclick","void(0)");
+		},function(data){
+			systemLoaded();
+			alert(data.returnMsg);
+		}
+	);
+//	submitSave(BASE_PATH + "/activity/add.do", params, function(data) {
+//		systemLoaded();
+//		$(".mc").removeClass("hide");
+//		$(".sign-succ-modal").removeClass("hide");
+//		$(".mc").height($(document).height());
+//		$("#Activity.actSub").attr("onclick","void(0)");
+//		//window.location.href = BASE_PATH + "/";
+//	}, function(data) {
+//		systemLoaded();
+//		alert(data.returnMsg);
+//	});
 };
 /**
  * 关闭活动需求提交成功按钮

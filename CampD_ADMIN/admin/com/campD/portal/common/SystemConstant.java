@@ -55,105 +55,125 @@ public class SystemConstant {
 	public static String ERROR_CODE_AUTH_ADMIN = "907";//管理员权限错误
 	
 	//===========================活动范畴定义的key值========================
-		public static String ENTREPRENEURSHIP= "0";//创业
-		public static String BUSINESS= "1";//商务
-		public static String PLAYING= "2";//玩乐
-		public static String MAKE_FRIENDS= "3";//交友
-		public static Map categoryMap = new HashMap();
-		static{
-			categoryMap.put(ENTREPRENEURSHIP, "创业");
-			categoryMap.put(BUSINESS, "商务");
-			categoryMap.put(PLAYING, "玩乐");
-			categoryMap.put(MAKE_FRIENDS, "交友");
-		}
-		//==========================活动类型定义的值============================
-		public static String COMMON_ACTIVITY= "0";//普通活动
-		public static String HOT_ACTIVITY= "1";//热门活动
-		public static Map actTypeMap = new HashMap();
-		static{
-			actTypeMap.put(COMMON_ACTIVITY, "普通活动");
-			actTypeMap.put(HOT_ACTIVITY, "热门活动");
-		}
-		
-		//=============================活动状态的定义============================
-	  	public static String ACTIVITY_NOT_PUBLISH="0";//活动未发布
-	  	public static String ACTIVITY_PUBLISH="1";//活动已发布
-	  	public static Map actstatusMap = new HashMap();
-	  	static{
-	  		actstatusMap.put(ACTIVITY_NOT_PUBLISH, "未发布");
-	  		actstatusMap.put(ACTIVITY_PUBLISH, "已发布");
-	  	}
-		
-		//=========================场地类型定义的值=============================
-		public static String SPACE_TYPE_0= "0";
-		public static String SPACE_TYPE_1= "1";
-		public static String SPACE_TYPE_2= "2";
-		public static String SPACE_TYPE_3= "3";
-		public static String SPACE_TYPE_4= "4";
-		public static String SPACE_TYPE_5= "5";
-		public static String SPACE_TYPE_6= "6";
-		public static String SPACE_TYPE_7= "7";
-		public static String SPACE_TYPE_8= "8";
-		public static String SPACE_TYPE_9= "9";
-		public static String SPACE_TYPE_10= "10";
-		public static String SPACE_TYPE_11= "11";
-		public static String SPACE_TYPE_12= "12";
-		public static String SPACE_TYPE_13= "13";
-		public static String SPACE_TYPE_14= "14";
-		public static String SPACE_TYPE_15= "15";
-		public static String SPACE_TYPE_16= "16";
-		public static String SPACE_TYPE_17= "17";
-		public static String SPACE_TYPE_18= "18";
-		public static String SPACE_TYPE_19= "19";
-		public static String SPACE_TYPE_20= "20";
-		public static String SPACE_TYPE_21= "21";
-		public static String SPACE_TYPE_22= "22";
-		public static String SPACE_TYPE_23= "23";
-		public static String SPACE_TYPE_24= "24";
-		public static String SPACE_TYPE_25= "25";
-		public static String SPACE_TYPE_26= "26";
-		public static String SPACE_TYPE_27= "27";
-		public static Map spaceTypeMap = new HashMap();
-		static{
-			//场地类型
-			spaceTypeMap.put(SPACE_TYPE_0, "餐厅");
-			spaceTypeMap.put(SPACE_TYPE_1, "酒楼公园");
-			spaceTypeMap.put(SPACE_TYPE_2, "游乐园");
-			spaceTypeMap.put(SPACE_TYPE_3, "艺术中心");
-			spaceTypeMap.put(SPACE_TYPE_4, "画廊");
-			spaceTypeMap.put(SPACE_TYPE_5, "会所");
-			spaceTypeMap.put(SPACE_TYPE_6, "俱乐部");
-			spaceTypeMap.put(SPACE_TYPE_7, "展览馆");
-			spaceTypeMap.put(SPACE_TYPE_8, "秀场");
-			spaceTypeMap.put(SPACE_TYPE_9, "会展");
-			spaceTypeMap.put(SPACE_TYPE_10, "会议中心");
-			spaceTypeMap.put(SPACE_TYPE_11, "学校");
-			spaceTypeMap.put(SPACE_TYPE_12, "培训机构");
-			spaceTypeMap.put(SPACE_TYPE_13, "度假村");
-			spaceTypeMap.put(SPACE_TYPE_14, "农家乐");
-			spaceTypeMap.put(SPACE_TYPE_15, "商圈");
-			spaceTypeMap.put(SPACE_TYPE_16, "商场");
-			spaceTypeMap.put(SPACE_TYPE_17, "剧院");
-			spaceTypeMap.put(SPACE_TYPE_18, "礼堂");
-			spaceTypeMap.put(SPACE_TYPE_19, "酒吧");
-			spaceTypeMap.put(SPACE_TYPE_20, "KTV");
-			spaceTypeMap.put(SPACE_TYPE_21, "咖啡厅");
-			spaceTypeMap.put(SPACE_TYPE_22, "茶馆");
-			spaceTypeMap.put(SPACE_TYPE_23, "体育场馆");
-			spaceTypeMap.put(SPACE_TYPE_24, "小区社区");
-			spaceTypeMap.put(SPACE_TYPE_25, "写字楼");
-			spaceTypeMap.put(SPACE_TYPE_26, "特色场地");
-			spaceTypeMap.put(SPACE_TYPE_27, "众创空间");
-		}
-		//========================场地级别定义的值=============================
-		public static String COMMON_SPACE= "0";//普通场地
-		public static String FINE_SPACE= "1";//精品场地
-		public static Map spaceLevelMap = new HashMap();
-		static{
-			//场地级别
-			spaceLevelMap.put(COMMON_SPACE, "普通场地");
-			spaceLevelMap.put(FINE_SPACE, "精品场地");
-		}
+	public static String ACTIVITY_CATEGORY_0= "0";
+	public static String ACTIVITY_CATEGORY_1= "1";
+	public static String ACTIVITY_CATEGORY_2= "2";
+	public static String ACTIVITY_CATEGORY_3= "3";
+	public static String ACTIVITY_CATEGORY_4= "4";
+	public static String ACTIVITY_CATEGORY_5= "5";
+	public static String ACTIVITY_CATEGORY_6= "6";
+	public static String ACTIVITY_CATEGORY_7= "7";
+	public static String ACTIVITY_CATEGORY_8= "8";
+	public static String ACTIVITY_CATEGORY_9= "9";
+	public static String ACTIVITY_CATEGORY_10= "10";
+	public static String ACTIVITY_CATEGORY_11= "11";
+	public static String ACTIVITY_CATEGORY_12= "12";
+	public static String ACTIVITY_CATEGORY_13= "13";
+	public static Map categoryMap = new HashMap();
+	static{
+		categoryMap.put(ACTIVITY_CATEGORY_0, "创业");
+		categoryMap.put(ACTIVITY_CATEGORY_1, "商务");
+		categoryMap.put(ACTIVITY_CATEGORY_2, "生活");
+		categoryMap.put(ACTIVITY_CATEGORY_3, "社交");
+		categoryMap.put(ACTIVITY_CATEGORY_4, "科技");
+		categoryMap.put(ACTIVITY_CATEGORY_5, "课程");
+		categoryMap.put(ACTIVITY_CATEGORY_6, "运动");
+		categoryMap.put(ACTIVITY_CATEGORY_7, "娱乐");
+		categoryMap.put(ACTIVITY_CATEGORY_8, "亲子");
+		categoryMap.put(ACTIVITY_CATEGORY_9, "文化");
+		categoryMap.put(ACTIVITY_CATEGORY_10, "音乐");
+		categoryMap.put(ACTIVITY_CATEGORY_11, "电影");
+		categoryMap.put(ACTIVITY_CATEGORY_12, "公益");
+		categoryMap.put(ACTIVITY_CATEGORY_13, "校园");
+	}
+	//==========================活动类型定义的值============================
+	public static String COMMON_ACTIVITY= "0";//普通活动
+	public static String HOT_ACTIVITY= "1";//热门活动
+	public static Map actTypeMap = new HashMap();
+	static{
+		actTypeMap.put(COMMON_ACTIVITY, "普通活动");
+		actTypeMap.put(HOT_ACTIVITY, "热门活动");
+	}
+	
+	//=============================活动状态的定义============================
+  	public static String ACTIVITY_NOT_PUBLISH="0";//活动未发布
+  	public static String ACTIVITY_PUBLISH="1";//活动已发布
+  	public static Map actstatusMap = new HashMap();
+  	static{
+  		actstatusMap.put(ACTIVITY_NOT_PUBLISH, "未发布");
+  		actstatusMap.put(ACTIVITY_PUBLISH, "已发布");
+  	}
+	
+	//=========================场地类型定义的值=============================
+	public static String SPACE_TYPE_0= "0";
+	public static String SPACE_TYPE_1= "1";
+	public static String SPACE_TYPE_2= "2";
+	public static String SPACE_TYPE_3= "3";
+	public static String SPACE_TYPE_4= "4";
+	public static String SPACE_TYPE_5= "5";
+	public static String SPACE_TYPE_6= "6";
+	public static String SPACE_TYPE_7= "7";
+	public static String SPACE_TYPE_8= "8";
+	public static String SPACE_TYPE_9= "9";
+	public static String SPACE_TYPE_10= "10";
+	public static String SPACE_TYPE_11= "11";
+	public static String SPACE_TYPE_12= "12";
+	public static String SPACE_TYPE_13= "13";
+	public static String SPACE_TYPE_14= "14";
+	public static String SPACE_TYPE_15= "15";
+	public static String SPACE_TYPE_16= "16";
+	public static String SPACE_TYPE_17= "17";
+	public static String SPACE_TYPE_18= "18";
+	public static String SPACE_TYPE_19= "19";
+	public static String SPACE_TYPE_20= "20";
+	public static String SPACE_TYPE_21= "21";
+	public static String SPACE_TYPE_22= "22";
+	public static String SPACE_TYPE_23= "23";
+	public static String SPACE_TYPE_24= "24";
+	public static String SPACE_TYPE_25= "25";
+	public static String SPACE_TYPE_26= "26";
+	public static String SPACE_TYPE_27= "27";
+	public static Map spaceTypeMap = new HashMap();
+	static{
+		//场地类型
+		spaceTypeMap.put(SPACE_TYPE_0, "餐厅");
+		spaceTypeMap.put(SPACE_TYPE_1, "酒楼公园");
+		spaceTypeMap.put(SPACE_TYPE_2, "游乐园");
+		spaceTypeMap.put(SPACE_TYPE_3, "艺术中心");
+		spaceTypeMap.put(SPACE_TYPE_4, "画廊");
+		spaceTypeMap.put(SPACE_TYPE_5, "会所");
+		spaceTypeMap.put(SPACE_TYPE_6, "俱乐部");
+		spaceTypeMap.put(SPACE_TYPE_7, "展览馆");
+		spaceTypeMap.put(SPACE_TYPE_8, "秀场");
+		spaceTypeMap.put(SPACE_TYPE_9, "会展");
+		spaceTypeMap.put(SPACE_TYPE_10, "会议中心");
+		spaceTypeMap.put(SPACE_TYPE_11, "学校");
+		spaceTypeMap.put(SPACE_TYPE_12, "培训机构");
+		spaceTypeMap.put(SPACE_TYPE_13, "度假村");
+		spaceTypeMap.put(SPACE_TYPE_14, "农家乐");
+		spaceTypeMap.put(SPACE_TYPE_15, "商圈");
+		spaceTypeMap.put(SPACE_TYPE_16, "商场");
+		spaceTypeMap.put(SPACE_TYPE_17, "剧院");
+		spaceTypeMap.put(SPACE_TYPE_18, "礼堂");
+		spaceTypeMap.put(SPACE_TYPE_19, "酒吧");
+		spaceTypeMap.put(SPACE_TYPE_20, "KTV");
+		spaceTypeMap.put(SPACE_TYPE_21, "咖啡厅");
+		spaceTypeMap.put(SPACE_TYPE_22, "茶馆");
+		spaceTypeMap.put(SPACE_TYPE_23, "体育场馆");
+		spaceTypeMap.put(SPACE_TYPE_24, "小区社区");
+		spaceTypeMap.put(SPACE_TYPE_25, "写字楼");
+		spaceTypeMap.put(SPACE_TYPE_26, "特色场地");
+		spaceTypeMap.put(SPACE_TYPE_27, "众创空间");
+	}
+	//========================场地级别定义的值=============================
+	public static String COMMON_SPACE= "0";//普通场地
+	public static String FINE_SPACE= "1";//精品场地
+	public static Map spaceLevelMap = new HashMap();
+	static{
+		//场地级别
+		spaceLevelMap.put(COMMON_SPACE, "普通场地");
+		spaceLevelMap.put(FINE_SPACE, "精品场地");
+	}
 	
 	/**
 	 * 将当前静态类的属性转换成Map

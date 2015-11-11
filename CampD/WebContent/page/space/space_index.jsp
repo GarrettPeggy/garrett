@@ -110,7 +110,7 @@
 				                    </div>	
 				                    <div class="data-li-right">
 				                    	<div class="dlr-title">
-				                        	${systemConst.spaceTypeMap[fn:trim(space.space_type)] }
+				                        	${space.name }
 				                        </div>
 				                        <div class="dlr-address">
 				                        	<c:if test="${fn:length(space.adress) > 10}">

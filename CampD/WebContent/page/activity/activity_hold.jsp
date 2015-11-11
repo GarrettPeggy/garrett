@@ -25,18 +25,20 @@
 	<!-- end -->
 	<!-- 主体 -->
 	 <div class="main">
-		 <form id="loginForm">
+		 <form id="addActivityForm">
+		 	<flagToken:token tokenName="addActivityForm"/>
 		 	<input type="hidden" id="contact" name="contact" value="${USER_INFO.mdn}"/>
+		 	<input type="hidden" id="actType" name="actType" value="0"/>
+		 	<input type="hidden" id="status" name="status" value="0"/>
 	    	<div class="sub-ac-form">
 	    		<dl>
 	                <dt>活动类型</dt>
 	                <dd>
-		                <select id="categoryId">
+		                <select id="categoryId" name="categoryId">
 		                	<option value="">---请选择---</option>
-		                	<option value="0">创业</option>
-		                	<option value="1">商务</option>
-		                	<option value="2">玩乐</option>
-		                	<option value="3">交友</option>
+		                	<c:forEach items="${systemConst.categoryMap}" var="category">
+								<option value="${category.key}">${category.value}</option>
+							</c:forEach>
 		                </select>
 	                </dd>
 	           </dl>

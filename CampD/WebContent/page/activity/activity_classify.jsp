@@ -13,21 +13,21 @@
     <!-- 导航栏 -->
     <div class="nav-box retina-1px-border-bottom" id="activity_nav">
     	<ul class="nav-list clearfix" id="activity_head">
-        	<li onclick="Activity.category(${systemConst.ENTREPRENEURSHIP })">
+        	<li onclick="Activity.category(${systemConst.ACTIVITY_CATEGORY_0 })">
             	<img src="${rmtResPath}/static/images/business_icon_01.png" width="48" height="48"/>
-                <p>${systemConst.categoryMap[systemConst.ENTREPRENEURSHIP] }</p>
+                <p>${systemConst.categoryMap[systemConst.ACTIVITY_CATEGORY_0] }</p>
             </li>
-            <li onclick="Activity.category(${systemConst.BUSINESS })">
+            <li onclick="Activity.category(${systemConst.ACTIVITY_CATEGORY_1 })">
             	<img src="${rmtResPath}/static/images/business_icon_02.png" width="48" height="48"/>
-                <p>${systemConst.categoryMap[systemConst.BUSINESS] }</p>
+                <p>${systemConst.categoryMap[systemConst.ACTIVITY_CATEGORY_1] }</p>
             </li>
-            <li onclick="Activity.category(${systemConst.PLAYING })">
+            <li onclick="Activity.category(${systemConst.ACTIVITY_CATEGORY_2 })">
             	<img src="${rmtResPath}/static/images/business_icon_03.png" width="48" height="48"/>
-                <p>${systemConst.categoryMap[systemConst.PLAYING] }</p>
+                <p>${systemConst.categoryMap[systemConst.ACTIVITY_CATEGORY_2] }</p>
             </li>
-            <li onclick="Activity.category(${systemConst.MAKE_FRIENDS })">
+            <li onclick="Activity.category(${systemConst.ACTIVITY_CATEGORY_3 })">
             	<img src="${rmtResPath}/static/images/business_icon_04.png" width="48" height="48"/>
-                <p>${systemConst.categoryMap[systemConst.MAKE_FRIENDS] }</p>
+                <p>${systemConst.categoryMap[systemConst.ACTIVITY_CATEGORY_3] }</p>
             </li>
         </ul>
     </div>
