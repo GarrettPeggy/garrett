@@ -822,9 +822,9 @@ a:hover{text-decoration:none;}
 	top:0px;
 	right:0px;
 }
-.tc-modal  img{
+.tc-modal  .ma{
 	text-align:center;
-	margin-top:20%;
+	margin-top:15%;
 }
    /* 场地dl样式修改*/
 .adt-desc .fontSize17 dl dt {

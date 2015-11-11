@@ -122,7 +122,7 @@
 
 		<!-- 分享 需要显示时删除hide -->
 	    <div class="tc-modal share-modal hide" id="activity_share">
-	    	<img alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
+	    	<img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
 			<!-- <div id="code" style="margin: 20px 20px 20px 20px"></div> -->
 	       <!--  <div class="bottom-close retina-1px-border-top">
 	        	<a onclick="Activity.cancel()">取&nbsp;&nbsp;消</a>
@@ -139,6 +139,7 @@
 			var isHide = $("#activity_share").hasClass("hide");
 			if(isHide){
 				$("#activity_share").removeClass("hide");
+				$("#activity_share").height($(document).height());
 			} else{
 				$("#activity_share").addClass("hide");
 			}

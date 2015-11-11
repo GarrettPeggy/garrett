@@ -116,7 +116,7 @@
 
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide" id="space_share">
-        <img alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" >
+        <img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" >
 		<!-- <div id="code" style="margin: 20px 20px 20px 20px"></div> -->
        <!--  <div class="bottom-close retina-1px-border-top">
          	<a onclick="Space.cancel()">取&nbsp;&nbsp;消</a>        
@@ -133,6 +133,7 @@
 		var isHide = $("#space_share").hasClass("hide");
 		if(isHide){
 			$("#space_share").removeClass("hide");
+			$("#space_share").height($(document).height());
 		} else{
 			$("#space_share").addClass("hide");
 		}
