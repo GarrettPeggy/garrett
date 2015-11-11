@@ -42,11 +42,9 @@
             <div class="search-detail hide">
                 <ul class="clearfix">
                     <li class="active" onclick="Space.type('',this)">全部</li>
-                    <li onclick="Space.type(1,this)">众创空间</li>
-                    <li onclick="Space.type(2,this)">咖啡厅</li>
-                    <li onclick="Space.type(3,this)">公司会议室</li>
-                    <li onclick="Space.type(4,this)">社区场地</li>
-                    <li onclick="Space.type(5,this)">商业广场</li>
+                    <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
+                    	<li onclick="Space.type(${spaceType.key},this)">${spaceType.value}</li>
+					</c:forEach>
                 </ul>
             </div>
             <!-- end -->

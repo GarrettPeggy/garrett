@@ -185,7 +185,7 @@
 					                    <label for="description" class="col-xs-12 col-sm-3 control-label no-padding-right">场地介绍</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <textarea rows="4" class="form-control limited" name="description" id="description" maxlength="250"></textarea>
+						                      <textarea rows="4" class="form-control limited" name="description" id="description"></textarea>
 					                      </span> 
 					                    </div>
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>

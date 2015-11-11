@@ -198,7 +198,7 @@
 							                <div class="form-group">
 												<label for="sponsor" class="col-xs-12 col-sm-3 control-label no-padding-right">活动需求</label>
 												<div class="">
-								                     <textarea rows="4" cols="300" name="requirement" id="requirement" style="width:500px; resize:none;" maxlength="300"></textarea> 
+								                     <textarea rows="4" cols="300" name="requirement" id="requirement" style="width:500px; resize:none;"></textarea> 
 												</div>
 											</div>
 							                
