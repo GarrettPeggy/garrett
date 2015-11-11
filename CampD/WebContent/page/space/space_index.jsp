@@ -64,6 +64,12 @@
                     <li onclick="Space.capacity(50,70,this)">50-70人</li>
                     <li onclick="Space.capacity(70,90,this)">70-90人</li>
                     <li onclick="Space.capacity(90,110,this)">90-110人</li>
+                    <li onclick="Space.capacity(110,150,this)">110-150人</li>
+                    <li onclick="Space.capacity(150,200,this)">150-200人</li>
+                    <li onclick="Space.capacity(200,300,this)">200-300人</li>
+                    <li onclick="Space.capacity(300,500,this)">300-500人</li>
+                    <li onclick="Space.capacity(500,700,this)">500-700人</li>
+                    <li onclick="Space.capacity(700,1000,this)">700-1000人</li>
                 </ul>
             </div>
             <!-- end -->

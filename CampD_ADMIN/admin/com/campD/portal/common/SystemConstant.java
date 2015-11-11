@@ -112,6 +112,7 @@ public class SystemConstant {
 		public static String SPACE_TYPE_24= "24";
 		public static String SPACE_TYPE_25= "25";
 		public static String SPACE_TYPE_26= "26";
+		public static String SPACE_TYPE_27= "27";
 		public static Map spaceTypeMap = new HashMap();
 		static{
 			//场地类型
@@ -142,6 +143,7 @@ public class SystemConstant {
 			spaceTypeMap.put(SPACE_TYPE_24, "小区社区");
 			spaceTypeMap.put(SPACE_TYPE_25, "写字楼");
 			spaceTypeMap.put(SPACE_TYPE_26, "特色场地");
+			spaceTypeMap.put(SPACE_TYPE_27, "众创空间");
 		}
 		//========================场地级别定义的值=============================
 		public static String COMMON_SPACE= "0";//普通场地
