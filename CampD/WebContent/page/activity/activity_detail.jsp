@@ -5,11 +5,6 @@
 	<head>
 		<%@ include file="/page/common/meta.jsp" %>
 		<%@ include file="/page/common/jsCss.jsp" %>
-		<script type="text/javascript">
-			var rmtResPath="${rmtResPath}";
-			var ctx="${ctx}";
-			//alert("${jsonview}");
-		</script>
 		<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
 		<script type="text/javascript" src="${locResPath}/static/common/share/jquery.qrcode.min.js?_v=${vs}"></script>
 		<script type="text/javascript" src="${locResPath}/static/common/share/share.js?_v=${vs}"></script>

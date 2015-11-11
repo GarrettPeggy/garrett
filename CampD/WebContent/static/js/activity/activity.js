@@ -226,7 +226,6 @@ Activity.hold=function(){
  * 提交活动需求
  */
 Activity.actSub=function(){
-	systemLoading(null, true, "提交中,请稍等");
 	var categoryId=$("#categoryId").val();
 	var actNum=$("#actNum").val();
 	var province=$("#province").val();
@@ -281,10 +280,13 @@ Activity.actSub=function(){
 		"contact":$("#contact").val()
 	};
 	// 记住参数提交的格式一定要正确，否则会报error错误。
+	systemLoading(null, true, "提交中,请稍等");
 	submitSave(BASE_PATH + "/activity/add.do", params, function(data) {
 		systemLoaded();
 		$(".mc").removeClass("hide");
 		$(".sign-succ-modal").removeClass("hide");
+		$(".mc").height($(document).height());
+		$("#Activity.actSub").attr("onclick","void(0)");
 		//window.location.href = BASE_PATH + "/";
 	}, function(data) {
 		systemLoaded();

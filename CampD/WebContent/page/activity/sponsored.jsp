@@ -11,9 +11,9 @@
 	<!-- 头部 -->
 	<div class="header clearfix">
     	<a class="head-left-icon">
-        	<img src="${rmtResPath}/static/images/back.png" onclick="back()" width="13" height="22"/>
+        	<img src="${rmtResPath}/static/images/back.png" onclick="back('${referer}')" width="13" height="22"/>
         </a>
-        <div class="head-content">要举办的活动</div>
+        <div class="head-content">举办的活动</div>
     </div>
     <!-- end -->
     <!-- 主体 -->

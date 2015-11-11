@@ -84,7 +84,7 @@
               </dl>
             </div>
 	        <div class="btn-box">
-	        	<button class="btn orange-btn" type="button" onclick="Activity.actSub()">立即提交</button>
+	        	<button class="btn orange-btn" id="Activity.actSub" type="button" onclick="Activity.actSub()">立即提交</button>
 	        </div>
 	    </form>
     </div>
