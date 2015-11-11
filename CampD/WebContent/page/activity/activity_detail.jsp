@@ -110,10 +110,10 @@
 	        </div>
 	        <div class="tc-modal-content">
 	        	<div class="modal-line">
-	            	<span class="modal-line1">恭喜您</span>
-	                <span class="modal-line2">报名成功！</span>
+	            	<span class="modal-line1  ">恭喜您</span>
+	                <span class="modal-line2  ">报名成功！</span>
 	            </div>
-	            <div class="modal-line pdt10 fontSize13 color94">
+	            <div class="modal-line pdt10 fontSize13 color94 ">
 	            	您可以在[已报名的活动]<br/>中查看相关信息哟
 	            </div>
 	        </div>

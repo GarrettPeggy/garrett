@@ -413,7 +413,7 @@ a:hover{text-decoration:none;}
 	margin:20px 0 30px 21px;
 }
 .tc-modal .tc-modal-content .modal-line{
-	width:80%;
+	width:100%;
 	margin:0 auto;
 }
 .tc-modal .tc-modal-content .modal-line .modal-line1{
@@ -824,7 +824,7 @@ a:hover{text-decoration:none;}
 }
 .tc-modal  img{
 	text-align:center;
-	margin-top:100px;
+	margin-top:20%;
 }
    /* 场地dl样式修改*/
 .adt-desc .fontSize17 dl dt {
@@ -872,3 +872,5 @@ a:hover{text-decoration:none;}
 	height:40px;
 	display:inline-block;
 }
+/*报名成功提示框修改*/
+
