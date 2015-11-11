@@ -799,7 +799,7 @@ a:hover{text-decoration:none;}
 }
 
 /* 关注我们样式 */
-.tc-modal span{
+.tc-modal .more{
 	bottom:-9px;
 	text-align:center;
 	position:relative;

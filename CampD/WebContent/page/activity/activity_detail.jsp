@@ -133,7 +133,7 @@
 	        	<a onclick="Activity.cancel()">取&nbsp;&nbsp;消</a>
 	        </div>
 	         -->
-	         <span>关注我们，获取更多活动资源</span>
+	         <span class="more">关注我们，获取更多活动资源</span>
 	         <img class="close" src="${rmtResPath}/static/images/login/closed.png"  onclick="Activity.cancel()"/>
 	    </div>
 	    <!-- end -->

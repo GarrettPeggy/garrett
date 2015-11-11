@@ -122,7 +122,7 @@
          	<a onclick="Space.cancel()">取&nbsp;&nbsp;消</a>        
              </div> 
         -->
-          <span>关注我们，获取更多活动资源</span>
+          <span class="more">关注我们，获取更多活动资源</span>
 	      <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Space.cancel()"/>
     </div>
     <!-- end -->
