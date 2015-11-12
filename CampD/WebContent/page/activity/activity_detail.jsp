@@ -121,7 +121,7 @@
 	    <!-- end -->
 
 		<!-- 分享 需要显示时删除hide -->
-	    <div class="tc-modal share-modal hide" id="activity_share">
+	    <div class="tc-modal share-modal hide newtc-modal" id="activity_share">
 	    	<img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
 			<!-- <div id="code" style="margin: 20px 20px 20px 20px"></div> -->
 	       <!--  <div class="bottom-close retina-1px-border-top">
