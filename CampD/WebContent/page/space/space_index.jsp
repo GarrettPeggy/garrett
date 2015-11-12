@@ -110,7 +110,12 @@
 				                    </div>	
 				                    <div class="data-li-right">
 				                    	<div class="dlr-title">
-				                        	${space.name }
+				                        	<c:if test="${fn:length(space.name) > 10}">
+				                    			<c:out value="${fn:substring(space.name, 0, 11)}......" /> 
+				                    		</c:if>
+				                    		<c:if test="${fn:length(space.name) <= 10}">
+				                    			 <c:out value="${space.name}" /> 
+				                    		</c:if>
 				                        </div>
 				                        <div class="dlr-address">
 				                        	<c:if test="${fn:length(space.adress) > 10}">
