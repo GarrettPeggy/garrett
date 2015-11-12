@@ -418,11 +418,22 @@ a:hover{text-decoration:none;}
 }
 .tc-modal .tc-modal-content .modal-line .modal-line1{
 	color:#edbe57;
-	font-size:24px;
+	/*font-size:24px;*/
 }
+/*字体修改*/
+.tc-modal .tc-modal-content .modal-line .newmodal-line1{
+	font-size:22px;
+	
+}
+
 .tc-modal .tc-modal-content .modal-line .modal-line2{
 	color:#484848;
-	font-size:22px;
+	/*font-size:22px;*/
+}
+/*字体修改*/
+.tc-modal .tc-modal-content .modal-line .newmodal-line2{
+	font-size:20px;
+	
 }
 .share-modal{
 	top:50px;
@@ -838,6 +849,8 @@ a:hover{text-decoration:none;}
  .clearfix .newfr{	
 	margin-right:2%;
 	display:inline;	
+	color:#000;
+	font-size:14px;
 }
 
 
@@ -863,18 +876,19 @@ a:hover{text-decoration:none;}
 	 font-size:34px;
 }
 .pic .word p{
-	margin-left:-30px;
+	margin-left:10px;
 	margin-bottom:15px;
 }
 .pic .word ul li{
 	list-style-type:disc;
 	margin-bottom:15px;
+	margin-right:20px;
 }
 .pic .point{
 	position:absolute;
 	top:65%;
 	left:10%;
-	margin-left:5%;
+	margin-left:15%;
 }
 .pic .point a{
 	color:#fff;
