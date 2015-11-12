@@ -216,7 +216,7 @@
 	$(function(){
 		DateUtil.initDateChoose();
 		Activity.searchActivityList();
-		$.fn.citySelect(['#province', '#city', '#area'],['北京市' , '北京市' , '东城区']);
+		$.fn.citySelect(['#province', '#city', '#area'],['' , '' , '']);
 	});
 </script>
 

@@ -140,80 +140,99 @@ public class ActivityJsonServer {
 	public Map getActivityList(Map reqMap){
 		//System.out.println("reqMap.get(\"categoryId\")===================="+reqMap.get("categoryId"));
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 ";
+		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 ";
 		String sqlCount =" select count(1) from activity where 1=1 ";
 		
-		if(null!=reqMap.get("id") && !"".equals(reqMap.get("id"))){
-			sqlStr+=" and id ='"+reqMap.get("id")+"' ";
-			sqlCount+=" and id ='"+reqMap.get("id")+"' ";
+		Object id = reqMap.get("id");
+		if(null!=id && !"".equals(id)){
+			sqlStr+=" and id ='"+id+"' ";
+			sqlCount+=" and id ='"+id+"' ";
 		}
 		
-		if(null!=reqMap.get("title") && !"".equals(reqMap.get("title"))){
-			sqlStr+=" and title like '%"+reqMap.get("title")+"%' ";
-			sqlCount+=" and title like '%"+reqMap.get("title")+"%' ";
+		Object title = reqMap.get("title");
+		if(null!=title && !"".equals(title)){
+			sqlStr+=" and title like '%"+title+"%' ";
+			sqlCount+=" and title like '%"+title+"%' ";
 		}
 		
-		if(null != reqMap.get("province") && !"".equals(reqMap.get("province"))){
-			sqlStr+=" and province like '%"+reqMap.get("province")+"%' ";
-			sqlCount+=" and province like '%"+reqMap.get("province")+"%' ";
+		Object province = reqMap.get("province");
+		if(null != province && !"".equals(province)){
+			sqlStr+=" and province like '%"+province+"%' ";
+			sqlCount+=" and province like '%"+province+"%' ";
 		}
 		
-		if(null != reqMap.get("city") && !"".equals(reqMap.get("city"))){
-			sqlStr+=" and city like '%"+reqMap.get("city")+"%' ";
-			sqlCount+=" and city like '%"+reqMap.get("city")+"%' ";
+		Object city = reqMap.get("city");
+		if(null != city && !"".equals(city)){
+			sqlStr+=" and city like '%"+city+"%' ";
+			sqlCount+=" and city like '%"+city+"%' ";
 		}
 		
-		if(null != reqMap.get("area") && !"".equals(reqMap.get("area"))){
-			sqlStr+=" and area '%"+reqMap.get("area")+"%' ";
-			sqlCount+=" and area '%"+reqMap.get("area")+"%' ";
+		Object area = reqMap.get("area");
+		if(null != area && !"".equals(area)){
+			sqlStr+=" and area '%"+area+"%' ";
+			sqlCount+=" and area '%"+area+"%' ";
 		}
 		
-		if(null!=reqMap.get("adress") && !"".equals(reqMap.get("adress"))){
-			sqlStr+=" and adress like '%"+reqMap.get("adress")+"%' ";
-			sqlCount+=" and adress like '%"+reqMap.get("adress")+"%' ";
+		Object adress = reqMap.get("adress");
+		if(null!=adress && !"".equals(adress)){
+			sqlStr+=" and adress like '%"+adress+"%' ";
+			sqlCount+=" and adress like '%"+adress+"%' ";
 		}
 		
-		if(null!=reqMap.get("sponsor") && !"".equals(reqMap.get("sponsor"))){
-			sqlStr+=" and sponsor like '%"+reqMap.get("sponsor")+"%' ";
-			sqlCount+=" and sponsor like '%"+reqMap.get("sponsor")+"%' ";
+		Object sponsor = reqMap.get("sponsor");
+		if(null!=sponsor && !"".equals(sponsor)){
+			sqlStr+=" and sponsor like '%"+sponsor+"%' ";
+			sqlCount+=" and sponsor like '%"+sponsor+"%' ";
 		}
 		
-		if(null!=reqMap.get("beginTime") && !"".equals(reqMap.get("beginTime"))){
-			sqlStr+=" and begin_time >= '"+reqMap.get("beginTime")+"' ";
-			sqlCount+=" and begin_time >= '"+reqMap.get("beginTime")+"' ";
+		Object beginTime = reqMap.get("beginTime");
+		if(null!=beginTime && !"".equals(beginTime)){
+			sqlStr+=" and begin_time >= '"+beginTime+"' ";
+			sqlCount+=" and begin_time >= '"+beginTime+"' ";
 		}
 		
-		if(null!=reqMap.get("endTime") && !"".equals(reqMap.get("endTime"))){
-			sqlStr+=" and end_time <= '"+reqMap.get("endTime")+"' ";
-			sqlCount+=" and end_time <= '"+reqMap.get("endTime")+"' ";
+		Object endTime = reqMap.get("endTime");
+		if(null!=endTime && !"".equals(endTime)){
+			sqlStr+=" and end_time <= '"+endTime+"' ";
+			sqlCount+=" and end_time <= '"+endTime+"' ";
 		}
 		
-		if(null!=reqMap.get("categoryId") && !"".equals(reqMap.get("categoryId"))){
-			sqlStr+=" and category_id ="+reqMap.get("categoryId")+"";
-			sqlCount+=" and category_id ="+reqMap.get("categoryId")+"";
-		}
-		if(null!=reqMap.get("createTime") && !"".equals(reqMap.get("createTime"))){
-			sqlStr+=" and create_time like '%"+reqMap.get("createTime")+"%' ";
-			sqlCount+=" and create_time like '%"+reqMap.get("createTime")+"%' ";
-		}
-		if(null!=reqMap.get("status") && !"".equals(reqMap.get("status"))){
-			sqlStr+=" and status ="+reqMap.get("status")+" ";
-			sqlCount+=" and status ="+reqMap.get("status")+" ";
-		}
-		if(null!=reqMap.get("creatorId") && !"".equals(reqMap.get("creatorId"))){
-			sqlStr+=" and creator_id ='"+reqMap.get("creatorId")+"' ";
-			sqlCount+=" and creator_id ='"+reqMap.get("creatorId")+"' ";
+		Object categoryId = reqMap.get("categoryId");
+		if(null!=categoryId && !"".equals(categoryId)){
+			sqlStr+=" and category_id ="+categoryId+"";
+			sqlCount+=" and category_id ="+categoryId+"";
 		}
 		
-		if(null!=reqMap.get("actType") && !"".equals(reqMap.get("actType"))){
-			sqlStr+=" and act_type ="+reqMap.get("actType")+"";
-			sqlCount+=" and act_type ="+reqMap.get("actType")+"";
+		Object createTime = reqMap.get("createTime");
+		if(null!=createTime && !"".equals(createTime)){
+			sqlStr+=" and create_time like '%"+createTime+"%' ";
+			sqlCount+=" and create_time like '%"+createTime+"%' ";
+		}
+		
+		Object status = reqMap.get("status");
+		if(null!=status && !"".equals(status)){
+			sqlStr+=" and status ="+status+" ";
+			sqlCount+=" and status ="+status+" ";
+		}
+		
+		Object creatorId = reqMap.get("creatorId");
+		if(null!=creatorId && !"".equals(creatorId)){
+			sqlStr+=" and creator_id ='"+creatorId+"' ";
+			sqlCount+=" and creator_id ='"+creatorId+"' ";
+		}
+		
+		Object actType = reqMap.get("actType");
+		if(null!=actType && !"".equals(actType)){
+			sqlStr+=" and act_type ="+actType+"";
+			sqlCount+=" and act_type ="+actType+"";
 		}
 		//要举办的活动通过创建时间倒序排列
-		if( null != reqMap.get("sponsored") && !"".equals(reqMap.get("sponsored")) && 0==Integer.parseInt(reqMap.get("sponsored").toString())){
+		Object sponsored = reqMap.get("sponsored");
+		if( null != sponsored && !"".equals(sponsored) && 0==Integer.parseInt(sponsored.toString())){
 			sqlStr+=" order by create_time desc ";
-		}else if(null != reqMap.get("sponsored") && !"".equals(reqMap.get("sponsored")) && 1==Integer.parseInt(reqMap.get("sponsored").toString())){//其余查询活动通过发布时间倒序排列
-			sqlStr+=" order by publish_time desc ";
+		}else if(null != sponsored && !"".equals(sponsored) && 1==Integer.parseInt(sponsored.toString())){//其余查询活动通过发布时间倒序排列
+			sqlStr+=" and begin_time>=NOW()  order by publish_time desc ";
+			sqlCount+=" and begin_time>=NOW() ";
 		}else{
 			// 默认按照发布时间降序排列
 			sqlStr += " ORDER BY create_time DESC ";
@@ -250,8 +269,8 @@ public class ActivityJsonServer {
 	 */
 	public Map getActivityById(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
-		//String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,begin_time as begintime,date_format(ifnull(end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
+		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
+		//String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,begin_time as begintime,date_format(ifnull(end_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 and id=? ";
 		Map activityInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});//单条信息
 		JSONView jsonView = new JSONView();
 		jsonView.setReturnCode(JSONView.RETURN_SUCCESS_CODE);
@@ -296,8 +315,8 @@ public class ActivityJsonServer {
 	 */
 	public Map getMyTakeAnActive(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.province,t1.city,t1.area,t1.adress,t1.sponsor,t1.contact,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,date_format(ifnull(t1.begin_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(t1.end_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as endtime,t1.click_num,date_format(ifnull(t1.create_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(t1.publish_time,'0000-00-00 00:00:00'),'%Y-%m-%d %H:%i:%s') as publishtime,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id=? ";
-		String sqlCount =" select count(1) from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id='"+reqMap.get("userId")+"'";
+		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.province,t1.city,t1.area,t1.adress,t1.sponsor,t1.contact,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,date_format(ifnull(t1.begin_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(t1.end_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as endtime,t1.click_num,date_format(ifnull(t1.create_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(t1.publish_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as publishtime,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t1.begin_time>=NOW() and t2.user_id=? ";
+		String sqlCount =" select count(1) from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t1.begin_time>=NOW() and t2.user_id='"+reqMap.get("userId")+"'";
 		
 		if(null!=reqMap.get("activityId") && !"".equals(reqMap.get("activityId"))){
 			sqlStr += " and t2.activity_id ='"+reqMap.get("activityId")+"' "; 

@@ -288,12 +288,9 @@ public class ActivityController extends BaseController {
 			map.put("activityId", activityId);
 			//查询该活动是否是该用户的
 			Map activityList=activityService.getActivityList(map, pageInfo, true);
-			
 			JSONView activityListJsonview=getSearchJSONView(activityList);
-			
 			List activityListJsonArray=(List) activityListJsonview.get("activityList");
-			
-			System.out.println(activityListJsonview);
+			logger.info(activityListJsonview);
 			
 			int flag=0;//标志位，说明该活动是否是该用户的   0不是该用户的  1是该用户的   2该活动不是该用户的但是已经报名
 			if(null!=activityListJsonArray && activityListJsonArray.size()>0){
@@ -302,9 +299,7 @@ public class ActivityController extends BaseController {
 			}
 			//判断该用户是否已经报名该活动
 			Map takeAnActiveList=activityService.getMyTakeAnActive(map, pageInfo, true);
-			
 			JSONView takeAnActiveListJsonview=getSearchJSONView(takeAnActiveList);
-			
 			List takeAnActiveListJsonArray=(List) takeAnActiveListJsonview.get("activityList");
 			
 			if(null!=takeAnActiveListJsonArray && takeAnActiveListJsonArray.size()>0){
@@ -315,7 +310,6 @@ public class ActivityController extends BaseController {
 		}
 		
 		JSONView jsonview=getSearchJSONView(resultMap);
-		
 		request.setAttribute("jsonview", jsonview);
 		 
 		return "activity/activity_detail";

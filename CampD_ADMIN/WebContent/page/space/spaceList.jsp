@@ -210,7 +210,7 @@
 $(function(){
 	DateUtil.initDatePicker();
 	Space.searchSpaceList();
-	$.fn.citySelect(['#province', '#city', '#area'],['上海市' , '上海市' , '浦东新区']);
+	$.fn.citySelect(['#province', '#city', '#area'],['' , '' , '']);
 });
 </script>
 </html>

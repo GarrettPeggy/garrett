@@ -197,6 +197,7 @@
 						                      		  	<div class="avatar-title clearfix">
 											    			<input type="file" class="btn-orange-s pull-lef" onchange="Activity.uploadActivityPic(this);" id="cropImg" name="cropImg"/>
 											    		</div>
+											    		<c:if test="${not empty activityMap.activityInfo.show_image}">
 											    		<div class="col-sm-3 clearfix" id="pic_div" style="margin-top: 10px;margin-bottom: 10px;">
 												    		<div class="avatar-x">
 												    			<div id="addPic">
@@ -205,6 +206,7 @@
 												    			<div class="avatar-bar"></div>
 												    		</div>
 												    	</div>
+												    	</c:if>
 							                      </span> 
 							                    </div>
 							                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
@@ -246,7 +248,7 @@
 </body>
 <script type="text/javascript">
 	$(function(){
-		DateUtil.initDatePicker();
+		DateUtil.initDateChoose();
 		$.fn.citySelect(['#province', '#city', '#area'],['${activityMap.activityInfo.province}' , '${activityMap.activityInfo.city}' , '${activityMap.activityInfo.area}']);
 	});
 </script>
