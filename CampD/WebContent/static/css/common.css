@@ -899,5 +899,11 @@ a:hover{text-decoration:none;}
 	height:40px;
 	display:inline-block;
 }
-/*报名成功提示框修改*/
+/*loadmore修改*/
+.newloadMore{
+	margin-top:5px;
+}
+.newloadMore .newmore{
+	color:grey;
+}
 
