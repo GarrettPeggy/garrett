@@ -42,7 +42,7 @@
    </div>-->
  <div class="error">
   <div class="pic" >
-    <img src="/static/images/wrong.png" >
+    <img src="${rmtResPath}/static/images/wrong.png" >
      <div class="word">
        <p>可能原因：</p>
        <ul >
@@ -51,8 +51,7 @@
        </ul>
      </div>  
      <div class="point" >
-       <a href="${ctx}">点击刷新</a>
-       	<img class="new" src="http://camp-images.oss-cn-shanghai.aliyuncs.com/static/images/new.png" >
+       <a href="${ctx}">点击刷新 <img class="new" src="${rmtResPath}/static/images/new.png" /></a> 
      </div>
  </div>
 </div>

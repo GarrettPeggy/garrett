@@ -16,7 +16,7 @@
     	<a class="head-left-icon">
         	<img src="${rmtResPath}/static/images/back.png" onclick="back('${referer}')" width="13" height="22"/>
         </a>
-        <div class="head-content">已报名的活动</div>
+        <div class="head-content">报名的活动</div>
     </div>
 	<!-- end -->
 	
