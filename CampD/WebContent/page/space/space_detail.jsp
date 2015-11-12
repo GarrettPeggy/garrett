@@ -67,12 +67,12 @@
                     <span class="fl">${jsonview.spaceInfo.adress }</span>
                 </div> -->
                  <dl class="fontSize14 color94 clearfix">
-                           <dt class="fl">交通概况</dt>
-                           <dd class="fl">${jsonview.spaceInfo.traffic }</dd> 
+                           <dt class="fl newfl">交通概况</dt>
+                           <dd class="newfr">${jsonview.spaceInfo.traffic }</dd> 
                 </dl>
                 <dl class="fontSize14 mat7 pdb10 clearfix color94" style="margin-right:8px;">
-                        <dt class="fl">具体地址</dt>
-                        <dd class="fl">${jsonview.spaceInfo.adress }</dd> 
+                        <dt class="fl newfl">具体地址</dt>
+                        <dd class="newfr">${jsonview.spaceInfo.adress }</dd> 
                </dl>
                 
             </div>

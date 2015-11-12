@@ -835,13 +835,19 @@ a:hover{text-decoration:none;}
 	margin-top:15%;
 }
    /* 场地dl样式修改*/
-.adt-desc .fontSize17 dl dt {
+dl .newfl{
 	width:30%;
-	margin-right:10%
+	margin-right:10%;
+	font-size:16px;
 }
-.adt-desc .fontSize17 dl dd {
-	width:60%;
+dl .newfr{
+	width:55%;
+	margin-right:5%;
+	display:inline;
+	font-size:16px;
 }
+
+
 /*error页面修改*/
 .error{
 	background:#fff; 
