@@ -46,7 +46,7 @@
 					            				<img src="${sysConfig.ossResUrl}${activity.show_image }" width="91" height="91"/>
 					            			</c:when>
 					            			<c:otherwise>
-					            				<img src="${rmtResPath}/static/images/cd_logo.png" width="91" height="91" />
+					            				<img src="${rmtResPath}/static/images/empty_image.png" width="91" height="91" />
 					            			</c:otherwise>
 					                	</c:choose>
 				                	</div>	

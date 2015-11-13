@@ -16,7 +16,7 @@ User.register = function(){
 		};
 		submitSave(BASE_PATH + "/user/register.do", params, function(data) {
 			systemLoaded();
-			window.location.href = BASE_PATH + "/";
+			window.location.href = BASE_PATH + "/page/user/register_forward.jsp";
 		}, function(data) {
 			systemLoaded();
 			alert(data.returnMsg);
@@ -41,7 +41,7 @@ User.login = function(){
 		// 记住参数提交的格式一定要正确，否则会报error错误。
 		submitSave(BASE_PATH + "/user/login.do", params, function(data) {
 			systemLoaded();
-			window.location.href = BASE_PATH + "/";
+			window.location.href = BASE_PATH + "/page/user/login_forward.jsp";
 		}, function(data) {
 			systemLoaded();
 			alert(data.returnMsg);

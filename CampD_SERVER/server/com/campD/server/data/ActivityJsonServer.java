@@ -315,8 +315,8 @@ public class ActivityJsonServer {
 	 */
 	public Map getMyTakeAnActive(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.province,t1.city,t1.area,t1.adress,t1.sponsor,t1.contact,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,date_format(ifnull(t1.begin_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(t1.end_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as endtime,t1.click_num,date_format(ifnull(t1.create_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(t1.publish_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as publishtime,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t1.begin_time>=NOW() and t2.user_id=? ";
-		String sqlCount =" select count(1) from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t1.begin_time>=NOW() and t2.user_id='"+reqMap.get("userId")+"'";
+		String sqlStr = " select t1.id,t1.creator_id,t1.category_id,t1.act_num,t1.province,t1.city,t1.area,t1.adress,t1.sponsor,t1.contact,t1.act_type,t1.requirement,t1.assistance,t1.show_image,t1.title,t1.sub_title,date_format(ifnull(t1.begin_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(t1.end_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as endtime,t1.click_num,date_format(ifnull(t1.create_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(t1.publish_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as publishtime,t1.status from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id=? ";
+		String sqlCount =" select count(1) from activity t1 right join user_activity t2 on t1.id=t2.activity_id where 1=1 and t2.user_id='"+reqMap.get("userId")+"'";
 		
 		if(null!=reqMap.get("activityId") && !"".equals(reqMap.get("activityId"))){
 			sqlStr += " and t2.activity_id ='"+reqMap.get("activityId")+"' "; 
