@@ -113,7 +113,7 @@ Header.loadTapShow=function(){
 		
 	},function(data){
 		systemLoaded();
-		alert("呵呵，错了吧-->"+data.returnMsg);
+		alert(data.returnMsg);
 	});
 	
 };

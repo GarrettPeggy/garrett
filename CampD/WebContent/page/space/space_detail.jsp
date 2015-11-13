@@ -3,6 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<title>${jsonview.spaceInfo.name }</title>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<link rel="stylesheet" href="${locResPath}/static/common/swipe/css/swipe.css?_v=${vs}"/>

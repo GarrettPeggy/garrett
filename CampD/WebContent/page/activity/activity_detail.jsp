@@ -3,6 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<title>${jsonview.activityInfo.title }</title>
 		<%@ include file="/page/common/meta.jsp" %>
 		<%@ include file="/page/common/jsCss.jsp" %>
 		<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>

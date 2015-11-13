@@ -98,7 +98,7 @@ public class ApplicationFilter implements Filter {
 			logger.info("请求"+serviceName+"服务发生异常", e);
 			try {
 				jsonError.setReturnCode(SystemConstant.RETURN_EXE_FAIL);
-				jsonError.setReturnMsg("操作异常," + e.getMessage());
+				jsonError.setReturnMsg("操作异常");
 				response.setContentType("text/html");
 				response.getWriter().write(jsonError.toString());
 				return;

@@ -54,7 +54,7 @@ Activity.list=function(){
 		$("#activity_first_pop").html(activity_html.join(""));
 	},function(data){
 		systemLoaded();
-		alert("呵呵，错了吧-->"+data.returnMsg);
+		alert(data.returnMsg);
 	});
 	
 };
@@ -116,7 +116,7 @@ Activity.populer=function(actType){
 };
 
 /**
- * 活动加载更多
+ * 活动加载更多...
  */
 Activity.loadMore=function(){
 	var curPage = 1 + parseInt($("#curPage").val());
@@ -188,7 +188,7 @@ Activity.search=function(url,isUserAuth){
 		var curPage = $("#curPage").val();
 		if(curPage<pageSize){
 			$("#activity_more").remove();
-			$("#activity_popu").parent().append("<div id='activity_more'><button id='activityLoadMore' name='activityLoadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Activity.loadMore()'>加载更多</button></div>");
+			$("#activity_popu").parent().append("<div id='activity_more'><button id='activityLoadMore' name='activityLoadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Activity.loadMore()'>加载更多...</button></div>");
 		} else{
 			$("#activity_more").remove();
 			$("#curPage").val(1);

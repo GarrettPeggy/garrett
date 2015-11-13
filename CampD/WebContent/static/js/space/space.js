@@ -99,7 +99,7 @@ Space.list=function(){
 		$("#space_first_pop").html(space_html.join(""));
 	},function(data){
 		systemLoaded();
-		alert("呵呵，错了吧-->"+data.returnMsg);
+		alert(data.returnMsg);
 	});
 };
 
@@ -296,7 +296,7 @@ Space.search=function(){
 		//alert("curPage###############"+curPage);
 		if(curPage<pageSize){
 			$("#loadMore_li").remove();
-			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Space.loadMore()'>加载更多</button></div>");
+			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Space.loadMore()'>加载更多...</button></div>");
 		}else{
 			$("#loadMore_li").remove();
 			$("#curPage").val(1);
@@ -307,7 +307,7 @@ Space.search=function(){
 	});
 };
 /**
- * 加载更多按钮
+ * 加载更多...按钮
  */
 Space.loadMore=function(){
 	
