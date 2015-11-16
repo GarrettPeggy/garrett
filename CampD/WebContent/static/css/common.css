@@ -373,9 +373,14 @@ a:hover{text-decoration:none;}
 	padding-bottom:16px;
 	line-height:22px;
 }
+/*电话、立即报名修改*/
 .btn-box{
 	text-align:center;
-	margin-top:15px;
+	position:fixed;
+	bottom:0px;
+	margin:0 auto;
+	left:0px;
+	right:0px;
 }
 .btn-box a{
 	letter-spacing:4px;
