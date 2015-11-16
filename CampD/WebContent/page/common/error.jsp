@@ -28,7 +28,7 @@
 	}
 </script>
 
-<body onload="timeout();">
+<body class="bg" onload="timeout();">
  <!--    <div class="nofood">
        <p>可能原因：</p>
        <ul>
