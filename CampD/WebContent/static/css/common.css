@@ -118,7 +118,7 @@ a:hover{text-decoration:none;}
 	width: 100%;	
 }
 #loadMore_li{
-	margin:14px auto;
+	margin:0px auto;/*14px*/
 	text-align:center;
 }
 .jiazai{
@@ -375,12 +375,14 @@ a:hover{text-decoration:none;}
 }
 /*电话、立即报名修改*/
 .btn-box{
-	text-align:center;
+	text-align: center;
+    margin-top: 15px;
+  /*text-align:center;
 	position:fixed;
 	bottom:0px;
 	margin:0 auto;
 	left:0px;
-	right:0px;
+	right:0px;*/
 }
 .btn-box a{
 	letter-spacing:4px;
@@ -912,10 +914,7 @@ a:hover{text-decoration:none;}
 	margin-left:15px;
 }
 /*loadmore修改*/
-.newloadMore{
-	margin-top:2px;
-}
-.newloadMore .newmore{
+#loadmore{
 	color:grey;
 }
 
