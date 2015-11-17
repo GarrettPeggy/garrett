@@ -18,6 +18,8 @@ import com.campD.portal.common.PageInfo;
 import com.campD.portal.common.SystemConstant;
 import com.campD.portal.model.UserInfo;
 import com.campD.portal.service.ActivityService;
+import com.campD.portal.util.FileUtils;
+import com.campD.portal.util.SystemMessage;
 
 /**
  * 
@@ -276,6 +278,8 @@ public class ActivityController extends BaseController {
 		Map<String, Object> map = bindParamToMap(request);
 		
 		Map<?, ?> resultMap = activityService.getActivityById(map);
+		// 从远程需求文件读取活动需求
+		readRequirementFromRemoteFile(resultMap);
 		
 		UserInfo userInfo=(UserInfo) request.getSession().getAttribute(SystemConstant.USER_INFO);
 		//如果用户登录，判断该活动是否是该用户的
@@ -313,6 +317,16 @@ public class ActivityController extends BaseController {
 		request.setAttribute("jsonview", jsonview);
 		 
 		return "activity/activity_detail";
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void readRequirementFromRemoteFile(Map activityMap){
+		String requirement = (String) ((Map)activityMap.get("activityInfo")).get("requirement");
+		requirement = requirement.replace("\\", "/");
+		int index = requirement.indexOf("attached/html");
+		if(null!=requirement && index>-1){ // 将连接更新为内容
+			((Map)activityMap.get("activityInfo")).put("requirement",FileUtils.readRemoteFile(SystemMessage.getString("ossResUrl") + requirement));
+		}
 	}
 	
 	/**

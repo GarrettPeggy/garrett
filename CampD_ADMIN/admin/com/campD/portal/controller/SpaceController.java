@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.common.JSONView;
 import com.campD.portal.common.PageInfo;
-import com.campD.portal.common.SystemConstant;
 import com.campD.portal.model.UserInfo;
 import com.campD.portal.service.SpaceService;
 import com.campD.portal.util.FileUtils;

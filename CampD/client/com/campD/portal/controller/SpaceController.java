@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.campD.portal.common.JSONView;
 import com.campD.portal.common.PageInfo;
 import com.campD.portal.service.SpaceService;
+import com.campD.portal.util.FileUtils;
+import com.campD.portal.util.SystemMessage;
 
 /**
  * 
@@ -122,10 +124,22 @@ public class SpaceController extends BaseController {
 		Map<String, Object> map = bindParamToMap(request);
 		
 		Map<?, ?> resultMap = spaceService.getSpaceInfoById(map);
+		readDscriptionFromRemoteFile(resultMap);
+		
 		JSONView jsonview=getSearchJSONView(resultMap);
 		request.setAttribute("jsonview", jsonview);
 		 
 		return "space/space_detail";
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void readDscriptionFromRemoteFile(Map spaceMap){
+		String description = (String) ((Map)spaceMap.get("spaceInfo")).get("description");
+		description = description.replace("\\", "/");
+		int index = description.indexOf("attached/html");
+		if(null!=description && index>-1){ // 将连接更新为内容
+			((Map)spaceMap.get("spaceInfo")).put("description",FileUtils.readRemoteFile(SystemMessage.getString("ossResUrl") + description));
+		}
 	}
 	
 }
