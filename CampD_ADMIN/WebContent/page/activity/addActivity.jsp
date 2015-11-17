@@ -112,7 +112,7 @@
 												<label for="actNum" class="col-xs-12 col-sm-3 control-label no-padding-right">活动人数</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
-									                    <input type="text" name="actNum" id="actNum" notnull="true" class="width-100" >
+									                    <input type="text" name="actNum" id="actNum" datatype="number" notnull="true" class="width-100" >
 									                    <i class="ace-icon fa fa-leaf"></i> 
 								                    </span>
 												</div>

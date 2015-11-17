@@ -37,6 +37,9 @@
 							<form id="updateSpaceInfoForm">
 								<flagToken:token tokenName="updateSpaceInfoForm"/>
 								<input type="hidden" name="id" value="${id}"><!-- 默认场地都是普通场地 -->
+								<c:if test="${not empty spaceMap.spaceInfo.originalDiscriptionURL}">
+									<input type="hidden" name="originalDiscriptionURL" value="${spaceMap.spaceInfo.originalDiscriptionURL}"><!-- 默认场地都是普通场地 -->
+								</c:if>
 								<div class="page-header"> <h1> 编辑场地信息 </h1> </div>
 					            <div class="row">
 					              <div class="col-xs-12">

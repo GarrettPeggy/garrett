@@ -94,7 +94,7 @@ public class UploadController extends BaseController{
 		logger.info("文件参数->"+resMap);
 		
 		List<String> uploadKey = Arrays.asList(((String)resMap.get("realPath")).split(","));
-		view = OSSUtil.uploadFile(uploadKey);
+		view = OSSUtil.uploadImage(uploadKey);
 		
 		// 此处上传文件至OSS
 		logger.info("文件路径->"+view);

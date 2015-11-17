@@ -41,8 +41,11 @@
 								<input type="hidden" id="activityId" name="id" value="${id }"/><!-- 活动id -->
 								<input type="hidden" id="actType" name="actType" value="${activityMap.activityInfo.act_type }"/><!-- 活动类型，必传，不需修改，就隐藏 -->
 								<input type="hidden" id="realPath" name="realPath" />
-								<input type="hidden" id="fakepath" name="fakepath" /><!-- 更新活动时判断是否有选择替换图片 -->
+								<input type="hidden" id="fakepath" name="fakepath" /><!-- 更新活动时判断是否有选择替换图片 -->originalRequirementURL
 								<input type="hidden" id="oldPath" name="oldPath" value="${activityMap.activityInfo.show_image }"/><!-- 图片的原来的路径 -->
+								<c:if test="${not empty activityMap.activityInfo.originalRequirementURL}">
+									<input type="hidden" id="originalRequirementURL" name="originalRequirementURL" value="${activityMap.activityInfo.originalRequirementURL }"/><!-- 图片的原来的路径 -->
+								</c:if>
 								<div class="page-header"> <h1> 修改活动信息 </h1> </div>
 								<div class="row">
 									<div class="col-xs-12">
@@ -114,7 +117,7 @@
 												<label for="actNum" class="col-xs-12 col-sm-3 control-label no-padding-right">活动人数</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
-									                    <input type="text" name="actNum" id="actNum" value="${activityMap.activityInfo.act_num }" notnull="true" class="width-100" >
+									                    <input type="text" name="actNum" id="actNum" value="${activityMap.activityInfo.act_num }" datatype="number" notnull="true" class="width-100" >
 									                    <i class="ace-icon fa fa-leaf"></i> 
 								                    </span>
 												</div>

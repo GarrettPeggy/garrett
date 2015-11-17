@@ -3,6 +3,8 @@ package com.campD.portal.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +21,10 @@ import com.campD.portal.common.PageInfo;
 import com.campD.portal.common.SystemConstant;
 import com.campD.portal.model.UserInfo;
 import com.campD.portal.service.ActivityService;
+import com.campD.portal.util.FileUtils;
+import com.campD.portal.util.OSSUtil;
+import com.campD.portal.util.SystemMessage;
+import com.campD.portal.util.UploadFileUtil;
 
 /**
  * 
@@ -46,17 +52,38 @@ public class ActivityController extends BaseController {
 	public JSONView add(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		UserInfo userInfo = getUserInfo();
-		
 		Map<String, Object> map = bindParamToMap(request);
 		
-		map.put("actType", Integer.parseInt(SystemConstant.COMMON_ACTIVITY));//活动类型   0:普通活动   1:热门活动
+		Map<?, ?> resultMap = null;
+		String requirements = (String) map.get("requirement");
+		resultMap = uploadRequirementsToOSS(requirements, request);
 		
-		map.put("creator", userInfo.getId());
-		
-		Map<?, ?> resultMap = activityService.add(map);
+		// 假如需求保存文件成功则将活动保存到数据库
+		if(JSONView.RETURN_SUCCESS_CODE.equals(resultMap.get("returnCode"))){
+			map.put("actType", Integer.parseInt(SystemConstant.COMMON_ACTIVITY));//活动类型   0:普通活动   1:热门活动
+			map.put("creator", userInfo.getId());
+			map.put("requirement", resultMap.get("requirementsURL"));
+			resultMap = activityService.add(map);
+		}
 		
 		return getOperateJSONView(resultMap);
 		
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private Map uploadRequirementsToOSS(String requirements, HttpServletRequest request){
+		
+		Map returnMap = null;
+		String fileName = FileUtils.getNumberFileName(UUID.randomUUID().toString() + "_" + new Random().nextInt(1000));// 随机生成一个文件名
+		String tmpPath = UploadFileUtil.getTmpFileRealPath(fileName, getUserInfo(), request);//文件保存目录路径
+		String relativePath = UploadFileUtil.getRelativePath(tmpPath, request).replace("\\", "/");// 相对路径
+		FileUtils.writerFile(requirements, tmpPath);
+		
+		// 往阿里OOS上面上传文件
+		returnMap = OSSUtil.uploadFile(tmpPath);
+		returnMap.put("requirementsURL", relativePath);
+		
+		return returnMap;
 	}
 	
 	/**
@@ -85,7 +112,10 @@ public class ActivityController extends BaseController {
 		
 		Map reqMap = bindParamToMap(request);
 		Map activityMap = activityService.getActivityById(reqMap);
+		// 读取远程活动需求的内容
+		readRequirementFromRemoteFile(activityMap);
 		mop.addAttribute("activityMap", activityMap);
+		
 		bindParamToAttrbute(request);
 		
 		return "activity/editActivity";
@@ -96,11 +126,14 @@ public class ActivityController extends BaseController {
 	 * 跳转到查看场地信息界面
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("/toViewActivity.do")
 	public String toViewActivity(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
 		
 		Map reqMap = bindParamToMap(request);
 		Map activityMap = activityService.getActivityById(reqMap);
+		// 读取远程活动需求的内容
+		readRequirementFromRemoteFile(activityMap);
 		mop.addAttribute("activityMap", activityMap);
 		
 		bindParamToAttrbute(request);
@@ -108,7 +141,16 @@ public class ActivityController extends BaseController {
 		return "activity/viewActivity"; 
 	}
 	
-	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void readRequirementFromRemoteFile(Map activityMap){
+		String requirement = (String) ((Map)activityMap.get("activityInfo")).get("requirement");
+		requirement = requirement.replace("\\", "/");
+		int index = requirement.indexOf("attached/html");
+		if(null!=requirement && index>-1){ // 将连接更新为内容
+			((Map)activityMap.get("activityInfo")).put("originalRequirementURL", requirement.substring(index));
+			((Map)activityMap.get("activityInfo")).put("requirement",FileUtils.readRemoteFile(SystemMessage.getString("ossResUrl") + requirement));
+		}
+	}
 	
 	/**
 	 * 跳转到添加活动时的添加活动类型界面
@@ -178,7 +220,21 @@ public class ActivityController extends BaseController {
 	public JSONView update(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		Map<?, ?> resultMap = activityService.update(map);
+
+		Map<?, ?> resultMap = null;
+		String requirements = (String) map.get("requirement");
+		// 重新生成活动需求的文件
+		resultMap = uploadRequirementsToOSS(requirements, request);
+		// 删除原有的文件
+		if(null!=map.get("originalRequirementURL")){
+			OSSUtil.deleteFile((String) map.get("originalRequirementURL"));
+		}
+		
+		// 假如需求保存文件成功则将活动保存到数据库
+		if(JSONView.RETURN_SUCCESS_CODE.equals(resultMap.get("returnCode"))){
+			map.put("requirement", resultMap.get("requirementsURL"));
+			resultMap = activityService.update(map);
+		}
 		 
 		return getOperateJSONView(resultMap);
 	}
@@ -195,7 +251,8 @@ public class ActivityController extends BaseController {
 	public JSONView updateActType(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		Map<?, ?> resultMap = activityService.updateActType(map);
+		
+		Map resultMap = activityService.updateActType(map);
 		 
 		return getOperateJSONView(resultMap);
 	}

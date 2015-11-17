@@ -26,7 +26,7 @@ public class UploadFileUtil {
     
     private static final SimpleDateFormat DATE_DIR_SDF = new SimpleDateFormat("yyyyMMdd");
     
-    private static final String DATE_FORMAT = "HHmmssSSS";
+    private static final String DATE_FORMAT = "yyyyMMddHHmmss";
     
     /**
      * 通过绝对路径得到相对路径
@@ -96,6 +96,28 @@ public class UploadFileUtil {
         return uploadDir + File.separator + fileName;
     }
     
+    /**
+     * html文件
+     * 得到一个临时文件绝对路径
+     * @param fileName 文件名 如 a.txt
+     * @param request
+     * @return
+     */
+    public static String getTmpFileRealPath(String fileName, UserInfo userInfo, HttpServletRequest request) {
+        Date date = new Date();
+        String tempFilePath = SystemMessage.getString("htmlFilePath");
+        tempFilePath = MessageFormat.format(tempFilePath, DATE_DIR_SDF.format(date));
+        int index = fileName.lastIndexOf(".");
+        if (index > 0) {
+            fileName = DateUtil.fmtDate(new Date(), DATE_FORMAT) + "_" + userInfo.getId() + fileName.substring(index);
+        }
+        // 创建目录
+        File uploadDir = new File(request.getSession().getServletContext().getRealPath(tempFilePath));
+        if (!uploadDir.exists()) {
+            uploadDir.mkdirs();
+        }
+        return uploadDir + File.separator + fileName;
+    }
     
     public static String writeByteToFile(byte[] imageBytes, String desRealPath) throws Exception {
         if (imageBytes != null) {
