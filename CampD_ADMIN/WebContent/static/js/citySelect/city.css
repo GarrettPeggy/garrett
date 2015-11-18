@@ -22,7 +22,7 @@ textarea {
 	outline: none;
 }
 
-dl,dd,dt,ul,li,ol {
+.infolist dl,dd,dt,ul,li,ol {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -166,7 +166,7 @@ i {
 	position: absolute;
 	border: 1px solid #E8E8E8;
 	background: white;
-	left: -26px;
+	left: 0px;
 	top: 36px;
 	border-top: 0;
 	margin-bottom: 10px;

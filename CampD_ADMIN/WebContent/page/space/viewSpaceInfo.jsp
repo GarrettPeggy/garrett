@@ -38,7 +38,7 @@
 					                <div class="form-horizontal">
 					                
 					                  <div class="form-group">
-					                    <label for="name" class="col-xs-12 col-sm-3 control-label no-padding-right">场地名称</label>
+					                    <label for="name" class="col-xs-12 col-sm-2 control-label no-padding-right">场地名称</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="name" id="name" class="width-100" value="${spaceMap.spaceInfo.name}" notnull="true" maxlength="50" disabled="disabled">
@@ -49,7 +49,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="contactor" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人</label>
+					                    <label for="contactor" class="col-xs-12 col-sm-2 control-label no-padding-right">联系人</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="contactor" id="contactor" class="width-100" value="${spaceMap.spaceInfo.contactor}" notnull="true" maxlength="15" disabled="disabled">
@@ -60,7 +60,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="contact" class="col-xs-12 col-sm-3 control-label no-padding-right">联系人方式</label>
+					                    <label for="contact" class="col-xs-12 col-sm-2 control-label no-padding-right">联系人方式</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="contact" id="contact" class="width-100" value="${spaceMap.spaceInfo.contact}" datatype="phone" notnull="true" disabled="disabled">
@@ -71,7 +71,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label class="col-sm-3 control-label no-padding-right">场地类型</label>
+					                    <label class="col-sm-2 control-label no-padding-right">场地类型</label>
 					                    <div class="col-md-3">
 					                      <div class="row">
 					                        <div class="col-sm-6">
@@ -87,7 +87,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="cost" class="col-xs-12 col-sm-3 control-label no-padding-right">场地费用</label>
+					                    <label for="cost" class="col-xs-12 col-sm-2 control-label no-padding-right">场地费用</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="cost" id="cost" class="width-100" value="${spaceMap.spaceInfo.cost}" datatype="money" notnull="true" disabled="disabled">
@@ -98,7 +98,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="cost" class="col-xs-12 col-sm-3 control-label no-padding-right">场地容量</label>
+					                    <label for="cost" class="col-xs-12 col-sm-2 control-label no-padding-right">场地容量</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="capacity" id="capacity" class="width-100" value="${spaceMap.spaceInfo.capacity}" datatype="number" notnull="true" disabled="disabled">
@@ -109,7 +109,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label class="col-sm-3 control-label no-padding-right">适合活动</label>
+					                    <label class="col-sm-2 control-label no-padding-right">适合活动</label>
 					                    <div class="col-md-3">
 					                      <div class="row">
 					                        <div class="col-sm-6">
@@ -125,7 +125,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">场地地址</label>
+					                    <label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">场地地址</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="adress" id="adress" class="width-100" value="${spaceMap.spaceInfo.adress}" notnull="true" maxlength="100" disabled="disabled">
@@ -136,7 +136,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="traffic" class="col-xs-12 col-sm-3 control-label no-padding-right">交通概况</label>
+					                    <label for="traffic" class="col-xs-12 col-sm-2 control-label no-padding-right">交通概况</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="traffic" id="traffic" class="width-100" value="${spaceMap.spaceInfo.traffic}" maxlength="100" notnull="true" disabled="disabled">
@@ -147,17 +147,25 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="description" class="col-xs-12 col-sm-3 control-label no-padding-right">场地介绍</label>
-					                    <div class="col-xs-12 col-sm-3"> 
-					                      <span class="block input-icon input-icon-right">
-						                      <textarea rows="4" class="form-control limited" name="description" id="description" maxlength="250" disabled="disabled">${spaceMap.spaceInfo.description}</textarea>
-					                      </span> 
-					                    </div>
+					                    <label for="description" class="col-xs-12 col-sm-2 control-label no-padding-right">场地介绍</label>
+					                    <div class="col-xs-12 col-sm-9">
+											<div class="widget-box ui-sortable-handle">
+												<div class="widget-body">
+													<div class="widget-main padding-6">
+														<div class="tab-content">
+															<div id="home" class="tab-pane in active">
+																${spaceMap.spaceInfo.description}
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="show_images" class="col-xs-12 col-sm-3 control-label no-padding-right">场地照片</label>
+					                    <label for="show_images" class="col-xs-12 col-sm-2 control-label no-padding-right">场地照片</label>
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right" id="pic_container">
 											    <c:if test="${!empty spaceMap.spaceInfo.show_images}">

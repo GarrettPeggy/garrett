@@ -3,16 +3,16 @@
 <table id="sample-table-1" class="table table-striped table-bordered table-hover">
 	<thead>
 		<tr>
-			<th width="10%" class="center">联系人</th>
+			<th width="8%" class="center">联系人</th>
 			<th width="10%" class="center">联系方式</th>
 			<th width="10%" class="center">名称</th>
-			<th width="10%" class="center">类型</th>
-			<th width="10%" class="center">适用活动</th>
+			<th width="8%" class="center">类型</th>
+			<th width="8%" class="center">适用活动</th>
 			<th width="10%" class="center">费用</th>
 			<th width="10%" class="center">特征</th>
 			<th width="10%" class="center">省市区</th>
 			<th width="10%" class="center">详细地址</th>
-			<th width="10%" class="center">操作</th>
+			<th width="16%" class="center">操作</th>
 		</tr>
 	</thead>
 

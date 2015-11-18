@@ -6,15 +6,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/page/common/meta.jsp"%>
-	<link rel="stylesheet" href="${rmtResPath}/static/css/bootstrap-datetimepicker.min.css" />
 	<%@ include file="/page/common/jsCss.jsp"%>
-	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
-	<script src="${locResPath}/static/js/date-time/moment.min.js"></script>
-	<script src="${locResPath}/static/js/date-time/locale/zh-cn.js"></script>
-	<script src="${locResPath}/static/js/date-time/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
+	
+	<!-- 编辑器的样式 -->
+	<link rel="stylesheet" href="${ctx}/static/js/kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="${ctx}/static/js/kindeditor/plugins/code/prettify.css" />
 </head>
 
 <body class="no-skin">
@@ -43,7 +40,7 @@
 									<div class="form-horizontal">
 									
 										<div class="form-group">
-											<label for="title" class="col-xs-12 col-sm-3 control-label no-padding-right">活动标题</label>
+											<label for="title" class="col-xs-12 col-sm-2 control-label no-padding-right">活动标题</label>
 											<div class="col-xs-12 col-sm-3">
 												<span class="block input-icon input-icon-right">
 								                    <input type="text" name="title" id="title" class="width-100" value="${activityMap.activityInfo.title }" disabled="disabled" notnull="true" maxlength="100" >
@@ -52,7 +49,7 @@
 										</div>
 										
 										<div class="form-group">
-											<label for="subTitle" class="col-xs-12 col-sm-3 control-label no-padding-right">活动副标题</label>
+											<label for="subTitle" class="col-xs-12 col-sm-2 control-label no-padding-right">活动副标题</label>
 											<div class="col-xs-12 col-sm-3">
 												<span class="block input-icon input-icon-right">
 								                    <input type="text" name="subTitle" id="subTitle" value="${activityMap.activityInfo.sub_title }" disabled="disabled" class="width-100" maxlength="100" >
@@ -61,36 +58,16 @@
 										</div>
 										
 										<div class="form-group">
-											<label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">所在地区</label>
-											<div class="col-xs-12 col-sm-3 infolist"> 
-						                      	<span class="block input-icon input-icon-right liststyle">
-							                      	<span id="province">
-					                                    <i>请选择省份</i>
-					                                    <ul>
-					                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
-					                                    </ul>
-					                                    <input type="hidden" name="province" class="curValue" value="${activityMap.activityInfo.province}" disabled="disabled">
-					                                </span>
-					                                <span id="city">
-					                                    <i>请选择城市</i>
-					                                    <ul>
-					                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
-					                                    </ul>
-					                                    <input type="hidden" name="city" class="curValue" value="${activityMap.activityInfo.city}" disabled="disabled">
-					                                </span>
-					                                <span id="area">
-					                                    <i>请选择地区</i>
-					                                    <ul>
-					                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
-					                                    </ul>
-					                                    <input type="hidden" name="area" class="curValue" value="${activityMap.activityInfo.area}" disabled="disabled">
-					                                </span>
-						                      	</span> 
-						                    </div>
+											<label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">所在地区</label>
+						                    <div class="col-xs-12 col-sm-3">
+												<span class="block input-icon input-icon-right">
+								                    <input type="text" name="bigAddress" id="bigAddress" value="${activityMap.activityInfo.province} ${activityMap.activityInfo.city} ${activityMap.activityInfo.area}" disabled="disabled" class="width-100" maxlength="100" >
+							                    </span>
+											</div>
 										</div>
 										
 										<div class="form-group">
-											<label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">活动地址</label>
+											<label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">活动地址</label>
 											<div class="col-xs-12 col-sm-3">
 												<span class="block input-icon input-icon-right">
 								                    <input type="text" name="adress" id="adress" value="${activityMap.activityInfo.adress }" disabled="disabled" notnull="true" class="width-100" maxlength="200" />
@@ -99,7 +76,7 @@
 										</div>
 										
 										<div class="form-group">
-											<label for="actNum" class="col-xs-12 col-sm-3 control-label no-padding-right">活动人数</label>
+											<label for="actNum" class="col-xs-12 col-sm-2 control-label no-padding-right">活动人数</label>
 											<div class="col-xs-12 col-sm-3">
 												<span class="block input-icon input-icon-right">
 								                    <input type="text" name="actNum" id="actNum" value="${activityMap.activityInfo.act_num }" disabled="disabled" notnull="true" class="width-100" />
@@ -108,7 +85,7 @@
 										</div>
 										
 										<div class="form-group">
-											<label for="sponsor" class="col-xs-12 col-sm-3 control-label no-padding-right">举办方</label>
+											<label for="sponsor" class="col-xs-12 col-sm-2 control-label no-padding-right">举办方</label>
 											<div class="col-xs-12 col-sm-3">
 												<span class="block input-icon input-icon-right">
 								                     <input type="text" name="sponsor" id="sponsor" value="${activityMap.activityInfo.sponsor }" disabled="disabled" class="width-100" notnull="true" maxlength="200" />
@@ -117,7 +94,7 @@
 										</div>
 										
 										<div class="form-group">
-											<label for="categoryId" class="col-sm-3 control-label no-padding-right">活动范畴</label>
+											<label for="categoryId" class="col-sm-2 control-label no-padding-right">活动范畴</label>
 											<div class="col-md-3">
 												<div class="row">
 													<div class="col-sm-6">
@@ -139,7 +116,7 @@
 										</div>
 										
 										<div class="form-group">
-											<label for="beginTime" class="col-xs-12 col-sm-3 control-label no-padding-right">开始时间</label>
+											<label for="beginTime" class="col-xs-12 col-sm-2 control-label no-padding-right">开始时间</label>
 											<div class="col-xs-12 col-sm-3">
 												<span class="block input-icon input-icon-right">
 								                     <input type="text" name="beginTime" id="beginTime" value="${activityMap.activityInfo.begintime }" disabled="disabled" class="input-sm form-control input-daterange-startDate" notnull="true" maxlength="200" >
@@ -148,7 +125,7 @@
 										</div>
 										
 										<div class="form-group">
-											<label for="endTime" class="col-xs-12 col-sm-3 control-label no-padding-right">结束时间</label>
+											<label for="endTime" class="col-xs-12 col-sm-2 control-label no-padding-right">结束时间</label>
 											<div class="col-xs-12 col-sm-3">
 												<span class="block input-icon input-icon-right">
 								                     <input type="text" name="endTime" id="endTime" value="${activityMap.activityInfo.endtime }" disabled="disabled" class="input-sm form-control input-daterange-endDate" notnull="true" maxlength="200" >
@@ -157,7 +134,7 @@
 										</div>
 										
 										<div class="form-group">
-						                    <label for="showImage" class="col-xs-12 col-sm-3 control-label no-padding-right">活动海报</label>
+						                    <label for="showImage" class="col-xs-12 col-sm-2 control-label no-padding-right">活动海报</label>
 						                    <div class="col-xs-12 col-sm-9"> 
 						                      <span class="block input-icon input-icon-right" id="pic_container">
 					                      		  	<div class="col-sm-3 clearfix" id="pic_div" style="margin-top: 10px;margin-bottom: 10px;">
@@ -173,8 +150,20 @@
 						                </div>
 						                
 						                <div class="form-group">
-											<label for="sponsor" class="col-xs-12 col-sm-3 control-label no-padding-right">活动需求</label>
-								            <textarea rows="4" cols="50" name="requirement" id="requirement" notnull="true" style="width:500px; resize:none;" maxlength="300" disabled="disabled">${activityMap.activityInfo.requirement }</textarea> 
+											<label for="sponsor" class="col-xs-12 col-sm-2 control-label no-padding-right">活动需求</label>
+											<div class="col-xs-12 col-sm-9">
+												<div class="widget-box ui-sortable-handle">
+													<div class="widget-body">
+														<div class="widget-main padding-6">
+															<div class="tab-content">
+																<div id="home" class="tab-pane in active">
+																	${activityMap.activityInfo.requirement }
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 										
 										<div class="clearfix form-actions">
@@ -194,9 +183,4 @@
 		<jsp:include page="/page/common/footer.jsp" flush="true"></jsp:include>
 	</div>
 </body>
-<script type="text/javascript">
-	$(function(){
-		$.fn.citySelect(['#province', '#city', '#area'],['${activityMap.activityInfo.province}' , '${activityMap.activityInfo.city}' , '${activityMap.activityInfo.area}']);
-	});
-</script>
 </html>

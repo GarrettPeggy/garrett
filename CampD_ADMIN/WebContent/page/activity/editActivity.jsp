@@ -14,6 +14,39 @@
 	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
+	
+	<!-- 编辑器初始化 -->
+	<link rel="stylesheet" href="${ctx}/static/js/kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="${ctx}/static/js/kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="${ctx}/static/js/kindeditor/kindeditor-all-min.js"></script>
+	<script charset="utf-8" src="${ctx}/static/js/kindeditor/lang/zh_CN.js"></script>
+	<script charset="utf-8" src="${ctx}/static/js/kindeditor/plugins/code/prettify.js"></script>
+	<script>
+		KindEditor.ready(function(K) {
+			var requirementEditor = K.create('#requirement', {
+				width : '700px',
+				height: '200px',
+				cssPath : '${ctx}/static/js/kindeditor/plugins/code/prettify.css',
+				uploadJson : '${ctx}/page/kindeditor/file_upload_json.jsp',
+				fileManagerJson : '${ctx}/page/kindeditor/file_manager_json.jsp',
+				allowFileManager : true,
+				afterCreate : function() {
+					// 编辑器创建完成之后执行的回调
+				},
+				allowImageUpload: function() {
+					// 图片上传成功之后调用此回调方法
+				},
+				afterChange:function() {// 保证每次图片都是最新的
+					this.sync();// 将编辑器内容同步到textarea
+					var content = $('#requirement').val();
+					$('#requirement').text(content.replace(/\/campD_admin/g, '${sysConfig.ossResUrl}'));
+					$('#requirement').val(content.replace(/\/campD_admin/g, '${sysConfig.ossResUrl}'));
+				}
+			});
+			prettyPrint();
+		});
+	</script>
+	
 </head>
 
 <body class="no-skin">
@@ -41,7 +74,7 @@
 								<input type="hidden" id="activityId" name="id" value="${id }"/><!-- 活动id -->
 								<input type="hidden" id="actType" name="actType" value="${activityMap.activityInfo.act_type }"/><!-- 活动类型，必传，不需修改，就隐藏 -->
 								<input type="hidden" id="realPath" name="realPath" />
-								<input type="hidden" id="fakepath" name="fakepath" /><!-- 更新活动时判断是否有选择替换图片 -->originalRequirementURL
+								<input type="hidden" id="fakepath" name="fakepath" /><!-- 更新活动时判断是否有选择替换图片 -->
 								<input type="hidden" id="oldPath" name="oldPath" value="${activityMap.activityInfo.show_image }"/><!-- 图片的原来的路径 -->
 								<c:if test="${not empty activityMap.activityInfo.originalRequirementURL}">
 									<input type="hidden" id="originalRequirementURL" name="originalRequirementURL" value="${activityMap.activityInfo.originalRequirementURL }"/><!-- 图片的原来的路径 -->
@@ -51,7 +84,7 @@
 									<div class="col-xs-12">
 										<div class="form-horizontal">
 											<div class="form-group">
-												<label for="title" class="col-xs-12 col-sm-3 control-label no-padding-right">活动标题</label>
+												<label for="title" class="col-xs-12 col-sm-2 control-label no-padding-right">活动标题</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
 									                    <input type="text" name="title" id="title" value="${activityMap.activityInfo.title }" class="width-100" notnull="true" maxlength="100" >
@@ -62,7 +95,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="subTitle" class="col-xs-12 col-sm-3 control-label no-padding-right">活动副标题</label>
+												<label for="subTitle" class="col-xs-12 col-sm-2 control-label no-padding-right">活动副标题</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
 									                    <input type="text" name="subTitle" id="subTitle" value="${activityMap.activityInfo.sub_title }" class="width-100" maxlength="100" >
@@ -73,8 +106,8 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">所在地区</label>
-												<div class="col-xs-12 col-sm-3 infolist"> 
+												<label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">所在地区</label>
+												<div class="col-xs-12 col-sm-6 infolist"> 
 							                      	<span class="block input-icon input-icon-right liststyle">
 								                      	<span id="province">
 						                                    <i>请选择省份</i>
@@ -103,7 +136,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="adress" class="col-xs-12 col-sm-3 control-label no-padding-right">活动地址</label>
+												<label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">活动地址</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
 									                    <input type="text" name="adress" id="adress" value="${activityMap.activityInfo.adress }" notnull="true" class="width-100" maxlength="200" >
@@ -114,7 +147,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="actNum" class="col-xs-12 col-sm-3 control-label no-padding-right">活动人数</label>
+												<label for="actNum" class="col-xs-12 col-sm-2 control-label no-padding-right">活动人数</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
 									                    <input type="text" name="actNum" id="actNum" value="${activityMap.activityInfo.act_num }" datatype="number" notnull="true" class="width-100" >
@@ -125,7 +158,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="sponsor" class="col-xs-12 col-sm-3 control-label no-padding-right">举办方</label>
+												<label for="sponsor" class="col-xs-12 col-sm-2 control-label no-padding-right">举办方</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
 									                     <input type="text" name="sponsor" id="sponsor" value="${activityMap.activityInfo.sponsor }" class="width-100" notnull="true" maxlength="200" >
@@ -136,7 +169,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="contact" class="col-xs-12 col-sm-3 control-label no-padding-right">联系方式</label>
+												<label for="contact" class="col-xs-12 col-sm-2 control-label no-padding-right">联系方式</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
 									                     <input type="text" name="contact" id="contact" class="width-100" datatype="telOrPhone" notnull="true" value="${activityMap.activityInfo.contact }">
@@ -147,7 +180,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="categoryId" class="col-sm-3 control-label no-padding-right">活动范畴</label>
+												<label for="categoryId" class="col-sm-2 control-label no-padding-right">活动范畴</label>
 												<div class="col-md-3">
 													<div class="row">
 														<div class="col-sm-6">
@@ -170,7 +203,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="beginTime" class="col-xs-12 col-sm-3 control-label no-padding-right">开始时间</label>
+												<label for="beginTime" class="col-xs-12 col-sm-2 control-label no-padding-right">开始时间</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
 									                     <input type="text" name="beginTime" id="beginTime" value="${activityMap.activityInfo.begintime }" class="input-sm form-control input-daterange-startDate" notnull="true" maxlength="200" >
@@ -181,7 +214,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label for="endTime" class="col-xs-12 col-sm-3 control-label no-padding-right">结束时间</label>
+												<label for="endTime" class="col-xs-12 col-sm-2 control-label no-padding-right">结束时间</label>
 												<div class="col-xs-12 col-sm-3">
 													<span class="block input-icon input-icon-right">
 									                     <input type="text" name="endTime" id="endTime" value="${activityMap.activityInfo.endtime }" class="input-sm form-control input-daterange-endDate" notnull="true" maxlength="200" >
@@ -192,7 +225,7 @@
 											</div>
 											
 											<div class="form-group">
-							                    <label for="showImage" class="col-xs-12 col-sm-3 control-label no-padding-right">活动海报</label>
+							                    <label for="showImage" class="col-xs-12 col-sm-2 control-label no-padding-right">活动海报</label>
 							                    <input type="hidden" id="flag" name="flag" value="1"/><!-- 1表示是修改界面  0表示是新增界面 -->
 							                    <input type="hidden" id="showImage" name="showImage" value="" />
 							                    <div class="col-xs-12 col-sm-9"> 
@@ -216,9 +249,9 @@
 							                </div>
 							                
 							                <div class="form-group">
-												<label for="sponsor" class="col-xs-12 col-sm-3 control-label no-padding-right">活动需求</label>
-												<div class="">
-								                     <textarea rows="4" cols="300" name="requirement" id="requirement" style="width:500px; resize:none;">${activityMap.activityInfo.requirement }</textarea> 
+												<label for="sponsor" class="col-xs-12 col-sm-2 control-label no-padding-right">活动需求</label>
+												<div class="col-xs-12 col-sm-9">
+								                     <textarea rows="4" cols="300" name="requirement" id="requirement">${activityMap.activityInfo.requirement }</textarea> 
 												</div>
 												<!-- <div class="help-block col-xs-12 col-sm-reset inline"> </div> -->
 											</div>
