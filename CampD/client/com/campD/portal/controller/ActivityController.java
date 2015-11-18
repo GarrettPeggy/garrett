@@ -68,61 +68,6 @@ public class ActivityController extends BaseController {
 		return "activity/activity_hold";
 		
 	}
-	/**
-	 * 跳转到添加活动时的添加活动类型界面
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping("/getActivityType.do")
-	public String getActivityType(HttpServletResponse response, HttpServletRequest request) throws Exception{
-		
-		return "activity/hold_type";
-		
-	}
-	
-	/**
-	 * 跳转到添加活动时的选择城市界面
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping("/getActivityCity.do")
-	public String getActivityCity(HttpServletResponse response, HttpServletRequest request) throws Exception{
-		
-		return "activity/hold_city";
-		
-	}
-	
-	/**
-	 * 跳转到添加活动时选择人数范围
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping("/getActivityPeople.do")
-	public String getActivityPeople(HttpServletResponse response, HttpServletRequest request) throws Exception{
-		
-		return "activity/hold_people";
-		
-	}
-	
-	/**
-	 * 跳转到添加活动时填写活动需求
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping("/getActivityDesc.do")
-	public String getActivityDesc(HttpServletResponse response, HttpServletRequest request) throws Exception{
-		
-		return "activity/hold_desc";
-		
-	}
 	
 	/**
 	 * 活动更新
