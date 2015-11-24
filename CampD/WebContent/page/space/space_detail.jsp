@@ -59,11 +59,11 @@
 	        </div>
 	        <!-- end -->
             <div class="adt-desc">
-                 <dl class="fontSize14 color94 clearfix mat7">
+                 <dl class="fontSize14 color94 clearfix mat15">
                     <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_jiaotong.png" width="17" height="17"/></dt>
                     <dd class="fl newfr1">${jsonview.spaceInfo.traffic }</dd> 
                 </dl>
-                <dl class="fontSize14 mat7 clearfix color94">
+                <dl class="fontSize14  clearfix color94 newmat ">
                     <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
                     <dd class="fl newfr2">${jsonview.spaceInfo.adress }</dd> 
                </dl> 
