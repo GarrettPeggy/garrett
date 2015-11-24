@@ -89,17 +89,17 @@
         	<div class=" retina-1px-border-bottom  padt10 bt_line">
             	<span class="fl percent">适用活动</span>
                 <ul class="consider">
-                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_0.png" width="25" height="25"></li>
-                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_1.png" width="25" height="25"></li>
+                	<c:forEach var="category" items="${ fn:split(jsonview.spaceInfo.work_for, ',') }">
+                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_${category}.png" width="25" height="25"></li>
+                    </c:forEach>
                  </ul>
             </div>
             <div class="padt10">
-            	<span class="fl percent">基础设施</span>
+            	<span class="fl percent">基础设施${jsonview.spaceInfo.infrastructure}</span>
                    <ul class="consider">
-                      <li class="considerpic"><img  src="${rmtResPath}/static/images/infrastructure_0.png" width="25" height="25"></li>
-                      <li class="considerpic"><img  src="${rmtResPath}/static/images/infrastructure_1.png" width="25" height="25"></li>
-                      <li class="considerpic"><img  src="${rmtResPath}/static/images/infrastructure_2.png" width="25" height="25"></li>
-                      <li class="considerpic"><img  src="${rmtResPath}/static/images/infrastructure_3.png" width="25" height="25"></li>
+                   	<c:forEach var="infrastructure" items="${ fn:split(jsonview.spaceInfo.infrastructure, ',') }">
+                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="25" height="25"></li>
+                    </c:forEach>
                  </ul> 
             </div>
         </div>
