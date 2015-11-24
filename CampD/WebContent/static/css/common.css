@@ -371,6 +371,7 @@ a:hover{text-decoration:none;}
 	padding-top:6px;
 	padding-bottom:16px;
 	line-height:22px;
+	margin-bottom:40px;
 }
 
 .btn-box{
@@ -859,7 +860,7 @@ a:hover{text-decoration:none;}
 	width:90%;	
 	padding-bottom:10px;
 }
-.adt-desc    .newmat{
+.adt-desc  .newmat{
 	margin-top:10px;
 }
 .adt-desc  .fontSize14{
