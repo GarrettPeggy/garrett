@@ -29,34 +29,40 @@
 		    <!-- 活动概括与地点 -->
 	    	<div class="ac-detail-title retina-1px-border-bottom">
 		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%" height="156"/>
+	           
+	            <div class="hdname">${jsonview.activityInfo.title }</div>
+	          
 	            <div class="adt-desc">
-	                <div class="fontSize17 retina-1px-border-bottom">${jsonview.activityInfo.title }</div>
-	                <div class="fontSize14">
-	                    <span class="fontSize13">
+	              <!--    <div class="fontSize17 retina-1px-border-bottom">${jsonview.activityInfo.title }</div> -->
+	                <div class="fontSize14 timedate mat7">
+	                    <span class="fl time"><img src="${rmtResPath}/static/images/HD_date.png" width="17" height="17"/></span>
+	                    <span class="fontSize13 date " >
 	                    	<fmt:parseDate value="${jsonview.activityInfo.begintime}" var="begintime" pattern="yyyy-MM-dd HH:mm:ss"/>
 	                    	<fmt:parseDate value="${jsonview.activityInfo.endtime}" var="endtime" pattern="yyyy-MM-dd HH:mm:ss"/>
 	                    	<fmt:formatDate value="${begintime}" pattern="MM月dd日  HH:mm"/>&nbsp;--
 	                    	<fmt:formatDate value="${endtime}" pattern="MM月dd日  HH:mm"/>
 	                    </span>
 	                </div>
-	                <div class="fontSize14 mat7 pdb10">
+	                <div class="fontSize14 mat7 pdb10 dress">
+	                    <span class="fl address"><img  src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></span>
 	                	<span class="fontSize13">${jsonview.activityInfo.adress }</span>
-	                </div>
+	                </div>   
 	            </div>
+	            
 	        </div>
 	        <!-- end -->
 	        <!-- 活动主办方、赞助方 -->
 	        <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
-	        	<div class="adm-line retina-1px-border-bottom clearfix">
-	        		<span class="fl">主办方</span>
-	        		<span class="fr">${jsonview.activityInfo.sponsor }</span>
+	        	<div class="adm-line retina-1px-border-bottom clearfix newheight">
+	        		<span class="fl sponsor">主办方:</span>
+	        		<span class="fl sponserInfo">${jsonview.activityInfo.sponsor }</span>
 	            </div>
-	            <%-- 
-	            <div class="adm-line clearfix">
-	            	<span class="fl">赞助方</span>
-                	<span class="fr">${jsonview.activityInfo.assistance }</span>
+	          
+	            <div class="adm-line clearfix newheight">
+	            	<span class="fl sponsor">联合方:</span>
+                	<span class="fl sponserInfo">${jsonview.activityInfo.assistance }</span>
 	            </div>
-	             --%>
+	            
 	        </div>
 	        <!-- end -->
 	        <!-- 活动详细介绍 -->
@@ -64,7 +70,7 @@
 	        	<div class="add-title retina-1px-border-bottom">
 	            	详细介绍
 	            </div>
-	            <div class="add-desc">
+	            <div class="add-desc newadd-desc">
 	            	${jsonview.activityInfo.requirement }
 	            </div>
 	        </div>
@@ -72,28 +78,48 @@
 	        <!-- 按钮 -->
 	        <c:choose>
 	        	<c:when test="${empty USER_INFO }"><!-- 用户没有登录，显示报名按钮 -->
-	        		<div class="btn-box">
-			        	<button class="btn orange-btn" type="button" onclick="Activity.sign()">立即报名</button>
-			        </div>
+				   <!-- 活动详情footer -->
+			       <div class="btn-box footer">
+			          <div class="head-left-icon newfoot-left-icon">
+			        	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
+			          </div>
+			          <button class="btn orange-btn " type="button" onclick="Activity.sign()">立即报名</button>
+			          <div class="head-right-icon newfoot-right-icon">
+			        	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
+			          </div>
+			       </div>	
 	        	</c:when>
 	        	
 	        	<c:when test="${!empty USER_INFO && flag==0 }"><!-- 不是该用户的活动，显示按钮 -->
-        			<div class="btn-box">
-			        	<button class="btn orange-btn" type="button" onclick="Activity.sign()">立即报名</button>
-			        </div>
+				    <div class="btn-box footer">
+			          <div class="head-left-icon newfoot-left-icon">
+			        	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
+			          </div>
+			          
+			        	<button class="btn orange-btn " type="button" onclick="Activity.sign()">立即报名</button>
+			         
+			          <div class="head-right-icon newfoot-right-icon">
+			        	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
+			          </div>
+			        </div>	
 	        	</c:when>
 	        	
 	        	<c:when test="${!empty USER_INFO && flag==1 }"><!-- 是该用户的活动，不显示按钮 -->
 	        	</c:when>
 	        	
 	        	<c:when test="${!empty USER_INFO && flag==2 }"><!-- 不是该用户的活动，但是该用户已经报名 -->
-        			<div class="btn-box">
-			        	<button class="btn gray-btn" type="button" disabled="disabled">已报名</button>
-			        </div>
+					<div class="btn-box footer">
+			          <div class="head-left-icon newfoot-left-icon">
+			        	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
+			          </div>
+			          <button class="btn gray-btn" type="button" disabled="disabled">已报名</button>
+			          <div class="head-right-icon newfoot-right-icon">
+			        	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
+			          </div>
+			        </div>	
 	        	</c:when>
 	        	
-	        	<c:otherwise>
-	        	</c:otherwise>
+	        	<c:otherwise></c:otherwise>
 	        </c:choose>
 	        <!-- end -->
     	</div>

@@ -43,7 +43,7 @@
 						</c:if>
 		           </div>
 		        </div>
-		        <ul id="position">
+		        <ul id="position" class="newposition">
 		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
 		        		<c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
 		        			<c:if test="${status.index == 0}">
@@ -54,48 +54,61 @@
 		        			</c:if>
 		        		</c:forEach>
 		        	</c:if>
-				</ul>
+				</ul>	
+				<div class=" worddescription">${jsonview.spaceInfo.name }</div>
 	        </div>
 	        <!-- end -->
             <div class="adt-desc">
-                <div class="fontSize17">${jsonview.spaceInfo.name }</div>
-                <div class="fontSize14 color94 clearfix">
-                  <!--   <span class="fl">交通概况</span>  -->
-                    <span class="fl newfr">${jsonview.spaceInfo.traffic }</span>
-                </div>
-                <div class="fontSize14 mat7 pdb10 clearfix color94">
-                	<!-- <span class="fl">具体地址</span> -->
-                    <span class="fl newfr">${jsonview.spaceInfo.adress }</span>
-                </div> 
-                <!--  <dl class="fontSize14 color94 clearfix">
-                           <dt class="fl newfl">交通概况</dt>
-                           <dd class="newfr">${jsonview.spaceInfo.traffic }</dd> 
+                 <dl class="fontSize14 color94 clearfix mat7">
+                    <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_jiaotong.png" width="17" height="17"/></dt>
+                    <dd class="fl newfr1">${jsonview.spaceInfo.traffic }</dd> 
                 </dl>
-                <dl class="fontSize14 mat7 pdb10 clearfix color94" style="margin-right:8px;">
-                        <dt class="fl newfl">具体地址</dt>
-                        <dd class="newfr">${jsonview.spaceInfo.adress }</dd> 
-               </dl> -->
+                <dl class="fontSize14 mat7 pdb10 clearfix color94">
+                    <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
+                    <dd class="fl newfr2">${jsonview.spaceInfo.adress }</dd> 
+               </dl> 
                 
             </div>
         </div>
         <!-- end -->
         <!-- 活动主办方、赞助方 -->
         <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
-        	<div class="adm-line retina-1px-border-bottom clearfix">
+        	 <!--  <div class="adm-line retina-1px-border-bottom clearfix" >  -->
+        	<div class="adm-line clearfix bt_line" >
             	<span class="fl">费用</span>
                 <span class="fr color94"><fmt:parseNumber integerOnly="true" value="${jsonview.spaceInfo.cost}" />元/小时</span>
                 <!-- 把金额每3位画一个逗号 -->
                 <%-- <fmt:formatNumber type="number" value="${jsonview.spaceInfo.cost}" maxFractionDigits="0"/> --%>
             </div>
-            <div class="adm-line clearfix">
+            <div class="adm-line clearfix " >
             	<span class="fl">容量</span>
                 <span class="fr color94">${jsonview.spaceInfo.capacity }人</span>
             </div>
         </div>
+        <!--适用活动和基础设施  -->
+         <div class="activebase retina-1px-border-bottom retina-1px-border-top">
+        	<div class=" retina-1px-border-bottom  padt10 bt_line">
+            	<span class="fl percent">适用活动</span>
+                <ul class="consider">
+                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_0.png" width="25" height="25"></li>
+                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_1.png" width="25" height="25"></li>
+                 </ul>
+            </div>
+            <div class="padt10">
+            	<span class="fl percent">基础设施</span>
+                   <ul class="consider">
+                      <li class="considerpic"><img  src="${rmtResPath}/static/images/infrastructure_0.png" width="25" height="25"></li>
+                      <li class="considerpic"><img  src="${rmtResPath}/static/images/infrastructure_1.png" width="25" height="25"></li>
+                      <li class="considerpic"><img  src="${rmtResPath}/static/images/infrastructure_2.png" width="25" height="25"></li>
+                      <li class="considerpic"><img  src="${rmtResPath}/static/images/infrastructure_3.png" width="25" height="25"></li>
+                 </ul> 
+            </div>
+        </div>
+
         <!-- end -->
         <!-- 活动详细介绍 -->
         <div class="ac-detail-desc retina-1px-border-bottom retina-1px-border-top">
-        	<div class="add-title retina-1px-border-bottom">
+        	<div class="add-title bt_line">
             	详细介绍
             </div>
             <div class="add-desc">
@@ -104,9 +117,18 @@
         </div>
         <!-- end -->
         <!-- 按钮 -->
-        <div class="btn-box">
-        	<a class="btn orange-btn" href="tel:15601925235">电话</a>
+        <div class="btn-box footer">
+          <div class="head-left-icon newfoot-left-icon">
+        	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
+          </div>
+        
+        	<a class="btn orange-btn " href="tel:15601925235"><img class="cellphone" src="${rmtResPath}/static/images/tel_02.png"/>联系电话</a>
+         
+          <div class="head-right-icon newfoot-right-icon">
+        	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
+          </div>
         </div>
+        
         <!-- end -->
     </div>
     <!-- end -->

@@ -111,7 +111,7 @@ a:hover{text-decoration:none;}
 
 
 /*鐢摜鏁ら幐澶愭尦*/
-.btn{padding: 0 62px;height:50px;line-height:50px;border:none;border-radius:5px;font-size:20px; display:inline-block;}
+.btn{padding: 0 20px;height:50px;line-height:50px;border:none;border-radius:5px;font-size:20px; display:inline-block;}
 .orange-btn {color:#fff; background:#edbe57;}
 .gray-btn {background:#CBCBCB;color:#fff;}
 .loadBtn{
@@ -341,7 +341,7 @@ a:hover{text-decoration:none;}
 	margin-bottom:10px;
 }
 .ac-detail-title .adt-desc{
-	padding:0 0 13px 11px;
+	padding:0 0 5px 11px;/* 下边距改14px改成5px*/
 }
 .ac-detail-mechanism{
 	position:relative;
@@ -351,7 +351,7 @@ a:hover{text-decoration:none;}
 }
 .ac-detail-mechanism .adm-line{
 	height:33px;
-	line-height:33px;
+    line-height:33px;
 	position:relative;
 	font-size:15px;
 }
@@ -373,16 +373,9 @@ a:hover{text-decoration:none;}
 	padding-bottom:16px;
 	line-height:22px;
 }
-/*电话、立即报名修改*/
+
 .btn-box{
 	text-align: center;
-    margin-top: 15px;
-  /*text-align:center;
-	position:fixed;
-	bottom:0px;
-	margin:0 auto;
-	left:0px;
-	right:0px;*/
 }
 .btn-box a{
 	letter-spacing:4px;
@@ -430,7 +423,6 @@ a:hover{text-decoration:none;}
 /*字体修改*/
 .tc-modal .tc-modal-content .modal-line .newmodal-line1{
 	font-size:22px;
-	
 }
 
 .tc-modal .tc-modal-content .modal-line .modal-line2{
@@ -853,11 +845,28 @@ a:hover{text-decoration:none;}
 	margin-top:15%;
 }
    /* 场地交通地址样式修改*/
- .clearfix .newfr{	
-	margin-right:2%;
-	display:inline;		
-}
+ .clearfix .newfl{
+ margin-right:10px;
+ width:5%;
 
+ }
+ .clearfix .newfr1{	
+	margin-right:5px;
+	width:90%;	
+	padding-bottom:10px;
+	border-bottom:1px solid  rgba(32,35,37,0.16);
+}
+ .clearfix .newfr2{	
+	margin-right:5px;
+	width:90%;	
+	padding-bottom:10px;
+}
+.adt-desc  dl.mat7{
+	margin-top:10px;
+}
+.adt-desc  .fontSize14{
+	line-height:20px;
+}
 
 /*error页面修改*/
 .error{
@@ -917,4 +926,156 @@ a:hover{text-decoration:none;}
 #loadmore{
 	color:grey;
 }
+/*电话修改*/
+.btn-box {
+ width:100%;
+ position:fixed;
+ bottom:0px;
+ background:#fff;
+ }
 
+ .btn-box .btn{
+	text-align:center;
+	padding-top:0px;
+	vertical-align:middle;
+	width:60%;
+}
+.btn-box .btn .cellphone{
+	width:30px;
+	height:30px;
+	margin-right:10px;
+	margin-top:0px;
+	vertical-align:middle;
+}
+
+/*网址换行*/
+.add-desc{
+	word-wrap: break-word; 
+	word-break: normal;
+}
+/*场地banner li改成右上角*/
+.newposition{
+  position: absolute;
+  top:0px;
+  right: 0;
+  padding-right: 8px;
+  margin: 0;
+  opacity: 0.4;
+  width: 100%;
+  filter: alpha(opacity=50);
+  text-align: right;
+}
+/* 场地详情foot修改*/
+.newfoot-left-icon{
+	float:left;
+	display:block;
+	width:20%;
+	text-align:center;
+	line-height:50px;
+	background:#fff;
+}
+
+.newfoot-right-icon{
+   float:right;
+	bottom:0;
+	display:block;
+	width:20%;
+	text-align:center;
+	line-height:50px;
+	background:#fff;
+}
+/*活动详情 timedate dress*/
+.adt-desc .timedate{
+	padding-bottom:5px;
+}
+.timedate .time{
+	margin-right:15px;
+	margin-top:4px;
+}
+.timedate .date{
+	margin-left:30px;
+	display:block;
+	padding-bottom:12px;
+	border-bottom:1px solid rgba(32,35,37,0.16);
+}
+.adt-desc .dress{
+		
+}
+.dress .address{
+	margin-right:15px;
+	margin-top:4px;
+}
+/* 场地轮播图修改*/
+.worddescription{
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:rgba(0,0,0,0.3);
+	width:100%;
+	height:45px;
+	color:#fff;
+	padding-left:20px;
+	line-height:20px;
+	padding-top:15px;
+	font-size:17px;
+}
+/*活动详情名称*/
+.hdname{
+	position: relative;
+    margin-left: 0px;
+    margin-top: -48px;
+	background:rgba(0,0,0,0.3);
+	width:100%;
+	height:45px;
+	color:#fff;
+	padding-left:20px;
+	line-height:20px;
+	padding-top:15px;
+	font-size:17px;
+	
+}
+/*hd主办方，联合方*/
+.ac-detail-mechanism .newheight{
+	height:50px;
+	line-height:50px;
+}
+.ac-detail-mechanism .adm-line .sponsor{
+	color:#949494;
+}
+.ac-detail-mechanism .adm-line .sponserInfo{
+	margin-left:10px;
+	margin-right:10px;	
+}
+
+/*适用活动，基础设施*/
+.activebase{
+	  position:relative;
+      background: #fff;
+      padding: 0 11px;
+      margin-bottom: 5px;
+}
+.activebase .padt10{
+	padding-top:10px;
+	height:50px;
+}
+ .bt_line{
+   height:0px;
+   border-bottom:1px solid rgba(32,35,37,0.16);
+}
+.activebase .padt10 .percent{
+	width:22%;
+	padding-top: 6px;
+}
+.activebase .padt10 .consider{
+	width:75%;
+	margin-left:25%;
+	margin-right:3%;
+}
+.activebase .padt10 .consider li.considerpic{
+	float:left;
+	margin-right:8%;
+	padding-top:5px;
+}
+
+
+	
