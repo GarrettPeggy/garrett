@@ -63,7 +63,7 @@
                     <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_jiaotong.png" width="17" height="17"/></dt>
                     <dd class="fl newfr1">${jsonview.spaceInfo.traffic }</dd> 
                 </dl>
-                <dl class="fontSize14 mat7 pdb10 clearfix color94">
+                <dl class="fontSize14 mat7 clearfix color94">
                     <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
                     <dd class="fl newfr2">${jsonview.spaceInfo.adress }</dd> 
                </dl> 
@@ -73,7 +73,6 @@
         <!-- end -->
         <!-- 活动主办方、赞助方 -->
         <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
-        	 <!--  <div class="adm-line retina-1px-border-bottom clearfix" >  -->
         	<div class="adm-line clearfix bt_line" >
             	<span class="fl">费用</span>
                 <span class="fr color94"><fmt:parseNumber integerOnly="true" value="${jsonview.spaceInfo.cost}" />元/小时</span>

@@ -34,7 +34,7 @@
 	          
 	            <div class="adt-desc">
 	              <!--    <div class="fontSize17 retina-1px-border-bottom">${jsonview.activityInfo.title }</div> -->
-	                <div class="fontSize14 timedate mat7">
+	                <div class="fontSize14 timedate ">
 	                    <span class="fl time"><img src="${rmtResPath}/static/images/HD_date.png" width="17" height="17"/></span>
 	                    <span class="fontSize13 date " >
 	                    	<fmt:parseDate value="${jsonview.activityInfo.begintime}" var="begintime" pattern="yyyy-MM-dd HH:mm:ss"/>
@@ -43,7 +43,7 @@
 	                    	<fmt:formatDate value="${endtime}" pattern="MM月dd日  HH:mm"/>
 	                    </span>
 	                </div>
-	                <div class="fontSize14 mat7 pdb10 dress">
+	                <div class="fontSize14  dress">
 	                    <span class="fl address"><img  src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></span>
 	                	<span class="fontSize13">${jsonview.activityInfo.adress }</span>
 	                </div>   
