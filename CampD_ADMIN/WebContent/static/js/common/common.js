@@ -881,18 +881,6 @@ function getUploadProgress(trackerId,fileIndex,doProgress){
 	});
 }
 
-/**
- * 阻止事件冒泡
- * @param e js事件对象
- */
-function stopBubble(e){ 
-	if (e && e.stopPropagation){
-		e.stopPropagation();
-	}
-	else{
-		window.event.cancelBubble=true 
-	}
-} 
 var CommonUtil = {};
 
 /**

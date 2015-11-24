@@ -104,6 +104,8 @@ Space.addSpace = function(){
 			return;
 		}
 		
+		Space.getInfrasAndWorkforInfo();
+		
 		submitForm("addSpaceInfoForm",BASE_PATH + '/space/add.do', function(data){
 				window.location.href = BASE_PATH + "/space/toList.do";
 			}, function(data){
@@ -149,6 +151,8 @@ Space.updateSpace = function(){
 			return;
 		}
 		
+		Space.getInfrasAndWorkforInfo();
+		
 		submitForm("updateSpaceInfoForm",BASE_PATH + '/space/update.do', function(data){
 				var oldPath = $("#oldPath").val();
 				if(isEmpty(oldPath)){
@@ -166,6 +170,25 @@ Space.updateSpace = function(){
 			}
 		);
 	}
+};
+
+/**
+ * 活动类型和基础设施更新
+ */
+Space.getInfrasAndWorkforInfo = function(){
+	var $checkedWorkforArray = $('input[name="work-for"]:checked');
+	var workFor = "";
+	for (var i = 0; i < $checkedWorkforArray.length; i++) {
+		workFor += i==0?$($checkedWorkforArray[i]).val():","+$($checkedWorkforArray[i]).val();
+	}
+	$("#workFor").val(workFor);
+	
+	var $checkedInfrastructureArray = $('input[name="infra-structure"]:checked');
+	var infrastructure = "";
+	for (var i = 0; i < $checkedInfrastructureArray.length; i++) {
+		infrastructure += i==0?$($checkedInfrastructureArray[i]).val():","+$($checkedInfrastructureArray[i]).val();
+	}
+	$("#infrastructure").val(infrastructure);
 };
 
 /**
@@ -230,4 +253,20 @@ Space.updateSpaceLevel = function(id, spaceLevel){
 	}, function(data) {
 		Dialog.alertError(data.returnMsg);
 	});
+};
+
+/**
+ * 设置用户角色
+ */
+Space.updateWorkforInfo = function(event, currentObj){
+	var $currentObj = $(currentObj).find('input[name="work-for"]');
+	var isChecked = $currentObj.get(0).checked;
+	if(!isChecked){
+		var $checkedWorkforArray = $('input[name="work-for"]:checked');
+		var checkedLength = $checkedWorkforArray.length;
+		if(checkedLength>=3){
+			stopDefault(event);
+			Dialog.alertInfo("使用活动最多只能选3个！");
+		}
+	}
 };

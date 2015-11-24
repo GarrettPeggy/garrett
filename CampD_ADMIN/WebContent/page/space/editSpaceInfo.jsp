@@ -151,14 +151,34 @@
 					                  
 					                  <div class="form-group">
 					                    <label class="col-sm-2 control-label no-padding-right">适合活动</label>
-					                    <div class="col-md-3">
+					                    <div class="col-sm-9">
 					                      <div class="row">
-					                        <div class="col-sm-6">
-					                          <select class="form-control" name="workFor">
+					                        <div class="checkbox">
 					                            <c:forEach items="${systemConst.categoryMap}" var="category">
-													<option value="${category.key}" selected="${category.key eq spaceMap.spaceInfo.work_for?'selected':''}">${category.value}</option>
+					                            	<label onclick="Space.updateWorkforInfo(event,this);" style="padding-bottom: 10px;">
+														<input name="work-for" class="ace ace-checkbox-${category.key} work-for-${category.key}" value="${category.key}" type="checkbox">
+														<span class="lbl">${category.value}</span>
+													</label>
 												</c:forEach>
-					                          </select>
+												<input type="hidden" name="workFor" id="workFor" value="${spaceMap.spaceInfo.work_for}">
+					                        </div>
+					                      </div>
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label class="col-sm-2 control-label no-padding-right">基础设施</label>
+					                    <div class="col-sm-6">
+					                      <div class="row">
+					                        <div class="checkbox">
+					                            <c:forEach items="${systemConst.infrastructureMap}" var="infrastructure">
+					                            	<label style="padding-bottom: 10px;">
+														<input name="infra-structure" class="ace ace-checkbox-${infrastructure.key} infrastructure-${infrastructure.key}" value="${infrastructure.key}" type="checkbox">
+														<span class="lbl">${infrastructure.value}</span>
+													</label>
+												</c:forEach>
+												<input type="hidden" name="infrastructure" id="infrastructure" value="${spaceMap.spaceInfo.infrastructure}">
 					                        </div>
 					                      </div>
 					                    </div>
@@ -274,8 +294,29 @@
 	</div>
 </body>
 <script type="text/javascript">
-$(function(){ //调用插件['#Province', '#City', '#Area']
+$(function(){ 
+	//调用插件['#Province', '#City', '#Area']
     $.fn.citySelect(['#province', '#city', '#area'],['${spaceMap.spaceInfo.province}' , '${spaceMap.spaceInfo.city}' , '${spaceMap.spaceInfo.area}']);
+    initWorkFor();
+    initInfrastructure();
 });
+
+//初始化使用活动选择
+initWorkFor = function(){
+	var workFor = '${spaceMap.spaceInfo.work_for}';
+	var workForArray = workFor.split(',');
+	for (var i = 0; i < workForArray.length; i++) {
+		$(".work-for-"+workForArray[i]).attr("checked", true);
+	}
+};
+
+// 初始化基础设施 
+initInfrastructure = function(){
+	var infrastructure = '${spaceMap.spaceInfo.infrastructure}';
+	var infrastructureArray = infrastructure.split(',');
+	for (var i = 0; i < infrastructureArray.length; i++) {
+		$(".infrastructure-"+infrastructureArray[i]).attr("checked", true);
+	}
+};
 </script>
 </html>

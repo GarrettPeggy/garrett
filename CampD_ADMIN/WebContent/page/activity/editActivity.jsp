@@ -180,6 +180,17 @@
 											</div>
 											
 											<div class="form-group">
+												<label for="assistance" class="col-xs-12 col-sm-2 control-label no-padding-right">联合方</label>
+												<div class="col-xs-12 col-sm-3">
+													<span class="block input-icon input-icon-right">
+									                     <input type="text" name="assistance" id="assistance" class="width-100" value="${activityMap.activityInfo.assistance }">
+									                     <i class="ace-icon fa fa-leaf"></i> 
+								                    </span> 
+												</div>
+												<div class="help-block col-xs-12 col-sm-reset inline"> </div>
+											</div>
+											
+											<div class="form-group">
 												<label for="categoryId" class="col-sm-2 control-label no-padding-right">活动范畴</label>
 												<div class="col-md-3">
 													<div class="row">

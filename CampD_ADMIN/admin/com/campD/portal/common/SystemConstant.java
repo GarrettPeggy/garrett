@@ -175,6 +175,21 @@ public class SystemConstant {
 		spaceLevelMap.put(FINE_SPACE, "精品场地");
 	}
 	
+	//===========================场地的基础设施分类========================
+	public static String SPACE_INFRASTRUCTURE_0= "0";
+	public static String SPACE_INFRASTRUCTURE_1= "1";
+	public static String SPACE_INFRASTRUCTURE_2= "2";
+	public static String SPACE_INFRASTRUCTURE_3= "3";
+	public static String SPACE_INFRASTRUCTURE_4= "4";
+	public static Map infrastructureMap = new HashMap();
+	static{
+		infrastructureMap.put(SPACE_INFRASTRUCTURE_0, "wifi");
+		infrastructureMap.put(SPACE_INFRASTRUCTURE_1, "停车场");
+		infrastructureMap.put(SPACE_INFRASTRUCTURE_2, "音响");
+		infrastructureMap.put(SPACE_INFRASTRUCTURE_3, "投影");
+		infrastructureMap.put(SPACE_INFRASTRUCTURE_4, "电视");
+	}
+	
 	/**
 	 * 将当前静态类的属性转换成Map
 	 * @return

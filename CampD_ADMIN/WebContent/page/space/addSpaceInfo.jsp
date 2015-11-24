@@ -148,14 +148,34 @@
 					                  
 					                  <div class="form-group">
 					                    <label class="col-sm-2 control-label no-padding-right">适合活动</label>
-					                    <div class="col-md-3">
+					                    <div class="col-sm-9">
 					                      <div class="row">
-					                        <div class="col-sm-6">
-					                          <select class="form-control" name="workFor">
+					                        <div class="checkbox">
 					                            <c:forEach items="${systemConst.categoryMap}" var="category">
-													<option value="${category.key}">${category.value}</option>
+					                            	<label onclick="Space.updateWorkforInfo(event,this);" style="padding-bottom: 10px;">
+														<input name="work-for" class="ace ace-checkbox-${category.key}" value="${category.key}" type="checkbox">
+														<span class="lbl">${category.value}</span>
+													</label>
 												</c:forEach>
-					                          </select>
+												<input type="hidden" name="workFor" id="workFor" value="">
+					                        </div>
+					                      </div>
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label class="col-sm-2 control-label no-padding-right">基础设施</label>
+					                    <div class="col-sm-6">
+					                      <div class="row">
+					                        <div class="checkbox">
+					                            <c:forEach items="${systemConst.infrastructureMap}" var="infrastructure">
+					                            	<label style="padding-bottom: 10px;">
+														<input name="infra-structure" class="ace ace-checkbox-${infrastructure.key}" value="${infrastructure.key}" type="checkbox">
+														<span class="lbl">${infrastructure.value}</span>
+													</label>
+												</c:forEach>
+												<input type="hidden" name="infrastructure" id="infrastructure" value="">
 					                        </div>
 					                      </div>
 					                    </div>
