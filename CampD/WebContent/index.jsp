@@ -14,7 +14,7 @@
     <!-- 主体 -->
     <div class="main" id="activity_main">
     	<!-- 轮播图 -->
-    	<div class="addWrap">
+    	<div class="addWrap mat51">
 	        <div class="img-tap-show swipe" id="mySwipe">
 	        	<div class="swipe-wrap">
 				</div>

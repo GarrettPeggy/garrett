@@ -923,7 +923,7 @@ a:hover{text-decoration:none;}
 }
 /*loadmore修改*/
 #loadMore{
-	color:#848484;
+	color:#a5a5a5;
 }
 /*电话修改*/
 .btn-box {
@@ -1092,3 +1092,10 @@ a:hover{text-decoration:none;}
 .hdmat51{
 	margin-top:51px;
 }
+/*首页轮播图*/
+ .main  .mat51{
+	margin-top:51px;
+}
+
+
+
