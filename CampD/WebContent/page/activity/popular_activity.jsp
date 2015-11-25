@@ -38,14 +38,6 @@
 					                    <div class="classify-li-title">
 					                    	<c:out value="${activity.title }" default="无标题"></c:out>
 					                    </div>
-					                    <div class="classify-li-desc color94 fontSize14">
-				                    		<c:if test="${fn:length(activity.requirement) > 20}">
-				                    			<c:out value="${fn:substring(activity.requirement, 0, 21)}......" /> 
-				                    		</c:if>
-				                    		<c:if test="${fn:length(activity.requirement) <= 20}">
-				                    			 <c:out value="${activity.requirement}" /> 
-				                    		</c:if>
-					                    </div>
 					                    <div class="classify-li-date fontSize14">
 					                    	<img src="${rmtResPath}/static/images/date_icon.png" width="10" height="10"/>
 					                    	<fmt:parseDate value="${activity.begintime}" var="begintime" pattern="yyyy-MM-dd HH:mm:ss"/>

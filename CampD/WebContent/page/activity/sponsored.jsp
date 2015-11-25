@@ -56,14 +56,14 @@
 				                            <span class="dlrt2"><font color="#638ee0">${activity.act_num}</font>人</span>&nbsp;&nbsp;&nbsp;
 				                            <span class="dlrt3">${activity.city }</span>
 				                        </div>
-				                        <div class="dlr-detail color94 fontSize14">
+				                        <%-- <div class="dlr-detail color94 fontSize14">
 					                        <c:if test="${fn:length(activity.requirement) > 20}">
 				                    			<c:out value="${fn:substring(activity.requirement, 0, 21)}......" /> 
 				                    		</c:if>
 				                    		<c:if test="${fn:length(activity.requirement) <= 20}">
 				                    			 <c:out value="${activity.requirement}" /> 
 				                    		</c:if>
-				                        </div>
+				                        </div> --%>
 				                    </div>
 				                </li>
 				            </a>
