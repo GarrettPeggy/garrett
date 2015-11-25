@@ -371,7 +371,7 @@ a:hover{text-decoration:none;}
 	padding-top:6px;
 	padding-bottom:16px;
 	line-height:22px;
-	margin-bottom:40px;
+	margin-bottom:35px;
 }
 
 .btn-box{
@@ -481,12 +481,12 @@ a:hover{text-decoration:none;}
 }
 .search-box{
 	padding-right:10px;
-	margin-top:5px;
+	margin-top:55px; /*5px*/
 	background:#fff;
 	position:relative;
 	height:38px;
 	line-height:38px;
-	z-index:36;
+	/*z-index:36;*/
 }
 .search-box .search-parent-list li{
 	float:left;
@@ -922,8 +922,8 @@ a:hover{text-decoration:none;}
 	margin-left:15px;
 }
 /*loadmore修改*/
-#loadmore{
-	color:grey;
+#loadMore{
+	color:#848484;
 }
 /*电话修改*/
 .btn-box {
@@ -1077,6 +1077,18 @@ a:hover{text-decoration:none;}
 	margin-right:8%;
 	padding-top:5px;
 }
-
-
-	
+.newheader{
+	position:fixed;
+	top:0px;
+	left:0px;
+}
+/*header固定定位*/	
+.newheader{
+	position:fixed;
+	top:0px;
+	left:0px;
+}
+/*活动页hdmat51*/
+.hdmat51{
+	margin-top:51px;
+}

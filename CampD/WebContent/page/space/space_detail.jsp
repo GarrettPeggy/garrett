@@ -14,7 +14,7 @@
 </head>
 <body>
 	<!-- 头部 -->
-	<div class="header ac-detail-header clearfix">
+	<div class="header ac-detail-header clearfix ">
     	<a class="head-left-icon">
         	<img src="${rmtResPath}/static/images/back.png" onclick="back()" width="13" height="22"/>
         </a>

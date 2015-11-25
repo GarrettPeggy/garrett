@@ -11,7 +11,7 @@
 	<!-- 头部 -->
 	<%@ include file="/page/common/head.jsp" %>
     <!-- 导航栏 -->
-    <div class="nav-box retina-1px-border-bottom" id="activity_nav">
+    <div class="nav-box retina-1px-border-bottom hdmat51" id="activity_nav">
     	<ul class="nav-list clearfix" id="activity_head">
         	<li onclick="Activity.category(${systemConst.ACTIVITY_CATEGORY_0 })">
             	<img src="${rmtResPath}/static/images/business_icon_01.png" width="48" height="48"/>

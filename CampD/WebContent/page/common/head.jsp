@@ -15,10 +15,10 @@
              	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img"/>
               <div class="fl right-text">报名的活动</div>
           </li>
-          <li class="line clearfix" onclick="Activity.sponsored()">
+          <%-- <li class="line clearfix" onclick="Activity.sponsored()">
              	<img src="${rmtResPath}/static/images/p2.png" width="41" height="41" class="fl left-img"/>
               <div class="fl right-text">举办的活动</div>
-          </li>
+          </li> --%>
           <c:if test="${empty USER_INFO}">
 	          <li class="line clearfix" onclick="Header.toLogin()">
 	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
@@ -47,7 +47,7 @@
     </div>
     <!-- end -->
     <!-- 头部 -->
-	<div class="header clearfix classify-head retina-1px-border-bottom positionR" id="activity_header">
+	<div class="header clearfix classify-head retina-1px-border-bottom positionR newheader" id="activity_header">
     	<div class="head-left-icon">
         	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14"/>
         </div>
@@ -71,10 +71,10 @@
             	<img src="${rmtResPath}/static/images/place.png" width="22" height="22"/>
                	 场地
             </li>
-            <li class="retina-1px-border-bottom1" onclick="Activity.hold()">
+            <%-- <li class="retina-1px-border-bottom1" onclick="Activity.hold()">
             	<img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
                                    举办活动
-            </li>
+            </li> --%>
         </ul>
     </div>
 <!-- end -->
