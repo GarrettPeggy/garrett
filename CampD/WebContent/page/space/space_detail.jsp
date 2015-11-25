@@ -95,7 +95,7 @@
                  </ul>
             </div>
             <div class="padt10">
-            	<span class="fl percent">基础设施${jsonview.spaceInfo.infrastructure}</span>
+            	<span class="fl percent">基础设施</span>
                    <ul class="consider">
                    	<c:forEach var="infrastructure" items="${ fn:split(jsonview.spaceInfo.infrastructure, ',') }">
                       <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="25" height="25"></li>
