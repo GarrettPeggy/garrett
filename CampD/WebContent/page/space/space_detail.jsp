@@ -7,6 +7,7 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<link rel="stylesheet" href="${locResPath}/static/common/swipe/css/swipe.css?_v=${vs}"/>
+	<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/swipe/js/swipe.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/share/jquery.qrcode.min.js?_v=${vs}"></script>
@@ -150,39 +151,52 @@
     <!-- end -->
     
     <!-- footer left-icon -->
-	       <div class="newindex-nav  hide" id="avtivity_nav" >
-    	         <ul>
-        	         <li class="retina-1px-border-bottom1"  onclick="Activity.classify()">
-            	          <img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">
-                                                               活动
-                      </li>
-                       <li class="retina-1px-border-bottom1"  onclick="Space.classify()">
-            	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">
-                                                               场地
-                       </li>
-                </ul>
+	       <div class="newindex-nav hide" id="avtivity_nav" >
+    	       <ul>
+       	         <li class="retina-1px-border-bottom1"  onclick="Activity.classify()">
+       	          	<img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">活动
+                 </li>
+                 <li class="retina-1px-border-bottom1"  onclick="Space.classify()">
+       	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
+                 </li>
+               </ul>
            </div>
 	    
 	    <!-- footer right-icon-->
-	    <div class="footer-newperson-right hide">
+	    <div class="footer-newperson-right hide" id="activity_person">
      	  <ul>
          	<li class="line clearfix" onclick="Activity.signUp()">
-             	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img" >
-               <div class="fl right-text">报名的活动</div>
-           </li>
-          
-	        <li class="line clearfix" onclick="Header.toLogin()">
-	            <img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img">
-	            <div class="fl right-text">登录</div>
-	       </li>
-          
+             	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img"/>
+              <div class="fl right-text">报名的活动</div>
+          </li>
+          <%-- <li class="line clearfix" onclick="Activity.sponsored()">
+             	<img src="${rmtResPath}/static/images/p2.png" width="41" height="41" class="fl left-img"/>
+              <div class="fl right-text">举办的活动</div>
+          </li> --%>
+          <c:if test="${empty USER_INFO}">
+	          <li class="line clearfix" onclick="Header.toLogin()">
+	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">登录</div>
+	          </li>
+          </c:if>
           <!-- 以下两个通过增加hide样式显示隐藏 -->
-          
-	        <li class="line clearfix" onclick="Header.toRegister()">
-	             <img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img">
-	             <div class="fl right-text">注册</div>
-	        </li>
-         </ul>
+          <c:if test="${!empty USER_INFO}">
+          	  <li class="line clearfix" onclick="Header.toUpdate()">
+	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">${USER_INFO.userName}</div>
+	          </li>
+	          <li class="line clearfix" onclick="Header.toQuit()">
+	             	<img src="${rmtResPath}/static/images/p4.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">退出</div>
+	          </li>
+          </c:if>
+          <c:if test="${empty USER_INFO}">
+	          <li class="line clearfix" onclick="Header.toRegister()">
+	             	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">注册</div>
+	          </li>
+          </c:if>
+        </ul>
       </div>
     
 </body>
@@ -201,7 +215,9 @@
 	
 	$(function(){
 		Space.tapShow();
+		// 底部按钮居中
 		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
+		Header.initFootIcon();
 	});
 </script>
 </html>

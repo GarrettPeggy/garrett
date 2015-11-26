@@ -54,6 +54,25 @@ Header.initHeadIcon=function(){
 	});
 };
 
+Header.initFootIcon=function(){
+	// 底部左边菜单显示和隐藏
+	$(".newfoot-left-icon").bind("click",function(){
+		if($("#avtivity_nav").hasClass("hide")){
+			$("#avtivity_nav").removeClass("hide");
+		} else{
+			$("#avtivity_nav").addClass("hide");
+		}
+	});
+	// 底部右边菜单显示和隐藏
+	$(".newfoot-right-icon").bind("click",function(){
+		if($("#activity_person").hasClass("hide")){
+			$("#activity_person").removeClass("hide");
+		} else{
+			$("#activity_person").addClass("hide");
+		}
+	});
+};
+
 /**
  * 轮播图
  */
@@ -117,8 +136,3 @@ Header.loadTapShow=function(){
 	});
 	
 };
-
-$(function(){
-	Header.initHeadIcon();
-	Header.loadTapShow();
-});

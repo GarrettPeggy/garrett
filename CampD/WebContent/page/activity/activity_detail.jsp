@@ -6,6 +6,7 @@
 		<title>${jsonview.activityInfo.title }</title>
 		<%@ include file="/page/common/meta.jsp" %>
 		<%@ include file="/page/common/jsCss.jsp" %>
+		<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>
 		<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
 		<script type="text/javascript" src="${locResPath}/static/common/share/jquery.qrcode.min.js?_v=${vs}"></script>
 		<script type="text/javascript" src="${locResPath}/static/common/share/share.js?_v=${vs}"></script>
@@ -165,47 +166,61 @@
 	    <!-- end -->
 	    
 	    <!-- footer left-icon -->
-	       <div class="newindex-nav hide" id="avtivity_nav" >
-    	         <ul>
-        	         <li class="retina-1px-border-bottom1" onclick="Activity.classify()">
-            	          <img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">
-                                                               活动
-                      </li>
-                      <li class="retina-1px-border-bottom1" onclick="Space.classify()">
-            	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">
-                                                               场地
-                      </li>
-                </ul>
-           </div>
+        <div class="newindex-nav hide" id="avtivity_nav" >
+   	         <ul>
+       	         <li class="retina-1px-border-bottom1" onclick="Activity.classify()">
+        	         <img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">活动
+                 </li>
+                 <li class="retina-1px-border-bottom1" onclick="Space.classify()">
+       	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
+                 </li>
+            </ul>
+        </div>
 	    
 	    <!-- footer right-icon-->
-	    <div class="footer-newperson-right hide" >
+	    <div class="footer-newperson-right hide" id="activity_person">
      	  <ul>
-         	<li class="line clearfix"  onclick="Activity.signUp()">
-             	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img" >
-               <div class="fl right-text">报名的活动</div>
-           </li>
-          
-	          <li class="line clearfix" onclick="Header.toLogin()" >
-	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img">
-	               <div class="fl right-text">登录</div>
+         	<li class="line clearfix" onclick="Activity.signUp()">
+             	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img"/>
+              <div class="fl right-text">报名的活动</div>
+          </li>
+          <%-- <li class="line clearfix" onclick="Activity.sponsored()">
+             	<img src="${rmtResPath}/static/images/p2.png" width="41" height="41" class="fl left-img"/>
+              <div class="fl right-text">举办的活动</div>
+          </li> --%>
+          <c:if test="${empty USER_INFO}">
+	          <li class="line clearfix" onclick="Header.toLogin()">
+	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">登录</div>
 	          </li>
-          
+          </c:if>
           <!-- 以下两个通过增加hide样式显示隐藏 -->
-          
-	          <li class="line clearfix" onclick="Header.toRegister()">
-	             	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img">
-	               <div class="fl right-text">注册</div>
+          <c:if test="${!empty USER_INFO}">
+          	  <li class="line clearfix" onclick="Header.toUpdate()">
+	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">${USER_INFO.userName}</div>
 	          </li>
-          
-         </ul>
+	          <li class="line clearfix" onclick="Header.toQuit()">
+	             	<img src="${rmtResPath}/static/images/p4.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">退出</div>
+	          </li>
+          </c:if>
+          <c:if test="${empty USER_INFO}">
+	          <li class="line clearfix" onclick="Header.toRegister()">
+	             	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img"/>
+	              <div class="fl right-text">注册</div>
+	          </li>
+          </c:if>
+        </ul>
       </div>
 	    
 	</body>
 	<script type="text/javascript">
 	
 		$(function(){
+			// 底部按钮居中
 			$("#submit_act").css("left",$(".newfoot-left-icon").width()+"px");
+			Header.initFootIcon();
 		});
 		
 		 //活动分享

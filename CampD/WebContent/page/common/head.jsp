@@ -78,3 +78,10 @@
         </ul>
     </div>
 <!-- end -->
+<script type="text/javascript">
+	$(function(){
+		Header.initHeadIcon();
+		Header.loadTapShow();
+	});
+</script>
+
