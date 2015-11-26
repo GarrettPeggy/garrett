@@ -972,7 +972,31 @@ a:hover{text-decoration:none;}
 	text-align:center;
 	line-height:50px;
 	background:#fff;
+	position:relative;
 }
+  .newindex-nav{
+	position:absolute;
+	top:-90px;
+	left:5px;
+    background: rgba(0,0,0,0.5);
+    color: #b8c3c6;
+    font-size: 17px;
+    width: 147px;
+    border-radius: 4px;
+}
+.newindex-nav ul li {
+  padding-left: 5px;
+  position: relative;
+  height: 44px;
+  line-height: 44px;
+}
+
+.newfoot-left-icon  .newindex-nav ul li .tu{
+	margin-right:5px;
+	margin-left:-50px;
+}
+
+
 
 .newfoot-right-icon{
    float:right;
@@ -982,6 +1006,12 @@ a:hover{text-decoration:none;}
 	text-align:center;
 	line-height:50px;
 	background:#fff;
+}
+.footer .btnheight{
+	position:absolute;
+	left:20%;
+	bottom:0px;
+	height:52px;
 }
 /*活动详情 timedate dress*/
 .adt-desc .timedate{
@@ -1096,6 +1126,8 @@ a:hover{text-decoration:none;}
  .main  .mat51{
 	margin-top:51px;
 }
-
-
+/**/
+.ac-detail-desc .add-desc img{
+	width:100%;
+}
 
