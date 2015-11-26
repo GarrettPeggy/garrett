@@ -75,15 +75,19 @@
 	            </div>
 	        </div>
 	        <!-- end -->
+	        
+	          
+	     	     
 	        <!-- 按钮 -->
 	        <c:choose>
 	        	<c:when test="${empty USER_INFO }"><!-- 用户没有登录，显示报名按钮 -->
 				   <!-- 活动详情footer -->
 			       <div class="btn-box footer">
-			          <div class="head-left-icon newfoot-left-icon">
+			           <div class="head-left-icon newfoot-left-icon">
 			        	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
-			          </div>
-			          <button class="btn orange-btn " type="button" onclick="Activity.sign()">立即报名</button>
+			          </div> 
+			           
+			          <button class="btn orange-btn btnheight" id="submit_act" type="button" onclick="Activity.sign()">立即报名</button>
 			          <div class="head-right-icon newfoot-right-icon">
 			        	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
 			          </div>
@@ -96,7 +100,7 @@
 			        	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
 			          </div>
 			          
-			        	<button class="btn orange-btn " type="button" onclick="Activity.sign()">立即报名</button>
+			        	<button class="btn orange-btn  btnheight" id="submit_act"  type="button" onclick="Activity.sign()">立即报名</button>
 			         
 			          <div class="head-right-icon newfoot-right-icon">
 			        	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
@@ -112,7 +116,7 @@
 			          <div class="head-left-icon newfoot-left-icon">
 			        	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
 			          </div>
-			          <button class="btn gray-btn" type="button" disabled="disabled">已报名</button>
+			          <button class="btn gray-btn btnheight" id="submit_act" type="button" disabled="disabled">已报名</button>
 			          <div class="head-right-icon newfoot-right-icon">
 			        	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
 			          </div>
@@ -159,8 +163,51 @@
 	         <img class="close" src="${rmtResPath}/static/images/login/closed.png"  onclick="Activity.cancel()"/>
 	    </div>
 	    <!-- end -->
+	    
+	    <!-- footer left-icon -->
+	       <div class="newindex-nav hide" id="avtivity_nav" >
+    	         <ul>
+        	         <li class="retina-1px-border-bottom1" onclick="Activity.classify()">
+            	          <img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">
+                                                               活动
+                      </li>
+                      <li class="retina-1px-border-bottom1" onclick="Space.classify()">
+            	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">
+                                                               场地
+                      </li>
+                </ul>
+           </div>
+	    
+	    <!-- footer right-icon-->
+	    <div class="footer-newperson-right hide" >
+     	  <ul>
+         	<li class="line clearfix"  onclick="Activity.signUp()">
+             	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img" >
+               <div class="fl right-text">报名的活动</div>
+           </li>
+          
+	          <li class="line clearfix" onclick="Header.toLogin()" >
+	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img">
+	               <div class="fl right-text">登录</div>
+	          </li>
+          
+          <!-- 以下两个通过增加hide样式显示隐藏 -->
+          
+	          <li class="line clearfix" onclick="Header.toRegister()">
+	             	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img">
+	               <div class="fl right-text">注册</div>
+	          </li>
+          
+         </ul>
+      </div>
+	    
 	</body>
 	<script type="text/javascript">
+	
+		$(function(){
+			$("#submit_act").css("left",$(".newfoot-left-icon").width()+"px");
+		});
+		
 		 //活动分享
 		Activity.share=function(){
 			var isHide = $("#activity_share").hasClass("hide");

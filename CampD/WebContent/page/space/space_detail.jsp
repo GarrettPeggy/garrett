@@ -121,7 +121,7 @@
         	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
           </div>
         
-        	<a class="btn orange-btn " href="tel:15601925235"><img class="cellphone" src="${rmtResPath}/static/images/tel_02.png"/>联系电话</a>
+        	<a class="btn orange-btn btnheight" id="submit_tel"  href="tel:15601925235"><img class="cellphone" src="${rmtResPath}/static/images/tel_02.png"/>联系电话</a>
          
           <div class="head-right-icon newfoot-right-icon">
         	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
@@ -148,6 +148,43 @@
 	      <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Space.cancel()"/>
     </div>
     <!-- end -->
+    
+    <!-- footer left-icon -->
+	       <div class="newindex-nav  hide" id="avtivity_nav" >
+    	         <ul>
+        	         <li class="retina-1px-border-bottom1"  onclick="Activity.classify()">
+            	          <img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">
+                                                               活动
+                      </li>
+                       <li class="retina-1px-border-bottom1"  onclick="Space.classify()">
+            	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">
+                                                               场地
+                       </li>
+                </ul>
+           </div>
+	    
+	    <!-- footer right-icon-->
+	    <div class="footer-newperson-right hide">
+     	  <ul>
+         	<li class="line clearfix" onclick="Activity.signUp()">
+             	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img" >
+               <div class="fl right-text">报名的活动</div>
+           </li>
+          
+	        <li class="line clearfix" onclick="Header.toLogin()">
+	            <img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img">
+	            <div class="fl right-text">登录</div>
+	       </li>
+          
+          <!-- 以下两个通过增加hide样式显示隐藏 -->
+          
+	        <li class="line clearfix" onclick="Header.toRegister()">
+	             <img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img">
+	             <div class="fl right-text">注册</div>
+	        </li>
+         </ul>
+      </div>
+    
 </body>
 <script type="text/javascript">
 	Space.share=function(){
@@ -164,6 +201,7 @@
 	
 	$(function(){
 		Space.tapShow();
+		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
 	});
 </script>
 </html>
