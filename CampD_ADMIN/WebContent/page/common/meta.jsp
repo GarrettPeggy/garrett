@@ -6,6 +6,6 @@
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-<meta name="keywords" content="CD-营运营后台、场地、活动、赞助"/>
-<meta name="description" content="CD营运营后台"/>
+<meta name="keywords" content="营运营后台、场地、活动、赞助"/>
+<meta name="description" content="CD营-运营后台"/>
 <title>CD营运营后台</title>
