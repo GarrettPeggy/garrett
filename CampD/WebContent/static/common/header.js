@@ -46,7 +46,7 @@ Header.initHeadIcon=function(){
 		
 		$("#activity_person").height($(document).height());
 		$("#activity_person").width($(document).width());
-		$("#activity_person").css("top","50px");
+		$("#activity_person").css("top","51px");
 		$("#activity_person").css("padding-top","0px");
 	});
 	$("#cd_logo").bind("click",function(){ //点击logo，跳转到首页
