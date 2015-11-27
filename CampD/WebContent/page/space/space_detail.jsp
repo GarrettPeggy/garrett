@@ -144,26 +144,25 @@
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide newtc-modal" id="space_share">
         <img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" >
-		<!-- <div id="code" style="margin: 20px 20px 20px 20px"></div> -->
-       <!--  <div class="bottom-close retina-1px-border-top">
-         	<a onclick="Space.cancel()">取&nbsp;&nbsp;消</a>        
-             </div> 
-        -->
-          <span class="more">关注我们，获取更多活动资源</span>
-	      <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Space.cancel()"/>
+        <span class="more">关注我们，获取更多活动资源</span>
+	    <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Space.cancel()"/>
     </div>
     <!-- end -->
     
     <!-- footer left-icon -->
 	       <div class="newindex-nav hide" id="avtivity_nav" >
-    	       <ul>
+   	         <ul>
        	         <li class="retina-1px-border-bottom1"  onclick="Activity.classify()">
        	          	<img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">活动
                  </li>
                  <li class="retina-1px-border-bottom1"  onclick="Space.classify()">
        	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
                  </li>
-               </ul>
+                 <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
+            	   <img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
+                                  联系我们
+            	</li>
+           	</ul>
            </div>
 	    
 	    <!-- footer right-icon-->

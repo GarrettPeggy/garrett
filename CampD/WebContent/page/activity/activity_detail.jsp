@@ -174,6 +174,10 @@
                  <li class="retina-1px-border-bottom1" onclick="Space.classify()">
        	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
                  </li>
+                 <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
+            	   <img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
+                                  联系我们
+            	</li>
             </ul>
         </div>
 	    
@@ -223,7 +227,7 @@
 			Header.initFootIcon();
 		});
 		
-		 //活动分享
+		//活动分享
 		Activity.share=function(){
 			var isHide = $("#activity_share").hasClass("hide");
 			if(isHide){

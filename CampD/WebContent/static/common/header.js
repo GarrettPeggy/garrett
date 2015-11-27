@@ -28,6 +28,12 @@ Header.toUpdate=function(){
  Header.toQuit=function(){
 	window.location.href = BASE_PATH + "/"+"user/quit.do";
 };
+/**
+ * 跳转到联系我们界面
+ */
+Header.toContact=function(){
+	window.location.href = BASE_PATH + "/page/common/contact.jsp";
+};
 
 Header.initHeadIcon=function(){
 	$(".head-left-icon").bind("click",function(){

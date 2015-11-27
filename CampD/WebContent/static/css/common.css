@@ -1145,7 +1145,43 @@ a:hover{text-decoration:none;}
 	margin-top:6px;
 	margin-right:17px;
 }
+/*联系我们*/
+.contactdetail{
+	width:100%;
+	background:#fff;
+	margin-bottom:7px;
+	height:100px;
+	}
+.contactdetail .flpic{
+	width:20%;
+	padding-left:15px;
+	padding-top:15px;
+	display:block;
+	margin-right:7%;
+	}
+.contactdetail .flword{
+	width:70%;
+	margin-right:3%;
+	}
 
+.contactdetail .flword .title{
+	color:#5a5a5a;
+	font-size:17px;
+	font-family:"微软雅黑";
+	padding-top:20px;
+	}
+.contactdetail .flword .btn{
+	font-family:"华文黑体";
+	text-align:center;
+	font-size:17px;
+	border:1px solid #f1bb46;
+	height:30px;
+	line-height:30px;
+	margin-top:12px;
+	margin-right:10px;
+	color:#f1bb46;
+	display:inline-block;
+	}
 
 
 

@@ -71,10 +71,10 @@
             	<img src="${rmtResPath}/static/images/place.png" width="22" height="22"/>
                	 场地
             </li>
-            <%-- <li class="retina-1px-border-bottom1" onclick="Activity.hold()">
+            <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
             	<img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
-                                   举办活动
-            </li> --%>
+                              联系我们
+            </li> 
         </ul>
     </div>
 <!-- end -->
