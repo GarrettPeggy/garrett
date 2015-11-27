@@ -118,7 +118,7 @@
 					                        <div class="col-sm-6">
 					                          <select class="form-control" name="spaceType">
 					                            <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
-													<option value="${spaceType.key}" selected="${spaceType.key eq spaceMap.spaceInfo.space_type?'selected':''}">${spaceType.value}</option>
+													<option value="${spaceType.key}" ${spaceType.key eq spaceMap.spaceInfo.space_type?'selected="selected"':''}>${spaceType.value}</option>
 												</c:forEach>
 					                          </select>
 					                        </div>
