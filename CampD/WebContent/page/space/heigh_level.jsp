@@ -75,7 +75,7 @@
 		        	<c:if test="${pageInfo.pageSize > pageInfo.curPage }">
 	        			<div id="loadMore_li">
 	        				<button id="loadMore" name="loadMore" class="btn btn-xs btn-light bigger loadBtn" onclick="Space.loadMore()">加载更多...</button>
-	        			<div>
+	        			</div>
 	        		</c:if>
         		</div>
     		</c:otherwise>

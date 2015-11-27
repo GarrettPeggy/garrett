@@ -1118,13 +1118,13 @@ a:hover{text-decoration:none;}
      z-index:40;
 }
 .newindex-nav ul li {
-  margin-left: 5px;
+  margin-left: 17px;
   position: relative;
   height: 44px;
   line-height: 44px;
 }
-.newfoot-left-icon  .newindex-nav ul li .tu{
-	margin-right:5px;
+ .newindex-nav  ul li .tu{
+	margin-right:8px;
 }
 /*footer-right*/
 .footer-newperson-right{

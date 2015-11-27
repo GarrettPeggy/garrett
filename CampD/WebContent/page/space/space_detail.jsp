@@ -90,17 +90,21 @@
         	<div class=" retina-1px-border-bottom  padt10 bt_line">
             	<span class="fl percent">适用活动</span>
                 <ul class="consider">
-                	<c:forEach var="category" items="${ fn:split(jsonview.spaceInfo.work_for, ',') }">
-                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_${category}.png" width="25" height="25"></li>
-                    </c:forEach>
+                	<c:if test="${not empty jsonview.spaceInfo.work_for}">
+	                	<c:forEach var="category" items="${ fn:split(jsonview.spaceInfo.work_for, ',') }">
+	                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_${category}.png" width="25" height="25"></li>
+	                    </c:forEach>
+                    </c:if>
                  </ul>
             </div>
             <div class="padt10">
             	<span class="fl percent">基础设施</span>
                    <ul class="consider">
-                   	<c:forEach var="infrastructure" items="${ fn:split(jsonview.spaceInfo.infrastructure, ',') }">
-                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="25" height="25"></li>
-                    </c:forEach>
+                    <c:if test="${not empty jsonview.spaceInfo.infrastructure}">
+	                   	<c:forEach var="infrastructure" items="${ fn:split(jsonview.spaceInfo.infrastructure, ',') }">
+	                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="25" height="25"></li>
+	                    </c:forEach>
+                    </c:if>
                  </ul> 
             </div>
         </div>
