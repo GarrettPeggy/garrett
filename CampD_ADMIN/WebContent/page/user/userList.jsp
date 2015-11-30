@@ -101,7 +101,7 @@
 
 											<div class="widget-toolbox padding-8 clearfix">
 												<div class="search-con-btn">
-													<button class="btn btn-xs btn-danger" onclick="User.searchUserList()" type="button">
+													<button class="btn btn-xs btn-danger" onclick="User.searchListByForm()" type="button">
 														<span class="bigger-110">搜索</span> 
 														<i class="ace-icon fa fa-search icon-on-right"></i>
 													</button>

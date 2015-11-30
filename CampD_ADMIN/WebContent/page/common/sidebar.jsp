@@ -75,7 +75,6 @@
 			</ul>
 		</li>
 	
-	
 		<li class="" id="leftMenu130100">
 			<a href="#" class="dropdown-toggle">
 				<img src="${locResPath}/static/images/statement .png"/>
@@ -88,6 +87,32 @@
 					<a href="${ctx}/information/toHomePicConfig.do">
 						<i class="menu-icon fa fa-caret-right"></i>
 						首页轮播图
+					</a>
+					<b class="arrow"></b>
+				</li>
+			</ul>
+		</li>
+		
+		<li class="" id="leftMenu140100">
+			<a href="#" class="dropdown-toggle">
+				<!-- <i class="menu-icon fa fa-users"></i> -->
+				<img src="${locResPath}/static/images/look.png"/>
+				<span class="menu-text"> 礼品管理 </span>
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li class="" name="subMenu140100" id="leftMenu140101">
+					<a href="${ctx}/gift/toAdd.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						发布礼品
+					</a>
+					<b class="arrow"></b>
+				</li>
+				<li class="" name="subMenu140100" id="leftMenu140102">
+					<a href="${ctx}/gift/toList.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						礼品列表
 					</a>
 					<b class="arrow"></b>
 				</li>

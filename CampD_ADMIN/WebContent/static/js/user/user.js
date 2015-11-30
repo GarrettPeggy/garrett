@@ -56,6 +56,10 @@ User.searchUserList = function(){
 		pageInfo("userListForm",User.searchUserList);
 	});
 };
+User.searchListByForm = function(){
+	$("#curPage").val(1);
+	User.searchUserList();
+};
 
 /**
  * 设置用户角色

@@ -180,7 +180,7 @@
 
 											<div class="widget-toolbox padding-8 clearfix">
 												<div class="search-con-btn">
-													<button class="btn btn-xs btn-danger" onclick="Space.searchSpaceList()" type="button">
+													<button class="btn btn-xs btn-danger" onclick="Space.searchListByForm()" type="button">
 														<span class="bigger-110">搜索</span> 
 														<i class="ace-icon fa fa-search icon-on-right"></i>
 													</button>
@@ -211,6 +211,7 @@ $(function(){
 	DateUtil.initDatePicker();
 	Space.searchSpaceList();
 	$.fn.citySelect(['#province', '#city', '#area'],['' , '' , '']);
+	$(".infolist .liststyle span ul").css("left","-26px");
 });
 </script>
 </html>

@@ -41,7 +41,7 @@
 	</script>
 	
 	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
-	<script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/gift/gift.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
@@ -55,28 +55,28 @@
 		</script>
 
 		<jsp:include page="/page/common/sidebar.jsp" flush="true">
-			<jsp:param value="120101" name="leftMenuSelectId"/>
+			<jsp:param value="140101" name="leftMenuSelectId"/>
 		</jsp:include>
 		
 		<div class="main-content">
 			<div class="main-content-inner">
 				<jsp:include page="/page/common/breadcrumbs.jsp" flush="true">
-					<jsp:param   value='[{"name":"场地管理","href":"#"},{"name":"发布场地","href":"${ctx}/space/toAdd.do"}]'  name="navigationItems" />
+					<jsp:param value='[{"name":"礼品管理","href":"#"},{"name":"添加礼品","href":"${ctx}/gift/toAdd.do"}]' name="navigationItems" />
 				</jsp:include>
 
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-							<form id="addSpaceInfoForm">
-								<input type="hidden" name="spaceLevel" value="${systemConst.COMMON_SPACE }"><!-- 默认场地都是普通场地 -->
-								<flagToken:token tokenName="addSpaceInfoForm"/>
-								<div class="page-header"> <h1> 发布场地信息 </h1> </div>
+							<form id="addGiftForm">
+								<input type="hidden" name="level" value="${systemConst.GIFT_LEVEL_0 }"><!-- 默认礼品都是普通礼品-->
+								<flagToken:token tokenName="addGiftForm"/>
+								<div class="page-header"> <h1> 发布礼品信息 </h1> </div>
 					            <div class="row">
 					              <div class="col-xs-12">
 					                <div class="form-horizontal">
 					                
 					                  <div class="form-group">
-					                    <label for="name" class="col-xs-12 col-sm-2 control-label no-padding-right">场地名称</label>
+					                    <label for="name" class="col-xs-12 col-sm-2 control-label no-padding-right">礼品名称</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <input type="text" name="name" id="name" class="width-100" notnull="true" maxlength="50" >
@@ -84,6 +84,74 @@
 					                      </span> 
 					                     </div>
 					                     <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label for="providerName" class="col-xs-12 col-sm-2 control-label no-padding-right">公司名称</label>
+					                    <div class="col-xs-12 col-sm-3"> 
+					                      <span class="block input-icon input-icon-right">
+						                      <input type="text" name="providerName" id="providerName" class="width-100" notnull="true" maxlength="50" >
+						                      <i class="ace-icon fa fa-leaf"></i> 
+					                      </span> 
+					                     </div>
+					                     <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label class="col-xs-12 col-sm-2 control-label no-padding-right">公司所在地区</label>
+					                    <div class="col-xs-12 col-sm-6 infolist"> 
+					                      <span class="block input-icon input-icon-right liststyle">
+						                      	<span id="providerProvince">
+				                                    <i>请选择省份</i>
+				                                    <ul>
+				                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
+				                                    </ul>
+				                                    <input type="hidden" name="providerProvince" class="curValue" value="">
+				                                </span>
+				                                <span id="providerCity">
+				                                    <i>请选择城市</i>
+				                                    <ul>
+				                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
+				                                    </ul>
+				                                    <input type="hidden" name="providerCity" class="curValue" value="">
+				                                </span>
+				                                <span id="providerArea">
+				                                    <i>请选择地区</i>
+				                                    <ul>
+				                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
+				                                    </ul>
+				                                    <input type="hidden" name="providerArea" class="curValue" value="">
+				                                </span>
+					                      </span> 
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label for="providerAdress" class="col-xs-12 col-sm-2 control-label no-padding-right">公司地址</label>
+					                    <div class="col-xs-12 col-sm-3"> 
+					                      <span class="block input-icon input-icon-right">
+						                      <input type="text" name="providerAdress" id="providerAdress" class="width-100" notnull="true" maxlength="100" >
+						                      <i class="ace-icon fa fa-leaf"></i> 
+					                      </span> 
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
+					                    <label class="col-sm-2 control-label no-padding-right">主营业务</label>
+					                    <div class="col-md-3">
+					                      <div class="row">
+					                        <div class="col-sm-6">
+					                          <select class="form-control" name="mainBusiness">
+					                            <c:forEach items="${systemConst.mainBusinessMap}" var="mainBusiness">
+													<option value="${mainBusiness.key}">${mainBusiness.value}</option>
+												</c:forEach>
+					                          </select>
+					                        </div>
+					                      </div>
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
 					                  </div>
 					                  
 					                  <div class="form-group">
@@ -109,13 +177,13 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label class="col-sm-2 control-label no-padding-right">场地类型</label>
+					                    <label class="col-sm-2 control-label no-padding-right">礼品形态</label>
 					                    <div class="col-md-3">
 					                      <div class="row">
 					                        <div class="col-sm-6">
-					                          <select class="form-control" name="spaceType">
-					                            <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
-													<option value="${spaceType.key}">${spaceType.value}</option>
+					                          <select class="form-control" name="form">
+					                            <c:forEach items="${systemConst.formMap}" var="form">
+													<option value="${form.key}">${form.value}</option>
 												</c:forEach>
 					                          </select>
 					                        </div>
@@ -125,34 +193,12 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="cost" class="col-xs-12 col-sm-2 control-label no-padding-right">场地费用</label>
-					                    <div class="col-xs-12 col-sm-3"> 
-					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="cost" id="cost" class="width-100" datatype="money" notnull="true" >
-						                      <i class="ace-icon fa fa-leaf"></i> 
-					                      </span>
-					                    </div>
-					                    <div class="help-block col-xs-12 col-sm-reset inline"><b>元/小时</b></div>
-					                  </div>
-					                  
-					                  <div class="form-group">
-					                    <label for="cost" class="col-xs-12 col-sm-2 control-label no-padding-right">场地容量</label>
-					                    <div class="col-xs-12 col-sm-3"> 
-					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="capacity" id="capacity" class="width-100" datatype="number" notnull="true" >
-						                      <i class="ace-icon fa fa-leaf"></i> 
-					                      </span>
-					                    </div>
-					                    <div class="help-block col-xs-12 col-sm-reset inline"><b>人</b></div>
-					                  </div>
-					                  
-					                  <div class="form-group">
-					                    <label class="col-sm-2 control-label no-padding-right">适合活动</label>
+					                    <label class="col-sm-2 control-label no-padding-right">适合活动类型</label>
 					                    <div class="col-sm-9">
 					                      <div class="row">
 					                        <div class="checkbox">
 					                            <c:forEach items="${systemConst.categoryMap}" var="category">
-					                            	<label onclick="Space.updateWorkforInfo(event,this);" style="padding-bottom: 10px;">
+					                            	<label onclick="Gift.checkWorkforInfo(event,this);" style="padding-bottom: 10px;">
 														<input name="work-for" class="ace ace-checkbox-${category.key}" value="${category.key}" type="checkbox">
 														<span class="lbl">${category.value}</span>
 													</label>
@@ -165,47 +211,29 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label class="col-sm-2 control-label no-padding-right">基础设施</label>
-					                    <div class="col-sm-6">
-					                      <div class="row">
-					                        <div class="checkbox">
-					                            <c:forEach items="${systemConst.infrastructureMap}" var="infrastructure">
-					                            	<label style="padding-bottom: 10px;">
-														<input name="infra-structure" class="ace ace-checkbox-${infrastructure.key}" value="${infrastructure.key}" type="checkbox">
-														<span class="lbl">${infrastructure.value}</span>
-													</label>
-												</c:forEach>
-												<input type="hidden" name="infrastructure" id="infrastructure" value="">
-					                        </div>
-					                      </div>
-					                    </div>
-					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
-					                  </div>
-					                  
-					                  <div class="form-group">
-					                    <label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">所在地区</label>
+					                    <label class="col-xs-12 col-sm-2 control-label no-padding-right">活动适用地区</label>
 					                    <div class="col-xs-12 col-sm-6 infolist"> 
 					                      <span class="block input-icon input-icon-right liststyle">
-						                      	<span id="province">
+						                      	<span id="workForProvince">
 				                                    <i>请选择省份</i>
 				                                    <ul>
 				                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
 				                                    </ul>
-				                                    <input type="hidden" name="province" class="curValue" value="">
+				                                    <input type="hidden" name="workForProvince" class="curValue" value="">
 				                                </span>
-				                                <span id="city">
+				                                <span id="workForCity">
 				                                    <i>请选择城市</i>
 				                                    <ul>
 				                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
 				                                    </ul>
-				                                    <input type="hidden" name="city" class="curValue" value="">
+				                                    <input type="hidden" name="workForCity" class="curValue" value="">
 				                                </span>
-				                                <span id="area">
+				                                <span id="workForArea">
 				                                    <i>请选择地区</i>
 				                                    <ul>
 				                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
 				                                    </ul>
-				                                    <input type="hidden" name="area" class="curValue" value="">
+				                                    <input type="hidden" name="workForArea" class="curValue" value="">
 				                                </span>
 					                      </span> 
 					                    </div>
@@ -213,29 +241,22 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">详细地址</label>
-					                    <div class="col-xs-12 col-sm-3"> 
-					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="adress" id="adress" class="width-100" notnull="true" maxlength="100" >
-						                      <i class="ace-icon fa fa-leaf"></i> 
+					                    <label for="showImage" class="col-xs-12 col-sm-2 control-label no-padding-right">礼品图片</label>
+					                    <input type="hidden" id="flag" name="flag" value="0"/><!-- 1表示是修改界面  0表示是新增界面 -->
+					                    <input type="hidden" id="showImage" name="showImage" value="" />
+					                    <input type="hidden" id="realPath" name="realPath"/>
+					                    <div class="col-xs-12 col-sm-9"> 
+					                      <span class="block input-icon input-icon-right" id="pic_container">
+				                      		  	<div class="avatar-title clearfix">
+									    			<input type="file" class="btn-orange-s pull-lef" onchange="Gift.uploadPic(this);" id="cropImg" name="cropImg"/>
+									    		</div>
 					                      </span> 
 					                    </div>
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
-					                  </div>
+						              </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="traffic" class="col-xs-12 col-sm-2 control-label no-padding-right">交通概况</label>
-					                    <div class="col-xs-12 col-sm-3"> 
-					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="traffic" id="traffic" class="width-100" maxlength="100" notnull="true" >
-						                      <i class="ace-icon fa fa-leaf"></i> 
-					                      </span> 
-					                    </div>
-					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
-					                  </div>
-					                  
-					                  <div class="form-group">
-					                    <label for="description" class="col-xs-12 col-sm-2 control-label no-padding-right">场地介绍</label>
+					                    <label for="description" class="col-xs-12 col-sm-2 control-label no-padding-right">礼品介绍</label>
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <textarea rows="4" class="form-control limited" name="description" id="description"></textarea>
@@ -244,24 +265,9 @@
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
 					                  </div>
 					                  
-					                  <div class="form-group">
-					                    <label for="show_images" class="col-xs-12 col-sm-2 control-label no-padding-right">场地照片</label>
-					                    <input type="hidden" id="show_images" name="showImages" value="">
-					                    <input type="hidden" name="realPath" id="realPath" value=""><!-- 新文件的物理路径-->
-					                    <input type="hidden" name="oldPath" id="oldPath" value=""><!-- 新文件的物理路径-->
-					                    <div class="col-xs-12 col-sm-9"> 
-					                      <span class="block input-icon input-icon-right" id="pic_container">
-						                      	<div class="avatar-title clearfix">
-											    	<input type="file" class="btn-orange-s pull-lef"  onclick="Space.controlPicNum(event,this);" onchange="Space.uploadSpacePic(this,'addSpaceInfoForm');" id="cropImg" name="cropImg">
-											    </div>
-					                      </span> 
-					                    </div>
-					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
-					                  </div>
-					                  
 					                  <div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-primary" onclick="Space.addSpacePicToOSS();" type="button">
+											<button class="btn btn-primary" onclick="Gift.uploadPicToOSS();" type="button">
 												<i class="ace-icon fa fa-check bigger-110"></i> 发布
 											</button>
 											&nbsp; &nbsp; &nbsp;
@@ -284,7 +290,8 @@
 </body>
 <script type="text/javascript">
 $(function(){ //调用插件['#Province', '#City', '#Area']
-    $.fn.citySelect(['#province', '#city', '#area'],['北京市' , '北京市' , '东城区']);
+    $.fn.citySelect(['#workForProvince', '#workForCity', '#workForArea'],['北京市' , '北京市' , '东城区']);
+    $.fn.citySelect(['#providerProvince', '#providerCity', '#providerArea'],['北京市' , '北京市' , '东城区']);
 });
 </script>
 </html>

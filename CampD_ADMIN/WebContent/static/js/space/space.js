@@ -10,6 +10,10 @@ Space.searchSpaceList = function(){
 		pageInfo("spaceListForm",Space.searchSpaceList);
 	});
 };
+Space.searchListByForm = function(){
+	$("#curPage").val(1);
+	Space.searchSpaceList();
+};
 
 /**
  * 上传场地展示图片
@@ -240,7 +244,7 @@ Space.getSpaceImages = function(){
 };
 
 /**
- * 设置用户角色
+ * 更新场地级别
  */
 Space.updateSpaceLevel = function(id, spaceLevel){
 	var params = {
@@ -256,7 +260,7 @@ Space.updateSpaceLevel = function(id, spaceLevel){
 };
 
 /**
- * 设置用户角色
+ * 更新场地适用活动
  */
 Space.updateWorkforInfo = function(event, currentObj){
 	var $currentObj = $(currentObj).find('input[name="work-for"]');

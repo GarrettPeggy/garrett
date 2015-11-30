@@ -179,7 +179,10 @@ Activity.searchActivityList=function(){
 		pageInfo("activityListForm",Activity.searchActivityList);
 	});
 };
-
+Activity.searchListByForm = function(){
+	$("#curPage").val(1);
+	Activity.searchActivityList();
+};
 
 /**
  * 验证省市区是否为空
