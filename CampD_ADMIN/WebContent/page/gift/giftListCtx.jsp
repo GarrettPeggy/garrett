@@ -39,8 +39,8 @@
 				</td>
 				<td class="center">${gift.work_for_province}&nbsp;&nbsp;${gift.work_for_city}&nbsp;&nbsp;${gift.work_for_area}</td>
 				<td class="center">
-					<a href="${ctx}/gift/toEdit.do?id=${gift.id}">修改</a>&nbsp;&nbsp;
-					<a href="${ctx}/gift/toView.do?id=${gift.id}">查看</a>
+					<a href="${ctx}/gift/toEdit.do?id=${gift.id}">修改</a>&nbsp;
+					<a href="${ctx}/gift/toView.do?id=${gift.id}">查看</a>&nbsp;
 					<c:if test="${systemConst.GIFT_LEVEL_0 eq gift.level}">
 						<a href="javascript:Gift.updateLevel('${gift.id}','${systemConst.GIFT_LEVEL_1}')">标记精美</a>
 					</c:if>

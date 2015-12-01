@@ -29,8 +29,8 @@
 				<td class="center">${space.province}&nbsp;&nbsp;${space.city}&nbsp;&nbsp;${space.area}</td>
 				<td class="center">${space.adress}</td>
 				<td class="center">
-					<a href="${ctx}/space/toEditSpace.do?id=${space.id}">修改</a>&nbsp;&nbsp;
-					<a href="${ctx}/space/toViewSpace.do?id=${space.id}">查看</a>
+					<a href="${ctx}/space/toEditSpace.do?id=${space.id}">修改</a>&nbsp;
+					<a href="${ctx}/space/toViewSpace.do?id=${space.id}">查看</a>&nbsp;
 					<c:if test="${systemConst.COMMON_SPACE eq space.space_level}">
 						<a href="javascript:Space.updateSpaceLevel('${space.id}','${systemConst.FINE_SPACE}')">标记精品</a>
 					</c:if>
