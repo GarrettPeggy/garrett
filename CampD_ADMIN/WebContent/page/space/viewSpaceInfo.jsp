@@ -189,7 +189,7 @@
 										<div class="col-md-offset-3 col-md-9">
 											<a href="${ctx}/space/toList.do" class="btn btn-default btn-lg active" role="button">返回列表</a>
 										</div>
-									   </div>
+									  </div>
 					                </div>
 					              </div>
 					            </div>
