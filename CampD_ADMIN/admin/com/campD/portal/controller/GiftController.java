@@ -157,8 +157,8 @@ public class GiftController extends BaseController {
 	 * 
 	 */
 	@SuppressWarnings("rawtypes")
-	@RequestMapping("/toViewSpace.do")
-	public String toViewSpace(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
+	@RequestMapping("/toView.do")
+	public String toView(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
 		
 		Map reqMap = bindParamToMap(request);
 		Map giftMap = giftService.getById(reqMap);
