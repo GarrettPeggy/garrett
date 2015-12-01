@@ -21,7 +21,7 @@
         </a>
         <div class="head-content">场地详情</div>
         <div class="head-right-icon">
-        	<img src="${rmtResPath}/static/images/guanzhu.png" onclick="Space.share()" width="28" height="28"/>
+        	<img src="${rmtResPath}/static/images/guanzhu.png" onclick="Header.shareCD()" width="28" height="28"/>
         </div>
     </div>
 	<!-- end -->
@@ -92,7 +92,7 @@
                 <ul class="consider">
                 	<c:if test="${not empty jsonview.spaceInfo.work_for}">
 	                	<c:forEach var="category" items="${ fn:split(jsonview.spaceInfo.work_for, ',') }">
-	                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_${category}.png" width="25" height="25"></li>
+	                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_${category}.png" width="25" height="35"></li>
 	                    </c:forEach>
                     </c:if>
                  </ul>
@@ -102,7 +102,7 @@
                    <ul class="consider">
                     <c:if test="${not empty jsonview.spaceInfo.infrastructure}">
 	                   	<c:forEach var="infrastructure" items="${ fn:split(jsonview.spaceInfo.infrastructure, ',') }">
-	                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="25" height="25"></li>
+	                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="30" height="32"></li>
 	                    </c:forEach>
                     </c:if>
                  </ul> 
@@ -128,7 +128,7 @@
         
         	<a class="btn orange-btn btnheight" id="submit_tel"  href="tel:15601925235"><img class="cellphone" src="${rmtResPath}/static/images/tel_02.png"/>联系电话</a>
          
-          <div class="head-right-icon newfoot-right-icon">
+          <div class="head-right-icon newfoot-right-icon" onclick="Header.toRightMenu()">
         	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
           </div>
         </div>
@@ -142,79 +142,30 @@
     <!-- end -->
 
 	<!-- 分享 需要显示时删除hide -->
-    <div class="tc-modal share-modal hide newtc-modal" id="space_share">
+    <div class="tc-modal share-modal hide newtc-modal" id="guanzhu">
         <img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" >
         <span class="more">关注我们，获取更多活动资源</span>
-	    <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Space.cancel()"/>
+	    <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Header.cancelShareCD()"/>
     </div>
     <!-- end -->
     
     <!-- footer left-icon -->
-	       <div class="newindex-nav hide" id="avtivity_nav" >
-   	         <ul>
-       	         <li class="retina-1px-border-bottom1"  onclick="Activity.classify()">
-       	          	<img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">活动
-                 </li>
-                 <li class="retina-1px-border-bottom1"  onclick="Space.classify()">
-       	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
-                 </li>
-                 <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
-            	   <img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
-                                  联系我们
-            	</li>
-           	</ul>
-           </div>
-	    
-	    <!-- footer right-icon-->
-	    <div class="footer-newperson-right hide" id="activity_person">
-     	  <ul>
-         	<li class="line clearfix" onclick="Activity.signUp()">
-             	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img"/>
-              <div class="fl right-text">报名的活动</div>
-          </li>
-          <%-- <li class="line clearfix" onclick="Activity.sponsored()">
-             	<img src="${rmtResPath}/static/images/p2.png" width="41" height="41" class="fl left-img"/>
-              <div class="fl right-text">举办的活动</div>
-          </li> --%>
-          <c:if test="${empty USER_INFO}">
-	          <li class="line clearfix" onclick="Header.toLogin()">
-	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
-	              <div class="fl right-text">登录</div>
-	          </li>
-          </c:if>
-          <!-- 以下两个通过增加hide样式显示隐藏 -->
-          <c:if test="${!empty USER_INFO}">
-          	  <li class="line clearfix" onclick="Header.toUpdate()">
-	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
-	              <div class="fl right-text">${USER_INFO.userName}</div>
-	          </li>
-	          <li class="line clearfix" onclick="Header.toQuit()">
-	             	<img src="${rmtResPath}/static/images/p4.png" width="41" height="41" class="fl left-img"/>
-	              <div class="fl right-text">退出</div>
-	          </li>
-          </c:if>
-          <c:if test="${empty USER_INFO}">
-	          <li class="line clearfix" onclick="Header.toRegister()">
-	             	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img"/>
-	              <div class="fl right-text">注册</div>
-	          </li>
-          </c:if>
-        </ul>
-      </div>
-    
+    <div class="newindex-nav hide" id="avtivity_nav" >
+         <ul>
+   	         <li class="retina-1px-border-bottom1"  onclick="Header.classify()">
+   	          	<img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">活动
+             </li>
+             <li class="retina-1px-border-bottom1"  onclick="Header.spaceIndex()">
+   	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
+             </li>
+             <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
+        	   <img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
+                              联系我们
+        	</li>
+       	</ul>
+    </div>
 </body>
 <script type="text/javascript">
-	Space.share=function(){
-		//场地分享
-		var isHide = $("#space_share").hasClass("hide");
-		if(isHide){
-			$("#space_share").removeClass("hide");
-			$("#space_share").height($(document).height());
-		} else{
-			$("#space_share").addClass("hide");
-		}
-		//Share.qcode();
-	};
 	
 	$(function(){
 		Space.tapShow();

@@ -5,6 +5,7 @@
 <head>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
+	<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -14,7 +15,7 @@
         </a>
         <div class="head-content">联系我们</div>
         <div class="head-right-icon">
-        	<img src="${rmtResPath}/static/images/guanzhu.png" onclick="guanzhu()" width="28" height="28"/>
+        	<img src="${rmtResPath}/static/images/guanzhu.png" onclick="Header.shareCD()" width="28" height="28"/>
         </div>
     </div>
 	<!-- end -->
@@ -48,24 +49,8 @@
     <div class="tc-modal share-modal hide newtc-modal" id="guanzhu">
         <img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" >
         <span class="more">关注我们，获取更多活动资源</span>
-	    <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="guanzhucancel()"/>
+	    <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Header.cancelShareCD()"/>
     </div>
     <!-- end -->
 </body>
-<script type="text/javascript">
-	guanzhu=function(){
-		//场地分享
-		var isHide = $("#guanzhu").hasClass("hide");
-		if(isHide){
-			$("#guanzhu").removeClass("hide");
-			$("#guanzhu").height($(document).height());
-		} else{
-			$("#guanzhu").addClass("hide");
-		}
-		//Share.qcode();
-	};
-   guanzhucancel=function(){
-	$("#guanzhu").addClass("hide");
-   };
-</script>
 </html>

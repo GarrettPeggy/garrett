@@ -32,7 +32,34 @@ Header.toUpdate=function(){
  * 跳转到联系我们界面
  */
 Header.toContact=function(){
-	window.location.href = BASE_PATH + "/page/common/contact.jsp";
+	window.location.href = BASE_PATH + "/" +"page/common/contact.jsp";
+};
+/**
+ * 跳转到footer-rightmenu界面
+ */
+Header.toRightMenu=function(){
+	window.location.href = BASE_PATH + "/" +"page/common/rightmenu.jsp";
+};
+
+/**
+ * 已报名的活动 在用户活动表中就应该查询得到  就是查询我的报名活动
+ */
+Header.signUp=function(){
+	window.location.href = BASE_PATH + "/" +"activity/getMyTakeAnActive.do?&curPage=1&pageLimit=6&isUserAuth=true";
+};
+
+/**
+ * 活动分类页面
+ */
+Header.classify=function(){
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do?status=1&curPage=1&pageLimit=6&isUserAuth=false";
+};
+
+/**
+ * 跳转到场地首页
+ */
+Header.spaceIndex=function(){
+	window.location.href = BASE_PATH + "/" +"space/getSpaceInfoList.do?curPage=1&pageLimit=6&isUserAuth=false";
 };
 
 Header.initHeadIcon=function(){
@@ -141,4 +168,18 @@ Header.loadTapShow=function(){
 		alert(data.returnMsg);
 	});
 	
+};
+
+//分享平台公众号的二维码
+Header.shareCD=function(){
+	var isHide = $("#guanzhu").hasClass("hide");
+	if(isHide){
+		$("#guanzhu").removeClass("hide");
+		$("#guanzhu").height($(document).height());
+	} else{
+		$("#guanzhu").addClass("hide");
+	}
+};
+Header.cancelShareCD=function(){
+	   $("#guanzhu").addClass("hide");
 };

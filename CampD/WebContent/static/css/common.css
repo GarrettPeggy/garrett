@@ -130,7 +130,7 @@ a:hover{text-decoration:none;}
 
 .hide{display:none;}
 
-.positionR{position:relative;z-index:36;}
+.positionR{position:relative;z-index:42;}
 
 .header{
 	position:relative;
@@ -701,7 +701,7 @@ a:hover{text-decoration:none;}
 	font-size:12px;
 }
 .index-nav{
-	position:absolute;
+	position:fixed;/*固定定位*/
 	top:51px;
 	left:9px;
 	z-index:20;
@@ -744,6 +744,8 @@ a:hover{text-decoration:none;}
 }
 /*给head加透明度*/
 .person-right .newperson-right{
+	position:fixed;
+	top:51px;
 	width:100%;
 	height:230px;
 	margin:0px;
@@ -1080,7 +1082,7 @@ a:hover{text-decoration:none;}
 .activebase .padt10 .consider li.considerpic{
 	float:left;
 	margin-right:8%;
-	padding-top:5px;
+	
 }
 .newheader{
 	position:fixed;
@@ -1182,10 +1184,56 @@ a:hover{text-decoration:none;}
 	color:#f1bb46;
 	display:inline-block;
 	}
-
-
-
-
-
-
-
+/* footer-right-icon 菜单*/
+.wode{
+	height:100%;
+	width:100%;
+	background:#f3f1f1;
+	z-index:60;
+	}
+.wode .logoword{
+	height:40%;
+	width:100%;
+	}
+.wode .logoword img{
+	display:block;
+	margin-top:30%;
+	margin-bottom:70%;
+    margin-left:25%;
+	margin-right:25%;
+	width:50%;
+	text-align:center;
+	}
+.wode .list-des{
+	position:absolute;
+	   top:55%;
+	   left:0px;
+	   width:100%;
+	   height:30%;
+	}
+.list-des .listmar{
+	 float:left;
+	 width:25%;
+	 margin-left:4%;
+	 margin-right:4%;
+	}
+.list-des .listmar .list-pic{
+	text-align:center;
+	}	
+	
+.list-des .listmar .list-word {
+    text-align:center;
+	color:#606060;
+	font-family:"微软雅黑";
+	}
+.wode  .close{
+	position:fixed;
+    bottom:0px;
+	left:0px;
+	width:100%;
+	background:#fcfcfc;
+	height:51px;
+	line-height:51px;
+	text-align:center;
+	}
+	

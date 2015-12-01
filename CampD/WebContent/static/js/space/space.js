@@ -313,10 +313,3 @@ Space.loadMore=function(){
 	
 };
 
-/**
- * 跳转到场地首页
- */
-Space.classify=function(){
-	window.location.href = BASE_PATH + "/" +"space/getSpaceInfoList.do?curPage=1&pageLimit=6&isUserAuth=false";
-};
-

@@ -63,13 +63,6 @@ Activity.getLength=function(str){
 };
 
 /**
- * 活动分类页面
- */
-Activity.classify=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do?status=1&curPage=1&pageLimit=6&isUserAuth=false";
-};
-
-/**
  * 举办活动时的活动类型 
  */
 Activity.type=function(){
@@ -188,10 +181,10 @@ Activity.search=function(url,isUserAuth){
 		alert(data.returnMsg);
 	});
 };
+
 /**
  * 已报名的活动 在用户活动表中就应该查询得到  就是查询我的报名活动
  */
-
 Activity.signUp=function(){
 	window.location.href = BASE_PATH + "/" +"activity/getMyTakeAnActive.do?&curPage=1&pageLimit=6&isUserAuth=true";
 };
