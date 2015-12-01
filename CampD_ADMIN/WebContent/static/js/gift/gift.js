@@ -138,11 +138,11 @@ Gift.update = function(){
  */
 Gift.getWorkforInfo = function(){
 	var $checkedWorkforArray = $('input[name="work-for"]:checked');
-	var workFor = ",";
+	var workFor = "";
 	for (var i = 0; i < $checkedWorkforArray.length; i++) {
 		workFor += i==0?$($checkedWorkforArray[i]).val():","+$($checkedWorkforArray[i]).val();
 	}
-	$("#workFor").val(workFor+",");
+	$("#workFor").val(workFor);
 };
 
 /**

@@ -31,9 +31,7 @@
 				<td class="center">
 					<c:if test="${not empty gift.work_for}">
 	                	<c:forEach var="category" items="${ fn:split(gift.work_for, ',') }">
-	                		<c:if test="${not empty category }">
-	                			${systemConst.categoryMap[category]}&nbsp;&nbsp;
-	                		</c:if>
+	                		${systemConst.categoryMap[category]}&nbsp;&nbsp;
 	                    </c:forEach>
                     </c:if>
 				</td>
