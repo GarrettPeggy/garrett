@@ -170,13 +170,13 @@ public class GiftController extends BaseController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private void readDscriptionFromRemoteFile(Map spaceMap){
-		String description = (String) ((Map)spaceMap.get("giftMap")).get("description");
+	private void readDscriptionFromRemoteFile(Map giftMap){
+		String description = (String) ((Map)giftMap.get("giftMap")).get("description");
 		description = description.replace("\\", "/");
 		int index = description.indexOf("attached/html");
 		if(null!=description && index>-1){ // 将连接更新为内容
-			((Map)spaceMap.get("giftMap")).put("originalDiscriptionURL", description.substring(index));
-			((Map)spaceMap.get("giftMap")).put("description",FileUtils.readRemoteFile(SystemMessage.getString("ossResUrl") + description));
+			((Map)giftMap.get("giftMap")).put("originalDiscriptionURL", description.substring(index));
+			((Map)giftMap.get("giftMap")).put("description",FileUtils.readRemoteFile(SystemMessage.getString("ossResUrl") + description));
 		}
 	}
 	

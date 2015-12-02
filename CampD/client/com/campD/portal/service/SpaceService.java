@@ -16,13 +16,8 @@ import com.campD.portal.util.SystemMessage;
 public class SpaceService extends JsonClientService {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map add(Map reqMap){
-		return postForMap(SystemMessage.getString("spaceJsonServer") + "/add", reqMap);
-	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getSpaceInfoList(Map reqMap,PageInfo pageInfo,boolean isUserAuth){
-		return postForMap(SystemMessage.getString("spaceJsonServer") + "/getSpaceInfoList", reqMap,pageInfo, null, isUserAuth);
+		return postForMap(SystemMessage.getString("spaceJsonServer") + "/getSpaceInfoList", reqMap, pageInfo, null, isUserAuth);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

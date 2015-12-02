@@ -18,7 +18,7 @@ import com.campD.portal.util.FileUtils;
 import com.campD.portal.util.SystemMessage;
 
 /**
- * 
+ * 场地管理
  * @author qrh
  *
  */
@@ -32,23 +32,6 @@ public class SpaceController extends BaseController {
 	private SpaceService spaceService;
 	
 	/**
-	 * 后台场地发布
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping("/add.do")
-    @ResponseBody
-	public JSONView add(HttpServletResponse response, HttpServletRequest request) throws Exception {
-		
-		Map<String, Object> map = bindParamToMap(request);
-		Map<?, ?> resultMap = spaceService.add(map);
-		 
-		return getOperateJSONView(resultMap);
-	}
-	
-	/**
 	 * 查询场地列表信息
 	 * @param response
 	 * @param request
@@ -57,13 +40,14 @@ public class SpaceController extends BaseController {
 	 */
 	@RequestMapping("/getSpaceInfoList.do")
 	public String getSpaceInfoList(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		
 		bindParamToAttrbute(request);
+		
 		Map<String, Object> map = bindParamToMap(request);
 		PageInfo pageInfo = getPageInfo(request);//每页显示多少条 、当前页   两个参数
 		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		
-		JSONView jsonview=getSearchJSONView(resultMap);
-		
+		JSONView jsonview = getSearchJSONView(resultMap);
 		request.setAttribute("jsonview", jsonview);
 		 
 		return "space/space_index";
@@ -100,9 +84,7 @@ public class SpaceController extends BaseController {
 		bindParamToAttrbute(request);
 		
 		Map<String, Object> map = bindParamToMap(request);
-		
 		PageInfo pageInfo=getPageInfo(request);
-		
 		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		
 		JSONView jsonview=getSearchJSONView(resultMap);
@@ -122,7 +104,6 @@ public class SpaceController extends BaseController {
 	public String getSpaceInfoById(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
-		
 		Map<?, ?> resultMap = spaceService.getSpaceInfoById(map);
 		readDscriptionFromRemoteFile(resultMap);
 		
