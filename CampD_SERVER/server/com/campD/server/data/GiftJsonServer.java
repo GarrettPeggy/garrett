@@ -171,10 +171,10 @@ public class GiftJsonServer {
 			sqlCount+=" and provider_area='"+providerArea+"' ";
 		}
 
-		Object workFor = reqMap.get("workFor");//适用活动
+		Object workFor = reqMap.get("workFor");//该字段是以逗号隔开的，适用活动
 		if(null!=workFor && !"".equals(workFor)){
-			sqlStr+=" and work_for like '%,"+workFor+",%' ";
-			sqlCount+=" and work_for like '%,"+workFor+",%' ";
+			sqlStr+=" and FIND_IN_SET("+workFor+", work_for) ";
+			sqlCount+=" and FIND_IN_SET("+workFor+", work_for) ";
 		}
 		
 		Object workForProvince = reqMap.get("workForProvince");//礼品适用省份

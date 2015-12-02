@@ -167,10 +167,10 @@ public class SpaceJsonServer {
 			sqlCount+=" and t1.city='"+city+"' ";
 		}
 
-		Object workFor = reqMap.get("workFor");//适用活动
+		Object workFor = reqMap.get("workFor");//该字段是以逗号隔开的，适用活动
 		if(null!=workFor && !"".equals(workFor)){
-			sqlStr+=" and t1.work_for ="+workFor+" ";
-			sqlCount+=" and t1.work_for ="+workFor+" ";
+			sqlStr+=" and FIND_IN_SET("+workFor+", work_for) ";
+			sqlCount+=" and FIND_IN_SET("+workFor+", work_for) ";
 		}
 
 		Object cost = reqMap.get("cost");//名称
