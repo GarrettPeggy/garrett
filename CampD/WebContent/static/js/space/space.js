@@ -165,16 +165,10 @@ Space.cost=function(costType, curObj){
 	
 	$('#curPage').val(1);
 	$('#cost').val(costType);//costType的值为  0：全部  1：收费   2：免费
-	$('#spaceType').val("");
-	$('#area').val("");
-	$('#minCapacity').val("");
-	$('#maxCapacity').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
-	
-	Space.resetStyle(curObj);
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -186,17 +180,10 @@ Space.type=function(spaceType, curObj){
 	
 	$('#curPage').val(1);
 	$('#spaceType').val(spaceType);//spaceType的值为  0：全部  1：众创空间  2：咖啡厅  3：公司会议室   4：社区场地   5：商业广场
-	$('#cost').val("");
-	$('#area').val("");
-	$('#minCapacity').val("");
-	$('#maxCapacity').val("");
-	
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
-	
-	Space.resetStyle(curObj);
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -208,16 +195,10 @@ Space.address=function(area, curObj){
 	
 	$('#curPage').val(1);
 	$('#area').val(area);
-	$('#cost').val("");
-	$('#spaceType').val("");
-	$('#minCapacity').val("");
-	$('#maxCapacity').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
-	
-	Space.resetStyle(curObj);
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -230,15 +211,10 @@ Space.capacity=function(minCapacity,maxCapacity, curObj){
 	$('#curPage').val(1);
 	$('#minCapacity').val(minCapacity);
 	$('#maxCapacity').val(maxCapacity);
-	$('#cost').val("");
-	$('#spaceType').val("");
-	$('#area').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
-	
-	Space.resetStyle(curObj);
 	
 	$("#space_highlevel").empty();
 	Space.search();
