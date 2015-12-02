@@ -36,7 +36,6 @@ var Space={
 
 $(function(){
 	Space.init();
-	//Space.tapShow();//自动调用轮播图效果
 });
 /**
  * 场地初始化
@@ -78,20 +77,18 @@ Space.list=function(){
 		systemLoaded();
 		//数据查询成功
 		//清空列表  活动查询设置为空
-		$("#space_first_pop").html("");
-		var space_html=[];
+		$("#space_first_pop").empty();
 		var spaceList=json.resultList;
 		//把数据写到页面上
 		if(null!=spaceList && spaceList.length>0){
 			for(var i=0;i<spaceList.length;i++){
 				var area = spaceList[i].area;
 				area = null==area?"":area;
-				space_html.push("<a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==spaceList[i].name ? "无名称" : spaceList[i].name )+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/place_2.png' width='10' height='10'/>&nbsp;<span>" + area + "</span>&nbsp;&nbsp;<span>"+spaceList[i].traffic+"</span>&nbsp;&nbsp;<span>"+spaceList[i].cost+"元/小时</span></div></li></a>");
+				$("#space_first_pop").append($("<a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==spaceList[i].name ? "无名称" : spaceList[i].name )+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/place_2.png' width='10' height='10'/>&nbsp;<span>" + area + "</span>&nbsp;&nbsp;<span>"+spaceList[i].traffic+"</span>&nbsp;&nbsp;<span>"+spaceList[i].cost+"元/小时</span></div></li></a>"));
 			}
 		}else{
-			space_html.push("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>");
+			$("#space_first_pop").append($("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>"));
 		}
-		$("#space_first_pop").html(space_html.join(""));
 	},function(data){
 		systemLoaded();
 		alert(data.returnMsg);
@@ -258,13 +255,10 @@ Space.search=function(){
 			$("#space_highlevel").append("<div class='ground-no'><img src='"+REMOTE_RES_PATH+"/static/images/no_data.png' width='41' height='41'/><p>抱歉，没有找到合适的场地</p><p>请浏览其他场地吧</p></div>");
 		}
 		
-		
 		var dataCount = parseInt(json.dataCount);
 		var pageSize = Math.floor(dataCount/pageLimit);
 		pageSize = dataCount%pageLimit==0 ? pageSize: pageSize + 1;
-		//alert("pageSize=============="+pageSize);
 		var curPage = $("#curPage").val();
-		//alert("curPage###############"+curPage);
 		if(curPage<pageSize){
 			$("#loadMore_li").remove();
 			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Space.loadMore()'>加载更多...</button></div>");
@@ -281,11 +275,8 @@ Space.search=function(){
  * 加载更多...按钮
  */
 Space.loadMore=function(){
-	
 	var curPage = 1 + parseInt($("#curPage").val());
 	$("#curPage").val(curPage);//更新当前页面
-	
 	Space.search();
-	
 };
 
