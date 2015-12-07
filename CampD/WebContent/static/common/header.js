@@ -40,7 +40,6 @@ Header.toContact=function(){
 Header.toRightMenu=function(){
 	window.location.href = BASE_PATH + "/" +"page/common/rightmenu.jsp";
 };
-
 /**
  * 已报名的活动 在用户活动表中就应该查询得到  就是查询我的报名活动
  */
@@ -182,4 +181,10 @@ Header.shareCD=function(){
 };
 Header.cancelShareCD=function(){
 	   $("#guanzhu").addClass("hide");
+};
+/**
+ * 跳转到gift index界面
+ */
+Header.toGiftIndex=function(){
+	window.location.href = BASE_PATH + "/gift/indexList.do";
 };

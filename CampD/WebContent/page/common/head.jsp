@@ -4,6 +4,7 @@
 <script type="text/javascript" src="${locResPath}/static/common/swipe/js/swipe.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
+<script type="text/javascript" src="${locResPath}/static/js/gift/gift.js?_v=${vs}"></script>
 
    	<!-- 毛玻璃效果蒙层 -->
     <!-- <div class="mao hide" id="activity_mao"></div> -->
@@ -66,6 +67,10 @@
             <li class="retina-1px-border-bottom1" onclick="Header.spaceIndex()">
             	<img src="${rmtResPath}/static/images/place.png" width="22" height="22"/>
                	 场地
+            </li>
+            <li class="retina-1px-border-bottom1" onclick="Header.toGiftIndex()">
+            	<img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
+                               礼品          
             </li>
             <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
             	<img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>

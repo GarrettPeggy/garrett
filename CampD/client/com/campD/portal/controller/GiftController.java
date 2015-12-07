@@ -53,6 +53,24 @@ public class GiftController extends BaseController {
 	}
 	
 	/**
+	 * 精美礼品列表页
+	 * @throws Exception
+	 */
+	@RequestMapping("/highLevelList.do")
+	public String highLevelList() throws Exception {
+		return "gift/high_level";
+	}
+	
+	/**
+	 * 礼品首页
+	 * @throws Exception
+	 */
+	@RequestMapping("/indexList.do")
+	public String indexList() throws Exception {
+		return "gift/gift_index";
+	}
+	
+	/**
 	 * 查询礼品详情
 	 * @param response
 	 * @param request
@@ -60,7 +78,7 @@ public class GiftController extends BaseController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/getById.do")
-	public String getSpaceInfoById(HttpServletResponse response, HttpServletRequest request) throws Exception {
+	public String getById(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> map = bindParamToMap(request);
 		Map<?, ?> giftMap = giftService.getById(map);

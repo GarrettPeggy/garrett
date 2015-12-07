@@ -65,7 +65,7 @@
                     <dd class="fl newfr1">${jsonview.spaceInfo.traffic }</dd> 
                 </dl>
                 <dl class="fontSize14  clearfix color94 newmat ">
-                    <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
+                    <dt class="fl newfl"><img src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
                     <dd class="fl newfr2">${jsonview.spaceInfo.adress }</dd> 
                </dl> 
                 
@@ -157,6 +157,9 @@
              </li>
              <li class="retina-1px-border-bottom1"  onclick="Header.spaceIndex()">
    	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
+             </li>
+             <li class="retina-1px-border-bottom1"  onclick="Header.toGiftIndex()">
+   	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">礼品
              </li>
              <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
         	   <img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>

@@ -22,7 +22,7 @@ public class GiftService extends JsonClientService {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getById(Map reqMap) {
 		
-		return postForMap(SystemMessage.getString("giftJsonServer") + "/getGiftById", reqMap);
+		return postForObject(SystemMessage.getString("giftJsonServer") + "/getGiftById", reqMap, Map.class, false);
 		
     }
 	

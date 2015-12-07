@@ -32,7 +32,7 @@
                  </c:if>
                  <c:if test="${not empty USER_INFO}">
                  <div class="listmar" onclick="Header.toQuit()"> 
-	                   <div class="list-pic"><img src="${rmtResPath}/static/images/p4.png" width="70" height="70"/></div>
+	                   <div class="list-pic"><img src="${rmtResPath}/static/images/quit.png" width="70" height="70"/></div>
 	                    <div class="list-word">退出</div>
 	                 </div>
                  </c:if>

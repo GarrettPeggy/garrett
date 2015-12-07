@@ -492,7 +492,7 @@ a:hover{text-decoration:none;}
 	float:left;
 	width:25%;
 	text-align:center;
-	background:url(/static/images/select_icon.png) no-repeat 83%;
+	background:url(/campD/static/images/select_icon.png) no-repeat 83%;/*提交时要改回去*/
 	background-size:8px 7px;
 }
 .ground-list li .data-li-right .dlr-title{
@@ -771,31 +771,8 @@ a:hover{text-decoration:none;}
 	height: 102px;
 }
 
-/*######### 閿欒椤甸潰  ######## */
-.nofood{
-	font-size:34px;
-	color:#FFF;
-	background:url(/static/images/wrong.png) no-repeat;
-	background-size: 100% 100%;
-}
-.nofood p{
-	font-family:寰蒋闆呴粦;
-	padding:520px 0 0 153px;
-}
-.nofood ul{
-	width:50%;
-	margin:0 auto;
-	margin-top:20px;
-	line-height:60px;
-	
-}
-.nofood ul li{
-	list-style-type:disc;
-	font-family:寰蒋闆呴粦;
-}
-.nofood a{
-	color:#FFF;
-}
+/*######### 错误页面  ######## */
+
 .point{
 	width:43%;
 	margin:35px auto;
@@ -1236,4 +1213,99 @@ a:hover{text-decoration:none;}
 	line-height:51px;
 	text-align:center;
 	}
-	
+/*精美礼品页*/
+.pd5 .giftword{
+	margin-top:0px;
+	padding-left:10px;
+	color:#3c3c3c;
+	font-size:15px;
+	letter-spacing:1px;
+	}
+.pd5 .giftrange{
+	padding-top:5px;
+	padding-left:10px;
+	color:#949494;
+	font-size:12px;
+	}
+.pd5 .giftrange span{
+	margin-left:8px;
+	margin-right:2px;
+	}
+/*礼品首页*/
+.search-box  .giftlist li{
+	width:30%;
+	margin-left:3%;
+	font-size:14px;
+	font-family:"微软雅黑";
+	}
+.ul-box .data-list .gift-list{
+	height:78px;
+	}
+.mat5{
+	margin-top:5px;
+	}
+.gift-list .gift-li-left{
+	display:block;
+	margin-right:10px;
+	}
+.gift-list .gift-li-right .title{
+	padding-top:7px;
+	font-size:14px;
+	color:#000;
+	}
+.gift-list .gift-li-right .style{
+	color:#a5a5a5;
+	padding-top:10px;
+	font-size:12px;
+	}
+.gift-list .gift-li-right .style .stylecolor{
+	color:#e6c680;
+	}
+
+/*礼品详情*/
+.giftpic{
+	position:relative;
+	background: #fff;
+    margin: 0px;
+    padding: 0px;
+	}
+.ac-detail-mechanism .adm-line .dresspic{
+	text-align:center;
+	margin-top:5px;
+	padding-top:2px;
+	}
+.ac-detail-mechanism .adm-line .dress{
+	width:85%;
+	margin-left:2%;
+	margin-right:5%;
+}
+.act .giftstyle{
+     margin-left:1%;
+     margin-right:2%;
+	}
+.ac-detail-mechanism .act{
+	position:relative;
+	height:50px;
+	line-height:50px;
+}
+ .act .actstyle{
+	width:25%;
+}
+ .act .category{
+	height:50px;	
+	padding-top:8px;
+}
+ .act .category span{
+	padding-top:10px;
+	width:20%;
+	margin-left:2%;
+	margin-right:3%;
+	margin-bottom:5px;
+}
+
+ .act .city  span{
+    height: 50px;
+    line-height: 50px;
+	margin-left:1%;
+	margin-right:2%;
+	}

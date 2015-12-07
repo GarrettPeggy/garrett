@@ -167,6 +167,59 @@ public class SystemConstant {
 		spaceLevelMap.put(COMMON_SPACE, "普通场地");
 		spaceLevelMap.put(FINE_SPACE, "精品场地");
 	}
+	
+	//===========================礼品的形态========================
+	public static String GIFT_FORM_0= "0";
+	public static String GIFT_FORM_1= "1";
+	public static String GIFT_FORM_2= "2";
+	public static String GIFT_FORM_3= "3";
+	public static Map formMap = new HashMap();
+	static{
+		formMap.put(GIFT_FORM_0, "实物");
+		formMap.put(GIFT_FORM_1, "礼券");
+		formMap.put(GIFT_FORM_2, "兑换码");
+		formMap.put(GIFT_FORM_3, "红包");
+	}
+	
+	//===========================礼品的主营业务=================注册，法律，财务，服务器，知识产权，创投，软件外包，场地，媒体，营推，管理咨询，人力资源=======
+	public static String GIFT_MAIN_BUSSINESS_0= "0";
+	public static String GIFT_MAIN_BUSSINESS_1= "1";
+	public static String GIFT_MAIN_BUSSINESS_2= "2";
+	public static String GIFT_MAIN_BUSSINESS_3= "3";
+	public static String GIFT_MAIN_BUSSINESS_4= "4";
+	public static String GIFT_MAIN_BUSSINESS_5= "5";
+	public static String GIFT_MAIN_BUSSINESS_6= "6";
+	public static String GIFT_MAIN_BUSSINESS_7= "7";
+	public static String GIFT_MAIN_BUSSINESS_8= "8";
+	public static String GIFT_MAIN_BUSSINESS_9= "9";
+	public static String GIFT_MAIN_BUSSINESS_10= "10";
+	public static String GIFT_MAIN_BUSSINESS_11= "11";
+	public static Map mainBusinessMap = new HashMap();
+	static{
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_0, "注册");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_1, "法律");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_2, "财务");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_3, "服务器");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_4, "知识产权");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_5, "创投");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_6, "软件外包");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_7, "场地");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_8, "媒体");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_9, "营推");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_10, "管理咨询");
+		mainBusinessMap.put(GIFT_MAIN_BUSSINESS_11, "人力资源");
+	}
+	
+	//========================礼品级别=============================
+	public static String GIFT_LEVEL_0= "0";//普通礼品
+	public static String GIFT_LEVEL_1= "1";//精品礼品
+	public static Map giftLevelMap = new HashMap();
+	static{
+		//场地级别
+		giftLevelMap.put(GIFT_LEVEL_0, "普通礼品");
+		giftLevelMap.put(GIFT_LEVEL_1, "精品礼品");
+	}
+	
 	/**
 	 * 将当前静态类的属性转换成Map
 	 * @return

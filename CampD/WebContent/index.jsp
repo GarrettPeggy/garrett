@@ -46,8 +46,8 @@
             
              <!-- 精品礼品 -->
             <div class="c-top clearfix">
-            	<div class="fl">精品礼品</div>
-                <div class="fr" onclick="    ">更多&gt;</div>
+            	<div class="fl">精美礼品</div>
+                <div class="fr" onclick="Gift.highlevel()">更多&gt;</div>
             </div>
             <div class="ul-box">
                 <ul class="data-list" id="present_first_pop">
@@ -66,5 +66,6 @@
 $(function(){
 	Activity.list();
 	Space.list();
+	Gift.list();
 });
 </script>
