@@ -225,17 +225,18 @@ public class ActivityController extends BaseController {
 		String requirements = (String) map.get("requirement");
 		// 重新生成活动需求的文件
 		resultMap = uploadRequirementsToOSS(requirements, request);
-		// 删除原有的文件
-		if(null!=map.get("originalRequirementURL")){
-			OSSUtil.deleteFile((String) map.get("originalRequirementURL"));
-		}
 		
 		// 假如需求保存文件成功则将活动保存到数据库
 		if(JSONView.RETURN_SUCCESS_CODE.equals(resultMap.get("returnCode"))){
 			map.put("requirement", resultMap.get("requirementsURL"));
 			resultMap = activityService.update(map);
 		}
-		 
+		
+		// 删除原有的文件
+		if(null!=map.get("originalRequirementURL")){
+			OSSUtil.deleteFile((String) map.get("originalRequirementURL"));
+		}
+		
 		return getOperateJSONView(resultMap);
 	}
 	

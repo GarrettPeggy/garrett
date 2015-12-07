@@ -103,15 +103,16 @@ public class SpaceController extends BaseController {
 		String description = (String) reqMap.get("description");
 		// 重新生成活动需求的文件
 		returnMap = uploadDescriptionToOSS(description, request);
-		// 删除原有的文件
-		if(null!=reqMap.get("originalDiscriptionURL")){
-			OSSUtil.deleteFile((String) reqMap.get("originalDiscriptionURL"));
-		}
 		
 		// 假如需求保存文件成功则将活动保存到数据库
 		if(JSONView.RETURN_SUCCESS_CODE.equals(returnMap.get("returnCode"))){
 			reqMap.put("description", returnMap.get("descriptionURL"));
 			returnMap = spaceService.updateSpace(reqMap);
+		}
+
+		// 删除原有的文件
+		if(null!=reqMap.get("originalDiscriptionURL")){
+			OSSUtil.deleteFile((String) reqMap.get("originalDiscriptionURL"));
 		}
 		
 		return getOperateJSONView(returnMap);

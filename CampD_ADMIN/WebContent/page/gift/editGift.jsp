@@ -217,31 +217,19 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label class="col-xs-12 col-sm-2 control-label no-padding-right">活动适用地区</label>
-					                    <div class="col-xs-12 col-sm-6 infolist"> 
-					                      <span class="block input-icon input-icon-right liststyle">
-						                      	<span id="workForProvince">
-				                                    <i>请选择省份</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="workForProvince" class="curValue" value="">
-				                                </span>
-				                                <span id="workForCity">
-				                                    <i>请选择城市</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="workForCity" class="curValue" value="">
-				                                </span>
-				                                <span id="workForArea">
-				                                    <i>请选择地区</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="workForArea" class="curValue" value="">
-				                                </span>
-					                      </span> 
+					                    <label class="col-sm-2 control-label no-padding-right">活动适用地区</label>
+					                    <div class="col-md-3">
+					                      <div class="row">
+					                        <div class="col-sm-6">
+					                          <select class="form-control" name="workForCity">
+					                            <option value="上海" ${'上海' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>上海</option>
+					                            <option value="北京" ${'北京' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>北京</option>
+					                            <option value="广州" ${'广州' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>广州</option>
+					                            <option value="深圳" ${'深圳' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>深圳</option>
+					                            <option value="杭州" ${'杭州' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>杭州</option>
+					                          </select>
+					                        </div>
+					                      </div>
 					                    </div>
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
 					                  </div>
