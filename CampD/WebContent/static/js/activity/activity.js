@@ -23,7 +23,7 @@ Activity.list=function(){
 	var params={
 		"actType":1,
 	    "curPage":1,
-	    "pageLimit":5,
+	    "pageLimit":3,
 	    "isUserAuth":false,
 	    "status":1//活动状态  0表示未发布 1表示已发布
     };

@@ -1,5 +1,5 @@
 var Gift={
-	workFor:{
+	workFor:{// 活动类型
 		"0":"创业",
 		"1":"商务",
 		"2":"生活",
@@ -15,7 +15,7 @@ var Gift={
 		"12":"公益",
 		"13":"校园"
 	},
-	form:{
+	form:{// 礼品形态
 		"0":"实物",
 		"1":"礼券",
 		"2":"兑换码",
@@ -29,7 +29,7 @@ Gift.list=function(){
 	var params={
 		"level":1,
 	    "curPage":1,
-	    "pageLimit":5,
+	    "pageLimit":3,
 	    "isUserAuth":false,
 	    "isRand":1
 	};

@@ -2,7 +2,7 @@
  * 场地js
  */
 var Space={
-	spaceType:{
+	spaceType:{// 场地类型
 		"0":"餐厅",
 		"1":"酒楼公园",
 		"2":"游乐园",
@@ -70,7 +70,7 @@ Space.list=function(){
 	var params={
 		"spaceLevel":1,
 	    "curPage":1,
-	    "pageLimit":5,
+	    "pageLimit":3,
 	    "isUserAuth":false,
 	    "isRand":1
 	};
