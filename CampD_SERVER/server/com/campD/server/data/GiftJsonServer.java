@@ -184,7 +184,7 @@ public class GiftJsonServer {
 		}
 		
 		Object workForCity = reqMap.get("workForCity");//礼品适用区域
-		if(null!=providerCity && !"".equals(workForCity)){
+		if(null!=workForCity && !"".equals(workForCity)){
 			sqlStr+=" and work_for_city='"+workForCity+"' ";
 			sqlCount+=" and work_for_city='"+workForCity+"' ";
 		}

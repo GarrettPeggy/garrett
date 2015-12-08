@@ -170,10 +170,10 @@
        	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
                  </li>
                  <li class="retina-1px-border-bottom1"  onclick="Header.toGiftIndex()">
-   	                 <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">礼品
+   	                 <img class="tu" src="${rmtResPath}/static/images/initiate.png" width="22" height="22">礼品
                  </li>
                  <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
-            	   <img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
+            	   <img src="${rmtResPath}/static/images/contact.png" width="22" height="22"/>
                                   联系我们
             	</li>
             </ul>

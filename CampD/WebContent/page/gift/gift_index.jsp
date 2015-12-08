@@ -27,11 +27,47 @@
             	<span>城市</span>
             </li>
         </ul>
+        <div>
+        <!-- 主营业务搜索下拉内容 -->
+            <div class="search-detail hide">
+                <ul class="clearfix">
+                    <li class="active" onclick="Gift.mainBussiness('',this)">全部</li>
+                    <c:forEach items="${systemConst.mainBusinessMap}" var="mainBussiness">
+                    	<li onclick="Gift.mainBussiness(${mainBussiness.key},this)">${mainBussiness.value}</li>
+					</c:forEach>
+                </ul>
+            </div>
+     <!-- 适用活动类型搜索下拉内容 -->
+            <div class="search-detail hide">
+                <ul class="clearfix">
+                    <li class="active" onclick="Gift.workFor('',this)">全部</li>
+                    <c:forEach items="${systemConst.categoryMap}" var="category">
+                    	<li onclick="Gift.workFor(${category.key},this)">${category.value}</li>
+					</c:forEach>
+                </ul>
+            </div>
+     <!-- 适用城市搜索下拉内容 -->
+            <div class="search-detail hide">
+                <ul class="clearfix">
+                    <li class="active" onclick="Gift.workForCity('',this)">全部</li>
+                    <li onclick="Gift.workForCity('北京',this)">北京</li>
+                    <li onclick="Gift.workForCity('上海',this)">上海</li>
+                    <li onclick="Gift.workForCity('广州',this)">广州</li>
+                    <li onclick="Gift.workForCity('深圳',this)">深圳</li>
+                    <li onclick="Gift.workForCity('杭州',this)">杭州</li>
+                </ul>
+            </div>
+         </div>  
      </div>
+     <!-- 蒙层 需要显示时删除hide -->
+    <div class="mc hide" id="space_mc"></div>
+    <!-- end -->
      <div class="main mat7" id="gift_main">
     	<input type="hidden" id="curPage" name="curPage" value="1"/>
     	<input type="hidden" id="pageLimit" name="pageLimit" value="6"/>
-    	<input type="hidden" id="cost" name="cost" value=""/>
+    	<input type="hidden" id="mainBussiness" name="mainBussiness" value=""/>
+    	<input type="hidden" id="workFor" name="workFor" value=""/>
+    	<input type="hidden" id="workForCity" name="workForCity" value=""/>
 	   	 <div class="ul-box">
 	          <ul class="data-list ground-list" id="gift_index">
 	             

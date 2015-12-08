@@ -477,7 +477,7 @@ a:hover{text-decoration:none;}
 
 /*閸﹀搫婀�*/
 .ground .mc{
-	top:94px;
+	top:56px;
 }
 .search-box{
 	padding-right:10px;
@@ -1043,10 +1043,13 @@ a:hover{text-decoration:none;}
 	padding-top:10px;
 	height:50px;
 }
- .bt_line{
+.activebase .active{
+	position:relative;
+}
+ /*.bt_line{
    height:0px;
    border-bottom:1px solid rgba(32,35,37,0.16);
-}
+}*/
 .activebase .padt10 .percent{
 	width:22%;
 	padding-top: 6px;
@@ -1224,7 +1227,7 @@ a:hover{text-decoration:none;}
 .pd5 .giftrange{
 	padding-top:5px;
 	padding-left:10px;
-	color:#949494;
+	color:#3c3c3c;
 	font-size:12px;
 	}
 .pd5 .giftrange span{
@@ -1237,6 +1240,7 @@ a:hover{text-decoration:none;}
 	margin-left:3%;
 	font-size:14px;
 	font-family:"微软雅黑";
+	display:block;
 	}
 .ul-box .data-list .gift-list{
 	height:78px;
@@ -1263,12 +1267,19 @@ a:hover{text-decoration:none;}
 	}
 
 /*礼品详情*/
+.bt-line{
+	 border-bottom:1px solid rgba(32,35,37,0.16);
+	 width:100%;
+}
 .giftpic{
 	position:relative;
 	background: #fff;
     margin: 0px;
     padding: 0px;
 	}
+.giftpic .worddescription{
+	bottom:2px;
+}
 .ac-detail-mechanism .adm-line .dresspic{
 	text-align:center;
 	margin-top:5px;

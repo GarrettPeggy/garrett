@@ -29,7 +29,7 @@
 </script>
 
 <body  onload="timeout();">
- <!--    <div class="nofood">
+ <!-- <div class="nofood">
        <p>可能原因：</p>
        <ul>
           <li>网络信号弱</li>

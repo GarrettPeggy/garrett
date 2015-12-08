@@ -74,11 +74,9 @@
         <!-- end -->
         <!-- 活动主办方、赞助方 -->
         <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
-        	<div class="adm-line clearfix bt_line" >
+        	<div class="adm-line clearfix bt-line" >
             	<span class="fl">费用</span>
                 <span class="fr color94"><fmt:parseNumber integerOnly="true" value="${jsonview.spaceInfo.cost}" />元/小时</span>
-                <!-- 把金额每3位画一个逗号 -->
-                <%-- <fmt:formatNumber type="number" value="${jsonview.spaceInfo.cost}" maxFractionDigits="0"/> --%>
             </div>
             <div class="adm-line clearfix " >
             	<span class="fl">容量</span>
@@ -87,7 +85,7 @@
         </div>
         <!--适用活动和基础设施  -->
          <div class="activebase retina-1px-border-bottom retina-1px-border-top">
-        	<div class=" retina-1px-border-bottom  padt10 bt_line">
+        	<div class="active bt-line  padt10 ">
             	<span class="fl percent">适用活动</span>
                 <ul class="consider">
                 	<c:if test="${not empty jsonview.spaceInfo.work_for}">
@@ -112,7 +110,7 @@
         <!-- end -->
         <!-- 活动详细介绍 -->
         <div class="ac-detail-desc retina-1px-border-bottom retina-1px-border-top">
-        	<div class="add-title bt_line">
+        	<div class="add-title bt-line">
             	详细介绍
             </div>
             <div class="add-desc">
@@ -159,10 +157,10 @@
    	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
              </li>
              <li class="retina-1px-border-bottom1"  onclick="Header.toGiftIndex()">
-   	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">礼品
+   	            <img class="tu" src="${rmtResPath}/static/images/initiate.png" width="22" height="22">礼品
              </li>
              <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
-        	   <img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
+        	   <img src="${rmtResPath}/static/images/contact.png" width="22" height="22"/>
                               联系我们
         	</li>
        	</ul>

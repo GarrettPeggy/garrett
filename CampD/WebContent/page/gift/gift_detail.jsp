@@ -31,7 +31,7 @@
 	    <!-- end -->
           
         <!-- 礼品类型 活动类型 活动城市-->
-        <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
+        <div class="ac-detail-mechanism retina-1px-border-bottom ">
         	<div class="act retina-1px-border-bottom clearfix">
             	<span class="fl actstyle">礼品类型：</span>
                 <span class="fl giftstyle">${systemConst.formMap[giftMap.giftMap.form]}</span>
@@ -72,7 +72,7 @@
         <!-- end -->
         <!-- 活动详细介绍 -->
         <div class="ac-detail-desc retina-1px-border-bottom retina-1px-border-top">
-        	<div class="add-title bt_line">
+        	<div class="add-title retina-1px-border-bottom">
             	详细介绍
             </div>
             <div class="add-desc">
@@ -119,10 +119,10 @@
    	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
              </li>
               <li class="retina-1px-border-bottom1"  onclick="Header.toGiftIndex()">
-   	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">礼品
+   	            <img class="tu" src="${rmtResPath}/static/images/initiate.png" width="22" height="22">礼品
              </li>
              <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
-        	   <img src="${rmtResPath}/static/images/initiate.png" width="22" height="22"/>
+        	   <img src="${rmtResPath}/static/images/contact.png" width="22" height="22"/>
                               联系我们
         	</li>
        	</ul>

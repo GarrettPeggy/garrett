@@ -55,7 +55,7 @@
                 </ul>
             </div>
             <!-- end -->
-            <!-- 区域搜索下拉内容 -->
+            <!-- 容量搜索下拉内容 -->
             <div class="search-detail hide">
                 <ul class="clearfix">
                     <li class="active" onclick="Space.capacity('','',this)">全部</li>

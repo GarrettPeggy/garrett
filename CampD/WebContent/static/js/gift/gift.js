@@ -20,6 +20,20 @@ var Gift={
 		"1":"礼券",
 		"2":"兑换码",
 		"3":"红包"
+	},
+	mainBussiness:{//主营业务
+		"0":"注册",
+		"1":"法律",
+		"2":"财务",
+		"3":"服务器",
+		"4":"知识产权",
+		"5":"创投",
+		"6":"软件外包",
+		"7":"场地",
+		"8":"媒体",
+		"9":"营推",
+		"10":"管理咨询",
+		"11":"人力资源"
 	}
 };
 /**
@@ -44,6 +58,7 @@ Gift.list=function(){
 		if(null!=giftList && length>0){
 			for(var i=0;i<length;i++){
 				var gift = giftList[i];
+				var showImage=gift.show_image;
 				var name = gift.name;
 				var workFor = gift.work_for;//逗号隔开
 				var category = "";
@@ -51,7 +66,7 @@ Gift.list=function(){
 				for (var i = 0; i < workForArray.length; i++) {
 					category += '<span>'+Gift.workFor[workForArray[i]]+'</span>';
 				}
-				$("#present_first_pop").append($('<li class="pd5"><a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><img class="giftpic" src="'+BASE_PATH+'/static/images/gift1.png" width="100%" height="116"/><div class="giftword ">'+name+'</div><div class="giftrange"><img src="'+BASE_PATH+'/static/images/drop.png" width="10"height="12"/>'+category+'</div></a></li>'));
+				$("#present_first_pop").append($('<li class="pd5"><a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><img class="giftpic" src="'+OSS_RES_URL+showImage+'" width="100%" height="156"/><div class="giftword ">'+name+'</div><div class="giftrange"><img src="'+BASE_PATH+'/static/images/drop.png" width="10" height="12"/>'+category+'</div></a></li>'));
 			}
 		}else{
 			$("#present_first_pop").append($("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>"));
@@ -123,17 +138,37 @@ Gift.loadMoreHighLevel = function(){
 Gift.highlevel=function(){
 	window.location.href = BASE_PATH + "/gift/highLevelList.do";
 };
+/**
+ * 下拉小三角
+ */
+Gift.setSelect=function(){
+	$(".search-parent-list li").each(function(index,item){
+        $(item).bind("click",function(){
+        	$(this).parent().parent().find("div.search-detail:eq("+index+")").removeClass("hide");
+        	$(this).parent().parent().find("div.search-detail:eq("+index+")").prevAll().addClass("hide");
+        	$(this).parent().parent().find("div.search-detail:eq("+index+")").nextAll().addClass("hide");
+        	$("#space_mc").css("height",$(document.body).height());
+        	$("#space_mc").removeClass("hide");
+        });
+	});
+};
 
-/*礼品index页*/
+
+
+/*礼品首页*/
 Gift.searchIndex=function(isUserAuth){
 	var pageLimit = parseInt($("#pageLimit").val());
 	var curPage = $("#curPage").val();
 	var params = {
 	    "curPage":curPage,
 	    "pageLimit":pageLimit,
-	    'isUserAuth':isUserAuth   
+	    'isUserAuth':isUserAuth,
+		'workFor':$('#workFor').val(),
+		'mainBussiness':$('#mainBussiness').val(),
+		'workForCity':$('#workForCity').val()   
 	};
-
+	$(".search-detail").addClass("hide");
+	$("#space_mc").addClass("hide");
 	ajaxSearch(BASE_PATH + "/gift/list.do",params,function(json){
 		var giftList=json.giftList;
 		var length = giftList.length;
@@ -170,9 +205,43 @@ Gift.searchIndex=function(isUserAuth){
 		alert(data.returnMsg);
 	});
 };
+/*加载更多礼品*/
 Gift.loadMore= function(){
 	var curPage = 1 + parseInt($("#curPage").val());
 	$("#curPage").val(curPage);//更新当前页面
 	Gift.searchIndex(false);
 };
-
+/*主营业务*/
+Gift.mainBussiness=function(mainBussiness, curObj){
+	$('#curPage').val(1);
+	$('#mainBussiness').val(mainBussiness);//mainBussiness的值为 "0":"注册","1":"法律","2":"财务","3":"服务器"...
+	$(curObj).addClass("active");
+	$(curObj).prevAll().removeClass("active");
+	$(curObj).nextAll().removeClass("active");
+	$("#gift_index").empty();
+	Gift.searchIndex(false);
+};
+/*适用活动类型*/
+Gift.workFor=function (workFor, curObj){
+	$('#curPage').val(1);
+	$('#workFor').val(workFor);
+	$(curObj).addClass("active");
+	$(curObj).prevAll().removeClass("active");
+	$(curObj).nextAll().removeClass("active");
+	$("#gift_index").empty();
+	Gift.searchIndex(false);
+};
+/*适用城市*/			
+Gift.workForCity=function (workForCity, curObj){
+	$('#curPage').val(1);
+	$('#workForCity').val(workForCity);
+	$(curObj).addClass("active");
+	$(curObj).prevAll().removeClass("active");
+	$(curObj).nextAll().removeClass("active");
+	$("#gift_index").empty();
+	Gift.searchIndex(false);
+};
+		
+		
+		
+	
