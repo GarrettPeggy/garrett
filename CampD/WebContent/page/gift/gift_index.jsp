@@ -18,22 +18,25 @@
     <div class="search-box retina-1px-border-bottom retina-1px-border-top">
     	<ul class="clearfix search-parent-list giftlist">
         	<li>
-            	<span>主营业务</span>
+            	  <span>主营业务</span>
+            	  <span class="conrner"></span>
             </li>
             <li>
-            	<span>活动类型</span>
+            	  <span>类型</span>
+            	  <span class="conrner"></span>
             </li>
             <li>
-            	<span>城市</span>
+            	  <span>城市</span>
+            	  <span class="conrner"></span>
             </li>
         </ul>
         <div>
         <!-- 主营业务搜索下拉内容 -->
             <div class="search-detail hide">
                 <ul class="clearfix">
-                    <li class="active" onclick="Gift.mainBussiness('',this)">全部</li>
-                    <c:forEach items="${systemConst.mainBusinessMap}" var="mainBussiness">
-                    	<li onclick="Gift.mainBussiness(${mainBussiness.key},this)">${mainBussiness.value}</li>
+                    <li class="active" onclick="Gift.mainBusiness('',this)">全部</li>
+                    <c:forEach items="${systemConst.mainBusinessMap}" var="mainBusiness">
+                    	<li onclick="Gift.mainBusiness(${mainBusiness.key},this)">${mainBusiness.value}</li>
 					</c:forEach>
                 </ul>
             </div>
@@ -64,8 +67,8 @@
     <!-- end -->
      <div class="main mat7" id="gift_main">
     	<input type="hidden" id="curPage" name="curPage" value="1"/>
-    	<input type="hidden" id="pageLimit" name="pageLimit" value="6"/>
-    	<input type="hidden" id="mainBussiness" name="mainBussiness" value=""/>
+    	<input type="hidden" id="pageLimit" name="pageLimit" value="4"/>
+    	<input type="hidden" id="mainBusiness" name="mainBusiness" value=""/>
     	<input type="hidden" id="workFor" name="workFor" value=""/>
     	<input type="hidden" id="workForCity" name="workForCity" value=""/>
 	   	 <div class="ul-box">

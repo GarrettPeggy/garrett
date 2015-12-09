@@ -1,5 +1,5 @@
 var Gift={
-	workFor:{// 活动类型
+	workFors:{// 活动类型
 		"0":"创业",
 		"1":"商务",
 		"2":"生活",
@@ -21,7 +21,7 @@ var Gift={
 		"2":"兑换码",
 		"3":"红包"
 	},
-	mainBussiness:{//主营业务
+	mainBusiness:{//主营业务
 		"0":"注册",
 		"1":"法律",
 		"2":"财务",
@@ -64,7 +64,7 @@ Gift.list=function(){
 				var category = "";
 				var workForArray = workFor.split(',');
 				for (var i = 0; i < workForArray.length; i++) {
-					category += '<span>'+Gift.workFor[workForArray[i]]+'</span>';
+					category += '<span>'+Gift.workFors[workForArray[i]]+'</span>';
 				}
 				$("#present_first_pop").append($('<li class="pd5"><a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><img class="giftpic" src="'+OSS_RES_URL+showImage+'" width="100%" height="156"/><div class="giftword ">'+name+'</div><div class="giftrange"><img src="'+BASE_PATH+'/static/images/drop.png" width="10" height="12"/>'+category+'</div></a></li>'));
 			}
@@ -108,7 +108,7 @@ Gift.searchHighlevel=function(isUserAuth){
 			var category = "";
 			var workForArray = workFor.split(',');
 			for (var j= 0; j < workForArray.length; j++) {
-				category += '<span>'+Gift.workFor[workForArray[j]]+'</span>';
+				category += '<span>'+Gift.workFors[workForArray[j]]+'</span>';
 			}
 			$("#gift_highlevel").append('<li class="pd5"><a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><img class="giftpic" src="'+OSS_RES_URL+showImage+'" width="100%" height="116"/><div class="giftword ">'+name+'</div><div class="giftrange"><img src="'+BASE_PATH+'/static/images/drop.png" width="10"height="12"/>'+category+'</div></a></li>');
 		};
@@ -164,7 +164,7 @@ Gift.searchIndex=function(isUserAuth){
 	    "pageLimit":pageLimit,
 	    'isUserAuth':isUserAuth,
 		'workFor':$('#workFor').val(),
-		'mainBussiness':$('#mainBussiness').val(),
+		'mainBusiness':$('#mainBusiness').val(),
 		'workForCity':$('#workForCity').val()   
 	};
 	$(".search-detail").addClass("hide");
@@ -212,9 +212,9 @@ Gift.loadMore= function(){
 	Gift.searchIndex(false);
 };
 /*主营业务*/
-Gift.mainBussiness=function(mainBussiness, curObj){
+Gift.mainBusiness=function(mainBusiness, curObj){
 	$('#curPage').val(1);
-	$('#mainBussiness').val(mainBussiness);//mainBussiness的值为 "0":"注册","1":"法律","2":"财务","3":"服务器"...
+	$('#mainBusiness').val(mainBusiness);//mainBusiness的值为 "0":"注册","1":"法律","2":"财务","3":"服务器"...
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");

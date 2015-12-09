@@ -38,7 +38,7 @@
            </div>
            <div class="fl flword " >
               <div class="title">赞助活动，提供礼品</div>
-                 <a class="btn" href="javascript:void();">活动礼品</a>
+                 <a class="btn" href="${ctx}/gift/indexList.do?curPage=1&pageLimit=6&isUserAuth=false">活动礼品</a>
                  <a class="btn" href="tel:15601925235">联系我们</a>  
            </div>
         </div>

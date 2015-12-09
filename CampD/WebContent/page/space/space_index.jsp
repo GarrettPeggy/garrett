@@ -17,15 +17,19 @@
     	<ul class="clearfix search-parent-list">
         	<li>
             	<span>费用</span>
+            	<span class="conrner"></span>
             </li>
             <li>
             	<span>类型</span>
+            	<span class="conrner"></span>
             </li>
             <li>
             	<span>区域</span>
+            	<span class="conrner"></span>
             </li>
             <li>
-            	<span>容量</span>        
+            	<span>容量</span>
+            	<span class="conrner"></span>        
             </li>
         </ul>
         <div>
