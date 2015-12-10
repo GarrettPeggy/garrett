@@ -216,11 +216,11 @@
 					                      <div class="row">
 					                        <div class="col-sm-6">
 					                          <select class="form-control" name="workForCity">
-					                            <option value="上海市">上海市</option>
-					                            <option value="北京市">北京市</option>
-					                            <option value="广州市">广州市</option>
-					                            <option value="深圳市">深圳市</option>
-					                            <option value="杭州市">杭州市</option>
+					                          	<c:if test="${!empty sysConfig.biz_open_city}">
+												  <c:forEach var="biz_open_city" items="${fn:split(sysConfig.biz_open_city, ',')}">
+												  	<option value="${biz_open_city }">${biz_open_city }</option>
+												  </c:forEach>
+												</c:if>
 					                          </select>
 					                        </div>
 					                      </div>
