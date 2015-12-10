@@ -222,11 +222,11 @@
 					                      <div class="row">
 					                        <div class="col-sm-6">
 					                          <select class="form-control" name="workForCity">
-					                            <option value="上海" ${'上海' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>上海</option>
-					                            <option value="北京" ${'北京' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>北京</option>
-					                            <option value="广州" ${'广州' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>广州</option>
-					                            <option value="深圳" ${'深圳' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>深圳</option>
-					                            <option value="杭州" ${'杭州' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>杭州</option>
+					                            <option value="上海" ${'上海市' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>上海市</option>
+					                            <option value="北京" ${'北京市' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>北京市</option>
+					                            <option value="广州" ${'广州市' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>广州市</option>
+					                            <option value="深圳" ${'深圳市' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>深圳市</option>
+					                            <option value="杭州" ${'杭州市' eq giftMap.giftMap.work_for_city?'selected="selected"':''}>杭州市</option>
 					                          </select>
 					                        </div>
 					                      </div>
