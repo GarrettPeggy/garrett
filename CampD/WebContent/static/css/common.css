@@ -931,11 +931,6 @@ a:hover{text-decoration:none;}
 	word-wrap: break-word; 
 	word-break: normal;
 }
-/*场地banner li改成右上角*/
-.newposition{
-  bottom:122px;
-  z-index:1;
-}
 /* 场地详情foot修改*/
 .newfoot-left-icon{
 	float:left;
