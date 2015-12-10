@@ -933,15 +933,8 @@ a:hover{text-decoration:none;}
 }
 /*场地banner li改成右上角*/
 .newposition{
-  position: absolute;
-  top:0px;
-  right: 0;
-  padding-right: 8px;
-  margin: 0;
-  opacity: 0.4;
-  width: 100%;
-  filter: alpha(opacity=50);
-  text-align: right;
+  bottom:122px;
+  z-index:1;
 }
 /* 场地详情foot修改*/
 .newfoot-left-icon{
