@@ -74,24 +74,6 @@
 				</li>
 			</ul>
 		</li>
-	
-		<li class="" id="leftMenu130100">
-			<a href="#" class="dropdown-toggle">
-				<img src="${locResPath}/static/images/statement .png"/>
-				<span class="menu-text"> 资讯管理</span>
-				<b class="arrow fa fa-angle-down"></b>
-			</a>
-			<b class="arrow"></b>
-			<ul class="submenu">
-				<li class="" name="subMenu130100" id="leftMenu130101">
-					<a href="${ctx}/information/toHomePicConfig.do">
-						<i class="menu-icon fa fa-caret-right"></i>
-						首页轮播图
-					</a>
-					<b class="arrow"></b>
-				</li>
-			</ul>
-		</li>
 		
 		<li class="" id="leftMenu140100">
 			<a href="#" class="dropdown-toggle">
@@ -118,6 +100,25 @@
 				</li>
 			</ul>
 		</li>
+	
+		<li class="" id="leftMenu130100">
+			<a href="#" class="dropdown-toggle">
+				<img src="${locResPath}/static/images/statement .png"/>
+				<span class="menu-text"> 资讯管理</span>
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li class="" name="subMenu130100" id="leftMenu130101">
+					<a href="${ctx}/information/toHomePicConfig.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						首页轮播图
+					</a>
+					<b class="arrow"></b>
+				</li>
+			</ul>
+		</li>
+		
 	</ul>
 	
 	<script type="text/javascript">
