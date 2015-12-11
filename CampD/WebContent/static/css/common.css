@@ -1123,17 +1123,15 @@ a:hover{text-decoration:none;}
 	height:100px;
 	}
 .contactdetail .flpic{
-	width:20%;
-	padding-left:15px;
+	width:15%;
 	padding-top:15px;
 	display:block;
-	margin-right:7%;
+	margin-right:10%;
+	margin-left:1%;
 	}
 .contactdetail .flword{
-	width:70%;
-	margin-right:3%;
+	width:74%;
 	}
-
 .contactdetail .flword .title{
 	color:#5a5a5a;
 	font-size:17px;
@@ -1143,7 +1141,7 @@ a:hover{text-decoration:none;}
 .contactdetail .flword .btn{
 	font-family:"华文黑体";
 	text-align:center;
-	font-size:17px;
+	font-size:14px;
 	border:1px solid #f1bb46;
 	height:30px;
 	line-height:30px;
@@ -1165,15 +1163,16 @@ a:hover{text-decoration:none;}
 	}
 .wode .logoword img{
 	display:block;
-	margin-top:30%;
-	margin-bottom:70%;
+	position:absolute;
+	top:20%;
+	bottom:80%;
     margin-left:25%;
 	margin-right:25%;
 	width:50%;
 	text-align:center;
 	}
 .wode .list-des{
-	position:absolute;
+	   position:absolute;
 	   top:55%;
 	   left:0px;
 	   width:100%;
@@ -1188,7 +1187,6 @@ a:hover{text-decoration:none;}
 .list-des .listmar .list-pic{
 	text-align:center;
 	}	
-	
 .list-des .listmar .list-word {
     text-align:center;
 	color:#606060;
@@ -1266,7 +1264,7 @@ a:hover{text-decoration:none;}
     padding: 0px;
 	}
 .giftpic .worddescription{
-	bottom:2px;
+	bottom:3px;
 }
 .ac-detail-mechanism .adm-line .dresspic{
 	text-align:center;

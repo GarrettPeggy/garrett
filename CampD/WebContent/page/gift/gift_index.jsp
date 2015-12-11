@@ -22,7 +22,7 @@
             	  <span class="conrner"></span>
             </li>
             <li>
-            	  <span>类型</span>
+            	  <span>活动类型</span>
             	  <span class="conrner"></span>
             </li>
             <li>
