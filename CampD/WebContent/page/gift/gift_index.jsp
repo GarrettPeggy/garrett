@@ -68,7 +68,7 @@
     <!-- end -->
      <div class="main mat7" id="gift_main">
     	<input type="hidden" id="curPage" name="curPage" value="1"/>
-    	<input type="hidden" id="pageLimit" name="pageLimit" value="4"/>
+    	<input type="hidden" id="pageLimit" name="pageLimit" value="6"/>
     	<input type="hidden" id="mainBusiness" name="mainBusiness" value=""/>
     	<input type="hidden" id="workFor" name="workFor" value=""/>
     	<input type="hidden" id="workForCity" name="workForCity" value=""/>
