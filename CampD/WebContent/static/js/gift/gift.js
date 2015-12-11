@@ -63,8 +63,8 @@ Gift.list=function(){
 				var workFor = gift.work_for;//逗号隔开
 				var category = "";
 				var workForArray = workFor.split(',');
-				for (var i = 0; i < workForArray.length; i++) {
-					category += '<span>'+Gift.workFors[workForArray[i]]+'</span>';
+				for (var j = 0; j < workForArray.length; j++) {
+					category += '<span>'+Gift.workFors[workForArray[j]]+'</span>';
 				}
 				$("#present_first_pop").append($('<li class="pd5"><a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><img class="giftpic" src="'+OSS_RES_URL+showImage+'" width="100%" height="156"/><div class="giftword ">'+name+'</div><div class="giftrange"><img src="'+BASE_PATH+'/static/images/drop.png" width="10" height="12"/>'+category+'</div></a></li>'));
 			}
