@@ -90,7 +90,7 @@ i {
 	border-radius: 5px;
 	padding: 0 10px;
 	background: #F7F7F7;
-	border: 1px solid #E8E8E8;
+	border: 1px solid #d5d5d5;;
 	color: #9E9E9E;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -120,7 +120,7 @@ i {
 	width: 120px;
 	line-height: 36px;
 	display: inline-block;
-	border: 1px solid #E8E8E8;
+	border: 1px solid #d5d5d5;;
 	border-radius: 0px;
 	padding: 0 0 0 8px;
 	cursor: pointer;
@@ -164,7 +164,7 @@ i {
 	width: 100%;
 	border-radius: 0 0 5px 5px;
 	position: absolute;
-	border: 1px solid #E8E8E8;
+	border: 1px solid #d5d5d5;;
 	background: white;
 	left: 0px;
 	top: 36px;
@@ -180,7 +180,7 @@ i {
 	width: 100%;
 	float: left;
 	overflow: hidden;
-	border-top: 1px solid #E8E8E8;
+	border-top: 1px solid #d5d5d5;;
 }
 
 .infolist .liststyle span ul li:first-child {
