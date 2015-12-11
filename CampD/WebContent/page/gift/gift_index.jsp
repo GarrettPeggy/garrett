@@ -53,11 +53,12 @@
             <div class="search-detail hide">
                 <ul class="clearfix">
                     <li class="active" onclick="Gift.workForCity('',this)">全部</li>
-                    <li onclick="Gift.workForCity('北京',this)">北京市</li>
-                    <li onclick="Gift.workForCity('上海',this)">上海市</li>
-                    <li onclick="Gift.workForCity('广州',this)">广州市</li>
-                    <li onclick="Gift.workForCity('深圳',this)">深圳市</li>
-                    <li onclick="Gift.workForCity('杭州',this)">杭州市</li>
+                      <c:if test="${!empty sysConfig.biz_open_city}">
+							<c:forEach var="biz_open_city" items="${fn:split(sysConfig.biz_open_city, ',')}">
+								<li  onclick="Gift.workForCity('${biz_open_city}',this)">${biz_open_city}</li>
+						    </c:forEach>
+					 </c:if>
+                    
                 </ul>
             </div>
          </div>  
