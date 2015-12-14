@@ -85,25 +85,29 @@
         </div>
         <!--适用活动和基础设施  -->
          <div class="activebase retina-1px-border-bottom retina-1px-border-top">
-        	<div class="active bt-line  padt10 ">
-            	<span class="fl percent">适用活动</span>
-                <ul class="consider">
+        	<div class="active padt10 clearfix bt-line ">
+            	<span class="fl percent">适用活动:</span>
+            	<div class="fr space-workfor">
+                  <ul class="consider">
                 	<c:if test="${not empty jsonview.spaceInfo.work_for}">
 	                	<c:forEach var="category" items="${ fn:split(jsonview.spaceInfo.work_for, ',') }">
 	                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_${category}.png" width="25" height="35"></li>
 	                    </c:forEach>
                     </c:if>
-                 </ul>
+                  </ul>
+                </div>
             </div>
-            <div class="padt10">
-            	<span class="fl percent">基础设施</span>
+            <div class="padt10 clearfix">
+            	<span class="fl percent">基础设施:</span>
+            	<div class="fr space-workfor">
                    <ul class="consider">
                     <c:if test="${not empty jsonview.spaceInfo.infrastructure}">
 	                   	<c:forEach var="infrastructure" items="${ fn:split(jsonview.spaceInfo.infrastructure, ',') }">
 	                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="30" height="32"></li>
 	                    </c:forEach>
                     </c:if>
-                 </ul> 
+                   </ul> 
+                </div>
             </div>
         </div>
 

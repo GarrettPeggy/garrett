@@ -54,14 +54,14 @@
 	        <!-- end -->
 	        <!-- 活动主办方、赞助方 -->
 	        <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
-	        	<div class="adm-line retina-1px-border-bottom clearfix newheight">
+	        	<div class="adm-line clearfix bt-line">
 	        		<span class="fl sponsor">主办方:</span>
-	        		<span class="fl sponserInfo">${jsonview.activityInfo.sponsor }</span>
+	        		<span class="fr sponserInfo">${jsonview.activityInfo.sponsor }</span>
 	            </div>
 	          
-	            <div class="adm-line clearfix newheight">
+	            <div class="adm-line clearfix ">
 	            	<span class="fl sponsor">联合方:</span>
-                	<span class="fl sponserInfo">${jsonview.activityInfo.assistance }</span>
+                	<span class="fr sponserInfo">${jsonview.activityInfo.assistance }</span>
 	            </div>
 	            
 	        </div>

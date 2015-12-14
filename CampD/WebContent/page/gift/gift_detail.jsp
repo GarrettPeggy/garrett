@@ -32,13 +32,13 @@
           
         <!-- 礼品类型 活动类型 活动城市-->
         <div class="ac-detail-mechanism retina-1px-border-bottom ">
-        	<div class="act retina-1px-border-bottom clearfix">
-            	<span class="fl actstyle">礼品类型：</span>
-                <span class="fl giftstyle">${systemConst.formMap[giftMap.giftMap.form]}</span>
+        	<div class="act  clearfix bt-line">
+            	<span class="fl actstyle" style="width:30%">礼品类型：</span>
+                <span class="fl giftstyle" >${systemConst.formMap[giftMap.giftMap.form]}</span>
             </div>
-            <div class="act  retina-1px-border-bottom">
+            <div class="gift-actstyle clearfix bt-line">
             	<span class="fl actstyle">活动类型:</span>
-            	<div class="category">
+            	<div class="category fr">
                 	<c:if test="${not empty giftMap.giftMap.work_for}">
 	                	<c:forEach var="category" items="${ fn:split(giftMap.giftMap.work_for, ',') }">
 	                     <span><img src="${rmtResPath}/static/images/category_${category}.png" width="25" height="35"></span>
@@ -46,14 +46,10 @@
                     </c:if>
                  </div>
             </div>
-            <div class="act clearfix">
-            	<span class="fl actstyle ">活动城市:</span>
-                   <div class="city">
-                    <c:if test="${not empty giftMap.giftMap.work_for_city}">
-	                   	<c:forEach var="workForCity" items="${ fn:split(giftMap.giftMap.work_for_city, ',') }">
-	                      <span>${giftMap.giftMap.work_for_city}</span>
-	                    </c:forEach>
-                    </c:if>
+            <div class="act clearfix ">
+            	<span class="fl actstyle" style="width:30%">活动城市:</span>
+                   <div class="city fr" style="width:70%">
+                     <span>${giftMap.giftMap.work_for_city}</span>
                    </div> 
             </div>
         </div>
