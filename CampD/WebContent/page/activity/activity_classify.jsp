@@ -45,9 +45,8 @@
         				<div class="textCenter mat15">
         					<img src="${rmtResPath}/static/images/no_data.png" width="41" height="41"/>
             				<div class="ui-tips-box mat10">
-            					<span class="color94">还没有任何活动哦!点击</span>
-                				<a href="${ctx}/activity/addUI.do" class="colorBlue">主办活动</a><br/>
-                				<p class="mat15 color94">提交你的活动需求吧</p>
+            					<span class="color94">抱歉，没有找到合适的活动</span>
+                				<p class="mat15 color94">请浏览其他活动吧</p>
             				</div>
         				</div>
         				<!-- end -->
