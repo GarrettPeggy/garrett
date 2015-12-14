@@ -7,10 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/page/common/meta.jsp"%>
 	<%@ include file="/page/common/jsCss.jsp"%>
-	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<script type="text/javascript" src="${locResPath}/static/js/gift/gift.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
 
 <body class="no-skin">
@@ -64,30 +61,11 @@
 					                  
 					                  <div class="form-group">
 					                    <label class="col-xs-12 col-sm-2 control-label no-padding-right">公司所在地区</label>
-					                    <div class="col-xs-12 col-sm-6 infolist"> 
-					                      <span class="block input-icon input-icon-right liststyle">
-						                      	<span id="providerProvince">
-				                                    <i>请选择省份</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="providerProvince" class="curValue" value="">
-				                                </span>
-				                                <span id="providerCity">
-				                                    <i>请选择城市</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="providerCity" class="curValue" value="">
-				                                </span>
-				                                <span id="providerArea">
-				                                    <i>请选择地区</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="providerArea" class="curValue" value="">
-				                                </span>
-					                      </span> 
+					                    <div class="col-xs-12 col-sm-6"> 
+					                      <span class="block input-icon input-icon-right">
+						                      <input type="text" value="${giftMap.giftMap.provider_province } ${giftMap.giftMap.provider_city } ${giftMap.giftMap.provider_area }" class="width-100" disabled="disabled" >
+						                      <i class="ace-icon fa fa-leaf"></i>
+					                      </span>  
 					                    </div>
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
 					                  </div>
@@ -243,8 +221,7 @@
 	</div>
 </body>
 <script type="text/javascript">
-$(function(){ //调用插件['#Province', '#City', '#Area']
-    $.fn.citySelect(['#providerProvince', '#providerCity', '#providerArea'],['${giftMap.giftMap.provider_province }' , '${giftMap.giftMap.provider_city }' , '${giftMap.giftMap.provider_area }']);
+$(function(){
     initWorkFor();
 });
 
