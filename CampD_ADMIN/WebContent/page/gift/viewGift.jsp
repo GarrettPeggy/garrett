@@ -7,39 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/page/common/meta.jsp"%>
 	<%@ include file="/page/common/jsCss.jsp"%>
-	
-	<!-- 编辑器初始化 -->
-	<link rel="stylesheet" href="${ctx}/static/js/kindeditor/themes/default/default.css" />
-	<link rel="stylesheet" href="${ctx}/static/js/kindeditor/plugins/code/prettify.css" />
-	<script charset="utf-8" src="${ctx}/static/js/kindeditor/kindeditor-all-min.js"></script>
-	<script charset="utf-8" src="${ctx}/static/js/kindeditor/lang/zh_CN.js"></script>
-	<script charset="utf-8" src="${ctx}/static/js/kindeditor/plugins/code/prettify.js"></script>
-	<script>
-		KindEditor.ready(function(K) {
-			var descriptionEditor = K.create('#description', {
-				width : '700px',
-				height: '200px',
-				cssPath : '${ctx}/static/js/kindeditor/plugins/code/prettify.css',
-				uploadJson : '${ctx}/page/kindeditor/file_upload_json.jsp',
-				fileManagerJson : '${ctx}/page/kindeditor/file_manager_json.jsp',
-				allowFileManager : true,
-				afterCreate : function() {
-					// 编辑器创建完成之后执行的回调
-				},
-				allowImageUpload: function() {
-					// 图片上传成功之后调用此回调方法
-				},
-				afterChange:function() {// 保证每次图片都是最新的
-					this.sync();// 将编辑器内容同步到textarea
-					var content = $('#description').val();
-					$('#description').text(content.replace(/\/campD_admin/g, '${sysConfig.ossResUrl}'));
-					$('#description').val(content.replace(/\/campD_admin/g, '${sysConfig.ossResUrl}'));
-				}
-			});
-			prettyPrint();
-		});
-	</script>
-	
 	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<script type="text/javascript" src="${locResPath}/static/js/gift/gift.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
@@ -211,28 +178,9 @@
 					                  <div class="form-group">
 					                    <label class="col-xs-12 col-sm-2 control-label no-padding-right">活动适用地区</label>
 					                    <div class="col-xs-12 col-sm-6 infolist"> 
-					                      <span class="block input-icon input-icon-right liststyle">
-						                      	<span id="workForProvince">
-				                                    <i>请选择省份</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择省份</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="workForProvince" class="curValue" value="">
-				                                </span>
-				                                <span id="workForCity">
-				                                    <i>请选择城市</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择城市</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="workForCity" class="curValue" value="">
-				                                </span>
-				                                <span id="workForArea">
-				                                    <i>请选择地区</i>
-				                                    <ul>
-				                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
-				                                    </ul>
-				                                    <input type="hidden" name="workForArea" class="curValue" value="">
-				                                </span>
+					                      <span class="block input-icon input-icon-right">
+						                      <input type="text" value="${giftMap.giftMap.work_for_city }" class="width-100" disabled="disabled" >
+						                      <i class="ace-icon fa fa-leaf"></i>
 					                      </span> 
 					                    </div>
 					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
@@ -296,7 +244,6 @@
 </body>
 <script type="text/javascript">
 $(function(){ //调用插件['#Province', '#City', '#Area']
-    $.fn.citySelect(['#workForProvince', '#workForCity', '#workForArea'],['${giftMap.giftMap.work_for_province }' , '${giftMap.giftMap.work_for_city }' , '${giftMap.giftMap.work_for_area }']);
     $.fn.citySelect(['#providerProvince', '#providerCity', '#providerArea'],['${giftMap.giftMap.provider_province }' , '${giftMap.giftMap.provider_city }' , '${giftMap.giftMap.provider_area }']);
     initWorkFor();
 });
