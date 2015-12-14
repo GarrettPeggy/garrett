@@ -218,16 +218,18 @@
 					                  
 					                  <div class="form-group">
 					                    <label class="col-sm-2 control-label no-padding-right">活动适用地区</label>
-					                    <div class="col-md-3">
+					                    <div class="col-sm-9">
 					                      <div class="row">
-					                        <div class="col-sm-6">
-					                          <select class="form-control" name="workForCity">
-					                          <c:if test="${!empty sysConfig.biz_open_city}">
+					                      	<div class="checkbox">
+					                            <c:if test="${!empty sysConfig.biz_open_city}">
 												  <c:forEach var="biz_open_city" items="${fn:split(sysConfig.biz_open_city, ',')}">
-												  	<option value="${biz_open_city}" ${biz_open_city eq giftMap.giftMap.work_for_city?'selected="selected"':''}>${biz_open_city}</option>
+					                            	<label style="padding-bottom: 10px;">
+														<input name="work-for-city" class="ace ace-checkbox-${biz_open_city } work-for-city-${biz_open_city }" value="${biz_open_city }" type="checkbox">
+														<span class="lbl">${biz_open_city }</span>
+													</label>
 												  </c:forEach>
-											  </c:if>
-					                          </select>
+												</c:if>
+												<input type="hidden" name="workForCity" id="workForCity" value="">
 					                        </div>
 					                      </div>
 					                    </div>
@@ -296,6 +298,7 @@ $(function(){ //调用插件['#Province', '#City', '#Area']
     $.fn.citySelect(['#workForProvince', '#workForCity', '#workForArea'],['${giftMap.giftMap.work_for_province }' , '${giftMap.giftMap.work_for_city }' , '${giftMap.giftMap.work_for_area }']);
     $.fn.citySelect(['#providerProvince', '#providerCity', '#providerArea'],['${giftMap.giftMap.provider_province }' , '${giftMap.giftMap.provider_city }' , '${giftMap.giftMap.provider_area }']);
     initWorkFor();
+    initWorkForCity();
 });
 
 //初始化使用活动选择
@@ -306,6 +309,17 @@ initWorkFor = function(){
 		var value = workForArray[i];
 		if(!isEmpty(value)){
 			$(".work-for-"+value).attr("checked", true);
+		}
+	}
+};
+//初始化使用活动选择
+initWorkForCity = function(){
+	var workForCity = '${giftMap.giftMap.work_for_city}';
+	var workForArray = workForCity.split(',');
+	for (var i = 0; i < workForArray.length; i++) {
+		var value = workForArray[i];
+		if(!isEmpty(value)){
+			$(".work-for-city-"+value).attr("checked", true);
 		}
 	}
 };

@@ -212,16 +212,18 @@
 					                  
 					                  <div class="form-group">
 					                    <label class="col-sm-2 control-label no-padding-right">活动适用地区</label>
-					                    <div class="col-md-3">
+					                    <div class="col-sm-9">
 					                      <div class="row">
-					                        <div class="col-sm-6">
-					                          <select class="form-control" name="workForCity">
-					                          	<c:if test="${!empty sysConfig.biz_open_city}">
+					                      	<div class="checkbox">
+					                            <c:if test="${!empty sysConfig.biz_open_city}">
 												  <c:forEach var="biz_open_city" items="${fn:split(sysConfig.biz_open_city, ',')}">
-												  	<option value="${biz_open_city }">${biz_open_city }</option>
+					                            	<label style="padding-bottom: 10px;">
+														<input name="work-for-city" class="ace ace-checkbox-${biz_open_city }" value="${biz_open_city }" type="checkbox">
+														<span class="lbl">${biz_open_city }</span>
+													</label>
 												  </c:forEach>
 												</c:if>
-					                          </select>
+												<input type="hidden" name="workForCity" id="workForCity" value="">
 					                        </div>
 					                      </div>
 					                    </div>

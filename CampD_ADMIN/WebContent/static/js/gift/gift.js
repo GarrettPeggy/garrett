@@ -87,6 +87,7 @@ Gift.save=function(){
 	}
 	
 	Gift.getWorkforInfo();
+	Gift.getWorkforCity();
 	if(Validator.validForm("addGiftForm")){
 		submitForm("addGiftForm",BASE_PATH + '/gift/add.do',function(data){
 				window.location.href = BASE_PATH + "/gift/toList.do";
@@ -117,6 +118,7 @@ Gift.update = function(){
 	}
 	
 	Gift.getWorkforInfo();
+	Gift.getWorkforCity();
 	if(Validator.validForm("editGiftForm")){
 		var fakepath = $("#fakepath").val();
 		var oldPath = $("#oldPath").val();
@@ -143,6 +145,18 @@ Gift.getWorkforInfo = function(){
 		workFor += i==0?$($checkedWorkforArray[i]).val():","+$($checkedWorkforArray[i]).val();
 	}
 	$("#workFor").val(workFor);
+};
+
+/**
+ * 适用活动城市更新
+ */
+Gift.getWorkforCity = function(){
+	var $checkedWorkforArray = $('input[name="work-for-city"]:checked');
+	var workForCity = "";
+	for (var i = 0; i < $checkedWorkforArray.length; i++) {
+		workForCity += i==0?$($checkedWorkforArray[i]).val():","+$($checkedWorkforArray[i]).val();
+	}
+	$("#workForCity").val(workForCity);
 };
 
 /**
