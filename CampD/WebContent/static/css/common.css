@@ -1013,10 +1013,10 @@ a:hover{text-decoration:none;}
 }
 .ac-detail-mechanism .adm-line .sponsor{
 	color:#949494;
-	width:15%;
+	width:25%;
 }
 .ac-detail-mechanism .adm-line .sponserInfo{
-	width:85%;
+	width:75%;
 	display:inline;	
 }
 
@@ -1034,7 +1034,7 @@ a:hover{text-decoration:none;}
 	position:relative;
 }
 .activebase .padt10 .percent{
-	width:22%;
+	width:30%;
 	padding: 8px 2px 8px 2px;
 }
 .activebase .padt10 .consider{
@@ -1316,7 +1316,7 @@ a:hover{text-decoration:none;}
 }
 /*场地基础设施和适用活动修改*/
 .activebase .padt10 .space-workfor{
-	width:78%;
+	width:70%;
 	display:inline-block;
 	padding:0px 2px 5px 1px;
 }
