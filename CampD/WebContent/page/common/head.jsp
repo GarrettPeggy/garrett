@@ -9,56 +9,88 @@
    	<!-- 毛玻璃效果蒙层 -->
     <!-- <div class="mao hide" id="activity_mao"></div> -->
     <!-- end -->
-    <div class="person-right hide" id="activity_person">
+   <!--   <div class="person-right hide" id="activity_person">
         <div class="newperson-right">
      	<ul>
-         	<li class="line clearfix" onclick="Header.signUp()">
-             	<img src="${rmtResPath}/static/images/p1.png" width="41" height="41" class="fl left-img"/>
+         	<li class="retina-1px-border-bottom" onclick="Header.signUp()">
+             	<img src="${rmtResPath}/static/images/signup2.png" width="41" height="41"/>
               <div class="fl right-text">报名的活动</div>
           </li>
           <c:if test="${empty USER_INFO}">
-	          <li class="line clearfix" onclick="Header.toLogin()">
-	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
+	          <li class="retina-1px-border-bottom" onclick="Header.toLogin()">
+	             	<img src="${rmtResPath}/static/images/login2.png" width="41" height="41"/>
 	              <div class="fl right-text">登录</div>
 	          </li>
           </c:if>
           <!-- 以下两个通过增加hide样式显示隐藏 -->
-          <c:if test="${!empty USER_INFO}">
-          	  <li class="line clearfix" onclick="Header.toUpdate()">
-	             	<img src="${rmtResPath}/static/images/p3.png" width="41" height="41" class="fl left-img"/>
+          <!--   <c:if test="${!empty USER_INFO}">
+          	  <li class="retina-1px-border-bottom" onclick="Header.toUpdate()">
+	             	<img src="${rmtResPath}/static/images/login2.png" width="41" height="41" />
 	              <div class="fl right-text">${USER_INFO.userName}</div>
 	          </li>
-	          <li class="line clearfix" onclick="Header.toQuit()">
-	             	<img src="${rmtResPath}/static/images/p4.png" width="41" height="41" class="fl left-img"/>
+	          <li class="retina-1px-border-bottom" onclick="Header.toQuit()">
+	             	<img src="${rmtResPath}/static/images/quit2.png" width="41" height="41" />
 	              <div class="fl right-text">退出</div>
 	          </li>
           </c:if>
           <c:if test="${empty USER_INFO}">
-	          <li class="line clearfix" onclick="Header.toRegister()">
-	             	<img src="${rmtResPath}/static/images/p5.png" width="41" height="41" class="fl left-img"/>
+	          <li class="retina-1px-border-bottom" onclick="Header.toRegister()">
+	             	<img src="${rmtResPath}/static/images/register2.png" width="41" height="41"/>
 	              <div class="fl right-text">注册</div>
 	          </li>
           </c:if>
       </ul>
       </div>
-    </div>
+    </div>-->
     <!-- end -->
     <!-- 头部 -->
 	<div class="header clearfix classify-head retina-1px-border-bottom positionR newheader" id="activity_header">
-    	<div class="head-left-icon">
-        	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14"/>
-        </div>
-        <div class="head-content">
+        <div class="newhead-left-icon">
         	<img src="${rmtResPath}/static/images/cd_logo.png" id="cd_logo" width="56" height="20" />
         </div>
         <div class="head-right-icon">
-        	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17"/>
+        	<img src="${rmtResPath}/static/images/user2.png" width="20" height="20"/>
         </div>
     </div>
     <!-- end -->
     
-     <!-- 导航 -->
-    <div class="index-nav hide" id="avtivity_nav" style="z-index: 99;">
+     <!-- 右上角菜单 -->
+   <div class="rightmenu-mc hide" id="rightmenu-mc" style="position:fixed;">
+     <span class="rightcorner"></span>
+     <div class="rightmenu">
+       <ul>
+          <li class="retina-1px-border-bottom" onclick="Header.signUp()">
+             	<img src="${rmtResPath}/static/images/signup2.png" width="25" height="25" class="fl mat8" />
+                             报名的活动
+          </li>
+          <c:if test="${empty USER_INFO}">
+	          <li class="retina-1px-border-bottom" onclick="Header.toLogin()">
+	             <img src="${rmtResPath}/static/images/login2.png" width="25" height="25" class="fl mat8" />
+	                        登录
+	          </li>
+          </c:if>
+          <!-- 以下两个通过增加hide样式显示隐藏 -->
+            <c:if test="${!empty USER_INFO}">
+          	  <li class="retina-1px-border-bottom" onclick="Header.toUpdate()">
+	              <img src="${rmtResPath}/static/images/login2.png" width="25" height="25" class="fl mat8" />
+	              ${USER_INFO.userName}
+	          </li>
+	          <li class="retina-1px-border-bottom" onclick="Header.toQuit()">
+	              <img src="${rmtResPath}/static/images/quit2.png" width="25" height="25" class="fl mat8" />
+	                          退出
+	          </li>
+          </c:if>
+          <c:if test="${empty USER_INFO}">
+	          <li class="retina-1px-border-bottom" onclick="Header.toRegister()">
+	              <img src="${rmtResPath}/static/images/register2.png" width="25" height="25" class="fl mat8" />
+	                         注册
+	          </li>
+          </c:if>
+        </ul>
+     </div>
+  </div>
+
+    <!--  <div class="index-nav hide" id="avtivity_nav" style="z-index: 99;">
     	<ul>
         	<li class="retina-1px-border-bottom1" onclick="Header.classify()">
             	<img src="${rmtResPath}/static/images/activity.png" width="22" height="22"/>
@@ -77,7 +109,7 @@
                               联系我们
             </li> 
         </ul>
-    </div>
+    </div>-->
 <!-- end -->
 <script type="text/javascript">
 	$(function(){

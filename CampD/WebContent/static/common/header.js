@@ -62,24 +62,9 @@ Header.spaceIndex=function(){
 };
 
 Header.initHeadIcon=function(){
-	$(".head-left-icon").bind("click",function(){
-		if($("#avtivity_nav").hasClass("hide")){
-			$("#avtivity_nav").removeClass("hide");
-		} else{
-			$("#avtivity_nav").addClass("hide");
-		}
-	});
 	$(".head-right-icon").bind("click",function(){
-		if($("#activity_person").hasClass("hide")){
-			$("#activity_person").removeClass("hide");
-		} else{
-			$("#activity_person").addClass("hide");
-		}
-		
-		$("#activity_person").height($(document).height());
-		$("#activity_person").width($(document).width());
-		$("#activity_person").css("top","51px");
-		$("#activity_person").css("padding-top","0px");
+		$("#rightmenu-mc").removeClass("hide");
+		$("#rightmenu-mc").height($(document).height());
 	});
 	$("#cd_logo").bind("click",function(){ //点击logo，跳转到首页
 		window.location.href = "/";

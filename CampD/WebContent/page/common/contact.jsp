@@ -27,7 +27,7 @@
                <img src="${rmtResPath}/static/images/LXWM_place.png" width="70" height="70"/>
            </div>
            <div class="fl flword " >
-              <div class="title">提供活动场地对外开放</div>
+              <div class="title">合作租赁，提供场地</div>
                  <a class="btn" href="${ctx}/space/getSpaceInfoList.do?curPage=1&pageLimit=6&isUserAuth=false">活动场地</a>
                  <a class="btn" href="tel:15601925235">联系我们</a>  
            </div>

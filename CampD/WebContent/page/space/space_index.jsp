@@ -6,15 +6,40 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/common/citySelect/city.min.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/iScroll/iscroll.js"></script>
 </head>
 <body>
 	<!-- 头部 -->
 	<%@ include file="/page/common/head.jsp" %>
     <!-- end -->
-    
+    <div class="workfor retina-1px-border-bottom retina-1px-border-top" id="scrolllist">
+      <div id="scroller">
+    	<ul class="clearfix search-parent-list workforlist" >
+            <li class="active" onclick="Space.workFor('',this)" value="0">全部</li>
+             <c:forEach items="${systemConst.categoryMap}" var="category" varStatus="status">
+             	<c:if test="${status.index le 2}">
+             	 <li onclick="Space.workFor(${category.key},this)" value="${status.index+1}">${category.value}</li>
+             	</c:if>
+             </c:forEach>
+        </ul>
+       </div> 
+     </div>
+     <div class="slidedown">
+          <img class="morelist" src="${rmtResPath}/static/images/down.png" width="20" height="11"/>
+     </div>
     <!-- 搜索条件 -->
-    <div class="search-box retina-1px-border-bottom retina-1px-border-top">
-    	<ul class="clearfix search-parent-list">
+    <div class="search-box clearfix">
+       <!-- 适用活动类型搜索下拉内容 -->
+       <div class="search-detail workfor-list hide" id="workfor-list">
+           <ul class="clearfix">
+               <c:forEach items="${systemConst.categoryMap}" var="category" varStatus="status">
+               	  <c:if test="${status.index gt 2}">
+               	    <li onclick="Space.workFor(${category.key},this)" value="${status.index+1}">${category.value}</li>
+               	  </c:if>
+               </c:forEach>
+           </ul>
+       </div>
+       <ul class="clearfix search-parent-list" id="search-box">
         	<li>
             	<span>费用</span>
             	<span class="conrner"></span>
@@ -34,7 +59,7 @@
         </ul>
         <div>
             <!-- 费用搜索下拉内容 -->
-            <div class="search-detail hide">
+            <div class="search-ul search-detail hide">
                 <ul class="clearfix">
                     <li class="active" onclick="Space.cost('',this)">全部</li>
                     <li onclick="Space.cost('1',this)">免费</li>
@@ -43,7 +68,7 @@
             </div>
             <!-- end -->
             <!-- 类型搜索下拉内容 -->
-            <div class="search-detail hide">
+            <div class="search-ul search-detail hide">
                 <ul class="clearfix">
                     <li class="active" onclick="Space.type('',this)">全部</li>
                     <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
@@ -53,14 +78,14 @@
             </div>
             <!-- end -->
             <!-- 区域搜索下拉内容 -->
-            <div class="search-detail hide">
+            <div class="search-ul search-detail hide">
                 <ul class="clearfix" id="search_province">
                     <li class="active" onclick="Space.address('',this)">全部</li>
                 </ul>
             </div>
             <!-- end -->
             <!-- 容量搜索下拉内容 -->
-            <div class="search-detail hide">
+            <div class="search-ul search-detail hide">
                 <ul class="clearfix">
                     <li class="active" onclick="Space.capacity('','',this)">全部</li>
                     <li onclick="Space.capacity(10,30,this)">10-30人</li>
@@ -93,6 +118,7 @@
     	<input type="hidden" id="area" name="area" value=""/>
     	<input type="hidden" id="minCapacity" name="minCapacity" value=""/>
     	<input type="hidden" id="maxCapacity" name="maxCapacity" value=""/>
+    	<input type="hidden" id="workFor" name="workFor" value=""/>
     	<c:choose>
     		<c:when test="${empty jsonview.resultList }">
     			<!-- 当没有场地时 -->
@@ -157,6 +183,8 @@
 $(function(){
 	// 初始化区域选择
 	Space.initProvince();
+	Space.setSelect();
+	Space.workForHerder();
 });
 </script>
 

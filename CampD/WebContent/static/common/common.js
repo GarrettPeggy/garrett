@@ -1010,16 +1010,10 @@ String.prototype.getBytesLength = function() {
 		source = event.srcElement||event.target;
 		
 		// 首页头图右边图标初始化
-		if((($(source).parents('#activity_person').length<=0 && !$(source).hasClass("person-right")) && (!$(source).hasClass("head-right-icon") && $(source).parents('.head-right-icon').length<=0))) { 
-			$("#activity_person").addClass("hide");
-			$("#activity_mao").addClass("hide");
-			$("#activity_main").removeClass("m-active");
-			$("#activity_header").removeClass("m-active");
-		};
-		
-		// 首页头图左边图标初始化
-		if(($(source).parents('#avtivity_nav').length<=0 && (!$(source).hasClass("head-left-icon") && $(source).parents('.head-left-icon').length<=0)) ) { 
-			$("#avtivity_nav").addClass("hide");
+		if($(source).parents('.rightmenu').length<=0 && !$(source).hasClass("head-right-icon") && $(source).parents('.head-right-icon').length <= 0) { 
+			$("#rightmenu-mc").addClass("hide");
+		}else if($(source).parents('.head-right-icon').length > 0 || $(source).hasClass("head-right-icon")){
+			$("#rightmenu-mc").removeClass("hide");
 		};
 		
 		// 场地列表下拉框初始化

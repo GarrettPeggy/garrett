@@ -23,11 +23,35 @@
 			</ul>
         </div>
         <!-- end -->
+	   <div class="mainlist retina-1px-border-bottom">
+		      <div class="news bt-line">
+		          <img class="newspic fl" src="${rmtResPath}/static/images/news.png" width="15" height="15"/>
+		          <span class="newsword">重要活动重要场地倒计时公布[可上下滚动呈现]</span>
+		      </div>
+		      <div class="piclist">
+			         <div class="mainpic fl" onclick="Header.classify()">
+			            <img class="picture" src="${rmtResPath}/static/images/active2.png" width="44" height="44"/>
+			            <div class="word">活动</div>
+			         </div>
+			         <div class="mainpic fl" onclick="Header.spaceIndex()">
+			            <img class="picture" src="${rmtResPath}/static/images/space2.png" width="44" height="44"/>
+			            <div class="word">场地</div>
+			         </div>
+			         <div class="mainpic fl" onclick="Header.toGiftIndex()">
+			            <img class="picture" src="${rmtResPath}/static/images/gift3.png" width="44" height="44"/>
+			            <div class="word">礼品</div>
+			         </div>
+			         <div class="contactus" onclick="Header.toContact()">
+                        <img src="${rmtResPath}/static/images/contact_0.png" width="68" height="68"/>
+                     </div>
+		      </div>  
+	   </div>
+        
         <!-- 热门活动 -->
         <div class="contain">
 			<div class="c-top clearfix">
             	<div class="fl">热门活动</div>
-                <div class="fr" onclick="Activity.populer(1)">更多&gt;</div>
+                <div class="fr" onclick="Activity.populer(1)"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></div>
             </div>
             <div class="ul-box">
                 <ul class="data-list" id="activity_first_pop">
@@ -37,7 +61,7 @@
             <!-- 精品场地 -->
             <div class="c-top clearfix">
             	<div class="fl">精品场地</div>
-                <div class="fr" onclick="Space.hightLevel(1)">更多&gt;</div>
+                <div class="fr" onclick="Space.hightLevel(1)"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></div>
             </div>
             <div class="ul-box">
                 <ul class="data-list" id="space_first_pop">
@@ -45,16 +69,14 @@
             </div>
             
              <!-- 精品礼品 -->
-            <div class="c-top clearfix">
-            	<div class="fl">精美礼品</div>
-                <div class="fr" onclick="Gift.highlevel()">更多&gt;</div>
+           <div class="gift">
+             <div class="firstlist">
+               <span class="hotspace fl">精美礼品</span>
+               <span class="fr more" onclick="Gift.highlevel()"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></span>
+             </div>
+             <div class="gift-list-pic " id="present_first_pop">
+
             </div>
-            <div class="ul-box">
-                <ul class="data-list" id="present_first_pop">
-                
-                </ul>
-            </div>
-            
         </div>
         <!-- end -->
     </div>

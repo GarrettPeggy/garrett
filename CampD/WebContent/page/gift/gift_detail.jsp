@@ -33,11 +33,11 @@
         <!-- 礼品类型 活动类型 活动城市-->
         <div class="ac-detail-mechanism retina-1px-border-bottom ">
         	<div class="act  clearfix bt-line">
-            	<span class="fl actstyle" style="width:30%">礼品类型：</span>
+            	<span class="fl actstyle" >礼品类型：</span>
                 <span class="fl giftstyle" >${systemConst.formMap[giftMap.giftMap.form]}</span>
             </div>
             <div class="gift-actstyle clearfix bt-line">
-            	<span class="fl actstyle">活动类型:</span>
+            	<span class="fl actstyle">适用活动:</span>
             	<div class="category fr">
                 	<c:if test="${not empty giftMap.giftMap.work_for}">
 	                	<c:forEach var="category" items="${ fn:split(giftMap.giftMap.work_for, ',') }">
@@ -47,8 +47,8 @@
                  </div>
             </div>
             <div class="act clearfix ">
-            	<span class="fl actstyle" style="width:30%">活动城市:</span>
-                   <div class="city fr" style="width:70%">
+            	<span class="fl actstyle">适用城市:</span>
+                   <div class="city fr">
                      <span>${giftMap.giftMap.work_for_city}</span>
                    </div> 
             </div>

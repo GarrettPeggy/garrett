@@ -2,6 +2,7 @@
  * 场地js
  */
 var Space={
+	myScroll:null,
 	spaceType:{// 场地类型
 		"0":"餐厅",
 		"1":"酒楼公园",
@@ -32,16 +33,6 @@ var Space={
 		"26":"特色场地",
 		"27":"众创空间"
 	}
-};
-
-$(function(){
-	Space.init();
-});
-/**
- * 场地初始化
- */
-Space.init=function(){
-	Space.setSelect();
 };
 
 /**
@@ -122,15 +113,30 @@ Space.cancel=function(){
  * 下拉小三角
  */
 Space.setSelect=function(){
-	$(".search-parent-list li").each(function(index,item){
+	$("#search-box li").each(function(index,item){
         $(item).bind("click",function(){
-        	$(this).parent().parent().find("div.search-detail:eq("+index+")").removeClass("hide");
-        	$(this).parent().parent().find("div.search-detail:eq("+index+")").prevAll().addClass("hide");
-        	$(this).parent().parent().find("div.search-detail:eq("+index+")").nextAll().addClass("hide");
+        	$(this).parent().parent().find("div.search-ul:eq("+index+")").removeClass("hide");
+        	$(this).parent().parent().find("div.search-ul:eq("+index+")").prevAll().addClass("hide");
+        	$(this).parent().parent().find("div.search-ul:eq("+index+")").nextAll().addClass("hide");
         	$("#space_mc").css("height",$(document.body).height());
         	$("#space_mc").removeClass("hide");
+            $("#workfor-list").css("display","none");	
+            $("#search-box").css("margin-top","0px");
         });
 	});
+};
+/**
+ * 场地适用活动选择
+ */
+Space.workForHerder=function(){
+	/*适用活动下拉列表*/
+	$(".morelist").click(function(){
+       $("#workfor-list").slideToggle("fast",function(){
+    	   $("#search-box").css("margin-top",$(this).is(':hidden')?"0px":"45px");
+       });
+    }); 
+	$(".workforlist").width($("#scrolllist").width()-$(".slidedown").width());
+	$("#scroller").width($("#scrolllist").width());
 };
 
 /**
@@ -171,6 +177,32 @@ Space.cost=function(costType, curObj){
 	$("#space_highlevel").empty();
 	Space.search();
 };
+
+/*适用活动类型*/
+Space.workFor=function (workFor, curObj){
+	
+	var index = $(curObj).attr("value");
+	if(index<4){
+		$("#scroller").find("ul li:eq("+index+")").addClass("active");
+		$("#scroller").find("ul li:not(:eq("+index+"))").removeClass("active");
+		$("#workfor-list").find("ul li").removeClass("active");
+	}else{
+		$("#workfor-list").find("ul li:eq("+(index-4)+")").addClass("active");
+		$("#workfor-list").find("ul li:not(:eq("+(index-4)+"))").removeClass("active");
+		$("#scroller").find("ul li").removeClass("active");
+	}
+//	if(index>1){
+//		$(".workforlist").scrollLeft(75*index);
+//	}else{
+//		$(".workforlist").scrollLeft(0);
+//	}
+	
+	$('#curPage').val(1);
+	$('#workFor').val(workFor);
+	$("#space_highlevel").empty();
+	Space.search();
+};
+
 /**
  * 类型
  */
@@ -231,7 +263,8 @@ Space.search=function(){
 		'area':$('#area').val(),
 		'minCapacity':$('#minCapacity').val(),
 		'maxCapacity':$('#maxCapacity').val(),
-		'spaceLevel':$('#spaceLevel').length==0?'':$('#spaceLevel').val()
+		'spaceLevel':$('#spaceLevel').length==0?'':$('#spaceLevel').val(),
+		'workFor':$('#workFor').val()
 	};
 	
 	$(".search-detail").addClass("hide");
@@ -280,4 +313,10 @@ Space.loadMore=function(){
 	$("#curPage").val(curPage);//更新当前页面
 	Space.search();
 };
+
+Space.scrolllist=function(){
+	Space.myScroll = new IScroll('#scrolllist', { scrollX: true, scrollY: false, mouseWheel: true });
+};
+
+
 

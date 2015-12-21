@@ -60,13 +60,13 @@ Gift.list=function(){
 				var gift = giftList[i];
 				var showImage=gift.show_image;
 				var name = gift.name;
-				var workFor = gift.work_for;//逗号隔开
+				/*var workFor = gift.work_for;//逗号隔开
 				var category = "";
 				var workForArray = workFor.split(',');
 				for (var j = 0; j < workForArray.length; j++) {
 					category += '<span>'+Gift.workFors[workForArray[j]]+'</span>';
-				}
-				$("#present_first_pop").append($('<li class="pd5"><a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><img class="giftpic" src="'+OSS_RES_URL+showImage+'" width="100%" height="156"/><div class="giftword ">'+name+'</div><div class="giftrange"><img src="'+BASE_PATH+'/static/images/drop.png" width="10" height="12"/>'+category+'</div></a></li>'));
+				}*/
+				$("#present_first_pop").append($('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="142" height="95"/><div class="giftword">'+name+'</div></div></a>'));
 			}
 		}else{
 			$("#present_first_pop").append($("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>"));
@@ -142,18 +142,18 @@ Gift.highlevel=function(){
  * 下拉小三角
  */
 Gift.setSelect=function(){
-	$(".search-parent-list li").each(function(index,item){
+	$("#searchbox li").each(function(index,item){
         $(item).bind("click",function(){
-        	$(this).parent().parent().find("div.search-detail:eq("+index+")").removeClass("hide");
-        	$(this).parent().parent().find("div.search-detail:eq("+index+")").prevAll().addClass("hide");
-        	$(this).parent().parent().find("div.search-detail:eq("+index+")").nextAll().addClass("hide");
-        	$("#space_mc").css("height",$(document.body).height());
+        	$(this).parent().parent().find("div.search-ul:eq("+index+")").removeClass("hide");
+        	$(this).parent().parent().find("div.search-ul:eq("+index+")").prevAll().addClass("hide");
+        	$(this).parent().parent().find("div.search-ul:eq("+index+")").nextAll().addClass("hide");
+        	$("#space_mc").css("height",$("#gift_index").height());
         	$("#space_mc").removeClass("hide");
+        	$("#workfor-list").css("display","none");	
+            $("#searchbox").css("margin-top","0px");
         });
 	});
 };
-
-
 
 /*礼品首页*/
 Gift.searchIndex=function(isUserAuth){
@@ -181,13 +181,7 @@ Gift.searchIndex=function(isUserAuth){
 			var gift = giftList[i];
 			var showImage=gift.show_image;
 			var name = gift.name;
-			var form = gift.form;
-			var numForm="";
-			var formArray = form.split(',');
-			for (var j= 0; j < formArray.length; j++) {
-				numForm += Gift.form[formArray[j]];
-			}
-			$("#gift_index").append('<li class="gift-list mat5"><a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="fl gift-li-left"><img src="'+OSS_RES_URL+showImage+'" width="91" height="63"/></div><div class="gift-li-right"><div class="title" >'+name+'</div><div class="style"><span>礼品类型：</span><span class="stylecolor">'+numForm+'</span></div></div></a></li>');
+			$("#gift_index").append('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="142" height="95"/><div class="giftword">'+name+'</div></div></a>');
 		};
 		
 		var dataCount = parseInt(json.dataCount);
@@ -223,11 +217,18 @@ Gift.mainBusiness=function(mainBusiness, curObj){
 };
 /*适用活动类型*/
 Gift.workFor=function (workFor, curObj){
+	var index = $(curObj).attr("value");
+	if(index<4){
+		$("#scroller").find("ul li:eq("+index+")").addClass("active");
+		$("#scroller").find("ul li:not(:eq("+index+"))").removeClass("active");
+		$("#workfor-list").find("ul li").removeClass("active");
+	}else{
+		$("#workfor-list").find("ul li:eq("+(index-4)+")").addClass("active");
+		$("#workfor-list").find("ul li:not(:eq("+(index-4)+"))").removeClass("active");
+		$("#scroller").find("ul li").removeClass("active");
+	}
 	$('#curPage').val(1);
 	$('#workFor').val(workFor);
-	$(curObj).addClass("active");
-	$(curObj).prevAll().removeClass("active");
-	$(curObj).nextAll().removeClass("active");
 	$("#gift_index").empty();
 	Gift.searchIndex(false);
 };
@@ -241,7 +242,20 @@ Gift.workForCity=function (workForCity, curObj){
 	$("#gift_index").empty();
 	Gift.searchIndex(false);
 };
-		
+/**
+ * 场地适用活动选择
+ */
+Gift.workForHerder=function(){
+	/*适用活动下拉列表*/
+	$(".slidedown").click(function(){
+       $("#workfor-list").slideToggle("fast",function(){
+    	   $("#searchbox").css("margin-top",$(this).is(':hidden')?"0px":"45px");
+       });
+    });
+	$(".workforlist").width($("#scrolllist").width()-$(".slidedown").width());
+	$("#scroller").width($("#scrolllist").width());
+};
+
 		
 		
 	
