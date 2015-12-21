@@ -198,7 +198,7 @@
 					                      <div class="row">
 					                        <div class="checkbox">
 					                            <c:forEach items="${systemConst.categoryMap}" var="category">
-					                            	<label onclick="Gift.checkWorkforInfo(event,this);" style="padding-bottom: 10px;">
+					                            	<label style="padding-bottom: 10px;">
 														<input name="work-for" class="ace ace-checkbox-${category.key}" value="${category.key}" type="checkbox">
 														<span class="lbl">${category.value}</span>
 													</label>
