@@ -20,13 +20,11 @@
 	<!-- 主体 -->
 	<div class="main mat7" id="gift_main">
     	<input type="hidden" id="curPage" name="curPage" value="1"/>
-    	<input type="hidden" id="pageLimit" name="pageLimit" value="6"/>
+    	<input type="hidden" id="pageLimit" name="pageLimit" value="10"/>
     	<input type="hidden" id="level" name="level" value="1"/>
-  		<div class="ul-box">
-        	<ul class="data-list" id="gift_highlevel">
-        		
-        	</ul>
-      	</div>
+        <div class="gift-list-pic " id="gift_highlevel">
+
+        </div>
     </div>   
 </body>
 <script type="text/javascript">

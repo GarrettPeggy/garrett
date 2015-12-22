@@ -110,7 +110,7 @@ Gift.searchHighlevel=function(isUserAuth){
 			for (var j= 0; j < workForArray.length; j++) {
 				category += '<span>'+Gift.workFors[workForArray[j]]+'</span>';
 			}
-			$("#gift_highlevel").append('<li class="pd5"><a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><img class="giftpic" src="'+OSS_RES_URL+showImage+'" width="100%" height="116"/><div class="giftword ">'+name+'</div><div class="giftrange"><img src="'+BASE_PATH+'/static/images/drop.png" width="10"height="12"/>'+category+'</div></a></li>');
+			$("#gift_highlevel").append('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="142" height="95"/><div class="giftword">'+name+'</div></div></a>');
 		};
 		
 		var dataCount = parseInt(json.dataCount);
