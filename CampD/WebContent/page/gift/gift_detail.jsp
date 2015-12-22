@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>${jsonview.spaceInfo.name }</title>
+	<title>${giftMap.giftMap.name}</title>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>

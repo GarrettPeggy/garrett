@@ -80,14 +80,6 @@ Header.initFootIcon=function(){
 			$("#avtivity_nav").addClass("hide");
 		}
 	});
-	// 底部右边菜单显示和隐藏
-	$(".newfoot-right-icon").bind("click",function(){
-		if($("#activity_person").hasClass("hide")){
-			$("#activity_person").removeClass("hide");
-		} else{
-			$("#activity_person").addClass("hide");
-		}
-	});
 };
 
 /**
