@@ -26,7 +26,7 @@
 	   <div class="mainlist retina-1px-border-bottom">
 		      <div class="news bt-line">
 		          <img class="newspic fl" src="${rmtResPath}/static/images/news.png" width="15" height="15"/>
-		          <span class="newsword">重要活动重要场地倒计时公布[可上下滚动呈现]</span>
+		          <span class="newsword">重要活动重要场地倒计时公布</span>
 		      </div>
 		      <div class="piclist">
 			         <div class="mainpic fl" onclick="Header.classify()">

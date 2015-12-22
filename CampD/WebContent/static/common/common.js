@@ -867,6 +867,26 @@ function stopDefault( e ) {
     return false; 
 }
 
+/**
+* 通知公告轮播 方法
+* containerID:通知的链接容器， 
+* intervalTop:每次滚动的距离
+* 调用方法： initNotifyInfo("div1", 30);
+*/
+function initNotifyInfo(boxID, intervalTop){
+	var box = document.getElementById(boxID), can = true;
+	// 鼠标移上去的时候暂停
+	box.onmouseover = function() { can = false; };
+	box.onmouseout = function() { can = true; };
+	new function() {
+		var stop = box.scrollTop % intervalTop == 0 && !can;
+		if (!stop){
+			box.scrollTop == parseInt(box.scrollHeight / 2) ? box.scrollTop = 0 : box.scrollTop++;
+		}
+		setTimeout(arguments.callee, box.scrollTop % intervalTop ? 10 : 1500);
+	};
+}
+
 var CommonUtil = {};
 
 /**
