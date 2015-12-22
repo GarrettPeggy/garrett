@@ -3,6 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<title>不限时间，不限次数，不限主题，CD营活动场地无限免费供给！</title>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 </head>
@@ -43,7 +44,7 @@
      <!--七个专场 -->
      <div class="spacial" style="margin:0px 5px 5px 5px;background:#fff; border:1px solid rgba(32,35,37,0.16);">
             <div class="first" style="background:#fff;height:35px;line-height:35px;padding-left:8px;">
-               <span class="specialtitle fl" style="color:#3c3c3c;font-size:16px;">1.奥斯卡路演厅</span>
+               <span class="specialtitle fl" style="color:#3c3c3c;font-size:16px;">1.创斯卡路演厅</span>
               <a href="${ctx}/space/getSpaceInfoById.do?id=918530f8-b900-4c00-8c32-12cb84775b99"> 
                   <div class="fr">
                      <span class="specialdetail fl" style="color:#e6cf9c;margin-right:8px; font-size:12px;">详情</span>
@@ -58,7 +59,7 @@
      </div>
      <div class="spacial" style="margin:0px 5px 5px 5px;background:#fff;border:1px solid rgba(32,35,37,0.16);">
             <div class="first" style="background:#fff;height:35px;line-height:35px;padding-left:8px;font-size:16px;">
-               <span class="specialtitle fl" style="color:#3c3c3c;">2.奥斯卡六角厅</span>
+               <span class="specialtitle fl" style="color:#3c3c3c;">2.创斯卡六角厅</span>
                <a href="${ctx}/space/getSpaceInfoById.do?id=4dd71d14-bee0-4565-9ec1-a4bf4ea33513">
                    <div class="fr">
                      <span class="specialdetail fl" style="color:#e6cf9c;margin-right:8px;font-size:12px;">详情</span>
