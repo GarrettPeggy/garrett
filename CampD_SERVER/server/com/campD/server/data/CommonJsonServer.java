@@ -109,7 +109,8 @@ public class CommonJsonServer {
     	if (null!=key && !"".equals((String) key)) {  
     		sqlStr += " and key_val = '" + key + "'";
         }
-
+    	// 默认按照发布时间降序排列
+    	sqlStr += " ORDER BY key_val ";
     	logger.info("sqlStr="+sqlStr);
     	
     	JSONView jsonView = new JSONView();
