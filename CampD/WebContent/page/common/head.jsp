@@ -114,7 +114,6 @@
 <script type="text/javascript">
 	$(function(){
 		Header.initHeadIcon();
-		Header.loadTapShow();
 	});
 </script>
 
