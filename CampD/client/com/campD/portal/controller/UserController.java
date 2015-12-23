@@ -18,8 +18,8 @@ import com.campD.portal.common.JSONView;
 import com.campD.portal.common.SystemConstant;
 import com.campD.portal.common.UserInfoHolder;
 import com.campD.portal.model.UserInfo;
-import com.campD.portal.service.RoleCacheService;
 import com.campD.portal.service.UserService;
+import com.campD.portal.service.cache.RoleCacheService;
 import com.campD.portal.util.SystemMessage;
 import com.campD.portal.util.WebUtil;
 

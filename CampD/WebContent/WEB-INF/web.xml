@@ -64,7 +64,7 @@
 		<init-param>
 		    <param-name>patterns</param-name>
 		    <!-- 配置你需要缓存的url -->
-		    <param-value>/demo/index.do</param-value>
+		    <param-value>/demo/index.do,/page/custom/aosika.jsp</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

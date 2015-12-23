@@ -1,4 +1,4 @@
-package com.campD.portal.service;
+package com.campD.portal.service.cache;
 
 import java.util.Map;
 

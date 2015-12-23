@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.common.UserInfoHolder;
 import com.campD.portal.model.UserInfo;
-import com.campD.portal.service.DemoCacheService;
 import com.campD.portal.service.DemoService;
+import com.campD.portal.service.cache.DemoCacheService;
 
 /**
  * @author Garrett Wang

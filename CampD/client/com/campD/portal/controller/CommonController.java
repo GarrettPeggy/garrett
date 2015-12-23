@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.service.CommonService;
+import com.campD.portal.service.cache.CommonCacheService;
 
 
 /**
@@ -29,13 +30,16 @@ public class CommonController extends BaseController {
 	@Autowired
 	private CommonService commonService;
 	
+	@Autowired
+	private CommonCacheService commonCacheService;
+	
 	@SuppressWarnings({ "rawtypes"})
 	@RequestMapping("/addSysConfig.do")
     @ResponseBody
     public Map addSysConfig(HttpServletRequest request) {
     	
 		Map reqMap = bindParamToMap(request);
-		Map returnMap = commonService.addSysConfig(reqMap);
+		Map returnMap = commonCacheService.createSysConfig(reqMap);
 		
 		return getOperateJSONView(returnMap);
     }
@@ -46,7 +50,7 @@ public class CommonController extends BaseController {
     public Map updateSysConfig(HttpServletRequest request) {
     	
 		Map reqMap = bindParamToMap(request);
-		Map returnMap = commonService.updateSysConfig(reqMap);
+		Map returnMap = commonCacheService.updateSysConfig(reqMap);
 		
 		return getOperateJSONView(returnMap);
     }
@@ -58,7 +62,7 @@ public class CommonController extends BaseController {
     	
 		Map reqMap = bindParamToMap(request);
 		
-		return commonService.findSysConfigs(reqMap);
+		return commonCacheService.findSysConfigs(reqMap);
     }
 	
 	@SuppressWarnings({ "rawtypes" })

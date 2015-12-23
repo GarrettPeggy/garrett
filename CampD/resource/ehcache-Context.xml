@@ -39,8 +39,8 @@
         </property>  
         <property name="patterns">  
             <list>  
-                <value>com.campD.portal.service.*CacheService.*find.*</value>  
-                <value>com.campD.portal.service.*CacheService.*get.*</value>  
+                <value>com.campD.portal.service.cache.*CacheService.*find.*</value>  
+                <value>com.campD.portal.service.cache.*CacheService.*get.*</value>  
             </list>  
         </property>  
     </bean>  
@@ -51,9 +51,9 @@
         </property>  
         <property name="patterns">  
             <list>  
-                <value>com.campD.portal.service.*CacheService.*create.*</value>  
-                <value>com.campD.portal.service.*CacheService.*update.*</value>  
-                <value>com.campD.portal.service.*CacheService.*delete.*</value>  
+                <value>com.campD.portal.service.cache.*CacheService.*create.*</value>  
+                <value>com.campD.portal.service.cache.*CacheService.*update.*</value>  
+                <value>com.campD.portal.service.cache.*CacheService.*delete.*</value>  
             </list>  
         </property>  
     </bean>  
