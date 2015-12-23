@@ -87,6 +87,7 @@
 
 <script type="text/javascript">
 $(function(){
+	Header.loadTapShow();
 	Activity.list();
 	Space.list();
 	Gift.list();
