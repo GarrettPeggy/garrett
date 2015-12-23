@@ -181,8 +181,8 @@ public class SpaceJsonServer {
 				sqlCount+=" and t1.cost is null or t1.cost=0 ";
 			}
 			if("2".equals(cost.toString())){
-				sqlStr+=" and t1.cost is not null ";
-				sqlCount+=" and t1.cost is not null ";
+				sqlStr+=" and t1.cost > 0";
+				sqlCount+=" and t1.cost > 0";
 			}
 		}
 
