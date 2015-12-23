@@ -24,11 +24,16 @@
         </div>
         <!-- end -->
 	   <div class="mainlist retina-1px-border-bottom">
-		      <div class="news bt-line">
+		      <div class="news bt-line ">
 		          <img class="newspic fl" src="${rmtResPath}/static/images/news.png" width="15" height="15"/>
-		          <span class="newsword">重要活动重要场地倒计时公布</span>
+		          <div class="newsword fl" id="newsword" style="height:32px;overflow:hidden;">
+		                        <a href="#">重要活动重要场地倒计时公布0</a>
+		                        <a href="#">重要活动重要场地倒计时公布1</a>
+		                        <a href="#">重要活动重要场地倒计时公布2</a>
+		                        <a href="#">重要活动重要场地倒计时公布3</a>
+		          </div>
 		      </div>
-		      <div class="piclist">
+		      <div class="clearfix piclist">
 			         <div class="mainpic fl" onclick="Header.classify()">
 			            <img class="picture" src="${rmtResPath}/static/images/active2.png" width="44" height="44"/>
 			            <div class="word">活动</div>
@@ -90,5 +95,6 @@ $(function(){
 	Activity.list();
 	Space.list();
 	Gift.list();
+	initNotifyInfo("newsword", 32);
 });
 </script>

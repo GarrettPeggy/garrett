@@ -1029,12 +1029,17 @@ String.prototype.getBytesLength = function() {
 		event = e||event;
 		source = event.srcElement||event.target;
 		
-		// 首页头图右边图标初始化
+		// 首页头图右边图标初始化newfoot-left-icon
 		if($(source).parents('.rightmenu').length<=0 && !$(source).hasClass("head-right-icon") && $(source).parents('.head-right-icon').length <= 0) { 
 			$("#rightmenu-mc").addClass("hide");
 		}else if($(source).parents('.head-right-icon').length > 0 || $(source).hasClass("head-right-icon")){
 			$("#rightmenu-mc").removeClass("hide");
 		};
+		
+		// 底部左下角图标初始化
+		if($(source).parents('.newfoot-left-icon').length<=0 && !$(source).hasClass("newfoot-left-icon")) { 
+			$("#avtivity_nav").addClass("hide");
+		}
 		
 		// 场地列表下拉框初始化
 		if($(source).parents('.search-parent-list').length <= 0 && $(source).parents('.search-detail').length <= 0) { 

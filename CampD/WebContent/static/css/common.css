@@ -1353,13 +1353,13 @@ a:hover{text-decoration:none;}
 	}
 .mainlist .piclist{
 	width:100%;
-	height:90px;
+	height:112px;
 	}
 .mainlist .piclist .mainpic{
 	width:30%;
 	margin-left:2%;
     text-align:center;
-	padding-top:12px;
+	padding-top:10px;
 	}	
 .mainlist .piclist .mainpic .word{
 	font-family:"微软雅黑";
@@ -1490,7 +1490,7 @@ a:hover{text-decoration:none;}
  .gift-list-pic .giftpic{
 	width:50%;
 	text-align:center;
-	padding:8px;
+	padding:8px 0px;
 	}
  .gift-list-pic .rightbd{
 	border-right:1px solid  rgba(32,35,37,0.16);
@@ -1575,4 +1575,13 @@ a:hover{text-decoration:none;}
   padding-top: 16px;
   padding-bottom: 6px;
   width: 100%;
+}
+/*倒计时滚动*/
+.newsword a{
+	display:block;
+	font-family:"微软雅黑";
+	font-size:12px;
+	line-height:32px;	
+	text-decoration:none;
+	color:#000;
 }
