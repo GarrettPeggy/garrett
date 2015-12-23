@@ -76,7 +76,8 @@
         <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
         	<div class="adm-line clearfix bt-line" >
             	<span class="fl">费用</span>
-                <span class="fr color94"><fmt:parseNumber integerOnly="true" value="${jsonview.spaceInfo.cost}" />元/小时</span>
+            	<c:if test="${jsonview.spaceInfo.cost eq 0}"><span class="fr color94 red" style="color:red;">免费</span></c:if>
+				<c:if test="${jsonview.spaceInfo.cost gt 0}"><span class="fr color94"><fmt:parseNumber integerOnly="true" value="${jsonview.spaceInfo.cost}" />元/小时</span></c:if>
             </div>
             <div class="adm-line clearfix " >
             	<span class="fl">容量</span>
@@ -103,7 +104,7 @@
                    <ul class="consider">
                     <c:if test="${not empty jsonview.spaceInfo.infrastructure}">
 	                   	<c:forEach var="infrastructure" items="${ fn:split(jsonview.spaceInfo.infrastructure, ',') }">
-	                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="30" height="32"></li>
+	                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="${infrastructure eq 1?40:30}" height="32"></li>
 	                    </c:forEach>
                     </c:if>
                    </ul> 

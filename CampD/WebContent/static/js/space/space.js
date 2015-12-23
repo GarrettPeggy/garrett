@@ -74,9 +74,14 @@ Space.list=function(){
 		//把数据写到页面上
 		if(null!=spaceList && spaceList.length>0){
 			for(var i=0;i<spaceList.length;i++){
-				var area = spaceList[i].area;
+				var area = spaceList[i].area, cost = spaceList[i].cost;
+				var costSpan = "<span>"+cost+"元/小时</span>";
+				if(cost == 0){
+					costSpan = "<span class='red' style='color:red;'>免费</span>";
+				}
 				area = null==area?"":area;
-				$("#space_first_pop").append($("<a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==spaceList[i].name ? "无名称" : spaceList[i].name )+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/place_2.png' width='10' height='10'/>&nbsp;<span>" + area + "</span>&nbsp;&nbsp;<span>"+spaceList[i].traffic+"</span>&nbsp;&nbsp;<span>"+spaceList[i].cost+"元/小时</span></div></li></a>"));
+				
+				$("#space_first_pop").append($("<a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==spaceList[i].name ? "无名称" : spaceList[i].name )+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/place_2.png' width='10' height='10'/>&nbsp;<span>" + area + "</span>&nbsp;&nbsp;<span>"+spaceList[i].traffic+"</span>&nbsp;&nbsp;"+costSpan+"</div></li></a>"));
 			}
 		}else{
 			$("#space_first_pop").append($("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>"));
@@ -118,7 +123,7 @@ Space.setSelect=function(){
         	$(this).parent().parent().find("div.search-ul:eq("+index+")").removeClass("hide");
         	$(this).parent().parent().find("div.search-ul:eq("+index+")").prevAll().addClass("hide");
         	$(this).parent().parent().find("div.search-ul:eq("+index+")").nextAll().addClass("hide");
-        	$("#space_mc").css("height",$(document.body).height());
+        	$("#space_mc").css("height",window.screen.height);
         	$("#space_mc").removeClass("hide");
             $("#workfor-list").css("display","none");	
             $("#search-box").css("margin-top","0px");
@@ -274,7 +279,11 @@ Space.search=function(){
 		var resultList=json.resultList;
 		if(null != resultList && resultList.length > 0){
 			for(var i=0;i<resultList.length;i++){
-				var adress = resultList[i].adress;
+				var adress = resultList[i].adress, cost = resultList[i].cost;
+				var costSpan = "<span class='co'>"+cost+"元/小时</span>";
+				if(cost == 0){
+					costSpan = "<span class='co red' style='color:red;'>免费</span>";
+				};
 				var name = resultList[i].name;
 				var len=Space.getLength(adress);
 				if(len > 10){
@@ -283,7 +292,7 @@ Space.search=function(){
 				if(Space.getLength(name) > 10){
 					name=name.substring(0,10) + "...";
 				}
-				$("#space_highlevel").append("<li class='clearfix'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+resultList[i].id+"'><div class='data-li-left'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='91' height='63'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+name+"</div><div class='dlr-address'>" + adress + "</div><div class='dlr-cost clearfix'><div class='fl'>费用：<span class='co'>"+resultList[i].cost+"元/小时</span></div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></a></li>");
+				$("#space_highlevel").append("<li class='clearfix'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+resultList[i].id+"'><div class='data-li-left'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='91' height='63'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+name+"</div><div class='dlr-address'>" + adress + "</div><div class='dlr-cost clearfix'><div class='fl'>费用："+costSpan+"</div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></a></li>");
 			};
 		}else{
 			$("#space_highlevel").append("<div class='ground-no'><img src='"+REMOTE_RES_PATH+"/static/images/no_data.png' width='41' height='41'/><p>抱歉，没有找到合适的场地</p><p>请浏览其他场地吧</p></div>");

@@ -24,13 +24,10 @@
         </div>
         <!-- end -->
 	   <div class="mainlist retina-1px-border-bottom">
-		      <div class="news bt-line ">
+		      <div class="news">
 		          <img class="newspic fl" src="${rmtResPath}/static/images/news.png" width="15" height="15"/>
-		          <div class="newsword fl" id="newsword" style="height:32px;overflow:hidden;">
-		                        <a href="#">重要活动重要场地倒计时公布0</a>
-		                        <a href="#">重要活动重要场地倒计时公布1</a>
-		                        <a href="#">重要活动重要场地倒计时公布2</a>
-		                        <a href="#">重要活动重要场地倒计时公布3</a>
+		          <div class="newsword fl" id="newsword">
+                      <a href="${ctx}/page/custom/aosika.jsp ">不限时间，不限主题，不限次数，免费场地无限供给</a>
 		          </div>
 		      </div>
 		      <div class="clearfix piclist">
@@ -96,6 +93,6 @@ $(function(){
 	Activity.list();
 	Space.list();
 	Gift.list();
-	initNotifyInfo("newsword", 32);
+	//initNotifyInfo("newsword", 32);
 });
 </script>

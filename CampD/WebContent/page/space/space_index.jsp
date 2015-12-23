@@ -141,23 +141,20 @@
 				                    <div class="data-li-right">
 				                    	<div class="dlr-title">
 				                        	<c:if test="${fn:length(space.name) > 10}">
-				                    			<c:out value="${fn:substring(space.name, 0, 11)}..." /> 
+				                    			${fn:substring(space.name, 0, 11)}... 
 				                    		</c:if>
 				                    		<c:if test="${fn:length(space.name) <= 10}">
-				                    			 <c:out value="${space.name}" /> 
+				                    			 ${space.name}
 				                    		</c:if>
 				                        </div>
 				                        <div class="dlr-address">
-				                        	<c:if test="${fn:length(space.adress) > 10}">
-				                    			<c:out value="${fn:substring(space.adress, 0, 11)}..." /> 
-				                    		</c:if>
-				                    		<c:if test="${fn:length(space.adress) <= 10}">
-				                    			 <c:out value="${space.adress}" /> 
-				                    		</c:if>
+				                        	<c:if test="${fn:length(space.adress) > 10}">${fn:substring(space.adress, 0, 11)}... </c:if>
+				                    		<c:if test="${fn:length(space.adress) <= 10}">${space.adress}</c:if>
 				                        </div>
 				                        <div class="dlr-cost clearfix">
-				                            <div class="fl">
-				                                                                        费用：<span class="co"><fmt:parseNumber integerOnly="true" value="${space.cost}" />元/小时</span>
+				                            <div class="fl">费用：
+				                            	<c:if test="${space.cost eq 0}"><span class="co red" style="color:red;">免费</span></c:if>
+				                            	<c:if test="${space.cost gt 0}"><span class="co"><fmt:parseNumber integerOnly="true" value="${space.cost}" />元/小时</span></c:if>
 				                            </div>
 				                            <div class="fr">
 				                                <span class="co">${space.capacity }</span>人

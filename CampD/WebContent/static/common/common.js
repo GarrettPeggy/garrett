@@ -1037,7 +1037,7 @@ String.prototype.getBytesLength = function() {
 		};
 		
 		// 底部左下角图标初始化
-		if($(source).parents('.newfoot-left-icon').length<=0 && !$(source).hasClass("newfoot-left-icon")) { 
+		if($(source).parents('.newfoot-left-icon').length<=0 && !$(source).hasClass("newfoot-left-icon") && $(source).parents('#avtivity_nav').length<=0 && !$(source).hasClass("newindex-nav")) { 
 			$("#avtivity_nav").addClass("hide");
 		}
 		
