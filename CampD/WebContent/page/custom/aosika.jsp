@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>不限时间，不限次数，不限主题，CD营活动场地无限免费供给！</title>
+	<title>不限时间，不限次数，不限主题，创斯卡携手CD营活动场地无限免费供给！</title>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 </head>
@@ -160,7 +160,7 @@
           <div class="head-left-icon newfoot-left-icon">
         	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
           </div>
-          <a class="btn orange-btn btnheight" id="submit_tel"  href="tel:15601925235"><img class="cellphone" src="${rmtResPath}/static/images/tel_02.png"/>联系电话</a>
+          <a class="btn orange-btn btnheight" id="submit_tel"  href="tel:13366660295"><img class="cellphone" src="${rmtResPath}/static/images/tel_02.png"/>联系电话</a>
           <div class=" newfoot-right-icon" onclick="Header.toRightMenu()">
         	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
           </div>
