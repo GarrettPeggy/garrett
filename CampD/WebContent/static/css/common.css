@@ -23,8 +23,8 @@ a:hover{text-decoration:none;}
 .colorGreen     { color : #26ae69;}
 .color94		{color:#949494; font-size:16px;}
 .bgfff			{background:#fff!important;}
-/*缂佸棛鍤�*/
-.retina-1px-border-top:before, .retina-1px-border-bottom:after { position: absolute; background-color: rgba(32,35,37,0.16); content: ""; right: 0; left: 0; height: 1px;z-index:30; width:100%;}
+/*缂佸棛鍤� (32,35,37,0.16)*/
+.retina-1px-border-top:before, .retina-1px-border-bottom:after { position: absolute; background-color:rgba(32,35,37,0.16); content: ""; right: 0; left: 0; height: 1px;z-index:30; width:100%;}
 .retina-1px-border-top:before {top:0}
 .retina-1px-border-bottom:after {bottom:0;}
 @media (-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5),(min-resolution:144dpi),(min-resolution:1.5dppx) {
@@ -98,7 +98,7 @@ a:hover{text-decoration:none;}
 .mat7{margin-top:7px;}
 .mar5{margin-right:5px;}
 .mar15{margin-right:15px;}
-.pd5{padding:5px!important;}
+.pd5{padding:12px 5px!important;}
 .bd-bottom {border-bottom:1px solid #e0e0e0!important;}
 
 /*鐢摜鏁ら弬鍥ㄦ拱閺嶅嘲绱�*/
@@ -507,6 +507,7 @@ a:hover{text-decoration:none;}
 	color:#949494;
 	padding-top:27px;
 	text-align:center;
+	background:#f0f0f0;
 }
 .ground-no p{
 	margin-top:16px;
@@ -676,13 +677,15 @@ a:hover{text-decoration:none;}
 }
 
 .main .contain{
-	padding:10px 5px 0px 5px;
-	font-size:11.5px;
+	padding-top:10px;
+	font-size:13px;
 }
 .main .contain .c-top{
-	padding:0px 5px 0px 5px;
-	height: 24px;
-    line-height: 17px;
+	padding:13px 10px;
+    height: 40px;
+    background:#fff;
+    border-bottom: 1px solid rgba(16,2,7,0.06);
+    color:#484848;
 }
 .main .contain .ul-box{
 	padding:0;
@@ -804,12 +807,12 @@ a:hover{text-decoration:none;}
 	color:#fff;
 }
 .tc-modal .close{
-	width:19px;
-	height:18px;
+	width:25px;
+	height:25px;
 	position:relative;
-	top:-294px;
-	right:-119px;
-	background:#ccc;
+	top:-329px;
+	right:-129px;
+	border:1px solid rgba(255,255,255,0.3);
 }
 .tc-modal  .ma{
 	text-align:center;
@@ -825,7 +828,7 @@ a:hover{text-decoration:none;}
 	margin-right:5px;
 	width:88%;	
 	padding-bottom:10px;
-	border-bottom:1px solid  rgba(32,35,37,0.16);
+	border-bottom:1px solid  rgba(16,2,7,0.06);
 }
  .clearfix .newfr2{	
 	margin-right:5px;
@@ -1243,7 +1246,7 @@ a:hover{text-decoration:none;}
 
 /*礼品详情*/
 .bt-line{
-	 border-bottom:1px solid rgba(32,35,37,0.16);
+	 border-bottom: 1px solid rgba(16,2,7,0.06);
 	 width:100%;
 }
 .giftpic{
@@ -1387,23 +1390,15 @@ a:hover{text-decoration:none;}
 		background:#fff;
 		}
 .firstlist{
-	height:30px;
-	line-height:30px;
-	background:#f0f0f0;
+	height:40px;
+	background:#fff;
 	position:relative;
-	margin-top:5px;
+    padding:13px 10px;
+    border-bottom: 1px solid rgba(16,2,7,0.06);
 	}
 .firstlist .hotspace{
 	color:#484848;
-	font-size:13px;
-	padding-left:5px;
-	margin-top:-4px;
-	font-size: 11.5px;
-	}
-.firstlist .more{
-	color:#818181;
-	font-size:13px;
-	padding-right:5px;
+	font-size: 13px;
 	}
 	
 /*newlist*/	
@@ -1499,15 +1494,16 @@ a:hover{text-decoration:none;}
  .gift-list-pic .giftpic{
 	width:50%;
 	text-align:center;
-	padding:8px 0px;
+	padding:12px 5px;
 	}
  .gift-list-pic .rightbd{
-	border-right:1px solid  rgba(32,35,37,0.16);
+	border-right: 1px solid rgba(16,2,7,0.06);
 	}	
  .gift-list-pic .giftpic .giftword{
 	color:#484848;
 	font-size:13px;
 	padding-top:2px;
+	float:left;
 	}	
 /*右上角菜单栏*/	
 .rightmenu-mc{
@@ -1592,7 +1588,7 @@ a:hover{text-decoration:none;}
 	font-size:12px;
 	line-height:32px;	
 	text-decoration:none;
-	color:#000;
+	color:#484848;
 }
 /*系统颜色定义*/
 .red{

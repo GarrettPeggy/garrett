@@ -66,7 +66,7 @@ Gift.list=function(){
 				for (var j = 0; j < workForArray.length; j++) {
 					category += '<span>'+Gift.workFors[workForArray[j]]+'</span>';
 				}*/
-				$("#present_first_pop").append($('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="98%" height="95"/><div class="giftword">'+name+'</div></div></a>'));
+				$("#present_first_pop").append($('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="98%" height="120"/><div class="giftword">'+name+'</div></div></a>'));
 			}
 		}else{
 			$("#present_first_pop").append($("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>"));
@@ -110,7 +110,7 @@ Gift.searchHighlevel=function(isUserAuth){
 			for (var j= 0; j < workForArray.length; j++) {
 				category += '<span>'+Gift.workFors[workForArray[j]]+'</span>';
 			}
-			$("#gift_highlevel").append('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="98%" height="95"/><div class="giftword">'+name+'</div></div></a>');
+			$("#gift_highlevel").append('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="98%" height="120"/><div class="giftword">'+name+'</div></div></a>');
 		};
 		
 		var dataCount = parseInt(json.dataCount);
@@ -181,7 +181,7 @@ Gift.searchIndex=function(isUserAuth){
 			var gift = giftList[i];
 			var showImage=gift.show_image;
 			var name = gift.name;
-			$("#gift_index").append('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="98%" height="95"/><div class="giftword">'+name+'</div></div></a>');
+			$("#gift_index").append('<a href="'+BASE_PATH+'/gift/getById.do?id='+gift.id+'"><div class="giftpic rightbd fl retina-1px-border-bottom"><img src="'+OSS_RES_URL+showImage+'" width="98%" height="120"/><div class="giftword">'+name+'</div></div></a>');
 		};
 		
 		var dataCount = parseInt(json.dataCount);
