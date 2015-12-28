@@ -94,7 +94,7 @@
     <!-- end -->
     
     <!-- banner点击时图片变大 显示时left为0，隐藏时left为屏幕宽度-->
-	<div class="max" id="picMax" onclick="Gift.hideMax();">
+	<div class="max hide" id="picMax" onclick="Gift.hideMax();">
 		<div class="heiht30"></div>
 		<div class="banner">
    	        <img  src="${sysConfig.ossResUrl}${giftMap.giftMap.show_image}" width="100%" height="222"/>

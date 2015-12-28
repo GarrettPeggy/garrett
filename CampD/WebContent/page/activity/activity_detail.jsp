@@ -128,7 +128,7 @@
     	<!-- end -->
     
 	    <!-- 点击图片变大 需要显示时删除hide -->
-		<div class="max" id="picMax" onclick="Activity.hideMax()">
+		<div class="max hide" id="picMax" onclick="Activity.hideMax()">
 		      <div class="heiht30"></div>
 		      <div class="banner">
 		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%" height="222"/>

@@ -257,10 +257,12 @@ Gift.workForHerder=function(){
 };
 /*点击图片变大*/
 Gift.showMax=function(){
-	$("#picMax").animate({left:"0"},300);
+	$("#picMax").removeClass("hide");
+	$("#picMax").animate({left:"0"},100);
 };
 Gift.hideMax=function(){
 	$("#picMax").animate({left:window.screen.width},300);
+	setTimeout('$("#picMax").addClass("hide");',300);
 };		
 		
 	

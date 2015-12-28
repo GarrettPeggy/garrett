@@ -330,9 +330,11 @@ Space.scrolllist=function(){
 
 /*banner图片放大*/
 Space.showMax=function(){
-	$("#picMax").animate({left:"0"},300);
+	$("#picMax").removeClass("hide");
+	$("#picMax").animate({left:"0"},100);
 	Space.tapShow('position1','mySwipe1');
 };
 Space.hideMax=function(){
 	$("#picMax").animate({left:window.screen.width},300);
+	setTimeout('$("#picMax").addClass("hide");',300);
 };

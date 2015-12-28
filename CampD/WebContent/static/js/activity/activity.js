@@ -373,8 +373,10 @@ Activity.validateAdress = function(){
 };
 /*点击图片放大*/
 Activity.showMax=function(){
-	$("#picMax").animate({left:"0"},300);
+	$("#picMax").removeClass("hide");
+	$("#picMax").animate({left:"0"},100);
 };
 Activity.hideMax=function(){
 	$("#picMax").animate({left:window.screen.width},300);
+	setTimeout('$("#picMax").addClass("hide");',300);
 };

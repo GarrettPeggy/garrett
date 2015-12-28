@@ -141,7 +141,7 @@
     <!-- end -->
     
     <!-- 点击图片放大  需要显示时删除hide -->
-	<div class="max" id="picMax" onclick="Space.hideMax();">
+	<div class="max hide" id="picMax" onclick="Space.hideMax();">
 	   <div class="heiht30"></div>
 	   <div class="addWrap addWrap1">
 		        <div class="img-tap-show-space swipe" id="mySwipe1">
