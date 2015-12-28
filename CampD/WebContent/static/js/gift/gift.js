@@ -255,7 +255,12 @@ Gift.workForHerder=function(){
 	$(".workforlist").width($("#scrolllist").width()-$(".slidedown").width());
 	$("#scroller").width($("#scrolllist").width());
 };
-
-		
+/*点击图片变大*/
+Gift.showMax=function(){
+	$("#picMax").animate({left:"0"},300);
+};
+Gift.hideMax=function(){
+	$("#picMax").animate({left:window.screen.width},300);
+};		
 		
 	

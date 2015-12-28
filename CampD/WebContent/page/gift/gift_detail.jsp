@@ -24,7 +24,7 @@
 	<!-- 主体 -->
     <div class="main">
 	    <!-- 活动概括与地点 -->
-    	<div class="giftpic">
+    	<div class="giftpic" onclick="Gift.showMax();">
    	        <img class="giftimg"  src="${sysConfig.ossResUrl}${giftMap.giftMap.show_image}" width="100%" height="156"/>
 			<div class="worddescription">${giftMap.giftMap.name }</div>
 	    </div>  
@@ -93,8 +93,15 @@
     </div>
     <!-- end -->
     
-    <!-- 蒙层 需要显示时删除hide -->
-	<div class="mc hide"></div>
+    <!-- banner点击时图片变大 显示时left为0，隐藏时left为屏幕宽度-->
+	<div class="max" id="picMax" onclick="Gift.hideMax();">
+		<div class="heiht30"></div>
+		<div class="banner">
+   	        <img  src="${sysConfig.ossResUrl}${giftMap.giftMap.show_image}" width="100%" height="222"/>
+			<span class="hdname1">${giftMap.giftMap.name }</span>
+	    </div> 
+		<div class="heiht30"></div>
+	</div>
     <!-- end -->
 
 	<!-- 分享 需要显示时删除hide -->
@@ -130,6 +137,7 @@
 		// 底部按钮居中
 		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
 		Header.initFootIcon();
+		$("#picMax").css("left",window.screen.width);
 	});
 </script>
 </html>

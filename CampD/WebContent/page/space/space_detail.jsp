@@ -32,7 +32,7 @@
 	    	<!-- 场地轮播图 -->
 	    	<div class="addWrap">
 		        <div class="img-tap-show-space swipe" id="mySwipe">
-		        	<div class="swipe-wrap">
+		        	<div class="swipe-wrap" onclick="Space.showMax();">
 		        		<c:if test="${!empty jsonview.spaceInfo.show_images}">
 						    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
 						    	<div>
@@ -140,8 +140,39 @@
     </div>
     <!-- end -->
     
-    <!-- 蒙层 需要显示时删除hide -->
-	<div class="mc hide"></div>
+    <!-- 点击图片放大  需要显示时删除hide -->
+	<div class="max" id="picMax" onclick="Space.hideMax();">
+	   <div class="heiht30"></div>
+	   <div class="addWrap addWrap1">
+		        <div class="img-tap-show-space swipe" id="mySwipe1">
+		        	<div class="swipe-wrap">
+		        		<c:if test="${!empty jsonview.spaceInfo.show_images}">
+						    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+						    	<div>
+							    	<a href="javascript:;">
+							    		<img src="${sysConfig.ossResUrl}${image_src}" class="img-responsive" alt="${ status.index + 1}" height="222" />
+							    	</a>
+						    	</div>
+						    </c:forEach>
+						</c:if>
+		           </div>
+		        </div>
+		        <ul id="position1"  style="z-index:1;">
+		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
+		        		<c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+		        			<c:if test="${status.index == 0}">
+		        				<li class="cur"></li>
+		        			</c:if>
+		        			<c:if test="${status.index != 0}">
+		        				<li></li>
+		        			</c:if>
+		        		</c:forEach>
+		        	</c:if>
+				</ul>	
+				<div class=" worddescription1">${jsonview.spaceInfo.name }</div>
+	        </div>
+	        <div class="heiht30"></div>
+	</div>
     <!-- end -->
 
 	<!-- 分享 需要显示时删除hide -->
@@ -174,10 +205,11 @@
 <script type="text/javascript">
 	
 	$(function(){
-		Space.tapShow();
+		Space.tapShow('position','mySwipe');
 		// 底部按钮居中
 		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
 		Header.initFootIcon();
+		$("#picMax").css("left",window.screen.width);
 	});
 </script>
 </html>

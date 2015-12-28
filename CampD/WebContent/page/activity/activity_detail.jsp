@@ -28,11 +28,9 @@
 	    	<input type="hidden" id="user" name="user" value="${USER_INFO}"/>
 	    	<input type="hidden" id="activityId" name="activityId" value="${jsonview.activityInfo.id}"/>
 		    <!-- 活动概括与地点 -->
-	    	<div class="ac-detail-title retina-1px-border-bottom">
-		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%" height="156"/>
-	           
+	    	<div class="ac-detail-title retina-1px-border-bottom" >
+		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%" height="156" onclick="Activity.showMax()"/>
 	            <div class="hdname">${jsonview.activityInfo.title }</div>
-	          
 	            <div class="adt-desc">
 	              <!--    <div class="fontSize17 retina-1px-border-bottom">${jsonview.activityInfo.title }</div> -->
 	                <div class="fontSize14 timedate ">
@@ -49,7 +47,6 @@
 	                	<span class="fontSize13">${jsonview.activityInfo.adress }</span>
 	                </div>   
 	            </div>
-	            
 	        </div>
 	        <!-- end -->
 	        <!-- 活动主办方、赞助方 -->
@@ -130,8 +127,15 @@
     	</div>
     	<!-- end -->
     
-	    <!-- 蒙层 需要显示时删除hide -->
-		<div class="mc hide" id="signUp_mc"></div>
+	    <!-- 点击图片变大 需要显示时删除hide -->
+		<div class="max" id="picMax" onclick="Activity.hideMax()">
+		      <div class="heiht30"></div>
+		      <div class="banner">
+		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%" height="222"/>
+		        <span class="hdname1">${jsonview.activityInfo.title }</span>
+		      </div>
+		      <div class="heiht30"></div>
+		</div>
 	    <!-- end -->
     
 		<!-- 提示框 需要显示时删除hide -->
@@ -186,6 +190,7 @@
 			// 底部按钮居中
 			$("#submit_act").css("left",$(".newfoot-left-icon").width()+"px");
 			Header.initFootIcon();
+			$("#picMax").css("left",window.screen.width);
 		});
 	</script>
 </html>

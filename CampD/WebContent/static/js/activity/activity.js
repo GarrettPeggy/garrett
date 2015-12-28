@@ -371,3 +371,10 @@ Activity.validateAdress = function(){
 	
 	return isPass;
 };
+/*点击图片放大*/
+Activity.showMax=function(){
+	$("#picMax").animate({left:"0"},300);
+};
+Activity.hideMax=function(){
+	$("#picMax").animate({left:window.screen.width},300);
+};

@@ -38,9 +38,9 @@ var Space={
 /**
  * 场地轮播图
  */
-Space.tapShow=function(){
-	var bullets = document.getElementById('position').getElementsByTagName('li');
-	var banner = Swipe(document.getElementById('mySwipe'), {
+Space.tapShow=function(position,mySwipe){
+	var bullets = document.getElementById(position).getElementsByTagName('li');
+	var banner = Swipe(document.getElementById(mySwipe), {
 		auto: 2000,
 		continuous: true,
 		disableScroll:false,
@@ -52,6 +52,7 @@ Space.tapShow=function(){
 			bullets[pos].className = 'cur';
 		}
 	});
+	return banner;
 };
 
 /**
@@ -327,5 +328,11 @@ Space.scrolllist=function(){
 	Space.myScroll = new IScroll('#scrolllist', { scrollX: true, scrollY: false, mouseWheel: true });
 };
 
-
-
+/*banner图片放大*/
+Space.showMax=function(){
+	$("#picMax").animate({left:"0"},300);
+	Space.tapShow('position1','mySwipe1');
+};
+Space.hideMax=function(){
+	$("#picMax").animate({left:window.screen.width},300);
+};
