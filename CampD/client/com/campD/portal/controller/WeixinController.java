@@ -5,6 +5,7 @@ package com.campD.portal.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +14,9 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.campD.portal.common.JSONView;
 import com.campD.portal.util.wx.DeveloperSignUtil;
+import com.campD.portal.util.wx.JSSDKSignUtil;
 
 /**
  * @author Garrett
@@ -27,7 +30,7 @@ public class WeixinController extends BaseController {
 	protected Logger logger = Logger.getLogger(getClass());
 	
 	/**
-	 * 微信服务器验证
+	 * 微信服务器开发者验证
 	 * @throws IOException 
 	 */
 	@RequestMapping("/validateServer.do")
@@ -53,5 +56,16 @@ public class WeixinController extends BaseController {
         
         writer.flush();
         writer.close();
+	}
+	
+	/**
+	 * 获取微信接口调用凭证（签名参数） 
+	 */
+	@RequestMapping("/getSignParam.do")
+	public JSONView getSignParam(HttpServletResponse response, HttpServletRequest request) {
+		
+		Map<?, ?> signParam = JSSDKSignUtil.getSignParam(request);
+		
+		return getSearchJSONView(signParam);
 	}
 }

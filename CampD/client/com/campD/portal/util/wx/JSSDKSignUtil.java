@@ -15,8 +15,6 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.campD.portal.util.JsonHelper;
-
 /**
  * @author Garrett
  * js-sdk签名工具类
@@ -34,14 +32,14 @@ public class JSSDKSignUtil {
      * @param url    当前网页的URL，不包含#及其后面部分
      * @return
      */
-    public static String getSignParam(String appId, String appSecret, HttpServletRequest request){
+    public static Map<String, String> getSignParam(HttpServletRequest request){
     	
         if(token == null){
             token = CommonUtil.getAccess_token();
             jsapi_ticket = CommonUtil.getJsApiTicket(token);
             time = getTime();
         }else{
-            if(!time.substring(0, 13).equals(getTime().substring(0, 13))){ //每小时刷新一次
+            if(!time.substring(0, 13).equals(getTime().substring(0, 13))){ //每小时刷新一次，每次请求token的有效期是两个小时
                 token = null;
                 token = CommonUtil.getAccess_token();
                 jsapi_ticket = CommonUtil.getJsApiTicket(token);
@@ -52,11 +50,9 @@ public class JSSDKSignUtil {
         String url = getUrl(request);// 根据当前请求动态获取URL
          
         Map<String, String> params = sign(jsapi_ticket, url);
-        params.put("appid", appId);
-         
-        String jsonStr = JsonHelper.parseToJson(params);
-        System.out.println(jsonStr);
-        return jsonStr;
+        params.put("appid", CommonUtil.APPID);
+        
+        return params;
     }
      
     private static String getUrl(HttpServletRequest request){
