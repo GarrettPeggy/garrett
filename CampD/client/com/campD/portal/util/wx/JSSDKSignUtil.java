@@ -21,41 +21,8 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 public class JSSDKSignUtil {
-
-	public static String token = null;
-    public static String time = null;
-    public static String jsapi_ticket = null;
-    /**
-     * 
-     * @param appId   公账号appId
-     * @param appSecret
-     * @param url    当前网页的URL，不包含#及其后面部分
-     * @return
-     */
-    public static Map<String, String> getSignParam(HttpServletRequest request){
-    	
-        if(token == null){
-            token = CommonUtil.getAccess_token();
-            jsapi_ticket = CommonUtil.getJsApiTicket(token);
-            time = getTime();
-        }else{
-            if(!time.substring(0, 13).equals(getTime().substring(0, 13))){ //每小时刷新一次，每次请求token的有效期是两个小时
-                token = null;
-                token = CommonUtil.getAccess_token();
-                jsapi_ticket = CommonUtil.getJsApiTicket(token);
-                time = getTime();
-            }
-        }
-        
-        String url = getUrl(request);// 根据当前请求动态获取URL
-         
-        Map<String, String> params = sign(jsapi_ticket, url);
-        params.put("appid", CommonUtil.APPID);
-        
-        return params;
-    }
      
-    private static String getUrl(HttpServletRequest request){
+    public static String getUrl(HttpServletRequest request){
         StringBuffer requestUrl = request.getRequestURL();
         String queryString = request.getQueryString();
         String url = requestUrl +"?"+queryString;

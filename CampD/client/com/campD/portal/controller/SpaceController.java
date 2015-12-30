@@ -113,6 +113,23 @@ public class SpaceController extends BaseController {
 		return "space/space_detail";
 	}
 	
+	/**
+	 * 查询场地详情
+	 * @param response
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/getSpace.do")
+	@ResponseBody
+	public JSONView getSpace(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		
+		Map<String, Object> map = bindParamToMap(request);
+		Map<?, ?> resultMap = spaceService.getSpaceInfoById(map);
+		
+		return getSearchJSONView(resultMap);
+	}
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void readDscriptionFromRemoteFile(Map spaceMap){
 		String description = (String) ((Map)spaceMap.get("spaceInfo")).get("description");
