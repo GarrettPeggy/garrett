@@ -300,15 +300,6 @@ Space.search=function(){
 		var pageSize = Math.floor(dataCount/pageLimit);
 		pageSize = dataCount%pageLimit==0 ? pageSize: pageSize + 1;
 		$("#pageSize").val(pageSize);
-		
-//		var curPage = $("#curPage").val();
-//		if(curPage<pageSize){
-//			$("#loadMore_li").remove();
-//			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Space.loadMore()'>加载更多...</button></div>");
-//		}else{
-//			$("#loadMore_li").remove();
-//			$("#curPage").val(1);
-//		}
 		Space.dropload?Space.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
 	}, function(data) {
 		systemLoaded();
@@ -360,8 +351,8 @@ Space.droploadPage = function(){
 	    	Space.search();
 	    },
 	    loadDownFn : function(me){
-	    	var curPage = $("#curPage").val();
-	    	var pageSize = $("#pageSize").val();
+	    	var curPage = Number($("#curPage").val());
+	    	var pageSize = Number($("#pageSize").val());
 			if(curPage<pageSize){
 	    		Space.loadMore();
 			}else{
