@@ -57,7 +57,9 @@
 		.position li.cur{  
 		background-color: #FF0000;
 		}
-		
+		.max .addWrap1{
+		background:#000;
+		}
 	</style>
 </head>
 <body>
@@ -294,7 +296,7 @@
           <div class="head-left-icon newfoot-left-icon">
         	<img src="${rmtResPath}/static/images/nav_icon.png" width="27" height="14">
           </div>
-          <a class="btn orange-btn btnheight" id="submit_tel"  href="tel:13366660295"><img class="cellphone" src="${rmtResPath}/static/images/tel_02.png"/>联系电话</a>
+          <a class="btn orange-btn btnheight" id="submit_tel"  href="tel:15601925235"><img class="cellphone" src="${rmtResPath}/static/images/tel_02.png"/>联系电话</a>
           <div class=" newfoot-right-icon" onclick="Header.toRightMenu()">
         	<img src="${rmtResPath}/static/images/user_icon_grey.png" width="17" height="17">
           </div>
