@@ -6,7 +6,7 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/common/citySelect/city.min.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/common/iScroll/iscroll.js"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/dropload/dropload.min.js"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -119,6 +119,7 @@
     	<input type="hidden" id="minCapacity" name="minCapacity" value=""/>
     	<input type="hidden" id="maxCapacity" name="maxCapacity" value=""/>
     	<input type="hidden" id="workFor" name="workFor" value=""/>
+    	<div class="outer">
     	<c:choose>
     		<c:when test="${empty jsonview.resultList }">
     			<!-- 当没有场地时 -->
@@ -130,10 +131,10 @@
     		</c:when>
     		<c:otherwise>
     			<!-- 当有场地时 -->
-    			<div class="ul-box">
+    			<div class="ul-box inner">
 		        	<ul class="data-list ground-list" id="space_highlevel">
 		        		<c:forEach items="${jsonview.resultList }" var="space">
-		        			<li class="clearfix">
+		        			<li class="clearfix item">
 		        				<a href="${ctx }/space/getSpaceInfoById.do?id=${space.id }">
 				                	<div class="data-li-left">
 				                    	<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="91" height="63"/>
@@ -165,23 +166,23 @@
 			                </li>
 		        		</c:forEach>
 		        	</ul>
-		        	<c:if test="${pageInfo.pageSize > pageInfo.curPage }">
-	        			<div id="loadMore_li" >
-	        				<button id="loadMore" name="loadMore" class="btn btn-xs btn-light bigger loadBtn " onclick="Space.loadMore()">加载更多...</button>
-	        			</div>
-	        		</c:if>
         		</div>
     		</c:otherwise>
     	</c:choose>
+    	</div>
     </div>
 </body>
 
 <script type="text/javascript">
+
 $(function(){
 	// 初始化区域选择
 	Space.initProvince();
 	Space.setSelect();
 	Space.workForHerder();
+	$(".outer").height(window.innerHeight-($("#activity_header").height()+$(".search-box").height()+$("#scrolllist").height()+1));
+	Space.droploadPage();  
+	
 });
 </script>
 

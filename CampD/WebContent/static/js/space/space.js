@@ -3,6 +3,7 @@
  */
 var Space={
 	myScroll:null,
+	dropload:null,
 	spaceType:{// 场地类型
 		"0":"餐厅",
 		"1":"酒楼公园",
@@ -76,9 +77,9 @@ Space.list=function(){
 		if(null!=spaceList && spaceList.length>0){
 			for(var i=0;i<spaceList.length;i++){
 				var area = spaceList[i].area, cost = spaceList[i].cost;
-				var costSpan = "<span>"+cost+"元/小时</span>";
+				var costSpan = "<span class='fr'>"+cost+"元/小时</span>";
 				if(cost == 0){
-					costSpan = "<span class='red' style='color:red;'>免费</span>";
+					costSpan = "<span class='fr' style='color:red;'>免费</span>";
 				}
 				area = null==area?"":area;
 				
@@ -139,6 +140,7 @@ Space.workForHerder=function(){
 	$(".morelist").click(function(){
        $("#workfor-list").slideToggle("fast",function(){
     	   $("#search-box").css("margin-top",$(this).is(':hidden')?"0px":"45px");
+    	   $(".outer").height(window.innerHeight-($("#activity_header").height()+$(".search-box").height()+$("#scrolllist").height()+1));
        });
     }); 
 	$(".workforlist").width($("#scrolllist").width()-$(".slidedown").width());
@@ -197,11 +199,6 @@ Space.workFor=function (workFor, curObj){
 		$("#workfor-list").find("ul li:not(:eq("+(index-4)+"))").removeClass("active");
 		$("#scroller").find("ul li").removeClass("active");
 	}
-//	if(index>1){
-//		$(".workforlist").scrollLeft(75*index);
-//	}else{
-//		$(".workforlist").scrollLeft(0);
-//	}
 	
 	$('#curPage').val(1);
 	$('#workFor').val(workFor);
@@ -302,16 +299,20 @@ Space.search=function(){
 		var dataCount = parseInt(json.dataCount);
 		var pageSize = Math.floor(dataCount/pageLimit);
 		pageSize = dataCount%pageLimit==0 ? pageSize: pageSize + 1;
-		var curPage = $("#curPage").val();
-		if(curPage<pageSize){
-			$("#loadMore_li").remove();
-			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Space.loadMore()'>加载更多...</button></div>");
-		}else{
-			$("#loadMore_li").remove();
-			$("#curPage").val(1);
-		}
+		$("#pageSize").val(pageSize);
+		
+//		var curPage = $("#curPage").val();
+//		if(curPage<pageSize){
+//			$("#loadMore_li").remove();
+//			$("#space_highlevel").parent().append("<div id='loadMore_li'><button id='loadMore' name='loadMore' class='btn btn-xs btn-light bigger loadBtn' onclick='Space.loadMore()'>加载更多...</button></div>");
+//		}else{
+//			$("#loadMore_li").remove();
+//			$("#curPage").val(1);
+//		}
+		Space.dropload?Space.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
 	}, function(data) {
 		systemLoaded();
+		Space.dropload?Space.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
 		alert(data.returnMsg);
 	});
 };
@@ -338,3 +339,39 @@ Space.hideMax=function(){
 	$("#picMax").animate({left:window.screen.width},300);
 	setTimeout('$("#picMax").addClass("hide");',300);
 };
+
+Space.droploadPage = function(){
+	Space.dropload= $('.inner').dropload({
+	    domUp : {
+	        domClass   : 'dropload-up',
+	        domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
+	        domUpdate  : '<div class="dropload-update">↑释放更新</div>',
+	        domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+	    },
+	    domDown : {
+	        domClass   : 'dropload-down',
+	        domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+	        domUpdate  : '<div class="dropload-update">↓释放加载</div>',
+	        domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+	    },
+	    loadUpFn : function(me){
+	    	$("#curPage").val(1);
+	    	$("#space_highlevel").empty();
+	    	Space.search();
+	    },
+	    loadDownFn : function(me){
+	    	var curPage = $("#curPage").val();
+	    	var pageSize = $("#pageSize").val();
+			if(curPage<pageSize){
+	    		Space.loadMore();
+			}else{
+				$(".dropload-load").empty();
+				$(".dropload-load").append('<span class="loading"></span>没有更多了...');
+				setTimeout(function(){
+					Space.dropload?Space.dropload.resetload():$.noop();
+				},1000);
+			}
+	    }
+	});
+};
+

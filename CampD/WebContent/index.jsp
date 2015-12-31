@@ -27,6 +27,7 @@
 		      <div class="news">
 		          <img class="newspic fl" src="${rmtResPath}/static/images/news.png" width="15" height="15"/>
 		          <div class="newsword fl" id="newsword">
+		          	  <a href="${ctx}/page/custom/chuangSiKa.jsp">CD营2016年免费场地推荐（1月第一批）</a>
                       <a href="${ctx}/page/custom/aosika.jsp ">不限时间，不限主题，不限次数，免费场地无限供给</a>
 		          </div>
 		      </div>
@@ -93,6 +94,6 @@ $(function(){
 	Activity.list();
 	Space.list();
 	Gift.list();
-	//initNotifyInfo("newsword", 32);
+	initNotifyInfo("newsword", 32);
 });
 </script>

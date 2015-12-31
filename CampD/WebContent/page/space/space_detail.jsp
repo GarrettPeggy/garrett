@@ -169,7 +169,7 @@
 		        		</c:forEach>
 		        	</c:if>
 				</ul>	
-				<div class=" worddescription1">${jsonview.spaceInfo.name }</div>
+				<div class="worddescription1">${jsonview.spaceInfo.name }</div>
 	        </div>
 	        <div class="heiht30"></div>
 	</div>
