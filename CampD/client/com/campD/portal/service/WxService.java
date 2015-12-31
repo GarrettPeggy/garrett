@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.campD.portal.service.common.JsonClientService;
 import com.campD.portal.util.SystemMessage;
 
 /**
@@ -18,12 +17,15 @@ import com.campD.portal.util.SystemMessage;
  * 微信公共服务类
  */
 @Service("wxService")
-public class WxService extends JsonClientService{
+public class WxService{
 
 	public static Logger logger = Logger.getLogger(WxService.class);
 	
 	public static String APPID = SystemMessage.getString("wx_AppID");
 	public static String APPSECRET = SystemMessage.getString("wx_AppSecret");
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	/**
      * 获取接口访问凭证
@@ -38,7 +40,7 @@ public class WxService extends JsonClientService{
         String requestUrl = token_url.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
         // 发起GET请求获取凭证
         @SuppressWarnings("rawtypes")
-		Map jsonMap = postForObject(requestUrl, null, Map.class, false);
+		Map jsonMap = restTemplate.getForObject(requestUrl, Map.class);//postForObject(requestUrl, null, Map.class, false);
         String access_token = null;
         if (null != jsonMap) {
             try {
@@ -62,7 +64,7 @@ public class WxService extends JsonClientService{
         String requestUrl = url.replace("ACCESS_TOKEN", access_token);
         // 发起GET请求获取凭证
         @SuppressWarnings("rawtypes")
-		Map jsonMap = postForObject(requestUrl, null, Map.class, false);
+		Map jsonMap = restTemplate.getForObject(requestUrl, Map.class);//postForObject(requestUrl, null, Map.class, false);
         String ticket = null;
         if (null != jsonMap) {
             try {
