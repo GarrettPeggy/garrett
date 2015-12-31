@@ -63,6 +63,9 @@
 	</style>
 </head>
 <body>
+	<div style="height:1px;overflow:hidden;">
+	    <img src="${rmtResPath}/static/images/custom/aosika-img/weixin_main_pic.png" />
+	</div>
 	<!-- 头部我的中心信息这一部分 -->
 	<%@ include file="/page/common/head.jsp" %>
      <div class="bg"> 
