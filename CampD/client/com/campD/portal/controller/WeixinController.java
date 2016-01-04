@@ -14,10 +14,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.common.JSONView;
-import com.campD.portal.common.SystemConstant;
 import com.campD.portal.service.WxService;
 import com.campD.portal.util.wx.DeveloperSignUtil;
 import com.campD.portal.util.wx.JSSDKSignUtil;
@@ -73,15 +72,18 @@ public class WeixinController extends BaseController {
 	/**
 	 * 获取微信接口调用凭证（签名参数） 
 	 */
-	@RequestMapping(value="/getSignParam.do", method = RequestMethod.GET)
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping(value="/getSignParam.do")
+	@ResponseBody
 	public JSONView getSignParam(HttpServletResponse response, HttpServletRequest request) {
 		
-		Map<?, ?> signParam = getSignParam(request);
-		response.setHeader("status", SystemConstant.RETURN_SUCC);
+		Map signParam = getSignParam(request);
 		logger.info("signParam->"+signParam);
 	    logger.info("response status->"+ response.getStatus());
 	    logger.info("response getHeader status->"+ response.getHeader("status"));
 		
+	    signParam.put("returnCode", 200);
+	    
 		return getSearchJSONView(signParam);
 	}
 

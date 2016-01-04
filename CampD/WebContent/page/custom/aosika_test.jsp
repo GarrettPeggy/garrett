@@ -156,27 +156,66 @@
              <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
         	   <img src="${rmtResPath}/static/images/contact.png" width="22" height="22"/>联系我们
         	</li>
-        	<li class="retina-1px-border-bottom1" onclick="toShare();">
+        	<li class="retina-1px-border-bottom1" onclick="wxOnMenuShareTimeline();">
         	   <img src="${rmtResPath}/static/images/contact.png" width="22" height="22"/>分享
         	</li>
        	</ul>
     </div>
 </body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
 	$(function(){
 		// 底部按钮居中
 		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
 		Header.initFootIcon();
 		
-		shareConfig();
+		wxConfig();
 	});
 	
 	// 微信分享的配置
-	shareConfig = function(){
-		$.get(BASE_PATH + "/wx/getSignParam.do", {},function(data){
-			console.info("data->"+data);
+	wxConfig = function(){
+		ajaxSearch(BASE_PATH + "/wx/getSignParam.do",{},function(data){
+			wx.config({
+			    debug: true,
+			    appId: data.appid,
+			    timestamp: data.timestamp,
+			    nonceStr: data.nonceStr,
+			    signature: data.signature,
+			    jsApiList: [
+			      // 所有要调用的 API 都要加到这个列表中
+			      'checkJsApi','onMenuShareTimeline', 'onMenuShareAppMessage'
+			    ]
+			});
+			wxCheckJsApi();
 		},function(data){
 			alert(data.returnMsg);
+		});
+	};
+
+	wxCheckJsApi = function(){
+	    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+		wx.checkJsApi({
+		    jsApiList: ['checkJsApi','onMenuShareTimeline', 'onMenuShareAppMessage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+		    success: function(res) {
+		        // 以键值对的形式返回，可用的api值true，不可用为false
+		        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+		        console.info('res->'+res);
+		    }
+		});
+	};
+	wxOnMenuShareTimeline = function(){
+		wx.onMenuShareTimeline({  //例如分享到朋友圈的API  
+		   title: '分享标题', // 分享标题
+		   link: 'http://cdying.cn', // 分享链接
+		   imgUrl: 'http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151008/222558719_c6b6f7f7-bf37-41b3-9aa0-dc6356ef9ee7.jpg', // 分享图标
+		   success: function () {
+		       // 用户确认分享后执行的回调函数
+		       alert("success");
+		   },
+		   cancel: function () {
+		       // 用户取消分享后执行的回调函数
+			   alert("error");
+		   }
 		});
 	};
 </script>
