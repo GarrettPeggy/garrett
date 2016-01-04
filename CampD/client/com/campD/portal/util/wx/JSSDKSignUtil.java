@@ -25,7 +25,7 @@ public class JSSDKSignUtil {
     public static String getUrl(HttpServletRequest request){
         StringBuffer requestUrl = request.getRequestURL();
         String queryString = request.getQueryString();
-        String url = requestUrl +"?"+queryString;
+        String url = queryString==null?requestUrl+"":requestUrl +"?"+queryString;
         return url;
     }
      

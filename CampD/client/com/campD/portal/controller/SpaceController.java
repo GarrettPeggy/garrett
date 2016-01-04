@@ -88,7 +88,7 @@ public class SpaceController extends BaseController {
 		Map<?, ?> resultMap = spaceService.getSpaceInfoList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
 		
 		JSONView jsonview=getSearchJSONView(resultMap);
-		request.setAttribute("jsonview", jsonview);;
+		request.setAttribute("jsonview", jsonview);
 		
 		return "space/heigh_level";
 	}
