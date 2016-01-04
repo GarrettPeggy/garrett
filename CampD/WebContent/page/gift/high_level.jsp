@@ -7,6 +7,7 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/js/gift/gift.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/dropload/dropload.min.js"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -22,14 +23,24 @@
     	<input type="hidden" id="curPage" name="curPage" value="1"/>
     	<input type="hidden" id="pageLimit" name="pageLimit" value="10"/>
     	<input type="hidden" id="level" name="level" value="1"/>
-        <div class="gift-list-pic " id="gift_highlevel">
-
+    	<input type="hidden"  id="pageSize" name="pageSize" value=""/>
+    	<div class="outer">
+	        <div class="gift-list-pic inner">
+	          <div class="gift-inner" id="gift_highlevel"></div>
+	        </div>
         </div>
     </div>   
 </body>
 <script type="text/javascript">
 $(function(){
+	$(".outer").height(window.innerHeight-($(".header").height()+7));
 	Gift.searchHighlevel(false);
+	setTimeout(function(){
+		Gift.droploadHigh();
+	},1000);
+	
 });
+
+
 </script>
 </html>

@@ -8,6 +8,7 @@
 	
 	<script type="text/javascript" src="${locResPath}/static/common/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/gift/gift.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/dropload/dropload.min.js"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -91,22 +92,29 @@
     <!-- end -->
      <div class="main mat7" id="gift_main">
     	<input type="hidden" id="curPage" name="curPage" value="1"/>
-    	<input type="hidden" id="pageLimit" name="pageLimit" value="10"/>
+    	<input type="hidden" id="pageLimit" name="pageLimit" value="8"/>
     	<input type="hidden" id="mainBusiness" name="mainBusiness" value=""/>
     	<input type="hidden" id="workFor" name="workFor" value=""/>
     	<input type="hidden" id="workForCity" name="workForCity" value=""/>
-	   	 <div class="gift-list-pic " id="gift_index">
-
-         </div>
+    	<input type="hidden"  id="pageSize" name="pageSize" value=""/>
+    	<div class="outer">
+	   	  <div class="gift-list-pic inner">
+			<div class="gift-inner" id="gift_index"></div>
+          </div>
       </div>
+    </div>
 </body>
 
 <script type="text/javascript">
 $(function(){
 	// 初始化区域选择
-	Gift.searchIndex(false);
 	Gift.setSelect();
 	Gift.workForHerder();
+	$(".outer").height(window.innerHeight-($("#activity_header").height()+$(".search-box").height()+$("#scrolllist").height()+1));
+	Gift.searchIndex(false);
+	setTimeout(function(){
+		Gift.droploadPage();
+	},1000);
 });
 </script>
 
