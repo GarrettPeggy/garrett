@@ -156,9 +156,6 @@
              <li class="retina-1px-border-bottom1" onclick="Header.toContact()">
         	   <img src="${rmtResPath}/static/images/contact.png" width="22" height="22"/>联系我们
         	</li>
-        	<li class="retina-1px-border-bottom1" onclick="wxOnMenuShareTimeline();">
-        	   <img src="${rmtResPath}/static/images/contact.png" width="22" height="22"/>分享
-        	</li>
        	</ul>
     </div>
 </body>
@@ -169,6 +166,7 @@
 		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
 		Header.initFootIcon();
 		
+		// 加载配置
 		wx.config({
 		    debug: true,
 		    appId: '${signParam.appid}',
@@ -180,7 +178,13 @@
 		      'checkJsApi','onMenuShareTimeline', 'onMenuShareAppMessage'
 		    ]
 		});
-		wxCheckJsApi();
+		
+		// 注册监听接口，其实就是覆盖微信默认的操作
+		wx.ready(function(){
+		    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+			wxOnMenuShareTimeline();
+			wxOnMenuShareAppMessage();
+		});
 	});
 
 	wxCheckJsApi = function(){
@@ -194,20 +198,50 @@
 		    }
 		});
 	};
+	
+	//分享都朋友圈
 	wxOnMenuShareTimeline = function(){
 		wx.onMenuShareTimeline({  //例如分享到朋友圈的API  
-		   title: '分享标题', // 分享标题
+		   title: '不限时间，不限次数，不限主题，创斯卡携手CD营活动场地无限免费供给！', // 分享标题
 		   link: 'http://cdying.cn', // 分享链接
 		   imgUrl: 'http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151008/222558719_c6b6f7f7-bf37-41b3-9aa0-dc6356ef9ee7.jpg', // 分享图标
-		   success: function () {
-		       // 用户确认分享后执行的回调函数
-		       alert("success");
-		   },
-		   cancel: function () {
-		       // 用户取消分享后执行的回调函数
-			   alert("error");
-		   }
+		   trigger: function (res) {
+	         alert('用户点击发送给朋友');
+	       },
+	       success: function (res) {
+	         alert('已分享');
+	       },
+	       cancel: function (res) {
+	         alert('已取消');
+	       },
+	       fail: function (res) {
+	         alert(JSON.stringify(res));
+	       }
 		});
+		alert('已注册获取“发送给朋友圈”状态事件');
+	};
+	
+	//分享给朋友
+	wxOnMenuShareAppMessage = function(){
+		wx.onMenuShareAppMessage({
+	      title: '不限时间，不限次数，不限主题，创斯卡携手CD营活动场地无限免费供给！',
+	      desc: '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。',
+	      link: 'http://cdying.cn', // 分享链接
+	      imgUrl: 'http://camp-images.oss-cn-shanghai.aliyuncs.com/images/20151008/222558719_c6b6f7f7-bf37-41b3-9aa0-dc6356ef9ee7.jpg', // 分享图标
+	      trigger: function (res) {
+	        alert('用户点击发送给朋友');
+	      },
+	      success: function (res) {
+	        alert('已分享');
+	      },
+	      cancel: function (res) {
+	        alert('已取消');
+	      },
+	      fail: function (res) {
+	        alert(JSON.stringify(res));
+	      }
+	    });
+	    alert('已注册获取“发送给朋友”状态事件');
 	};
 </script>
 </html>
