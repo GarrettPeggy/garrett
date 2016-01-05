@@ -74,11 +74,12 @@ public class WeixinController extends BaseController {
 	@RequestMapping(value="/getSignParam.do")
 	public String getSignParam(HttpServletResponse response, HttpServletRequest request) {
 		
-		//获取微信接口调用凭证（签名参数） 
+		// 获取微信接口调用凭证（签名参数） 
 		Map signParam = getSignParam(request);
 		logger.info("signParam->"+signParam);
 		request.setAttribute("signParam", signParam);
 		
+		// 获取永久二维码
 		String qrLimitCode = wxService.getQrLimitCode(token);
 		request.setAttribute("qrLimitCode", qrLimitCode);
 	    
