@@ -46,14 +46,12 @@ public class WeixinController extends BaseController {
 	public void validateServer(HttpServletResponse response, HttpServletRequest request) throws IOException {
 		
 		PrintWriter writer = response.getWriter();
-		
+		Map<String, Object> map = bindParamToMap(request);
         String signature = request.getParameter("signature");  // 微信加密签名  
         String timestamp = request.getParameter("timestamp");  // 时间戳  
         String nonce = request.getParameter("nonce");  // 随机数  
         String echostr = request.getParameter("echostr");  // 随机字符串  
-        logger.info("signature->"+signature);
-        logger.info("timestamp->"+timestamp);
-        logger.info("nonce->"+nonce);
+        logger.info("验证服务器map->"+map);
         logger.info("echostr->"+echostr);
         // 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败  
         if (DeveloperSignUtil.checkSignature(signature, timestamp, nonce)) {
