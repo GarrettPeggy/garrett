@@ -6,9 +6,7 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
-	<script type="text/javascript">
-		//alert("${jsonview.returnCode}");
-	</script>
+	<script type="text/javascript" src="${locResPath}/static/common/dropload/dropload.min.js"></script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -26,6 +24,7 @@
     	<input type="hidden" id="curPage" name="curPage" value="${pageInfo.curPage }"/>
     	<input type="hidden" id="pageLimit" name="pageLimit" value="${pageInfo.pageLimit }"/>
     	<input type="hidden" id="userId" name="userId" value="${USER_INFO.id }"/>
+    	<div class="outer">
     	<c:choose>
     		<c:when test="${empty jsonview.activityList}">
     			<div class="textCenter mat15">
@@ -38,32 +37,35 @@
         		</div>
     		</c:when>
     		<c:otherwise>
-    			<div class="ul-box" id="activity_popu">
-		        	<ul class="data-list">
-		        		<c:forEach items="${jsonview.activityList }" var="activity">
-			        		<a href="${ctx }/activity/getActivityById.do?id=${activity.id }">
-				            	<li class="pd5">
-				                	<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="156"/>
-				                    <div class="classify-li-title">${activity.title }</div>
-				                    <div class="classify-li-date fontSize14">
-				                    	<img src="${rmtResPath}/static/images/date_icon.png" width="10" height="10"/>
-				                        <span>${activity.begintime }--</span>
-				                        <span>${activity.endtime }</span>
-				                    </div>
+    			<div class="ul-box inner" >
+    			   <div id="activity_popu">
+			        	<ul class="data-list">
+			        		<c:forEach items="${jsonview.activityList }" var="activity">
+				        		<li class="pd5">
+					                <a class="item itemwidth" href="${ctx }/activity/getActivityById.do?id=${activity.id }">
+					            		<img src="${sysConfig.ossResUrl}${activity.show_image }" width="100%" height="156"/>
+					                    <div class="classify-li-title">${activity.title }</div>
+					                    <div class="classify-li-date fontSize14">
+					                    	<img src="${rmtResPath}/static/images/date_icon.png" width="10" height="10"/>
+					                        <span>${activity.begintime }--</span>
+					                        <span>${activity.endtime }</span>
+					                    </div>
+						            </a>
 				                </li>
-				            </a>
-		                </c:forEach>
-		            </ul>
-		            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
-		            	<div id="activity_more">
-		            		<button id="activityLoadMore" name="activityLoadMore" class="btn btn-xs btn-light bigger loadBtn" onclick="Activity.loadMyActivityMore()">加载更多...</button> 
-		            	</div>
-		            </c:if>
+			                </c:forEach>
+			            </ul>
+			          </div>
         		</div>
     		</c:otherwise>
     	</c:choose>
     </div>
+  </div>
     <!-- end -->
-    
 </body>
+<script type="text/javascript">
+$(function(){
+	$(".outer").height(window.innerHeight-($(".header").height()+9));
+	Activity.droploadSponsor();
+});
+</script>
 </html>

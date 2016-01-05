@@ -136,12 +136,12 @@ Activity.search=function(url,isUserAuth){
 			
 			if($("#isSponsored").length > 0){//判断是不是要举办的活动界面  $("#isSponsored").length==0代表是已报名的活动    $("#isSponsored").length>0代表的是要举办的活动
 				if(null !=activityList[i].show_image && "" != activityList[i].show_image){
-					$("#activity_popu").append('<li class="clearfix"><a class="item" href="'+BASE_PATH+'/activity/getActivityById.do?id='+activityList[i].id+'"><div class="data-li-left item opacity"><img src="'+OSS_RES_URL+activityList[i].show_image+'" width="91" height="91"/></div><div class="data-li-right"><div class="dlr-title retina-1px-border-bottom"><span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span>&nbsp;&nbsp;&nbsp;<span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span>&nbsp;&nbsp;&nbsp;<span class="dlrt3">'+city+'</span></div></div></a></li>');
+					$("#activity_popu").append('<li class="clearfix"><a class="item itemwidth" href="'+BASE_PATH+'/activity/getActivityById.do?id='+activityList[i].id+'"><div class="data-li-left item opacity"><img src="'+OSS_RES_URL+activityList[i].show_image+'" width="91" height="91"/></div><div class="data-li-right"><div class="dlr-title retina-1px-border-bottom"><span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span>&nbsp;&nbsp;&nbsp;<span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span>&nbsp;&nbsp;&nbsp;<span class="dlrt3">'+city+'</span></div></div></a></li>');
 				}else{
-					$("#activity_popu").append('<li class="clearfix"><a class="item" href="'+BASE_PATH+'/activity/getActivityById.do?id='+activityList[i].id+'"><div class="data-li-left  item opacity"><img src="'+REMOTE_RES_PATH+'/static/images/empty_image.png" width="91" height="91"/></div><div class="data-li-right"><div class="dlr-title retina-1px-border-bottom"><span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span>&nbsp;&nbsp;&nbsp;<span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span>&nbsp;&nbsp;&nbsp;<span class="dlrt3">'+city+'</span></div></div></a></li>');
+					$("#activity_popu").append('<li class="clearfix"><a class="item itemwidth" href="'+BASE_PATH+'/activity/getActivityById.do?id='+activityList[i].id+'"><div class="data-li-left  item opacity"><img src="'+REMOTE_RES_PATH+'/static/images/empty_image.png" width="91" height="91"/></div><div class="data-li-right"><div class="dlr-title retina-1px-border-bottom"><span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span>&nbsp;&nbsp;&nbsp;<span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span>&nbsp;&nbsp;&nbsp;<span class="dlrt3">'+city+'</span></div></div></a></li>');
 				}
 			}else{// 不是要举办的活动
-				$("#activity_popu").append("<li class='pd5'><a class='item' href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><img class='item opacity' src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+begintime+"&nbsp;&nbsp;"+begintimeWeek+"</span></div></a></li>");
+				$("#activity_popu").append("<li class='pd5'><a class='item itemwidth' href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><img class='item opacity' src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+begintime+"&nbsp;&nbsp;"+begintimeWeek+"</span></div></a></li>");
 			}
 			
 		};
@@ -370,7 +370,42 @@ Activity.droploadPage=function(){
 	});
 	
 };
-
+/*我报名的活动*/
+Activity.droploadSponsor=function(){
+	Activity.dropload= $('.inner').dropload({
+	    domUp:{
+	        domClass   : 'dropload-up',
+	        domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
+	        domUpdate  : '<div class="dropload-update">↑释放更新</div>',
+	        domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+	    },
+	    domDown:{
+	        domClass   : 'dropload-down',
+	        domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+	        domUpdate  : '<div class="dropload-update">↓释放加载</div>',
+	        domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+	    },
+	    loadUpFn:function(me){
+	    	$("#curPage").val(1);
+	    	$("#activity_popu").empty();
+	    	Activity.search("/activity/getMyTakeAnActiveAjax.do",true);
+	    },
+	    loadDownFn:function(me){
+	    	var curPage = Number($("#curPage").val());
+	    	var pageSize = Number($("#pageSize").val());
+			if(curPage<pageSize){
+				Activity.loadMyActivityMore();
+			}else{
+				$(".dropload-load").empty();
+				$(".dropload-load").append('<span class="loading"></span>没有更多了...');
+				setTimeout(function(){
+					Activity.dropload?Activity.dropload.resetload():$.noop();
+				},1000);
+			}
+	    }
+	});
+	
+};
 
 
 

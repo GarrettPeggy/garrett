@@ -9,9 +9,6 @@
 <body onload="timeout();">
 	<!-- 头部 -->
 	<div class="header clearfix">
-    	<%-- <a class="head-left-icon">
-        	<img src="${rmtResPath}/static/images/back.png" onclick="back()" width="13" height="22"/>
-        </a> --%>
         <div class="head-content">登录成功</div>
     </div>
 	<!-- end -->
@@ -35,7 +32,7 @@
 function timeout(){
 	setTimeout(function(){
 		window.location.href = BASE_PATH;
-	},2000);
+	},1000);
 }
 </script>
 </html>

@@ -1770,5 +1770,8 @@ a:hover{text-decoration:none;}
 .ul-box .data-list li{
 	display:block;
 }
-
+/*活动图片宽度调整*/
+.inner .itemwidth{
+	width:100%;
+}
 
