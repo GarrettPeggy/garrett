@@ -39,7 +39,7 @@
                </c:forEach>
            </ul>
        </div>
-       <ul class="clearfix search-parent-list bt-line" id="search-box" style="background:#fff;">
+       <ul class="clearfix search-parent-list " id="search-box" >
         	<li> 
             	<span>费用</span>
             	<span class="conrner"></span>
@@ -57,22 +57,7 @@
             	<span class="conrner"></span>        
             </li>
         </ul>
-        <div class="choose " style="height:55px; width:100%;background:#fff;margin-bottom:7px;">
-          <div class="fl" style="padding:5px 10px;margin-left:2%;margin-right:2%;">
-             <img style="position:absolute;margin-top:5px;" src="${rmtResPath}/static/images/border.png" width="99" height="35">
-             <span style="color:#cba34b;position:relative;padding-left:10px;padding-left:16px;">众创空间</span>
-          </div>
-          <div class="fl" style="padding:5px 10px;margin-left:2%;margin-right:2%;">
-             <img style="position:absolute;margin-top:5px;" src="${rmtResPath}/static/images/border.png" width="99" height="35">
-             <span style="color:#cba34b;position:relative;padding-left:10px;padding-left:28px;">创业</span>
-          </div>
-          <div class="fl" style="padding:5px 10px;margin-left:2%;margin-right:2%;">
-             <img style="position:absolute;margin-top:5px;" src="${rmtResPath}/static/images/border.png" width="99" height="35">
-             <span style="color:#cba34b;position:relative;padding-left:10px;padding-left:28px;">上海</span>
-          </div>
-        </div>
-        
-        <div class="clearfix">
+        <div >
             <!-- 费用搜索下拉内容 -->
             <div class="search-ul search-detail hide">
                 <ul class="clearfix">
