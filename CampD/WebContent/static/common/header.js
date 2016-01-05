@@ -51,7 +51,7 @@ Header.signUp=function(){
  * 活动分类页面
  */
 Header.classify=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do?status=1&curPage=1&pageLimit=6&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListClassify.do";
 };
 
 /**

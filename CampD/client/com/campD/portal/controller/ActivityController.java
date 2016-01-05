@@ -133,13 +133,6 @@ public class ActivityController extends BaseController {
 	 */
 	@RequestMapping("/getActivityListClassify.do")
 	public String getActivityListClassify(HttpServletResponse response, HttpServletRequest request) throws Exception {
-		
-		Map<String, Object> map = bindParamToMap(request);
-		map.put("sponsored", 1); //参数sponsored=0表示自己要举办的活动，sponsored=1表示不是自己要举办的活动，好在后台进行按照创建时间排序
-		PageInfo pageInfo = getPageInfo(request);
-		Map<?, ?> resultMap = activityService.getActivityList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
-		JSONView jsonview=getSearchJSONView(resultMap);
-		request.setAttribute("jsonview", jsonview);
 		 
 		return "activity/activity_classify";
 	}
@@ -154,14 +147,6 @@ public class ActivityController extends BaseController {
 	@RequestMapping("/getActivityListByParam.do")
 	public String getActivityListByParam(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		bindParamToAttrbute(request);
-		Map<String, Object> map = bindParamToMap(request);
-		map.put("sponsored", 1); //参数sponsored=0表示自己要举办的活动，sponsored=1表示不是自己要举办的活动，好在后台进行按照创建时间排序
-		PageInfo pageInfo = getPageInfo(request);
-		Map<?, ?> resultMap = activityService.getActivityList(map,pageInfo,Boolean.valueOf(map.get("isUserAuth").toString()));
-		JSONView jsonview=getSearchJSONView(resultMap);
-		
-		request.setAttribute("categoryId", map.get("categoryId"));//活动范畴放到页面上
-		request.setAttribute("jsonview", jsonview);
 		
 		return "activity/all_activity_list";
 	}

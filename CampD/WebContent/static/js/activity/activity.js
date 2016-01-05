@@ -62,36 +62,10 @@ Activity.getLength=function(str){
 };
 
 /**
- * 举办活动时的活动类型 
- */
-Activity.type=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityType.do";
-};
-/**
- * 举办活动时的活动城市
- */
-Activity.city=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityCity.do";
-};
-/**
- * 举办活动时的活动人数
- */
-Activity.people=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityPeople.do";
-};
-
-/**
- * 举办活动的时候活动需求
- */
-Activity.desc=function(){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityDesc.do";
-};
-
-/**
  * 各种活动再分类显示
  */
 Activity.category=function(categoryValue){
-	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?status=1&categoryId="+categoryValue+"&curPage=1&pageLimit=6&isUserAuth=false";
+	window.location.href = BASE_PATH + "/" +"activity/getActivityListByParam.do?status=1&categoryId="+categoryValue;
 };
 
 /**
@@ -122,8 +96,6 @@ Activity.loadMyActivityMore=function(){
 	$("#curPage").val(curPage);//更新当前页面
 	Activity.search("/activity/getMyTakeAnActiveAjax.do",true);
 };
-
-//
 
 /**
  * 活动搜索
@@ -168,7 +140,7 @@ Activity.search=function(url,isUserAuth){
 				}else{
 					$("#activity_popu").append('<li class="clearfix"><a class="item" href="'+BASE_PATH+'/activity/getActivityById.do?id='+activityList[i].id+'"><div class="data-li-left  item opacity"><img src="'+REMOTE_RES_PATH+'/static/images/empty_image.png" width="91" height="91"/></div><div class="data-li-right"><div class="dlr-title retina-1px-border-bottom"><span class="dlrt1">'+Activity.catagory[activityList[i].category_id]+'</span>&nbsp;&nbsp;&nbsp;<span class="dlrt2"><font color="#638ee0">'+activityList[i].act_num+'</font>人</span>&nbsp;&nbsp;&nbsp;<span class="dlrt3">'+city+'</span></div></div></a></li>');
 				}
-			}else{//已报名的活动
+			}else{// 不是要举办的活动
 				$("#activity_popu").append("<li class='pd5'><a class='item' href='"+BASE_PATH+"/activity/getActivityById.do?id="+activityList[i].id+"'><img class='item opacity' src='"+OSS_RES_URL+activityList[i].show_image+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==activityList[i].title ? "无标题" : activityList[i].title )+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/date_icon.png' width='10' height='10'/>&nbsp;<span>"+begintime+"&nbsp;&nbsp;"+begintimeWeek+"</span></div></a></li>");
 			}
 			
