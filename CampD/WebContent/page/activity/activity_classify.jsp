@@ -35,8 +35,8 @@
 	<!-- end -->
     <!-- 主体 -->
     <div class="main">
-    	<input type="hidden" id="pageSize" name="pageSize" value="${pageInfo.pageSize }"/>
-    	<input type="hidden" id="curPage" name="curPage" value="${pageInfo.curPage }"/>
+    	<input type="hidden" id="pageSize" name="pageSize" value=""/>
+    	<input type="hidden" id="curPage" name="curPage" value="1"/>
     	<input type="hidden" id="pageLimit" name="pageLimit" value="6"/>
     	<div class="outer">
 	    	<div class="ul-box inner" id="activity_main">
