@@ -44,7 +44,7 @@ Gift.list=function(){
 	var params={
 		"level":1,
 	    "curPage":1,
-	    "pageLimit":3,
+	    "pageLimit":4,
 	    "isUserAuth":false,
 	    "isRand":1
 	};
@@ -91,6 +91,7 @@ Gift.searchHighlevel=function(isUserAuth){
 	
 		if(curPage==1 && length==0){
 			$("#gift_highlevel").append('<div class="ground-no "><img src="'+BASE_PATH+'/static/images/no_data.png" width="41" height="41"/><p>抱歉，没有找到合适的礼品</p><p>请浏览其他礼品吧</p></div>');
+			Gift.dropload?Gift.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
 			return;
 		}
 		for(var i=0;i<length;i++){
@@ -157,6 +158,7 @@ Gift.searchIndex=function(isUserAuth){
 		var length = giftList.length;
 		if(curPage==1 && length==0){
 			$("#gift_index").append('<div class="ground-no "><img src="'+BASE_PATH+'/static/images/no_data.png" width="41" height="41"/><p>抱歉，没有找到合适的礼品</p><p>请浏览其他礼品吧</p></div>');
+			Gift.dropload?Gift.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
 			return;
 		}
 		//把数据写到页面上

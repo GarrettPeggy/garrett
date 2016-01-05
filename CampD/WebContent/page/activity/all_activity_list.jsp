@@ -23,22 +23,10 @@
     	<input type="hidden" id="curPage" name="curPage" value="${pageInfo.curPage }"/>
     	<input type="hidden" id="pageLimit" name="pageLimit" value="${pageInfo.pageLimit }"/>
     	<input type="hidden" id="categoryId" name="categoryId" value="${categoryId }"/>
-    	<input type="hidden" id="pageSize" name="pageSize" value=""/>
     	<div class="outer">
 	    	<div class="ul-box inner">
 	        	<ul class="data-list" id="activity_popu">
-	        		<c:choose>
-		        		<c:when test="${empty jsonview.activityList }">
-		        			<div class="textCenter mat15">
-			        			<img src="${rmtResPath}/static/images/no_data.png" width="41" height="41"/>
-	            				<div class="ui-tips-box mat10">
-	            					<span class="color94">抱歉，没有找到合适的活动</span>
-	                				<p class="mat15 color94">请浏览其他活动吧</p>
-	            				</div>
-			        		</div>
-		        		</c:when>
-		        		<c:otherwise></c:otherwise>
-		            </c:choose>
+	        		
 	            </ul>
 	        </div>
        </div>

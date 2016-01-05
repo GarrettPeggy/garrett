@@ -52,11 +52,6 @@
 		                </c:otherwise>
 	                </c:choose>
 	            </ul>
-	            <c:if test="${pageInfo.pageSize > pageInfo.curPage }">
-	            	<div id="activity_more">
-	            		<button id="activityLoadMore" name="activityLoadMore" class="btn btn-xs btn-light bigger loadBtn" onclick="Activity.loadMore()">加载更多...</button> 
-	            	</div>
-	            </c:if>
 	        </div>
 	      </div>
     </div>
@@ -66,10 +61,7 @@
 <script type="text/javascript">
 $(function(){
 	$(".outer").height(window.innerHeight-($(".header").height()+9));
-	Activity.search("/activity/getActivityList.do",false);
-	setTimeout(function(){
-		Activity.droploadPage();
-	},1000);
+	Activity.droploadPage();
 });
 </script>
 

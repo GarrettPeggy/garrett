@@ -130,6 +130,7 @@ Activity.loadMyActivityMore=function(){
  */
 Activity.search=function(url,isUserAuth){
 	var pageLimit = parseInt($("#pageLimit").val());
+	var curPage = $("#curPage").val();
 	var params = {
 	    "curPage":$("#curPage").val(),
 	    "pageLimit":pageLimit,
@@ -143,7 +144,15 @@ Activity.search=function(url,isUserAuth){
 
 	ajaxSearch(BASE_PATH + url,params,function(json){
 		var activityList=json.activityList;
-		for(var i=0;i<activityList.length;i++){
+		
+		var length = activityList.length;
+		if(curPage==1 && length==0){
+			$("#activity_popu").append('<div class="textCenter mat15"><img src="'+BASE_PATH+'/static/images/no_data.png" width="41" height="41"><div class="ui-tips-box mat10"><span class="color94">抱歉，没有找到合适的活动</span><p class="mat15 color94">请浏览其他活动吧</p></div></div>');
+			Activity.dropload?Activity.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
+			return;
+		}
+		
+		for(var i=0;i<length;i++){
 			var city=activityList[i].city;
 			if(null == city){
 				city = "";
@@ -227,18 +236,6 @@ Activity.actSub=function(){
 		return;
 	}
 	
-//	var params = {
-//		"categoryId":categoryId,//活动类型
-//		"actNum":actNum,//活动人数
-//		"province":province,//省份
-//		"city":city,//城市
-//		"area":area,//区域
-//		"requirement":requirement, //活动需求
-//		"actType":0,//默认普通活动
-//		"status":0,//活动状态  0表示未发布
-//		"contact":$("#contact").val()
-//	};
-	// 记住参数提交的格式一定要正确，否则会报error错误。
 	systemLoading(null, true, "提交中,请稍等");
 	submitForm("addActivityForm",BASE_PATH + '/activity/add.do',function(data){
 			systemLoaded();
@@ -251,17 +248,6 @@ Activity.actSub=function(){
 			alert(data.returnMsg);
 		}
 	);
-//	submitSave(BASE_PATH + "/activity/add.do", params, function(data) {
-//		systemLoaded();
-//		$(".mc").removeClass("hide");
-//		$(".sign-succ-modal").removeClass("hide");
-//		$(".mc").height($(document).height());
-//		$("#Activity.actSub").attr("onclick","void(0)");
-//		//window.location.href = BASE_PATH + "/";
-//	}, function(data) {
-//		systemLoaded();
-//		alert(data.returnMsg);
-//	});
 };
 /**
  * 关闭活动需求提交成功按钮

@@ -294,6 +294,7 @@ a:hover{text-decoration:none;}
 .classify-li-title, .classify-li-desc, .classify-li-date{
 	padding-left:10px;
 	padding-top:5px;
+	padding-right:10px;
 }
 .classify-li-title,.classify-li-date{
 	color:#3c3c3c;
@@ -1765,7 +1766,9 @@ a:hover{text-decoration:none;}
         transform: rotate(360deg);
     }
 }
-
-
+/*下拉加载样式影响场地样式，需修改*/
+.ul-box .data-list li{
+	display:block;
+}
 
 

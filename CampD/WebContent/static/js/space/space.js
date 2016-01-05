@@ -294,6 +294,8 @@ Space.search=function(){
 			};
 		}else{
 			$("#space_highlevel").append("<div class='ground-no'><img src='"+REMOTE_RES_PATH+"/static/images/no_data.png' width='41' height='41'/><p>抱歉，没有找到合适的场地</p><p>请浏览其他场地吧</p></div>");
+			Space.dropload?Space.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
+			return;
 		}
 		
 		var dataCount = parseInt(json.dataCount);
