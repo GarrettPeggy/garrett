@@ -3,7 +3,9 @@
  */
 package com.campD.portal.service;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class WxService{
 	
 	public static String APPID = SystemMessage.getString("wx_AppID");
 	public static String APPSECRET = SystemMessage.getString("wx_AppSecret");
+	
+	public static Random random = new Random();
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -75,5 +79,41 @@ public class WxService{
             }
         }
         return ticket;
+    }
+    
+    /**
+     * 获取公众号永久二维码
+     * 
+     * @param access_token 接口访问凭证
+     * @return
+     */
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public String getQrLimitCode(String access_token) {
+        String url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN";
+        String requestUrl = url.replace("TOKEN", access_token);
+        // 构造二维码参数：{"action_name": "QR_LIMIT_STR_SCENE", "action_info": {"scene": {"scene_str": "123"}}}
+        Map paramMap = new HashMap();
+        Map sceneIdMap = new HashMap();
+        sceneIdMap.put("scene_id", random.nextInt(10000));
+        Map sceneMap = new HashMap();
+        sceneMap.put("scene", sceneIdMap);
+        paramMap.put("action_name", "QR_LIMIT_SCENE");
+        paramMap.put("action_info", sceneMap);
+        logger.info("微信二位码生成参数 paramMap -> "+paramMap);
+        // 发起POST请求获取二维码凭证
+		Map jsonMap = restTemplate.postForObject(requestUrl, paramMap, Map.class, paramMap);
+		logger.info("微信二位码返回参数 jsonMap -> "+jsonMap);
+        String ticket = null;
+        if (null != jsonMap) {
+            try {
+                ticket = (String) jsonMap.get("ticket");
+            } catch (Exception e) {// 获取token失败
+            	logger.error("获取ticket失败 errcode:{"+jsonMap.get("errcode")+"} errmsg:{"+jsonMap.get("errmsg")+"}");
+            }
+        }
+
+        String returnUrl = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET";
+        returnUrl = returnUrl.replace("TICKET", ticket);
+        return returnUrl;
     }
 }

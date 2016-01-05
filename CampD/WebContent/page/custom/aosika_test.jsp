@@ -124,7 +124,7 @@
      </div>
      <!--二维码-->
      <div style="text-align:center;background:#fff;line-height:28px;font-size:14px;margin:0px 5px 45px 5px;border:1px solid rgba(32,35,37,0.16);padding-bottom:10px;">
-        <img class="ma" style="border:1px solid rgba(32,35,37,0.16); margin-top:15px;" alt="二维码" src="${rmtResPath}/static/images/custom/aosika-img/cd_qrcode.jpg" width="150" height="150"/>
+        <img class="ma" style="border:1px solid rgba(32,35,37,0.16); margin-top:15px;" alt="二维码" src="${qrLimitCode}" width="150" height="150"/>
         <p class="more" style="color:red;" >活动规则</p>
         <p><a href="javascript:void(0)" style="color:green;">分享朋友圈,</a>发送截图给我们</p>
         <p>您二月一号之前所有活动的活动场地</p>

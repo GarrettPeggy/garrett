@@ -78,6 +78,9 @@ public class WeixinController extends BaseController {
 		Map signParam = getSignParam(request);
 		logger.info("signParam->"+signParam);
 		request.setAttribute("signParam", signParam);
+		
+		String qrLimitCode = wxService.getQrLimitCode(token);
+		request.setAttribute("qrLimitCode", qrLimitCode);
 	    
 		return "custom/aosika_test";
 	}
