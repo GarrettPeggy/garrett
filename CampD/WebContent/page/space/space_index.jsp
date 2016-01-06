@@ -39,7 +39,7 @@
                </c:forEach>
            </ul>
        </div>
-       <ul class="clearfix search-parent-list " id="search-box" >
+       <ul class="clearfix search-parent-list bt-line" id="search-box"  >
         	<li> 
             	<span>费用</span>
             	<span class="conrner"></span>
@@ -57,9 +57,11 @@
             	<span class="conrner"></span>        
             </li>
         </ul>
-        <div >
+        <!-- 已选项列表 -->
+        <div class="choose" id="choose"></div>
+        <div class="clearfix">
             <!-- 费用搜索下拉内容 -->
-            <div class="search-ul search-detail hide">
+            <div class="search-ul search-detail hide" id="cho-cost">
                 <ul class="clearfix">
                     <li class="active" onclick="Space.cost('',this)">全部</li>
                     <li onclick="Space.cost('1',this)">免费</li>
@@ -68,7 +70,7 @@
             </div>
             <!-- end -->
             <!-- 类型搜索下拉内容 -->
-            <div class="search-ul search-detail hide">
+            <div class="search-ul search-detail hide" id="cho-type">
                 <ul class="clearfix">
                     <li class="active" onclick="Space.type('',this)">全部</li>
                     <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
@@ -78,14 +80,14 @@
             </div>
             <!-- end -->
             <!-- 区域搜索下拉内容 -->
-            <div class="search-ul search-detail hide">
+            <div class="search-ul search-detail hide" id="cho-address">
                 <ul class="clearfix" id="search_province">
                     <li class="active" onclick="Space.address('',this)">全部</li>
                 </ul>
             </div>
             <!-- end -->
             <!-- 容量搜索下拉内容 -->
-            <div class="search-ul search-detail hide">
+            <div class="search-ul search-detail hide" id="cho-capacity">
                 <ul class="clearfix">
                     <li class="active" onclick="Space.capacity('','',this)">全部</li>
                     <li onclick="Space.capacity(10,30,this)">10-30人</li>
@@ -180,9 +182,8 @@ $(function(){
 	Space.initProvince();
 	Space.setSelect();
 	Space.workForHerder();
-	$(".outer").height(window.innerHeight-($("#activity_header").height()+$(".search-box").height()+$("#scrolllist").height()+1));
+	Space.setOuterHeight();
 	Space.droploadPage();  
-	
 });
 </script>
 

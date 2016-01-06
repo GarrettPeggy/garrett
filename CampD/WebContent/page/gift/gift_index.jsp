@@ -41,13 +41,13 @@
 	               </c:forEach>
                  </ul>
             </div>
-    	 <ul class="clearfix search-parent-list giftlist" id="searchbox">
+    	 <ul class="clearfix search-parent-list giftlist bt-line" id="searchbox">
         	<li>
             	  <span>主营业务</span>
             	  <span class="conrner"></span>
             </li>
             <li>
-            	  <span>活动类型</span>
+            	  <span>礼品形态</span>
             	  <span class="conrner"></span>
             </li>
             <li>
@@ -55,9 +55,11 @@
             	  <span class="conrner"></span>
             </li>
         </ul>
-        <div>
+        <!-- 已选项列表 -->
+        <div class="choose" id="choose"></div>
+        <div class="clearfix">
         <!-- 主营业务搜索下拉内容 -->
-            <div class="search-ul search-detail hide">
+            <div class="search-ul search-detail hide" id="cho-mainBusiness">
                 <ul class="clearfix">
                     <li class="active" onclick="Gift.mainBusiness('',this)">全部</li>
                     <c:forEach items="${systemConst.mainBusinessMap}" var="mainBusiness">
@@ -65,17 +67,17 @@
 					</c:forEach>
                 </ul>
             </div>
-     <!-- 适用活动类型搜索下拉内容 -->
-            <div class="search-ul search-detail hide">
+     <!-- 适用礼品形态搜索下拉内容 -->
+            <div class="search-ul search-detail hide" id="cho-form">
                 <ul class="clearfix">
-                    <li class="active" onclick="Gift.workFor('',this)">全部</li>
-                    <c:forEach items="${systemConst.categoryMap}" var="category">
-                    	<li onclick="Gift.workFor(${category.key},this)">${category.value}</li>
+                    <li class="active" onclick="Gift.form('',this)">全部</li>
+                    <c:forEach items="${systemConst.formMap}" var="form">
+                    	<li onclick="Gift.form(${form.key},this)">${form.value}</li>
 					</c:forEach>
                 </ul>
             </div>
      <!-- 适用城市搜索下拉内容 -->
-            <div class="search-ul search-detail hide">
+            <div class="search-ul search-detail hide" id="cho-workForCity">
                 <ul class="clearfix">
                     <li class="active" onclick="Gift.workForCity('',this)">全部</li>
                       <c:if test="${!empty sysConfig.biz_open_city}">
@@ -92,11 +94,12 @@
     <!-- end -->
      <div class="main mat7" id="gift_main">
     	<input type="hidden" id="curPage" name="curPage" value="1"/>
+    	<input type="hidden"  id="pageSize" name="pageSize" value=""/>
     	<input type="hidden" id="pageLimit" name="pageLimit" value="8"/>
     	<input type="hidden" id="mainBusiness" name="mainBusiness" value=""/>
     	<input type="hidden" id="workFor" name="workFor" value=""/>
     	<input type="hidden" id="workForCity" name="workForCity" value=""/>
-    	<input type="hidden"  id="pageSize" name="pageSize" value=""/>
+    	<input type="hidden"  id="form" name="form" value=""/>
     	<div class="outer">
 	   	  <div class="gift-list-pic inner">
 			<div class="gift-inner" id="gift_index"></div>
@@ -110,7 +113,7 @@ $(function(){
 	// 初始化区域选择
 	Gift.setSelect();
 	Gift.workForHerder();
-	$(".outer").height(window.innerHeight-($("#activity_header").height()+$(".search-box").height()+$("#scrolllist").height()+1));
+	Gift.setOuterHeight();
 	Gift.searchIndex(false);
 	setTimeout(function(){
 		Gift.droploadPage();

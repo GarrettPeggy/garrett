@@ -149,7 +149,8 @@ Gift.searchIndex=function(isUserAuth){
 	    'isUserAuth':isUserAuth,
 		'workFor':$('#workFor').val(),
 		'mainBusiness':$('#mainBusiness').val(),
-		'workForCity':$('#workForCity').val()   
+		'workForCity':$('#workForCity').val(),
+		'form':$('#form').val()
 	};
 	$(".search-detail").addClass("hide");
 	$("#space_mc").addClass("hide");
@@ -194,6 +195,13 @@ Gift.mainBusiness=function(mainBusiness, curObj){
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
+	
+	// 更新提示选项
+	$("#choose").find(".cho-mainBusiness").remove();
+	if(!isEmpty(mainBusiness)){
+		$("#choose").append('<div class="fl chose cho-mainBusiness" onclick="Gift.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
+	}
+	Gift.setOuterHeight();
 	$("#gift_index").empty();
 	Gift.searchIndex(false);
 };
@@ -204,15 +212,42 @@ Gift.workFor=function (workFor, curObj){
 		$("#scroller").find("ul li:eq("+index+")").addClass("active");
 		$("#scroller").find("ul li:not(:eq("+index+"))").removeClass("active");
 		$("#workfor-list").find("ul li").removeClass("active");
+		// 更新提示选项
+		$("#choose").find(".cho-workFor").remove();
+		if(index != 0){
+			$("#choose").append('<div class="fl chose cho-workFor" onclick="Gift.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png" height="35" ><div class="cword">'+$(curObj).text()+'</div></div>');
+		}
 	}else{
 		$("#workfor-list").find("ul li:eq("+(index-4)+")").addClass("active");
 		$("#workfor-list").find("ul li:not(:eq("+(index-4)+"))").removeClass("active");
 		$("#scroller").find("ul li").removeClass("active");
+		// 更新提示选项
+		$("#choose").find(".cho-workFor").remove();
+		$("#choose").append('<div class="fl chose cho-workFor" onclick="Gift.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
 	}
+	Gift.setOuterHeight();
 	$('#curPage').val(1);
 	$('#workFor').val(workFor);
 	$("#gift_index").empty();
 	Gift.searchIndex(false);
+
+};
+/*礼品形态*/			
+Gift.form=function (form, curObj){
+	$('#curPage').val(1);
+	$('#form').val(form);
+	$(curObj).addClass("active");
+	$(curObj).prevAll().removeClass("active");
+	$(curObj).nextAll().removeClass("active");
+	
+	// 更新提示选项
+	$("#choose").find(".cho-form").remove();
+	if(!isEmpty(form)){
+		$("#choose").append('<div class="fl chose cho-form" onclick="Gift.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
+	}
+	$("#gift_index").empty();
+	Gift.searchIndex(false);
+	Gift.setOuterHeight();
 };
 /*适用城市*/			
 Gift.workForCity=function (workForCity, curObj){
@@ -221,9 +256,52 @@ Gift.workForCity=function (workForCity, curObj){
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
+	
+	// 更新提示选项
+	$("#choose").find(".cho-workForCity").remove();
+	if(!isEmpty(workForCity)){
+		$("#choose").append('<div class="fl chose cho-workForCity" onclick="Gift.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
+	}
+	$('#curPage').val(1);
 	$("#gift_index").empty();
 	Gift.searchIndex(false);
+	Gift.setOuterHeight();
 };
+
+/**
+ * 取消某一个过滤选项
+ */
+Gift.deleteChoose=function(curObj){
+	var $curObj = $(curObj);
+	if($curObj.hasClass("cho-workFor")){// 选择的是活动类型，workFor
+		$("#choose").find(".cho-workFor").remove();// 移出当前选项
+		$("#scrolllist,#workfor-list").find('li').removeClass('active');
+		$($("#scrolllist").find('li')[0]).addClass('active');
+		// 刷新页面
+		$('#workFor').val('');
+	}else if($curObj.hasClass("cho-mainBusiness")){// 选择的是主营业务，mainBusiness 
+		$("#choose").find(".cho-mainBusiness").remove();// 移出当前选项
+		$("#cho-mainBusiness").find('li').removeClass('active');
+		$($("#cho-mainBusiness").find('li')[0]).addClass('active');
+		$('#mainBusiness').val('');
+	}else if($curObj.hasClass("cho-form")){// 选择的是礼品形态，form
+		$("#choose").find(".cho-form").remove();// 移出当前选项
+		$("#cho-form").find('li').removeClass('active');
+		$($("#cho-form").find('li')[0]).addClass('active');
+		// 刷新页面
+		$('#form').val('');
+	} else if($curObj.hasClass("cho-workForCity")){// 选择的是活动城市，workForCity 
+		$("#choose").find(".cho-workForCity").remove();// 移出当前选项
+		$("#cho-workForCity").find('li').removeClass('active');
+		$($("#cho-workForCity").find('li')[0]).addClass('active');
+		$('#workForCity').val('');
+	}
+	$("#gift_index").empty();
+	$('#curPage').val(1);
+	Gift.searchIndex(false);
+	Gift.setOuterHeight();
+};
+
 /**
  * 场地适用活动选择
  */
@@ -317,5 +395,10 @@ Gift.droploadHigh=function(){
 			}
 	    }
 	});
-	
+};
+/**
+ * 给滑动加载最外层div设置高度
+ */
+Gift.setOuterHeight = function(){
+	$(".outer").height(window.innerHeight-($("#activity_header").height()+$(".search-box").height()+$("#scrolllist").height()+6));
 };

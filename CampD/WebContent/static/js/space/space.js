@@ -140,11 +140,17 @@ Space.workForHerder=function(){
 	$(".morelist").click(function(){
        $("#workfor-list").slideToggle("fast",function(){
     	   $("#search-box").css("margin-top",$(this).is(':hidden')?"0px":"45px");
-    	   $(".outer").height(window.innerHeight-($("#activity_header").height()+$(".search-box").height()+$("#scrolllist").height()+1));
+    	   Space.setOuterHeight();
        });
     }); 
 	$(".workforlist").width($("#scrolllist").width()-$(".slidedown").width());
 	$("#scroller").width($("#scrolllist").width());
+};
+/**
+ * 给滑动加载最外层div设置高度
+ */
+Space.setOuterHeight = function(){
+	$(".outer").height(window.innerHeight-($("#activity_header").height()+$(".search-box").height()+$("#scrolllist").height()+6));
 };
 
 /**
@@ -182,6 +188,12 @@ Space.cost=function(costType, curObj){
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
 	
+	// 更新提示选项
+	$("#choose").find(".cho-cost").remove();
+	if(!isEmpty(costType)){
+		$("#choose").append('<div class="fl chose cho-cost" onclick="Space.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
+	}
+	Space.setOuterHeight();
 	$("#space_highlevel").empty();
 	Space.search();
 };
@@ -194,14 +206,63 @@ Space.workFor=function (workFor, curObj){
 		$("#scroller").find("ul li:eq("+index+")").addClass("active");
 		$("#scroller").find("ul li:not(:eq("+index+"))").removeClass("active");
 		$("#workfor-list").find("ul li").removeClass("active");
+		// 更新提示选项
+		$("#choose").find(".cho-workFor").remove();
+		if(index != 0){
+			$("#choose").append('<div class="fl chose cho-workFor" onclick="Space.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png" height="35" ><div class="cword">'+$(curObj).text()+'</div></div>');
+		}
 	}else{
 		$("#workfor-list").find("ul li:eq("+(index-4)+")").addClass("active");
 		$("#workfor-list").find("ul li:not(:eq("+(index-4)+"))").removeClass("active");
 		$("#scroller").find("ul li").removeClass("active");
+		// 更新提示选项
+		$("#choose").find(".cho-workFor").remove();
+		$("#choose").append('<div class="fl chose cho-workFor" onclick="Space.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
 	}
 	
+	Space.setOuterHeight();
 	$('#curPage').val(1);
 	$('#workFor').val(workFor);
+	$("#space_highlevel").empty();
+	Space.search();
+};
+
+/**
+ * 取消某一个过滤选项
+ */
+Space.deleteChoose = function(curObj){
+	var $curObj = $(curObj);
+	if($curObj.hasClass("cho-workFor")){// 选择的是活动类型，workFor
+		$("#choose").find(".cho-workFor").remove();// 移出当前选项
+		$("#scrolllist,#workfor-list").find('li').removeClass('active');
+		$($("#scrolllist").find('li')[0]).addClass('active');
+		// 刷新页面
+		$('#workFor').val('');
+	} else if($curObj.hasClass("cho-cost")){// 选择的是费用，cost   
+		$("#choose").find(".cho-cost").remove();// 移出当前选项
+		$("#cho-cost").find('li').removeClass('active');
+		$($("#cho-cost").find('li')[0]).addClass('active');
+		$('#cost').val('');
+	} else if($curObj.hasClass("cho-type")){// 选择的是场地类型，type cho-address 
+		$("#choose").find(".cho-type").remove();// 移出当前选项
+		$("#cho-type").find('li').removeClass('active');
+		$($("#cho-type").find('li')[0]).addClass('active');
+		$('#spaceType').val('');
+	} else if($curObj.hasClass("cho-address")){// 选择的是地区，address
+		$("#choose").find(".cho-address").remove();// 移出当前选项
+		$("#cho-address").find('li').removeClass('active');
+		$($("#cho-address").find('li')[0]).addClass('active');
+		$('#area').val('');
+	} else if($curObj.hasClass("cho-capacity")){// 选择的是容量，capacity
+		$("#choose").find(".cho-capacity").remove();// 移出当前选项
+		$("#cho-capacity").find('li').removeClass('active');
+		$($("#cho-capacity").find('li')[0]).addClass('active');
+		$('#minCapacity').val('');
+		$('#maxCapacity').val('');
+	}
+	
+	Space.setOuterHeight();
+	$('#curPage').val(1);
 	$("#space_highlevel").empty();
 	Space.search();
 };
@@ -212,11 +273,18 @@ Space.workFor=function (workFor, curObj){
 Space.type=function(spaceType, curObj){
 	
 	$('#curPage').val(1);
-	$('#spaceType').val(spaceType);//spaceType的值为  0：全部  1：众创空间  2：咖啡厅  3：公司会议室   4：社区场地   5：商业广场
+	$('#spaceType').val(spaceType);
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
+	
+	// 更新提示选项
+	$("#choose").find(".cho-type").remove();
+	if(!isEmpty(spaceType)){
+		$("#choose").append('<div class="fl chose cho-type" onclick="Space.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
+	}
+	Space.setOuterHeight();
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -233,6 +301,13 @@ Space.address=function(area, curObj){
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
 	
+	// 更新提示选项
+	$("#choose").find(".cho-address").remove();
+	if(!isEmpty(area)){
+		$("#choose").append('<div class="fl chose cho-address" onclick="Space.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
+	}
+	Space.setOuterHeight();
+	
 	$("#space_highlevel").empty();
 	Space.search();
 };
@@ -248,6 +323,13 @@ Space.capacity=function(minCapacity,maxCapacity, curObj){
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
 	$(curObj).nextAll().removeClass("active");
+	
+	// 更新提示选项
+	$("#choose").find(".cho-capacity").remove();
+	if(!isEmpty(minCapacity) && !isEmpty(maxCapacity) ){
+		$("#choose").append('<div class="fl chose cho-capacity" onclick="Space.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
+	}
+	Space.setOuterHeight();
 	
 	$("#space_highlevel").empty();
 	Space.search();
@@ -294,8 +376,6 @@ Space.search=function(){
 			};
 		}else{
 			$("#space_highlevel").append("<div class='ground-no'><img src='"+REMOTE_RES_PATH+"/static/images/no_data.png' width='41' height='41'/><p>抱歉，没有找到合适的场地</p><p>请浏览其他场地吧</p></div>");
-			Space.dropload?Space.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
-			return;
 		}
 		
 		var dataCount = parseInt(json.dataCount);
