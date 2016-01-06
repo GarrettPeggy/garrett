@@ -681,13 +681,23 @@ a:hover{text-decoration:none;}
 	padding-top:10px;
 	font-size:13px;
 }
+.main .contain .index-act{
+	padding:13px 10px;
+    height: 40px;
+    background:#fff;
+    border-bottom: 1px solid rgba(16,2,7,0.06);
+    color:#484848;
+	margin-bottom: -8px;
+	margin-top: -4px;
+}
 .main .contain .c-top{
 	padding:13px 10px;
     height: 40px;
     background:#fff;
     border-bottom: 1px solid rgba(16,2,7,0.06);
     color:#484848;
-    margin-top:8px;
+    margin-bottom: -8px;
+    margin-top: 8px;
 }
 .main .contain .ul-box{
 	padding:0;

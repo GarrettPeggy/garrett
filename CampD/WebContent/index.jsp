@@ -52,7 +52,7 @@
         
         <!-- 热门活动 -->
         <div class="contain">
-			<div class="c-top clearfix">
+			<div class="clearfix index-act">
             	<div class="fl">热门活动</div>
                 <div class="fr" onclick="Activity.populer(1)"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></div>
             </div>
