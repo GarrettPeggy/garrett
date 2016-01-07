@@ -100,7 +100,7 @@
                     <li onclick="Space.capacity(200,300,this)">200-300人</li>
                     <li onclick="Space.capacity(300,500,this)">300-500人</li>
                     <li onclick="Space.capacity(500,700,this)">500-700人</li>
-                    <li onclick="Space.capacity(700,1000,this)">700-1000人</li>
+                    <li onclick="Space.capacity(700,1000,this)">700人以上</li>
                 </ul>
             </div>
             <!-- end -->
