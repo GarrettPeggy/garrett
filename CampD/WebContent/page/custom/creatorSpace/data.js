@@ -1,3 +1,6 @@
+var CreatorDataUtil = {
+	
+};
 /**
  * 众创空间场地数据结构
  */
