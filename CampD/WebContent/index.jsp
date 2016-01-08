@@ -6,6 +6,7 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/js/user/user.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/page/custom/creatorSpace/data.js?_v=${vs}"></script>
 </head>
 
 <body>

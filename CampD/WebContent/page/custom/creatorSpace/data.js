@@ -1,6 +1,4 @@
-var CreatorDataUtil = {
-	
-};
+var CreatorDataUtil = {};
 /**
  * 众创空间场地数据结构
  */
@@ -34,4 +32,32 @@ var logoSpaceData={
         {"id":"6", "capacity":"", "name":"", "cost":"", "showImage":""},
         {"id":"7", "capacity":"", "name":"", "cost":"", "showImage":""}
 	]
+};
+
+/**
+ * 根据区域搜索场地
+ */
+CreatorDataUtil.getSpacesByArea = function(area){
+	
+	var logoArray = areaLogoData[area];
+	var spaceArray = new Array();
+	
+	var logoId = null, curLogoSpaceArray = null;
+	var length = logoArray.length;
+	for (var i = 0; i < length; i++) {
+		logoId = logoArray[i].id;
+		curLogoSpaceArray = CreatorDataUtil.getSpacesByLogo(logoId);
+		for (var j = 0; j < curLogoSpaceArray.length; j++) {
+			spaceArray.push(curLogoSpaceArray[j]);
+		}
+	}
+	
+	return spaceArray;
+};
+
+/**
+ * 根据众创空间（logo）搜索场地
+ */
+CreatorDataUtil.getSpacesByLogo = function(logoId){
+	return logoSpaceData[logoId];
 };
