@@ -5,7 +5,7 @@ var CreatorDataUtil = {};
 // 每个区域下面有哪些重创空间
 var areaLogoData={
 	"浦东新区":[
-        {"id":"0", "logo":"", "name":"", "mdn":""},
+        {"id":"0", "logo":"", "name":"创斯卡", "mdn":""},
         {"id":"1", "logo":"", "name":"", "mdn":""}
 	],
 	"黄浦区":[

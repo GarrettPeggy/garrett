@@ -270,7 +270,20 @@ Space.updateWorkforInfo = function(event, currentObj){
 		var checkedLength = $checkedWorkforArray.length;
 		if(checkedLength>=3){
 			stopDefault(event);
-			Dialog.alertInfo("使用活动最多只能选3个！");
+			Dialog.alertInfo("适用活动最多只能选3个！");
 		}
+	}
+};
+
+/**
+ * 当点击众创空间的时候显示所有的logo
+ */
+Space.showAndHideLogo = function(currentObj){
+	var curValue = $(currentObj).val();
+	if(curValue == 27){// 众创空间场地
+		$("#form-belongTo").removeClass("hide");
+	}else{
+		$("#form-belongTo").addClass("hide");
+		$("input:radio[name='belongTo']").attr("checked",false);
 	}
 };

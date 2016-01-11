@@ -113,11 +113,30 @@
 					                    <div class="col-md-3">
 					                      <div class="row">
 					                        <div class="col-sm-6">
-					                          <select class="form-control" name="spaceType">
+					                          <select class="form-control" name="spaceType" onchange="Space.showAndHideLogo(this);">
 					                            <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
-													<option value="${spaceType.key}">${spaceType.value}</option>
+													<option ${spaceType.key eq 27?'selected="selected"':''} value="${spaceType.key}">${spaceType.value}</option>
 												</c:forEach>
 					                          </select>
+					                        </div>
+					                      </div>
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group" id="form-belongTo">
+					                    <label class="col-sm-2 control-label no-padding-right">所属众创空间</label>
+					                    <div class="col-sm-9">
+					                      <div class="row">
+					                        <div class="radio">
+					                            <label style="padding-bottom: 10px;">
+													<input name="belongTo" class="ace ace-radio-0" value="0" type="radio">
+													<span class="lbl">创斯卡</span>
+												</label>
+												<label style="padding-bottom: 10px;">
+													<input name="belongTo" class="ace ace-radio-1" value="1" type="radio">
+													<span class="lbl">智造会</span>
+												</label>
 					                        </div>
 					                      </div>
 					                    </div>
