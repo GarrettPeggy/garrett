@@ -36,8 +36,8 @@ public class SpaceJsonServer {
 		logger.info("reqMap="+reqMap);
 		// 添加场地到数据库
 		//String sqlStr = "insert into activity(id,creator_id,category_id,act_num,act_city,act_type,requirement,create_time,status) values(?,?,?,?,?,?,?,?,?)";
-		String sqlStr = " insert into spaces(id,creator_id,name,province,city,area,adress,traffic,work_for,capacity,cost,contact,show_images,description,create_time,space_type,contactor,space_level,infrastructure,belong_to) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creatorId"), reqMap.get("name"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"), reqMap.get("adress"),reqMap.get("traffic"),reqMap.get("workFor"),reqMap.get("capacity"),reqMap.get("cost"),reqMap.get("contact"),reqMap.get("showImages"),reqMap.get("description"),new Date(),reqMap.get("spaceType"),reqMap.get("contactor"),reqMap.get("spaceLevel"),reqMap.get("infrastructure"),reqMap.get("belongTo")};
+		String sqlStr = " insert into spaces(id,creator_id,name,province,city,area,adress,traffic,work_for,capacity,cost,contact,show_images,description,create_time,space_type,contactor,space_level,infrastructure) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creatorId"), reqMap.get("name"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"), reqMap.get("adress"),reqMap.get("traffic"),reqMap.get("workFor"),reqMap.get("capacity"),reqMap.get("cost"),reqMap.get("contact"),reqMap.get("showImages"),reqMap.get("description"),new Date(),reqMap.get("spaceType"),reqMap.get("contactor"),reqMap.get("spaceLevel"),reqMap.get("infrastructure")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -67,8 +67,8 @@ public class SpaceJsonServer {
 		logger.info("reqMap="+reqMap);
 		
 		// 添加场地到数据库
-		String sqlStr = " update spaces set name=?, province=?, city=?, area=?, adress=?, traffic=?, work_for=?, capacity=?, cost=?, contact=?, show_images=?, description=?, space_type=?, contactor=?, infrastructure=?, belong_to=? where id=?";
-        Object[] params = new Object[]{reqMap.get("name"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("traffic"),reqMap.get("workFor"),reqMap.get("capacity"),reqMap.get("cost"),reqMap.get("contact"),reqMap.get("showImages"),reqMap.get("description"),reqMap.get("spaceType"),reqMap.get("contactor"),reqMap.get("infrastructure"),reqMap.get("belongTo"),reqMap.get("id")};
+		String sqlStr = " update spaces set name=?, province=?, city=?, area=?, adress=?, traffic=?, work_for=?, capacity=?, cost=?, contact=?, show_images=?, description=?, space_type=?, contactor=?, infrastructure=? where id=?";
+        Object[] params = new Object[]{reqMap.get("name"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("traffic"),reqMap.get("workFor"),reqMap.get("capacity"),reqMap.get("cost"),reqMap.get("contact"),reqMap.get("showImages"),reqMap.get("description"),reqMap.get("spaceType"),reqMap.get("contactor"),reqMap.get("infrastructure"),reqMap.get("id")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -221,12 +221,6 @@ public class SpaceJsonServer {
 			sqlCount+=" and t1.space_level="+spaceLevel+" ";
 		}
 		
-		Object belongTo = reqMap.get("belongTo");//场地所属公司或者机构
-		if(null!=belongTo && !"".equals(belongTo)){
-			sqlStr+=" and t1.belong_to in ("+belongTo+") ";
-			sqlCount+=" and t1.belong_to in ("+belongTo+") ";
-		}
-		
 		// 获取当前场地总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		
@@ -269,7 +263,7 @@ public class SpaceJsonServer {
 	public Map getSpaceInfoById(Map reqMap){
 		logger.info("reqMap="+reqMap);
 		//根据场地Id查询场地信息
-		String sqlStr = "select t1.id,t1.creator_id,t1.name,t1.province,t1.city,t1.area,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level,t1.infrastructure,t1.belong_to from spaces t1 where 1=1 and t1.id=? ";
+		String sqlStr = "select t1.id,t1.creator_id,t1.name,t1.province,t1.city,t1.area,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level,t1.infrastructure from spaces t1 where 1=1 and t1.id=? ";
 		Map spaceInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});
 		
 		JSONView jsonView = new JSONView();

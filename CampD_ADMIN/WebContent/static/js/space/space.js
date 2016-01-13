@@ -274,16 +274,3 @@ Space.updateWorkforInfo = function(event, currentObj){
 		}
 	}
 };
-
-/**
- * 当点击众创空间的时候显示所有的logo
- */
-Space.showAndHideLogo = function(currentObj){
-	var curValue = $(currentObj).val();
-	if(curValue == 27){// 众创空间场地
-		$("#form-belongTo").removeClass("hide");
-	}else{
-		$("#form-belongTo").addClass("hide");
-		$("input:radio[name='belongTo']").attr("checked",false);
-	}
-};
