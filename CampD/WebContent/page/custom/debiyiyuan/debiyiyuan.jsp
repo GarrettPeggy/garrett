@@ -5,6 +5,7 @@
 <head>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
+	<title>为大家提供不仅仅是免费活动场地还有茶点水果 and 精美礼品哦！</title>
 	<style type="text/css">
 		.contain{padding:5px;margin:0px;background:#fff;}
 		.idea{font-size:16px;line-height:25px;font-family:'微软雅黑';padding:5px 5px;position:relative;margin-top:51px;}
