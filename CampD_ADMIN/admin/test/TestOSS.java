@@ -8,7 +8,7 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
 
-public class Test {
+public class TestOSS {
 	
 	public static final String ACCESS_ID="EKNuX4gneNZoqNt1";
 	public static final String ACCESS_KEY="Gt2PB5uRaSHumEms5wKM0vUWqn3gfY";
