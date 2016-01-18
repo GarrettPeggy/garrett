@@ -14,12 +14,7 @@ Activity.uploadActivityPic = function(currentObject){
 	var fakepath = $(currentObject).val();
 	$("#fakepath").val(fakepath);//把选择到的图片放到页面上进行判断更新活动时，是否选择了图片
 	var ext = fakepath.substring(fakepath.lastIndexOf('.')+1);
-	
-	var form = "addActivityInfoForm";
-	
-	if(flag == 1){
-		form = "editActivityInfoForm";
-	}
+	var form = flag == 1?"editActivityInfoForm":"addActivityInfoForm";
 	
 	if((Activity.imageFormat).indexOf(ext)!=-1){
 		submitForm(form, BASE_PATH + '/upload/uploadCropImg.do', function(res){

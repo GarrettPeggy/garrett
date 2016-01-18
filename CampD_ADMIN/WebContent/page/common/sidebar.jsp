@@ -100,6 +100,31 @@
 				</li>
 			</ul>
 		</li>
+		
+		<li class="" id="leftMenu150100">
+			<a href="#" class="dropdown-toggle">
+				 <img src="${locResPath}/static/images/myepal.png"/>
+				 <span class="menu-text"> 办公空间</span>
+				 <b class="arrow fa fa-angle-down"></b>
+			</a>
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li class="" name="subMenu150100" id="leftMenu150101">
+					<a href="${ctx}/officeSpace/toAdd.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						发布空间
+					</a>
+					<b class="arrow"></b>
+				</li>
+				<li class="" name="subMenu150100" id="leftMenu150102">
+					<a href="${ctx}/officeSpace/toList.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						空间列表
+					</a>
+					<b class="arrow"></b>
+				</li>
+			</ul>
+		</li>
 	
 		<li class="" id="leftMenu130100">
 			<a href="#" class="dropdown-toggle">
