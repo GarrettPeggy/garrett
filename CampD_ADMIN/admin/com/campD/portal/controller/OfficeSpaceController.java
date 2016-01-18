@@ -15,10 +15,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.campD.portal.common.JSONView;
 import com.campD.portal.common.PageInfo;
 import com.campD.portal.service.OfficeSpaceService;
-import com.campD.portal.util.OSSUtil;
 
 /**
  * @author Garrett
