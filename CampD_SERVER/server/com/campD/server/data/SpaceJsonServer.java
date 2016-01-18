@@ -35,7 +35,6 @@ public class SpaceJsonServer {
 	public Map add(Map reqMap){
 		logger.info("reqMap="+reqMap);
 		// 添加场地到数据库
-		//String sqlStr = "insert into activity(id,creator_id,category_id,act_num,act_city,act_type,requirement,create_time,status) values(?,?,?,?,?,?,?,?,?)";
 		String sqlStr = " insert into spaces(id,creator_id,name,province,city,area,adress,traffic,work_for,capacity,cost,contact,show_images,description,create_time,space_type,contactor,space_level,infrastructure) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creatorId"), reqMap.get("name"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"), reqMap.get("adress"),reqMap.get("traffic"),reqMap.get("workFor"),reqMap.get("capacity"),reqMap.get("cost"),reqMap.get("contact"),reqMap.get("showImages"),reqMap.get("description"),new Date(),reqMap.get("spaceType"),reqMap.get("contactor"),reqMap.get("spaceLevel"),reqMap.get("infrastructure")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
@@ -254,6 +253,7 @@ public class SpaceJsonServer {
         
         return jsonView;
 	}
+	
 	/**
 	 * 查询场地详情
 	 * @param reqMap:{id:场地id}
@@ -263,7 +263,7 @@ public class SpaceJsonServer {
 	public Map getSpaceInfoById(Map reqMap){
 		logger.info("reqMap="+reqMap);
 		//根据场地Id查询场地信息
-		String sqlStr = "select t1.id,t1.creator_id,t1.name,t1.province,t1.city,t1.area,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level,t1.infrastructure from spaces t1 where 1=1 and t1.id=? ";
+		String sqlStr = "select t1.id,t1.creator_id,t1.name,t1.province,t1.city,t1.area,t1.adress,t1.traffic,t1.work_for,t1.capacity,t1.cost,t1.contact,t1.show_images,t1.description,t1.create_time,t1.space_type,t1.contactor,t1.space_level,t1.infrastructure from spaces t1 where t1.id=? ";
 		Map spaceInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});
 		
 		JSONView jsonView = new JSONView();
@@ -274,6 +274,5 @@ public class SpaceJsonServer {
 		
 		return jsonView;
 	}
-	
 	
 }
