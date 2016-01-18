@@ -23,9 +23,8 @@ public class SystemMessage {
 	private static final String BUNDLE_NAME = "system";
 
 	static{
-		//�?启本地读取模�?
+		//开启本地读取模式
 		ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME);
-		//properties = new Properties();
 		Enumeration<String> e = bundle.getKeys();
 		while(e.hasMoreElements()){
 			String key = e.nextElement();
