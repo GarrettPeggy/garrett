@@ -87,4 +87,18 @@ public class OfficeSpaceRestController extends BaseRestController {
         return returnMap;
 	}
 	
+	/**
+	 * 后台空间状体更新
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	@RequestMapping(value="/updateStatus", method=RequestMethod.POST)
+    @ResponseBody
+	public Map updateStatus(HttpServletRequest request){
+		
+		Map reqMap = bindParamToMap(request);
+    	Map returnMap = officeSpaceJsonServer.updateStatus(reqMap);
+    	
+        return returnMap;
+	}
+	
 }

@@ -33,6 +33,13 @@ public class OfficeSpaceService extends JsonClientService {
     }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map updateStatus(Map reqMap) {
+		
+		return postForMap(SystemMessage.getString("officeSpaceJsonServer") + "/updateStatus", reqMap);
+		
+    }
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getById(Map reqMap) {
 		
 		return postForMap(SystemMessage.getString("officeSpaceJsonServer") + "/getById", reqMap);

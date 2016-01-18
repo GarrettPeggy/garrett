@@ -242,6 +242,16 @@ public class SystemConstant {
 		giftLevelMap.put(GIFT_LEVEL_1, "精品礼品");
 	}
 	
+	//========================办公空间状态=============================
+	public static String OFFICE_SPACE_STATUS_0= "0";//隐藏
+	public static String OFFICE_SPACE_STATUS_1= "1";//显示
+	public static Map officeSpaceStatusMap = new HashMap();
+	static{
+		//场地级别
+		officeSpaceStatusMap.put(OFFICE_SPACE_STATUS_0, "隐藏");
+		officeSpaceStatusMap.put(OFFICE_SPACE_STATUS_1, "显示");
+	}
+	
 	/**
 	 * 将当前静态类的属性转换成Map
 	 * @return

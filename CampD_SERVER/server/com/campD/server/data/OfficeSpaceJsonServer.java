@@ -35,8 +35,8 @@ public class OfficeSpaceJsonServer {
 	@SuppressWarnings("rawtypes")
 	public Map add(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " insert into office_space(id,name,logo,province,city,area,create_time) values(?,?,?,?,?,?,?) ";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("name"), reqMap.get("logo"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),new Date()};
+		String sqlStr = " insert into office_space(id,name,logo,status,province,city,area,create_time) values(?,?,?,?,?,?,?,?) ";
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("name"), reqMap.get("logo"), reqMap.get("status"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -89,7 +89,7 @@ public class OfficeSpaceJsonServer {
 	@SuppressWarnings("rawtypes")
 	public Map getById(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = "select id,name,logo,province,city,area,create_time from office_space where id=? ";
+		String sqlStr = "select id,name,logo,status,province,city,area,create_time from office_space where id=? ";
 		Map officeInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});
 		
 		JSONView jsonView = new JSONView();
@@ -108,7 +108,7 @@ public class OfficeSpaceJsonServer {
 	public Map getList(Map reqMap){
 		
 		logger.info("reqMap="+reqMap);
-		String sqlStr = "select id,name,logo,province,city,area,create_time from office_space where 1=1 ";
+		String sqlStr = "select id,name,logo,status,province,city,area,create_time from office_space where 1=1 ";
 		String sqlCount =" select count(1) from office_space where 1=1 ";
 		
 		Object name = reqMap.get("name");//名称
@@ -134,6 +134,12 @@ public class OfficeSpaceJsonServer {
 			sqlStr+=" and FIND_IN_SET("+area+", area) ";
 			sqlCount+=" and FIND_IN_SET("+area+", area) ";
 		}
+		
+		Object status = reqMap.get("status");//状体
+		if(null!=status && !"".equals(status)){
+			sqlStr+=" and status='"+status+"' ";
+			sqlCount+=" and status='"+status+"' ";
+		}
 
 		// 获取当前场地总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
@@ -156,6 +162,32 @@ public class OfficeSpaceJsonServer {
         jsonView.addAttribute("dataCount", dataCount);
         
         logger.info("空间列表信息查询,\\(^o^)/。。。，resultList="+resultList);
+        
+        return jsonView;
+	}
+	
+	/**
+	 * 更新空间状态
+	 */
+	@SuppressWarnings("rawtypes")
+	public Map updateStatus(Map reqMap){
+		
+		logger.info("reqMap="+reqMap);
+		String sqlStr = " update office_space set status=? where id=?";
+        Object[] params = new Object[]{reqMap.get("status"),reqMap.get("id")};
+        int updateLineCount = jdbcTemplate.update(sqlStr, params);
+        
+        JSONView jsonView = new JSONView();
+        if(updateLineCount <= 0){
+        	jsonView.setFail();
+			jsonView.setReturnErrorMsg();
+			logger.info("后台更新空间状态失败，此时传入参数为->params="+params);
+			return jsonView;
+        }
+        
+        jsonView.setReturnMsg("空间状态更新成功");
+        jsonView.addAttribute("updateLineCount", updateLineCount);
+        logger.info("后台空间整体更新成功,\\(^o^)/。。。，updateLineCount="+updateLineCount);
         
         return jsonView;
 	}

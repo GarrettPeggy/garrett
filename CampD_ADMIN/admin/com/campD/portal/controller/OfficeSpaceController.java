@@ -34,7 +34,7 @@ public class OfficeSpaceController extends BaseController {
 	@RequestMapping("/toList.do")
     public String toList(){
 		
-        return "officeSpace/officeSpaceList";
+        return "officeSpace/list";
     }
 	
 	/**
@@ -50,7 +50,7 @@ public class OfficeSpaceController extends BaseController {
 		Map officeSpaceListMap = officeSpaceService.getList(reqMap, pageInfo);
 		mop.addAttribute("officeSpaceListMap", officeSpaceListMap);
 		
-		return "officeSpace/officeSpaceListCtx"; 
+		return "officeSpace/listCtx"; 
 	}
 	
 	/**
@@ -60,7 +60,7 @@ public class OfficeSpaceController extends BaseController {
 	@RequestMapping("/toAdd.do")
     public String toAdd(){
 		
-        return "officeSpace/addOfficeSpace";
+        return "officeSpace/add";
     }
 	
 	/**
@@ -89,7 +89,7 @@ public class OfficeSpaceController extends BaseController {
 		mop.addAttribute("officeSpaceMap", officeSpaceMap);
 		
 		bindParamToAttrbute(request);
-		return "officeSpace/editOfficeSpace"; 
+		return "officeSpace/edit"; 
 	}
 	
 	/**
@@ -107,6 +107,20 @@ public class OfficeSpaceController extends BaseController {
     }
 	
 	/**
+	 * 更新空间状态
+	 */
+	@SuppressWarnings({ "rawtypes"})
+	@RequestMapping("/updateStatus.do")
+    @ResponseBody
+    public Map updateStatus(HttpServletRequest request) {
+    	
+		Map reqMap = bindParamToMap(request);
+		Map<?, ?> returnMap = officeSpaceService.updateStatus(reqMap);
+		
+		return getOperateJSONView(returnMap);
+    }
+	
+	/**
 	 * 去预览场地信息
 	 */
 	@SuppressWarnings("rawtypes")
@@ -117,7 +131,7 @@ public class OfficeSpaceController extends BaseController {
 		Map officeSpaceMap = officeSpaceService.getById(reqMap);
 		mop.addAttribute("officeSpaceMap", officeSpaceMap);
 		
-		return "officeSpace/viewOfficeSpace"; 
+		return "officeSpace/view"; 
 	}
 	
 }
