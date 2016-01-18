@@ -57,13 +57,13 @@
 		</script>
 		
 		<jsp:include page="/page/common/sidebar.jsp" flush="true">
-			<jsp:param value="110101" name="leftMenuSelectId"/>
+			<jsp:param value="110102" name="leftMenuSelectId"/>
 		</jsp:include>
 		
 		<div class="main-content">
 			<div class="main-content-inner">
 				<jsp:include page="/page/common/breadcrumbs.jsp" flush="true">
-					<jsp:param value='[{"name":"活动管理","href":"#"},{"name":"活动列表","href":"#"},{"name":"活动修改","href":"${ctx}/activity/toEditActivity.do"}]'  name="navigationItems" />
+					<jsp:param value='[{"name":"活动管理","href":"#"},{"name":"活动列表","href":"#"},{"name":"活动修改","href":"${ctx}/activity/toEditActivity.do?id=${id }"}]'  name="navigationItems" />
 				</jsp:include>
 				
 				<div class="page-content">
