@@ -146,7 +146,7 @@
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span>
 					                    </div>
-					                    <div class="help-block col-xs-12 col-sm-reset inline"><b>人</b></div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"></div>
 					                  </div>
 					                  
 					                  <div class="form-group">
