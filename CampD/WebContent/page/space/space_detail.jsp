@@ -64,7 +64,7 @@
                     <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_jiaotong.png" width="17" height="17"/></dt>
                     <dd class="fl newfr1" >${jsonview.spaceInfo.traffic }</dd> 
                 </dl>
-                <dl class="fontSize14  clearfix color94 newmat" onclick="Space.toBaiDuMap('${jsonview.spaceInfo.adress}')">
+                <dl class="fontSize14  clearfix color94 newmat" onclick="toBaiDuMap('${jsonview.spaceInfo.adress}')">
                     <dt class="fl newfl"><img src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
                     <dd class="fl newfr2">${jsonview.spaceInfo.adress }</dd> 
                </dl> 

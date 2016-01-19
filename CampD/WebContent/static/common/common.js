@@ -792,6 +792,13 @@ function back(oldUrl){
 }
 
 /**
+ * 跳转到百度地图界面
+ */
+toBaiDuMap=function(address){
+	window.location.href = BASE_PATH + "/common/toMap.do?address="+address;
+};
+
+/**
  * 清空查询条件
  * 注:根据id 清空form所有input内容 排除隐藏文本框
  * @return

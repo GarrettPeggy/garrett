@@ -453,9 +453,3 @@ Space.droploadPage = function(){
 	    }
 	});
 };
-/**
- * 跳转到百度地图界面
- */
-Space.toBaiDuMap=function(address){
-	window.location.href = BASE_PATH + "/common/toMap.do?address="+address;
-};
