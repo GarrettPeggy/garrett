@@ -22,7 +22,9 @@
 					</c:if>
 					<c:if test="${systemConst.OFFICE_SPACE_STATUS_0 eq officeSpace.status}">
 						<a href="javascript:OfficeSpace.updateStatus('${officeSpace.id}','${systemConst.OFFICE_SPACE_STATUS_1}')">显示</a>
-					</c:if>
+					</c:if>&nbsp;
+					<a href="${ctx}/office/toAdd.do?belongTo=${officeSpace.id}">添加场地</a>&nbsp;
+					<a href="${ctx}/office/toList.do?belongTo=${officeSpace.id}">场地列表</a>
 				</td>
 			</tr>
 		</c:forEach>

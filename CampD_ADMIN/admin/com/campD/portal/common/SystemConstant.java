@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -251,6 +252,28 @@ public class SystemConstant {
 		officeSpaceStatusMap.put(OFFICE_SPACE_STATUS_0, "隐藏");
 		officeSpaceStatusMap.put(OFFICE_SPACE_STATUS_1, "显示");
 	}
+	
+	//========================办公空间类型     综合,TMT,智能硬件,设计,电商,游戏,汽车,其它=============================
+		public static String OFFICE_SPACE_TYPE_0= "0";//综合
+		public static String OFFICE_SPACE_TYPE_1= "1";//TMT
+		public static String OFFICE_SPACE_TYPE_2= "2";//智能硬件
+		public static String OFFICE_SPACE_TYPE_3= "3";//设计
+		public static String OFFICE_SPACE_TYPE_4= "4";//电商
+		public static String OFFICE_SPACE_TYPE_5= "5";//游戏
+		public static String OFFICE_SPACE_TYPE_6= "6";//汽车
+		public static String OFFICE_SPACE_TYPE_1000= "1000";//其他
+		public static Map officeSpaceTypeMap = new LinkedHashMap();
+		static{
+			//办公空间类型
+			officeSpaceTypeMap.put(OFFICE_SPACE_TYPE_0, "综合");
+			officeSpaceTypeMap.put(OFFICE_SPACE_TYPE_1, "TMT");
+			officeSpaceTypeMap.put(OFFICE_SPACE_TYPE_2, "智能硬件");
+			officeSpaceTypeMap.put(OFFICE_SPACE_TYPE_3, "设计");
+			officeSpaceTypeMap.put(OFFICE_SPACE_TYPE_4, "电商");
+			officeSpaceTypeMap.put(OFFICE_SPACE_TYPE_5, "游戏");
+			officeSpaceTypeMap.put(OFFICE_SPACE_TYPE_6, "汽车");
+			officeSpaceTypeMap.put(OFFICE_SPACE_TYPE_1000, "其他");
+		}
 	
 	/**
 	 * 将当前静态类的属性转换成Map

@@ -4,6 +4,8 @@
 package com.campD.portal.controller;
 
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,8 +17,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.campD.portal.common.JSONView;
 import com.campD.portal.common.PageInfo;
 import com.campD.portal.service.OfficeService;
+import com.campD.portal.util.FileUtils;
+import com.campD.portal.util.OSSUtil;
+import com.campD.portal.util.SystemMessage;
+import com.campD.portal.util.UploadFileUtil;
 
 /**
  * @author Garrett
@@ -43,12 +50,12 @@ public class OfficeController extends BaseController {
 	 */
 	@SuppressWarnings("rawtypes")
 	@RequestMapping("/list.do")
-	public String queryOfficeSpaceList(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
+	public String queryOfficeList(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
 		
 		Map reqMap = bindParamToMap(request);
 		PageInfo pageInfo = getPageInfo(request);
-		Map officeSpaceListMap = officeService.getList(reqMap, pageInfo);
-		mop.addAttribute("officeSpaceListMap", officeSpaceListMap);
+		Map officeListMap = officeService.getList(reqMap, pageInfo);
+		mop.addAttribute("officeListMap", officeListMap);
 		
 		return "office/listCtx"; 
 	}
@@ -58,21 +65,30 @@ public class OfficeController extends BaseController {
 	 * 去添加空间信息
 	 */
 	@RequestMapping("/toAdd.do")
-    public String toAdd(){
+    public String toAdd(HttpServletRequest request){
 		
+		bindParamToAttrbute(request);
         return "office/add";
     }
 	
 	/**
 	 * 添加空间信息
 	 */
-	@SuppressWarnings({ "rawtypes"})
+	@SuppressWarnings({ "rawtypes", "unchecked"})
 	@RequestMapping("/add.do")
     @ResponseBody
     public Map add(HttpServletRequest request) {
     	
 		Map reqMap = bindParamToMap(request);
-		Map<?, ?> returnMap = officeService.add(reqMap);
+		Map<?, ?> returnMap = null;
+		String description = (String) reqMap.get("description");
+		returnMap = uploadDescriptionToOSS(description, request);
+		
+		// 假如场地描述保存文件成功则将场地信息保存到数据库
+		if(JSONView.RETURN_SUCCESS_CODE.equals(returnMap.get("returnCode"))){
+			reqMap.put("description", returnMap.get("descriptionURL"));
+			returnMap = officeService.add(reqMap);
+		}
 		
 		return getOperateJSONView(returnMap);
     }
@@ -85,8 +101,10 @@ public class OfficeController extends BaseController {
 	public String toEdit(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
 		
 		Map reqMap = bindParamToMap(request);
-		Map officeSpaceMap = officeService.getById(reqMap);
-		mop.addAttribute("officeSpaceMap", officeSpaceMap);
+		Map officeMap = officeService.getById(reqMap);
+		// 读取远程活动需求的内容
+		readDscriptionFromRemoteFile(officeMap);
+		mop.addAttribute("officeMap", officeMap);
 		
 		bindParamToAttrbute(request);
 		return "office/edit"; 
@@ -95,16 +113,57 @@ public class OfficeController extends BaseController {
 	/**
 	 * 更新空间信息
 	 */
-	@SuppressWarnings({ "rawtypes"})
+	@SuppressWarnings({ "rawtypes", "unchecked"})
 	@RequestMapping("/update.do")
     @ResponseBody
     public Map update(HttpServletRequest request) {
     	
 		Map reqMap = bindParamToMap(request);
-		Map<?, ?> returnMap = officeService.update(reqMap);
+		Map<?, ?> returnMap = null;
+		String description = (String) reqMap.get("description");
+		// 重新生成活动需求的文件
+		returnMap = uploadDescriptionToOSS(description, request);
+		
+		// 假如需求保存文件成功则将活动保存到数据库
+		if(JSONView.RETURN_SUCCESS_CODE.equals(returnMap.get("returnCode"))){
+			reqMap.put("description", returnMap.get("descriptionURL"));
+			returnMap = officeService.update(reqMap);
+		}
+
+		// 删除原有的文件
+		if(null!=reqMap.get("originalDiscriptionURL")){
+			OSSUtil.deleteFile((String) reqMap.get("originalDiscriptionURL"));
+		}
 		
 		return getOperateJSONView(returnMap);
     }
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void readDscriptionFromRemoteFile(Map spaceMap){
+		String description = (String) ((Map)spaceMap.get("officeInfo")).get("description");
+		description = description.replace("\\", "/");
+		int index = description.indexOf("attached/html");
+		if(null!=description && index>-1){ // 将连接更新为内容
+			((Map)spaceMap.get("officeInfo")).put("originalDiscriptionURL", description.substring(index));
+			((Map)spaceMap.get("officeInfo")).put("description",FileUtils.readRemoteFile(SystemMessage.getString("ossResUrl") + description));
+		}
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private Map uploadDescriptionToOSS(String description, HttpServletRequest request){
+		
+		Map returnMap = null;
+		String fileName = FileUtils.getNumberFileName(UUID.randomUUID().toString() + "_" + new Random().nextInt(1000));// 随机生成一个文件名
+		String tmpPath = UploadFileUtil.getTmpFileRealPath(fileName, getUserInfo(), request);//文件保存目录路径
+		String relativePath = UploadFileUtil.getRelativePath(tmpPath, request).replace("\\", "/");// 相对路径
+		FileUtils.writerFile(description, tmpPath);
+		
+		// 往阿里OOS上面上传文件
+		returnMap = OSSUtil.uploadFile(tmpPath);
+		returnMap.put("descriptionURL", relativePath);
+		
+		return returnMap;
+	}
 	
 	/**
 	 * 更新空间状态
@@ -128,8 +187,10 @@ public class OfficeController extends BaseController {
 	public String toView(HttpServletResponse response, ModelMap mop, HttpServletRequest request) {
 		
 		Map reqMap = bindParamToMap(request);
-		Map officeSpaceMap = officeService.getById(reqMap);
-		mop.addAttribute("officeSpaceMap", officeSpaceMap);
+		Map officeMap = officeService.getById(reqMap);
+		// 读取远程活动需求的内容
+		readDscriptionFromRemoteFile(officeMap);
+		mop.addAttribute("officeMap", officeMap);
 		
 		return "office/view"; 
 	}

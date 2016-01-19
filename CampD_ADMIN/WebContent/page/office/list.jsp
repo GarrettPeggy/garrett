@@ -51,7 +51,7 @@
 												<div class="col-xs-12 col-sm-3">
 													<div class="widget-body">
 														<div class="widget-main">
-															<label>活动总称</label> 
+															<label>空间总称</label> 
 															<input type="text" name="name" id="name" value="" class="col-xs-12 col-sm-12" />
 														</div>
 													</div>
