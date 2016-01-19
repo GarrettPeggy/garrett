@@ -38,8 +38,9 @@ public class OfficeController extends BaseController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/toList.do")
-	public String toList() throws Exception {
-		return "officeSpace/list";
+	public String toList(HttpServletRequest request) throws Exception {
+		bindParamToAttrbute(request);
+		return "officeSpace/spaceList";
 	}
 	
 	/**
@@ -66,8 +67,7 @@ public class OfficeController extends BaseController {
 		Map<?, ?> officeMap = officeService.getById(map);
 		readDscriptionFromRemoteFile(officeMap);
 		
-		JSONView jsonview=getSearchJSONView(officeMap);
-		request.setAttribute("jsonview", jsonview);
+		request.setAttribute("officeMap", officeMap);
 		 
 		return "officeSpace/detail";
 	}

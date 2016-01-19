@@ -37,7 +37,7 @@ public class OfficeSpaceController extends BaseController {
 	 */
 	@RequestMapping("/toList.do")
 	public String toList() throws Exception {
-		return "officeSpace/list";
+		return "officeSpace/logoList";
 	}
 	
 	/**
