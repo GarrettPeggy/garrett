@@ -8,7 +8,7 @@
 	<%@ include file="/page/common/meta.jsp"%>
 	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<%@ include file="/page/common/jsCss.jsp"%>
-	<script type="text/javascript" src="${locResPath}/static/js/officeSpace/officeSpace.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/office/office.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
 </head>
@@ -26,13 +26,14 @@
 		<div class="main-content">
 			<div class="main-content-inner">
 				<jsp:include page="/page/common/breadcrumbs.jsp" flush="true">
-					<jsp:param value='[{"name":"办公空间","href":"#"},{"name":"空间列表","href":"${ctx}/officeSpace/toList.do"}]' name="navigationItems" />
+					<jsp:param value='[{"name":"办公空间","href":"#"},{"name":"空间列表","href":"${ctx}/officeSpace/toList.do"},{"name":"空间场地列表","href":"${ctx}/office/toList.do?belongTo=${belongTo}"}]' name="navigationItems" />
 				</jsp:include>
 				
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-							<form id="officeSpaceListForm">
+							<form id="officeListForm">
+								<input type="hidden" name="belongTo" id="belongTo" value="${belongTo}"><!-- 场地所属空间 -->
 								<div class="widget-container-col ui-sortable">
 									<div class="widget-box widget-color-blue2 ui-sortable-handle">
 										<div class="widget-header">
@@ -51,7 +52,7 @@
 												<div class="col-xs-12 col-sm-3">
 													<div class="widget-body">
 														<div class="widget-main">
-															<label>空间总称</label> 
+															<label>空间名称</label> 
 															<input type="text" name="name" id="name" value="" class="col-xs-12 col-sm-12" />
 														</div>
 													</div>
@@ -91,9 +92,41 @@
 												</div>
 											</div>
 											
+											<div class="row">
+												<div class="col-xs-12 col-sm-3">
+													<div class="widget-body">
+														<div class="widget-main">
+															<label>联系人</label> 
+															<input type="text" name="contactor" value="" placeholder="联系人" class="col-xs-12 col-sm-12" />
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-3">
+													<div class="widget-body">
+														<div class="widget-main">
+															<label>联系方式</label> 
+															<input type="text" name="contact" value="" placeholder="联系方式" class="col-xs-12 col-sm-12" />
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-3">
+													<div class="widget-body">
+														<div class="widget-main">
+															<label for="form-field-select-1">空间类型</label> 
+															<select class="form-control" name="type">
+																<option value="">全部</option>
+																<c:forEach items="${systemConst.officeSpaceTypeMap}" var="officeSpaceType">
+																	<option value="${officeSpaceType.key}">${officeSpaceType.value}</option>
+																</c:forEach>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											
 											<div class="widget-toolbox padding-8 clearfix">
 												<div class="search-con-btn">
-													<button class="btn btn-xs btn-danger" onclick="OfficeSpace.searchListByForm()" type="button">
+													<button class="btn btn-xs btn-danger" onclick="Office.searchListByForm()" type="button">
 														<span class="bigger-110">搜索</span> 
 														<i class="ace-icon fa fa-search icon-on-right"></i>
 													</button>
@@ -124,7 +157,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		OfficeSpace.searchList();
+		Office.searchList();
 		$.fn.citySelect(['#province', '#city', '#area'],['' , '' , '']);
 		$(".infolist .liststyle span ul").css("left","-26px");
 	});
