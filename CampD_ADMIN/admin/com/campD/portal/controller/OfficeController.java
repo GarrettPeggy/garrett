@@ -39,8 +39,9 @@ public class OfficeController extends BaseController {
 	private OfficeService officeService;
 	
 	@RequestMapping("/toList.do")
-    public String toList(){
+    public String toList(HttpServletRequest request){
 		
+		bindParamToAttrbute(request);
         return "office/list";
     }
 	

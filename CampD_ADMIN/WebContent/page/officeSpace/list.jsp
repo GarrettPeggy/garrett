@@ -96,8 +96,7 @@
 													<button class="btn btn-xs btn-danger" onclick="OfficeSpace.searchListByForm()" type="button">
 														<span class="bigger-110">搜索</span> 
 														<i class="ace-icon fa fa-search icon-on-right"></i>
-													</button>
-
+													</button>&nbsp;&nbsp;
 													<button class="btn btn-xs btn-info" type="reset">
 														<span class="bigger-110">重置</span>
 													    <i class="ace-icon fa fa-refresh icon-on-right"></i>

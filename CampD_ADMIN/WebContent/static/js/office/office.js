@@ -197,3 +197,10 @@ Office.getSpaceImages = function(){
 	
 	return show_images;
 };
+
+/**
+ * 添加空间场地
+ */
+Office.toAddOffice = function(belongTo){
+	window.location.href = BASE_PATH + "/office/toAdd.do?belongTo="+belongTo;
+};
