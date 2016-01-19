@@ -131,6 +131,11 @@ Space.setSelect=function(){
             $("#search-box").css("margin-top","0px");
         });
 	});
+	
+	// 将众创空间放到第一个
+	var $spaceType27 = $("#spaceType27");
+	$("#spaceType27").remove();
+	$("#spaceType-1").after($spaceType27);
 };
 /**
  * 场地适用活动选择
@@ -413,6 +418,7 @@ Space.hideMax=function(){
 	setTimeout('$("#picMax").addClass("hide");',300);
 };
 
+/*下拉加载*/
 Space.droploadPage = function(){
 	Space.dropload= $('.inner').dropload({
 	    domUp : {
@@ -447,4 +453,9 @@ Space.droploadPage = function(){
 	    }
 	});
 };
-
+/**
+ * 跳转到百度地图界面
+ */
+Space.toBaiDuMap=function(address){
+	window.location.href = BASE_PATH + "/common/toMap.do?address="+address;
+};

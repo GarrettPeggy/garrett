@@ -60,11 +60,11 @@
 	        </div>
 	        <!-- end -->
             <div class="adt-desc">
-                 <dl class="fontSize14 color94 clearfix mat15">
+                 <dl class="fontSize14 color94 clearfix mat15" >
                     <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_jiaotong.png" width="17" height="17"/></dt>
-                    <dd class="fl newfr1">${jsonview.spaceInfo.traffic }</dd> 
+                    <dd class="fl newfr1" >${jsonview.spaceInfo.traffic }</dd> 
                 </dl>
-                <dl class="fontSize14  clearfix color94 newmat ">
+                <dl class="fontSize14  clearfix color94 newmat" onclick="Space.toBaiDuMap('${jsonview.spaceInfo.adress}')">
                     <dt class="fl newfl"><img src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
                     <dd class="fl newfr2">${jsonview.spaceInfo.adress }</dd> 
                </dl> 
@@ -174,7 +174,16 @@
 	        <div class="heiht30"></div>
 	</div>
     <!-- end -->
-
+    <!-- 点击出现地图  需要显示时删除hide -->
+       <div class="showMap hide" style="position:fixed;top:0;left:0;height:100%;width:100%;background:#000;z-index:51;text-align:center;" onclick="Space.hideMap();">
+          <div class="height25" style="height:25%;"></div>
+          <div class="maparea" id="container" style="height:50%;overflow: hidden;">
+          </div>
+          <div class="height25" style="height:25%;position:relative;text-align:center;">
+            <div class="wordadress" style="color:#fff;font-size:19px;position:absolute;top:40px;width:100%;">${jsonview.spaceInfo.adress }</div>
+          </div>
+       </div>
+    <!-- end -->
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide newtc-modal" id="guanzhu">
         <img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" >

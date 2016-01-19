@@ -72,9 +72,9 @@
             <!-- 类型搜索下拉内容 -->
             <div class="search-ul search-detail hide" id="cho-type">
                 <ul class="clearfix">
-                    <li class="active" onclick="Space.type('',this)">全部</li>
+                    <li id="spaceType-1" class="active" onclick="Space.type('',this)">全部</li>
                     <c:forEach items="${systemConst.spaceTypeMap}" var="spaceType">
-                    	<li onclick="Space.type(${spaceType.key},this)">${spaceType.value}</li>
+                    	<li id="spaceType${spaceType.key}" onclick="Space.type(${spaceType.key},this)">${spaceType.value}</li>
 					</c:forEach>
                 </ul>
             </div>
