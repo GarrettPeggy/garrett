@@ -33,10 +33,6 @@ public class SpaceController extends BaseController {
 	
 	/**
 	 * 查询场地列表信息
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
 	 */
 	@RequestMapping("/getSpaceInfoList.do")
 	public String getSpaceInfoList(HttpServletResponse response, HttpServletRequest request) throws Exception {
@@ -55,10 +51,6 @@ public class SpaceController extends BaseController {
 	
 	/**
 	 * 查询场地列表信息  返回json数据
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
 	 */
 	@RequestMapping("/getSpaceListByParam.do")
 	@ResponseBody
@@ -73,10 +65,6 @@ public class SpaceController extends BaseController {
 	
 	/**
 	 * 查询场地列表信息,跳转到精品场地界面
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
 	 */
 	@RequestMapping("/getSpaceListByLevel.do")
 	public String getSpaceListByLevel(HttpServletResponse response, HttpServletRequest request) throws Exception {
@@ -95,10 +83,6 @@ public class SpaceController extends BaseController {
 	
 	/**
 	 * 查询场地详情
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
 	 */
 	@RequestMapping("/getSpaceInfoById.do")
 	public String getSpaceInfoById(HttpServletResponse response, HttpServletRequest request) throws Exception {
@@ -115,10 +99,6 @@ public class SpaceController extends BaseController {
 	
 	/**
 	 * 查询场地详情
-	 * @param response
-	 * @param request
-	 * @return
-	 * @throws Exception
 	 */
 	@RequestMapping("/getSpace.do")
 	@ResponseBody
