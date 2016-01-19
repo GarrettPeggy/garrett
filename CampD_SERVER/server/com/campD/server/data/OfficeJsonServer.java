@@ -109,7 +109,7 @@ public class OfficeJsonServer {
 		
 		logger.info("reqMap="+reqMap);
 		String sqlStr = "select id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,show_images,description,create_time from office where 1=1 ";
-		String sqlCount =" select count(1) from office_space where 1=1 ";
+		String sqlCount =" select count(1) from office where 1=1 ";
 		
 		Object name = reqMap.get("name");//名称
 		if(null!=name && !"".equals(name)){
@@ -165,6 +165,7 @@ public class OfficeJsonServer {
 			sqlCount+=" and belong_to='"+belongTo+"' ";
 		}
 
+    	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		// 获取当前场地总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		
@@ -176,7 +177,6 @@ public class OfficeJsonServer {
     	sqlStr += " limit " + startIndex + "," + pageLimit;
     	
     	logger.info("sql日志输出:sqlStr===="+sqlStr);
-    	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		
 		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{});
     	JSONView jsonView = new JSONView();

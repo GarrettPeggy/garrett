@@ -34,9 +34,6 @@ public class ActivityJsonServer {
 	public Map add(Map reqMap) {
 		
 		logger.info("reqMap="+reqMap);
-		
-		// 添加活动需求到数据库
-		//String sqlStr = "insert into activity(id,creator_id,category_id,act_num,adress,sponsor,act_city,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		String sqlStr = "insert into activity(id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,show_image,title,sub_title,begin_time,end_time,create_time,publish_time,status,assistance) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("creator"), reqMap.get("categoryId"), reqMap.get("actNum"),reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("adress"),reqMap.get("sponsor"),reqMap.get("contact"),reqMap.get("actType"),reqMap.get("requirement"),reqMap.get("showImage"),reqMap.get("title"),reqMap.get("subTitle"),reqMap.get("beginTime"),reqMap.get("endTime"),new Date(),new Date(),reqMap.get("status"),reqMap.get("assistance")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
@@ -138,7 +135,6 @@ public class ActivityJsonServer {
 	 * @return
 	 */
 	public Map getActivityList(Map reqMap){
-		//System.out.println("reqMap.get(\"categoryId\")===================="+reqMap.get("categoryId"));
 		logger.info("reqMap="+reqMap);
 		String sqlStr = " select id,creator_id,category_id,act_num,province,city,area,adress,sponsor,contact,act_type,requirement,assistance,show_image,title,sub_title,date_format(ifnull(begin_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as begintime,date_format(ifnull(end_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as endtime,click_num,date_format(ifnull(create_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as createtime,date_format(ifnull(publish_time,'1970-01-01 00:00:01'),'%Y-%m-%d %H:%i:%s') as publishtime,status from activity where 1=1 ";
 		String sqlCount =" select count(1) from activity where 1=1 ";
@@ -237,7 +233,8 @@ public class ActivityJsonServer {
 			// 默认按照发布时间降序排列
 			sqlStr += " ORDER BY create_time DESC ";
 		}
-		
+
+    	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		// 获取当前活动总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		
@@ -249,7 +246,6 @@ public class ActivityJsonServer {
     	sqlStr += " limit " + startIndex + "," + pageLimit;
     	
     	logger.info("sql日志输出:sqlStr===="+sqlStr);
-    	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		
 		List activityList =  jdbcTemplate.queryForList(sqlStr, new Object[]{});//多条信息
 		JSONView jsonView = new JSONView();

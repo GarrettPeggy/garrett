@@ -223,7 +223,8 @@ public class GiftJsonServer {
 			sqlStr+=" and level="+level+" ";
 			sqlCount+=" and level="+level+" ";
 		}
-		
+
+    	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		// 获取当前场地总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		
@@ -244,7 +245,6 @@ public class GiftJsonServer {
     	sqlStr += " limit " + startIndex + "," + pageLimit;
     	
     	logger.info("sql日志输出:sqlStr===="+sqlStr);
-    	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		
 		List giftList = jdbcTemplate.queryForList(sqlStr, new Object[]{});
     	JSONView jsonView = new JSONView();

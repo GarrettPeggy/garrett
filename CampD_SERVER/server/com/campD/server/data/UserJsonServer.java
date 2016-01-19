@@ -244,7 +244,8 @@ public class UserJsonServer {
     		sqlStr += " and u.login_time <= '" + endLoginTime + " 23:59:59'";
     		sqlCountStr += " and u.login_time <= '" + endLoginTime + " 23:59:59'";
         }
-    	
+
+    	logger.info("sqlCountStr="+sqlCountStr);
     	// 获取当前用户总数
     	@SuppressWarnings("deprecation")
 		int dataCount = jdbcTemplate.queryForInt(sqlCountStr);
@@ -257,7 +258,6 @@ public class UserJsonServer {
     	sqlStr += " limit " + startIndex + "," + pageLimit;
 
     	logger.info("sqlStr="+sqlStr);
-    	logger.info("sqlCountStr="+sqlCountStr);
     	
     	JSONView jsonView = new JSONView();
     	List userList = jdbcTemplate.queryForList(sqlStr, new Object[0]);

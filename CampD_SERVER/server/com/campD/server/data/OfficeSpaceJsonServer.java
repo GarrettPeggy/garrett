@@ -141,6 +141,7 @@ public class OfficeSpaceJsonServer {
 			sqlCount+=" and status='"+status+"' ";
 		}
 
+    	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		// 获取当前场地总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);
 		
@@ -152,7 +153,6 @@ public class OfficeSpaceJsonServer {
     	sqlStr += " limit " + startIndex + "," + pageLimit;
     	
     	logger.info("sql日志输出:sqlStr===="+sqlStr);
-    	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		
 		List resultList = jdbcTemplate.queryForList(sqlStr, new Object[]{});
     	JSONView jsonView = new JSONView();
