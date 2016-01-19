@@ -200,7 +200,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="description" class="col-xs-12 col-sm-2 control-label no-padding-right">场地介绍</label>
+					                    <label for="description" class="col-xs-12 col-sm-2 control-label no-padding-right">空间介绍</label>
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right">
 						                      <textarea rows="4" class="form-control limited" name="description" id="description"></textarea>
@@ -210,7 +210,7 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
-					                    <label for="show_images" class="col-xs-12 col-sm-2 control-label no-padding-right">场地照片</label>
+					                    <label for="show_images" class="col-xs-12 col-sm-2 control-label no-padding-right">空间照片</label>
 					                    <input type="hidden" id="show_images" name="showImages" value="">
 					                    <input type="hidden" name="realPath" id="realPath" value=""><!-- 新文件的物理路径-->
 					                    <input type="hidden" name="oldPath" id="oldPath" value=""><!-- 新文件的物理路径-->
