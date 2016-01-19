@@ -60,7 +60,7 @@
 		<div class="main-content">
 			<div class="main-content-inner">
 				<jsp:include page="/page/common/breadcrumbs.jsp" flush="true">
-					<jsp:param value='[{"name":"办公空间","href":"#"},{"name":"空间列表","href":"${ctx}/officeSpace/toList.do"},{"name":"空间场地列表","href":"${ctx}/office/toList.do?belongTo=${officeMap.officeInfo.belongTo}"},{"name":"编辑空间场地","href":"${ctx}/office/toEdit.do?id=${id}"}]' name="navigationItems" />
+					<jsp:param value='[{"name":"办公空间","href":"#"},{"name":"空间列表","href":"${ctx}/officeSpace/toList.do"},{"name":"空间场地列表","href":"${ctx}/office/toList.do?belongTo=${officeMap.officeInfo.belong_to}"},{"name":"编辑空间场地","href":"${ctx}/office/toEdit.do?id=${id}"}]' name="navigationItems" />
 				</jsp:include>
 
 				<div class="page-content">
@@ -142,7 +142,7 @@
 					                    <label for="cost" class="col-xs-12 col-sm-2 control-label no-padding-right">费用单位</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="unit" id="unit" class="width-100" value="${officeMap.officeInfo.unit}" datatype="number" notnull="true" >
+						                      <input type="text" name="unit" id="unit" class="width-100" value="${officeMap.officeInfo.unit}" notnull="true" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span>
 					                    </div>
@@ -183,7 +183,7 @@
 					                    <label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">详细地址</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="adress" id="adress" class="width-100" value="${officeMap.officeInfo.adress}" notnull="true" maxlength="100" >
+						                      <input type="text" name="address" id="address" class="width-100" value="${officeMap.officeInfo.address}" notnull="true" maxlength="100" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -242,7 +242,7 @@
 					                  <div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
 											<a href="javascript:Office.updateOfficePicToOSS();" class="btn btn-primary btn-lg active" role="button">保存</a>
-											<a href="${ctx}/office/toList.do?belongTo=${belongTo}"" class="btn btn-default btn-lg active" role="button">取消</a>
+											<a href="${ctx}/office/toList.do?belongTo=${officeMap.officeInfo.belong_to}" class="btn btn-default btn-lg active" role="button">取消</a>
 										</div>
 									   </div>
 					                </div>

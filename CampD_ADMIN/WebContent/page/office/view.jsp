@@ -25,7 +25,7 @@
 		<div class="main-content">
 			<div class="main-content-inner">
 				<jsp:include page="/page/common/breadcrumbs.jsp" flush="true">
-					<jsp:param value='[{"name":"办公空间","href":"#"},{"name":"空间列表","href":"${ctx}/officeSpace/toList.do"},{"name":"空间场地列表","href":"${ctx}/office/toList.do?belongTo=${officeMap.officeInfo.belongTo}"},{"name":"浏览空间场地","href":"${ctx}/office/toView.do?id=${id}"}]' name="navigationItems" />
+					<jsp:param value='[{"name":"办公空间","href":"#"},{"name":"空间列表","href":"${ctx}/officeSpace/toList.do"},{"name":"空间场地列表","href":"${ctx}/office/toList.do?belongTo=${officeMap.officeInfo.belong_to}"},{"name":"浏览空间场地","href":"${ctx}/office/toView.do?id=${id}"}]' name="navigationItems" />
 				</jsp:include>
 
 				<div class="page-content">
@@ -96,7 +96,7 @@
 					                    <label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">场地地址</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="adress" class="width-100" value="${officeMap.officeInfo.adress}" disabled="disabled">
+						                      <input type="text" name="address" class="width-100" value="${officeMap.officeInfo.address}" disabled="disabled">
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>
@@ -155,7 +155,7 @@
 					                  
 					                  <div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<a href="${ctx}/office/toList.do?belongTo=${officeMap.officeInfo.belongTo}" class="btn btn-default btn-lg active" role="button">返回列表</a>
+											<a href="${ctx}/office/toList.do?belongTo=${officeMap.officeInfo.belong_to}" class="btn btn-default btn-lg active" role="button">返回列表</a>
 										</div>
 									  </div>
 					                </div>

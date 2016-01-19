@@ -18,10 +18,10 @@
 		<c:forEach items="${officeListMap.resultList}" var="officeSpace">
 			<tr>
 				<td class="center">${officeSpace.name}</td>
-				<td class="center">${systemConst.officeSpaceTypeMap[officeMap.officeInfo.type]}</td>
+				<td class="center">${systemConst.officeSpaceTypeMap[officeSpace.type]}</td>
 				<td class="center">${officeSpace.contactor}</td>
 				<td class="center">${officeSpace.contact}</td>
-				<td class="center">${officeSpace.cost}${officeSpace.unit}</td>
+				<td class="center">${officeSpace.cost}（${officeSpace.unit}）</td>
 				<td class="center">${officeSpace.province}&nbsp;${officeSpace.city}&nbsp;${officeSpace.area}</td>
 				<td class="center">${officeSpace.address}</td>
 				<td class="center">

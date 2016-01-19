@@ -181,7 +181,7 @@
 					                    <label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">详细地址</label>
 					                    <div class="col-xs-12 col-sm-3"> 
 					                      <span class="block input-icon input-icon-right">
-						                      <input type="text" name="adress" id="adress" class="width-100" notnull="true" maxlength="100" >
+						                      <input type="text" name="address" id="address" class="width-100" notnull="true" maxlength="100" >
 						                      <i class="ace-icon fa fa-leaf"></i> 
 					                      </span> 
 					                    </div>

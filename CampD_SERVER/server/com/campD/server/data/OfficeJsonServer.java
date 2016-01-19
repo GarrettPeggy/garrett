@@ -158,6 +158,12 @@ public class OfficeJsonServer {
 			sqlStr+=" and type='"+type+"' ";
 			sqlCount+=" and type='"+type+"' ";
 		}
+		
+		Object belongTo = reqMap.get("belongTo");//空间隶属于那个总空间
+		if(null!=belongTo && !"".equals(belongTo)){
+			sqlStr+=" and belong_to='"+belongTo+"' ";
+			sqlCount+=" and belong_to='"+belongTo+"' ";
+		}
 
 		// 获取当前场地总数
 		int dataCount = jdbcTemplate.queryForInt(sqlCount);

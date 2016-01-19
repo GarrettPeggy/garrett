@@ -40,12 +40,12 @@ Office.updateStatus=function(id,status){
 Office.uploadOfficePic = function(currentObject, uploadForm){
 	var fakepath = $(currentObject).val();
 	var ext = fakepath.substring(fakepath.lastIndexOf('.')+1);
-	if((Space.imageFormat).indexOf(ext)!=-1){
+	if((Office.imageFormat).indexOf(ext)!=-1){
 		submitForm(uploadForm, BASE_PATH + '/upload/uploadCropImg.do', function(res){
 			// 保证能连续上传同一张图片
 			$(currentObject).val("");
 			if(res && res.tmpPath){
-				$("#pic_container").append('<div class="col-sm-3 clearfix" style="margin-top: 10px;margin-bottom: 10px;"><div class="avatar-x"><div id="addPic"><img class="space-img" src="'+res.tmpPath+'" width="200" height="200"></div><div class="avatar-bar"></div></div><button style="margin-left: 157px;margin-top: 10px;" class="btn btn-xs btn-success" id="button_0" onclick="Space.deleteCurPic(this);" type="button"><span class="bigger-110">删除</span></button></div>');
+				$("#pic_container").append('<div class="col-sm-3 clearfix" style="margin-top: 10px;margin-bottom: 10px;"><div class="avatar-x"><div id="addPic"><img class="space-img" src="'+res.tmpPath+'" width="200" height="200"></div><div class="avatar-bar"></div></div><button style="margin-left: 157px;margin-top: 10px;" class="btn btn-xs btn-success" id="button_0" onclick="Office.deleteCurPic(this);" type="button"><span class="bigger-110">删除</span></button></div>');
 				var realPath = $("#realPath").val();
 				if(realPath.length==0){
 					$("#realPath").val(res.realPath);
@@ -107,7 +107,7 @@ Office.addOfficePicToOSS = function(){
 Office.addOffice = function(){
 	if(Validator.validForm("addOfficeForm")){
 		
-		var show_images = Space.getSpaceImages();
+		var show_images = Office.getSpaceImages();
 		$("#show_images").val(show_images);
 		// 必须上传场地图片
 		if(isEmpty(show_images)){
@@ -152,7 +152,7 @@ Office.updateOfficePicToOSS = function(){
 Office.updateOffice = function(){
 	if(Validator.validForm("updateOfficeForm")){
 		
-		var show_images = Space.getSpaceImages();
+		var show_images = Office.getSpaceImages();
 		$("#show_images").val(show_images);
 		// 必须上传场地图片
 		if(isEmpty(show_images)){
