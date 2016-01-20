@@ -89,6 +89,7 @@ OfficeSpace.save=function(){
 	}
 	
 	if(Validator.validForm("addOfficeSpaceForm")){
+		OfficeSpace.getAreaInfo();
 		submitForm("addOfficeSpaceForm",BASE_PATH + '/officeSpace/add.do',function(data){
 				window.location.href = BASE_PATH + "/officeSpace/toList.do";
 			},function(data){
@@ -117,6 +118,7 @@ OfficeSpace.update = function(){
 		if(null == fakepath || "" == fakepath){
 			$("#logo").val(oldPath);
 		}
+		OfficeSpace.getAreaInfo();
 		submitForm("editOfficeSpaceForm",BASE_PATH + '/officeSpace/update.do',function(data){
 			OfficeSpace.deletePicFromOSS();//活动修改成功后就删除图片
 			},
@@ -125,6 +127,18 @@ OfficeSpace.update = function(){
 			}
 		);
 	}
+};
+
+/**
+ * 活动类型和基础设施更新
+ */
+OfficeSpace.getAreaInfo = function(){
+	var $checkedAreaArray = $('input[name="area-span"]:checked');
+	var area = "";
+	for (var i = 0; i < $checkedAreaArray.length; i++) {
+		area += i==0?$($checkedAreaArray[i]).val():","+$($checkedAreaArray[i]).val();
+	}
+	$("#area").val(area);
 };
 
 /**

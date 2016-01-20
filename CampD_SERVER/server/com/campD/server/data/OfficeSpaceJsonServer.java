@@ -131,8 +131,8 @@ public class OfficeSpaceJsonServer {
 		
 		Object area = reqMap.get("area");//区域
 		if(null!=area && !"".equals(area)){
-			sqlStr+=" and FIND_IN_SET("+area+", area) ";
-			sqlCount+=" and FIND_IN_SET("+area+", area) ";
+			sqlStr+=" and FIND_IN_SET('"+area+"', area) ";
+			sqlCount+=" and FIND_IN_SET('"+area+"', area) ";
 		}
 		
 		Object status = reqMap.get("status");//状体
