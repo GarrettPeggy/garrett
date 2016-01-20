@@ -162,6 +162,11 @@ function getAreaIndexByCity(city){
 };
 
 function checkAreas(city, areas){
+	
+	if(isEmpty(city)){
+		return;
+	}
+	
 	// 先把区域div放进去
 	if($("#areaSelect").length<=0){
 		$("#citySelect").append('<div class="col-sm-2"></div><div class="col-sm-10"><div class="row"><div class="checkbox" id="areaSelect"></div></div></div>');
