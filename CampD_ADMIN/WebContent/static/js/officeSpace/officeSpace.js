@@ -179,3 +179,7 @@ OfficeSpace.updateStatus=function(id,status){
 		Dialog.alertError(data.returnMsg);
 	});
 };
+
+OfficeSpace.toAddOfficeSpace = function(){
+	window.location.href = BASE_PATH + "/officeSpace/toAdd.do";
+};

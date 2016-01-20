@@ -100,6 +100,10 @@
 													<button class="btn btn-xs btn-info" type="reset">
 														<span class="bigger-110">重置</span>
 													    <i class="ace-icon fa fa-refresh icon-on-right"></i>
+													</button>&nbsp;&nbsp;
+													<button class="btn btn-xs btn-warning" onclick="OfficeSpace.toAddOfficeSpace();" type="button">
+														<span class="bigger-110">添加总空间</span>
+													    <i class="ace-icon fa fa-plus icon-on-right"></i>
 													</button>
 												</div>
 											</div>
