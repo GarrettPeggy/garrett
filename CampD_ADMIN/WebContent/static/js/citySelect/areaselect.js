@@ -32,6 +32,7 @@ $.fn.citySelect = function(cityArray,defaultCityArray,options) {
  		}
  		$_vala.text(_stval[optremove.thisindex]);
  		$_valb.val(_stval[optremove.thisindex]);
+ 		
  		return this;
  	};
  	$.fn.appendlist = function(options){  //添加
@@ -113,18 +114,10 @@ $.fn.citySelect = function(cityArray,defaultCityArray,options) {
  				$(_setId[2]).removelist({thisindex : 2});
  				$(_setId[2]).appendlist({theindex:'0_'+indA+'_'+indB});	
  				_emeltC.text('请选择地区');	
- 				_inputC.val('');	
+ 				_inputC.val('');
  				
- 				// 先把区域div放进去
- 				if($("#areaSelect").length<=0){
- 					$("#citySelect").append('<div class="col-sm-2"></div><div class="col-sm-10"><div class="row"><div class="checkbox" id="areaSelect"></div></div></div>');
- 				}
- 				var area, areaArray = dsy.Items['0_'+indA+'_'+indB];
- 				$("#areaSelect").empty();
- 				for (var i = 0; i < areaArray.length; i++) {
-					area = areaArray[i];
-					$("#areaSelect").append('<label style="padding-bottom: 10px;"><input name="area-span" class="ace ace-checkbox-'+area+'" value="'+area+'" type="checkbox"><span class="lbl">'+area+'</span></label>');
-				}
+ 				// 区域选择初始化
+ 				checkAreas(_valB, $("#area").val());
  				
  				return indB;
  			});
@@ -151,5 +144,40 @@ $.fn.citySelect = function(cityArray,defaultCityArray,options) {
  	}
  	$(_setId[0]).appendlist({theindex:'0'}); //默认添加省
  	$.fn.liClick();
+ 	// 区域选择初始化
+	checkAreas(_stval[1], _stval[2]);
 };  
 })(jQuery);
+
+function getAreaIndexByCity(city){
+	for (var i = 0; i < 33; i++) {// 总共34个省份
+		var cityArray = dsy.Items['0_'+i];
+		var cityLength = cityArray.length;
+		for (var j = 0; j < cityLength; j++) {
+			if(city == cityArray[j]){
+				return '0_'+i+'_'+j;
+			}
+		}
+	}
+};
+
+function checkAreas(city, areas){
+	// 先把区域div放进去
+	if($("#areaSelect").length<=0){
+		$("#citySelect").append('<div class="col-sm-2"></div><div class="col-sm-10"><div class="row"><div class="checkbox" id="areaSelect"></div></div></div>');
+	}
+
+	var areaIndex = getAreaIndexByCity(city);
+	var areaArray = dsy.Items[areaIndex];
+	var selectedAreas = areas.split(',');
+	$("#areaSelect").empty();
+	var area;
+	for (var i = 0; i < areaArray.length; i++) {
+		area = areaArray[i];
+		var checked = "";
+		if($.inArray(area, selectedAreas)>=0){
+			checked = "checked";
+		}
+		$("#areaSelect").append('<label style="padding-bottom: 10px;"><input name="area-span" '+checked+' class="ace ace-checkbox-'+area+'" value="'+area+'" type="checkbox"><span class="lbl">'+area+'</span></label>');
+	}
+}

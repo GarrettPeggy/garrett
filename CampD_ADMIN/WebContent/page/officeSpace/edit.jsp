@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="${locResPath}/static/js/citySelect/city.css?_v=${vs}" />
 	<script type="text/javascript" src="${locResPath}/static/js/officeSpace/officeSpace.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/citySelect/city.min.js?_v=${vs}"></script>
-	<script type="text/javascript" src="${locResPath}/static/js/citySelect/jquery.cityselect.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/js/citySelect/areaselect.js?_v=${vs}"></script>
 </head>
 
 <body class="no-skin">
@@ -49,9 +49,9 @@
 												<div class="help-block col-xs-12 col-sm-reset inline"></div>
 											</div>
 											
-											<div class="form-group">
+											<div class="form-group" id="citySelect">
 												<label for="adress" class="col-xs-12 col-sm-2 control-label no-padding-right">所在地区</label>
-												<div class="col-xs-12 col-sm-6 infolist"> 
+												<div class="col-xs-12 col-sm-10 infolist"> 
 							                      	<span class="block input-icon input-icon-right liststyle">
 								                      	<span id="province">
 						                                    <i>请选择省份</i>
@@ -67,16 +67,9 @@
 						                                    </ul>
 						                                    <input type="hidden" name="city" class="curValue" value="${officeSpaceMap.officeInfo.city}">
 						                                </span>
-						                                <span id="area">
-						                                    <i>请选择地区</i>
-						                                    <ul>
-						                                        <li><a href="javascript:void(0)" alt="">请选择地区</a></li>
-						                                    </ul>
-						                                    <input type="hidden" name="area" class="curValue" value="${officeSpaceMap.officeInfo.area}">
-						                                </span>
+						                                <input type="hidden" name="area" id="area" value="${officeSpaceMap.officeInfo.area}">
 							                      	</span> 
 							                    </div>
-												<div class="help-block col-xs-12 col-sm-reset inline"></div>
 											</div>
 											
 											<div class="form-group">
