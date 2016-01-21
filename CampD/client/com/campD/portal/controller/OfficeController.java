@@ -3,6 +3,7 @@
  */
 package com.campD.portal.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -34,12 +36,22 @@ public class OfficeController extends BaseController {
 	private OfficeService officeService;
 
 	/**
-	 * 总空间列表页
+	 * 空间场地列表页
 	 * @throws Exception
 	 */
 	@RequestMapping("/toList.do")
-	public String toList(HttpServletRequest request) throws Exception {
-		bindParamToAttrbute(request);
+	public String toList(HttpServletRequest request, ModelMap mop) throws Exception {
+		
+		Map<String, Object> reqMap = bindParamToMap(request);
+		String val = (String) reqMap.get("name");
+	    try {
+			val = new String(val.getBytes("iso8859-1"), "UTF-8");
+		    mop.put("name", val);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	    mop.put("belongTo", reqMap.get("belongTo"));
+		
 		return "officeSpace/spaceList";
 	}
 	
