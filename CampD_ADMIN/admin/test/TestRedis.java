@@ -24,7 +24,7 @@ public class TestRedis {
 	public static void main(String[] args) {
 		// 连接到Redis
 	    Jedis jedis = new Jedis("112.124.63.41", 6379);
-	    jedis.auth("CDying123");
+	    //jedis.auth("CDying123");
 	    System.out.println("Server is running: "+jedis.ping());
 	    
 //	    // 测试字符串类型

@@ -54,4 +54,17 @@ public class OfficeSpaceController extends BaseController {
 		return getSearchJSONView(officeSpaceListMap);
 	}
 	
+	/**
+	 * 查询详细信息
+	 */
+	@RequestMapping("/getById.do")
+	@ResponseBody
+	public JSONView getById(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		
+		Map<String, Object> map = bindParamToMap(request);
+		Map<?, ?> officeMap = officeSpaceService.getById(map);
+		
+		return getSearchJSONView(officeMap);
+	}
+	
 }
