@@ -69,7 +69,7 @@
 							<form id="updateOfficeForm">
 								<flagToken:token tokenName="updateOfficeForm"/>
 								<input type="hidden" name="id" value="${id}"><!-- 标识符 -->
-								<input type="hidden" name="belongTo" id="belongTo" value="${belongTo}"><!-- 场地所属空间 -->
+								<input type="hidden" name="belongTo" id="belongTo" value="${officeMap.officeInfo.belong_to}"><!-- 场地所属空间 -->
 								<c:if test="${not empty officeMap.officeInfo.originalDiscriptionURL}">
 									<input type="hidden" name="originalDiscriptionURL" value="${officeMap.officeInfo.originalDiscriptionURL}"><!-- 默认场地都是普通场地 -->
 								</c:if>

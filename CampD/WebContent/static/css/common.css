@@ -95,6 +95,7 @@ a:hover{text-decoration:none;}
 .pdb5{padding-bottom:5px;}
 .pdb10{padding-bottom:10px;}
 .pdl10{padding-left:10px;}
+.padt15{padding-top:15px;}
 .mat7{margin-top:7px;}
 .mar5{margin-right:5px;}
 .mar15{margin-right:15px;}
@@ -845,7 +846,7 @@ a:hover{text-decoration:none;}
  .clearfix .newfr2{	
 	margin-right:5px;
 	width:88%;	
-	padding-bottom:10px;
+	padding-bottom:3px;
 }
 .adt-desc  .newmat{
 	margin-top:10px;
@@ -1811,7 +1812,21 @@ a:hover{text-decoration:none;}
 .gift-inner{
 	margin-top:8px;
 }
-/*重创空间修改*/
+/*众创空间修改*/
 .mat-5{
 	margin-top:-5px;
 }
+/*众创空间logo页*/
+.logolist{width:100%;min-height:290px;background:#fff;padding:15px 5px 15px 5px;display:inline-block;position:relative;}
+.logolist .logoimg{width:20%;margin-right:3%;margin-left:2%;line-height:60px;}
+.morelogo{margin-top:-32px;}
+.logolist .down{position:absolute;bottom:0px;width:100%;background:#fff;text-align:center;line-height:30px;}
+.qrcode{text-align:center;margin-top:15px;margin-bottom:10px;}
+.qrcode .qrcodeimg{margin-bottom:10px;}
+.qrcode a{color:#06F;}
+/*加载更多logo*/
+.loadmorelogo{position:absolute;bottom:5px;text-align:center;width:100%;}
+/*百度地图修改*/
+.mappic{margin-top:-2px;}
+
+

@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>${jsonview.spaceInfo.name }</title>
+	<title>${officeMap.officeInfo.name }</title>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<link rel="stylesheet" href="${locResPath}/static/common/swipe/css/swipe.css?_v=${vs}"/>
@@ -19,7 +19,7 @@
     	<a class="head-left-icon">
         	<img src="${rmtResPath}/static/images/back.png" onclick="back()" width="13" height="22"/>
         </a>
-        <div class="head-content">场地详情</div>
+        <div class="head-content">空间详情</div>
         <div class="head-right-icon">
         	<img src="${rmtResPath}/static/images/guanzhu.png" onclick="Header.shareCD()" width="28" height="28"/>
         </div>
@@ -33,8 +33,8 @@
 	    	<div class="addWrap">
 		        <div class="img-tap-show-space swipe" id="mySwipe">
 		        	<div class="swipe-wrap" onclick="Space.showMax();">
-		        		<c:if test="${!empty jsonview.spaceInfo.show_images}">
-						    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+		        		<c:if test="${!empty officeMap.officeInfo.show_images}">
+						    <c:forEach var="image_src" items="${fn:split(officeMap.officeInfo.show_images, ',')}" varStatus="status">
 						    	<div>
 							    	<a href="javascript:;">
 							    		<img src="${sysConfig.ossResUrl}${image_src}" class="img-responsive" alt="${ status.index + 1}"/>
@@ -45,8 +45,8 @@
 		           </div>
 		        </div>
 		        <ul id="position"  style="z-index:1;bottom:122px;">
-		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
-		        		<c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+		        	<c:if test="${!empty officeMap.officeInfo.show_images}">
+		        		<c:forEach var="image_src" items="${fn:split(officeMap.officeInfo.show_images, ',')}" varStatus="status">
 		        			<c:if test="${status.index == 0}">
 		        				<li class="cur"></li>
 		        			</c:if>
@@ -56,19 +56,18 @@
 		        		</c:forEach>
 		        	</c:if>
 				</ul>	
-				<div class=" worddescription">${jsonview.spaceInfo.name }</div>
+				<div class="worddescription">${officeMap.officeInfo.name }</div>
 	        </div>
 	        <!-- end -->
             <div class="adt-desc">
                  <dl class="fontSize14 color94 clearfix mat15" >
                     <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_jiaotong.png" width="17" height="17"/></dt>
-                    <dd class="fl newfr1" >${jsonview.spaceInfo.traffic }</dd> 
+                    <dd class="fl newfr1" >${officeMap.officeInfo.traffic }</dd> 
                 </dl>
-                <dl class="fontSize14  clearfix color94 newmat" onclick="toBaiDuMap('${jsonview.spaceInfo.adress}')">
+                <dl class="fontSize14  clearfix color94 newmat" >
                     <dt class="fl newfl"><img src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
-                    <dd class="fl newfr2">${jsonview.spaceInfo.adress }</dd> 
+                    <dd class="fl newfr2">${officeMap.officeInfo.address }<img class="fr mappic" onclick="toBaiDuMap('${officeMap.officeInfo.address}')" src="${rmtResPath}/static/images/baidumap.png" width="30" height="26"/></dd> 
                </dl> 
-                
             </div>
         </div>
         <!-- end -->
@@ -76,39 +75,12 @@
         <div class="ac-detail-mechanism retina-1px-border-bottom retina-1px-border-top">
         	<div class="adm-line clearfix bt-line" >
             	<span class="fl">费用</span>
-            	<c:if test="${jsonview.spaceInfo.cost eq 0}"><span class="fr color94 red" style="color:red;">免费</span></c:if>
-				<c:if test="${jsonview.spaceInfo.cost gt 0}"><span class="fr color94"><fmt:parseNumber integerOnly="true" value="${jsonview.spaceInfo.cost}" />元/小时</span></c:if>
+            	<c:if test="${officeMap.officeInfo.cost eq 0}"><span class="fr color94 red" style="color:red;">免费</span></c:if>
+				<c:if test="${officeMap.officeInfo.cost gt 0}"><span class="fr color94"><fmt:parseNumber integerOnly="true" value="${officeMap.officeInfo.cost}" />元/人月</span></c:if>
             </div>
-            <div class="adm-line clearfix " >
-            	<span class="fl">容量</span>
-                <span class="fr color94">${jsonview.spaceInfo.capacity }人</span>
-            </div>
-        </div>
-        <!--适用活动和基础设施  -->
-         <div class="activebase retina-1px-border-bottom retina-1px-border-top">
-        	<div class="active padt10 clearfix bt-line ">
-            	<span class="fl percent">适用活动:</span>
-            	<div class="fr space-workfor">
-                  <ul class="consider">
-                	<c:if test="${not empty jsonview.spaceInfo.work_for}">
-	                	<c:forEach var="category" items="${ fn:split(jsonview.spaceInfo.work_for, ',') }">
-	                      <li class="considerpic"><img src="${rmtResPath}/static/images/category_${category}.png" width="25" height="35"></li>
-	                    </c:forEach>
-                    </c:if>
-                  </ul>
-                </div>
-            </div>
-            <div class="padt10 clearfix">
-            	<span class="fl percent">基础设施:</span>
-            	<div class="fr space-workfor">
-                   <ul class="consider">
-                    <c:if test="${not empty jsonview.spaceInfo.infrastructure}">
-	                   	<c:forEach var="infrastructure" items="${ fn:split(jsonview.spaceInfo.infrastructure, ',') }">
-	                      <li class="considerpic"><img src="${rmtResPath}/static/images/infrastructure_${infrastructure}.png" width="${infrastructure eq 1?40:30}" height="32"></li>
-	                    </c:forEach>
-                    </c:if>
-                   </ul> 
-                </div>
+            <div class="adm-line clearfix">
+            	<span class="fl">电话</span>
+                <span class="fr color94">${officeMap.officeInfo.contact}</span>
             </div>
         </div>
 
@@ -119,7 +91,7 @@
             	详细介绍
             </div>
             <div class="add-desc">
-            	${jsonview.spaceInfo.description }
+            	${officeMap.officeInfo.description }
             </div>
         </div>
         <!-- end -->
@@ -146,8 +118,8 @@
 	   <div class="addWrap addWrap1">
 		        <div class="img-tap-show-space swipe" id="mySwipe1">
 		        	<div class="swipe-wrap">
-		        		<c:if test="${!empty jsonview.spaceInfo.show_images}">
-						    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+		        		<c:if test="${!empty officeMap.officeInfo.show_images}">
+						    <c:forEach var="image_src" items="${fn:split(officeMap.officeInfo.show_images, ',')}" varStatus="status">
 						    	<div>
 							    	<a href="javascript:;">
 							    		<img src="${sysConfig.ossResUrl}${image_src}" class="img-responsive" alt="${ status.index + 1}" height="222" />
@@ -158,8 +130,8 @@
 		           </div>
 		        </div>
 		        <ul id="position1"  style="z-index:1;">
-		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
-		        		<c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
+		        	<c:if test="${!empty officeMap.officeInfo.show_images}">
+		        		<c:forEach var="image_src" items="${fn:split(officeMap.officeInfo.show_images, ',')}" varStatus="status">
 		        			<c:if test="${status.index == 0}">
 		        				<li class="cur"></li>
 		        			</c:if>
@@ -169,20 +141,10 @@
 		        		</c:forEach>
 		        	</c:if>
 				</ul>	
-				<div class="worddescription1">${jsonview.spaceInfo.name }</div>
+				<div class="worddescription1">${officeMap.officeInfo.name }</div>
 	        </div>
 	        <div class="heiht30"></div>
 	</div>
-    <!-- end -->
-    <!-- 点击出现地图  需要显示时删除hide -->
-       <div class="showMap hide" style="position:fixed;top:0;left:0;height:100%;width:100%;background:#000;z-index:51;text-align:center;" onclick="Space.hideMap();">
-          <div class="height25" style="height:25%;"></div>
-          <div class="maparea" id="container" style="height:50%;overflow: hidden;">
-          </div>
-          <div class="height25" style="height:25%;position:relative;text-align:center;">
-            <div class="wordadress" style="color:#fff;font-size:19px;position:absolute;top:40px;width:100%;">${jsonview.spaceInfo.adress }</div>
-          </div>
-       </div>
     <!-- end -->
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide newtc-modal" id="guanzhu">
