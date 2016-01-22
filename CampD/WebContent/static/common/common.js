@@ -797,7 +797,6 @@ function back(oldUrl){
 toBaiDuMap=function(address){
 	window.location.href = BASE_PATH + "/common/toMap.do?address="+address;
 };
-
 /**
  * 清空查询条件
  * 注:根据id 清空form所有input内容 排除隐藏文本框

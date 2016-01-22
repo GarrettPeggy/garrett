@@ -64,9 +64,9 @@
                     <dt class="fl newfl"><img  src="${rmtResPath}/static/images/CHANGDI_jiaotong.png" width="17" height="17"/></dt>
                     <dd class="fl newfr1" >${jsonview.spaceInfo.traffic }</dd> 
                 </dl>
-                <dl class="fontSize14  clearfix color94 newmat">
+                <dl class="fontSize14  clearfix color94 newmat" onclick="toBaiDuMap('${jsonview.spaceInfo.adress}')" >
                     <dt class="fl newfl"><img src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
-                    <dd class="fl newfr2">${jsonview.spaceInfo.adress }<img class="fr mappic" onclick="toBaiDuMap('${jsonview.spaceInfo.adress}')" src="${rmtResPath}/static/images/baidumap.png" width="30" height="26"/></dd> 
+                    <dd class="fl newfr2">${jsonview.spaceInfo.adress }<img class="fr mappic" src="${rmtResPath}/static/images/baidumap.png" width="30" height="26"/></dd> 
                </dl> 
                 
             </div>

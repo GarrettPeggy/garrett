@@ -7,9 +7,9 @@
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6984viF2zxB6nZnfskwL97VG"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=7IGTlD9BMR4jas0p1PZn92RB"></script>
 	<style type="text/css">
-	 body, html,#container {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";background:#949494;}
+	body, html,#container {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
 	</style>
 </head>
 <body>
@@ -39,18 +39,8 @@
 	$(function(){
 		$(".showMap").css("height",window.innerHeight);
 		$(".showMap").css("width",window.innerWidth);
-		searchMap("container", '${address}');
+		initBaiduMap("container", '${address}');
 	});
-	
-	searchMap = function(containerId, address){
-    	if($("#"+containerId).hasClass("opened")){
-    		$("#"+containerId).css("display","block");
-    	} else{
-    		$("#"+containerId).addClass("opened")
-    		$("#"+containerId).css("display","block");
-    	    initBaiduMap(containerId, address);
-    	}
-    };
 		
 	/**
 	* 在地图中根据详细地址搜索
@@ -65,7 +55,7 @@
 		map.enableContinuousZoom(true);         //启用地图惯性拖拽，默认禁用
 		map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
 		map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
-		//map.addControl(new BMap.ScaleControl()); // 添加默认比例尺控件
+		map.addControl(new BMap.ScaleControl()); // 添加默认比例尺控件
 	};
 	/**
 	* 在地图中根据详细地址搜索
@@ -79,7 +69,7 @@
 		localSearch.setSearchCompleteCallback(function(searchResult){
 			var poi = searchResult.getPoi(0);   //获取搜索结果中的第一个坐标(经度，纬度)
 			if(poi){
-				map.centerAndZoom(poi.point,18);
+				map.centerAndZoom(poi.point,16);
 			    var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地址对应的经纬度
 			    var opts = {title : '<span style="font-size:14px;color:#0A8021;">${address}</span>'};
 			    var infoWindow =new BMap.InfoWindow("<div style='line-height:1.8em;font-size:12px;'>联系电话：15601925235</div>", opts);  // 创建信息窗口对象，引号里可以书写任意的html语句。
