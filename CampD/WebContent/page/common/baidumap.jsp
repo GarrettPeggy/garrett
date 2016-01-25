@@ -5,16 +5,18 @@
 <head>
 	<title>${address}</title>
 	<%@ include file="/page/common/meta.jsp" %>
-	<%@ include file="/page/common/jsCss.jsp" %>
-	<script type="text/javascript" src="${locResPath}/static/common/header.js?_v=${vs}"></script>
+	<script type="text/javascript" src="${locResPath}/static/common/jquery/jquery-1.11.3.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=7IGTlD9BMR4jas0p1PZn92RB"></script>
 	<style type="text/css">
 	body, html,#container {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	.header { position: relative; background: #638ee0;color: #ffffff; width: 100%; height: 51px; line-height: 51px;font-size: 19px;}
+	.header .head-left-icon { position: absolute; top: 0;left: 2px; display: block; width: 45px; text-align: center; padding-top: 4px;}
+	.header .head-content {width: 100%;text-align: center;}
 	</style>
 </head>
 <body>
 	<!-- 头部 -->
-	<div class="header ac-detail-header clearfix " style="z-index:30">
+	<div class="header">
     	<a class="head-left-icon">
         	<img src="${rmtResPath}/static/images/back.png" onclick="back()" width="13" height="22"/>
         </a>
@@ -55,7 +57,7 @@
 		map.enableContinuousZoom(true);         //启用地图惯性拖拽，默认禁用
 		map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
 		map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
-		map.addControl(new BMap.ScaleControl()); // 添加默认比例尺控件
+		//map.addControl(new BMap.ScaleControl()); // 添加默认比例尺控件
 	};
 	/**
 	* 在地图中根据详细地址搜索
@@ -83,7 +85,17 @@
 		});
 		localSearch.search(address);	
 	};
-
+	
+	/**
+	 * 页面上的返回按钮
+	 */
+	function back(oldUrl){
+		if(!oldUrl){
+			window.history.go(-1);// 返回历史
+		} else{
+			window.location.href = oldUrl;
+		}
+	};
 	
 </script>
 </html>
