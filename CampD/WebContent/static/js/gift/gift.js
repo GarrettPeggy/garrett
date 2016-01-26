@@ -320,6 +320,8 @@ Gift.workForHerder=function(){
 Gift.showMax=function(){
 	$("#picMax").removeClass("hide");
 	$("#picMax").animate({left:"0"},100);
+	/*让showmax图片垂直居中*/
+	$(".showmax").css("margin-top",($(window).innerHeight() - $(".max img").innerHeight())/2);
 };
 Gift.hideMax=function(){
 	$("#picMax").animate({left:window.screen.width},300);

@@ -95,12 +95,10 @@
     
     <!-- banner点击时图片变大 显示时left为0，隐藏时left为屏幕宽度-->
 	<div class="max hide" id="picMax" onclick="Gift.hideMax();">
-		<div class="heiht30"></div>
-		<div class="banner">
-   	        <img  src="${sysConfig.ossResUrl}${giftMap.giftMap.show_image}" width="100%" height="222"/>
+		<div class="banner showmax">
+   	        <img  src="${sysConfig.ossResUrl}${giftMap.giftMap.show_image}" width="100%"/>
 			<span class="hdname1">${giftMap.giftMap.name }</span>
 	    </div> 
-		<div class="heiht30"></div>
 	</div>
     <!-- end -->
 
@@ -134,6 +132,9 @@
 <script type="text/javascript">
 	
 	$(function(){
+		// 让全屏显示的图片垂直居中
+		$(".max img").css("max-height", window.innerHeight*0.65);
+		$(".max img").css("min-height", window.innerHeight*0.35);
 		// 底部按钮居中
 		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
 		Header.initFootIcon();

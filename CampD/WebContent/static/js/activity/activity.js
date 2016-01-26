@@ -329,6 +329,8 @@ Activity.validateAdress = function(){
 Activity.showMax=function(){
 	$("#picMax").removeClass("hide");
 	$("#picMax").animate({left:"0"},100);
+	/*让showmax图片垂直居中*/
+	$(".showmax").css("margin-top",($(window).innerHeight() - $(".showmax").innerHeight())/2);
 };
 Activity.hideMax=function(){
 	$("#picMax").animate({left:window.screen.width},300);

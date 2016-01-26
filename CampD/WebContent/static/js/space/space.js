@@ -412,6 +412,8 @@ Space.showMax=function(){
 	$("#picMax").removeClass("hide");
 	$("#picMax").animate({left:"0"},100);
 	Space.tapShow('position1','mySwipe1');
+	/*让showmax图片垂直居中*/
+	$(".showmax").css("margin-top",($(window).innerHeight() - $(".max img").innerHeight())/2);
 };
 Space.hideMax=function(){
 	$("#picMax").animate({left:window.screen.width},300);

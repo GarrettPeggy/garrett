@@ -42,10 +42,11 @@
 	                    	<fmt:formatDate value="${endtime}" pattern="MM月dd日  HH:mm"/>
 	                    </span>
 	                </div>
-	                <div class="fontSize14  dress">
-	                    <span class="fl address"><img  src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></span>
-	                	<span class="fontSize13">${jsonview.activityInfo.adress }</span>
-	                </div>   
+	                <dl class="fontSize13  clearfix color94 mat5 actdress" onclick="toBaiDuMap('${jsonview.activityInfo.adress}')" >
+	                    <dt class="fl newfl"><img src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
+	                    <dd class="fl newfr2 padl6">${jsonview.activityInfo.adress}</dd> 
+	                    <dd><img class="fr mappic" src="${rmtResPath}/static/images/baidumap.png" width="30" height="26"/></dd>
+                   </dl>
 	            </div>
 	        </div>
 	        <!-- end -->
@@ -74,8 +75,6 @@
 	        </div>
 	        <!-- end -->
 	        
-	          
-	     	     
 	        <!-- 按钮 -->
 	        <c:choose>
 	        	<c:when test="${empty USER_INFO }"><!-- 用户没有登录，显示报名按钮 -->
@@ -129,12 +128,10 @@
     
 	    <!-- 点击图片变大 需要显示时删除hide -->
 		<div class="max hide" id="picMax" onclick="Activity.hideMax()">
-		      <div class="heiht30"></div>
-		      <div class="banner">
-		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%" height="222"/>
+		      <div class="banner showmax">
+		        <img src="${sysConfig.ossResUrl}${jsonview.activityInfo.show_image }" width="100%"/>
 		        <span class="hdname1">${jsonview.activityInfo.title }</span>
 		      </div>
-		      <div class="heiht30"></div>
 		</div>
 	    <!-- end -->
     
@@ -187,6 +184,9 @@
 	<script type="text/javascript">
 	
 		$(function(){
+			// 让全屏显示的图片垂直居中
+			$(".max img").css("max-height", window.innerHeight*0.65);
+			$(".max img").css("min-height", window.innerHeight*0.35);
 			// 底部按钮居中
 			$("#submit_act").css("left",$(".newfoot-left-icon").width()+"px");
 			Header.initFootIcon();

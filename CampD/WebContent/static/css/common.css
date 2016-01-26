@@ -845,11 +845,12 @@ a:hover{text-decoration:none;}
 }
  .clearfix .newfr2{	
 	margin-right:5px;
-	width:88%;	
+	width:78%;	
 	padding-bottom:3px;
 }
 .adt-desc  .newmat{
 	margin-top:10px;
+	margin-bottom:2px;
 }
 .adt-desc  .fontSize14{
 	line-height:20px;
@@ -981,12 +982,12 @@ a:hover{text-decoration:none;}
 	border-bottom:1px solid rgba(32,35,37,0.16);
 }
 .adt-desc .dress{
-		margin-top:5px;
-		margin-bottom:8px;
+		margin-top:6px;
+		margin-bottom:6px;
 }
 .dress .address{
 	margin-right:15px;
-	margin-top:4px;
+	margin-top:2px;
 }
 /* 场地轮播图修改*/
 .worddescription{
@@ -1619,20 +1620,20 @@ a:hover{text-decoration:none;}
 	background:#000;
 	z-index:51;
 	text-align:center;
-}
-.max .heiht30{
-	height:30%;
+	vertical-align:middle;
 }
 .max .addWrap1{
-	height:40%;
 	text-align:center;
+	background:#000;
+}
+.max img{
+	overflow:hidden;
 }
 #position1{
   padding-right: 8px;
-  margin: 0;
   opacity: 0.4;
   width: 100%;
-  margin-top: 15%;
+  margin-top: 3%;
 }
 #position1 li.cur {
   background-color: #FF0000;
@@ -1649,13 +1650,9 @@ a:hover{text-decoration:none;}
 #mySwipe1{
 	height:100%;
 }
-#mySwipe1 .swipe-wrap img{
-	height:222px;
-}
 .worddescription1 {
-  position: absolute;
+  position: relative;
   left: 0px;
-  bottom: -1px;
   background: black;
   width: 100%;
   height: 47px;
@@ -1665,9 +1662,6 @@ a:hover{text-decoration:none;}
   font-size: 17px;
 }
 /*礼品详情 图片点击时变大*/
-.max .banner{
-	height:40%;
-}
 .max .banner .hdname1{
   background: rgba(0,0,0,0.3);
   width: 100%;
@@ -1827,6 +1821,7 @@ a:hover{text-decoration:none;}
 /*加载更多logo*/
 .loadmorelogo{position:absolute;bottom:5px;text-align:center;width:100%;}
 /*百度地图修改*/
-.mappic{margin-top:-2px;}
-
-
+.mappic{margin-top:-2px;margin-right: 11px;}
+/*活动详情页地图修改*/
+.actdress{color:#000;margin-bottom:3px;}
+.padl6{padding-left:6px;}

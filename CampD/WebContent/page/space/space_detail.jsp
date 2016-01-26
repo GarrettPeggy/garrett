@@ -66,9 +66,9 @@
                 </dl>
                 <dl class="fontSize14  clearfix color94 newmat" onclick="toBaiDuMap('${jsonview.spaceInfo.adress}')" >
                     <dt class="fl newfl"><img src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
-                    <dd class="fl newfr2">${jsonview.spaceInfo.adress }<img class="fr mappic" src="${rmtResPath}/static/images/baidumap.png" width="30" height="26"/></dd> 
-               </dl> 
-                
+                    <dd class="fl newfr2">${jsonview.spaceInfo.adress }</dd> 
+                    <dd><img class="fr mappic" src="${rmtResPath}/static/images/baidumap.png" width="30" height="26"/></dd>
+               </dl>
             </div>
         </div>
         <!-- end -->
@@ -142,22 +142,22 @@
     
     <!-- 点击图片放大  需要显示时删除hide -->
 	<div class="max hide" id="picMax" onclick="Space.hideMax();">
-	   <div class="heiht30"></div>
-	   <div class="addWrap addWrap1">
-		        <div class="img-tap-show-space swipe" id="mySwipe1">
+	   <div class="addWrap addWrap1 showmax">
+		        <div class="img-tap-show-space swipe" id="mySwipe1" >
 		        	<div class="swipe-wrap">
 		        		<c:if test="${!empty jsonview.spaceInfo.show_images}">
 						    <c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
 						    	<div>
 							    	<a href="javascript:;">
-							    		<img src="${sysConfig.ossResUrl}${image_src}" class="img-responsive" alt="${ status.index + 1}" height="222" />
+							    		<img src="${sysConfig.ossResUrl}${image_src}"  alt="${ status.index + 1}" width="100%"/>
 							    	</a>
 						    	</div>
 						    </c:forEach>
 						</c:if>
 		           </div>
-		        </div>
-		        <ul id="position1"  style="z-index:1;">
+		        </div>	
+				<div class="worddescription1">${jsonview.spaceInfo.name }</div>
+		        <ul id="position1"  style="z-index:60;">
 		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
 		        		<c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
 		        			<c:if test="${status.index == 0}">
@@ -168,21 +168,9 @@
 		        			</c:if>
 		        		</c:forEach>
 		        	</c:if>
-				</ul>	
-				<div class="worddescription1">${jsonview.spaceInfo.name }</div>
+				</ul>
 	        </div>
-	        <div class="heiht30"></div>
 	</div>
-    <!-- end -->
-    <!-- 点击出现地图  需要显示时删除hide -->
-       <div class="showMap hide" style="position:fixed;top:0;left:0;height:100%;width:100%;background:#000;z-index:51;text-align:center;" onclick="Space.hideMap();">
-          <div class="height25" style="height:25%;"></div>
-          <div class="maparea" id="container" style="height:50%;overflow: hidden;">
-          </div>
-          <div class="height25" style="height:25%;position:relative;text-align:center;">
-            <div class="wordadress" style="color:#fff;font-size:19px;position:absolute;top:40px;width:100%;">${jsonview.spaceInfo.adress }</div>
-          </div>
-       </div>
     <!-- end -->
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide newtc-modal" id="guanzhu">
@@ -214,11 +202,15 @@
 <script type="text/javascript">
 	
 	$(function(){
+		// 让全屏显示的图片垂直居中
+		$(".max img").css("max-height", window.innerHeight*0.65);
+		$(".max img").css("min-height", window.innerHeight*0.35);
 		Space.tapShow('position','mySwipe');
 		// 底部按钮居中
 		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
 		Header.initFootIcon();
 		$("#picMax").css("left",window.screen.width);
 	});
+ 	
 </script>
 </html>

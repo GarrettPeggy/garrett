@@ -66,7 +66,8 @@
                 </dl>
                 <dl class="fontSize14  clearfix color94 newmat" onclick="toBaiDuMap('${officeMap.officeInfo.address}')">
                     <dt class="fl newfl"><img src="${rmtResPath}/static/images/CHANGDI_dress.png"  width="17" height="17"/></dt>
-                    <dd class="fl newfr2" >${officeMap.officeInfo.address }<img class="fr mappic"  src="${rmtResPath}/static/images/baidumap.png" width="30" height="26"/></dd> 
+                    <dd class="fl newfr2" >${officeMap.officeInfo.address }</dd> 
+                    <dd><img class="fr mappic"  src="${rmtResPath}/static/images/baidumap.png" width="30" height="26"/></dd>
                </dl> 
             </div>
         </div>
@@ -114,21 +115,21 @@
     
     <!-- 点击图片放大  需要显示时删除hide -->
 	<div class="max hide" id="picMax" onclick="Space.hideMax();">
-	   <div class="heiht30"></div>
-	   <div class="addWrap addWrap1">
+	   <div class="addWrap addWrap1 showmax">
 		        <div class="img-tap-show-space swipe" id="mySwipe1">
 		        	<div class="swipe-wrap">
 		        		<c:if test="${!empty officeMap.officeInfo.show_images}">
 						    <c:forEach var="image_src" items="${fn:split(officeMap.officeInfo.show_images, ',')}" varStatus="status">
 						    	<div>
 							    	<a href="javascript:;">
-							    		<img src="${sysConfig.ossResUrl}${image_src}" class="img-responsive" alt="${ status.index + 1}" height="222" />
+							    		<img src="${sysConfig.ossResUrl}${image_src}" alt="${ status.index + 1}" width="100%" />
 							    	</a>
 						    	</div>
 						    </c:forEach>
 						</c:if>
 		           </div>
 		        </div>
+		        <div class="worddescription1">${officeMap.officeInfo.name }</div>
 		        <ul id="position1"  style="z-index:1;">
 		        	<c:if test="${!empty officeMap.officeInfo.show_images}">
 		        		<c:forEach var="image_src" items="${fn:split(officeMap.officeInfo.show_images, ',')}" varStatus="status">
@@ -141,9 +142,7 @@
 		        		</c:forEach>
 		        	</c:if>
 				</ul>	
-				<div class="worddescription1">${officeMap.officeInfo.name }</div>
 	        </div>
-	        <div class="heiht30"></div>
 	</div>
     <!-- end -->
 	<!-- 分享 需要显示时删除hide -->
@@ -176,6 +175,9 @@
 <script type="text/javascript">
 	
 	$(function(){
+		// 让全屏显示的图片垂直居中
+		$(".max img").css("max-height", window.innerHeight*0.65);
+		$(".max img").css("min-height", window.innerHeight*0.35);
 		Space.tapShow('position','mySwipe');
 		// 底部按钮居中
 		$("#submit_tel").css("left",$(".newfoot-left-icon").width()+"px");
