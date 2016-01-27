@@ -44,7 +44,7 @@
 						</c:if>
 		           </div>
 		        </div>
-		        <ul id="position"  style="z-index:1;bottom:122px;">
+		        <ul id="position"  style="z-index:1;">
 		        	<c:if test="${!empty jsonview.spaceInfo.show_images}">
 		        		<c:forEach var="image_src" items="${fn:split(jsonview.spaceInfo.show_images, ',')}" varStatus="status">
 		        			<c:if test="${status.index == 0}">
