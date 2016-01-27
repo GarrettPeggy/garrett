@@ -19,7 +19,7 @@
 	        	<div class="swipe-wrap">
 				</div>
 	        </div>
-	        <ul id="position">
+	        <ul id="position" style="bottom: 0px;">
 			</ul>
         </div>
         <!-- end -->
