@@ -129,7 +129,7 @@ Header.loadTapShow=function(){
 			for(var i=0;i<length;i++){//
 				var url_val = tapShowList[i].url_val;
 				url_val = url_val==null || isEmpty(url_val)?'javascript:void();':url_val;
-				$(".swipe-wrap").append("<div><a href='"+url_val+"'><img class='img-responsive' src='"+OSS_RES_URL+tapShowList[i].value_val+"' alt='"+(i+1)+"'/></a></div>");
+				$(".swipe-wrap").append("<div><a href='"+url_val+"'><img style='height:156px;' class='img-responsive' src='"+OSS_RES_URL+tapShowList[i].value_val+"' alt='"+(i+1)+"'/></a></div>");
 				if(i==0){
 					$("#position").append("<li class='cur'></li>");
 				}else{
