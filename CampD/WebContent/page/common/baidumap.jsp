@@ -72,7 +72,11 @@
 			var poi = searchResult.getPoi(0);   //获取搜索结果中的第一个坐标(经度，纬度)
 			if(poi){
 				map.centerAndZoom(poi.point,16);
-			    var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地址对应的经纬度
+				// 自定义标记
+				var myIcon = new BMap.Icon("${rmtResPath}/static/images/marker.png",new BMap.Size(32,47),{
+					offset:new BMap.Size(10,25)    //指定定位位置
+				});
+				var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat),{icon:myIcon});  // 创建标注，为要查询的地址对应的经纬度
 			    var opts = {title : '<span style="font-size:14px;color:#0A8021;">${address}</span>'};
 			    var infoWindow =new BMap.InfoWindow("<div style='line-height:1.8em;font-size:12px;'>联系电话：15601925235</div>", opts);  // 创建信息窗口对象，引号里可以书写任意的html语句。
 			    marker.addEventListener("click", function(){
