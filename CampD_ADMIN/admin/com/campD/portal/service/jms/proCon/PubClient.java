@@ -3,6 +3,10 @@
  */
 package com.campD.portal.service.jms.proCon;
 
+import java.util.Date;
+
+import com.campD.portal.util.DateUtil;
+
 import redis.clients.jedis.Jedis;
 
 /**
@@ -20,6 +24,8 @@ public class PubClient {
 	
 	// 发布消息
 	public void pub(String channel,String message){
+		String time = DateUtil.fmtDate(new Date(), "yyyy-MM-dd HH:mm:ss");
+		System.out.println("-------------message publish:" + message + ",channel:" + channel + "..." + time);
 		jedis.publish(channel, message);
 	}
 	

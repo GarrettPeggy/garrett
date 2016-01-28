@@ -32,6 +32,7 @@ public class RedisJmsTest {
 		
 		PubClient pubClient = new PubClient("112.124.63.41", 6379);
 		final String channel = "pubsub-channel";
+		// 以下这两条消息由于是在订阅前发布的，所以后面订阅的订阅者收不到这两条消息
 		pubClient.pub(channel, "before1");
 		pubClient.pub(channel, "before2");
 		Thread.sleep(2000);
@@ -57,7 +58,7 @@ public class RedisJmsTest {
 		subThread.start();
 		
 		int i=0;
-		while(i < 10){
+		while(i < 1000){
 			String message = "这是第"+i+"条消息！";//apache-commons
 			pubClient.pub(channel, message);
 			i++;
