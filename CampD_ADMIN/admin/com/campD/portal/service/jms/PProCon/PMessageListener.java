@@ -4,9 +4,11 @@
 package com.campD.portal.service.jms.PProCon;
 
 import java.util.Date;
+import java.util.Map;
 
 import com.campD.portal.service.jms.Constants;
 import com.campD.portal.util.DateUtil;
+import com.campD.portal.util.JsonHelper;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
@@ -78,6 +80,9 @@ public class PMessageListener extends JedisPubSub {
 	private void message(String channel,String message){
 		String time = DateUtil.fmtDate(new Date(), "yyyy-MM-dd HH:mm:ss");
 		System.out.println("message receive:" + message + ",channel:" + channel + "..." + time);
+		String messageStr = message.substring(message.indexOf("/") + 1);
+		System.out.println("messageMap->"+messageStr);
+		System.out.println("对象->"+JsonHelper.parseToObject(messageStr, Map.class));
 	}
 	
 	//订阅之后的消息处理类
