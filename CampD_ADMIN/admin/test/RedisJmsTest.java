@@ -9,8 +9,8 @@ import java.util.UUID;
 
 import redis.clients.jedis.JedisPubSub;
 
-import com.campD.portal.service.jms.PProCon.PPubClient;
-import com.campD.portal.service.jms.PProCon.PSubClient;
+import com.campD.portal.service.jms.pProCon.PPubClient;
+import com.campD.portal.service.jms.pProCon.PSubClient;
 import com.campD.portal.service.jms.proCon.MessgeListener;
 import com.campD.portal.service.jms.proCon.PubClient;
 import com.campD.portal.service.jms.proCon.SubClient;

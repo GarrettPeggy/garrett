@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.campD.portal.service.jms.PProCon;
+package com.campD.portal.service.jms.pProCon;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;

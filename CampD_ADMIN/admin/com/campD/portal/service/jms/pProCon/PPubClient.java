@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.campD.portal.service.jms.PProCon;
+package com.campD.portal.service.jms.pProCon;
 
 import java.util.Set;
 
