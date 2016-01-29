@@ -191,6 +191,18 @@ public class RedisJmsTest {
         });  
 		consumerThread3.setDaemon(true);  
 		consumerThread3.start();
+		
+		final Consumer consumer4 = new Consumer("messageList1", "consumer4");
+		Thread consumerThread4 = new Thread(new Runnable() {  // 消费者4
+            @Override  
+            public void run() {  
+                logger.info("----------consumer4 operation begin-------");  
+                consumer4.consume();
+                logger.info("----------consumer4 operation end-------");  
+            }  
+        });  
+		consumerThread4.setDaemon(true);  
+		consumerThread4.start();
 
 		final Producer producer1 = new Producer("messageList1");
 		final Producer producer2 = new Producer("messageList1");
@@ -211,11 +223,11 @@ public class RedisJmsTest {
         	producer2.provide(message2);
             i++;
             // 这里让它停顿是为了模仿日常请求
-//            try {
-//				Thread.sleep(100);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}//停顿0.1秒
+            try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}//停顿0.1秒
         }
         logger.info("-----------结束产生消息---------------");
         long endTime=System.currentTimeMillis();
