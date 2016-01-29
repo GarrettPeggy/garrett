@@ -210,7 +210,7 @@ public class RedisJmsTest {
         	String message2 = JsonHelper.parseToJson(messageMap);
         	producer2.provide(message2);
             i++;
-            
+            // 这里让它停顿是为了模仿日常请求
 //            try {
 //				Thread.sleep(100);
 //			} catch (InterruptedException e) {
