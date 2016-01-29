@@ -6,6 +6,8 @@ package com.campD.portal.service.jms.pProCon;
 import java.util.Date;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.campD.portal.service.jms.Constants;
 import com.campD.portal.util.DateUtil;
 import com.campD.portal.util.JsonHelper;
@@ -20,6 +22,8 @@ import redis.clients.jedis.JedisPubSub;
  *
  */
 public class PMessageListener extends JedisPubSub {
+	
+	protected Logger logger = Logger.getLogger(getClass());
 
 	private String clientId;
 	private PSubHandler handler;
@@ -40,33 +44,33 @@ public class PMessageListener extends JedisPubSub {
 
 	@Override
 	public void onPMessage(String pattern, String channel, String message) {
-		System.out.println("message receive:" + message + ",pattern channel:" + channel);
+		logger.info("message receive:" + message + ",pattern channel:" + channel);
 		
 	}
 
 	@Override
 	public void onSubscribe(String channel, int subscribedChannels) {
 		handler.subscribe(channel);
-		System.out.println("subscribe:" + channel + ";total channels : " + subscribedChannels);
+		logger.info("subscribe:" + channel + ";total channels : " + subscribedChannels);
 		
 	}
 
 	@Override
 	public void onUnsubscribe(String channel, int subscribedChannels) {
 		handler.unsubscribe(channel);
-		System.out.println("unsubscribe:" + channel + ";total channels : " + subscribedChannels);
+		logger.info("unsubscribe:" + channel + ";total channels : " + subscribedChannels);
 		
 	}
 
 	@Override
 	public void onPUnsubscribe(String pattern, int subscribedChannels) {
-		System.out.println("unsubscribe pattern:" + pattern + ";total channels : " + subscribedChannels);
+		logger.info("unsubscribe pattern:" + pattern + ";total channels : " + subscribedChannels);
 		
 	}
 
 	@Override
 	public void onPSubscribe(String pattern, int subscribedChannels) {
-		System.out.println("subscribe pattern:" + pattern + ";total channels : " + subscribedChannels);		
+		logger.info("subscribe pattern:" + pattern + ";total channels : " + subscribedChannels);		
 	}
 	
 	@Override
@@ -79,10 +83,10 @@ public class PMessageListener extends JedisPubSub {
 	
 	private void message(String channel,String message){
 		String time = DateUtil.fmtDate(new Date(), "yyyy-MM-dd HH:mm:ss");
-		System.out.println("message receive:" + message + ",channel:" + channel + "..." + time);
+		logger.info("message receive:" + message + ",channel:" + channel + "..." + time);
 		String messageStr = message.substring(message.indexOf("/") + 1);
-		System.out.println("messageMap->"+messageStr);
-		System.out.println("对象->"+JsonHelper.parseToObject(messageStr, Map.class));
+		logger.info("messageMap->"+messageStr);
+		logger.info("对象->"+JsonHelper.parseToObject(messageStr, Map.class));
 	}
 	
 	//订阅之后的消息处理类
