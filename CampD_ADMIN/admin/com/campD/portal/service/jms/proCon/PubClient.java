@@ -6,6 +6,7 @@ package com.campD.portal.service.jms.proCon;
 import java.util.Date;
 
 import com.campD.portal.util.DateUtil;
+import com.campD.portal.util.RedisUtil;
 
 import redis.clients.jedis.Jedis;
 
@@ -17,9 +18,11 @@ import redis.clients.jedis.Jedis;
 public class PubClient {
 
 	private Jedis jedis;
+	private RedisUtil redisUtil = new RedisUtil("112.124.63.41", 6379);
 	
-	public PubClient(String host,int port){
-		jedis = new Jedis(host,port);
+	public PubClient(){
+		
+		jedis = redisUtil.getResource();
 	}
 	
 	// 发布消息

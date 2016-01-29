@@ -30,7 +30,7 @@ public class RedisJmsTest {
 	 */
 	private static void testPubSub() throws InterruptedException{
 		
-		PubClient pubClient = new PubClient("112.124.63.41", 6379);
+		PubClient pubClient = new PubClient();
 		final String channel = "pubsub-channel";
 		// 以下这两条消息由于是在订阅前发布的，所以后面订阅的订阅者收不到这两条消息
 		pubClient.pub(channel, "before1");
@@ -43,7 +43,7 @@ public class RedisJmsTest {
 			@Override
 			public void run() {
 				try{
-					SubClient subClient = new SubClient("112.124.63.41", 6379);
+					SubClient subClient = new SubClient();
 					System.out.println("----------subscribe operation begin-------");
 					JedisPubSub listener = new MessgeListener();
 					//在API级别，此处为轮询操作，直到unsubscribe调用，才会返回
@@ -62,7 +62,7 @@ public class RedisJmsTest {
 			String message = "这是第"+i+"条消息！";//apache-commons
 			pubClient.pub(channel, message);
 			i++;
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 		}
 		
 		//被动关闭指示，如果通道中，消息发布者确定通道需要关闭，那么就发送一个“quit”

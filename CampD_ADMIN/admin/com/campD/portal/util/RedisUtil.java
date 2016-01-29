@@ -107,6 +107,16 @@ public class RedisUtil {
 			this.pool = pool;
 		}
 	}
+	
+	/**
+	 * <p>
+	 * 获取一个redis实例
+	 * </p>
+	 * 
+	 */
+	public Jedis getResource() {
+		return pool.getResource();
+	}
 
 	/**
 	 * <p>

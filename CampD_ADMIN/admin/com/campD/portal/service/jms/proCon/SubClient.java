@@ -3,6 +3,8 @@
  */
 package com.campD.portal.service.jms.proCon;
 
+import com.campD.portal.util.RedisUtil;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
@@ -14,9 +16,10 @@ import redis.clients.jedis.JedisPubSub;
 public class SubClient {
 
 	private Jedis jedis;//
+	private RedisUtil redisUtil = new RedisUtil("112.124.63.41", 6379);
 	
-	public SubClient(String host,int port){
-		jedis = new Jedis(host,port);
+	public SubClient(){
+		jedis = redisUtil.getResource();
 	}
 	
 	public void sub(JedisPubSub listener,String channel){
