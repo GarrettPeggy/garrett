@@ -3,20 +3,21 @@
  */
 package com.campD.portal.service.jms.proCon;
 
+import com.campD.portal.service.jms.Constants;
 import com.campD.portal.util.RedisUtil;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
 /**
- * 消息订阅端
+ * 非持久化-消息订阅端
  * @author Garrett
  *
  */
 public class SubClient {
 
-	private Jedis jedis;//
-	private RedisUtil redisUtil = new RedisUtil("112.124.63.41", 6379);
+	private Jedis jedis;
+	private RedisUtil redisUtil = new RedisUtil(Constants.IP, Constants.PORT);
 	
 	public SubClient(){
 		jedis = redisUtil.getResource();

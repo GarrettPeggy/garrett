@@ -5,6 +5,8 @@ package test;
 
 import redis.clients.jedis.JedisPubSub;
 
+import com.campD.portal.service.jms.PProCon.PPubClient;
+import com.campD.portal.service.jms.PProCon.PSubClient;
 import com.campD.portal.service.jms.proCon.MessgeListener;
 import com.campD.portal.service.jms.proCon.PubClient;
 import com.campD.portal.service.jms.proCon.SubClient;
@@ -20,6 +22,8 @@ public class RedisJmsTest {
 		
 		// 非持久化的发布订阅模式测试
 		testPubSub();
+		// 持久化的发布订阅模式测试
+		testPPubSub();
 
 	}
 	
@@ -59,7 +63,7 @@ public class RedisJmsTest {
 		
 		int i=0;
 		while(i < 1000){
-			String message = "这是第"+i+"条消息！";//apache-commons
+			String message = "这是第"+i+"条消息！";
 			pubClient.pub(channel, message);
 			i++;
 			//Thread.sleep(1000);
@@ -71,6 +75,58 @@ public class RedisJmsTest {
 		pubClient.close(channel);
 		//此外，你还可以这样取消订阅
 		//listener.unsubscribe(channel);
+	}
+	
+	/**
+	 * 持久化的发布订阅模式测试
+	 * @throws InterruptedException 
+	 *
+	 */
+	private static void testPPubSub() throws InterruptedException{
+		
+		PPubClient pubClient = new PPubClient();  
+        final String channel = "pubsub-channel-p";  
+        final PSubClient subClient = new PSubClient("subClient-1");
+        final PSubClient subClient2 = new PSubClient("subClient-2");
+        
+        Thread subThread = new Thread(new Runnable() {  
+            @Override  
+            public void run() {  
+                System.out.println("----------subscribe1 operation begin-------");  
+                //在API级别，此处为轮询操作，直到unsubscribe调用，才会返回  
+                subClient.sub(channel);
+                System.out.println("----------subscribe1 operation end-------");  
+            }  
+        });  
+        subThread.setDaemon(true);  
+        subThread.start(); 
+        
+        Thread subThread1 = new Thread(new Runnable() {  
+            @Override  
+            public void run() {  
+                System.out.println("----------subscribe2 operation begin-------");  
+                //在API级别，此处为轮询操作，直到unsubscribe调用，才会返回  
+                subClient2.sub(channel);
+                System.out.println("----------subscribe2 operation end-------");  
+            }  
+        });  
+        subThread1.setDaemon(true);  
+        subThread1.start(); 
+        
+        int i = 0;  
+        while(i < 20){  
+        	String message = "这是第"+i+"条消息！";
+            pubClient.pub(channel, message);  
+            i++;
+            Thread.sleep(100);
+        }  
+        
+        //被动关闭指示，如果通道中，消息发布者确定通道需要关闭，那么就发送一个“quit”
+  		//那么在listener.onMessage()中接收到“quit”时，其他订阅client将执行“unsubscribe”操作。
+  		Thread.sleep(1000);// 1秒后停止订阅
+  		pubClient.close(channel);
+  		//此外，你还可以这样取消订阅
+  		//listener.unsubscribe(channel); 
 	}
 
 }

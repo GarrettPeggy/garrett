@@ -5,20 +5,21 @@ package com.campD.portal.service.jms.proCon;
 
 import java.util.Date;
 
+import com.campD.portal.service.jms.Constants;
 import com.campD.portal.util.DateUtil;
 import com.campD.portal.util.RedisUtil;
 
 import redis.clients.jedis.Jedis;
 
 /**
- * 消息发布端
+ * 非持久化-消息发布端
  * @author Garrett
  *
  */
 public class PubClient {
 
 	private Jedis jedis;
-	private RedisUtil redisUtil = new RedisUtil("112.124.63.41", 6379);
+	private RedisUtil redisUtil = new RedisUtil(Constants.IP, Constants.PORT);
 	
 	public PubClient(){
 		
