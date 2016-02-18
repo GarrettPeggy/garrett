@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.campD.portal.service.jms.proCon;
+package com.campD.portal.service.jms.pubSub;
 
 import com.campD.portal.service.jms.Constants;
 import com.campD.portal.util.RedisUtil;

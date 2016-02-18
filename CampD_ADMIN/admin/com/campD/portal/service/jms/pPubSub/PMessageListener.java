@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.campD.portal.service.jms.pProCon;
+package com.campD.portal.service.jms.pPubSub;
 
 import java.util.Date;
 import java.util.Map;

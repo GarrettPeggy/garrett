@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.campD.portal.service.jms.proCom;
+package com.campD.portal.service.jms.proCon;
 
 import java.util.List;
 

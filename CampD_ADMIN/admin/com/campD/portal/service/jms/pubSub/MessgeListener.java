@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.campD.portal.service.jms.proCon;
+package com.campD.portal.service.jms.pubSub;
 
 import java.util.Date;
 

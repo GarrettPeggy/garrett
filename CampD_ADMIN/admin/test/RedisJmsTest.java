@@ -11,13 +11,13 @@ import org.apache.log4j.Logger;
 
 import redis.clients.jedis.JedisPubSub;
 
-import com.campD.portal.service.jms.pProCon.PPubClient;
-import com.campD.portal.service.jms.pProCon.PSubClient;
-import com.campD.portal.service.jms.proCom.Consumer;
-import com.campD.portal.service.jms.proCom.Producer;
-import com.campD.portal.service.jms.proCon.MessgeListener;
-import com.campD.portal.service.jms.proCon.PubClient;
-import com.campD.portal.service.jms.proCon.SubClient;
+import com.campD.portal.service.jms.pPubSub.PPubClient;
+import com.campD.portal.service.jms.pPubSub.PSubClient;
+import com.campD.portal.service.jms.proCon.Consumer;
+import com.campD.portal.service.jms.proCon.Producer;
+import com.campD.portal.service.jms.pubSub.MessgeListener;
+import com.campD.portal.service.jms.pubSub.PubClient;
+import com.campD.portal.service.jms.pubSub.SubClient;
 import com.campD.portal.util.JsonHelper;
 
 /**
