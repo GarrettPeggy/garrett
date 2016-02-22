@@ -1749,7 +1749,7 @@ a:hover{text-decoration:none;}
     width: 15px;
     border-radius: 100%;
     margin: 16px;
-  	left: 25%;
+  	left: 19%;
     border: 2px solid #666;
     border-bottom-color: transparent;
     -webkit-animation: rotate 0.75s 0 linear infinite;
@@ -1812,7 +1812,7 @@ a:hover{text-decoration:none;}
 }
 /*众创空间修改*/
 .mat-5{
-	margin-top:-5px;
+	margin-top:-2px;
 }
 /*众创空间logo页*/
 .logolist{width:100%;min-height:290px;background:#fff;padding:15px 5px 15px 5px;display:inline-block;position:relative;}
