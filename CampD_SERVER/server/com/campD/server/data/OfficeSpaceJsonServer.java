@@ -140,6 +140,9 @@ public class OfficeSpaceJsonServer {
 			sqlStr+=" and status='"+status+"' ";
 			sqlCount+=" and status='"+status+"' ";
 		}
+		
+		// 默认按照发布时间降序排列
+		sqlStr += " ORDER BY create_time DESC ";
 
     	logger.info("sql日志输出:sqlCount===="+sqlCount);
 		// 获取当前场地总数

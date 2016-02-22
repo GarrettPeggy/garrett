@@ -16,7 +16,17 @@
 		<c:forEach items="${userListMap.userList}" var="user">
 			<tr>
 				<td class="center">${user.userName}</td>
-				<td class="center">${user.mdn}</td>
+				<td class="center">
+					<c:choose> 
+					  <c:when test="${((USER_INFO.roleName eq sysConfig.role_super_admin) and (user.roleName eq sysConfig.role_super_admin) and not(USER_INFO.userName eq user.userName)) or
+					  ((USER_INFO.roleName eq sysConfig.role_admin) and ((user.roleName eq sysConfig.role_super_admin) or (user.roleName eq sysConfig.role_admin and not(USER_INFO.userName eq user.userName))))}">   
+					    ***********  
+					  </c:when> 
+					  <c:otherwise> 
+						${user.mdn}
+					  </c:otherwise> 
+					</c:choose>
+				</td>
 				<td class="center">${user.roleName}</td>
 				<td class="center">${user.register_time}</td>
 				<td class="center">${user.login_time}</td>
