@@ -79,10 +79,10 @@
             	<c:if test="${officeMap.officeInfo.cost eq 0}"><span class="fr color94 red" style="color:red;">免费</span></c:if>
 				<c:if test="${officeMap.officeInfo.cost gt 0}"><span class="fr color94"><fmt:parseNumber integerOnly="true" value="${officeMap.officeInfo.cost}" />元/人月</span></c:if>
             </div>
-            <div class="adm-line clearfix">
+            <%-- <div class="adm-line clearfix">
             	<span class="fl">电话</span>
-                <span class="fr color94">${officeMap.officeInfo.contact}</span>
-            </div>
+                 <span class="fr color94">${officeMap.officeInfo.contact}</span> 
+            </div> --%>
         </div>
 
         <!-- end -->

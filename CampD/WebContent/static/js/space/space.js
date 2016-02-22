@@ -77,13 +77,13 @@ Space.list=function(){
 		if(null!=spaceList && spaceList.length>0){
 			for(var i=0;i<spaceList.length;i++){
 				var area = spaceList[i].area, cost = spaceList[i].cost;
-				var costSpan = "<span class='fr'>"+cost+"元/小时</span>";
+				var costSpan = "<span class='stylecolor fl'>"+cost+"元/小时</span>";
 				if(cost == 0){
-					costSpan = "<span class='fr' style='color:red;'>免费</span>";
+					costSpan = "<span class='stylecolor fl' style='color:red;'>免费</span>";
 				}
 				area = null==area?"":area;
 				
-				$("#space_first_pop").append($("<a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><li class='pd5'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%' height='156'/><div class='classify-li-title'>"+(null==spaceList[i].name ? "无名称" : spaceList[i].name )+"</div><div class='classify-li-date fontSize14'><img src='"+REMOTE_RES_PATH+"/static/images/place_2.png' width='10' height='10'/>&nbsp;<span>" + area + "</span>&nbsp;&nbsp;<span>"+spaceList[i].traffic+"</span>&nbsp;&nbsp;"+costSpan+"</div></li></a>"));
+				$("#space_first_pop").append($("<li class='gift-list bt-line'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><div class='fl gift-li-left'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%'/></div><div class='space-li-right'><div class='title' >"+(null==spaceList[i].name ? "无名称" : spaceList[i].name )+"</div><div class='address'>"+spaceList[i].adress+"</div><div class='style'><span class='cost fl'>费用：</span>"+costSpan+"</div><div class='style fr'><span class='stylecolor fl'>"+spaceList[i].capacity+"</span><span class='cost fr'>人</span></div></div></a></li>"));
 			}
 		}else{
 			$("#space_first_pop").append($("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>"));
@@ -377,7 +377,7 @@ Space.search=function(){
 				if(Space.getLength(name) > 10){
 					name=name.substring(0,10) + "...";
 				}
-				$("#space_highlevel").append("<li class='clearfix'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+resultList[i].id+"'><div class='data-li-left'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='91' height='63'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+name+"</div><div class='dlr-address'>" + adress + "</div><div class='dlr-cost clearfix'><div class='fl'>费用："+costSpan+"</div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></a></li>");
+				$("#space_highlevel").append("<li class='clearfix item'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+resultList[i].id+"'><div class='data-li-left'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='100%'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+name+"</div><div class='dlr-address'>" + adress + "</div><div class='dlr-cost clearfix'><div class='fl'>费用："+costSpan+"</div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></a></li>");
 			};
 		}else{
 			$("#space_highlevel").append("<div class='ground-no'><img src='"+REMOTE_RES_PATH+"/static/images/no_data.png' width='41' height='41'/><p>抱歉，没有找到合适的场地</p><p>请浏览其他场地吧</p></div>");

@@ -42,7 +42,7 @@ OfficeSpace.list=function(){
 		//把数据写到页面上
 		if(null!=officelogos && length>0){
 			for(var i=0;i<length;i++){
-				$("#logolist").append("<div class='fl logoimg'><a href='"+BASE_PATH+"/office/toList.do?belongTo="+officelogos[i].id+"&name="+officelogos[i].name+"'><img src='"+OSS_RES_URL+officelogos[i].logo+"' width='100%' height='60'/></a></div>");
+				$("#logolist").append("<div class='fl logoimg'><a href='"+BASE_PATH+"/office/toList.do?belongTo="+officelogos[i].id+"&name="+officelogos[i].name+"'><img src='"+OSS_RES_URL+officelogos[i].logo+"' width='65' height='65'/></a></div>");
 			}
 		}else{
 			$("#logolist").append("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>");

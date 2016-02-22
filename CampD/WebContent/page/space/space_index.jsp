@@ -135,11 +135,11 @@
     			<!-- 当有场地时 -->
     			<div class="ul-box inner">
 		        	<ul class="data-list ground-list" id="space_highlevel">
-		        		<c:forEach items="${jsonview.resultList }" var="space">
+		        		<%-- <c:forEach items="${jsonview.resultList }" var="space">
 		        			<li class="clearfix item">
 		        				<a href="${ctx }/space/getSpaceInfoById.do?id=${space.id }">
 				                	<div class="data-li-left">
-				                    	<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="91" height="63"/>
+				                    	<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="100%"/>
 				                    </div>	
 				                    <div class="data-li-right">
 				                    	<div class="dlr-title">
@@ -166,7 +166,7 @@
 				                    </div>	
 			                    </a>
 			                </li>
-		        		</c:forEach>
+		        		</c:forEach> --%>
 		        	</ul>
         		</div>
     		</c:otherwise>
@@ -181,6 +181,7 @@ $(function(){
 	// 初始化区域选择
 	Space.initProvince();
 	Space.setSelect();
+	Space.search();
 	Space.workForHerder();
 	Space.setOuterHeight();
 	Space.droploadPage();  

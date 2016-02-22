@@ -33,10 +33,10 @@
 		          </div>
 		      </div>
 		      <div class="clearfix piclist">
-			         <div class="mainpic fl" onclick="Header.classify()">
+			         <%-- <div class="mainpic fl" onclick="Header.classify()">
 			            <img class="picture" src="${rmtResPath}/static/images/active2.png" width="44" height="44"/>
 			            <div class="word">活动</div>
-			         </div>
+			         </div> --%>
 			         <div class="mainpic fl" onclick="Header.spaceIndex()">
 			            <img class="picture" src="${rmtResPath}/static/images/space2.png" width="44" height="44"/>
 			            <div class="word">场地</div>
@@ -51,8 +51,9 @@
 		      </div>  
 	   </div>
         
-        <!-- 热门活动 -->
+        
         <div class="contain">
+        <%-- <!-- 热门活动 -->
 			<div class="clearfix index-act">
             	<div class="fl">热门活动</div>
                 <div class="fr" onclick="Activity.populer(1)"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></div>
@@ -60,28 +61,28 @@
             <div class="ul-box">
                 <ul class="data-list" id="activity_first_pop">
                 </ul>
-            </div>
+            </div> --%>
             
             <!-- 精品场地 -->
             <div class="c-top clearfix">
             	<div class="fl">精品场地</div>
                 <div class="fr" onclick="Space.hightLevel(1)"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></div>
             </div>
-            <div class="ul-box">
-                <ul class="data-list" id="space_first_pop">
+            <div class="ul-box space-ul-box">
+                <ul class="data-list highspace-list" id="space_first_pop">
                 </ul>
             </div>
             
              <!-- 精品礼品 -->
            <div class="gift">
-             <div class="firstlist">
-               <span class="hotspace fl">精美礼品</span>
-               <span class="fr more" onclick="Gift.highlevel()"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></span>
-             </div>
-             <div class="gift-list-pic " id="present_first_pop">
+              <div class="firstlist">
+                <span class="hotspace fl">精美礼品</span>
+                <span class="fr more" onclick="Gift.highlevel()"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></span>
+              </div>
+              <div class="gift-list-pic " id="present_first_pop">
 
+               </div>
             </div>
-        </div>
         <!-- end -->
     </div>
     <!-- end -->
