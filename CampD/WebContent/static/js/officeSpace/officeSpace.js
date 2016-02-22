@@ -157,7 +157,7 @@ OfficeSpace.search=function(){
 			for(var i=0;i<resultList.length;i++){
 				var area = resultList[i].area;
 				var name = resultList[i].name;
-				$("#creatorSpaceList").append($("<li class='clearfix item'><a  href='"+BASE_PATH+"/office/getById.do?id="+resultList[i].id+"'><div class='data-li-left fl'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='91' height='63'></div><div class='data-li-right fl'><div class='dlr-title'>"+name+"</div><div class='dlr-address padt15'>"+area+"</div></div></a></li>"));
+				$("#creatorSpaceList").append($("<li class='clearfix item'><a  href='"+BASE_PATH+"/office/getById.do?id="+resultList[i].id+"'><div class='data-li-left fl'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='100%'></div><div class='data-li-right fl'><div class='dlr-title'>"+name+"</div><div class='dlr-address padt15'>"+area+"</div></div></a></li>"));
 			};
 		}else{
 			$("#creatorSpaceList").append($("<div class='ground-no'><img src='"+REMOTE_RES_PATH+"/static/images/no_data.png' width='41' height='41'/><p>抱歉，没有找到合适的众创空间</p><p>请浏览其他众创空间吧</p></div>"));
