@@ -132,10 +132,12 @@ Space.setSelect=function(){
         });
 	});
 	
-	// 将众创空间放到第一个
-	var $spaceType27 = $("#spaceType27");
-	$("#spaceType27").remove();
-	$("#spaceType-1").after($spaceType27);
+	// 将场地列表页的类型缩减至五个(众创空间，会议中心，体育场馆，培训机构，特色场地)
+	var $spaceType27 = $("#spaceType27"), $spaceType10 = $("#spaceType10"), $spaceType23 = $("#spaceType23"), $spaceType12 = $("#spaceType12"), $spaceType26 = $("#spaceType26");
+	for(var i=0;i<28;i++){
+		$("#spaceType"+i).remove();
+	}
+	$("#spaceType-1").after($spaceType27, $spaceType10, $spaceType23 ,$spaceType12, $spaceType26);
 };
 /**
  * 场地适用活动选择
@@ -207,6 +209,7 @@ Space.cost=function(costType, curObj){
 Space.workFor=function (workFor, curObj){
 	
 	var index = $(curObj).attr("value");
+
 	if(index<4){
 		$("#scroller").find("ul li:eq("+index+")").addClass("active");
 		$("#scroller").find("ul li:not(:eq("+index+"))").removeClass("active");
@@ -224,7 +227,6 @@ Space.workFor=function (workFor, curObj){
 		$("#choose").find(".cho-workFor").remove();
 		$("#choose").append('<div class="fl chose cho-workFor" onclick="Space.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png"  height="35"><div class="cword">'+$(curObj).text()+'</div></div>');
 	}
-	
 	Space.setOuterHeight();
 	$('#curPage').val(1);
 	$('#workFor').val(workFor);
@@ -393,6 +395,7 @@ Space.search=function(){
 		Space.dropload?Space.dropload.resetload():$.noop();// 滑动加载重置,一定要重置加载，即便是ajax请求失败也要在error中重新加载。
 		alert(data.returnMsg);
 	});
+	
 };
 /**
  * 加载更多...按钮
