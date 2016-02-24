@@ -34,7 +34,7 @@
     		</c:when>
     		<c:otherwise>
     			<!-- 当有场地时 -->
-    			<div class="ul-box inner">
+    			<div class="ul-box inner mat-6">
 		        	<ul class="data-list ground-list " id="space_highlevel">
 		        		<c:forEach items="${jsonview.resultList }" var="space">
 		        			<li class="clearfix item">
