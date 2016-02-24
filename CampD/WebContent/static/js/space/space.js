@@ -5,7 +5,7 @@ var Space={
 	myScroll:null,
 	dropload:null,
 	spaceType:{// 场地类型
-		"0":"餐厅",
+		/*"0":"餐厅",
 		"1":"酒楼公园",
 		"2":"游乐园",
 		"3":"艺术中心",
@@ -15,9 +15,7 @@ var Space={
 		"7":"展览馆",
 		"8":"秀场",
 		"9":"会展",
-		"10":"会议中心",
 		"11":"学校",
-		"12":"培训机构",
 		"13":"度假村",
 		"14":"农家乐",
 		"15":"商圈",
@@ -28,9 +26,11 @@ var Space={
 		"20":"KTV",
 		"21":"咖啡厅",
 		"22":"茶馆",
-		"23":"体育场馆",
 		"24":"小区社区",
-		"25":"写字楼",
+		"25":"写字楼",*/
+		"10":"会议中心",
+		"12":"培训机构",
+		"23":"体育场馆",
 		"26":"特色场地",
 		"27":"众创空间"
 	}
@@ -132,12 +132,10 @@ Space.setSelect=function(){
         });
 	});
 	
-	// 将场地列表页的类型缩减至五个(众创空间，会议中心，体育场馆，培训机构，特色场地)
-	var $spaceType27 = $("#spaceType27"), $spaceType10 = $("#spaceType10"), $spaceType23 = $("#spaceType23"), $spaceType12 = $("#spaceType12"), $spaceType26 = $("#spaceType26");
-	for(var i=0;i<28;i++){
-		$("#spaceType"+i).remove();
-	}
-	$("#spaceType-1").after($spaceType27, $spaceType10, $spaceType23 ,$spaceType12, $spaceType26);
+	// 将场地列表页的众创空间排第一(众创空间，会议中心，体育场馆，培训机构，特色场地)
+	var $spaceType27 = $("#spaceType27");
+	$spaceType27.remove();
+	$("#spaceType-1").after($spaceType27);
 };
 /**
  * 场地适用活动选择

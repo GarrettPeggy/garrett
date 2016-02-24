@@ -73,7 +73,7 @@
 			if(poi){
 				map.centerAndZoom(poi.point,16);
 				// 自定义标记
-				var myIcon = new BMap.Icon("${rmtResPath}/static/images/marker.png",new BMap.Size(20,29),{
+				var myIcon = new BMap.Icon("${rmtResPath}/static/images/marker.png",new BMap.Size(21,31),{
 					offset:new BMap.Size(10,25)    //指定定位位置
 				});
 				var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat),{icon:myIcon});  // 创建标注，为要查询的地址对应的经纬度
