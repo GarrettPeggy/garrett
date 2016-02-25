@@ -131,6 +131,72 @@
 										</button>
 							        </form> 
 								</div>
+								<div class="col-xs-4">
+									<form id="addHomePicDialogForm_3" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+								        <input type="hidden" name="type" value="${sysConfig.sys_conf_homePic}"><!-- 系统配置类型，0表示首页轮播图配置 -->
+								        <input type="hidden" name="key" id="value_3" value="3"><!-- 轮播图顺序，0表示首页轮播图第一张 -->
+								        <input type="hidden" name="value" id="imageHiddenPath_3" value="${rmtResPath}/static/images/login/cd_logo.png">
+								        <input type="hidden" name="oldUrl" id="prin_url_3" value=""><!-- 轮播图的原始路径 -->
+								        <input type="hidden" name="realPath" id="realPath_3" value=""><!-- 新文件的物理路径-->
+										<div class="avatar-title clearfix">
+									    	<input type="file" class="btn-orange-s pull-lef" onchange="Information.uploadPic(this,'3');" id="cropImg" name="cropImg">
+									    </div>
+									    <div class="clearfix" style="margin-top: 10px;margin-bottom: 10px;">
+									    	<div class="avatar-x">
+									    	    <div id="addPic">
+									    	    	<img id="imagePath_3" src="${rmtResPath}/static/images/login/cd_logo.png" width="200" height="200">
+									    	    </div>
+									            <div class="avatar-bar"></div>
+									        </div>
+									    </div>
+									    <div class="form-group">
+											<label for="subTitle" class="col-xs-12 col-sm-3 control-label no-padding-right">链接地址：</label>
+											<div class="col-xs-12 col-sm-6">
+												<span class="block input-icon input-icon-right">
+								                    <input type="text" name="url" id="url_3" class="width-100" maxlength="300" >
+								                    <i class="ace-icon fa fa-leaf"></i>
+							                    </span>
+											</div>
+											<div class="help-block col-xs-12 col-sm-reset inline"></div>
+										</div>
+									    <button class="btn btn-xs btn-success" id="button_3" onclick="Information.addHomePicToOSS('3');" type="button">
+											<span class="bigger-110">保存</span>
+										</button>
+							        </form> 
+								</div>
+								<div class="col-xs-4">
+									<form id="addHomePicDialogForm_4" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+								        <input type="hidden" name="type" value="${sysConfig.sys_conf_homePic}"><!-- 系统配置类型，0表示首页轮播图配置 -->
+								        <input type="hidden" name="key" id="value_4" value="4"><!-- 轮播图顺序，0表示首页轮播图第一张 -->
+								        <input type="hidden" name="value" id="imageHiddenPath_4" value="${rmtResPath}/static/images/login/cd_logo.png">
+								        <input type="hidden" name="oldUrl" id="prin_url_4" value=""><!-- 轮播图的原始路径 -->
+								        <input type="hidden" name="realPath" id="realPath_4" value=""><!-- 新文件的物理路径-->
+										<div class="avatar-title clearfix">
+									    	<input type="file" class="btn-orange-s pull-lef" onchange="Information.uploadPic(this,'4');" id="cropImg" name="cropImg">
+									    </div>
+									    <div class="clearfix" style="margin-top: 10px;margin-bottom: 10px;">
+									    	<div class="avatar-x">
+									    	    <div id="addPic">
+									    	    	<img id="imagePath_4" src="${rmtResPath}/static/images/login/cd_logo.png" width="200" height="200">
+									    	    </div>
+									            <div class="avatar-bar"></div>
+									        </div>
+									    </div>
+									    <div class="form-group">
+											<label for="subTitle" class="col-xs-12 col-sm-3 control-label no-padding-right">链接地址：</label>
+											<div class="col-xs-12 col-sm-6">
+												<span class="block input-icon input-icon-right">
+								                    <input type="text" name="url" id="url_4" class="width-100" maxlength="300" >
+								                    <i class="ace-icon fa fa-leaf"></i>
+							                    </span>
+											</div>
+											<div class="help-block col-xs-12 col-sm-reset inline"></div>
+										</div>
+									    <button class="btn btn-xs btn-success" id="button_4" onclick="Information.addHomePicToOSS('4');" type="button">
+											<span class="bigger-110">保存</span>
+										</button>
+							        </form> 
+								</div>
 							</div>
 						</div>
 			        </div>
