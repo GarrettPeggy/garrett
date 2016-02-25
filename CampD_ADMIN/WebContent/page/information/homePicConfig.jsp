@@ -131,7 +131,7 @@
 										</button>
 							        </form> 
 								</div>
-								<div class="col-xs-4">
+								<div class="col-xs-4" style="margin-top: 40px;">
 									<form id="addHomePicDialogForm_3" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
 								        <input type="hidden" name="type" value="${sysConfig.sys_conf_homePic}"><!-- 系统配置类型，0表示首页轮播图配置 -->
 								        <input type="hidden" name="key" id="value_3" value="3"><!-- 轮播图顺序，0表示首页轮播图第一张 -->
@@ -164,7 +164,7 @@
 										</button>
 							        </form> 
 								</div>
-								<div class="col-xs-4">
+								<div class="col-xs-4" style="margin-top: 40px;">
 									<form id="addHomePicDialogForm_4" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
 								        <input type="hidden" name="type" value="${sysConfig.sys_conf_homePic}"><!-- 系统配置类型，0表示首页轮播图配置 -->
 								        <input type="hidden" name="key" id="value_4" value="4"><!-- 轮播图顺序，0表示首页轮播图第一张 -->
