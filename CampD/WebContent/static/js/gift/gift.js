@@ -44,7 +44,7 @@ Gift.list=function(){
 	var params={
 		"level":1,
 	    "curPage":1,
-	    "pageLimit":4,
+	    "pageLimit":6,
 	    "isUserAuth":false,
 	    "isRand":1
 	};

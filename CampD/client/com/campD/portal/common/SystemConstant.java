@@ -50,34 +50,34 @@ public class SystemConstant {
 	//===========================活动范畴定义的key值========================
 	public static String ACTIVITY_CATEGORY_0= "0";
 	public static String ACTIVITY_CATEGORY_1= "1";
- //	public static String ACTIVITY_CATEGORY_2= "2";
+ 	public static String ACTIVITY_CATEGORY_2= "2";
 	public static String ACTIVITY_CATEGORY_3= "3";
 	public static String ACTIVITY_CATEGORY_4= "4";
-//	public static String ACTIVITY_CATEGORY_5= "5";
-//	public static String ACTIVITY_CATEGORY_6= "6";
-//	public static String ACTIVITY_CATEGORY_7= "7";
-//	public static String ACTIVITY_CATEGORY_8= "8";
+	public static String ACTIVITY_CATEGORY_5= "5";
+	public static String ACTIVITY_CATEGORY_6= "6";
+	public static String ACTIVITY_CATEGORY_7= "7";
+	public static String ACTIVITY_CATEGORY_8= "8";
 	public static String ACTIVITY_CATEGORY_9= "9";
-//	public static String ACTIVITY_CATEGORY_10= "10";
-//	public static String ACTIVITY_CATEGORY_11= "11";
-//	public static String ACTIVITY_CATEGORY_12= "12";
-//	public static String ACTIVITY_CATEGORY_13= "13";
+	public static String ACTIVITY_CATEGORY_10= "10";
+	public static String ACTIVITY_CATEGORY_11= "11";
+	public static String ACTIVITY_CATEGORY_12= "12";
+	public static String ACTIVITY_CATEGORY_13= "13";
 	public static Map categoryMap = new HashMap();
 	static{
 		categoryMap.put(ACTIVITY_CATEGORY_0, "创业");
 		categoryMap.put(ACTIVITY_CATEGORY_1, "商务");
-	 // categoryMap.put(ACTIVITY_CATEGORY_2, "生活");
+	    categoryMap.put(ACTIVITY_CATEGORY_2, "生活");
 		categoryMap.put(ACTIVITY_CATEGORY_3, "社交");
 		categoryMap.put(ACTIVITY_CATEGORY_4, "科技");
-	 //	categoryMap.put(ACTIVITY_CATEGORY_5, "课程");
-	 //	categoryMap.put(ACTIVITY_CATEGORY_6, "运动");
-	//	categoryMap.put(ACTIVITY_CATEGORY_7, "娱乐");
-	//	categoryMap.put(ACTIVITY_CATEGORY_8, "亲子");
-		categoryMap.put(ACTIVITY_CATEGORY_9, "文化");
-	//	categoryMap.put(ACTIVITY_CATEGORY_10, "音乐");
-	//	categoryMap.put(ACTIVITY_CATEGORY_11, "电影");
-	//	categoryMap.put(ACTIVITY_CATEGORY_12, "公益");
-	//	categoryMap.put(ACTIVITY_CATEGORY_13, "校园");
+	 	categoryMap.put(ACTIVITY_CATEGORY_5, "课程");
+	 	categoryMap.put(ACTIVITY_CATEGORY_6, "运动");
+		categoryMap.put(ACTIVITY_CATEGORY_7, "娱乐");
+		categoryMap.put(ACTIVITY_CATEGORY_8, "亲子");
+		categoryMap.put(ACTIVITY_CATEGORY_9, "文创");
+		categoryMap.put(ACTIVITY_CATEGORY_10, "音乐");
+		categoryMap.put(ACTIVITY_CATEGORY_11, "电影");
+		categoryMap.put(ACTIVITY_CATEGORY_12, "公益");
+		categoryMap.put(ACTIVITY_CATEGORY_13, "校园");
 		
 	}
 	//==========================活动类型定义的值============================

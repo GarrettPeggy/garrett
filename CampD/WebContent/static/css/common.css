@@ -494,7 +494,7 @@ a:hover{text-decoration:none;}
 }
 .ground-list li .data-li-right .dlr-address, .ground-list li .data-li-right .dlr-cost{
 	color:#a5a5a5;
-	font-size:14px;
+	font-size:12px;
 }
 .ground-list li .data-li-right .dlr-cost .co{
 	color:#e6c680;
@@ -1401,11 +1401,11 @@ a:hover{text-decoration:none;}
 	top:377px;
 	z-index:50;
 	}
-.space-ul-box{
+/* .space-ul-box{
 		padding: 0px 5px;
 		margin-bottom:5px;
 		background:#fff;
-		}
+		} */
 .firstlist{
 	height:40px;
 	background:#fff;
@@ -1483,7 +1483,7 @@ a:hover{text-decoration:none;}
 	}
 .space-li-right	 .address{
 	color:#a5a5a5;
-	font-size:13px;
+	font-size:12px;
 	padding-top:4px;
 	}
 .space-li-right	.style .cost{
@@ -1496,6 +1496,7 @@ a:hover{text-decoration:none;}
 	font-size:13px;
 	padding-top:4px;
 	margin-left:5px;
+	padding-right:3px;
 	}	
 .gift{
 	background:#fff;
@@ -1829,10 +1830,6 @@ a:hover{text-decoration:none;}
 /*活动详情页地图修改*/
 .actdress{color:#000;margin-bottom:3px;}
 .padl6{padding-left:6px;}
-/*首页精品场地列表修改（自适应）*/
-.ul-box .highspace-list {
-	padding-top:2px;
-}
 /*场地首页自适应修改*/
 .ul-box .data-list .item{
 	width:100%;
@@ -1851,4 +1848,7 @@ a:hover{text-decoration:none;}
 }
 .mat-6{
 	margin-top:-6px;
+}
+.mat-8{
+	margin-top:0px;
 }

@@ -64,12 +64,12 @@
             </div> --%>
             
             <!-- 精品场地 -->
-            <div class="c-top clearfix">
+            <div class="firstlist clearfix">
             	<div class="fl">精品场地</div>
                 <div class="fr" onclick="Space.hightLevel(1)"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></div>
             </div>
             <div class="ul-box space-ul-box">
-                <ul class="data-list highspace-list" id="space_first_pop">
+                <ul class="data-list" id="space_first_pop">
                 </ul>
             </div>
             

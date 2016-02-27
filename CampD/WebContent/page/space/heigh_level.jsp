@@ -40,23 +40,23 @@
 		        			<li class="clearfix item">
 		        				<a href="${ctx }/space/getSpaceInfoById.do?id=${space.id }">
 				                	<div class="data-li-left">
-				                    	<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="91" height="63"/>
+				                    	<img src="${sysConfig.ossResUrl}${fn:split(space.show_images, ',')[0]}" width="100%"/>
 				                    </div>	
 				                    <div class="data-li-right">
 				                    	<div class="dlr-title">
-				                        	<c:if test="${fn:length(space.name) > 10}">
-				                    			<c:out value="${fn:substring(space.name, 0, 11)}..." /> 
+				                        	<c:if test="${fn:length(space.name) > 9}">
+				                    			<c:out value="${fn:substring(space.name, 0, 10)}..." /> 
 				                    		</c:if>
-				                    		<c:if test="${fn:length(space.name) <= 10}">
+				                    		<c:if test="${fn:length(space.name) <= 9}">
 				                    			 <c:out value="${space.name}" /> 
 				                    		</c:if>
 				                        </div>
 				                        <div class="dlr-address">
-				                           	<c:if test="${fn:length(space.adress) > 10}">
+				                           	<c:if test="${fn:length(space.adress) > 8}">
 				                    			<%-- <c:out value="${space.province }${space.city }${space.area }${fn:substring(space.adress, 0, 11)}......" /> --%> 
-				                    			<c:out value="${fn:substring(space.adress, 0, 11)}......" />
+				                    			<c:out value="${fn:substring(space.adress, 0, 9)}......" />
 				                    		</c:if>
-				                    		<c:if test="${fn:length(space.adress) <= 10}">
+				                    		<c:if test="${fn:length(space.adress) <= 8}">
 				                    			 <%-- <c:out value="${space.province }${space.city }${space.area }${space.adress}" /> --%>
 				                    			 <c:out value="${space.adress}" /> 
 				                    		</c:if>

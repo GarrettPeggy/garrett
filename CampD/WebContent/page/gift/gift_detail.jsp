@@ -113,9 +113,9 @@
     <!-- footer left-icon -->
     <div class="newindex-nav hide" id="avtivity_nav" >
          <ul>
-   	         <li class="retina-1px-border-bottom1"  onclick="Header.classify()">
+   	        <%--  <li class="retina-1px-border-bottom1"  onclick="Header.classify()">
    	          	<img class="tu" src="${rmtResPath}/static/images/activity.png" width="22" height="22">活动
-             </li>
+             </li> --%>
              <li class="retina-1px-border-bottom1"  onclick="Header.spaceIndex()">
    	            <img class="tu" src="${rmtResPath}/static/images/place.png" width="22" height="22">场地
              </li>
