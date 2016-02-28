@@ -17,11 +17,11 @@
     	<ul class="clearfix search-parent-list workforlist" >
             <li class="active" onclick="Space.workFor('',this)" value="0">全部</li>
              <c:forEach items="${systemConst.categoryMap}" var="category" varStatus="status">
-                <c:if test="${status.index le 2}">
+                <%-- <c:if test="${status.index le 2}"> --%>
 	             	<c:if test="${category.key eq 0||category.key eq 1||category.key eq 3}">
 	             	   <li onclick="Space.workFor(${category.key},this)" value="${status.index+1}">${category.value}</li>
 	             	</c:if>
-	            </c:if>	
+	            <%-- </c:if> --%>	
              </c:forEach>
         </ul>
        </div> 
@@ -35,11 +35,11 @@
        <div class="search-detail workfor-list hide" id="workfor-list">
            <ul class="clearfix">
                <c:forEach items="${systemConst.categoryMap}" var="category" varStatus="status">
-               	  <c:if test="${status.index gt 2}">
+               	  <%-- <c:if test="${status.index gt 2}"> --%>
 	               	    <c:if test="${category.key ne 0 && category.key ne 1 && category.key ne 3}">
 		             	   <li onclick="Space.workFor(${category.key},this)" value="${status.index+1}">${category.value}</li>
 		             	</c:if>
-               	  </c:if>
+               	  <%-- </c:if> --%>
                </c:forEach>
            </ul>
        </div>
