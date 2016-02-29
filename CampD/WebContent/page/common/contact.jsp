@@ -27,8 +27,8 @@
                <img src="${rmtResPath}/static/images/LXWM_officeSpace.png" width="70" height="70"/>
            </div>
            <div class="fl flword " >
-              <div class="title">办公空间，提供招商</div>
-                 <a class="btn" href="${ctx}/gift/indexList.do?curPage=1&pageLimit=6&isUserAuth=false">办公空间</a>
+              <div class="title">招商对接，洽谈合作</div>
+                 <a class="btn" href="${ctx}/officeSpace/toList.do">办公空间</a>
                  <a class="btn" href="tel:15601925235">联系我们</a>  
            </div>
         </div>
