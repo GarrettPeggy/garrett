@@ -19,7 +19,7 @@
              <c:forEach items="${systemConst.categoryMap}" var="category" varStatus="status">
                 <%-- <c:if test="${status.index le 2}"> --%>
 	             	<c:if test="${category.key eq 0||category.key eq 1||category.key eq 3}">
-	             	   <li onclick="Space.workFor(${category.key},this)" value="${status.index+1}">${category.value}</li>
+	             	   <li onclick="Space.workFor(${category.key},this)" value="${category.key+1}">${category.value}</li>
 	             	</c:if>
 	            <%-- </c:if> --%>	
              </c:forEach>
@@ -37,7 +37,7 @@
                <c:forEach items="${systemConst.categoryMap}" var="category" varStatus="status">
                	  <%-- <c:if test="${status.index gt 2}"> --%>
 	               	    <c:if test="${category.key ne 0 && category.key ne 1 && category.key ne 3}">
-		             	   <li onclick="Space.workFor(${category.key},this)" value="${status.index+1}">${category.value}</li>
+		             	   <li onclick="Space.workFor(${category.key},this)" value="${category.key+1}">${category.value}</li>
 		             	</c:if>
                	  <%-- </c:if> --%>
                </c:forEach>

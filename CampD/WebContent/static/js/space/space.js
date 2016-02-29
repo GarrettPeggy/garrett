@@ -87,10 +87,7 @@ Space.list=function(){
 				if(len > 15){
 					adress=adress.substring(0,15) + "...";
 				}
-				if(Space.getLength(name) > 13){
-					name=name.substring(0,13) + "...";
-				}
-				$("#space_first_pop").append($("<li class='gift-list bt-line' style='margin-top:0px;padding:10px 5px 7px 5px;' ><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><div class='fl gift-li-left'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%'/></div><div class='space-li-right'><div class='title' >"+(null==name ? "无名称" : name )+"</div><div class='address'>"+adress+"</div><div class='style'><span class='cost fl'>费用：</span>"+costSpan+"</div><div class='style fr '><span class='stylecolor fl'>"+spaceList[i].capacity+"</span><span class='cost fr'>人</span></div></div></a></li>"));
+				$("#space_first_pop").append($("<li class='gift-list bt-line' style='margin-top:0px;padding:10px 5px 7px 5px;' ><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><div class='fl gift-li-left'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%'/></div><div class='space-li-right'><div class='title' >"+(null==name ? "无名称" : name )+"</div><div class='address'>"+adress+"</div><div class='style'><span class='cost fl'>费用：</span>"+costSpan+"</div><div class='style fr mar15'><span class='stylecolor fl'>"+spaceList[i].capacity+"</span><span class='cost fr'>人</span></div></div></a></li>"));
 			}
 		}else{
 			$("#space_first_pop").append($("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>"));
@@ -217,9 +214,10 @@ Space.workFor=function (workFor, curObj){
 	
 	var index = $(curObj).attr("value");
 	
-	if(index<4){
-		$("#scroller").find("ul li:eq("+index+")").addClass("active");
-		$("#scroller").find("ul li:not(:eq("+index+"))").removeClass("active");
+//	if(index<4){
+	if(index==1 || index==2 || index==4){
+		$("#scroller").find("ul li").removeClass("active");
+		$(curObj).addClass("active");
 		$("#workfor-list").find("ul li").removeClass("active");
 		// 更新提示选项
 		$("#choose").find(".cho-workFor").remove();
@@ -227,8 +225,8 @@ Space.workFor=function (workFor, curObj){
 			$("#choose").append('<div class="fl chose cho-workFor" onclick="Space.deleteChoose(this)"><img class="cpic" src="'+BASE_PATH+'/static/images/border.png" height="35" ><div class="cword">'+$(curObj).text()+'</div></div>');
 		}
 	}else{
-		$("#workfor-list").find("ul li:eq("+(index)+")").addClass("active");
-		$("#workfor-list").find("ul li:not(:eq("+(index)+"))").removeClass("active");
+		$("#workfor-list").find("ul li").removeClass("active");
+		$(curObj).addClass("active");
 		$("#scroller").find("ul li").removeClass("active");
 		// 更新提示选项
 		$("#choose").find(".cho-workFor").remove();
