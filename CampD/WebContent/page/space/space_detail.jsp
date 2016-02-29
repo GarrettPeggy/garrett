@@ -187,7 +187,7 @@
    	          	<img class="tu fl" src="${rmtResPath}/static/images/activity.png" width="22" height="22">活动
              </li> --%>
               <li class="retina-1px-border-bottom1"  onclick="Header.officeSpaceIndex()">
-   	            <img class="tu fl" src="${rmtResPath}/static/images/officeSpace.png" width="22" height="22">办公空间
+   	            <img class="tu fl" src="${rmtResPath}/static/images/officeSpace.png" width="22" height="25">办公空间
              </li>
              <li class="retina-1px-border-bottom1"  onclick="Header.spaceIndex()">
    	            <img class="tu fl" src="${rmtResPath}/static/images/place.png" width="22" height="22">活动场地

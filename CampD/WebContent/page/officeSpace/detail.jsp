@@ -147,7 +147,7 @@
     <!-- end -->
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide newtc-modal" id="guanzhu">
-        <img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" >
+        <img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
         <span class="more">关注我们，获取更多活动资源</span>
 	    <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Header.cancelShareCD()"/>
     </div>
@@ -160,7 +160,7 @@
    	          	<img class="tu fl" src="${rmtResPath}/static/images/activity.png" width="22" height="22">活动
              </li> --%>
               <li class="retina-1px-border-bottom1"  onclick="Header.officeSpaceIndex()">
-   	            <img class="tu fl" src="${rmtResPath}/static/images/officeSpace.png" width="22" height="22">办公空间
+   	            <img class="tu fl" src="${rmtResPath}/static/images/officeSpace.png" width="22" height="25">办公空间
              </li>
              <li class="retina-1px-border-bottom1"  onclick="Header.spaceIndex()">
    	            <img class="tu fl" src="${rmtResPath}/static/images/place.png" width="22" height="22">活动场地
