@@ -37,13 +37,17 @@
 			            <img class="picture" src="${rmtResPath}/static/images/active2.png" width="44" height="44"/>
 			            <div class="word">活动</div>
 			         </div> --%>
+			         <div class="mainpic fl" onclick="Header.officeSpaceIndex()">
+			            <img class="picture" src="${rmtResPath}/static/images/officeSpace2.png" width="44" height="44"/>
+			            <div class="word">办公空间</div>
+			         </div>
 			         <div class="mainpic fl" onclick="Header.spaceIndex()">
 			            <img class="picture" src="${rmtResPath}/static/images/space2.png" width="44" height="44"/>
-			            <div class="word">场地</div>
+			            <div class="word">活动场地</div>
 			         </div>
 			         <div class="mainpic fl" onclick="Header.toGiftIndex()">
 			            <img class="picture" src="${rmtResPath}/static/images/gift3.png" width="44" height="44"/>
-			            <div class="word">礼品</div>
+			            <div class="word">礼品赞助</div>
 			         </div>
 			         <div class="contactus" onclick="Header.toContact()">
                         <img src="${rmtResPath}/static/images/contact_0.png" width="68" height="68"/>

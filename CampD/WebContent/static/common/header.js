@@ -61,6 +61,13 @@ Header.spaceIndex=function(){
 	window.location.href = BASE_PATH + "/" +"space/getSpaceInfoList.do?curPage=1&pageLimit=6&isUserAuth=false";
 };
 
+/**
+ * 跳转到办公空间首页
+ */
+Header.officeSpaceIndex=function(){
+	window.location.href = BASE_PATH + "/" +"officeSpace/toList.do";
+};
+
 Header.initHeadIcon=function(){
 	$(".head-right-icon").bind("click",function(){
 		$("#rightmenu-mc").removeClass("hide");

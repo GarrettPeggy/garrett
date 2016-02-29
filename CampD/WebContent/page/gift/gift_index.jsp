@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="${locResPath}/static/common/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/gift/gift.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/dropload/dropload.min.js"></script>
+    <title>CD营活动平台礼品赞助</title>
 </head>
 <body>
 	<!-- 头部 -->

@@ -7,6 +7,7 @@
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/common/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/officeSpace/officeSpace.js"></script>
+	<title>CD营活动平台办公空间</title>
 </head>
 <body>
 	<!-- 头部 -->

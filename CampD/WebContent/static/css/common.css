@@ -503,6 +503,7 @@ a:hover{text-decoration:none;}
 
 .ground-list li .data-li-right .dlr-address{
 	margin-bottom:4px;
+	line-height:18px;
 }
 .ground-no{
 	color:#949494;
@@ -1098,6 +1099,7 @@ a:hover{text-decoration:none;}
 }
  .newindex-nav  ul li .tu{
 	margin-right:8px;
+	margin-top:11px;
 }
 /*footer-right*/
 .footer-newperson-right{
@@ -1386,7 +1388,7 @@ a:hover{text-decoration:none;}
 	height:130px;
 	}
 .mainlist .piclist .mainpic{
-	width:50%;
+	width:33%;
     text-align:center;
 	padding-top:17px;
 	}	
@@ -1485,15 +1487,16 @@ a:hover{text-decoration:none;}
 	color:#a5a5a5;
 	font-size:12px;
 	padding-top:4px;
+	line-height:18px;
 	}
 .space-li-right	.style .cost{
 	color:#a5a5a5;
-	font-size:13px;
+	font-size:12px;
 	padding-top:4px;
 	}
 .space-li-right	.style .stylecolor{
 	color:#E6C680;
-	font-size:13px;
+	font-size:12px;
 	padding-top:4px;
 	margin-left:5px;
 	padding-right:3px;
@@ -1839,7 +1842,7 @@ a:hover{text-decoration:none;}
 	width:30%;
 }
 .data-list .item .data-li-right{
-	line-height:19px;
+	line-height:18px;
 	width:70%;
 }
 .data-list .item .data-li-left img{
@@ -1849,6 +1852,6 @@ a:hover{text-decoration:none;}
 .mat-6{
 	margin-top:-6px;
 }
-.mat-8{
-	margin-top:0px;
+.mar15{
+	margin-right:15px;
 }
