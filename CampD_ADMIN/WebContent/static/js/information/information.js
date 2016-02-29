@@ -5,7 +5,9 @@ var Information = {
 	sys_conf_homePic:'0', // 首页轮播图类型
 	sys_conf_homePic_0:'0',
 	sys_conf_homePic_1:'1',
-	sys_conf_homePic_2:'2', // 首页轮播图第1，2，3张
+	sys_conf_homePic_2:'2', 
+	sys_conf_homePic_3:'3',
+	sys_conf_homePic_4:'4', // 首页轮播图第1，2，3，4，5张
 	imageFormat : 'jpg,png,PNG,JPG'
 };
 
@@ -43,6 +45,14 @@ Information.initHomePic = function(){
 				}	
 				case Information.sys_conf_homePic_2:{
 					$("#button_"+key).attr("onclick",'Information.updateHomePicToOSS("2");');
+					break;
+				}
+				case Information.sys_conf_homePic_3:{
+					$("#button_"+key).attr("onclick",'Information.updateHomePicToOSS("3");');
+					break;
+				}	
+				case Information.sys_conf_homePic_4:{
+					$("#button_"+key).attr("onclick",'Information.updateHomePicToOSS("4");');
 					break;
 				}	
 				default:

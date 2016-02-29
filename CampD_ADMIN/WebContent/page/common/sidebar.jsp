@@ -141,6 +141,13 @@
 					</a>
 					<b class="arrow"></b>
 				</li>
+				<li class="" name="subMenu130100" id="leftMenu130102">
+					<a href="${ctx}/information/notify/toList.do">
+						<i class="menu-icon fa fa-caret-right"></i>
+						首页通知
+					</a>
+					<b class="arrow"></b>
+				</li>
 			</ul>
 		</li>
 		
