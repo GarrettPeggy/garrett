@@ -77,17 +77,17 @@ Space.list=function(){
 		if(null!=spaceList && spaceList.length>0){
 			for(var i=0;i<spaceList.length;i++){
 				var area = spaceList[i].area, cost = spaceList[i].cost;
-				var costSpan = "<span class='stylecolor fl'>"+cost+"元/小时</span>";
+				var costSpan = "<span class='stylecolor fr'>"+cost+"元/小时</span>";
 				if(cost == 0){
-					costSpan = "<span class='stylecolor fl' style='color:red;'>免费</span>";
+					costSpan = "<span class='stylecolor fr' style='color:red;'>免费</span>";
 				}
 				area = null==area?"":area;
 				var name = spaceList[i].name, adress = spaceList[i].adress;
 				var len=Space.getLength(adress);
-				if(len > 15){
-					adress=adress.substring(0,15) + "...";
+				if(len > 13){
+					adress=adress.substring(0,13) + "...";
 				}
-				$("#space_first_pop").append($("<li class='gift-list bt-line' style='margin-top:0px;padding:10px 5px 7px 5px;' ><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><div class='fl gift-li-left'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%'/></div><div class='space-li-right'><div class='title' >"+(null==name ? "无名称" : name )+"</div><div class='address'>"+adress+"</div><div class='style'><span class='cost fl'>费用：</span>"+costSpan+"</div><div class='style fr mar15'><span class='stylecolor fl'>"+spaceList[i].capacity+"</span><span class='cost fr'>人</span></div></div></a></li>"));
+				$("#space_first_pop").append($("<li class='gift-list bt-line' style='margin-top:0px;padding:10px 5px 7px 5px;' ><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+spaceList[i].id+"'><div class='fl gift-li-left'><img src='"+OSS_RES_URL+spaceList[i].show_images.split(",")[0]+"' width='100%'/></div><div class='space-li-right'><div class='title' >"+(null==name ? "无名称" : name )+"</div><div class='address'>"+adress+"</div><div class='style fl'><span class='cost fl'>费用：</span>"+costSpan+"</div><div class='style fr mar15'><span class='stylecolor fl'>"+spaceList[i].capacity+"</span><span class='cost fr'>人</span></div></div></a></li>"));
 			}
 		}else{
 			$("#space_first_pop").append($("<li class='pd5'>对不起，暂时没有你所要查询的数据</li>"));
@@ -378,11 +378,11 @@ Space.search=function(){
 				};
 				var name = resultList[i].name;
 				var len=Space.getLength(adress);
-				if(len > 10){
-					adress=adress.substring(0,11) + "...";
+				if(len > 13){
+					adress=adress.substring(0,13) + "...";
 				}
-				if(Space.getLength(name) > 10){
-					name=name.substring(0,10) + "...";
+				if(Space.getLength(name) > 12){
+					name=name.substring(0,12) + "...";
 				}
 				$("#space_highlevel").append("<li class='clearfix item'><a href='"+BASE_PATH+"/space/getSpaceInfoById.do?id="+resultList[i].id+"'><div class='data-li-left'><img src='"+OSS_RES_URL+resultList[i].show_images.split(",")[0]+"' width='100%'/></div><div class='data-li-right'><div class='dlr-title' id='space_type'>"+name+"</div><div class='dlr-address'>" + adress + "</div><div class='dlr-cost clearfix'><div class='fl'>费用："+costSpan+"</div><div class='fr'><span class='co'>"+resultList[i].capacity+"</span>人</div></div></div></a></li>");
 			};
