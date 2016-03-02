@@ -3,6 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+     <title>CD营活动平台</title>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/js/user/user.js?_v=${vs}"></script>

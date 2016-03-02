@@ -3,11 +3,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <title>CD营活动平台活动场地</title>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/common/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/common/dropload/dropload.min.js"></script>
-    <title>CD营活动平台活动场地</title>
 </head>
 <body>
 	<!-- 头部 -->

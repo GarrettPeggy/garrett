@@ -148,7 +148,7 @@
 	<!-- 分享 需要显示时删除hide -->
     <div class="tc-modal share-modal hide newtc-modal" id="guanzhu">
         <img class="ma" alt="二维码" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg">
-        <span class="more">关注我们，获取更多活动资源</span>
+        <span class="more">活动生态，你我共享</span>
 	    <img class="close"  src="${rmtResPath}/static/images/login/closed.png"  onclick="Header.cancelShareCD()"/>
     </div>
     <!-- end -->

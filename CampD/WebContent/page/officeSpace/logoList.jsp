@@ -3,13 +3,16 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+     <title>CD营活动平台办公空间</title>
 	<%@ include file="/page/common/meta.jsp" %>
 	<%@ include file="/page/common/jsCss.jsp" %>
 	<script type="text/javascript" src="${locResPath}/static/common/citySelect/city.min.js?_v=${vs}"></script>
 	<script type="text/javascript" src="${locResPath}/static/js/officeSpace/officeSpace.js"></script>
-	<title>CD营活动平台办公空间</title>
 </head>
 <body>
+     <div style="height:1px;overflow:hidden">
+        <img src="${rmtResPath}/static/images/weixin_officespace.png"/> 
+     </div>
 	<!-- 头部 -->
 	<%@ include file="/page/common/head.jsp" %>
     <!-- end -->
@@ -50,7 +53,7 @@
 	   </div>
 	   <div class="qrcode">
 	      <img class="qrcodeimg" src="${rmtResPath}/static/images/icon/cd_qrcode.jpg" width="175" height="175"/>
-	      <div><a href="#">关注我们</a>，获取更多活动资源</div>
+	      <div>活动生态，你我共享</div>
 	   </div>
     </div>
 </body>
