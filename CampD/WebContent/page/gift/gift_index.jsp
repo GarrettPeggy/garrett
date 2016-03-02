@@ -12,7 +12,7 @@
 </head>
 <body>
      <div style="height:1px;overflow:hidden">
-        <img src="${rmtResPath}/static/images/gift3.png"/> 
+        <img src="${rmtResPath}/static/images/weixin_gift.png"/> 
      </div>
 	<!-- 头部 -->
 	<%@ include file="/page/common/head.jsp" %>

@@ -10,6 +10,9 @@
 	<script type="text/javascript" src="${locResPath}/static/common/dropload/dropload.min.js"></script>
 </head>
 <body>
+     <div style="height:1px;overflow:hidden">
+        <img src="${rmtResPath}/static/images/weixin_space.png"/> 
+     </div>
 	<!-- 头部 -->
 	<%@ include file="/page/common/head.jsp" %>
     <!-- end -->
