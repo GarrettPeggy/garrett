@@ -1246,10 +1246,10 @@ a:hover{text-decoration:none;}
 .gift-list .gift-li-left{
 	display:block;
 	margin-right:10px;
-	width:28%;
+	width:30%;
 	}
 .gift-list .gift-li-left img{
-	min-height:70px;
+	min-height:79px;
 }	
 .gift-list .gift-li-right .title{
 	padding-top:7px;
@@ -1850,7 +1850,7 @@ a:hover{text-decoration:none;}
 	width:70%;
 }
 .data-list .item .data-li-left img{
-	min-height:63px;
+	min-height:79px;
 	width:100%;
 }
 .mat-6{
