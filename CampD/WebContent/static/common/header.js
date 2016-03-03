@@ -1,5 +1,6 @@
 var Header = {
-	home_tra_pic:"0"  //首页轮播图类型
+	home_tra_pic:"0",  //首页轮播图类型
+	home_notify:"1"
 };
 /**
  * 跳转到登录页面
@@ -144,6 +145,33 @@ Header.loadTapShow=function(){
 				}
 			}
 			Header.tapShow();
+		}
+		
+	},function(data){
+		systemLoaded();
+		alert(data.returnMsg);
+	});
+	
+};
+
+/**
+ * 加载首页通知
+ */
+Header.loadNotify=function(){
+	
+	var params={"type":Header.home_notify}; 
+	
+	ajaxSearch(BASE_PATH + "/common/findSysConfigs.do",params,function(json){
+		systemLoaded();
+		var notifyList=json.sysConfigList;
+		//把数据写到页面上
+		if(null!=notifyList && notifyList.length>0){
+			var length=notifyList.length;
+			for(var i=0;i<length;i++){//
+				var url_val = notifyList[i].url_val;
+				url_val = url_val==null || isEmpty(url_val)?'javascript:void();':url_val;
+				$("#newsword").append('<a href="'+url_val+'">'+notifyList[i].value_val+'</a>');
+			}
 		}
 		
 	},function(data){

@@ -28,9 +28,10 @@
 		      <div class="news">
 		          <img class="newspic fl" src="${rmtResPath}/static/images/news.png" width="15" height="15"/>
 		          <div class="newsword fl" id="newsword">
-		          	  <a href="${ctx}/page/custom/debiyiyuan/debiyiyuan.jsp">德必易园为大家提供免费活动场地及精美礼品！</a>
+		          <!-- 直接从后台去配置的通知项 -->
+		          	  <%-- <a href="${ctx}/page/custom/debiyiyuan/debiyiyuan.jsp">德必易园为大家提供免费活动场地及精美礼品！</a>
 		          	  <a href="${ctx}/page/custom/chuangSiKa.jsp">CD营2016年免费场地推荐（1月第一批）</a>
-                      <a href="${ctx}/page/custom/aosika.jsp ">不限时间，不限主题，不限次数，免费场地无限供给</a>
+                      <a href="${ctx}/page/custom/aosika.jsp ">不限时间，不限主题，不限次数，免费场地无限供给</a> --%>
 		          </div>
 		      </div>
 		      <div class="clearfix piclist">
@@ -93,14 +94,15 @@
     <!-- end -->
     
 </body>
-</html>
-
 <script type="text/javascript">
 $(function(){
-	Header.loadTapShow();
+	Header.loadTapShow();// 加载轮播图
+	Header.loadNotify();// 加载首页通知
 	Activity.list();
 	Space.list();
 	Gift.list();
 	initNotifyInfo("newsword", 32);
 });
 </script>
+
+</html>
