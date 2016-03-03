@@ -30,6 +30,7 @@
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
+							<input type="hidden" name="maxKeyVal" value="1"><!-- 当前最大的key   -->
 							<form id="notifyListForm">
 								<input type="hidden" name="type" value="1"><!-- 首页通知配置类型   -->
 								
@@ -49,7 +50,7 @@
 										<div class="widget-body" style="display: block;">
 											<div class="widget-toolbox padding-8 clearfix">
 												<div class="search-con-btn">
-													<button class="btn btn-xs btn-warning" onclick="toAddNotify();" type="button">
+													<button class="btn btn-xs btn-warning" onclick="toOpenAddNotify();" type="button">
 														<span class="bigger-110">添加通知</span>
 													    <i class="ace-icon fa fa-plus icon-on-right"></i>
 													</button>
@@ -79,12 +80,67 @@ $(function(){
 
 searchNotifyList = function(){
 	submitSearch('notifyListForm', 'load_content', BASE_PATH + '/information/notify/list.do',function() {
+		// 更新最大的key值
 		
 	});
 };
 
-toAddNotify = function(){
-	alert("这里打开添加通知的对话框！");
+// 打开添加通知对话框
+toOpenAddNotify = function(){
+	var url = BASE_PATH + '/information/notify/toAdd.do';
+	Dialog.ajaxOpenDialog(url,{},"addNotifyDialog",function(){
+		updateMaxKey();// 更新最大的key值
+	},null);
+};
+
+function updateMaxKey(){
+	var curMaxKey = $("#max_key").val();
+	var keyList = $("input[name='keyVal']");
+	var keyLength = keyList.length;
+	for(var i=0; i<keyLength; i++){
+		var key = $(keyList[i]).val();
+		if(Number(curMaxKey)<Number(key)){
+			curMaxKey = key;
+		}
+	}
+	$("#max_key").val(Number(curMaxKey)+1);
+};
+
+function addNotify(){
+	if(Validator.validForm("addTagForm")){
+		submitForm("addTagForm",BASE_PATH + '/common/addSysConfig.do', function(data){
+				searchNotifyList();
+				$('#addNotifyDialog').modal('hide');
+			}, function(data){
+				Dialog.alertError(data.returnMsg);
+				$('#addNotifyDialog').modal('hide');
+			}
+		);
+	}
+};
+
+toOpenEditNotify = function(type,key){
+	var url = BASE_PATH + '/information/notify/toEdit.do';
+	var params = {
+		type:type,
+		key:key
+	};
+	Dialog.ajaxOpenDialog(url,params,"eidtNotifyDialog",function(){
+		
+	},null);
+};
+
+function editNotify(){
+	if(Validator.validForm("editNotifyForm")){
+		submitForm("editNotifyForm",BASE_PATH + '/common/updateSysConfig.do', function(data){
+				searchNotifyList();
+				$('#eidtNotifyDialog').modal('hide');
+			}, function(data){
+				Dialog.alertError(data.returnMsg);
+				$('#eidtNotifyDialog').modal('hide');
+			}
+		);
+	}
 };
 </script>
 

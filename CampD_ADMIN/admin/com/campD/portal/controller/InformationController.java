@@ -62,4 +62,26 @@ public class InformationController extends BaseController {
 		return "/information/notifyListCtx";
 	}
 	
+	/**
+	 * 添加首页通知
+	 */
+	@RequestMapping("/notify/toAdd.do")
+    public String toOpenAddNotify(){
+		
+        return "/information/addNotifyDialog";
+    }
+	
+	/**
+	 * 添加首页通知
+	 */
+	@SuppressWarnings("rawtypes")
+	@RequestMapping("/notify/toEdit.do")
+    public String toOpenEditNotify(ModelMap mop, HttpServletRequest request){
+		
+		Map reqMap = bindParamToMap(request);
+		Map sysConfigMap = commonService.findSysConfigs(reqMap);
+		mop.addAttribute("sysConfig", sysConfigMap);
+		
+        return "/information/editNotifyDialog";
+    }
 }
