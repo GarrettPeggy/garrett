@@ -16,7 +16,7 @@
 		          <label for="value" class="col-xs-12 col-sm-3 col-md-3 control-label no-padding-right">链接:</label>
 		          <div class="col-xs-12 col-sm-6">
 					<span class="block input-icon input-icon-right">
-						<input type="text" class="width-100" notnull="true" name="value" id="value">
+						<input type="text" class="width-100" notnull="true" name="url" id="url">
 					</span>
 				  </div>
 	          </div>
@@ -25,7 +25,7 @@
 				<label for="remark" class="col-xs-12 col-sm-3 col-md-3 control-label no-padding-right">主题</label>
 				<div class="col-xs-12 col-sm-6">
 					<span class="block input-icon input-icon-right">
-						<textarea class="width-100" name="url" id="url" notnull="true" placeholder="请添加通知主题"></textarea>
+						<textarea class="width-100" name="value" id="value" notnull="true" placeholder="请添加通知主题"></textarea>
 					</span>
 				</div>
 			  </div>

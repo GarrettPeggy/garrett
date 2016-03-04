@@ -13,19 +13,19 @@
 	      	  <input type="hidden" name="type" value="${sysConfig.sysConfigList[0].sys_type}">
 			  <input type="hidden" name="key" value="${sysConfig.sysConfigList[0].key_val}">
 	          <div class="form-group">
-		          <label for="value" class="col-xs-12 col-sm-3 col-md-3 control-label no-padding-right">标签名称:</label>
+		          <label for="value" class="col-xs-12 col-sm-3 col-md-3 control-label no-padding-right">连接:</label>
 		          <div class="col-xs-12 col-sm-6">
 					<span class="block input-icon input-icon-right">
-						<input type="text" class="width-100" value="${sysConfig.sysConfigList[0].value_val}" notnull="true" name="value" id="value">
+						<input type="text" class="width-100" value="${sysConfig.sysConfigList[0].url_val}" notnull="true" name="url" id="url">
 					</span>
 				  </div>
 	          </div>
 	          
 	          <div class="form-group">
-				<label for="url" class="col-xs-12 col-sm-3 col-md-3 control-label no-padding-right">描述</label>
+				<label for="url" class="col-xs-12 col-sm-3 col-md-3 control-label no-padding-right">主题</label>
 				<div class="col-xs-12 col-sm-6">
 					<span class="block input-icon input-icon-right">
-						<textarea class="width-100" name="url" id="url" notnull="true" placeholder="请添加描述">${sysConfig.sysConfigList[0].url_val}</textarea>
+						<textarea class="width-100" name="value" id="value" notnull="true" placeholder="请添加通知主题">${sysConfig.sysConfigList[0].value_val}</textarea>
 					</span>
 				</div>
 			  </div>
