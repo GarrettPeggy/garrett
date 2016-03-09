@@ -25,7 +25,7 @@
     <div class="main">
 	    <!-- 活动概括与地点 -->
     	<div class="giftpic" onclick="Gift.showMax();">
-   	        <img class="giftimg"  src="${sysConfig.ossResUrl}${giftMap.giftMap.show_image}" width="100%" height="156"/>
+   	        <img class="giftimg"  src="${sysConfig.ossResUrl}${giftMap.giftMap.show_image}" width="100%"/>
 			<div class="worddescription">${giftMap.giftMap.name }</div>
 	    </div>  
 	    <!-- end -->
