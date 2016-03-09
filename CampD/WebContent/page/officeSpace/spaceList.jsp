@@ -16,10 +16,10 @@
 	<script type="text/javascript" src="${locResPath}/static/js/officeSpace/officeSpace.js"></script>
 </head>
 <body>
-	<!-- 头部 -->
+	<!-- 头部  -->
 	<div class="header clearfix">
-    	<a class="head-left-icon" href="${ctx}/officeSpace/toList.do">
-        	<img src="${rmtResPath}/static/images/back.png" width="13" height="22"/>
+    	<a class="head-left-icon" >
+        	<img src="${rmtResPath}/static/images/back.png" width="13" height="22" onclick="back()"/>
         </a>
         <div class="head-content">${name}</div>
     </div>
