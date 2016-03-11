@@ -200,3 +200,15 @@ Header.cancelShareCD=function(){
 Header.toGiftIndex=function(){
 	window.location.href = BASE_PATH + "/gift/indexList.do";
 };
+/**
+ * 跳转到foot关于我们
+ */
+Header.toAboutUs=function(){
+	window.location.href = BASE_PATH + "/"+"page/common/aboutUs.jsp";
+};
+/**
+ * 跳转到foot版权声明
+ */
+Header.toRights=function(){
+	window.location.href = BASE_PATH + "/"+"page/common/rights.jsp";
+};

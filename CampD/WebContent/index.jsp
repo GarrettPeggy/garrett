@@ -13,7 +13,7 @@
 	<!-- 头部我的中心信息这一部分 -->
 	<%@ include file="/page/common/head.jsp" %>
     <!-- 主体 -->
-    <div class="main" id="activity_main">
+    <div class="main" id="activity_main" style="heigh:100%">
     	<!-- 轮播图 -->
     	<div class="addWrap mat51">
 	        <div class="img-tap-show swipe" id="mySwipe">
@@ -81,14 +81,34 @@
                 <span class="hotspace fl">精美礼品</span>
                 <span class="fr more" onclick="Gift.highlevel()"><img src="${rmtResPath}/static/images/more.png" width="45" height="15"/></span>
               </div>
-              <div class="gift-list-pic " id="present_first_pop">
+              <div class="gift-list-pic clearfix" id="present_first_pop">
 
-               </div>
+              </div>
+           </div>
+            
+             <div class="footdes" >
+	                <div class="about">
+		                 <div class="aboutus" onclick="Header.toAboutUs()">
+			                   <img class="fl bird" src="${rmtResPath}/static/images/bird.png" height="25" width="22" />
+			                   <span class="us">关于我们</span>
+		                 </div>
+		                 <div class="fchar">|</div>
+		                 <div class="aboutus" onclick="Header.toRights()">
+			                   <img class="fl blink"  src="${rmtResPath}/static/images/link.png" height="23" width="23"/>
+			                   <span class="rights">版权声明</span>
+		                 </div>
+	                </div>
+                    <div class="logoimg2" >
+	                    <img src="${rmtResPath}/static/images/cd_logo_02.png" width="70%"/>
+	                </div>
+                    <div class="icp"> 
+	                       <p>沪ICP备15047475号</p>
+	                </div>
             </div>
         <!-- end -->
     </div>
     <!-- end -->
-    
+  </div>  
 </body>
 <script type="text/javascript">
 $(function(){
