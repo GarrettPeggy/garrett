@@ -1863,11 +1863,11 @@ a:hover{text-decoration:none;}
 .footdes{background:#f0f0f0;margin-top:28px;position:relative;margin-bottom: -20px;}
 .about{width:100%;line-height:32px;margin-bottom:15px;}
 .about .aboutus{width:45%;text-align:center;display:inline-block;}
-.about .aboutus .bird{margin-left:34%;padding-top:4px;margin-right:8px;}
+.about .aboutus .bird{margin-left:34%;margin-top:5px;margin-right:8px;}
 .us{color:#454545;font-size: 14px;margin-left: -23px;}
 .fchar{color:#b4b4b4;width:4%;text-align:center;display:inline-block;}
-.aboutus .blink{margin-left:12%;padding-top:6px;margin-right:-14px;}
-.aboutus  .rights{color:#454545;margin-left:-28px; font-size: 14px;}
+.aboutus .blink{margin-left:12%;margin-top:4px;margin-right:-14px;}
+.aboutus  .rights{color:#454545;margin-left:-34px; font-size: 14px;}
 .logoimg2{width:100%;text-align:center;}
 .icp{background:#adadad;text-align:center;line-height:40px;color:#f1f1f1;position:relative;margin-top:12px;font-size:13px;}
 /*公司介绍和版权声明*/

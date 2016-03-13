@@ -89,12 +89,12 @@
              <div class="footdes" >
 	                <div class="about">
 		                 <div class="aboutus" onclick="Header.toAboutUs()">
-			                   <img class="fl bird" src="${rmtResPath}/static/images/bird.png" height="25" width="22" />
+			                   <img class="fl bird" src="${rmtResPath}/static/images/bird.png" height="19" width="22" />
 			                   <span class="us">关于我们</span>
 		                 </div>
 		                 <div class="fchar">|</div>
 		                 <div class="aboutus" onclick="Header.toRights()">
-			                   <img class="fl blink"  src="${rmtResPath}/static/images/link.png" height="23" width="23"/>
+			                   <img class="fl blink"  src="${rmtResPath}/static/images/link.png" height="19" width="19"/>
 			                   <span class="rights">版权声明</span>
 		                 </div>
 	                </div>
