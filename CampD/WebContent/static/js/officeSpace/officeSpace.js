@@ -123,6 +123,7 @@ OfficeSpace.area = function(curObj){
 	index==0?$("#area").val(''):$("#area").val($(curObj).text());
 	$("#logolist").empty();
 	OfficeSpace.list();
+	window.location.href = "#" + rnd();
 };
 /**
  * 区域下拉选择
