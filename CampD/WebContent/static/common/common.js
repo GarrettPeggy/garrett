@@ -887,7 +887,8 @@ function initNotifyInfo(boxID, intervalTop){
 	new function() {
 		var stop = box.scrollTop % intervalTop == 0 && !can;
 		if (!stop){
-			box.scrollTop == parseInt(box.scrollHeight / 2) ? box.scrollTop = 0 : box.scrollTop++;
+			// 当scrollTop等于到达最后一个的位置后，要从新轮回
+			box.scrollTop == ($('#newsword').children("a").length - 1)*($($('#newsword').children("a")[0]).height()) ? box.scrollTop = 0 : box.scrollTop++;
 		}
 		setTimeout(arguments.callee, box.scrollTop % intervalTop ? 10 : 1500);
 	};
