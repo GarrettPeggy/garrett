@@ -171,9 +171,7 @@ Header.loadNotify=function(){
 				var url_val = notifyList[i].url_val;
 				url_val = url_val==null || isEmpty(url_val)?'javascript:void();':url_val;
 				var value_val = notifyList[i].value_val;
-				value_val = value_val==null || isEmpty(value_val)?'':value_val;
-				value_val = value_val.length<=20?value_val:value_val.substr(0,20)+"...";
-				$("#newsword").append('<a href="'+url_val+'">'+value_val+'</a>');
+				$("#newsword").append('<a style="height: 32px;" href="'+url_val+'">'+value_val+'</a>');
 			}
 		}
 		
