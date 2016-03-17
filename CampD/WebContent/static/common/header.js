@@ -170,7 +170,10 @@ Header.loadNotify=function(){
 			for(var i=0;i<length;i++){//
 				var url_val = notifyList[i].url_val;
 				url_val = url_val==null || isEmpty(url_val)?'javascript:void();':url_val;
-				$("#newsword").append('<a href="'+url_val+'">'+notifyList[i].value_val+'</a>');
+				var value_val = notifyList[i].value_val;
+				value_val = value_val==null || isEmpty(value_val)?'':value_val;
+				value_val = value_val.length<=20?value_val:value_val.substr(0,20)+"...";
+				$("#newsword").append('<a href="'+url_val+'">'+value_val+'</a>');
 			}
 		}
 		
