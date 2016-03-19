@@ -2,7 +2,8 @@
  * 办公空间管理
  */
 var Office = {
-	imageFormat : 'jpg,png,PNG,JPG'
+	imageFormat : 'jpg,png,PNG,JPG',
+	railwayLength: 16
 };
 
 /**
@@ -114,6 +115,8 @@ Office.addOffice = function(){
 			Dialog.alertInfo("请至少上传一张场地照片",false);
 			return;
 		}
+		// 获取选中的地铁信息
+		Office.getRailways();
 		
 		submitForm("addOfficeForm",BASE_PATH + '/office/add.do', function(data){
 				window.location.href = BASE_PATH + "/office/toList.do?belongTo="+$("#belongTo").val();
@@ -159,6 +162,8 @@ Office.updateOffice = function(){
 			Dialog.alertInfo("请至少上传一张场地照片",false);
 			return;
 		}
+		// 获取选中的地铁信息
+		Office.getRailways();
 		
 		submitForm("updateOfficeForm",BASE_PATH + '/office/update.do', function(data){
 				var oldPath = $("#oldPath").val();
@@ -203,4 +208,51 @@ Office.getSpaceImages = function(){
  */
 Office.toAddOffice = function(belongTo){
 	window.location.href = BASE_PATH + "/office/toAdd.do?belongTo="+belongTo;
+};
+
+/**
+ * 初始化地铁信息 - 添加和编辑页面
+ */
+Office.initRailways = function(){
+	var $railwayContainer = $("#rail-way");
+	for (var i = 1; i < Office.railwayLength+1; i++) {
+		$railwayContainer.append('<label style="padding-bottom: 10px;"><input name="railway" class="ace ace-checkbox-'+i+' railway-'+i+'" value="'+i+'" type="checkbox"><span class="lbl">地铁'+i+'</span></label>');
+	}
+};
+
+/**
+ * 初始化地铁信息 - 列表页面
+ */
+Office.initSelectRailways = function(){
+	var $railwayContainer = $("#railways");
+	for (var i = 1; i < Office.railwayLength+1; i++) {
+		$railwayContainer.append('<option value="'+i+'">地铁'+i+'</option>');
+	}
+};
+
+/**
+ * 地铁信息
+ */
+Office.getRailways = function(){
+	var $checkedRailwayArray = $('input[name="railway"]:checked');
+	var railway = "";
+	for (var i = 0; i < $checkedRailwayArray.length; i++) {
+		railway += i==0?$($checkedRailwayArray[i]).val():","+$($checkedRailwayArray[i]).val();
+	}
+	$("#railways").val(railway);
+};
+
+//选中已经选择了的地铁信息
+Office.checkRailways = function(){
+	var railways = $("#railways").val();
+	
+	if(!isEmpty(railways)){
+		var railwayArray = railways.split(',');
+		for (var i = 0; i < railwayArray.length; i++) {
+			var value = railwayArray[i];
+			if(!isEmpty(value)){
+				$(".railway-"+value).attr("checked", true);
+			}
+		}
+	}
 };

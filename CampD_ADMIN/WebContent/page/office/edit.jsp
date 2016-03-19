@@ -202,6 +202,18 @@
 					                  </div>
 					                  
 					                  <div class="form-group">
+					                    <label class="col-xs-12 col-sm-2 control-label no-padding-right">地铁</label>
+					                    <div class="col-sm-9">
+					                      <div class="row">
+					                        <div class="checkbox" id="rail-way">
+												<input type="hidden" name="railways" id="railways" value="${officeMap.officeInfo.railways}">
+					                        </div>
+					                      </div>
+					                    </div>
+					                    <div class="help-block col-xs-12 col-sm-reset inline"> </div>
+					                  </div>
+					                  
+					                  <div class="form-group">
 					                    <label for="description" class="col-xs-12 col-sm-2 control-label no-padding-right">空间介绍</label>
 					                    <div class="col-xs-12 col-sm-9"> 
 					                      <span class="block input-icon input-icon-right">
@@ -260,6 +272,8 @@
 <script type="text/javascript">
 $(function(){ 
     $.fn.citySelect(['#province', '#city', '#area'],['${officeMap.officeInfo.province}' , '${officeMap.officeInfo.city}' , '${officeMap.officeInfo.area}']);
+    Office.initRailways();
+    Office.checkRailways();
 });
 </script>
 </html>

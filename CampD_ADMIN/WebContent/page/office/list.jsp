@@ -58,7 +58,7 @@
 													</div>
 												</div>
 												
-												<div class="col-xs-12 col-sm-8">
+												<div class="col-xs-12 col-sm-4">
 													<div class="widget-body">
 														<div class="widget-main">
 															<label>所在地区</label> 
@@ -87,6 +87,17 @@
 									                                </span>
 									                      		</span> 
 									                      	</div>
+														</div>
+													</div>
+												</div>
+												
+												<div class="col-xs-12 col-sm-3">
+													<div class="widget-body">
+														<div class="widget-main">
+															<label>空间类型</label> 
+															<select class="form-control" name="railways" id="railways">
+																<option value="">全部</option>
+															</select>
 														</div>
 													</div>
 												</div>
@@ -163,6 +174,7 @@
 		Office.searchList();
 		$.fn.citySelect(['#province', '#city', '#area'],['' , '' , '']);
 		$(".infolist .liststyle span ul").css("left","-26px");
+		Office.initSelectRailways();
 	});
 </script>
 

@@ -35,8 +35,8 @@ public class OfficeJsonServer {
 	@SuppressWarnings("rawtypes")
 	public Map add(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " insert into office(id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,show_images,description,create_time) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("name"), reqMap.get("belongTo"), reqMap.get("type"), reqMap.get("status"), reqMap.get("contactor"), reqMap.get("contact"), reqMap.get("cost"), reqMap.get("unit"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("address"),reqMap.get("traffic"),reqMap.get("showImages"),reqMap.get("description"),new Date()};
+		String sqlStr = " insert into office(id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,railways,show_images,description,create_time) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+        Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("name"), reqMap.get("belongTo"), reqMap.get("type"), reqMap.get("status"), reqMap.get("contactor"), reqMap.get("contact"), reqMap.get("cost"), reqMap.get("unit"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("address"),reqMap.get("traffic"),reqMap.get("railways"),reqMap.get("showImages"),reqMap.get("description"),new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -62,8 +62,8 @@ public class OfficeJsonServer {
 	public Map update(Map reqMap){
 		
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " update office set name=?, type=?,contactor=?,contact=?,cost=?,unit=?, province=?, city=?, area=?,address=?,traffic=?,show_images=?,description=?, create_time=? where id=?";
-        Object[] params = new Object[]{reqMap.get("name"), reqMap.get("type"), reqMap.get("contactor"), reqMap.get("contact"), reqMap.get("cost"), reqMap.get("unit"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("address"),reqMap.get("traffic"),reqMap.get("showImages"),reqMap.get("description"),new Date(),reqMap.get("id")};
+		String sqlStr = " update office set name=?, type=?,contactor=?,contact=?,cost=?,unit=?, province=?, city=?, area=?,address=?,traffic=?,railways=?,show_images=?,description=?, create_time=? where id=?";
+        Object[] params = new Object[]{reqMap.get("name"), reqMap.get("type"), reqMap.get("contactor"), reqMap.get("contact"), reqMap.get("cost"), reqMap.get("unit"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("address"),reqMap.get("traffic"),reqMap.get("railways"),reqMap.get("showImages"),reqMap.get("description"),new Date(),reqMap.get("id")};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
         JSONView jsonView = new JSONView();
@@ -89,7 +89,7 @@ public class OfficeJsonServer {
 	@SuppressWarnings("rawtypes")
 	public Map getById(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = "select id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,show_images,description,create_time from office where id=? ";
+		String sqlStr = "select id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,railways,show_images,description,create_time from office where id=? ";
 		Map officeInfo = jdbcTemplate.queryForMap(sqlStr, new Object[]{reqMap.get("id")});
 		
 		JSONView jsonView = new JSONView();
@@ -108,7 +108,7 @@ public class OfficeJsonServer {
 	public Map getList(Map reqMap){
 		
 		logger.info("reqMap="+reqMap);
-		String sqlStr = "select id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,show_images,description,create_time from office where 1=1 ";
+		String sqlStr = "select id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,railways,show_images,description,create_time from office where 1=1 ";
 		String sqlCount =" select count(1) from office where 1=1 ";
 		
 		Object name = reqMap.get("name");//名称
@@ -163,6 +163,12 @@ public class OfficeJsonServer {
 		if(null!=belongTo && !"".equals(belongTo)){
 			sqlStr+=" and belong_to='"+belongTo+"' ";
 			sqlCount+=" and belong_to='"+belongTo+"' ";
+		}
+		
+		Object railways = reqMap.get("railways");//该字段是以逗号隔开的，地铁
+		if(null!=railways && !"".equals(railways)){
+			sqlStr+=" and FIND_IN_SET("+railways+", railways) ";
+			sqlCount+=" and FIND_IN_SET("+railways+", railways) ";
 		}
 		
 		// 默认按照发布时间降序排列
