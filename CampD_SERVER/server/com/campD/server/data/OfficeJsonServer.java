@@ -165,6 +165,17 @@ public class OfficeJsonServer {
 			sqlCount+=" and belong_to='"+belongTo+"' ";
 		}
 		
+		Object minCost = reqMap.get("minCost");//开始时间
+		Object maxCost = reqMap.get("maxCost");//结束时间
+		if(null!=minCost && !"".equals(minCost)){
+			sqlStr+=" and cost>="+minCost;
+			sqlCount+=" and cost>='"+minCost;
+		}
+		if(null!=maxCost && !"".equals(maxCost)){
+			sqlStr+=" and cost<"+maxCost;
+			sqlCount+=" and cost<"+maxCost;
+		}
+		
 		Object railways = reqMap.get("railways");//该字段是以逗号隔开的，地铁
 		if(null!=railways && !"".equals(railways)){
 			sqlStr+=" and FIND_IN_SET("+railways+", railways) ";
