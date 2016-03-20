@@ -94,7 +94,7 @@
 												<div class="col-xs-12 col-sm-3">
 													<div class="widget-body">
 														<div class="widget-main">
-															<label>空间类型</label> 
+															<label>地铁</label> 
 															<select class="form-control" name="railways" id="railways">
 																<option value="">全部</option>
 															</select>
