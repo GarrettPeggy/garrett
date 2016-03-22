@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campD.portal.common.JSONView;
 import com.campD.portal.common.PageInfo;
+import com.campD.portal.service.GiftService;
+import com.campD.portal.service.OfficeService;
 import com.campD.portal.service.OfficeSpaceService;
+import com.campD.portal.service.SpaceService;
 
 /**
  * @author Garrett
@@ -30,6 +33,41 @@ public class OfficeSpaceController extends BaseController {
 	
 	@Autowired
 	private OfficeSpaceService officeSpaceService;
+	
+	@Autowired
+	private OfficeService officeService;
+	
+	@Autowired
+	private SpaceService spaceService;
+	
+	@Autowired
+	private GiftService giftService;
+	
+	/**
+	 * 根据名称全文搜索场地、礼品、办公空间
+	 */
+	@SuppressWarnings({ "unchecked"})
+	@RequestMapping("/resourseList.do")
+	@ResponseBody
+	public JSONView resourseList(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		
+		Map<String, Object> map = bindParamToMap(request);
+		PageInfo pageInfo=getPageInfo(request);
+		Map<?, ?> officeListMap = officeService.getList(map,pageInfo);
+		Map<?, ?> spaceListMap = spaceService.getSpaceInfoList(map, pageInfo, false);
+		Map<?, ?> giftListMap = giftService.getList(map,pageInfo, false);
+		
+		JSONView resourseListMap = new JSONView();
+		resourseListMap.put("giftListMap", giftListMap);
+		resourseListMap.put("spaceListMap", spaceListMap);
+		resourseListMap.put("officeListMap", officeListMap);
+		
+		// 此处需要判断三次请求都成功了才真正返回成功
+		resourseListMap.setSuccess();
+		resourseListMap.setReturnSuccMsg();
+		
+		return getSearchJSONView(resourseListMap);
+	}
 
 	/**
 	 * 总空间列表页
