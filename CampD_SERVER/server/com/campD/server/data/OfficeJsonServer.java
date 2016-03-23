@@ -35,7 +35,7 @@ public class OfficeJsonServer {
 	@SuppressWarnings("rawtypes")
 	public Map add(Map reqMap){
 		logger.info("reqMap="+reqMap);
-		String sqlStr = " insert into office(id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,railways,show_images,description,create_time) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+		String sqlStr = " insert into office(id,name,belong_to,type,status,contactor,contact,cost,unit,province,city,area,address,traffic,railways,show_images,description,create_time) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
         Object[] params = new Object[]{UUID.randomUUID().toString(), reqMap.get("name"), reqMap.get("belongTo"), reqMap.get("type"), reqMap.get("status"), reqMap.get("contactor"), reqMap.get("contact"), reqMap.get("cost"), reqMap.get("unit"), reqMap.get("province"),reqMap.get("city"),reqMap.get("area"),reqMap.get("address"),reqMap.get("traffic"),reqMap.get("railways"),reqMap.get("showImages"),reqMap.get("description"),new Date()};
         int updateLineCount = jdbcTemplate.update(sqlStr, params);
         
