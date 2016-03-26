@@ -1053,6 +1053,11 @@ String.prototype.getBytesLength = function() {
 			$(".search-detail").addClass("hide");
 			$("#space_mc").addClass("hide");
 		};
+		
+		// 办公空间全局抖索列表下拉框初始化
+		if($(source).parents('#search_all').length <= 0 && !$(source).hasClass('searchPic')) { 
+			$("#search_all").addClass("hide");
+		};
 	});
 	
 	

@@ -67,7 +67,7 @@
 		OfficeSpace.searchByArea();
 		OfficeSpace.search();
 		OfficeSpace.setOuterHeight();
-		OfficeSpace.droploadPage(); 
+		OfficeSpace.droploadPage(OfficeSpace.search, false); 
 	});
 </script>
 </html>

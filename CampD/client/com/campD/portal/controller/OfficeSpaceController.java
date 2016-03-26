@@ -77,7 +77,7 @@ public class OfficeSpaceController extends BaseController {
 		resourseListMap.setSuccess();
 		resourseListMap.setReturnSuccMsg();
 		
-		return getSearchJSONView(resourseListMap);
+		return resourseListMap;
 	}
 
 	/**

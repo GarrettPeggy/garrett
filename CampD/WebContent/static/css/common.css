@@ -1057,16 +1057,12 @@ a:hover{text-decoration:none;}
 	margin-right:8%;
 	line-height: 25px;
 }
-.newheader{
-	position:fixed;
-	top:0px;
-	left:0px;
-}
 /*header固定定位*/	
 .newheader{
 	position:fixed;
 	top:0px;
 	left:0px;
+	width:100%;
 }
 /*活动页hdmat51*/
 .hdmat51{
@@ -1423,7 +1419,7 @@ a:hover{text-decoration:none;}
 	
 /*newlist*/	
 .workfor{
-    top: 50px;
+    top: 51px;
     left:0px;
     background: #FFF ;
     position: fixed;
@@ -1432,6 +1428,7 @@ a:hover{text-decoration:none;}
     width:100%;
     white-space: nowrap;
     z-index:42;
+    border-bottom: 1px solid #f0f0f0;
 	}
 #scroller{
   position: fixed;
@@ -1463,14 +1460,14 @@ a:hover{text-decoration:none;}
 	width:23%;
 	text-align:center;
 	font-size:16px;
-	color:#3c3c3c;
+	color:#7c7c7c;
 	}
 #scroller .workforlist li.active{
 	background:#a0bdf4;
 	border:1px solid;
     border-radius:16px;
-	height:36px;
-	line-height:33px;
+	line-height:27px;
+	height:28px;
 	color:#fff;
 	}
 .search-box .giftlist li .word {
@@ -1584,10 +1581,10 @@ a:hover{text-decoration:none;}
 .slidedown{
   position:fixed;
   width: 45px;
-  top:50px;
+  top:51px;
   right:0px;
   background:#fff;
-  height: 43px;
+  height: 42px;
   line-height: 37px;
   margin-top: 1px;
   z-index:42;
@@ -1823,7 +1820,7 @@ a:hover{text-decoration:none;}
 	margin-top:-2px;
 }
 /*众创空间logo页*/
-.logolist{width:100%;min-height:290px;background:#fff;padding:15px 5px 15px 5px;display:inline-block;position:relative;}
+.logolist{width:100%;min-height:290px;background:#fff;padding:15px 5px 15px 5px;display:inline-block;position:relative;margin-top:40px;}
 .logolist .logoimg{width:20%;margin-right:3%;margin-left:2%;line-height:60px;}
 .morelogo{margin-top:-32px;}
 .logolist .down{position:absolute;bottom:0px;width:100%;background:#fff;text-align:center;line-height:30px;}
@@ -1876,7 +1873,25 @@ a:hover{text-decoration:none;}
 .campanypic2{display:inline-block;width:40%;margin-top:20px;}
 .description{margin-top:20px;padding:0px 5px 0px 5px;}
 .description  p{line-height:32px; font-size:14px;}
-
+/*办公空间搜索框*/
+.searchAll{position:relative;margin-left:24%;width:63%;margin-right:13%;margin-top:-3px;}
+.searchBorder{border:1px solid #f0f0f0;width:100%;line-height:30px;border-radius:15px;padding-left:25px;background:#eeeff3;margin-top:13px;font-size:15px;color:0e0e0e;}
+.searchPic{position: fixed;top: 18px;left: 26%;display: block;z-index: 42;}
+.searchDel{position: fixed;top: 17px;right:15%;display: block;z-index: 42;margin-left:10px;}
+/*搜索结果列表*/
+.searchMc{position:fixed;top:51px;background:#ffffff;z-index:60;width:100%;}
+.searchRes{line-height:35px;border-bottom:1px solid #f0f0f0;width:100%;font-size:13px;padding-left:10px;color:434343;}
+.nosearch{min-height:150px;}
+/*品牌 区域 价位 地铁*/
+.bandlist{width:100%;line-height:40px;background:#ffffff;position:fixed;top:50px;text-align:center;z-index:42;border-top:1px solid #f0f0f0;padding:0px;}
+.bandlist .band{margin-top:1px;color:#3c3c3c;width:23%;text-align:center;display:inline-block;font-size:18px;}
+.bandlist .active{color:#638ee0;border-bottom:3px solid #638ee0;}
+/*众创空间修改*/
+.workfor1{top:94px;}
+.slidedown1{top:94px;height:42px;}
+.workfor-list1{margin-top:0px !important;top:37px !important;border-bottom:1px solid #f0f0f0;}
+.logolist1{margin-top:45px;}
+.workfor-list1 li{color:#707070;font-size:16px;}
 
 
 
