@@ -57,7 +57,18 @@ public class OfficeSpaceController extends BaseController {
 		Map<?, ?> spaceListMap = spaceService.getSpaceInfoList(map, pageInfo, false);
 		Map<?, ?> giftListMap = giftService.getList(map,pageInfo, false);
 		
+		String giftReturnCode = giftListMap!=null?(String) giftListMap.get("returnCode"):null;
+		String spaceReturnCode = spaceListMap!=null?(String) spaceListMap.get("returnCode"):null;
+		String officeReturnCode = officeListMap!=null?(String) officeListMap.get("returnCode"):null;
+
 		JSONView resourseListMap = new JSONView();
+		resourseListMap.setSearchReturnType();
+		if(!"200".equals(giftReturnCode) || !"200".equals(spaceReturnCode) || !"200".equals(officeReturnCode)){
+			resourseListMap.setFail();
+			resourseListMap.setReturnErrorMsg();
+			return getSearchJSONView(resourseListMap);
+		}
+
 		resourseListMap.put("giftListMap", giftListMap);
 		resourseListMap.put("spaceListMap", spaceListMap);
 		resourseListMap.put("officeListMap", officeListMap);
