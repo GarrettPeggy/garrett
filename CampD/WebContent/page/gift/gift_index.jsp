@@ -17,6 +17,9 @@
 	<!-- 头部 -->
 	<%@ include file="/page/common/head.jsp" %>
     <!-- end -->
+    <!-- 全局搜索结果列表 -->
+	<div class="searchMc" id="search_all"></div>
+    <!-- end -->
      <div class="workfor retina-1px-border-bottom retina-1px-border-top" id="scrolllist">
       <div id="scroller">
     	<ul class="clearfix search-parent-list workforlist" >

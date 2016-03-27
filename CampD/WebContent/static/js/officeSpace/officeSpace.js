@@ -277,6 +277,7 @@ OfficeSpace.setSelect=function(){
     	    	
     	    	$('#curPage').val(1);
     	    	$(".logolist,.qrcode").hide();
+    	    	$(".outer").show();
     	    	$("#creatorSpaceList").empty();
     	    	OfficeSpace.searchSpace();
         	}else{
@@ -284,6 +285,7 @@ OfficeSpace.setSelect=function(){
         		$("#space_mc").addClass("hide");
         		$("#area").val("");
         		$(".logolist,.qrcode").show();
+        		$(".outer").hide();
         	}
     	    	$(this).addClass('active');
                 $(this).prevAll().removeClass("active");
@@ -387,6 +389,7 @@ OfficeSpace.searchKey = function(){
 	
 	$("#search_all").empty();
 	$("#search_all").removeClass("hide");
+	$("#search_all").css({"max-height":window.screen.height-$(".header").height(),"min-height":"150px"});
 	
 	var searchKey = $('#searchKey').val();
 	var params = {
@@ -416,7 +419,7 @@ OfficeSpace.searchKey = function(){
 		var officeLength = officeList.length;
 		
 		if(giftLength == 0 && spaceLength == 0 && officeLength == 0 ){
-			$("#search_all").append($('<div class="searchRes nosearch">抱歉，暂时没有找到相关信息！</div>'));
+			$("#search_all").append($('<div class="searchRes">抱歉，暂时没有找到相关信息！</div>'));
 			return;
 		}
 		
@@ -424,7 +427,7 @@ OfficeSpace.searchKey = function(){
 			for(var i=0; i<officeLength; i++){
 				var id = officeList[i].id;
 				var name = officeList[i].name;
-				$("#search_all").append($('<div class="searchRes"><a href="'+BASE_PATH+'/office/getById.do?id='+id+'">'+name+'</a></div>'));
+				$("#search_all").append($('<div class="searchRes"><a href="'+BASE_PATH+'/gift/getById.do?id='+id+'">'+name+'</a></div>'));
 			};
 		}
 		

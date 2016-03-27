@@ -12,6 +12,8 @@
 <body>
 	<!-- 头部我的中心信息这一部分 -->
 	<%@ include file="/page/common/head.jsp" %>
+	<!-- 全局搜索结果列表 -->
+	<div class="searchMc" id="search_all"></div>
     <!-- 主体 -->
     <div class="main" id="activity_main" style="heigh:100%">
     	<!-- 轮播图 -->

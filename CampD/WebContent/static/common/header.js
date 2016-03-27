@@ -213,3 +213,79 @@ Header.toAboutUs=function(){
 Header.toRights=function(){
 	window.location.href = BASE_PATH + "/"+"page/common/rights.jsp";
 };
+/**
+ * 清空全局搜索框
+ */
+Header.delSearchKey = function(){
+	$("#searchKey").val("");
+};
+/**
+ * 全局搜索
+ */
+Header.searchKey = function(){
+	
+	$("#search_all").empty();
+	$("#search_all").removeClass("hide");
+	$("#search_all").css({"max-height":window.screen.height-$(".header").height(),"min-height":"150px"});
+	
+	var searchKey = $('#searchKey').val();
+	var params = {
+	    "curPage":1,
+	    "pageLimit":10000,
+		'name':searchKey
+	};
+	
+	if(isEmpty(searchKey)){
+		$.dialog({title:'',
+		    content: '您是否忘记输入关键词了？',
+		    ok: function(){
+		        return true;
+		    },
+		});
+		return;
+	}
+	
+	ajaxSearch(BASE_PATH + "/officeSpace/resourseList.do",params,function(json){
+		
+		var giftList = json.giftListMap.giftList;
+		var spaceList = json.spaceListMap.resultList;
+		var officeList = json.officeListMap.resultList;
+		
+		var giftLength = giftList.length;
+		var spaceLength = spaceList.length;
+		var officeLength = officeList.length;
+		
+		if(giftLength == 0 && spaceLength == 0 && officeLength == 0 ){
+			$("#search_all").append($('<div class="searchRes ">抱歉，暂时没有找到相关信息！</div>'));
+			return;
+		}
+		
+		if(null != officeList && officeLength > 0){
+			for(var i=0; i<officeLength; i++){
+				var id = officeList[i].id;
+				var name = officeList[i].name;
+				$("#search_all").append($('<div class="searchRes"><a href="'+BASE_PATH+'/office/getById.do?id='+id+'">'+name+'</a></div>'));
+			};
+		}
+		
+		if(null != giftList && giftLength > 0){
+			for(var i=0; i<giftLength; i++){
+				var id = giftList[i].id;
+				var name = giftList[i].name;
+				$("#search_all").append($('<div class="searchRes"><a href="'+BASE_PATH+'/gift/getById.do?id='+id+'">'+name+'</a></div>'));
+			};
+		}
+		
+		if(null != spaceList && spaceLength > 0){
+			for(var i=0; i<spaceLength; i++){
+				var id = spaceList[i].id;
+				var name = spaceList[i].name;
+				$("#search_all").append($('<div class="searchRes"><a href="'+BASE_PATH+'/space/getSpaceInfoById.do?id='+id+'">'+name+'</a></div>'));
+			};
+		}
+		
+	}, function(data) {
+		systemLoaded();
+		alert(data.returnMsg);
+	});
+};

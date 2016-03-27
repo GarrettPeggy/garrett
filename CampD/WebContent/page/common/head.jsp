@@ -5,16 +5,21 @@
 <script type="text/javascript" src="${locResPath}/static/js/activity/activity.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/js/space/space.js?_v=${vs}"></script>
 <script type="text/javascript" src="${locResPath}/static/js/gift/gift.js?_v=${vs}"></script>
-
     <!-- 头部 -->
 	<div class="header clearfix classify-head retina-1px-border-bottom positionR newheader" id="activity_header">
         <div class="newhead-left-icon">
         	<img src="${rmtResPath}/static/images/cd_logo.png" id="cd_logo" width="56" height="20" />
         </div>
+        <div class="searchAll">
+            <input class="searchBorder" id="searchKey" type="text"/>
+        </div> 
         <div class="head-right-icon">
         	<img src="${rmtResPath}/static/images/user2.png" width="20" height="20"/>
         </div>
     </div>
+    <img class="searchPic" onclick="Header.searchKey();"  src="${rmtResPath}/static/images/search.png" width="15" height="15"/>
+    <img class="searchDel" onclick="Header.delSearchKey();" src="${rmtResPath}/static/images/close.png" width="16" height="16"/>
+    
     <!-- end -->
     
      <!-- 右上角菜单 -->
