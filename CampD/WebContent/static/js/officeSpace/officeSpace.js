@@ -126,13 +126,28 @@ OfficeSpace.area = function(curObj){
 	window.location.href = "#" + rnd();
 };
 /**
- * 区域下拉选择
+ * logoList页区域下拉选择
+ */
+OfficeSpace.moreLogoArea=function(){
+	/*区域下拉列表*/
+	$(".morelist").click(function(){
+       $("#workfor-list").slideToggle("fast",function(){
+    	 /*  $("#space_main").css("margin-top",$(this).is(':hidden')?"7px":"45px");*/
+    	   OfficeSpace.setOuterHeight();
+       });
+    }); 
+	$(".workforlist").width($("#scrolllist").width()-$(".slidedown").width());
+	$("#scroller").width($("#scrolllist").width());
+	
+};
+/**
+ * spaceList页区域下拉选择
  */
 OfficeSpace.moreArea=function(){
 	/*区域下拉列表*/
 	$(".morelist").click(function(){
        $("#workfor-list").slideToggle("fast",function(){
-    	   /*$("#space_main").css("margin-top",$(this).is(':hidden')?"7px":"45px");*/
+    	   $("#space_main").css("margin-top",$(this).is(':hidden')?"7px":"45px");
     	   OfficeSpace.setOuterHeight();
        });
     }); 

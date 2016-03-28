@@ -133,7 +133,7 @@
 	$(function(){
 		// 初始化区域选择
 		OfficeSpace.list();
-		OfficeSpace.moreArea();
+		OfficeSpace.moreLogoArea();
 		OfficeSpace.initAreaLogo();
 		OfficeSpace.setSelect();
 		OfficeSpace.initProvince();

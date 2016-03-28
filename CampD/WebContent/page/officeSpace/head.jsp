@@ -12,7 +12,7 @@
         	<img src="${rmtResPath}/static/images/cd_logo.png" id="cd_logo" width="56" height="20" />
         </div>
         <div class="searchAll">
-            <input class="searchBorder" id="searchKey" type="text"/>
+            <input class="searchBorder" id="searchKey" type="text" style="-webkit-appearance:none;"/>
         </div> 
         <div class="head-right-icon">
         	<img src="${rmtResPath}/static/images/user2.png" width="20" height="20"/>
