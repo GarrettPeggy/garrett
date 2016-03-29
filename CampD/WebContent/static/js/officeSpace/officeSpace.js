@@ -326,9 +326,9 @@ OfficeSpace.address=function(area, curObj){
 	
 	$('#curPage').val(1);
 	$('#area').val(area);
-	$('#minCost').val("");
-	$('#maxCost').val("");
-	$('#line').val("");
+//	$('#minCost').val("");
+//	$('#maxCost').val("");
+//	$('#line').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
@@ -351,8 +351,8 @@ OfficeSpace.cost=function(minCost,maxCost, curObj){
 	$('#curPage').val(1);
 	$('#minCost').val(minCost);
 	$('#maxCost').val(maxCost);
-	$('#area').val("");
-	$('#line').val("");
+//	$('#area').val("");
+//	$('#line').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
@@ -374,9 +374,9 @@ OfficeSpace.line=function(line, curObj){
 	
 	$('#curPage').val(1);
 	$('#line').val(line);
-	$('#area').val("");
-	$('#minCost').val("");
-	$('#maxCost').val("");
+//	$('#area').val("");
+//	$('#minCost').val("");
+//	$('#maxCost').val("");
 	
 	$(curObj).addClass("active");
 	$(curObj).prevAll().removeClass("active");
