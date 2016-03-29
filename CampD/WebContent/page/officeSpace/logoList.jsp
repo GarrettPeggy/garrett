@@ -15,7 +15,7 @@
         <img src="${rmtResPath}/static/images/weixin_officespace.png"/> 
      </div>
 	<!-- 头部 -->
-	<%@ include file="/page/officeSpace/head.jsp" %>
+	<%@ include file="/page/common/head.jsp" %>
 	<!-- end -->
 	<!-- 全局搜索结果列表 -->
 	<div class="searchMc" id="search_all"></div>

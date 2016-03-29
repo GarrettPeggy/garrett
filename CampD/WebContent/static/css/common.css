@@ -1343,14 +1343,14 @@ a:hover{text-decoration:none;}
     display: block;
     text-align: center;
     padding-top: 4px;
-    width:80px;
+    width:78px;
     left:2px;
 	}
 .header .head-right-icon {
     position: absolute;
     top: 4px;
     right: 2px;
-    width: 50px;
+    width: 49px;
     height: 50px;
     text-align: center;
 }
@@ -1874,13 +1874,15 @@ a:hover{text-decoration:none;}
 .description{margin-top:20px;padding:0px 5px 0px 5px;}
 .description  p{line-height:32px; font-size:14px;}
 /*办公空间搜索框*/
-.searchAll{position:relative;margin-left:24%;width:63%;margin-right:13%;margin-top:-3px;}
-.searchBorder{border:1px solid #f0f0f0;width:100%;line-height:26px;border-radius:15px;padding-left:25px;background:#eeeff3;margin-top:13px;font-size:16px;color:0e0e0e;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(255,255,255,0);}
+.searchAll{position:relative;margin-left:24%;width:60%;margin-top:-3px;}
+.searchBorder{border:1px solid #f0f0f0;width:85%;line-height:26px;border-radius:15px;padding-left:25px;background:#eeeff3;margin-top:13px;font-size:14px;color:0e0e0e;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(255,255,255,0);}
 .searchPic{position: fixed;top: 17px;left: 26%;display: block;z-index: 42;}
-.searchDel{position: fixed;top: 16px;right:15%;display: block;z-index: 42;margin-left:10px;}
+.searchDel{position: fixed;top: 16px;right:27%;display: block;z-index: 42;margin-left:10px;display:none;}
+.searchWord{position: fixed;top: 0px;right: 15%;display:inline;z-index: 42;margin-left: 10px; color: #a5a5a5;font-size: 14px;}
 /*搜索结果列表*/
 .searchMc{position:fixed;top:51px;background:#ffffff;z-index:60;width:100%;overflow-y:scroll;}
-.searchRes a{line-height:35px;border-bottom:1px solid #f0f0f0;width:100%;font-size:14px;padding-left:10px;color:#434343;}
+.searchRes {font-size:12px;padding-left:10px;color:#434343;display:block;line-height:35px;border-bottom:1px solid #f0f0f0;width:100%;}
+.searchRes a{line-height:35px;width:100%;font-size:12px;padding-left:10px;color:#434343;display:block;}
 /*品牌 区域 价位 地铁*/
 .bandlist{width:100%;line-height:40px;background:#ffffff;position:fixed;top:50px;text-align:center;z-index:42;border-top:1px solid #f0f0f0;padding:0px;}
 .bandlist .band{margin-top:1px;color:#3c3c3c;width:23%;text-align:center;display:inline-block;font-size:18px;}

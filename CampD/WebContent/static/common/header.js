@@ -218,6 +218,9 @@ Header.toRights=function(){
  */
 Header.delSearchKey = function(){
 	$("#searchKey").val("");
+	$(".searchPic").show();
+	$(".searchDel").hide();
+	$(".searchBorder").css("padding-left","25px");
 };
 /**
  * 全局搜索
@@ -288,4 +291,13 @@ Header.searchKey = function(){
 		systemLoaded();
 		alert(data.returnMsg);
 	});
+};
+
+/**
+ * 聚焦时隐藏搜索icon
+ */
+Header.hideSearchPic=function(){
+	$(".searchPic").hide();
+	$(".searchDel").show();
+	$(".searchBorder").css("padding-left","12px");
 };
