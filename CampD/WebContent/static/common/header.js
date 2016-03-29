@@ -230,6 +230,7 @@ Header.searchKey = function(){
 	$("#search_all").empty();
 	$("#search_all").removeClass("hide");
 	$("#search_all").css({"max-height":window.screen.height-$(".header").height(),"min-height":"150px"});
+	$(".searchMc").show();
 	
 	var searchKey = $('#searchKey').val();
 	var params = {
@@ -245,6 +246,7 @@ Header.searchKey = function(){
 		        return true;
 		    },
 		});
+		$(".searchMc").hide();
 		return;
 	}
 	
