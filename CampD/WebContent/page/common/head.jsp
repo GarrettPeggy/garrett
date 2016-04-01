@@ -11,14 +11,14 @@
         	<img src="${rmtResPath}/static/images/cd_logo.png" id="cd_logo" width="56" height="20" />
         </div>
         <div class="searchAll">
-            <input class="searchBorder" id="searchKey" type="text" style="-webkit-appearance:none;" onfocus="Header.hideSearchPic()"/>
-            <div class="searchWord" onclick="Header.searchKey();">搜索</div>
+            <input class="searchBorder" id="searchKey" type="text" style="-webkit-appearance:none;"/>
+            <!-- <div class="searchWord">搜索</div> -->
         </div> 
         <div class="head-right-icon">
         	<img src="${rmtResPath}/static/images/user2.png" width="20" height="20"/>
         </div>
     </div>
-    <img class="searchPic" src="${rmtResPath}/static/images/search.png" width="15" height="15"/>
+    <img class="searchPic" onclick="Header.searchKey();"    src="${rmtResPath}/static/images/search.png" width="15" height="15"/>
     <img class="searchDel" onclick="Header.delSearchKey();" src="${rmtResPath}/static/images/close.png" width="16" height="16"/>
     <!-- end -->
     
