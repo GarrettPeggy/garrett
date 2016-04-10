@@ -76,7 +76,7 @@
   
   <!-- 制定会话缺省超时值半个小时 -->
   <session-config>
-      <session-timeout>30</session-timeout>
+      <session-timeout>120</session-timeout>
   </session-config> 
   
   <!-- 设定JSP的相关配置 -->
